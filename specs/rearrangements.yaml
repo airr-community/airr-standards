@@ -1,0 +1,218 @@
+url: https://github.com/airr-community/airr-formats/airr.yaml
+version: 0.1.0
+name: rearrangement
+type: object
+description: AIRR schema for Ig/TCR rearrangements
+fields:
+  -
+    name: id
+    type: string
+    doc: Read/sequence identifier
+  -
+    name: sequence
+    type: string
+    doc: Nucleotide sequence (e.g., the "read" sequence; revcomp'd if
+         necessary)
+  -
+    name: primary
+    type: boolean
+    doc: This record contains the primary VDJ alignments for this read/sequence
+  -
+    name: sample
+    type: string
+    doc: The biological sample this read derives from (e.g., from BioSample
+         database)
+  -
+    name: constant
+    type: string
+    doc: Constant region gene (e.g., IGHG4, IGHA2, IGHE, TRBC)
+  -
+    name: functional
+    type: boolean
+    doc: VDJ sequence is predicted to be functional
+  -
+    name: rev_comp
+    type: boolean
+    doc: Sequence is reverse complemented
+  -
+    name: v_call
+    type: string
+    doc: V allele assignment
+  -
+    name: d_call
+    type: string
+    doc: D allele assignment
+  -
+    name: j_call
+    type: string
+    doc: J allele assignment
+  -
+    name: v_score
+    type: float
+    doc: V alignment score
+  -
+    name: d_score
+    type: float
+    doc: D alignment score
+  -
+    name: j_score
+    type: float
+    doc: J alignment score
+  -
+    name: v_cigar
+    type: string
+    doc: V alignment CIGAR string
+  -
+    name: d_cigar
+    type: string
+    doc: D alignment CIGAR string
+  -
+    name: j_cigar
+    type: string
+    doc: J alignment CIGAR string
+  -
+    name: v_evalue
+    type: float
+    doc: V alignment E-value (when applicable)
+  -
+    name: d_evalue
+    type: float
+    doc: D alignment E-value (when applicable)
+  -
+    name: j_evalue
+    type: float
+    doc: J alignment E-value (when applicable)
+  -
+    name: v_identity
+    type: float
+    doc:  V alignment identity
+  -
+    name: d_identity
+    type: float
+    doc:  D alignment identity
+  -
+    name: j_identity
+    type: float
+    doc:  J alignment identity
+  -
+    name: vdj_score
+    type: float
+    doc: Score for aligners that consider the full sequence as a whole
+  -
+    name: vdj_evalue
+    type: float
+    doc: E-value for aligners that consider the full sequence as a whole
+  -
+    name: vdj_identity
+    type: float
+    doc: Identity for aligners that consider the full sequence as a whole
+  -
+    name: fwr1_start
+    type: integer
+    doc: FWR1 start coordinate in sequence (transferred from germline)
+  -
+    name: cdr1_start
+    type: integer
+    doc: CDR1 start coord in sequence (transferred from germline)
+  -
+    name: fwr2_start
+    type: integer
+    doc: FWR2 start coord in sequence (transferred from germline)
+  -
+    name: cdr2_start
+    type: integer
+    doc: CDR2 start coord in sequence (transferred from germline)
+  -
+    name: fwr3_start
+    type: integer
+    doc: FWR3 start coord in sequence (transferred from germline)
+  -
+    name: cdr3_start
+    type: integer
+    doc: CDR3 start coord in sequence (transferred from germline)
+  -
+    name: cdr3_end
+    type: integer
+    doc: CDR3 end coord in sequence (transferred from germline)
+  -
+    name: fwr4_end
+    type: integer
+    doc: FWR4 end coord in sequence (transferred from germline)
+  -
+    name: clone
+    type: string
+    doc: Clone assignment for this sequence
+  -
+    name: parent_id
+    type: string
+    doc: Sequence ID of parent rearrangement in tree
+
+mandatory:
+  - id
+  - sequence
+  - primary
+  - sample
+  - constant
+  - functional
+  - rev_comp
+  - v_call
+  - d_call
+  - j_call
+  - v_score
+  - d_score
+  - j_score
+  - v_cigar
+  - d_cigar
+  - j_cigar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
