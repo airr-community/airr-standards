@@ -64,7 +64,10 @@ Metadata should note whether the data file only contains "primary" records.
 
 A single line containing the column names (and also specifying field order).
 Any field that corresponds to one of the defined fields should use the
-specified field name. The order of the fields does not matter.
+specified field name. The order of the fields does not matter.  Custom fields
+are allowed, and should follow the same naming scheme (Python-style
+snake_case). Consider submitting a pull request if the field may be broadly
+useful.
 
 
 **Data**
