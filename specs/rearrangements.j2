@@ -85,6 +85,13 @@ Some of the fields specified below are mandated and must always be present in a
 rearrangements file.
 
 
+**Ordering**
+
+There is no requirement that the records are sorted in any way.  However,
+multiple records with the same `id` should be next to each other.  (Put another
+way, the data should be stored as if they were the result of `GROUP BY id`.)
+
+
 **Fields**
 
 | Name | Type | Mandatory | Description |
