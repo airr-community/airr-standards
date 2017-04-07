@@ -1,15 +1,18 @@
-# `rearrangement` schema/format
+## Rearrangement Data
 
-## Overall format
+### File Format
 
 Data for `rearrangement` objects are stored as rows in a tab-delimited file and
 should be compatible with any CSV reader.
 
+**File names**
+
+File names should end with `.tsv`. If any metadata is incorporated into the
+filename, consider including it in the metadata header as well.
 
 **Encoding**
 
 The file should be encoded as ASCII or UTF-8. Everything is case-sensitive.
-
 
 **CSV dialect**
 
@@ -18,36 +21,13 @@ Fields or data should not be quoted. A header line with the columns names is
 always required.
 
 
-**Boolean values**
-
-Boolean values must be encoded as `T` for true and `F` for false.
-
-
-**Null values**
-
-All fields can be null. This should be encoded as an empty string.
-
-
-**File names**
-
-File names should end with `.tsv`. If any metadata is incorporated into the
-filename, consider including it in the metadata header as well.
-
-
-**Identifiers/illegal characters**
-
-Data must not contain tabs or newlines.  Data should avoid `#` and quote
-characters, as the result may be implementation dependent.
-
-
-**Structure**
+### File Structure
 
 The file has 3 sections in this order:
 
 1.  Metadata
 2.  Header (single line with column names)
 3.  Data (one record per line)
-
 
 **Metadata**
 
@@ -57,13 +37,11 @@ first line not prefixed with a `#` marks the end of the metadata section. All
 metadata should be encoded into the header rather than (in addition to?) the
 filename.
 
-
 **Header**
 
 A single line containing the column names (and also specifying field order).
 Any field that corresponds to one of the defined fields should use the
 specified field name. The order of the fields does not matter.
-
 
 **Data**
 
@@ -79,13 +57,26 @@ additional rows with the same `id` and the `primary` field set to `F`.
 INSERT FIGURE
 
 
-**Mandated columns**
+### Data Types
+
+**Boolean values**
+
+Boolean values must be encoded as `T` for true and `F` for false.
+
+**Null values**
+
+All fields can be null. This should be encoded as an empty string.
+
+**Identifiers/illegal characters**
+
+Data must not contain tabs or newlines.  Data should avoid `#` and quote
+characters, as the result may be implementation dependent.
+
+
+### Fields
 
 Some of the fields specified below are mandated and must always be present in a
 rearrangements file.
-
-
-**Fields**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
