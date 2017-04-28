@@ -5,7 +5,7 @@ type: object
 description: AIRR schema for Ig/TCR rearrangements
 fields:
   -
-    name: id
+    name: sequence_id
     type: string
     doc: Read/sequence identifier
   -
@@ -18,7 +18,7 @@ fields:
     type: boolean
     doc: This record contains the primary VDJ alignments for this read/sequence
   -
-    name: sample
+    name: sample_id
     type: string
     doc: The biological sample this read derives from (e.g., from BioSample
          database)
@@ -70,6 +70,14 @@ fields:
     name: j_cigar
     type: string
     doc: J alignment CIGAR string
+  -
+    name: cdr3_aa
+    type: string
+    doc: Amino acid sequence for CDR3
+  -
+    name: cdr3_na
+    type: string
+    doc: Nucleotide sequence for CDR3
   -
     name: v_evalue
     type: float
@@ -139,6 +147,10 @@ fields:
     type: integer
     doc: FWR4 end coord in sequence (transferred from germline)
   -
+    name: duplicate_count
+    type: integer
+    doc: Count of duplicate sequences for this sequence
+  -
     name: clone
     type: string
     doc: Clone assignment for this sequence
@@ -160,7 +172,8 @@ mandatory:
   - v_cigar
   - d_cigar
   - j_cigar
-
+  - cdr3_aa
+  - cdr3_na
 
 
 
