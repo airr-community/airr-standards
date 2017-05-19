@@ -142,10 +142,6 @@ fields:
     name: clone
     type: string
     doc: Clone assignment for this sequence
-  -
-    name: parent_id
-    type: string
-    doc: Sequence ID of parent rearrangement in tree
 
 mandatory:
   - id
