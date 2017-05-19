@@ -149,7 +149,7 @@ fields:
   -
     name: duplicate_count
     type: integer
-    doc: Count of duplicate sequences for this sequence
+    doc: Number of duplicate reads for this sequence
   -
     name: clone
     type: string
