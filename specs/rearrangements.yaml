@@ -1,4 +1,4 @@
-url: https://github.com/airr-community/airr-formats/airr.yaml
+url: https://github.com/airr-community/airr-formats/blob/master/specs/rearrangements.yaml
 version: 0.1.0
 name: rearrangement
 type: object
