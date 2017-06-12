@@ -1,7 +1,0 @@
-biopython>=1.65
-setuptools>=2.0
-argparse>=1.1
-BeautifulSoup4>=4.3.2
-six>=1.9.0
-prov>=1.5.0
-pyyaml>=3.12

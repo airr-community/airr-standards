@@ -8,11 +8,14 @@ Each specification is in a pair of files in `specs/`
 -   `object.j2`: A Markdown Jinja2 template with additional information
 
 
-To render the specs, run
+To render the specs, from the root package directory run
 
 ```bash
-bin/build.sh
+scripts/build_docs.sh
 ```
 
 which will generate Markdown `.md` files in the `docs/` directory.  (This makes
 use of the `jinja2-cli` package.)
+
+
+All libraries are in the `lang/` subdirectory.
