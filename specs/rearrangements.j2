@@ -102,5 +102,5 @@ way, the data should be stored as if they were the result of `GROUP BY id`.)
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 {%- for field in fields %}
-| `{{ field.name }}` | `{{ field.type }}` | {% if field.name in mandatory %} mandatory {% endif %} | {{ field.doc }} |
+| `{{ field.name }}` | `{{ field.type }}` | {% if field.mandatory %} mandatory {% endif %} | {{ field.doc }} |
 {%- endfor %}
