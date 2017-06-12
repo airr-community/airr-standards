@@ -19,7 +19,7 @@ setup(name='airr-formats',
       description='AIRR community formats for antibody and TCR sequence data.',
       long_description=long_description,
       zip_safe=False,
-      license='Apache v2',
+      license='MIT',
       url='https://airr-formats.readthedocs.org/',
       keywords=('AIRR bioinformatics immunoglobulin antibody adaptive immune '
                 'lymphocyte sequencing TCR CDR3'),
