@@ -37,6 +37,12 @@ fields:
     doc: Sequence is reverse complemented
     mandatory: True
   -
+    name: cell_index
+    type: string
+    doc: Cell index for single-cell sequencing. Also used for associating
+         paired chains (e.g., heavy/light, alpha/beta)
+    mandatory: False
+  -
     name: v_call
     type: string
     doc: V allele assignment
@@ -165,6 +171,26 @@ fields:
     name: cdr3_start
     type: integer
     doc: CDR3 start coord in sequence (transferred from germline)
+    mandatory: False
+  -
+    name: v_end
+    type: integer
+    doc: End coordinate of the V segment (generally inside the CDR3)
+    mandatory: False
+  -
+    name: d_start
+    type: integer
+    doc: Start coordinate of the D segment
+    mandatory: False
+  -
+    name: d_end
+    type: integer
+    doc: End coordinate of the D segment
+    mandatory: False
+  -
+    name: j_start
+    type: integer
+    doc: Start coordinate of the J segment (generally inside the CDR3)
     mandatory: False
   -
     name: cdr3_end

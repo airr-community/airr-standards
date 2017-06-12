@@ -107,6 +107,7 @@ way, the data should be stored as if they were the result of `GROUP BY id`.)
 | `constant` | `string` |  mandatory  | Constant region gene (e.g., IGHG4, IGHA2, IGHE, TRBC) |
 | `functional` | `boolean` |  mandatory  | VDJ sequence is predicted to be functional |
 | `rev_comp` | `boolean` |  mandatory  | Sequence is reverse complemented |
+| `cell_index` | `string` |  | Cell index for single-cell sequencing. Also used for associating paired chains (e.g., heavy/light, alpha/beta) |
 | `v_call` | `string` |  mandatory  | V allele assignment |
 | `d_call` | `string` |  mandatory  | D allele assignment |
 | `j_call` | `string` |  mandatory  | J allele assignment |
@@ -133,6 +134,10 @@ way, the data should be stored as if they were the result of `GROUP BY id`.)
 | `cdr2_start` | `integer` |  | CDR2 start coord in sequence (transferred from germline) |
 | `fwr3_start` | `integer` |  | FWR3 start coord in sequence (transferred from germline) |
 | `cdr3_start` | `integer` |  | CDR3 start coord in sequence (transferred from germline) |
+| `v_end` | `integer` |  | End coordinate of the V segment (generally inside the CDR3) |
+| `d_start` | `integer` |  | Start coordinate of the D segment |
+| `d_end` | `integer` |  | End coordinate of the D segment |
+| `j_start` | `integer` |  | Start coordinate of the J segment (generally inside the CDR3) |
 | `cdr3_end` | `integer` |  | CDR3 end coord in sequence (transferred from germline) |
 | `fwr4_end` | `integer` |  | FWR4 end coord in sequence (transferred from germline) |
 | `duplicate_count` | `integer` |  | Number of duplicate reads for this sequence |
