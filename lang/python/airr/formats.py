@@ -4,6 +4,7 @@ Reference library for AIRR schema for Ig/TCR rearrangements
 
 from __future__ import print_function
 import re
+import sys
 
 from prov import model
 
@@ -12,17 +13,34 @@ from airr.specs import rearrangements
 
 class RearrangementsFile(object):
 
-    def __init__(self, filename, state):
+    def __init__(self, state, filename=None, handle=None):
+        if not filename and not handle:
+            sys.stderr.write("Error: filename or handle must be provided to RearrangementsFile\n")
+            return None
+
+        self.mandatoryFieldNames = []
+        self.optionalFieldNames = []
+        self.additionalFieldNames = []
+        self._inputFieldNames = []
+        for f in rearrangements['fields']:
+            if f['mandatory']: self.mandatoryFieldNames.append(f['name'])
+            else: self.optionalFieldNames.append(f['name'])
+
         if state:
             self.writableState = state
-            self.dataFile = open(filename, 'w')
+            if filename:
+                self.dataFile = open(filename, 'w')
+            else:
+                self.dataFile = handle
             self.metadata = model.ProvDocument()
             self.metadata.set_default_namespace('http://airr-community.org/')
             self.wroteMetadata = False
-            self.fieldNames = list(rearrangements['mandatory'])
         else:
             self.writableState = state
-            self.dataFile = open(filename, 'r')
+            if filename:
+                self.dataFile = open(filename, 'r')
+            else:
+                self.dataFile = handle
             self.wroteMetadata = None
             # read metadata
             header = None
@@ -39,7 +57,11 @@ class RearrangementsFile(object):
                 self.metadata = model.ProvDocument.deserialize(
                     None, text, 'json')
             if not header: header = self.dataFile.readline().rstrip('\n')
-            self.fieldNames = header.split('\t')
+            self._inputFieldNames = header.split('\t')
+            for f in self._inputFieldNames:
+                if f in self.mandatoryFieldNames: continue
+                if f in self.optionalFieldNames: continue
+                if f not in self.additionalFieldNames: self.additionalFieldNames.append(f)
 
     # document operations
     def close(self):
@@ -54,7 +76,7 @@ class RearrangementsFile(object):
         text = anObj.metadata.serialize(None, 'json', indent=2)
         self.metadata = model.ProvDocument.deserialize(None, text, 'json')
         # copy fields
-        self.fieldNames = list(anObj.fieldNames)
+        self.additionalFieldNames = list(anObj.additionalFieldNames)
 
     # metadata operations
     def addRearrangementActivity(self, inputEntity, germlineDatabase,
@@ -128,8 +150,10 @@ class RearrangementsFile(object):
 
     def addFields(self, namespace, names):
         for name in names:
-            if name not in self.fieldNames: self.fieldNames.append(name)
-        return self.fieldNames
+            if name in self.mandatoryFieldNames: continue
+            if name in self.optionalFieldNames: continue
+            if name not in self.additionalFieldNames: self.additionalFieldNames.append(name)
+        return self.additionalFieldNames
 
     def writeMetadata(self):
         if not self.writableState: return
@@ -138,7 +162,13 @@ class RearrangementsFile(object):
         lines = text.split('\n')
         for line in lines:
             self.dataFile.write('#M ' + line + '\n')
-        self.dataFile.write('\t'.join(self.fieldNames) + '\n')
+        # write headers after metadata
+        self.dataFile.write('\t'.join(self.mandatoryFieldNames))
+        if len(self.optionalFieldNames) > 0:
+            self.dataFile.write('\t' + '\t'.join(self.optionalFieldNames))
+        if len(self.additionalFieldNames) > 0:
+            self.dataFile.write('\t' + '\t'.join(self.additionalFieldNames))
+        self.dataFile.write('\n')
         self.wroteMetadata = True
 
     # row operations
@@ -150,10 +180,7 @@ class RearrangementsFile(object):
         line = self.dataFile.readline().rstrip('\n')
         if not line: raise StopIteration
         fields = line.split('\t')
-        if len(fields) != len(self.fieldNames):
-            print("Incorrect number of fields in row.")
-            return None
-        return dict(zip(self.fieldNames, fields))
+        return dict(zip(self._inputFieldNames, fields))
 
     def next(self):
         return self.__next__()
@@ -163,9 +190,22 @@ class RearrangementsFile(object):
         if not self.wroteMetadata: self.writeMetadata()
         # validate row?
         first = True
-        for field in self.fieldNames:
+        for field in self.mandatoryFieldNames:
             if not first: self.dataFile.write('\t')
             first = False
             value = row.get(field)
-            if value: self.dataFile.write(value)
+            if value is not None:
+                self.dataFile.write(value)
+            else:
+                sys.stderr.write('Error: Record is missing AIRR mandatory field (' + field + ').\n')
+        for field in self.optionalFieldNames:
+            if not first: self.dataFile.write('\t')
+            first = False
+            value = row.get(field)
+            if value is not None: self.dataFile.write(value)
+        for field in self.additionalFieldNames:
+            if not first: self.dataFile.write('\t')
+            first = False
+            value = row.get(field)
+            if value is not None: self.dataFile.write(value)
         self.dataFile.write('\n')

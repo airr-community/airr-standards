@@ -1,214 +1,294 @@
-url: https://github.com/airr-community/airr-formats/airr.yaml
+url: https://github.com/airr-community/airr-formats/blob/master/specs/rearrangements.yaml
 version: 0.1.0
 name: rearrangement
 type: object
 description: AIRR schema for Ig/TCR rearrangements
 fields:
   -
-    name: id
+    name: sequence_id
     type: string
     doc: Read/sequence identifier
+    mandatory: True
   -
     name: sequence
     type: string
     doc: Nucleotide sequence (e.g., the "read" sequence; revcomp'd if
          necessary)
+    mandatory: True
   -
-    name: primary
-    type: boolean
-    doc: This record contains the primary VDJ alignments for this read/sequence
-  -
-    name: sample
+    name: sample_id
     type: string
     doc: The biological sample this read derives from (e.g., from BioSample
          database)
+    mandatory: True
   -
     name: constant
     type: string
     doc: Constant region gene (e.g., IGHG4, IGHA2, IGHE, TRBC)
+    mandatory: True
   -
     name: functional
     type: boolean
     doc: VDJ sequence is predicted to be functional
+    mandatory: True
   -
     name: rev_comp
     type: boolean
     doc: Sequence is reverse complemented
+    mandatory: True
+  -
+    name: cell_index
+    type: string
+    doc: Cell index for single-cell sequencing. Also used for associating
+         paired chains (e.g., heavy/light, alpha/beta)
+    mandatory: False
   -
     name: v_call
     type: string
     doc: V allele assignment
+    mandatory: True
   -
     name: d_call
     type: string
     doc: D allele assignment
+    mandatory: True
   -
     name: j_call
     type: string
     doc: J allele assignment
+    mandatory: True
   -
     name: v_score
     type: float
     doc: V alignment score
+    mandatory: True
   -
     name: d_score
     type: float
     doc: D alignment score
+    mandatory: True
   -
     name: j_score
     type: float
     doc: J alignment score
+    mandatory: True
   -
     name: v_cigar
     type: string
     doc: V alignment CIGAR string
+    mandatory: True
   -
     name: d_cigar
     type: string
     doc: D alignment CIGAR string
+    mandatory: True
   -
     name: j_cigar
     type: string
     doc: J alignment CIGAR string
+    mandatory: True
+  -
+    name: cdr3_aa
+    type: string
+    doc: Amino acid sequence for CDR3
+    mandatory: True
+  -
+    name: cdr3_na
+    type: string
+    doc: Nucleotide sequence for CDR3
+    mandatory: True
   -
     name: v_evalue
     type: float
     doc: V alignment E-value (when applicable)
+    mandatory: False
   -
     name: d_evalue
     type: float
     doc: D alignment E-value (when applicable)
+    mandatory: False
   -
     name: j_evalue
     type: float
     doc: J alignment E-value (when applicable)
+    mandatory: False
   -
     name: v_identity
     type: float
     doc:  V alignment identity
+    mandatory: False
   -
     name: d_identity
     type: float
     doc:  D alignment identity
+    mandatory: False
   -
     name: j_identity
     type: float
     doc:  J alignment identity
+    mandatory: False
   -
     name: vdj_score
     type: float
     doc: Score for aligners that consider the full sequence as a whole
+    mandatory: False
   -
     name: vdj_evalue
     type: float
     doc: E-value for aligners that consider the full sequence as a whole
+    mandatory: False
   -
     name: vdj_identity
     type: float
     doc: Identity for aligners that consider the full sequence as a whole
+    mandatory: False
+  -
+    name: vdj_cigar
+    type: string
+    doc: VDJ alignment CIGAR string
+    mandatory: False
+  -
+    name: v_start
+    type: integer
+    doc: Position of first V nucleotide in 'sequence' field
+    mandatory: False
+  -
+    name: v_germ_start
+    type: integer
+    doc: Position of 'v_start' field in IMGT numbered germline V(D)J sequence
+    mandatory: False
   -
     name: fwr1_start
     type: integer
     doc: FWR1 start coordinate in sequence (transferred from germline)
+    mandatory: False
   -
     name: cdr1_start
     type: integer
     doc: CDR1 start coord in sequence (transferred from germline)
+    mandatory: False
   -
     name: fwr2_start
     type: integer
     doc: FWR2 start coord in sequence (transferred from germline)
+    mandatory: False
   -
     name: cdr2_start
     type: integer
     doc: CDR2 start coord in sequence (transferred from germline)
+    mandatory: False
   -
     name: fwr3_start
     type: integer
     doc: FWR3 start coord in sequence (transferred from germline)
+    mandatory: False
   -
     name: cdr3_start
     type: integer
     doc: CDR3 start coord in sequence (transferred from germline)
+    mandatory: False
+  -
+    name: v_end
+    type: integer
+    doc: End coordinate of the V segment (generally inside the CDR3)
+    mandatory: False
+  -
+    name: d_start
+    type: integer
+    doc: Start coordinate of the D segment
+    mandatory: False
+  -
+    name: d_germ_start
+    type: integer
+    doc: Position of 'd_start' field in IMGT numbered germline V(D)J sequence
+    mandatory: False
+  -
+    name: d_end
+    type: integer
+    doc: End coordinate of the D segment
+    mandatory: False
+  -
+    name: j_start
+    type: integer
+    doc: Start coordinate of the J segment (generally inside the CDR3)
+    mandatory: False
+  -
+    name: j_germ_start
+    type: integer
+    doc: Position of 'j_start' field in IMGT numbered germline V(D)J sequence
+    mandatory: False
   -
     name: cdr3_end
     type: integer
     doc: CDR3 end coord in sequence (transferred from germline)
+    mandatory: False
   -
     name: fwr4_end
     type: integer
     doc: FWR4 end coord in sequence (transferred from germline)
+    mandatory: False
+  -
+    name: j_end
+    type: integer
+    doc: End coordinate of the J segment
+    mandatory: False
+  -
+    name: junction
+    type: string
+    doc: Ungapped sample junction region nucletide sequence
+    mandatory: False
+  -
+    name: junction_length
+    type: integer
+    doc: Number of junction nucleotides in sequence_vdj
+    mandatory: False
+  -
+    name: np1_length
+    type: integer
+    doc: Number of of nucleotides between sample V and D sequences
+    mandatory: False
+  -
+    name: np2_length
+    type: integer
+    doc: Number of of nucleotides between sample D and J sequences
+    mandatory: False
+  -
+    name: n1_length
+    type: integer
+    doc: Nucleotides 5' of the D-segment
+    mandatory: False
+  -
+    name: n2_length
+    type: integer
+    doc: Nucleotides 3' of the D-segment
+    mandatory: False
+  -
+    name: p3v_length
+    type: integer
+    doc: Palindromic nucleotides 3' of the V-segment
+    mandatory: False
+  -
+    name: p5d_length
+    type: integer
+    doc: Palindromic nucleotides 5' of the D-segment
+    mandatory: False
+  -
+    name: p3d_length
+    type: integer
+    doc: Palindromic nucleotides 3' of the D-segment
+    mandatory: False
+  -
+    name: p5j_length
+    type: integer
+    doc: Palindromic nucleotides 5' of the J-segment
+    mandatory: False
+  -
+    name: duplicate_count
+    type: integer
+    doc: Number of duplicate reads for this sequence
+    mandatory: False
   -
     name: clone
     type: string
     doc: Clone assignment for this sequence
-
-mandatory:
-  - id
-  - sequence
-  - primary
-  - sample
-  - constant
-  - functional
-  - rev_comp
-  - v_call
-  - d_call
-  - j_call
-  - v_score
-  - d_score
-  - j_score
-  - v_cigar
-  - d_cigar
-  - j_cigar
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    mandatory: False
