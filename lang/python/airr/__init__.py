@@ -7,12 +7,12 @@ from airr.formats import RearrangementsFile
 
 def read(filename):
     """Open an AIRR rearrangements file and read its contents"""
-    return RearrangementsFile(filename, False)
+    return RearrangementsFile(False, filename=filename)
 
 
-def create(filename):
+def create(filename=None, handle=None):
     """Create an empty AIRR rearrangements file"""
-    return RearrangementsFile(filename, True)
+    return RearrangementsFile(True, filename=filename, handle=handle)
 
 
 def createDerivation(inputFilename, outputFilename, toolEntity, activity,
@@ -20,8 +20,8 @@ def createDerivation(inputFilename, outputFilename, toolEntity, activity,
     """Create a derived AIRR rearrangments file, possibly with addl annotation
     fields
     """
-    ifile = RearrangementsFile(inputFilename, False)
-    ofile = RearrangementsFile(outputFilename, True)
+    ifile = RearrangementsFile(False, filename=inputFilename)
+    ofile = RearrangementsFile(True, filename=outputFilename)
     ofile.deriveFrom(ifile)
     ofile.addAnnotationActivity(inputFilename, outputFilename, toolEntity, activity, None, namespace, namespaceURI)
     return [ifile, ofile]
