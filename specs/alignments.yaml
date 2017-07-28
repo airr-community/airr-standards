@@ -1,0 +1,62 @@
+url: https://github.com/airr-community/airr-formats/blob/master/specs/alignments.yaml
+version: 0.1.0
+name: rearrangement
+type: object
+description: AIRR schema for Ig/TCR rearrangements
+fields:
+  -
+    name: id
+    type: string
+    doc: Read/sequence identifier
+    mandatory: True
+  -
+    name: sequence
+    type: string
+    doc: Nucleotide sequence (e.g., the "read" sequence; revcomp'd if
+         necessary)
+    mandatory: True
+  -
+    name: segment
+    type: string
+    doc: The gene segment for this alignment (e.g., V, D, J, C)
+    mandatory: True
+  -
+    name: rev_comp
+    type: boolean
+    doc: Sequence is reverse complemented
+    mandatory: True
+  -
+    name: call
+    type: string
+    doc: Allele assignment
+    mandatory: True
+  -
+    name: score
+    type: float
+    doc: Alignment score
+    mandatory: True
+  -
+    name: cigar
+    type: string
+    doc: Alignment CIGAR string
+    mandatory: True
+  -
+    name: identity
+    type: float
+    doc:  Alignment identity (percent)
+    mandatory: True
+  -
+    name: probability
+    type: float
+    doc: Alignment probability (when applicable)
+    mandatory: False
+  -
+    name: loglikelihood
+    type: float
+    doc: Alignment log likelihood (when applicable)
+    mandatory: False
+  -
+    name: rank
+    type: int
+    doc:  Alignment rank
+    mandatory: False
