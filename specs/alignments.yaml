@@ -57,6 +57,6 @@ fields:
     mandatory: False
   -
     name: rank
-    type: int
+    type: integer
     doc:  Alignment rank
     mandatory: False
