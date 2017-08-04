@@ -195,17 +195,17 @@ class RearrangementsFile(object):
             first = False
             value = row.get(field)
             if value is not None:
-                self.dataFile.write(value)
+                self.dataFile.write(str(value))
             else:
                 sys.stderr.write('Error: Record is missing AIRR mandatory field (' + field + ').\n')
         for field in self.optionalFieldNames:
             if not first: self.dataFile.write('\t')
             first = False
             value = row.get(field)
-            if value is not None: self.dataFile.write(value)
+            if value is not None: self.dataFile.write(str(value))
         for field in self.additionalFieldNames:
             if not first: self.dataFile.write('\t')
             first = False
             value = row.get(field)
-            if value is not None: self.dataFile.write(value)
+            if value is not None: self.dataFile.write(str(value))
         self.dataFile.write('\n')
