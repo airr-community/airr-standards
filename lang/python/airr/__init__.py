@@ -5,14 +5,14 @@ Reference library for AIRR schema for Ig/TCR rearrangements
 from airr.formats import RearrangementsFile
 
 
-def read(filename):
+def read(filename, debug=False):
     """Open an AIRR rearrangements file and read its contents"""
-    return RearrangementsFile(False, filename=filename)
+    return RearrangementsFile(False, filename=filename, debug=debug)
 
 
-def create(filename=None, handle=None):
+def create(filename=None, handle=None, debug=False):
     """Create an empty AIRR rearrangements file"""
-    return RearrangementsFile(True, filename=filename, handle=handle)
+    return RearrangementsFile(True, filename=filename, handle=handle, debug=debug)
 
 
 def createDerivation(inputFilename, outputFilename, toolEntity, activity,

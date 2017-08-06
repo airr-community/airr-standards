@@ -13,11 +13,15 @@ from airr.specs import rearrangements
 
 class RearrangementsFile(object):
 
-    def __init__(self, state, filename=None, handle=None):
+    def __init__(self, state, filename=None, handle=None, debug=False):
         if not filename and not handle:
-            sys.stderr.write("Error: filename or handle must be provided to RearrangementsFile\n")
+            sys.exit("Error: filename or handle must be provided to RearrangementsFile\n")
             return None
 
+        # set logging level. for now, just True/False to issue warnings.
+        self.debug = debug
+
+        # define fields
         self.mandatoryFieldNames = []
         self.optionalFieldNames = []
         self.additionalFieldNames = []
@@ -188,24 +192,30 @@ class RearrangementsFile(object):
     def write(self, row):
         if not self.writableState: return
         if not self.wroteMetadata: self.writeMetadata()
+
         # validate row?
         first = True
         for field in self.mandatoryFieldNames:
             if not first: self.dataFile.write('\t')
             first = False
-            value = row.get(field)
+            value = row.get(field, None)
             if value is not None:
                 self.dataFile.write(str(value))
             else:
-                sys.stderr.write('Error: Record is missing AIRR mandatory field (' + field + ').\n')
+                self.dataFile.write('')
+                if self.debug:
+                    sys.stderr.write('Warning: Record is missing AIRR mandatory field (' + field + ').\n')
+
         for field in self.optionalFieldNames:
             if not first: self.dataFile.write('\t')
             first = False
-            value = row.get(field)
-            if value is not None: self.dataFile.write(str(value))
+            value = row.get(field, '')
+            self.dataFile.write(str(value))
+
         for field in self.additionalFieldNames:
             if not first: self.dataFile.write('\t')
             first = False
-            value = row.get(field)
-            if value is not None: self.dataFile.write(str(value))
+            value = row.get(field, '')
+            self.dataFile.write(str(value))
+
         self.dataFile.write('\n')
