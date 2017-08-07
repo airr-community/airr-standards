@@ -11,4 +11,5 @@ docs_dir: 'docs'
 pages:
   - 'About': index.md
   - 'Data Standards':
+    - 'Formats Overview': common.md
     - 'Rearrangement Data': rearrangements.md
