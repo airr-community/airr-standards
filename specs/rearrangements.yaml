@@ -108,7 +108,7 @@ fields:
     doc: Amino acid sequence for CDR3
     mandatory: True
   -
-    name: cdr3_na
+    name: cdr3_nt
     type: string
     doc: Nucleotide sequence for CDR3
     mandatory: True
