@@ -12,4 +12,5 @@ pages:
   - 'About': index.md
   - 'Data Standards':
     - 'Formats Overview': common.md
+    - 'Alignment Data': alignments.md
     - 'Rearrangement Data': rearrangements.md
