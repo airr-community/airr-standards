@@ -58,6 +58,11 @@ fields:
     doc: J allele assignment
     mandatory: True
   -
+    name: c_call
+    type: string
+    doc: C gene assignment
+    mandatory: True
+  -
     name: v_score
     type: float
     doc: V alignment score
@@ -73,6 +78,11 @@ fields:
     doc: J alignment score
     mandatory: True
   -
+    name: c_score
+    type: float
+    doc: C alignment score
+    mandatory: True
+  -
     name: v_cigar
     type: string
     doc: V alignment CIGAR string
@@ -86,6 +96,11 @@ fields:
     name: j_cigar
     type: string
     doc: J alignment CIGAR string
+    mandatory: True
+  -
+    name: c_cigar
+    type: string
+    doc: C alignment CIGAR string
     mandatory: True
   -
     name: cdr3_aa
