@@ -17,19 +17,3 @@ See the formatting overview for details on how to structure this data.
 | `probability` | `float` |  | Alignment probability (when applicable) |
 | `loglikelihood` | `float` |  | Alignment log likelihood (when applicable) |
 | `rank` | `integer` |  | Alignment rank |
-
-**CIGAR specification**
-
-Alignments details are specified using the CIGAR format as defined in the
-[SAM specifications](https://samtools.github.io/hts-specs/SAMv1.pdf), with
-vocabulary restrictions. The following are valid operations.
-
-| Operator | Description |
-| -------- | ----------- |
-| =	 	   | An identical non-gap character. |
-| X	 	   | A differing non-gap character. |
-| M	 	   | A positional match in the alignment. This can be either an identical (=) or differing (x) non-gap character. |
-| D	 	   | Deletion in the query (gap in the query). |
-| I	 	   | Insertion in the query (gap in the reference). |
-| N	 	   | A space in the alignment. Used exclusively to denote the start position of the alignment in the reference. Should precede any S operators. |
-| S	 	   | Positions that appear in the query, but not the reference. Used exclusively to denote the start position of the alignment in the query. |
