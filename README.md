@@ -13,7 +13,7 @@ Syed Ahmad, Chan Bukhari, Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schr
 ### <a href="https://github.com/airr-community/airr-standards/raw/master/AIRR%20Minimal%20Standard%20Data%20Elements.xlsx"><img src="https://github.com/airr-community/airr-standards/blob/master/Images/download.png" alt="download"  height="75" width="75"/></a>   AIRR Community Accpted Elements  
 <hr>
 
-### AIRR data submission to BioProject, BioSample and SRA
+### <font color="red">AIRR data submission to BioProject, BioSample and SRA</font>
 
 
 
