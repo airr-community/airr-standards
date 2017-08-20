@@ -7,6 +7,9 @@ The Minimal Standards Working Group has created experimental metadata standards 
 ### Members
 Syed Ahmad, Chan Bukhari, Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schramm, Christian Busse, Corey Watson, Encarnita Mariotti-ferrandiz, Felix Breden, Florian Rubelt, Jean Büerckert, Jerome Jaglale, Lindsay Cowell, Eline Luning Prak (co-chair), Marie-paule Lefranc, Nishanth Marthandan, Richard Bruskiewich, Scott Boyd, Scott Christley, Uri Hershberg, Steven Kleinstein (co-chair), Uri Laserson, William Faison
 
+
+![Image](https://github.com/airr-community/airr-standards/blob/master/Images/accepted-data-elements.png)
+
 You can use the [editor on GitHub](https://github.com/airr-community/airr-standards/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
