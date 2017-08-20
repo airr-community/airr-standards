@@ -37,7 +37,7 @@ Follwoing is a tutorial to submit AIRR data to the NCBI
 
 <img src="https://github.com/airr-community/airr-standards/blob/master/Images/manual3.png" alt="airr-ncbi" />
 
-5- The AIRR BioSample template is not yet listed on the NCBI website. NCBI compliant AIRR templates can be download in the download section of this repository.
+5- The AIRR templates are not yet listed on the NCBI website. NCBI compliant AIRR templates can be download in the download section of this repository.
 NCBI allows both web-based and command-line submissions and accepts .tsv files (for web-based submission) and XML (for bulk submission through command line and FTP). AIRR Minimal Standards WG is providing NCBI compliant AIRR templates  for the both types of submissions.
 <a href="https://github.com/airr-community/airr-standards/raw/master/NCBI%20Templates/AIRR_BioSample_v1.0.xls">AIRR_BioSample_v1.0</a> and <a href="https://github.com/airr-community/airr-standards/raw/master/NCBI%20Templates/AIRR_SRA_v1.0.xls">AIRR_SRA_v1.0</a> are the templates (blank)  for the BioSample and SRA that you can fill-up using MS Excel. People had some difficulty in editing the files therefore we kept the MS Excel as default software to edit but **you must need to save the templates in .tsv format prior to upload at the NCBI**. 
 
