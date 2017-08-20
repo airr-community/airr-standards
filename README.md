@@ -10,7 +10,7 @@ Syed Ahmad, Chan Bukhari, Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schr
 
 ![Image](https://github.com/airr-community/airr-standards/blob/master/Images/accepted-data-elements.png)
 
-### <a href="https://github.com/airr-community/airr-standards/blob/master/AIRR%20Minimal%20Standard%20Data%20Elements.xlsx"><img src="https://github.com/airr-community/airr-standards/blob/master/Images/download.png" alt="download"  height="100" width="100"/></a>   AIRR Community Accpted Elements  
+### <a href="https://github.com/airr-community/airr-standards/raw/master/AIRR%20Minimal%20Standard%20Data%20Elements.xlsx"><img src="https://github.com/airr-community/airr-standards/blob/master/Images/download.png" alt="download"  height="100" width="100"/></a>   AIRR Community Accpted Elements  
 
 You can use the [editor on GitHub](https://github.com/airr-community/airr-standards/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
