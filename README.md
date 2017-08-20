@@ -18,44 +18,36 @@ Syed Ahmad, Chan Bukhari, Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schr
 <hr>
 The National Center for Biotechnology Information (NCBI) repositories constitute a major public resource for sharing diverse types of biomedical data. These repositories provide the necessary infrastructure for researchers to submit experimental data and associated metadata as part of the science-dissemination process. AIRR Minimal Standards WG has developed templates to submit AIRR data to the NCBI's BioProject, BioSample, Sequence Read Archive and GenBank (Figure below).
 
+
 <img src="https://github.com/airr-community/airr-standards/blob/master/Images/airr-ncbi.png" alt="airr-ncbi" />
 
-Submitting AIRR data and associated metadata to the Bioproject, BioSample and SRA databases via NCBI's web interface follows in general the submission procedure described in https://www.ncbi.nlm.nih.gov/books/NBK47529/pdf/Bookshelf_NBK47529.pdf, but uses AIRR-specific template for metadata submission:
+Follwoing is a tutorial to submit AIRR data to the NCBI
 
-1. Go to \url{https://submit.ncbi.nlm.nih.gov/subs/sra/} and login with your NCBI account (create an account if necessary).
+1. Go to https://submit.ncbi.nlm.nih.gov/subs/sra/ and login with your NCBI account (create an account if necessary).
+
 2. Click on "create new submission". You will see a form as below. Fill the form with required information and click on "continue".
 
-You can use the [editor on GitHub](https://github.com/airr-community/airr-standards/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+<img src="https://github.com/airr-community/airr-standards/blob/master/Images/manual1.png" alt="airr-ncbi" />
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+3. If you are submitting for the first time, check “Yes” on the "new BioProject" or "new BioSample" options to create a new project or BioSample, respectively.
 
-### Markdown
+<img src="https://github.com/airr-community/airr-standards/blob/master/Images/manual2.png" alt="airr-ncbi" />
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+4. Fill in the project information. Add as much relevant information you can add in description. It will help later in searching the particular submission.
 
-```markdown
-Syntax highlighted code block
+<img src="https://github.com/airr-community/airr-standards/blob/master/Images/manual3.png" alt="airr-ncbi" />
 
-# Header 1
-## Header 2
-### Header 3
+5- The AIRR BioSample template is not yet listed on the NCBI website. NCBI compliant AIRR templates can be download in the download section of this repository.
+NCBI allows both web-based and command-line submissions and accepts .tsv files (for web-based submission) and XML (for bulk submission through command line and FTP). AIRR Minimal Standards WG is providing NCBI compliant AIRR templates  for the both types of submissions.
+<a href="https://github.com/airr-community/airr-standards/raw/master/NCBI%20Templates/AIRR_BioSample_v1.0.xls">AIRR_BioSample_v1.0</a> and <a href="https://github.com/airr-community/airr-standards/raw/master/NCBI%20Templates/AIRR_SRA_v1.0.xls">AIRR_SRA_v1.0</a> are the templates (blank)  for the BioSample and SRA that you can fill-up using MS Excel. People had some difficulty in editing the files therefore we kept the MS Excel as default software to edit but **you must need to save the templates in .tsv format prior to upload at the NCBI**. 
 
-- Bulleted
-- List
+### Filled AIRR-NCBI Metadata Examples   <a href="https://github.com/airr-community/airr-standards/blob/master/Filled_NCBI_Templates/F_AIRR_BS.tsv">BioSample</a>  <a href="https://github.com/airr-community/airr-standards/blob/master/Filled_NCBI_Templates/F_AIRR_SRA.tsv">SRA</a>
 
-1. Numbered
-2. List
+### Detailed Documentation about AIRR seq data specification can be viewed and download here <a href="https://www.overleaf.com/8640205fsmvkppdygzb#/30770054/"><img src="https://github.com/airr-community/airr-standards/blob/master/Images/download.png" alt="download"  height="75" width="75"/></a>
 
-**Bold** and _Italic_ and `Code` text
+### Bulk Data Submission (An example based solution)
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-
+In case you are planning to populate the AIRR template files programmatically, please use <a href="https://github.com/airr-community/airr-standards/blob/master/NCBI-XML%20Templates/AIRR_BS_SRA_v1.0.xml"> AIRR_BS_SRA_v1.0.xml</a> file (its filled with dummy data).
 
 ### Support or Contact
 
