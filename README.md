@@ -16,12 +16,14 @@ Syed Ahmad, Chan Bukhari, Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schr
 ### AIRR data submission to BioProject, BioSample and SRA
 
 <hr>
+The National Center for Biotechnology Information (NCBI) repositories constitute a major public resource for sharing diverse types of biomedical data. These repositories provide the necessary infrastructure for researchers to submit experimental data and associated metadata as part of the science-dissemination process. AIRR Minimal Standards WG has developed templates to submit AIRR data to the NCBI's BioProject, BioSample, Sequence Read Archive and GenBank (Figure below).
+
 <img src="https://github.com/airr-community/airr-standards/blob/master/Images/airr-ncbi.png" alt="airr-ncbi" />
 
 Submitting AIRR data and associated metadata to the Bioproject, BioSample and SRA databases via NCBI's web interface follows in general the submission procedure described in https://www.ncbi.nlm.nih.gov/books/NBK47529/pdf/Bookshelf_NBK47529.pdf, but uses AIRR-specific template for metadata submission:
 
-	- Go to \url{https://submit.ncbi.nlm.nih.gov/subs/sra/} and login with your NCBI account (create an account if necessary).
-	- Click on "create new submission". You will see a form as below. Fill the form with required information and click on "continue".
+1. Go to \url{https://submit.ncbi.nlm.nih.gov/subs/sra/} and login with your NCBI account (create an account if necessary).
+2. Click on "create new submission". You will see a form as below. Fill the form with required information and click on "continue".
 
 You can use the [editor on GitHub](https://github.com/airr-community/airr-standards/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
