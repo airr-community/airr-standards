@@ -16,7 +16,7 @@ Syed Ahmad, Chan Bukhari, Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schr
 ### AIRR data submission to BioProject, BioSample and SRA
 
 <hr>
-![Image](https://github.com/airr-community/airr-standards/blob/master/Images/airr-ncbi.png)
+<img src="https://github.com/airr-community/airr-standards/blob/master/Images/airr-ncbi.png" alt="airr-ncbi" />
 
 Submitting AIRR data and associated metadata to the Bioproject, BioSample and SRA databases via NCBI's web interface follows in general the submission procedure described in https://www.ncbi.nlm.nih.gov/books/NBK47529/pdf/Bookshelf_NBK47529.pdf, but uses AIRR-specific template for metadata submission:
 
