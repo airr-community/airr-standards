@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Submission >
+  <Description>
+    <Comment attribute_cdeid="3VVjezoGzfT">AIRR data submission to (BioProject+BioSample+SRA) Star Wars themed</Comment>
+    <Organization role="master" type="institute" attribute_cdeid="71Mg66vmJJl">
+      <Name attribute_cdeid="71Mg66vmJJl">The Jedi Order</Name>
+      <Contact email="Luke.Skywalker@galaxy.org" attribute_cdeid="Q1yeS7W4yyx">
+        <Name attribute_cdeid="7J0oSvQJyl">
+          <First attribute_cdeid="XyROb8Q1kl">Luke</First>
+          <Last attribute_cdeid="XyzJhD7yye">Skywalker</Last>
+        </Name>
+      </Contact>
+    </Organization>
+    <Hold release_date="2017-01-31" attribute_cdeid="X1e9tWOhM"></Hold>
+  </Description>
+    <Action>
+    <AddData target_db="BioProject" attribute_cdeid="Q125vZO3f">
+      <Data content_type="xml">
+        <XmlContent>
+          <Project schema_version="2.0">
+            <ProjectID attribute_cdeid="71TAZ78lX">
+              <SPUID spuid_namespace="CFSAN" attribute_cdeid="7kEgUTH4kkx">MIDI_ISO_9154</SPUID>
+            </ProjectID>
+            <Descriptor>
+              <Title attribute_cdeid="mJzdTg_2M">GenomeTrakr Project: Epidemiological Research Center at Sinaloa,
+                Mexico:sp_3-.2014-09-26_11-47</Title>
+              <Description>
+                <p>GenomeTrakr Project: Epidemiological Research Center at Sinaloa, Mexico</p>
+              </Description>
+              <ExternalLink attribute_cdeid="mJPlmmIxX" label="Website: Epidemiological Research Center at Sinaloa, Mexico">
+                <URL attribute_cdeid="7JAY7mLxQ">http://www.hgculiacan.com/cies/cies%20descripcion.htm</URL>
+              </ExternalLink>
+              <Relevance attribute_cdeid="mJQWNQUlm">
+                <Medical>Yes</Medical>
+              </Relevance>
+            </Descriptor>
+            <ProjectType>
+              <ProjectTypeSubmission sample_scope="eMultispecies" attribute_cdeid="719GK78xX">
+                <IntendedDataTypeSet>
+                  <DataType>genome sequencing</DataType>
+                </IntendedDataTypeSet>
+              </ProjectTypeSubmission>
+            </ProjectType>
+          </Project>
+        </XmlContent>
+      </Data>
+      <Identifier>
+        <SPUID spuid_namespace="CFSAN" attribute_cdeid="7kEgUTH4kkx">MIDI_ISO_9154</SPUID>
+      </Identifier>
+    </AddData>
+  </Action>
+  <Action>
+    <AddData target_db="BioSample" attribute_cdeid="Q125vZO3f">
+      <Data content_type="XML">
+        <XmlContent>
+          <BioSample schema_version="2.0">
+            <SampleId>
+              <SPUID spuid_namespace="JEDI-MIDI" attribute_cdeid="7kEgUTH4kkx">MIDI_ISO_9154</SPUID> <!-- Mandatory Element-->
+            </SampleId>
+            <Descriptor>
+              <Title attribute_cdeid="71cR8WOhz">Midi-chlorian isolates collected from a Jedi</Title>
+            </Descriptor>
+            <Organism>
+              <OrganismName attribute_cdeid="mJO901xpUf">Midi-chlorian</OrganismName>
+            </Organism>
+            <BioProject>
+              <PrimaryId db="BioProject" attribute_cdeid="eUKjhM1PSM3">PRJNA999999</PrimaryId>
+            </BioProject>
+            <Package attribute_cdeid="XkcRY__hz">Pathogen.env.1.0</Package>
+            <Attributes>
+			  <!-- AIRR Specific -->
+			  <Attribute attribute_name="anatomic_site" attribute_cdeid="7Jxe1__Xy1e">xxxxx</Attribute>
+			  <Attribute attribute_name="disease_state_sample" attribute_cdeid="7Jxe1__Xy1e">xxxxxx</Attribute>
+			  <Attribute attribute_name="collection_date" attribute_cdeid="JxwSJvNsgVg">2016-01-31</Attribute> 
+			  <Attribute attribute_name="collection_time_event" attribute_cdeid="717yglP2f">xxxxxx</Attribute>
+			  <Attribute attribute_name="geo_loc_name" attribute_cdeid="Qyl4ildhf">Tunisia:Matmata</Attribute> <!-- mandatory -->
+			  <Attribute attribute_name="source_commercial" attribute_cdeid="QkEekTJNqbf">xxxxxx</Attribute>
+			  <Attribute attribute_name="isolate" attribute_cdeid="710axgDhz">MIDI 915</Attribute>
+			  <Attribute attribute_name="isolation_source" attribute_cdeid="mkyBD__hG">Respiratory</Attribute> <!-- Mandatory Element-->
+			  <Attribute attribute_name="age" attribute_cdeid="XkjgY8cihig">12</Attribute>
+			  <Attribute attribute_name="biomaterial_provider" attribute_cdeid="7JHwP_unM">xxxxxxxxx</Attribute>
+			  <Attribute attribute_name="sex" attribute_cdeid="71qxF89inig">Martian</Attribute>
+			   <Attribute attribute_name="sample_type" attribute_cdeid="Q1QVlZN9iBR">xxxx</Attribute>
+			  <Attribute attribute_name="tissue" attribute_cdeid="Q1QVlZN9iBR">xxxx</Attribute>
+			  <Attribute attribute_name="tissue_processing" attribute_cdeid="710axgDhz">xxxx</Attribute>
+			  <Attribute attribute_name="cell_storage" attribute_cdeid="710axgDhz">xxxx</Attribute>
+			  <Attribute attribute_name="cell_quality" attribute_cdeid="7kjAQlD3M">xxxx</Attribute>
+			  <Attribute attribute_name="cell_isolation" attribute_cdeid="QJNMVlPhf">xxxx</Attribute>
+			  <Attribute attribute_name="cell_subset" attribute_cdeid="XyANWePnG">xxxx</Attribute>
+			  <Attribute attribute_name="cell_involved" attribute_cdeid="XyrWmlv2G">xxxx</Attribute>
+			  <Attribute attribute_name="cell_number" attribute_cdeid="QkdGYIQJ1x">xxxx</Attribute>
+			  <Attribute attribute_name="processing_protocol" attribute_cdeid="71ARdldnz">xxxx</Attribute>
+            </Attributes>
+          </BioSample>
+        </XmlContent>
+      </Data>
+      <Identifier>
+        <SPUID spuid_namespace="JEDI-MIDI" attribute_cdeid="mJO901xpUf">MIDI_ISO_9154</SPUID> 
+      </Identifier>
+    </AddData>
+  </Action>
+   <Action>
+    <AddFiles target_db="SRA" attribute_cdeid="Q125vZO3f">
+      <File file_path="MIDI2441_S9_L001_R1_001.fastq" attribute_cdeid="Xk4av_u3f">
+        <DataType>generic-data</DataType>
+      </File>
+	   <!-- AIRR Specific -->
+	  <Attribute name="library_ID" attribute_cdeid="7JzHTlunf">xxxxx</Attribute>	
+	  <Attribute name="title" attribute_cdeid="mJzdTg_2M">xxxxx</Attribute>
+	  <Attribute name="library_strategy" attribute_cdeid="Q1Bi6gOnM">WGS</Attribute><!-- controlled vocabulary -->
+	  <Attribute name="library_source" attribute_cdeid="Xk_OJW_2M">GENOMIC</Attribute><!-- controlled vocabulary -->
+	  <Attribute name="library_selection" attribute_cdeid="7kCq1WOnf">RANDOM</Attribute><!-- controlled vocabulary -->
+	  <Attribute name="library_layout" attribute_cdeid="Xyhle_d2z">PAIRED</Attribute> <!-- controlled vocabulary -->
+	  <Attribute name="library_name" attribute_cdeid="X1pGe_u2f">2441</Attribute>
+      <Attribute name="library_construction_protocol" attribute_cdeid="m1jwgZdnz">TruSeq PCR free DNA preparation from a pure bacterial culture</Attribute>
+	  <Attribute name="platform" attribute_cdeid="mJRTrlP2f">xxxxx</Attribute>
+	  <Attribute name="instrument_model" attribute_cdeid="71QBfb_2f">Illumina MiSeq</Attribute><!-- controlled vocabulary -->
+	  <Attribute name="design_description" attribute_cdeid="QykDfWOnz">xxxxx</Attribute>
+	  <Attribute name="filetype" attribute_cdeid="7JitfZunz">xxxxx</Attribute>
+	  <Attribute name="filename" attribute_cdeid="QyQbzlxV5_f">xxxxx</Attribute>
+	  <Attribute name="target_substrate" attribute_cdeid="XySSVev3z">xxxxx</Attribute>
+	  <Attribute name="target_substrate_quality" attribute_cdeid="mkJwElv3M">xxxxx</Attribute>
+	  <Attribute name="library_generation_method" attribute_cdeid="QkOKEevnz">xxxxx</Attribute>
+	  <Attribute name="library_generation_protocol" attribute_cdeid="m1po4gPhG">xxxxx</Attribute>
+	  <Attribute name="target_locus_PCR" attribute_cdeid="m1caNgw3z">xxxxx</Attribute>
+	  <Attribute name="forward_PCR_primer_target_location" attribute_cdeid="Qku1rgvhz">xxxxx</Attribute>
+	  <Attribute name="reverse_PCR_primer_targe_location" attribute_cdeid="XkGWHewnz">xxxxx</Attribute>
+	  <Attribute name="whole_vs_partial_sequences" attribute_cdeid="XJwNBevnG">xxxxx</Attribute>
+	  <Attribute name="comparison_heavy_light_chain_paired_chains" attribute_cdeid="mJArrlPhf">xxxxx</Attribute>
+	  <Attribute name="ng_template" attribute_cdeid="Q1XDSlwnz">xxxxx</Attribute>
+	  <Attribute name="total_reads_passing_QC_filter" attribute_cdeid="mJB5Bevnz">xxxxx</Attribute>
+	  <Attribute name="protocol_id" attribute_cdeid="edesBqX067K">xxxxx</Attribute>
+	  <Attribute name="sequencing_platform" attribute_cdeid="mJRTrlP2f">xxxxx</Attribute>
+	  <Attribute name="read_length" attribute_cdeid="71klIlD2M">xxxxx</Attribute>
+	  <Attribute name="sequencing_facility" attribute_cdeid="f8ebyzrEY7w">xxxxx</Attribute>
+	  <Attribute name="batch_number" attribute_cdeid="mJ2YCORoHf">xxxxx</Attribute>
+	  <Attribute name="sequencing_run_date" attribute_cdeid="mkAP8lvnz">xxxxx</Attribute>
+	  <Attribute name="sequencing_kit" attribute_cdeid="XkgGfeAm5WG">xxxxx</Attribute>
+      <AttributeRefId name="BioProject">
+        <RefId>
+          <PrimaryId db="BioProject" attribute_cdeid="eUKjhM1PSM3">PRJNA999999</PrimaryId>
+        </RefId>
+      </AttributeRefId>
+      <AttributeRefId name="BioSample">
+        <RefId>
+          <SPUID spuid_namespace="JEDI-MIDI" attribute_cdeid="mJO901xpUf">MIDI_ISO_2441</SPUID>
+        </RefId>
+      </AttributeRefId>
+    </AddFiles>
+  </Action>
+</Submission>
