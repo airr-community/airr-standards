@@ -49,6 +49,10 @@ NCBI allows both web-based and command-line submissions and accepts .tsv files (
 
 In case you are planning to populate the AIRR template files programmatically, please use <a href="https://github.com/airr-community/airr-standards/blob/master/NCBI-XML%20Templates/AIRR_BS_SRA_v1.0.xml"> AIRR_BS_SRA_v1.0.xml</a> file (its filled with dummy data).
 
+### How to cite?
+
+To be updated
+
 ### Support or Contact
 
 If you are interested to know more about AIRR Standards or looking for help in NCBI templates. Please create an issue or send email to Ahmad
