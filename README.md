@@ -13,9 +13,14 @@ Syed Ahmad, Chan Bukhari, Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schr
 ### <a href="https://github.com/airr-community/airr-standards/raw/master/AIRR%20Minimal%20Standard%20Data%20Elements.xlsx"><img src="https://github.com/airr-community/airr-standards/blob/master/Images/download.png" alt="download"  height="75" width="75"/></a>   AIRR Community Accpted Elements  
 <hr>
 
-### <span style="color:blue">AIRR data submission to BioProject, BioSample and SRA</span>
+### AIRR data submission to BioProject, BioSample and SRA
 
+<hr>
 
+Submitting AIRR data and associated metadata to the Bioproject, BioSample and SRA databases via NCBI's web interface follows in general the submission procedure described in https://www.ncbi.nlm.nih.gov/books/NBK47529/pdf/Bookshelf_NBK47529.pdf, but uses AIRR-specific template for metadata submission:
+
+	- Go to \url{https://submit.ncbi.nlm.nih.gov/subs/sra/} and login with your NCBI account (create an account if necessary).
+	- Click on "create new submission". You will see a form as below. Fill the form with required information and click on "continue".
 
 You can use the [editor on GitHub](https://github.com/airr-community/airr-standards/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
