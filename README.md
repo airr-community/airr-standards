@@ -45,7 +45,7 @@ NCBI allows both web-based and command-line submissions and accepts .tsv files (
 
 ### Detailed Documentation about AIRR seq data specification can be viewed and download here <a href="https://www.overleaf.com/8640205fsmvkppdygzb#/30770054/"><img src="https://github.com/airr-community/airr-standards/blob/master/Images/download.png" alt="download"  height="75" width="75"/></a>
 
-### Bulk Data Submission (An example based solution)
+### Bulk Data Submission to the NCBI
 
 In case you are planning to populate the AIRR template files programmatically, please use <a href="https://github.com/airr-community/airr-standards/blob/master/NCBI-XML%20Templates/AIRR_BS_SRA_v1.0.xml"> AIRR_BS_SRA_v1.0.xml</a> file (its filled with dummy data).
 
