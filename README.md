@@ -7,6 +7,7 @@ The Minimal Standards Working Group has created experimental metadata standards 
 ### Members
 Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schramm, Christian Busse, Corey Watson, Encarnita Mariotti-ferrandiz, Felix Breden, Florian Rubelt, Jean Büerckert, Jerome Jaglale, Lindsay Cowell, Eline Luning Prak (co-chair), Marie-paule Lefranc, Nishanth Marthandan, Richard Bruskiewich, Scott Boyd, Scott Christley, Syed Ahmad Chan Bukhari, Uri Hershberg, Steven Kleinstein (co-chair), Uri Laserson, William Faison
 
+### AIRR Community Accpted Elements
 
 ![Image](https://github.com/airr-community/airr-standards/blob/master/Images/dataelements.png)
 
