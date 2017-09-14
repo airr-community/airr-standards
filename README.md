@@ -76,6 +76,8 @@ GenBank. Additional manual editing is not required before submission. To prepare
 
 <img src="https://github.com/airr-community/airr-standards/blob/master/Images/genbank.png" alt="genkbank" />
 
+If you are interested to read more about AIRR NCBI submission detail. We have created a **Draft specification for AIRR Minimal Standard-compliant reporting to INSDC databases** which is accessible <a href="https://www.overleaf.com/8640205fsmvkppdygzb#/30770054/">here</a>
+
 ### How to cite?
 
 To be updated
