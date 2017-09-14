@@ -5,7 +5,7 @@
 The Minimal Standards Working Group has created experimental metadata standards to describe how AIRR-Seq data are generated and evaluated for quality. These metadata include clinical and demographic data on the subjects, sample information, cell phenotypes, nucleic acid purification, immune receptor amplification, sequencing library preparation, sequencing protocol, deposition of the raw sequencing data, and documentation of the computational pipelines used to generate the processed data. A Guidelines Manuscript is being prepared that outlines the set of metadata recommended for submission of AIRR-Seq data for publication or curation in an AIRR-compliant public data repository.
 
 ### Members
-Syed Ahmad Chan Bukhari, Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schramm, Christian Busse, Corey Watson, Encarnita Mariotti-ferrandiz, Felix Breden, Florian Rubelt, Jean Büerckert, Jerome Jaglale, Lindsay Cowell, Eline Luning Prak (co-chair), Marie-paule Lefranc, Nishanth Marthandan, Richard Bruskiewich, Scott Boyd, Scott Christley, Uri Hershberg, Steven Kleinstein (co-chair), Uri Laserson, William Faison
+Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schramm, Christian Busse, Corey Watson, Encarnita Mariotti-ferrandiz, Felix Breden, Florian Rubelt, Jean Büerckert, Jerome Jaglale, Lindsay Cowell, Eline Luning Prak (co-chair), Marie-paule Lefranc, Nishanth Marthandan, Richard Bruskiewich, Scott Boyd, Scott Christley, Syed Ahmad Chan Bukhari, Uri Hershberg, Steven Kleinstein (co-chair), Uri Laserson, William Faison
 
 
 ![Image](https://github.com/airr-community/airr-standards/blob/master/Images/accepted-data-elements.png)
