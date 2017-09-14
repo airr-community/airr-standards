@@ -63,7 +63,7 @@ GenBank provides multiple tools (GUI and command-line) to submit data:
 
 **Tbl2asn** is a recommended tool for the bulk submission of data. Tbl2asn is a command-line program that automates the creation of sequence records for
 submission to GenBank. It uses many of the same functions as Sequin but is driven generally by data files. Tbl2asn generates .sqn files for submission to
-GenBank. Additional manual editing is not required before submission. To prepare a tbl2asn submission please visit https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/ More information to make it user friendly
+GenBank. Additional manual editing is not required before submission. To prepare a tbl2asn submission please visit https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/ 
 
 ### REQUIRED
 
