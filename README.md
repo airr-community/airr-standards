@@ -49,6 +49,38 @@ NCBI allows both web-based and command-line submissions and accepts .tsv files (
 
 In case you are planning to populate the AIRR template files programmatically, please use <a href="https://github.com/airr-community/airr-standards/blob/master/NCBI-XML%20Templates/AIRR_BS_SRA_v1.0.xml"> AIRR_BS_SRA_v1.0.xml</a> file (its filled with dummy data).
 
+### AIRR data submission to GenBank
+GenBank provides multiple tools (GUI and command-line) to submit data:
+
+1- BankIt, a web-based submission tool with wizards to guide the submission process
+2- Sequin, NCBI's stand-alone submission tool with wizards to guide the submission process is available by FTP for use on for Windows, macOS and Unix platforms.
+3- tbl2asn, a command-line program, automates the creation of sequence records for submission to GenBank using many of the same functions as Sequin. It is used primarily for submission of complete genomes and large batches of sequences and is available by FTP for use on Windows, macOS and Unix platforms. Submission Portal, a unified system for multiple submission types.  Currently only ribosomal RNA (rRNA) or rRNA-ITS sequences can be submitted with the GenBank component of this tool.  This will be expanded in the future to include other types of GenBank submissions. Genome and Transcriptome Assemblies can be submitted through the Genomes and TSA portals, respectively.
+Barcode Submission Tool, a web-based tool for the submission of sequences and trace read data for Barcode of Life projects based on the COI 
+
+Tbl2asn is a recommended tool for the bulk submission of data. Tbl2asn is a command-line program that automates the creation of sequence records for
+submission to GenBank. It uses many of the same functions as Sequin but is driven generally by data files. Tbl2asn generates .sqn files for submission to
+GenBank. Additional manual editing is not required before submission. To prepare a tbl2asn submission please visit https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/}.\todo More information to make it user friendly
+
+### REQUIRED
+
+1- Template file containing a text ASN.1 Submit-block object (suffix .sbt).
+2- Nucleotide sequence data in FASTA format (suffix .fsa).
+3- Feature Table (suffix .tbl).
+
+### OPTIONAL
+
+1- Quality Scores (suffix .qvl).\todo{How are these represented in GenBank?}
+2- Protein sequence (suffix .pep). (These are rarely needed).\todo{Not required}
+3- Source Table (suffix .src).
+
+
+
+
+
+\pagebreak
+
+
+
 ### How to cite?
 
 To be updated
