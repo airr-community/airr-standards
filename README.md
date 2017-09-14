@@ -67,15 +67,14 @@ GenBank. Additional manual editing is not required before submission. To prepare
 ### REQUIRED
 
 1- Template file containing a text ASN.1 Submit-block object (suffix .sbt).
+
 2- Nucleotide sequence data in FASTA format (suffix .fsa).
+
 3- Feature Table (suffix .tbl).
 
-### OPTIONAL
+### AIRR suggested Feature Table to represent CD3
 
-1- Quality Scores (suffix .qvl).\todo{How are these represented in GenBank?}
-2- Protein sequence (suffix .pep). (These are rarely needed).\todo{Not required}
-3- Source Table (suffix .src).
-
+<img src="https://github.com/airr-community/airr-standards/blob/master/Images/genbank.png" alt="genkbank" />
 
 ### How to cite?
 
