@@ -5,7 +5,7 @@
 The Minimal Standards Working Group has created experimental metadata standards to describe how AIRR-Seq data are generated and evaluated for quality. These metadata include clinical and demographic data on the subjects, sample information, cell phenotypes, nucleic acid purification, immune receptor amplification, sequencing library preparation, sequencing protocol, deposition of the raw sequencing data, and documentation of the computational pipelines used to generate the processed data. A Guidelines Manuscript is being prepared that outlines the set of metadata recommended for submission of AIRR-Seq data for publication or curation in an AIRR-compliant public data repository.
 
 ### Members
-Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schramm, Christian Busse, Corey Watson, Encarnita Mariotti-ferrandiz, Felix Breden, Florian Rubelt, Jean Büerckert, Jerome Jaglale, Lindsay Cowell, Eline Luning Prak (co-chair), Marie-paule Lefranc, Nishanth Marthandan, Richard Bruskiewich, Scott Boyd, Scott Christley, Syed Ahmad Chan Bukhari, Uri Hershberg, Steven Kleinstein, Uri Laserson, William Faison
+Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schramm, Christian Busse, Corey Watson, Encarnita Mariotti-Ferrandiz, Felix Breden, Florian Rubelt, Jean Bürckert, Jerome Jaglale, Lindsay Cowell, Eline Luning Prak (co-chair), Marie-Paule Lefranc, Nishanth Marthandan, Richard Bruskiewich, Scott Boyd, Scott Christley, Syed Ahmad Chan Bukhari, Uri Hershberg, Steven Kleinstein (co-chair), Uri Laserson, William Faison
 
 ### AIRR Community Accpted Elements
 
@@ -44,7 +44,8 @@ NCBI allows both web-based and command-line submissions and accepts .tsv files (
 
 ### Filled AIRR-NCBI Metadata Examples   <a href="https://github.com/airr-community/airr-standards/blob/master/Filled_NCBI_Templates/F_AIRR_BS.tsv">BioSample</a>  <a href="https://github.com/airr-community/airr-standards/blob/master/Filled_NCBI_Templates/F_AIRR_SRA.tsv">SRA</a>
 
-### Detailed Documentation about AIRR seq data specification can be viewed and download here <a href="https://www.overleaf.com/8640205fsmvkppdygzb#/30770054/"><img src="https://github.com/airr-community/airr-standards/blob/master/Images/download.png" alt="download"  height="75" width="75"/></a>
+### Detailed Documentation
+A detailed documentation about AIRR-seq data submission using NCBI databases can be found [here](https://www.overleaf.com/read/tytddwptgkhb).
 
 ### Bulk Data Submission to the NCBI
 

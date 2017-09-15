@@ -1,0 +1,82 @@
+Collection / subset,MiAIRR field designation,Data type,Content type,Field value (example),AIRR Formats WG designation
+1 / study,Study,String ,Alphanumeric UID assigned by NCBI,PRJNA349,project
+1 / study,Study title,String ,UID assigned by submitter,Publication or protocol title,project_title
+1 / study,Study type,String,Free text,Placebo controlled phase 3 clinical trial,project_type
+1 / study,Study inclusion/exclusion criteria,String,Free text,,inclusion_exclusion_criteria
+1 / study,Grant funding agency,String,Free text,NIH,grants
+1 / study,Lab name,String,Free text,abc Lab,
+1 / study,Contact information (data collection),String,RFC6530-compliant email address,abc@xyz.com,collected_by
+1 / study,Contact information (data deposition),String,Free text,Mr. Abc,
+1 / study,Lab address,String,Free text,"abc Lab, xyz school of Medicine",
+1 / study,Relevant publications,String,UID assigned by PubMed (PMID),PMID85642,pub_ids
+1 / subject,Subject ID,String,UID assigned by submitter,SUB856413,subject_id
+1 / subject,Organism-based or synthetic,String,Controlled vocabulary,"human, mouse or synthetic based study",organism
+1 / subject,Sex,Char,Controlled vocabulary,,sex
+1 / subject,Age,String,Time duration and unit,200 days,age
+1 / subject,Age event,String,Free text,Enrollment,age_event
+1 / subject,Ancestry population,String,Free text,,ancestry_population
+1 / subject,Ethnicity,String,Free text,Tamil and Sinhalese,ethnicity
+1 / subject,Race,String,Free text,South Indian,race
+1 / subject,Species name,String,Controlled vocabulary,Homo sapiens,species_name
+1 / subject,Strain name,String,Free text,C57BL/6J,strain_name
+1 / subject,Relation to other subjects,String,Subject ID,SUB1355648,linked_subjects
+1 / subject,Relation type,String,Controlled vocabulary,"sister, father, daughter",link_type
+1 / diag. & intervent.,Study group description,String,Free text,Case vs. Control,study_group_description
+1 / diag. & intervent.,Diagnosis,String,Free text,"infection, metastasis ",
+1 / diag. & intervent.,Length of disease,String,Time duration and unit,5 years,
+1 / diag. & intervent.,Disease stage,String,Free text,"Tumor, nodes or mets",disease_stage
+1 / diag. & intervent.,Prior therapies for primary disease under study,String,Free text,"Surgery, medications etc.",prior_therapies
+1 / diag. & intervent.,Immunogen/agent,String,Free text,Vaccine,immunogen
+1 / diag. & intervent.,Intervention definition,String,Free text,"Drug, Vaccine, Surgery etc.",intervention
+1 / diag. & intervent.,Other relevant medical history,String,Free text,"Medications, surgeries, other conditions",
+2 / sample,Biological sample ID,String,UID assigned by submitter,SUP52415,sample_id
+2 / sample,Sample type,String,Free text,"Tissue, body fluid",sample_type
+2 / sample,Anatomic site,String,Free text,spleen,tissue
+2 / sample,Disease state of sample,String,Free text,tumor vs. margin,disease_state_sample
+2 / sample,Sample collection time,String,Free text,10 Days,collection_date
+2 / sample,Collection time event (T0),String,Free text,"vaccination, recruitment, treatment",collection_time_event
+2 / sample,Commercial source,String,Free text,XYZ Pharma,source_commercial
+3 / process (cell),Tissue processing,String,Free text,Enzymatic digestion and/or physical methods used to isolate cells from sample,tissue_processing
+3 / process (cell),Cell subset,String,Controlled vocabulary,,cell_subset
+3 / process (cell),Cell subset phenotype,String,Free text,,
+3 / process (cell),Single-cell sort,Boolean,Controlled vocabulary,TRUE,
+3 / process (cell),Number of cells in experiment,Unsigned integer,number,100,cell_number
+3 / process (cell),Number of cells per sequencing reaction,Unsigned integer,number,100,cells_per_reaction
+3 / process (cell),Cell storage,Boolean,YES/NO,Yes,
+3 / process (cell),Cell quality,String,Free text,Viability,
+3 / process (cell),Cell isolation / enrichment procedure,String,Free text,Flow cytometry or magnetic bead enrichment,
+3 / process (cell),Processing protocol,String,Free text,Stimulation with cytokines or cells,
+3 / process (nucl. acid),Target substrate,String,Controlled vocabulary,(DNA|RNA),library_source
+3 / process (nucl. acid),Target substrate quality,String,Free text,"RIN for RNA, or specified in protocol",
+3 / process (nucl. acid),Library generation method,String,Free text,,
+3 / process (nucl. acid),Library generation protocol,String,Free text,RACE or oligo (nested) amplification based,library_construction_protocol
+3 / process (nucl. acid),Target locus for PCR,String,Free text,Constant region vs. V region amplification,target_locus_PCR
+3 / process (nucl. acid),Forward PCR primer target location,String,Free text,FR1,forward_PCR_primer_target_location
+3 / process (nucl. acid),Reverse PCR primer target location,String,Free text,Constant region,reverse_PCR_primer_target_location
+3 / process (nucl. acid),Whole vs. partial sequences,Boolean,YES/NO,Yes,whole_vs_partial_sequences
+3 / process (nucl. acid),Physical linkage of different loci,String,Controlled vocabulary,IGH-IGK/IGL-head/head,
+3 / process (nucl. acid),Template amount,Float,number [ng],123.45,ng_template
+3 / process (nucl. acid),Total reads passing QC filter,Unsigned integer,Number of usable reads for analysis,10,total_reads_passing_qc_filter
+3 / process (nucl. acid),Protocol IDs,String,UID either assigned by submitter,4501uggt,protocol
+3 / process (nucl. acid),Sequencing Platform,String,Free text,Alumina,platform
+3 / process (nucl. acid),Read lengths,Unsigned integer,Number of base pairs and directions,180,read_length
+3 / process (nucl. acid),Sequencing Facility,String,Free text,ABC Lab,sequencing_facility
+3 / process (nucl. acid),Batch number,String,UID either assigned by submitter,BAT84562,batch_number
+3 / process (nucl. acid),Date of sequencing run,String,ISO8601-compliant date,2016-12-16,sequencing_run_date
+3 / process (nucl. acid),Sequencing kit,String,Free text,"Manufacturer, Catalog Number, Lot number",sequencing_kit
+4 / data (raw reads),Raw sequence data,Blob,FASTQ sequences,,
+5 / process (comput.),Software tools and version numbers,String,Free text,"version number and / or date, include company pipelines",software_versions
+5 / process (comput.),Paired read assembly,String,Free text,How paired end reads were assembled into a single receptor sequence,paired_reads_assembly
+5 / process (comput.),Quality thresholds,String,Free text,How sequences were removed from (4) based on base quality scores,quality_thresholds
+5 / process (comput.),Primer match cutoffs,String,Free text,"How primers were identified in the sequences, were they removed/masked/etc?",primer_match_cutoffs
+5 / process (comput.),Collapsing method,String,Free text,The method used for combining multiple sequences from (4) into a single sequence in (5),collapsing_method
+5 / process (comput.),Data processing protocols,String,Free text,General description of how QC is performed,data_processing_protocols
+6 / data (proc. seq.),V(D)J germline reference database,String,Free text,"Source of germline V(D)J segments, with version number or date accessed",
+6 / data (proc. seq.),Cell Index,Unsigned integer,index,UID linking sequences from the same cell,
+6 / data (proc. seq.),V gene,String,Free text,V gene with allele,v_allele
+6 / data (proc. seq.),D gene,String,Free text,D gene with allele,d_allele
+6 / data (proc. seq.),J gene,String,Free text,J gene with allele,j_allele
+6 / data (proc. seq.),C region,String,Free text,C region with allele,c_allele
+6 / data (proc. seq.),JUNCTION nucleotide sequence,String,Free text,Sequence of the CDR3 region (nucleotide),junction_nt
+6 / data (proc. seq.),JUNCTION amino acid sequence,String,Free text,Sequence of the CDR3 region (amino acid),junction_aa
+6 / data (proc. seq.),read count,Unsigned integer,number,Number of reads of the sequence,
