@@ -72,13 +72,6 @@ GenBank. Additional manual editing is not required before submission. To prepare
 Creating the template file (.sbt)
 
 Go to Create Submission Template page
-Fill in the boxes
-Click on "Create Template"
-SAVE the file as template.sbt
-
-2- Nucleotide sequence data in FASTA format (suffix .fsa).
-
-Go to Create Submission Template page
 
 Fill in the boxes
 
