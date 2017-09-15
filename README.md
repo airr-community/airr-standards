@@ -94,27 +94,25 @@ Optional defline information is in this list of source modifiers and includes:
 
 Biological
 
-strain [strain=S288C]
+*   strain [strain=S288C]
 
-isolate [isolate=CWS1]
+*   isolate [isolate=CWS1]
 
-chromosome [chromosome=XVI]
+*   chromosome [chromosome=XVI]
 
 Other elements
 
-topology [topology=circular]
+*   topology [topology=circular]
 
-location [location=mitochondrion]
+*   location [location=mitochondrion]
 
-molecule [moltype=mRNA] (DNA is the default)
+*   molecule [moltype=mRNA] (DNA is the default)
 
-technique [tech=wgs]
+*   technique [tech=wgs]
 
-protein name [protein=helicase] (if using -c)
+*   protein name [protein=helicase] (if using -c)
 
-genetic code [gcode=4]
-
-Here is the list of source modifiers . See the Taxonomy pages for the genetic code values.
+*   genetic code [gcode=4]
 
 
 Example FASTA:
