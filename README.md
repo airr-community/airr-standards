@@ -44,9 +44,6 @@ NCBI allows both web-based and command-line submissions and accepts .tsv files (
 
 ### Filled AIRR-NCBI Metadata Examples   <a href="https://github.com/airr-community/airr-standards/blob/master/Filled_NCBI_Templates/F_AIRR_BS.tsv">BioSample</a>  <a href="https://github.com/airr-community/airr-standards/blob/master/Filled_NCBI_Templates/F_AIRR_SRA.tsv">SRA</a>
 
-### Detailed Documentation
-A detailed documentation about AIRR-seq data submission using NCBI databases can be found [here](https://www.overleaf.com/read/tytddwptgkhb).
-
 ### Bulk Data Submission to the NCBI
 
 In case you are planning to populate the AIRR template files programmatically, please use <a href="https://github.com/airr-community/airr-standards/blob/master/NCBI-XML%20Templates/AIRR_BS_SRA_v1.0.xml"> AIRR_BS_SRA_v1.0.xml</a> file (its filled with dummy data).
@@ -138,11 +135,12 @@ agggatatgatttatataatttaggttttacagcaggtt
 
 3- Feature Table (suffix .tbl).
 
-### AIRR suggested Feature Table to represent CD3
+### AIRR suggested Feature Table to represent JUNCTION
 
 <img src="https://github.com/airr-community/airr-standards/blob/master/Images/genbank.png" alt="genkbank" />
 
-If you are interested to read more about AIRR NCBI submission detail. We have created a **Draft specification for AIRR Minimal Standard-compliant reporting to INSDC databases** which is accessible <a href="https://www.overleaf.com/8640205fsmvkppdygzb#/30770054/">here</a>
+### Detailed specification
+A **draft specification for AIRR Minimal Standard-compliant reporting to INSDC databases** can be found [here](https://www.overleaf.com/read/tytddwptgkhb).
 
 ### How to cite?
 
