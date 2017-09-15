@@ -69,7 +69,58 @@ GenBank. Additional manual editing is not required before submission. To prepare
 
 1- Template file containing a text ASN.1 Submit-block object (suffix .sbt).
 
+Creating the template file (.sbt)
+
+Go to Create Submission Template page
+Fill in the boxes
+Click on "Create Template"
+SAVE the file as template.sbt
+
 2- Nucleotide sequence data in FASTA format (suffix .fsa).
+
+Go to Create Submission Template page
+Fill in the boxes
+Click on "Create Template"
+SAVE the file as template.sbt
+Nucleotide sequence and FASTA defline formats (.fsa)
+
+No size limit on nucleotide sequence, generally.
+FASTA file should consist of a single definition line beginning with a '>'.
+Minimum requirements for the FASTA defline are:
+SeqID (sequence identifier) which is the text between the '>' and the first space. The SeqIDs limits are:
+Must be <50 characters
+Can only include letters, digits, hyphens (-), underscores (_), periods (.), colons (:), asterisks (*), and number signs (#).
+Organism and related information (unless organism information is included with -j at the command line or in a .src file )
+Optional defline information is in this list of source modifiers and includes:
+Biological
+strain [strain=S288C]
+isolate [isolate=CWS1]
+chromosome [chromosome=XVI]
+Other elements
+topology [topology=circular]
+location [location=mitochondrion]
+molecule [moltype=mRNA] (DNA is the default)
+technique [tech=wgs]
+protein name [protein=helicase] (if using -c)
+genetic code [gcode=4]
+Here is the list of source modifiers . See the Taxonomy pages for the genetic code values.
+
+Example FASTA:
+
+>Sc_16 [organism=Saccharomyces cerevisiae]
+tataggcgaatcgagtatattattttttctcaacatatgtat
+atgaacatgagaatatatttataggaatgtataaaattgtga
+cctctcctgctattttagttactgattttatgtatgtagggg
+gaataggggctgcctttcttaatgcagttttaattttttctt
+ttaattttttcttagtaaaattatttaaagtaaagattaatg
+gaataaccattgcgcttttttttacagtttttggtttttcat
+tttttggaaaaaatattttaaatattttacctttttatttag
+ggggtattttatatagtatctatacttcaacagatttttctg
+aacatatagttcctattgctttttcaagtgcattagcccctt
+ttgtaagcagtgttgctttttatggagaaatatcctatgaaa
+catcatatataaatgcaattttaattggtattttaattggtt
+ttatagtggttcctttgtctaaaagtctttatgactttcatg
+agggatatgatttatataatttaggttttacagcaggtt
 
 3- Feature Table (suffix .tbl).
 
