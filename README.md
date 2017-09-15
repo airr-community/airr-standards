@@ -95,10 +95,7 @@ FASTA file should consist of a single definition line beginning with a '>'.
 Minimum requirements for the FASTA defline are:
 
 SeqID (sequence identifier) which is the text between the '>' and the first space. The SeqIDs limits are:
-Must be <50 characters
-
-Can only include letters, digits, hyphens (-), underscores (_), periods (.), colons (:), asterisks (*), and number signs (#).
-Organism and related information (unless organism information is included with -j at the command line or in a .src file )
+Must be <50 characters Can only include letters, digits, hyphens (-), underscores (_), periods (.), colons (:), asterisks (*), and number signs (#). Organism and related information (unless organism information is included with -j at the command line or in a .src file )
 
 Optional defline information is in this list of source modifiers and includes:
 
