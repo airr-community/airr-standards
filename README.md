@@ -51,6 +51,7 @@ NCBI allows both web-based and command-line submissions and accepts .tsv files (
 In case you are planning to populate the AIRR template files programmatically, please use <a href="https://github.com/airr-community/airr-standards/blob/master/NCBI-XML%20Templates/AIRR_BS_SRA_v1.0.xml"> AIRR_BS_SRA_v1.0.xml</a> file (its filled with dummy data).
 
 ### AIRR data submission to GenBank
+
 GenBank provides multiple tools (GUI and command-line) to submit data:
 
 1- **BankIt**, a web-based submission tool with wizards to guide the submission process
@@ -71,19 +72,19 @@ GenBank. Additional manual editing is not required before submission. To prepare
 
 Creating the template file (.sbt)
 
-Go to Create Submission Template page
+*   Go to Create Submission Template page  https://submit.ncbi.nlm.nih.gov/genbank/template/submission/
 
-Fill in the boxes
+*   Fill in the boxes
 
-Click on "Create Template"
+*   Click on "Create Template"
 
-SAVE the file as template.sbt
+*   SAVE the file as template.sbt
 
 **2 Nucleotide sequence and FASTA defline formats (.fsa)**
 
-No size limit on nucleotide sequence, generally.
+*   No size limit on nucleotide sequence, generally.
 
-FASTA file should consist of a single definition line beginning with a '>'.
+*   FASTA file should consist of a single definition line beginning with a '>'.
 
 Minimum requirements for the FASTA defline are:
 
