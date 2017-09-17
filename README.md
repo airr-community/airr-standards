@@ -1,3 +1,6 @@
+<img src="https://github.com/airr-community/airr-standards/blob/master/Images/miairr.png" alt="miairr" />
+
+***
 ## Welcome to the AIRR Minimal Standards Working Group
 
 ### Introduction
