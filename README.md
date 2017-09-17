@@ -142,6 +142,8 @@ agggatatgatttatataatttaggttttacagcaggtt
 
 <img src="https://github.com/airr-community/airr-standards/blob/master/Images/genbank.png" alt="genkbank" />
 
+### How to prepare a GenBank submission. Guideline is available <a href="https://www.ncbi.nlm.nih.gov/books/NBK53709/#gbankquickstart.how_do_i_create_a_submis">here</a>
+
 ### Detailed specification
 A **draft specification for AIRR Minimal Standard-compliant reporting to INSDC databases** can be found [here](https://www.overleaf.com/read/tytddwptgkhb).
 
