@@ -3,21 +3,17 @@
 <p align="left"><i>Revolutizing the Immune Receptor Sequencing through Standardization</i></p>
 
 ***
-## Welcome to the AIRR Minimal Standards Working Group
+## Welcome to the AIRR study submission guide
 
 ### Introduction
 
-The Minimal Standards Working Group has created experimental metadata standards to describe how AIRR-Seq data are generated and evaluated for quality. These metadata include clinical and demographic data on the subjects, sample information, cell phenotypes, nucleic acid purification, immune receptor amplification, sequencing library preparation, sequencing protocol, deposition of the raw sequencing data, and documentation of the computational pipelines used to generate the processed data. A Guidelines Manuscript is being prepared that outlines the set of metadata recommended for submission of AIRR-Seq data for publication or curation in an AIRR-compliant public data repository.
-
-### Members
-Brian Corrie, Bjoern Peters, Bojan Zimonja, Chaim Schramm, Christian Busse, Corey Watson, Encarnita Mariotti-Ferrandiz, Felix Breden, Florian Rubelt, Jean Bürckert, Jerome Jaglale, Lindsay Cowell, Eline Luning Prak (co-chair), Marie-Paule Lefranc, Nishanth Marthandan, Richard Bruskiewich, Scott Boyd, Scott Christley, Syed Ahmad Chan Bukhari, Uri Hershberg, Steven Kleinstein (co-chair), Uri Laserson, William Faison
+The AIRR Community has defined six high-level sets that will guide the publication, curation and sharing of AIRR-Seq data and metadata: Study and subject, sample collection, sample processing and sequencing, raw sequences, processing of sequence data, and processed AIRR sequences. The detailed data elements within these sets are defined  <a href="https://github.com/airr-community/airr-standards/raw/master/AIRR%20Minimal%20Standard%20Data%20Elements.xlsx">here </a>. An implementation of the AIRR data standard has been developed for the NCBI repositories (BioProject, BioSample, Sequence Read Archive (SRA) and GenBank). The association between each of these repositories and the AIRR sets is shown below:
 
 ### AIRR Community Accpted Elements
 
 ![Image](https://github.com/airr-community/airr-standards/blob/master/Images/dataelements.png)
 
-### <a href="https://github.com/airr-community/airr-standards/raw/master/AIRR%20Minimal%20Standard%20Data%20Elements.xlsx"><img src="https://github.com/airr-community/airr-standards/blob/master/Images/download.png" alt="download"  height="75" width="75"/></a>   AIRR Community Accpted Elements  
-<hr>
+
 
 ### AIRR data submission to BioProject, BioSample and SRA
 
