@@ -35,4 +35,3 @@ If you are interested to know more about AIRR Standards or looking for help in N
 <a href="mailto:ahmad.chan@yale.edu">Syed **Ahmad** Chan Bukhari</a> or <a href="mailto:steven.kleinstein@yale.edu">Steven Kleinstein</a>
 
 ***
-***
