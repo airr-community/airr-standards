@@ -1,5 +1,7 @@
 <img src="https://github.com/airr-community/airr-standards/blob/master/Images/miairr.png" alt="miairr" />
 
+                                                      Revolutizing the Immune Receptor Sequencing through Standardization
+
 ***
 ## Welcome to the AIRR Minimal Standards Working Group
 
