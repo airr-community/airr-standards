@@ -31,7 +31,7 @@ To be updated
 
 ### Support or Contact
 
-If you are interested to know more about AIRR Standards or looking for help in NCBI templates. Please create an issue or send email to Ahmad
+If you are interested to know more about AIRR Standards or looking for help in NCBI templates. Please create <a href="https://github.com/airr-community/airr-standards/issues/new">an issue</a> or send email to Ahmad
 <a href="mailto:ahmad.chan@yale.edu">Syed **Ahmad** Chan Bukhari</a> or <a href="mailto:steven.kleinstein@yale.edu">Steven Kleinstein</a>
 
 ***
