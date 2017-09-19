@@ -14,7 +14,9 @@ The AIRR Community has defined six high-level sets that will guide the publicati
 ![Image](https://github.com/airr-community/airr-standards/blob/master/Images/dataelements.png)
 
 
-This site provides a guide for submission of AIRR sequencing data and metadata to NCBI public data repositories. The process consists of 4 sequential steps:
+This site provides a guide for submission of AIRR sequencing data and metadata to NCBI public data repositories.
+
+The process consists of 4 sequential steps:
 
 ###  <i>1- Submit study and sample-level information to NCBI BioProject and BioSample repositories</i>
 ###  <i>2- Submit raw sequencing data to NCBI SRA using the AIRR data templates</i>
