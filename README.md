@@ -1,9 +1,9 @@
-<img src="https://github.com/airr-community/airr-standards/blob/master/Images/miairr.png" alt="miairr" />
+<img src="https://github.com/airr-community/airr-standards/blob/master/Images/miairr.png" alt="miairr" width="500" />
 
-<p align="left"><i>Revolutizing the Immune Receptor Sequencing through Standardization</i></p>
+<i>Revolutizing the Immune Receptor Sequencing through Standardization</i>
 
 ***
-## Welcome to the AIRR study submission guide
+
 
 ### Introduction
 
