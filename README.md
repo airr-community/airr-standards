@@ -31,6 +31,20 @@ For step-by-step instructions on carrying out theses steps an AIRR study submiss
 The National Center for Biotechnology Information (NCBI) repositories constitute a major public resource for sharing diverse types of biomedical data. These repositories provide the necessary infrastructure for researchers to submit experimental data and associated metadata as part of the science-dissemination process. AIRR Minimal Standards WG has developed templates to submit AIRR data to the NCBI's BioProject, BioSample, Sequence Read Archive and GenBank (Figure below).
 
 
+### How to cite?
+
+To be updated
+
+### Support or Contact
+
+If you are interested to know more about AIRR Standards or looking for help in NCBI templates. Please create an issue or send email to Ahmad
+<a href="mailto:ahmad.chan@yale.edu">Syed **Ahmad** Chan Bukhari</a> or <a href="mailto:steven.kleinstein@yale.edu">Steven Kleinstein</a>
+
+
+
+***
+***
+
 <img src="https://github.com/airr-community/airr-standards/blob/master/Images/airr-ncbi.png" alt="airr-ncbi" />
 
 Follwoing is a tutorial to submit AIRR data to the NCBI
@@ -155,11 +169,4 @@ agggatatgatttatataatttaggttttacagcaggtt
 ### Detailed specification
 A **draft specification for AIRR Minimal Standard-compliant reporting to INSDC databases** can be found [here](https://www.overleaf.com/read/tytddwptgkhb).
 
-### How to cite?
 
-To be updated
-
-### Support or Contact
-
-If you are interested to know more about AIRR Standards or looking for help in NCBI templates. Please create an issue or send email to Ahmad
-<a href="mailto:ahmad.chan@yale.edu">Syed **Ahmad** Chan Bukhari</a> or <a href="mailto:steven.kleinstein@yale.edu">Steven Kleinstein</a>
