@@ -19,7 +19,7 @@ This site provides a guide for submission of AIRR sequencing data and metadata t
 The process consists of 4 sequential steps:
 
 ###  <i>1- Submit study and sample-level information to NCBI BioProject and BioSample repositories</i>
-###  <i>2- Submit raw sequencing data to NCBI SRA using the AIRR data templates</i>
+###  <i>2- Submit raw sequencing data to NCBI SRA using the <a href="https://github.com/airr-community/airr-standards/tree/master/NCBI-XML%20Templates">AIRR data templates</a></i>
 ###  <i>3- Generate a DOI for the protocol describing how raw sequencing data were processed using  Zenodo (https://zenodo.org)  or equivalent</i>
 ###  <i>4- Submit processed sequencing data with sequence-level annotations to GenBank using AIRR feature tags</i>
 
