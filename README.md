@@ -7,7 +7,7 @@
 
 ### Introduction
 
-The AIRR Community has defined six high-level sets that will guide the publication, curation and sharing of AIRR-Seq data and metadata: Study and subject, sample collection, sample processing and sequencing, raw sequences, processing of sequence data, and processed AIRR sequences. The detailed data elements within these sets are defined  <a href="https://github.com/airr-community/airr-standards/raw/master/AIRR%20Minimal%20Standard%20Data%20Elements.xlsx">here </a>. An implementation of the AIRR data standard has been developed for the NCBI repositories (BioProject, BioSample, Sequence Read Archive (SRA) and GenBank). The association between each of these repositories and the AIRR sets is shown below:
+The AIRR Community has defined six high-level sets that will guide the publication, curation and sharing of AIRR-Seq data and metadata: Study and subject, sample collection, sample processing and sequencing, raw sequences, processing of sequence data, and processed AIRR sequences. The detailed data elements within these sets are defined  <a href="https://github.com/airr-community/airr-standards/blob/master/AIRR_Minimal_Standard_Data_Elements.csv">here </a>. An implementation of the AIRR data standard has been developed for the NCBI repositories (BioProject, BioSample, Sequence Read Archive (SRA) and GenBank). The association between each of these repositories and the AIRR sets is shown below:
 
 ### AIRR Community Accpted Elements
 
