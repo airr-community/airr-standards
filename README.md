@@ -5,11 +5,11 @@
 ***
 
 
-### Introduction
+### Guide for submission of AIRR-seq data to NCBI
 
-The AIRR Community has defined six high-level sets that will guide the publication, curation and sharing of AIRR-Seq data and metadata: Study and subject, sample collection, sample processing and sequencing, raw sequences, processing of sequence data, and processed AIRR sequences. The detailed data elements within these sets are defined  <a href="https://github.com/airr-community/airr-standards/blob/master/AIRR_Minimal_Standard_Data_Elements.csv">here </a>. An implementation of the AIRR data standard has been developed for the NCBI repositories (BioProject, BioSample, Sequence Read Archive (SRA) and GenBank). The association between each of these repositories and the AIRR sets is shown below:
+This site provides a detailed “how-to” guide for submission of AIRR-seq data to NCBI databases (BioProject, BioSample, SRA and GenBank). 
 
-### AIRR Community Accpted Elements
+One of the primary initiatives of the AIRR (Adaptive Immune Receptor Repertoire) Community has been to develop a set of metadata standards for the submission of immune receptor repertoire sequencing datasets. This work has been carried out by the AIRR Community Standards Working Group. In order to support reproducibility, standard quality control, and data deposition in a common repository, the AIRR Community has agreed to six high-level data sets that will guide the publication, curation and sharing of AIRR-Seq data and metadata: Study and subject, sample collection, sample processing and sequencing, raw sequences, processing of sequence data, and processed AIRR sequences. The detailed data elements within these sets are defined [here](https://github.com/airr-community/airr-standards/blob/master/AIRR_Minimal_Standard_Data_Elements.csv). The association between these AIRR sets, the associated data elements, and each of the NCBI repositories is shown below:
 
 ![Image](https://github.com/airr-community/airr-standards/blob/master/Images/dataelements.png)
 
