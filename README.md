@@ -1,4 +1,4 @@
-<img src="https://github.com/airr-community/airr-standards/blob/master/Images/miairr.png" alt="miairr" width="500" />
+<img src="https://github.com/airr-community/airr-standards/blob/master/Images/miairr_logo.png" alt="miairr" width="500" />
 
 <i>Revolutionizing the Immune Receptor Sequencing through Standardization</i>
 
