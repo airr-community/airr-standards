@@ -14,16 +14,16 @@ One of the primary initiatives of the AIRR (Adaptive Immune Receptor Repertoire)
 ![Image](https://github.com/airr-community/airr-standards/blob/master/Images/dataelements.png)
 
 
-This site provides a guide for submission of AIRR sequencing data and metadata to NCBI public data repositories.
+Submission of AIRR sequencing data and metadata to NCBI public data repositories consists of 5 sequential steps:
 
-The process consists of 4 sequential steps:
-
-###  <i>1- Submit study and sample-level information to NCBI BioProject and BioSample repositories</i>
-###  <i>2- Submit raw sequencing data to NCBI SRA using the <a href="https://github.com/airr-community/airr-standards/tree/master/NCBI%20Templates">AIRR data templates</a></i>
+###  <i>1- Submit study information to <a href="https://submit.ncbi.nlm.nih.gov/subs/bioproject/">NCBI BioProject</a> using the NCBI web interface</i>
+###  <i>2- Submit sample-level information to the <a href="https://submit.ncbi.nlm.nih.gov/subs/biosample/">NCBI BioSample repository</a> using the <a href="https://github.com/airr-community/airr-standards/tree/master/NCBI_implementation/NCBI%20Templates">AIRR templates</a></i>
 ###  <i>3- Generate a DOI for the protocol describing how raw sequencing data were processed using  Zenodo (https://zenodo.org)  or equivalent</i>
-###  <i>4- Submit processed sequencing data with sequence-level annotations to GenBank using AIRR feature tags</i>
+###  <i>4- Submit processed sequencing data with sequence-level annotations to <a href="https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/">GenBank using AIRR feature tags</a></i>
 
-For step-by-step instructions on carrying out theses steps an AIRR study submission, please <a href="https://www.overleaf.com/read/tytddwptgkhb#/41759617/">Click here to view</a>
+
+For detailed instructions on carrying out theses steps for AIRR study submission, please see [here](https://www.overleaf.com/read/tytddwptgkhb).
+
 
 ### How to cite?
 
