@@ -35,3 +35,17 @@ For further information about the MiAIRR standard please contact
 [Steven Kleinstein](mailto:steven.kleinstein@yale.edu?subject=MiAIRR%20Standard).
 
 ***
+### Share on Social Media
+
+[![alt text][1.1]][1]
+[![alt text][2.1]][2]
+[![alt text][3.1]][3]
+
+[1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
+[2.1]: http://i.imgur.com/P3YfQoD.png (facebook icon with padding)
+[3.1]: http://i.imgur.com/yCsTjba.png (google plus icon with padding)
+
+[1]: https://twitter.com/share?url=https://github.com/airr-community/airr-standards
+[2]: https://www.facebook.com/sharer/sharer.php?u=https://github.com/airr-community/airr-standards
+[3]: https://plus.google.com/share?url=https://github.com/airr-community/airr-standards
+
