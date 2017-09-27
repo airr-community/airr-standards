@@ -1,8 +1,6 @@
 ![Image](https://github.com/airr-community/airr-standards/raw/master/Images/miairr_logo.png)
 
-**Minimal standards for Adaptive Immune Receptor Repertoire**
- 
-_Community repository of high-throughput Adaptive Immune Receptor Sequencing through Standardization_
+_Minimum information about an Adaptive Immune Receptor Repertoire Sequencing Experiment_
 
 ***
 
