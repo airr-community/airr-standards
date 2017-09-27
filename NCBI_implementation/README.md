@@ -35,7 +35,12 @@ For step-by-step instructions on carrying out theses steps an AIRR study submiss
 
 ### How to cite?
 
+_Manuscript in preparation_
+<!---
+The following link could give a false impression on contribution to the MiAIRR standard, therefore please keep it
+commented out until the actual MiAIRR publication it out and can be referenced too.
 [![DOI](https://zenodo.org/badge/104967269.svg)](https://zenodo.org/badge/latestdoi/104967269)
+-->
 
 
 ### Report an issue to help us improving MiAIRR
