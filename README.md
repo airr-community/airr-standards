@@ -16,6 +16,10 @@ One of the primary initiatives of the Adaptive Immune Receptor Repertoire (AIRR)
 
 To be updated
 
+### Help us in improving. Report an Issue
+
+https://waffle.io/airr-community/airr-standards
+
 ### Contact
 
 For further information about the MiAIRR Standard please contact [Syed **Ahmad** Chan Bukhari](mailto:ahmad.chan@yale.edu?subject=MiAIRR%20Standard) or [Steven Kleinstein](mailto:steven.kleinstein@yale.edu?subject=MiAIRR%20Standard).
