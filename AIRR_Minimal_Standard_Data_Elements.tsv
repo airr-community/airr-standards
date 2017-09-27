@@ -5,9 +5,9 @@ Collection / subset	MiAIRR field designation	Data type	Content type	Field value 
 1 / study	Study inclusion/exclusion criteria	String	Free text		inclusion_exclusion_criteria
 1 / study	Grant funding agency	String	Free text	NIH	grants
 1 / study	Lab name	String	Free text	abc Lab	lab_name
-1 / study	Contact information (data collection)	String	RFC6530-compliant email address	abc@xyz.com	collected_by
-1 / study	Contact information (data deposition)	String	Free text	Mr. Abc	submitted_by
-1 / study	Lab address	String	Free text	abc Lab, xyz school of Medicine	lab_address
+1 / study	Contact information (data collection)	String	RFC6530-compliant email address	p.stibbons@unseenu.edu	collected_by
+1 / study	Contact information (data deposition)	String	Free text	Dr. P. Stibbons	submitted_by
+1 / study	Lab address	String	Free text	Stibbons Lab, School of Medicine, Unseen University, Ankh-Morpork, Disk World	lab_address
 1 / study	Relevant publications	String	UID assigned by PubMed (PMID)	PMID85642	pub_ids
 1 / subject	Subject ID	String	UID assigned by submitter	SUB856413	subject_id
 1 / subject	Organism-based or synthetic	String	Controlled vocabulary	human, mouse or synthetic based study	organism
