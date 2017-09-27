@@ -1,6 +1,6 @@
 ![Image](https://github.com/airr-community/airr-standards/raw/master/Images/miairr_logo.png)
 
-_Revolutionizing Adaptive Immune Receptor Sequencing through Standardization_
+_Minimum information about an Adaptive Immune Receptor Repertoire Sequencing Experiment_
 
 ***
 
