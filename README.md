@@ -14,7 +14,8 @@ One of the primary initiatives of the Adaptive Immune Receptor Repertoire (AIRR)
 
 ### How to cite?
 
-To be updated
+[![DOI](https://zenodo.org/badge/104967269.svg)](https://zenodo.org/badge/latestdoi/104967269)
+
 
 ### Report an issue to help us improving the MiAIRR 
 
