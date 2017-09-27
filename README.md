@@ -16,7 +16,7 @@ One of the primary initiatives of the Adaptive Immune Receptor Repertoire (AIRR)
 
 To be updated
 
-### Help us in improving. Report an Issue
+### Report an issue to help us improving the MiAIRR 
 
 https://waffle.io/airr-community/airr-standards
 
