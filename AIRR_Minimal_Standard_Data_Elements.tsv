@@ -55,7 +55,7 @@ Collection / subset	MiAIRR field designation	Data type	Content type	Field value 
 3 / process (nucl. acid)	Reverse PCR primer target location	String	Free text	Constant region	reverse_PCR_primer_target_location
 3 / process (nucl. acid)	Whole vs. partial sequences	Boolean	YES/NO	Yes	whole_vs_partial_sequences
 3 / process (nucl. acid)	Physical linkage of different loci	String	Controlled vocabulary	IGH-IGK/IGL-head/head	physical_linkage
-3 / process (nucl. acid)	Template amount	Float	number [ng]	123.45	ng_template
+3 / process (nucl. acid)	Template amount	Float	number [ng]	123.45	template_amount
 3 / process (nucl. acid)	Total reads passing QC filter	Unsigned integer	Number of usable reads for analysis	10	total_reads_passing_qc_filter
 3 / process (nucl. acid)	Protocol IDs	String	UID either assigned by submitter	4501uggt	protocol_id
 3 / process (nucl. acid)	Sequencing Platform	String	Free text	Alumina	platform
