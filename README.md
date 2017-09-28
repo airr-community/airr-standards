@@ -6,7 +6,7 @@ _Minimum information about an Adaptive Immune Receptor Repertoire Sequencing Exp
 
 ### Introduction
 One of the primary initiatives of the Adaptive Immune Receptor Repertoire (AIRR) Community has been to develop a set of
-metadata standards for the submission of AIRR sequencing datasets. This work has been carried out by the AIRR Community
+metadata standards for the submission of AIRR sequencing datasets. This work has been carried out by the [AIRR Community
 Minimal Standards Working Group](http://airr.irmacs.sfu.ca/working_groups/minimal_standards). In order to support
 reproducibility, standard quality control, and data deposition in a common repository, the AIRR Community has agreed to
 six high-level data sets that will guide the publication, curation and sharing of AIRR-Seq data and metadata: Study and
