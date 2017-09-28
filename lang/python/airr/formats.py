@@ -5,6 +5,7 @@ Reference library for AIRR schema for Ig/TCR rearrangements
 from __future__ import print_function
 import re
 import sys
+import csv
 
 from prov import model
 
@@ -30,38 +31,45 @@ class RearrangementsFile(object):
             if f['mandatory']: self.mandatoryFieldNames.append(f['name'])
             else: self.optionalFieldNames.append(f['name'])
 
+        # writing or reading
         if state:
             self.writableState = state
             if filename:
                 self.dataFile = open(filename, 'w')
+                self.metaFile = open(filename + '.meta.json', 'w')
             else:
                 self.dataFile = handle
+                self.metaFile = open(handle.name + '.meta.json', 'w')
             self.metadata = model.ProvDocument()
             self.metadata.set_default_namespace('http://airr-community.org/')
             self.wroteMetadata = False
+            self.dictWriter = None
         else:
             self.writableState = state
             if filename:
                 self.dataFile = open(filename, 'r')
+                try:
+                    self.metaFile = open(filename + '.meta.json', 'w')
+                except IOError:
+                    self.metaFile = None
             else:
                 self.dataFile = handle
+                try:
+                    self.metaFile = open(handle.name + '.meta.json', 'w')
+                except IOError:
+                    self.metaFile = None
             self.wroteMetadata = None
+
             # read metadata
-            header = None
-            done = False
-            text = ''
-            while not done:
-                line = self.dataFile.readline()
-                m = re.match('^#M', line)
-                if m: text += re.sub('^#M', '', line)
-                else:
-                    done = True
-                    header = line.rstrip('\n')
-            if len(text) > 0:
-                self.metadata = model.ProvDocument.deserialize(
-                    None, text, 'json')
-            if not header: header = self.dataFile.readline().rstrip('\n')
-            self._inputFieldNames = header.split('\t')
+            self.metadata = None
+            if self.metaFile:
+                text = self.metaFile.read()
+                self.metaFile.close()
+                self.metadata = model.ProvDocument.deserialize(None, text, 'json')
+
+            # data reader, collect field names
+            self.dictReader = csv.DictReader(self.dataFile, dialect='excel-tab')
+            self._inputFieldNames = self.dictReader.fieldnames
             for f in self._inputFieldNames:
                 if f in self.mandatoryFieldNames: continue
                 if f in self.optionalFieldNames: continue
@@ -74,6 +82,8 @@ class RearrangementsFile(object):
             self.dataFile.close()
             self.dataFile = None
             self.writableState = None
+            self.dictWriter = None
+            self.dictReader = None
 
     def deriveFrom(self, anObj):
         # copy metadata
@@ -162,17 +172,10 @@ class RearrangementsFile(object):
     def writeMetadata(self):
         if not self.writableState: return
         if self.wroteMetadata: return
+        if not self.metaFile: return
         text = self.metadata.serialize(None, 'json', indent=2)
-        lines = text.split('\n')
-        for line in lines:
-            self.dataFile.write('#M ' + line + '\n')
-        # write headers after metadata
-        self.dataFile.write('\t'.join(self.mandatoryFieldNames))
-        if len(self.optionalFieldNames) > 0:
-            self.dataFile.write('\t' + '\t'.join(self.optionalFieldNames))
-        if len(self.additionalFieldNames) > 0:
-            self.dataFile.write('\t' + '\t'.join(self.additionalFieldNames))
-        self.dataFile.write('\n')
+        self.metaFile.write(text)
+        self.metaFile.close()
         self.wroteMetadata = True
 
     # row operations
@@ -181,10 +184,7 @@ class RearrangementsFile(object):
 
     def __next__(self):
         if self.writableState: raise StopIteration
-        line = self.dataFile.readline().rstrip('\n')
-        if not line: raise StopIteration
-        fields = line.split('\t')
-        return dict(zip(self._inputFieldNames, fields))
+        return next(self.dictReader)
 
     def next(self):
         return self.__next__()
@@ -193,29 +193,19 @@ class RearrangementsFile(object):
         if not self.writableState: return
         if not self.wroteMetadata: self.writeMetadata()
 
+        if not self.dictWriter:
+            fieldNames = []
+            fieldNames.extend(self.mandatoryFieldNames)
+            fieldNames.extend(self.optionalFieldNames)
+            fieldNames.extend(self.additionalFieldNames)
+            self.dictWriter = csv.DictWriter(self.dataFile, fieldnames=fieldNames, dialect='excel-tab', extrasaction='ignore')
+            self.dictWriter.writeheader()
+
         # validate row?
-        first = True
         for field in self.mandatoryFieldNames:
-            if not first: self.dataFile.write('\t')
-            first = False
             value = row.get(field, None)
-            if value is not None:
-                self.dataFile.write(str(value))
-            else:
-                self.dataFile.write('')
+            if value is None:
                 if self.debug:
                     sys.stderr.write('Warning: Record is missing AIRR mandatory field (' + field + ').\n')
 
-        for field in self.optionalFieldNames:
-            if not first: self.dataFile.write('\t')
-            first = False
-            value = row.get(field, '')
-            self.dataFile.write(str(value))
-
-        for field in self.additionalFieldNames:
-            if not first: self.dataFile.write('\t')
-            first = False
-            value = row.get(field, '')
-            self.dataFile.write(str(value))
-
-        self.dataFile.write('\n')
+        self.dictWriter.writerow(row)
