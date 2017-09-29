@@ -25,7 +25,7 @@ Study:
          type: string
       lab_address:
          type: string
-      pubs_ids:
+      pub_ids:
          type: string
 
 # 1-to-n relationship between a study and its subjects
@@ -177,7 +177,7 @@ NucleicAcidProcessing:
             - partial
       physical_linkage:
          type: string
-      ng_template:
+      template_amount:
          type: string
       total_reads_passing_qc_filter:
          type: integer

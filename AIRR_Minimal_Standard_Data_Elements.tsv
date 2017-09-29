@@ -4,7 +4,7 @@ Collection / subset	MiAIRR field designation	Data type	Content type	Field value 
 1 / study	Study type	String	Free text	Placebo controlled phase 3 clinical trial	study_description
 1 / study	Study inclusion/exclusion criteria	String	Free text		inclusion_exclusion_criteria
 1 / study	Grant funding agency	String	Free text	NIH	grants
-1 / study	Lab name	String	Free text	abc Lab	lab_name
+1 / study	Lab name	String	Free text	Stibbons Lab	lab_name
 1 / study	Contact information (data collection)	String	RFC6530-compliant email address	p.stibbons@unseenu.edu	collected_by
 1 / study	Contact information (data deposition)	String	Free text	Dr. P. Stibbons	submitted_by
 1 / study	Lab address	String	Free text	Stibbons Lab, School of Medicine, Unseen University, Ankh-Morpork, Disk World	lab_address
