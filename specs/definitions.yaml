@@ -173,8 +173,9 @@ NucleicAcidProcessing:
          type: string
       whole_vs_partial sequences:
          enum:
-            - whole
             - partial
+            - complete
+            - "complete & untemplated"
       physical_linkage:
          type: string
       template_amount:

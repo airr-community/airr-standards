@@ -53,7 +53,7 @@ Collection / subset	MiAIRR field designation	Data type	Content type	Field value 
 3 / process (nucl. acid)	Target locus for PCR	String	Free text	Constant region vs. V region amplification	target_locus_PCR
 3 / process (nucl. acid)	Forward PCR primer target location	String	Free text	FR1	forward_PCR_primer_target_location
 3 / process (nucl. acid)	Reverse PCR primer target location	String	Free text	Constant region	reverse_PCR_primer_target_location
-3 / process (nucl. acid)	Whole vs. partial sequences	Boolean	YES/NO	Yes	whole_vs_partial_sequences
+3 / process (nucl. acid)	Complete sequences	String	Controlled vocabulary	To be considered `complete`, a sequences MUST 1) include the first V segment codon that encodes the mature polypeptide chain (i.e. after the leader sequence); 2) include the last complete codon of the J segment (i.e. 1 bp 5' of the J->C splice site); 3) provide sequence information for all positions between 1) and 2). To be considered `complete & untemplated`, the sections of the sequences defined in points 1) to 3) of the previous sentence MUST be untemplated, i.e. MUST NOT overlap with the primers used in library preparation.	complete_sequences
 3 / process (nucl. acid)	Physical linkage of different loci	String	Controlled vocabulary	IGH-IGK/IGL-head/head	physical_linkage
 3 / process (nucl. acid)	Template amount	Float	number [ng]	123.45	template_amount
 3 / process (nucl. acid)	Total reads passing QC filter	Unsigned integer	Number of usable reads for analysis	10	total_reads_passing_qc_filter
