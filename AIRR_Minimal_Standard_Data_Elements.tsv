@@ -10,14 +10,14 @@ Collection / subset	MiAIRR field designation	Data type	Content type	Field value 
 1 / study	Lab address	String	Free text	Stibbons Lab, School of Medicine, Unseen University, Ankh-Morpork, Disk World	lab_address
 1 / study	Relevant publications	String	UID assigned by PubMed (PMID)	PMID85642	pub_ids
 1 / subject	Subject ID	String	UID assigned by submitter	SUB856413	subject_id
-1 / subject	Organism-based or synthetic	String	Controlled vocabulary	human, mouse or synthetic based study	organism
+1 / subject	Synthetic library	Boolean	TRUE/FALSE	TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)	synthetic
+1 / subject	Organism	String	Controlled vocabulary	Homo sapiens	organism
 1 / subject	Sex	Char	Controlled vocabulary		sex
 1 / subject	Age	String	Time duration and unit	200 days	age
 1 / subject	Age event	String	Free text	Enrollment	age_event
 1 / subject	Ancestry population	String	Free text		ancestry_population
 1 / subject	Ethnicity	String	Free text	Tamil and Sinhalese	ethnicity
 1 / subject	Race	String	Free text	South Indian	race
-1 / subject	Species name	String	Controlled vocabulary	Homo sapiens	species_name
 1 / subject	Strain name	String	Free text	C57BL/6J	strain_name
 1 / subject	Relation to other subjects	String	Subject ID	SUB1355648	linked_subjects
 1 / subject	Relation type	String	Controlled vocabulary	sister, father, daughter	link_type

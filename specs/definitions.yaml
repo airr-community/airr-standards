@@ -38,6 +38,8 @@ Subject:
          type: string
       subject_id:
          type: string
+      synthetic:
+         type: boolean
       organism:
          type: string
       sex:
@@ -51,8 +53,6 @@ Subject:
       ethnicity:
          type: string
       race:
-         type: string
-      species_name:
          type: string
       strain_name:
          type: string
