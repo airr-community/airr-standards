@@ -110,7 +110,7 @@ Sample:
          type: string
       collection_time_event:
          type: string
-      source_commercial:
+      biomaterial_provider:
          type: string
 
 # 1-to-n relationship between a sample and processing of its cells
