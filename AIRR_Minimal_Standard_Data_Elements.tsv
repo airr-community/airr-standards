@@ -36,7 +36,7 @@ Collection / subset	MiAIRR field designation	Data type	Content type	Field value 
 2 / sample	Disease state of sample	String	Free text	tumor vs. margin	disease_state_sample
 2 / sample	Sample collection time	String	Free text	10 Days	collection_date
 2 / sample	Collection time event (T0)	String	Free text	vaccination, recruitment, treatment	collection_time_event
-2 / sample	Commercial source	String	Free text	XYZ Pharma	source_commercial
+2 / sample	Biomaterial provider	String	Free text	XYZ Pharma	biomaterial_provider
 3 / process (cell)	Tissue processing	String	Free text	Enzymatic digestion and/or physical methods used to isolate cells from sample	tissue_processing
 3 / process (cell)	Cell subset	String	Controlled vocabulary		cell_subset
 3 / process (cell)	Cell subset phenotype	String	Free text		cell_phenotype
