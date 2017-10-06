@@ -102,6 +102,8 @@ Sample:
          type: string
       tissue:
          type: string
+      anatomic_site:
+         type: string
       disease_state_sample:
          type: string
       collection_date:
