@@ -30,8 +30,9 @@ Collection / subset	MiAIRR field designation	Data type	Content type	Field value 
 1 / diag. & intervent.	Intervention definition	String	Free text	Drug, Vaccine, Surgery etc.	intervention
 1 / diag. & intervent.	Other relevant medical history	String	Free text	Medications, surgeries, other conditions	medical_history
 2 / sample	Biological sample ID	String	UID assigned by submitter	SUP52415	sample_id
-2 / sample	Sample type	String	Free text	Tissue, body fluid	sample_type
-2 / sample	Anatomic site	String	Free text	spleen	tissue
+2 / sample	Sample type	String	Free text	The way the sample was obtained, e.g. biopsy, fine-needle aspirate, organ harvest	sample_type
+2 / sample	Tissue	String	Free text	The actual tissue, e.g. bone marrow, liver, peripheral blood	tissue
+2 / sample	Anatomic site	String	Free text	The location of the tissue, e.g. Inguinal, femur	anatomic_site
 2 / sample	Disease state of sample	String	Free text	tumor vs. margin	disease_state_sample
 2 / sample	Sample collection time	String	Free text	10 Days	collection_date
 2 / sample	Collection time event (T0)	String	Free text	vaccination, recruitment, treatment	collection_time_event
