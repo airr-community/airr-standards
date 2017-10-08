@@ -1,5 +1,6 @@
 # airr-formats
-Open source formats for AIRR data using Thrift.
+
+Open source formats for AIRR data.
 
 Each specification is in a pair of files in `specs/`
 
@@ -8,14 +9,14 @@ Each specification is in a pair of files in `specs/`
 -   `object.j2`: A Markdown Jinja2 template with additional information
 
 
-To render the specs, from the root package directory run
+To render the specs, first install [`jinja2-cli`](https://pypi.python.org/pypi/jinja2-cli).
+
+Then run from the root package directory
 
 ```bash
 scripts/build_docs.sh
 ```
 
-which will generate Markdown `.md` files in the `docs/` directory.  (This makes
-use of the `jinja2-cli` package.)
-
+which will generate Markdown `.md` files in the `docs/` directory.
 
 All libraries are in the `lang/` subdirectory.
