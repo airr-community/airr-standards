@@ -1,5 +1,7 @@
 # airr-formats
 
+[![Build Status](https://travis-ci.org/airr-community/airr-formats.svg?branch=master)](https://travis-ci.org/airr-community/airr-formats)
+
 Open source formats for AIRR data.
 
 Each specification is in a pair of files in `specs/`
