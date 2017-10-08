@@ -58,6 +58,11 @@ fields:
     doc: J allele assignment
     mandatory: True
   -
+    name: c_call
+    type: string
+    doc: C gene assignment
+    mandatory: True
+  -
     name: v_score
     type: float
     doc: V alignment score
@@ -71,6 +76,11 @@ fields:
     name: j_score
     type: float
     doc: J alignment score
+    mandatory: True
+  -
+    name: c_score
+    type: float
+    doc: C alignment score
     mandatory: True
   -
     name: v_cigar
@@ -88,14 +98,21 @@ fields:
     doc: J alignment CIGAR string
     mandatory: True
   -
+    name: c_cigar
+    type: string
+    doc: C alignment CIGAR string
+    mandatory: True
+  -
     name: junction_nt
     type: string
-    doc: Nucleotide sequence of the junction region
+    doc: Nucleotide sequence of the junction region (CDR3 plus conserved
+         residues)
     mandatory: True
   -
     name: junction_aa
     type: string
-    doc: Amino acid sequence of the junction region
+    doc: Amino acid sequence of the junction region (CDR3 plus conserved
+         residues)
     mandatory: True
   -
     name: v_evalue
