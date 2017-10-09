@@ -173,7 +173,7 @@ NucleicAcidProcessing:
          type: string
       reverse_PCR_primer_target_location:
          type: string
-      whole_vs_partial sequences:
+      complete_sequences:
          enum:
             - partial
             - complete
@@ -237,7 +237,7 @@ SoftwareProcessing:
          type: string
       primer_match_cutoffs:
          type: string
-      collapsing method:
+      collapsing_method:
          type: string
       data_processing_protocols:
          type: string
