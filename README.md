@@ -1,7 +1,5 @@
 ![Image](https://github.com/airr-community/airr-standards/raw/master/Images/miairr_logo.png)
 
-[![Build Status](https://travis-ci.org/airr-community/airr-standards.svg?branch=master)](https://travis-ci.org/airr-community/airr-standards)
-
 _Minimum information about an Adaptive Immune Receptor Repertoire Sequencing Experiment_
 
 ***
@@ -31,6 +29,8 @@ commented out until the actual MiAIRR publication it out and can be referenced t
 -->
 
 ### Report an issue to help us improving MiAIRR
+
+[![Build Status](https://travis-ci.org/airr-community/airr-standards.svg?branch=master)](https://travis-ci.org/airr-community/airr-standards)
 
 https://waffle.io/airr-community/airr-standards
 
