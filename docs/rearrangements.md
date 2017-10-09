@@ -69,6 +69,6 @@ See the formatting overview for details on how to structure this data.
 | `p5d_length` | `integer` |  | Palindromic nucleotides 5' of the D-segment |
 | `p3d_length` | `integer` |  | Palindromic nucleotides 3' of the D-segment |
 | `p5j_length` | `integer` |  | Palindromic nucleotides 5' of the J-segment |
-| `duplicate_count` | `integer` |  | Number of duplicate reads for this sequence |
-| `consensus_count` | `integer` |  | Number of reads contributing to the consensus for this sequence |
+| `duplicate_count` | `integer` |  | Copy number/number of duplicate observations for this sequence (e.g., number of UMIs sharing an identical sequence, or number of identical observations of this sequence absent UMIs) |
+| `consensus_count` | `integer` |  | Number of reads contributing to the (UMI) consensus for this sequence (e.g., the sum of the number of reads for all UMIs that contribute to (this rearrangement) |
 | `clone` | `string` |  | Clone assignment for this sequence |
