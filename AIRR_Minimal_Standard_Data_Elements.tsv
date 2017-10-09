@@ -59,9 +59,9 @@ Collection / subset	MiAIRR field designation	Data type	Content type	Field value 
 3 / process (nucl. acid)	Template amount	Float	number [ng]	123.45	template_amount
 3 / process (nucl. acid)	Total reads passing QC filter	Unsigned integer	Number of usable reads for analysis	10	total_reads_passing_qc_filter
 3 / process (nucl. acid)	Protocol IDs	String	UID either assigned by submitter	4501uggt	protocol_id
-3 / process (nucl. acid)	Sequencing Platform	String	Free text	Alumina	platform
+3 / process (nucl. acid)	Sequencing platform	String	Free text	Alumina	platform
 3 / process (nucl. acid)	Read lengths	Unsigned integer	Number of base pairs and directions	180	read_length
-3 / process (nucl. acid)	Sequencing Facility	String	Free text	ABC Lab	sequencing_facility
+3 / process (nucl. acid)	Sequencing facility	String	Free text	ABC Lab	sequencing_facility
 3 / process (nucl. acid)	Batch number	String	UID either assigned by submitter	BAT84562	batch_number
 3 / process (nucl. acid)	Date of sequencing run	String	ISO8601-compliant date	2016-12-16	sequencing_run_date
 3 / process (nucl. acid)	Sequencing kit	String	Free text	Manufacturer, Catalog Number, Lot number	sequencing_kit
@@ -78,6 +78,6 @@ Collection / subset	MiAIRR field designation	Data type	Content type	Field value 
 6 / data (proc. seq.)	D gene	String	Free text	D gene with allele	d_allele
 6 / data (proc. seq.)	J gene	String	Free text	J gene with allele	j_allele
 6 / data (proc. seq.)	C region	String	Free text	C region with allele	c_allele
-6 / data (proc. seq.)	JUNCTION nucleotide sequence	String	Free text	Sequence of the CDR3 region (nucleotide)	junction_nt
-6 / data (proc. seq.)	JUNCTION amino acid sequence	String	Free text	Sequence of the CDR3 region (amino acid)	junction_aa
-6 / data (proc. seq.)	read count	Unsigned integer	number	Number of reads of the sequence	duplicate_count
+6 / data (proc. seq.)	IMGT-JUNCTION nucleotide sequence	String	Free text	Nucleotide sequence of the IMGT-JUNCTION	junction_nt
+6 / data (proc. seq.)	IMGT-JUNCTION amino acid sequence	String	Free text	Amino acid sequence of the IMGT-JUNCTION	junction_aa
+6 / data (proc. seq.)	Read count	Unsigned integer	number	Number of reads of the sequence	duplicate_count
