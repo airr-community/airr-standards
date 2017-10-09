@@ -7,10 +7,10 @@ Documentation is available on
 
 ## Building
 
-From the root Python package directory, run
+From the root repo directory, run
 
 ```bash
-scripts/update_specs.sh
+scripts/propagate-specs.sh
 ```
 
 to copy in the latest version of the YAML files into package directory tree.

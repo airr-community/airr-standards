@@ -4,4 +4,4 @@ python:
 install:
   - pip install pyyaml jinja2 jsondiff
 script:
-  - scripts/ensure-consistency.py
+  - scripts/check-consistency.py

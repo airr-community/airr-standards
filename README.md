@@ -10,13 +10,18 @@ Each specification is in a pair of files in `specs/`
 
 -   `object.j2`: A Markdown Jinja2 template with additional information
 
+To propagate specs from `specs/` into the packages in `lang/`, run
+
+```bash
+scripts/propagate-specs.sh
+```
 
 To render the specs, first install [`jinja2-cli`](https://pypi.python.org/pypi/jinja2-cli).
 
-Then run from the root package directory
+Then run from the root repo directory
 
 ```bash
-scripts/build_docs.sh
+scripts/build-docs.sh
 ```
 
 which will generate Markdown `.md` files in the `docs/` directory.
