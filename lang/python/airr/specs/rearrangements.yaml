@@ -106,13 +106,13 @@ fields:
     name: junction_nt
     type: string
     doc: Nucleotide sequence of the junction region (CDR3 plus conserved
-         residues)
+         residues; i.e., IMGT's JUNCTION)
     mandatory: True
   -
     name: junction_aa
     type: string
     doc: Amino acid sequence of the junction region (CDR3 plus conserved
-         residues)
+         residues; i.e., IMGT's JUNCTION)
     mandatory: True
   -
     name: v_evalue
@@ -227,12 +227,14 @@ fields:
   -
     name: cdr3_start
     type: integer
-    doc: CDR3 start coord in sequence (transferred from germline)
+    doc: CDR3 start coord in sequence; like CDR3-IMGT, excludes 2nd-CYS
+         (transferred from germline)
     mandatory: False
   -
     name: cdr3_end
     type: integer
-    doc: CDR3 end coord in sequence (transferred from germline)
+    doc: CDR3 end coord in sequence; excludes J-TRP or J-PHE (transferred from
+         germline)
     mandatory: False
   -
     name: fwr4_start
