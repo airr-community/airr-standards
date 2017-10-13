@@ -195,7 +195,7 @@ NucleicAcidProcessing:
       batch_number:
          type: string
       sequencing_run_date:
-         type: dateTime
+         type: string
       sequencing_kit:
          type: string
 
