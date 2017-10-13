@@ -20,7 +20,7 @@ elements within these sets are defined
 [here](https://github.com/airr-community/airr-standards/blob/master/AIRR_Minimal_Standard_Data_Elements.tsv). The
 association between these AIRR sets, the associated data elements, and each of the NCBI repositories is shown below:
 
-![Image](https://github.com/airr-community/airr-standards/raw/master/Images/dataelements.png)
+![Image](https://github.com/airr-community/airr-standards/raw/master/Images/MiAIRR_data_elements_NCBI_targets.png)
 
 Submission of AIRR sequencing data and metadata to NCBI's public data repositories consists of five sequential steps:
 
