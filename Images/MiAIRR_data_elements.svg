@@ -15,9 +15,11 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="AIRR_MiniStd_Fig2.svg"
+   sodipodi:docname="MiAIRR_data_elements.svg"
    inkscape:export-xdpi="149.98444"
    inkscape:export-ydpi="149.98444">
+  <title
+     id="title4822">MiAIRR data standard elements</title>
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -28,15 +30,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="655.74803"
-     inkscape:cy="331.13884"
+     inkscape:cx="473.74803"
+     inkscape:cy="332.13884"
      inkscape:document-units="mm"
      inkscape:current-layer="g5463"
      inkscape:document-rotation="0"
      showgrid="false"
      showguides="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1133"
+     inkscape:window-width="2560"
+     inkscape:window-height="1371"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -53,15 +55,33 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title>MiAIRR data standard elements</dc:title>
         <cc:license
            rdf:resource="http://creativecommons.org/licenses/by/4.0/" />
         <dc:creator>
           <cc:Agent>
-            <dc:title>Christian B</dc:title>
+            <dc:title>Christian Busse</dc:title>
           </cc:Agent>
         </dc:creator>
-        <dc:date>2017-10-09</dc:date>
+        <dc:date>2017</dc:date>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Corey Watson, Syed Ahmad Chan Bukhari, Christian Busse</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>AIRR</rdf:li>
+            <rdf:li>MiAIRR</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:language>en-US</dc:language>
+        <dc:description>This figure shows the sets, subsets and individual items of the MiAIRR (minimal information about adaptive immune receptor repertoires) standard. It further includes the mapping of the NCBI implementation of the standard, the respective target repositories for the items are depicted with a solid line.</dc:description>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Copyright 2017 Watson, Chan, Busse</dc:title>
+          </cc:Agent>
+        </dc:rights>
       </cc:Work>
       <cc:License
          rdf:about="http://creativecommons.org/licenses/by/4.0/">
@@ -380,7 +400,7 @@
            id="flowPara3845" /><flowPara
            id="flowPara3847" /><flowPara
            id="flowPara3849" /><flowPara
-           id="flowPara3851"></flowPara><flowPara
+           id="flowPara3851" /><flowPara
            id="flowPara1189">location</flowPara><flowPara
            id="flowPara3853" /><flowPara
            id="flowPara3855">location</flowPara><flowPara
@@ -645,7 +665,7 @@
            id="flowPara3826">○ Contact information</flowPara><flowPara
            id="flowPara3757" /><flowPara
            id="flowPara5703">○ Relevant publications</flowPara><flowPara
-           id="flowPara5705"></flowPara><flowPara
+           id="flowPara5705" /><flowPara
            id="flowPara1191">○ Subject ID</flowPara><flowPara
            id="flowPara5707">○ Synthetic library</flowPara><flowPara
            id="flowPara5709">○ Organism</flowPara><flowPara
