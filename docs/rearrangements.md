@@ -2,6 +2,16 @@
 
 See the formatting overview for details on how to structure this data.
 
+**"Junction" versus "CDR3"**
+
+We work with the IMGT definitions of the junction/CDR3 regions.  Specifically,
+the IMGT `JUNCTION` includes the conserved cysteine and tryptophan/phenylalanine
+residues, while `CDR3` excludes those two residues. Therfore, our `junction_nt`
+and `junction_aa` fields which represent the extracted sequence include the two
+conserved residues, while the coordinate fields (`cdr3_start` and `cdr3_end`)
+exclude them.
+
+
 **Fields**
 
 | Name | Type | Mandatory | Description |
@@ -25,8 +35,8 @@ See the formatting overview for details on how to structure this data.
 | `d_cigar` | `string` |  mandatory  | D alignment CIGAR string |
 | `j_cigar` | `string` |  mandatory  | J alignment CIGAR string |
 | `c_cigar` | `string` |  mandatory  | C alignment CIGAR string |
-| `junction_nt` | `string` |  mandatory  | Nucleotide sequence of the junction region (CDR3 plus conserved residues) |
-| `junction_aa` | `string` |  mandatory  | Amino acid sequence of the junction region (CDR3 plus conserved residues) |
+| `junction_nt` | `string` |  mandatory  | Nucleotide sequence of the junction region (CDR3 plus conserved residues; i.e., IMGT's JUNCTION) |
+| `junction_aa` | `string` |  mandatory  | Amino acid sequence of the junction region (CDR3 plus conserved residues; i.e., IMGT's JUNCTION) |
 | `v_evalue` | `float` |  | V alignment E-value (when applicable) |
 | `d_evalue` | `float` |  | D alignment E-value (when applicable) |
 | `j_evalue` | `float` |  | J alignment E-value (when applicable) |
@@ -49,8 +59,8 @@ See the formatting overview for details on how to structure this data.
 | `cdr2_end` | `integer` |  | CDR2 end coord in sequence (transferred from germline) |
 | `fwr3_start` | `integer` |  | FWR3 start coord in sequence (transferred from germline) |
 | `fwr3_end` | `integer` |  | FWR3 end coord in sequence (transferred from germline) |
-| `cdr3_start` | `integer` |  | CDR3 start coord in sequence (transferred from germline) |
-| `cdr3_end` | `integer` |  | CDR3 end coord in sequence (transferred from germline) |
+| `cdr3_start` | `integer` |  | CDR3 start coord in sequence; like CDR3-IMGT, excludes 2nd-CYS (transferred from germline) |
+| `cdr3_end` | `integer` |  | CDR3 end coord in sequence; excludes J-TRP or J-PHE (transferred from germline) |
 | `fwr4_start` | `integer` |  | FWR3 start coord in sequence (transferred from germline) |
 | `fwr4_end` | `integer` |  | FWR4 end coord in sequence (transferred from germline) |
 | `v_end` | `integer` |  | End coordinate of the V segment (generally inside the CDR3) |
