@@ -1,4 +1,4 @@
-sequence_id	sequence	sample_id	functional	locus	constant	rev_comp	v_call	d_call	j_call	v_score	j_score	v_btop	j_btop	fwr1_start	d_score	v_cigar	d_cigar	j_cigar	cdr3_aa	cdr3_na
+sequence_id	sequence	sample_id	functional	locus	constant	rev_comp	v_call	d_call	j_call	v_score	j_score	v_btop	j_btop	fwr1_start	d_score	v_cigar	d_cigar	j_cigar	junction_aa	junction_na
 seq_1	NNNNNNNN	MID53	T	IGH	IGHG	T	IGHV2-5*02	IGHD5-24*01	IGHJ4*02	318	65.9	21AG11TC7CG9AGCGAG62C-C-A-A-A-T-2TA1CGAC2ATCA50GA7AG4CT22CT30	32TC4	21						
 seq_2	NNNNNNNN	MID54	T	IGH	IGHG	F	IGHV5-51*01	"IGHD3-16*02,IGHD3-3*01,IGHD3-3*02"	"IGHJ6*02,IGHJ6*04"	313	48.1	15GA15CT11GC2CT1GC1CAAG3TC7CG41CGCG2GC10AG3GC1TC5TCTC5TC4AC9GA19TC24TCAC9AG20GC6AG4TA9GA2	12GT15	21						
 seq_3	NNNNNNNN	MID53	T	IGH	IGHG	T	IGHV7-4-1*02	IGHD3-22*01	IGHJ4*02	343	69.9	34GA13CA6TC2AG6AT2AGCA18GC9TG35AG1GATC2GAGA1CG7GA12GA53TCGA17TA3GC1TG19	6CT14GA21	21						

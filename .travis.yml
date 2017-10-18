@@ -1,0 +1,7 @@
+language: python
+python:
+  - 3.6
+install:
+  - pip install pyyaml jinja2 jsondiff
+script:
+  - scripts/check-consistency.py
