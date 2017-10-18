@@ -327,12 +327,16 @@ fields:
   -
     name: duplicate_count
     type: integer
-    doc: Number of duplicate reads for this sequence
+    doc: Copy number/number of duplicate observations for this sequence (e.g.,
+         number of UMIs sharing an identical sequence, or number of identical
+         observations of this sequence absent UMIs)
     mandatory: False
   -
     name: consensus_count
     type: integer
-    doc: Number of reads contributing to the consensus for this sequence
+    doc: Number of reads contributing to the (UMI) consensus for this sequence
+         (e.g., the sum of the number of reads for all UMIs that contribute to
+         (this rearrangement)
     mandatory: False
   -
     name: clone
