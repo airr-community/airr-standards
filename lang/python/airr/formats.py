@@ -49,13 +49,13 @@ class RearrangementsFile(object):
             if filename:
                 self.dataFile = open(filename, 'r')
                 try:
-                    self.metaFile = open(filename + '.meta.json', 'w')
+                    self.metaFile = open(filename + '.meta.json', 'r')
                 except IOError:
                     self.metaFile = None
             else:
                 self.dataFile = handle
                 try:
-                    self.metaFile = open(handle.name + '.meta.json', 'w')
+                    self.metaFile = open(handle.name + '.meta.json', 'r')
                 except IOError:
                     self.metaFile = None
             self.wroteMetadata = None
@@ -87,8 +87,9 @@ class RearrangementsFile(object):
 
     def deriveFrom(self, anObj):
         # copy metadata
-        text = anObj.metadata.serialize(None, 'json', indent=2)
-        self.metadata = model.ProvDocument.deserialize(None, text, 'json')
+        if anObj.metadata:
+            text = anObj.metadata.serialize(None, 'json', indent=2)
+            self.metadata = model.ProvDocument.deserialize(None, text, 'json')
         # copy fields
         self.additionalFieldNames = list(anObj.additionalFieldNames)
 
@@ -98,6 +99,7 @@ class RearrangementsFile(object):
         """Record provenance for original generation of rearrangements from the
         VDJ assignment tool
         """
+        if not self.metadata: return
         ie = self.metadata.entity('input_sequences', {'filename': inputEntity})
         ge = self.metadata.entity(
             'germline_database', {'name': germlineDatabase})
@@ -118,6 +120,7 @@ class RearrangementsFile(object):
         """Record provenance for original generation of rearrangements from the
         VDJ assignment tool with intermediate parsing step
         """
+        if not self.metadata: return
         ie = self.metadata.entity('input_sequences', {'filename': inputEntity})
         ge = self.metadata.entity(
             'germline_database', {'name': germlineDatabase})
@@ -147,6 +150,7 @@ class RearrangementsFile(object):
                               activity, auxiliaryEntities, namespace,
                               namespaceURI):
         """Record provenance for downstream annotation tool"""
+        if not self.metadata: return
         self.metadata.add_namespace(namespace, namespaceURI)
         ie = self.metadata.entity(inputEntity)
         oe = self.metadata.entity(outputEntity)
