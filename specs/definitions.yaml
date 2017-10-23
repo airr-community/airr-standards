@@ -248,7 +248,7 @@ SoftwareProcessing:
          type: string
 
 # The minimal standards rearrangement object
-MiAIRR_Rearrangements:
+MiAIRR_Rearrangement:
    discriminator: MiAIRR
    type: object
    properties:
