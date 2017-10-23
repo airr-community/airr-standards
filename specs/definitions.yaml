@@ -251,52 +251,54 @@ SoftwareProcessing:
 MiAIRR_Rearrangement:
    discriminator: MiAIRR
    type: object
+   required:
+      - sequence
+      - germline_database
+      - cell_index
+      - v_call
+      - d_call
+      - j_call
+      - c_call
+      - junction_nt
+      - junction_aa
+      - duplicate_count
    properties:
         sequence:
           type: string
-          required: true
           description: >
             Nucleotide sequence (e.g., the "read" sequence; revcomp'd if necessary)
         germline_database:
           type: string
-          required: true
           description: >
             Source of germline V(D)J segments, with version number or
             date accessed (e.g. IMGT/V-QUEST Release 201736-4 (7 September 2017)) (AIRR)
         cell_index:
           type: integer
-          required: true
           description: |
             Cell Index (UID linking sequences from the same cell) (AIRR)
         v_call:
           type: string
-          required: true
           description: |
             V gene with allele (e.g. IGHV4-59*01) (AIRR)
         d_call:
           type: string
-          required: true
           description: |
             D gene with allele (e.g. IGHD3-10*01) (AIRR)
         j_call:
           type: string
-          required: true
           description: |
             J gene with allele (e.g. IGHJ4*02) (AIRR)
         c_call:
           type: string
-          required: true
           description: |
             C region with allele (AIRR)
         junction_nt:
           type: string
-          required: true
           description: >
             JUNCTION nucleotide sequence (Sequence of the CDR3
             region (nucleotide)) (AIRR)
         junction_aa:
           type: string
-          required: true
           description: >
             JUNCTION amino acid sequence (Sequence of the CDR3
             region (amino acid)) (AIRR)
