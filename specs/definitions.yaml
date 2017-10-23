@@ -326,10 +326,6 @@ Rearrangement:
          type: string
          required: true
          description: Identifier for grouping rearrangements defined by study metadata
-      constant:
-         type: string
-         required: true
-         description: Constant region gene (e.g., IGHG4, IGHA2, IGHE, TRBC)
       functional:
          type: boolean
          required: true
