@@ -1,7 +1,8 @@
 # AIRR formats overview
 
-Data for `airr-formats` objects are stored as rows in a *tab-delimited* file
-and should be compatible with any CSV reader.
+Data for `airr-formats` objects are stored as rows in a *tab-delimited* file and
+should be compatible with any CSV reader. Metadata is stored as a companion JSON
+or YAML file according to the MiAIRR specifications.
 
 
 **Encoding**
@@ -12,7 +13,7 @@ The file should be encoded as ASCII or UTF-8. Everything is case-sensitive.
 **CSV dialect**
 
 The record separator is a newline `\n` and the field separator is a tab `\t`.
-Fields or data should not be quoted. A header line with the AIRR-mandated column
+Fields or data should not be quoted. A header line with the AIRR-specified column
 names is always required.
 
 
@@ -37,38 +38,30 @@ Boolean values must be encoded as `T` for true and `F` for false.
 
 **File names**
 
-File names should end with `.tsv`. If any metadata is incorporated into the
-filename, consider including it in the metadata header as well.
+AIRR-formatted data files should end with `.tsv`. If any metadata is
+incorporated into the filename, consider including it in the accompanying
+metadata file as well. Accompanying metadata files should end in `.meta.json` or
+`.meta.yaml`.
 
 
 **Identifiers/illegal characters**
 
-Data must not contain tabs or newlines.  Data should avoid `#` and quote
-characters, as the result may be implementation dependent.
+Data must not contain tab or newline characters.  Data should avoid `#` and quote
+characters, as the result may be implementation-dependent.
 
 
 **Structure**
 
-The file has 3 sections in this order:
+The data file has 2 sections in this order:
 
-1.  Metadata
-2.  Header (single line with column names)
-3.  Data (one record per line)
+1.  Header (single line with column names)
+2.  Data (one record per line)
 
-
-**Metadata**
-
-Each line in the metadata section should be prefixed with a `#`. When all the
-`#` symbols are stripped, the remainder should be parsable as YAML data. The
-first line not prefixed with a `#` marks the end of the metadata section. All
-metadata should be encoded into the header rather than (in addition to?) the
-filename.
-
-In cases where repeated keys are allowed, metadata should note whether the data
-file only contains "primary" records.
+The metadata file should be readable as a JSON or YAML object according to the
+MiAIRR spec.
 
 
-**Header**
+**Header line**
 
 A single line containing the column names (and also specifying field order).
 Any field that corresponds to one of the defined fields should use the
@@ -99,6 +92,7 @@ Unless specified otherwise, there is no requirement that the records are sorted
 in any way.  However, multiple records with the same primary key should be next
 to each other.  (Put another way, the data should be stored as if they were the
 result of `GROUP BY primary_key`.)
+
 
 **CIGAR specification**
 
