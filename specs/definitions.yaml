@@ -90,6 +90,7 @@ Diagnosis:
 # 1-to-n relationship between a subject and its samples
 # sample_id is unique within a study
 Sample:
+   discriminator: MiAIRR
    type: object
    properties:
       study_id:
@@ -116,6 +117,7 @@ Sample:
 # 1-to-n relationship between a sample and processing of its cells
 # cell_processing_id is unique within a study
 CellProcessing:
+   discriminator: MiAIRR
    type: object
    properties:
       study_id:
@@ -149,6 +151,7 @@ CellProcessing:
 # but may be 1-to-n for technical replicates.
 # nucleic_acid_processing_id is unique within a study
 NucleicAcidProcessing:
+   discriminator: MiAIRR
    type: object
    properties:
       study_id:
@@ -202,6 +205,7 @@ NucleicAcidProcessing:
 # 1-to-1 relationship between a NucleicAcidProcessing and resultant raw sequencing files
 # filenames are unique within a study
 RawSequenceData:
+   discriminator: MiAIRR
    type: object
    properties:
       study_id:
@@ -225,6 +229,7 @@ RawSequenceData:
 
 # 1-to-1 relationship between a study and software processing
 SoftwareProcessing:
+   discriminator: MiAIRR
    type: object
    properties:
       study_id:
@@ -242,7 +247,301 @@ SoftwareProcessing:
       data_processing_protocols:
          type: string
 
+# The minimal standards rearrangement object
+MiAIRR_Rearrangements:
+   discriminator: MiAIRR
+   type: object
+   properties:
+        sequence:
+          type: string
+          required: true
+          description: >
+            Nucleotide sequence (e.g., the "read" sequence; revcomp'd if necessary)
+        germline_database:
+          type: string
+          required: true
+          description: >
+            Source of germline V(D)J segments, with version number or
+            date accessed (e.g. IMGT/V-QUEST Release 201736-4 (7 September 2017)) (AIRR)
+        cell_index:
+          type: integer
+          required: true
+          description: |
+            Cell Index (UID linking sequences from the same cell) (AIRR)
+        v_call:
+          type: string
+          required: true
+          description: |
+            V gene with allele (e.g. IGHV4-59*01) (AIRR)
+        d_call:
+          type: string
+          required: true
+          description: |
+            D gene with allele (e.g. IGHD3-10*01) (AIRR)
+        j_call:
+          type: string
+          required: true
+          description: |
+            J gene with allele (e.g. IGHJ4*02) (AIRR)
+        c_call:
+          type: string
+          required: true
+          description: |
+            C region with allele (AIRR)
+        junction_nt:
+          type: string
+          required: true
+          description: >
+            JUNCTION nucleotide sequence (Sequence of the CDR3
+            region (nucleotide)) (AIRR)
+        junction_aa:
+          type: string
+          required: true
+          description: >
+            JUNCTION amino acid sequence (Sequence of the CDR3
+            region (amino acid)) (AIRR)
+        duplicate_count:
+          type: integer
+          description: |
+            Number of times the sequence has been duplicated in a file (AIRR)
 
-# Though, MiAIRR defines minimal standards for rearrangement annotation
-# the complete schema is defined in the airr-formats repository.
-# https://github.com/airr-community/airr-formats
+# The extended rearrangement object
+Rearrangement:
+   discriminator: AIRR
+   type: object
+   properties:
+      rearrangement_id:
+         type: string
+         required: true
+         description: >
+            Read/sequence identifier; often identical to a read identifier, but
+            not necessarily (especially where a rearrangement is derived from a
+            multiple read consensus).
+      sequence:
+         type: string
+         required: true
+         description: >
+            Nucleotide sequence (e.g., the "read" sequence; revcomp'd if necessary)
+      rearrangement_set_id:
+         type: string
+         required: true
+         description: Identifier for grouping rearrangements defined by study metadata
+      constant:
+         type: string
+         required: true
+         description: Constant region gene (e.g., IGHG4, IGHA2, IGHE, TRBC)
+      functional:
+         type: boolean
+         required: true
+         description: VDJ sequence is predicted to be functional
+      rev_comp:
+         type: boolean
+         required: true
+         description: Sequence is reverse complemented
+      cell_index:
+         type: string
+         description: >
+            Cell index for single-cell sequencing. Also used for associating
+            paired chains (e.g., heavy/light, alpha/beta)
+      v_call:
+         type: string
+         required: true
+         description: V allele assignment
+      d_call:
+         type: string
+         required: true
+         description: D allele assignment
+      j_call:
+         type: string
+         required: true
+         description: J allele assignment
+      c_call:
+        type: string
+        required: true
+        description: C gene assignment
+      v_score:
+        type: number
+        required: true
+        description: V alignment score
+      d_score:
+        type: number
+        required: true
+        description: D alignment score
+      j_score:
+        type: number
+        required: true
+        description: J alignment score
+      c_score:
+        type: number
+        required: true
+        description: C alignment score
+      v_cigar:
+        type: string
+        required: true
+        description: V alignment CIGAR string
+      d_cigar:
+        type: string
+        required: true
+        description: D alignment CIGAR string
+      j_cigar:
+        type: string
+        required: true
+        description: J alignment CIGAR string
+      c_cigar:
+        type: string
+        required: true
+        description: C alignment CIGAR string
+      junction_nt:
+        type: string
+        required: true
+        description: >
+            JUNCTION nucleotide sequence (Sequence of the CDR3
+            region (nucleotide)) (AIRR)
+      junction_aa:
+        type: string
+        required: true
+        description: >
+            JUNCTION amino acid sequence (Sequence of the CDR3
+            region (amino acid)) (AIRR)
+      v_evalue:
+        type: number
+        description: V alignment E-value (when applicable)
+      d_evalue:
+        type: number
+        description: D alignment E-value (when applicable)
+      j_evalue:
+        type: number
+        description: J alignment E-value (when applicable)
+      v_identity:
+        type: number
+        description:  V alignment identity
+      d_identity:
+        type: number
+        description:  D alignment identity
+      j_identity:
+        type: number
+        description:  J alignment identity
+      vdj_score:
+        type: number
+        description: Score for aligners that consider the full sequence as a whole
+      vdj_evalue:
+        type: number
+        description: E-value for aligners that consider the full sequence as a whole
+      vdj_identity:
+        type: number
+        description: Identity for aligners that consider the full sequence as a whole
+      vdj_cigar:
+        type: string
+        description: VDJ alignment CIGAR string
+      v_start:
+        type: integer
+        description: Position of first V nucleotide in 'sequence' field
+      v_germ_start:
+        type: integer
+        description: Position of 'v_start' field in IMGT numbered germline V(D)J sequence
+      fwr1_start:
+        type: integer
+        description: FWR1 start coordinate in sequence (transferred from germline)
+      fwr1_end:
+        type: integer
+        description: FWR1 end coordinate in sequence (transferred from germline)
+      cdr1_start:
+        type: integer
+        description: CDR1 start coord in sequence (transferred from germline)
+      cdr1_end:
+        type: integer
+        description: CDR1 end coord in sequence (transferred from germline)
+      fwr2_start:
+        type: integer
+        description: FWR2 start coord in sequence (transferred from germline)
+      fwr2_end:
+        type: integer
+        description: FWR2 end coord in sequence (transferred from germline)
+      cdr2_start:
+        type: integer
+        description: CDR2 start coord in sequence (transferred from germline)
+      cdr2_end:
+        type: integer
+        description: CDR2 end coord in sequence (transferred from germline)
+      fwr3_start:
+        type: integer
+        description: FWR3 start coord in sequence (transferred from germline)
+      fwr3_end:
+        type: integer
+        description: FWR3 end coord in sequence (transferred from germline)
+      cdr3_start:
+        type: integer
+        description: CDR3 start coord in sequence (transferred from germline)
+      cdr3_end:
+        type: integer
+        description: CDR3 end coord in sequence (transferred from germline)
+      fwr4_start:
+        type: integer
+        description: FWR3 start coord in sequence (transferred from germline)
+      fwr4_end:
+        type: integer
+        description: FWR4 end coord in sequence (transferred from germline)
+      v_end:
+        type: integer
+        description: End coordinate of the V segment (generally inside the CDR3)
+      d_start:
+        type: integer
+        description: Start coordinate of the D segment
+      d_germ_start:
+        type: integer
+        description: Position of 'd_start' field in IMGT numbered germline V(D)J sequence
+      d_end:
+        type: integer
+        description: End coordinate of the D segment
+      j_start:
+        type: integer
+        description: Start coordinate of the J segment (generally inside the CDR3)
+      j_germ_start:
+        type: integer
+        description: Position of 'j_start' field in IMGT numbered germline V(D)J sequence
+      j_end:
+        type: integer
+        description: End coordinate of the J segment
+      junction_length:
+        type: integer
+        description: Number of junction nucleotides in sequence_vdj
+      np1_length:
+        type: integer
+        description: Number of of nucleotides between sample V and D sequences
+      np2_length:
+        type: integer
+        description: Number of of nucleotides between sample D and J sequences
+      n1_length:
+        type: integer
+        description: Nucleotides 5' of the D-segment
+      n2_length:
+        type: integer
+        description: Nucleotides 3' of the D-segment
+      p3v_length:
+        type: integer
+        description: Palindromic nucleotides 3' of the V-segment
+      p5d_length:
+        type: integer
+        description: Palindromic nucleotides 5' of the D-segment
+      p3d_length:
+        type: integer
+        description: Palindromic nucleotides 3' of the D-segment
+      p5j_length:
+        type: integer
+        description: Palindromic nucleotides 5' of the J-segment
+      duplicate_count:
+        type: integer
+        description: >
+           Copy number/number of duplicate observations for this sequence (e.g.,
+           number of UMIs sharing an identical sequence, or number of identical
+           observations of this sequence absent UMIs)
+      consensus_count:
+        type: integer
+        description: >
+           Number of reads contributing to the (UMI) consensus for this sequence
+           (e.g., the sum of the number of reads for all UMIs that contribute to
+           (this rearrangement)
+      clone:
+        type: string
+        description: Clone assignment for this sequence
+
