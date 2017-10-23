@@ -261,7 +261,6 @@ MiAIRR_Rearrangement:
       - c_call
       - junction_nt
       - junction_aa
-      - duplicate_count
    properties:
         sequence:
           type: string
@@ -311,30 +310,52 @@ MiAIRR_Rearrangement:
 Rearrangement:
    discriminator: AIRR
    type: object
+   required:
+      - rearrangement_id
+      - rearrangement_set_id
+      - sequence
+      - germline_database
+      - functional
+      - rev_comp
+      - cell_index
+      - v_call
+      - d_call
+      - j_call
+      - c_call
+      - v_score
+      - d_score
+      - j_score
+      - c_score
+      - v_cigar
+      - d_cigar
+      - j_cigar
+      - c_cigar
+      - junction_nt
+      - junction_aa
    properties:
       rearrangement_id:
          type: string
-         required: true
          description: >
             Read/sequence identifier; often identical to a read identifier, but
             not necessarily (especially where a rearrangement is derived from a
             multiple read consensus).
-      sequence:
-         type: string
-         required: true
-         description: >
-            Nucleotide sequence (e.g., the "read" sequence; revcomp'd if necessary)
       rearrangement_set_id:
          type: string
-         required: true
          description: Identifier for grouping rearrangements defined by study metadata
+      sequence:
+         type: string
+         description: >
+            Nucleotide sequence (e.g., the "read" sequence; revcomp'd if necessary)
+      germline_database:
+         type: string
+         description: >
+            Source of germline V(D)J segments, with version number or
+            date accessed (e.g. IMGT/V-QUEST Release 201736-4 (7 September 2017)) (AIRR)
       functional:
          type: boolean
-         required: true
          description: VDJ sequence is predicted to be functional
       rev_comp:
          type: boolean
-         required: true
          description: Sequence is reverse complemented
       cell_index:
          type: string
@@ -343,61 +364,47 @@ Rearrangement:
             paired chains (e.g., heavy/light, alpha/beta)
       v_call:
          type: string
-         required: true
          description: V allele assignment
       d_call:
          type: string
-         required: true
          description: D allele assignment
       j_call:
          type: string
-         required: true
          description: J allele assignment
       c_call:
         type: string
-        required: true
         description: C gene assignment
       v_score:
         type: number
-        required: true
         description: V alignment score
       d_score:
         type: number
-        required: true
         description: D alignment score
       j_score:
         type: number
-        required: true
         description: J alignment score
       c_score:
         type: number
-        required: true
         description: C alignment score
       v_cigar:
         type: string
-        required: true
         description: V alignment CIGAR string
       d_cigar:
         type: string
-        required: true
         description: D alignment CIGAR string
       j_cigar:
         type: string
-        required: true
         description: J alignment CIGAR string
       c_cigar:
         type: string
-        required: true
         description: C alignment CIGAR string
       junction_nt:
         type: string
-        required: true
         description: >
             JUNCTION nucleotide sequence (Sequence of the CDR3
             region (nucleotide)) (AIRR)
       junction_aa:
         type: string
-        required: true
         description: >
             JUNCTION amino acid sequence (Sequence of the CDR3
             region (amino acid)) (AIRR)
