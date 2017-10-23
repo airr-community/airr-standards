@@ -65,7 +65,7 @@ Collection / subset	MiAIRR field designation	Data type	Content type	Field value 
 3 / process (nucl. acid)	Batch number	String	UID either assigned by submitter	BAT84562	batch_number
 3 / process (nucl. acid)	Date of sequencing run	String	ISO8601-compliant date	2016-12-16	sequencing_run_date
 3 / process (nucl. acid)	Sequencing kit	String	Free text	Manufacturer, Catalog Number, Lot number	sequencing_kit
-4 / data (raw reads)	Raw sequence data	Blob	FASTQ sequences		
+4 / data (raw reads)	Raw sequence data	Blob	FASTQ sequences
 5 / process (comput.)	Software tools and version numbers	String	Free text	version number and / or date, include company pipelines	software_versions
 5 / process (comput.)	Paired read assembly	String	Free text	How paired end reads were assembled into a single receptor sequence	paired_reads_assembly
 5 / process (comput.)	Quality thresholds	String	Free text	How sequences were removed from (4) based on base quality scores	quality_thresholds
@@ -74,10 +74,10 @@ Collection / subset	MiAIRR field designation	Data type	Content type	Field value 
 5 / process (comput.)	Data processing protocols	String	Free text	General description of how QC is performed	data_processing_protocols
 6 / data (proc. seq.)	V(D)J germline reference database	String	Free text	Source of germline V(D)J segments, with version number or date accessed	germline_database
 6 / data (proc. seq.)	Cell Index	Unsigned integer	index	UID linking sequences from the same cell	cell_index
-6 / data (proc. seq.)	V gene	String	Free text	V gene with allele	v_allele
-6 / data (proc. seq.)	D gene	String	Free text	D gene with allele	d_allele
-6 / data (proc. seq.)	J gene	String	Free text	J gene with allele	j_allele
-6 / data (proc. seq.)	C region	String	Free text	C region with allele	c_allele
+6 / data (proc. seq.)	V gene	String	Free text	V gene with allele	v_call
+6 / data (proc. seq.)	D gene	String	Free text	D gene with allele	d_call
+6 / data (proc. seq.)	J gene	String	Free text	J gene with allele	j_call
+6 / data (proc. seq.)	C region	String	Free text	C region with allele	c_call
 6 / data (proc. seq.)	IMGT-JUNCTION nucleotide sequence	String	Free text	Nucleotide sequence of the IMGT-JUNCTION	junction_nt
 6 / data (proc. seq.)	IMGT-JUNCTION amino acid sequence	String	Free text	Amino acid sequence of the IMGT-JUNCTION	junction_aa
 6 / data (proc. seq.)	Read count	Unsigned integer	number	Number of reads of the sequence	duplicate_count
