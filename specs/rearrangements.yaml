@@ -5,9 +5,11 @@ type: object
 description: AIRR schema for Ig/TCR rearrangements
 fields:
   -
-    name: sequence_id
+    name: rearrangement_id
     type: string
-    doc: Read/sequence identifier
+    doc: Read/sequence identifier; often identical to a read identifier, but
+         not necessarily (especially where a rearrangement is derived from a
+         multiple read consensus).
     mandatory: True
   -
     name: sequence

@@ -16,7 +16,7 @@ exclude them.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| `sequence_id` | `string` |  mandatory  | Read/sequence identifier |
+| `rearrangement_id` | `string` |  mandatory  | Read/sequence identifier; often identical to a read identifier, but not necessarily (especially where a rearrangement is derived from a multiple read consensus). |
 | `sequence` | `string` |  mandatory  | Nucleotide sequence (e.g., the "read" sequence; revcomp'd if necessary) |
 | `sample_id` | `string` |  mandatory  | The biological sample this read derives from (e.g., from BioSample database) |
 | `constant` | `string` |  mandatory  | Constant region gene (e.g., IGHG4, IGHA2, IGHE, TRBC) |

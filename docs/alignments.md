@@ -6,7 +6,7 @@ See the formatting overview for details on how to structure this data.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| `id` | `string` |  mandatory  | Read/sequence identifier |
+| `rearrangement_id` | `string` |  mandatory  | Read/sequence identifier (identifies corresponding annotated rearrangement) |
 | `sequence` | `string` |  mandatory  | Nucleotide sequence (e.g., the "read" sequence; revcomp'd if necessary) |
 | `segment` | `string` |  mandatory  | The gene segment for this alignment (e.g., V, D, J, C) |
 | `rev_comp` | `boolean` |  mandatory  | Sequence is reverse complemented |
