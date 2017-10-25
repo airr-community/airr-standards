@@ -1,37 +1,57 @@
-<img src="https://github.com/airr-community/airr-standards/blob/master/Images/miairr.png" alt="miairr" width="500" />
+![Image](https://github.com/airr-community/airr-standards/raw/master/images/miairr_logo.png)
 
-<i>Revolutionizing the Immune Receptor Sequencing through Standardization</i>
+_Minimum information about an Adaptive Immune Receptor Repertoire Sequencing Experiment_
 
 ***
 
+### Introduction
+One of the primary initiatives of the Adaptive Immune Receptor Repertoire (AIRR) Community has been to develop a set of
+metadata standards for the submission of AIRR sequencing datasets. This work has been carried out by the [AIRR Community
+Minimal Standards Working Group](http://airr.irmacs.sfu.ca/working_groups/minimal_standards). In order to support
+reproducibility, standard quality control, and data deposition in a common repository, the AIRR Community has agreed to
+six high-level data sets that will guide the publication, curation and sharing of AIRR-Seq data and metadata: Study and
+subject, sample collection, sample processing and sequencing, raw sequences, processing of sequence data, and processed
+AIRR sequences. The detailed data elements within these sets are defined
+[here](https://github.com/airr-community/airr-standards/blob/master/AIRR_Minimal_Standard_Data_Elements.tsv).
 
-### Guide for submission of AIRR-seq data to NCBI
+### Implementations
 
-This site provides a detailed “how-to” guide for submission of AIRR-seq data to NCBI databases (BioProject, BioSample, SRA and GenBank). 
-
-One of the primary initiatives of the AIRR (Adaptive Immune Receptor Repertoire) Community has been to develop a set of metadata standards for the submission of immune receptor repertoire sequencing datasets. This work has been carried out by the AIRR Community Standards Working Group. In order to support reproducibility, standard quality control, and data deposition in a common repository, the AIRR Community has agreed to six high-level data sets that will guide the publication, curation and sharing of AIRR-Seq data and metadata: Study and subject, sample collection, sample processing and sequencing, raw sequences, processing of sequence data, and processed AIRR sequences. The detailed data elements within these sets are defined [here](https://github.com/airr-community/airr-standards/blob/master/AIRR_Minimal_Standard_Data_Elements.csv). The association between these AIRR sets, the associated data elements, and each of the NCBI repositories is shown below:
-
-![Image](https://github.com/airr-community/airr-standards/blob/master/Images/dataelements.png)
-
-
-This site provides a guide for submission of AIRR sequencing data and metadata to NCBI public data repositories.
-
-The process consists of 4 sequential steps:
-
-###  <i>1- Submit study and sample-level information to NCBI BioProject and BioSample repositories</i>
-###  <i>2- Submit raw sequencing data to NCBI SRA using the <a href="https://github.com/airr-community/airr-standards/tree/master/NCBI%20Templates">AIRR data templates</a></i>
-###  <i>3- Generate a DOI for the protocol describing how raw sequencing data were processed using  Zenodo (https://zenodo.org)  or equivalent</i>
-###  <i>4- Submit processed sequencing data with sequence-level annotations to GenBank using AIRR feature tags</i>
-
-For step-by-step instructions on carrying out theses steps an AIRR study submission, please <a href="https://www.overleaf.com/read/tytddwptgkhb#/41759617/">Click here to view</a>
+- [NCBI-based](https://github.com/airr-community/airr-standards/tree/master/NCBI_implementation)
+- AIRR Common Repositories - _in development_
 
 ### How to cite?
 
-To be updated
+_Manuscript in preparation_
+<!---
+The following link could give a false impression on contribution to the MiAIRR standard, therefore please keep it
+commented out until the actual MiAIRR publication it out and can be referenced too.
+[![DOI](https://zenodo.org/badge/104967269.svg)](https://zenodo.org/badge/latestdoi/104967269)
+-->
 
-### Support or Contact
+### Report an issue to help us improving MiAIRR
 
-If you are interested to know more about AIRR Standards or looking for help in NCBI templates. Please create <a href="https://github.com/airr-community/airr-standards/issues/new">an issue</a> or send email to Ahmad
-<a href="mailto:ahmad.chan@yale.edu">Syed **Ahmad** Chan Bukhari</a> or <a href="mailto:steven.kleinstein@yale.edu">Steven Kleinstein</a>
+[![Build Status](https://travis-ci.org/airr-community/airr-standards.svg?branch=master)](https://travis-ci.org/airr-community/airr-standards)
+
+https://waffle.io/airr-community/airr-standards
+
+### Contact
+
+For further information about the MiAIRR standard please contact
+[Syed **Ahmad** Chan Bukhari](mailto:ahmad.chan@yale.edu?subject=MiAIRR%20Standard) or
+[Steven Kleinstein](mailto:steven.kleinstein@yale.edu?subject=MiAIRR%20Standard).
 
 ***
+### Share on Social Media
+
+[![alt text][1.1]][1]
+[![alt text][2.1]][2]
+[![alt text][3.1]][3]
+
+[1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
+[2.1]: http://i.imgur.com/P3YfQoD.png (facebook icon with padding)
+[3.1]: http://i.imgur.com/yCsTjba.png (google plus icon with padding)
+
+[1]: https://twitter.com/share?url=https://github.com/airr-community/airr-standards
+[2]: https://www.facebook.com/sharer/sharer.php?u=https://github.com/airr-community/airr-standards
+[3]: https://plus.google.com/share?url=https://github.com/airr-community/airr-standards
+

@@ -1,0 +1,248 @@
+#
+# Schema definitions for AIRR minimal standards objects
+#
+
+# The overall study with a globally unique study_id
+Study:
+   discriminator: MiAIRR
+   type: object
+   properties:
+      study_id:
+         type: string
+      study_title:
+         type: string
+      study_description:
+         type: string
+      inclusion_exclusion_criteria:
+         type: string
+      grants:
+         type: string
+      lab_name:
+         type: string
+      collected_by:
+         type: string
+      submitted_by:
+         type: string
+      lab_address:
+         type: string
+      pub_ids:
+         type: string
+
+# 1-to-n relationship between a study and its subjects
+# subject_id is unique within a study
+Subject:
+   discriminator: MiAIRR
+   type: object
+   properties:
+      study_id:
+         type: string
+      subject_id:
+         type: string
+      synthetic:
+         type: boolean
+      organism:
+         type: string
+      sex:
+         type: string
+      age:
+         type: string
+      age_event:
+         type: string
+      ancestry_population:
+         type: string
+      ethnicity:
+         type: string
+      race:
+         type: string
+      strain_name:
+         type: string
+      linked_subjects:
+         type: string
+      link_type:
+         type: string
+
+# 1-to-n relationship between a subject and its diagnoses
+Diagnosis:
+   discriminator: MiAIRR
+   type: object
+   properties:
+      study_id:
+         type: string
+      subject_id:
+         type: string
+      study_group_description:
+         type: string
+      disease_diagnosis:
+         type: string
+      disease_length:
+         type: string
+      disease_stage:
+         type: string
+      prior_therapies:
+         type: string
+      immunogen:
+         type: string
+      intervention:
+         type: string
+      medical_history:
+         type: string
+
+# 1-to-n relationship between a subject and its samples
+# sample_id is unique within a study
+Sample:
+   type: object
+   properties:
+      study_id:
+         type: string
+      subject_id:
+         type: string
+      sample_id:
+         type: string
+      sample_type:
+         type: string
+      tissue:
+         type: string
+      anatomic_site:
+         type: string
+      disease_state_sample:
+         type: string
+      collection_date:
+         type: string
+      collection_time_event:
+         type: string
+      biomaterial_provider:
+         type: string
+
+# 1-to-n relationship between a sample and processing of its cells
+# cell_processing_id is unique within a study
+CellProcessing:
+   type: object
+   properties:
+      study_id:
+         type: string
+      sample_id:
+         type: string
+      cell_processing_id:
+         type: string
+      tissue_processing:
+         type: string
+      cell_subset:
+         type: string
+      cell_phenotype:
+         type: string
+      single_cell:
+         type: boolean
+      cell_number:
+         type: integer
+      cells_per_reaction:
+         type: integer
+      cell_storage:
+         type: boolean
+      cell_quality:
+         type: string
+      cell_isolation:
+         type: string
+      cell_processing_protocol:
+         type: string
+
+# generally, a 1-to-1 relationship between a CellProcessing and processing of its nucleic acid
+# but may be 1-to-n for technical replicates.
+# nucleic_acid_processing_id is unique within a study
+NucleicAcidProcessing:
+   type: object
+   properties:
+      study_id:
+         type: string
+      cell_processing_id:
+         type: string
+      nucleic_acid_processing_id:
+         type: string
+      library_source:
+         enum:
+            - DNA
+            - RNA
+      library_quality:
+         type: string
+      library_construction_method:
+         type: string
+      library_construction_protocol:
+         type: string
+      target_locus_PCR:
+         type: string
+      forward_PCR_primer_target_location:
+         type: string
+      reverse_PCR_primer_target_location:
+         type: string
+      complete_sequences:
+         enum:
+            - partial
+            - complete
+            - "complete & untemplated"
+      physical_linkage:
+         type: string
+      template_amount:
+         type: string
+      total_reads_passing_qc_filter:
+         type: integer
+      protocol_id:
+         type: string
+      platform:
+         type: string
+      read_length:
+         type: string
+      sequencing_facility:
+         type: string
+      batch_number:
+         type: string
+      sequencing_run_date:
+         type: string
+      sequencing_kit:
+         type: string
+
+# 1-to-1 relationship between a NucleicAcidProcessing and resultant raw sequencing files
+# filenames are unique within a study
+RawSequenceData:
+   type: object
+   properties:
+      study_id:
+         type: string
+      nucleic_acid_processing_id:
+         type: string
+      filename:
+         type: string
+      read_direction:
+         enum:
+            - forward
+            - reverse
+            - mixed
+      paired_filename:
+         type: string
+      paired_read_direction:
+         enum:
+            - forward
+            - reverse
+            - mixed
+
+# 1-to-1 relationship between a study and software processing
+SoftwareProcessing:
+   type: object
+   properties:
+      study_id:
+         type: string
+      software_versions:
+         type: string
+      paired_reads_assembly:
+         type: string
+      quality_thresholds:
+         type: string
+      primer_match_cutoffs:
+         type: string
+      collapsing_method:
+         type: string
+      data_processing_protocols:
+         type: string
+
+
+# Though, MiAIRR defines minimal standards for rearrangement annotation
+# the complete schema is defined in the airr-formats repository.
+# https://github.com/airr-community/airr-formats
