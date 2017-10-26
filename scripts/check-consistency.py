@@ -49,7 +49,7 @@ miairr_table = pd.read_csv('AIRR_Minimal_Standard_Data_Elements.tsv', sep='\t', 
 miairr_biosample_rows = miairr_table.iloc[:, 0].isin(["1 / subject", "1 / diag. & intervent.", "2 / sample", "3 / process (cell)"])
 miairr_identifiers = set(miairr_table[miairr_biosample_rows].iloc[:, 5])
 
-ncbi_biosample = pd.read_excel('NCBI_implementation/NCBI Templates/AIRR_BioSample_v1.0.xls', skiprows=12)
+ncbi_biosample = pd.read_excel('NCBI_implementation/templates_XLS/AIRR_BioSample_v1.0.xls', skiprows=13)
 ncbi_identifiers = set([x.lstrip('*') for x in ncbi_biosample.columns])
 
 if miairr_identifiers != ncbi_identifiers:
