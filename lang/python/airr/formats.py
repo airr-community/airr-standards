@@ -24,15 +24,16 @@ class RearrangementsFile(object):
 
         # define fields
         self.mandatoryFieldNames = []
-        self.optionalFieldNames = []
+        self.optionalSpecFieldNames = []
         self.additionalFieldNames = []
         self._inputFieldNames = []
         for f in rearrangements['fields']:
             if f['mandatory']: self.mandatoryFieldNames.append(f['name'])
-            else: self.optionalFieldNames.append(f['name'])
+            else: self.optionalSpecFieldNames.append(f['name'])
 
         # writing or reading
         if state:
+            # writing
             self.writableState = state
             if filename:
                 self.dataFile = open(filename, 'w')
@@ -45,6 +46,7 @@ class RearrangementsFile(object):
             self.wroteMetadata = False
             self.dictWriter = None
         else:
+            # reading
             self.writableState = state
             if filename:
                 self.dataFile = open(filename, 'r')
@@ -72,8 +74,31 @@ class RearrangementsFile(object):
             self._inputFieldNames = self.dictReader.fieldnames
             for f in self._inputFieldNames:
                 if f in self.mandatoryFieldNames: continue
-                if f in self.optionalFieldNames: continue
                 if f not in self.additionalFieldNames: self.additionalFieldNames.append(f)
+
+    # utility operations
+    def specForField(self, name):
+        for f in rearrangements['fields']:
+            if f['name'] == name: return f
+        return None
+
+    def convertBool(self, value):
+        if type(value) is bool: return value
+        if value.upper() in [ "F", "FALSE", "NO", "N" ]:
+            return False
+        if value.upper() in [ "T", "TRUE", "YES", "Y" ]:
+            return True
+        return None
+
+    def convertInt(self, value):
+        if type(value) is int: return value
+        try: return int(value)
+        except ValueError: return None
+
+    def convertNumber(self, value):
+        if type(value) is float: return value
+        try: return float(value)
+        except ValueError: return None
 
     # document operations
     def close(self):
@@ -166,10 +191,9 @@ class RearrangementsFile(object):
     def annotationToolForNamespace(self, namespace):
         return None
 
-    def addFields(self, namespace, names):
+    def addFields(self, namespace, names, types=None):
         for name in names:
             if name in self.mandatoryFieldNames: continue
-            if name in self.optionalFieldNames: continue
             if name not in self.additionalFieldNames: self.additionalFieldNames.append(name)
         return self.additionalFieldNames
 
@@ -188,7 +212,15 @@ class RearrangementsFile(object):
 
     def __next__(self):
         if self.writableState: raise StopIteration
-        return next(self.dictReader)
+        row = next(self.dictReader)
+        for f in row.keys():
+            spec = self.specForField(f)
+            if spec:
+                if spec['type'] == 'boolean': row[f] = self.convertBool(row[f])
+                if spec['type'] == 'integer': row[f] = self.convertInt(row[f])
+                if spec['type'] == 'float': row[f] = self.convertNumber(row[f])
+                if spec['type'] == 'number': row[f] = self.convertNumber(row[f])
+        return row
 
     def next(self):
         return self.__next__()
@@ -200,7 +232,15 @@ class RearrangementsFile(object):
         if not self.dictWriter:
             fieldNames = []
             fieldNames.extend(self.mandatoryFieldNames)
-            fieldNames.extend(self.optionalFieldNames)
+            # order according to spec
+            olist = []
+            alist = []
+            for f in self.optionalSpecFieldNames:
+                if f in self.additionalFieldNames: olist.append(f)
+            for f in self.additionalFieldNames:
+                if f not in self.optionalSpecFieldNames: alist.append(f)
+            self.additionalFieldNames = olist
+            self.additionalFieldNames.extend(alist)
             fieldNames.extend(self.additionalFieldNames)
             self.dictWriter = csv.DictWriter(self.dataFile, fieldnames=fieldNames, dialect='excel-tab', extrasaction='ignore')
             self.dictWriter.writeheader()

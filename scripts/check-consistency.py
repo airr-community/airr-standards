@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 import sys
 from glob import glob
@@ -7,7 +7,7 @@ import os.path as osp
 import yaml
 import jinja2
 import jsondiff
-
+import difflib
 
 # function to extract name from file
 basename = lambda f: osp.splitext(osp.basename(f))[0]
@@ -22,15 +22,15 @@ doc_files = {basename(f): f for f in glob('docs/*.md')}
 
 if set(spec_files.keys()) != set(py_files.keys()):
     for spec in set(spec_files.keys()) - set(py_files.keys()):
-        print(f'{spec} missing from python package', file=sys.stderr)
+        print('{} missing from python package'.format(spec), file=sys.stderr)
     for spec in set(py_files.keys()) - set(spec_files.keys()):
-        print(f'{spec} found in python package but missing from specs/', file=sys.stderr)
+        print('{} found in python package but missing from specs/'.format(spec), file=sys.stderr)
     sys.exit(1)
 
 
 if len(set(spec_files.keys()) - set(doc_files.keys())) > 0:
     for spec in set(spec_files.keys()) - set(doc_files.keys()):
-        print(f'{spec} missing from rendered doc files', file=sys.stderr)
+        print('{} missing from rendered doc files'.format(spec), file=sys.stderr)
     sys.exit(1)
 
 
@@ -42,7 +42,7 @@ for spec_name in spec_files:
         py_spec = yaml.load(ip)
 
     if jsondiff.diff(gold_spec, py_spec) != {}:
-        print(f'{spec_name} spec is different from python version', file=sys.stderr)
+        print('{} spec is different from python version'.format(spec_name), file=sys.stderr)
         print(jsondiff.diff(gold_spec, py_spec), file=sys.stderr)
         sys.exit(1)
 
@@ -53,5 +53,9 @@ for spec_name in spec_files:
         doc_contents = ip.read().strip()
 
     if template.render(gold_spec) != doc_contents:
-        print(f'rendered doc for {spec_name} does not correspond to spec')
+        doc_lines = doc_contents.splitlines()
+        gold_lines = template.render(gold_spec).splitlines()
+        diff = difflib.unified_diff(doc_lines, gold_lines)
+        print('rendered doc for {} does not correspond to spec'.format(spec_name))
+        print('\n'.join(diff))
         sys.exit(1)

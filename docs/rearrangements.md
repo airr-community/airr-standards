@@ -19,14 +19,16 @@ exclude them.
 | `rearrangement_id` | `string` |  mandatory  | Read/sequence identifier; often identical to a read identifier, but not necessarily (especially where a rearrangement is derived from a multiple read consensus). |
 | `sequence` | `string` |  mandatory  | Nucleotide sequence (e.g., the "read" sequence; revcomp'd if necessary) |
 | `sample_id` | `string` |  mandatory  | The biological sample this read derives from (e.g., from BioSample database) |
-| `constant` | `string` |  mandatory  | Constant region gene (e.g., IGHG4, IGHA2, IGHE, TRBC) |
 | `functional` | `boolean` |  mandatory  | VDJ sequence is predicted to be functional |
 | `rev_comp` | `boolean` |  mandatory  | Sequence is reverse complemented |
-| `cell_index` | `string` |  | Cell index for single-cell sequencing. Also used for associating paired chains (e.g., heavy/light, alpha/beta) |
 | `v_call` | `string` |  mandatory  | V allele assignment |
 | `d_call` | `string` |  mandatory  | D allele assignment |
 | `j_call` | `string` |  mandatory  | J allele assignment |
-| `c_call` | `string` |  mandatory  | C gene assignment |
+| `c_call` | `string` |  mandatory  | C gene assignment (e.g., IGHG4, IGHA2, IGHE, TRBC) |
+| `junction_nt` | `string` |  mandatory  | Nucleotide sequence of the junction region (CDR3 plus conserved residues; i.e., IMGT's JUNCTION) |
+| `junction_nt_length` | `integer` |  mandatory  | Number of junction nucleotides in sequence_vdj |
+| `junction_aa` | `string` |  mandatory  | Amino acid sequence of the junction region (CDR3 plus conserved residues; i.e., IMGT's JUNCTION) |
+| `junction_aa_length` | `integer` |  | Number of junction amino acids in sequence_vdj |
 | `v_score` | `float` |  mandatory  | V alignment score |
 | `d_score` | `float` |  mandatory  | D alignment score |
 | `j_score` | `float` |  mandatory  | J alignment score |
@@ -35,8 +37,6 @@ exclude them.
 | `d_cigar` | `string` |  mandatory  | D alignment CIGAR string |
 | `j_cigar` | `string` |  mandatory  | J alignment CIGAR string |
 | `c_cigar` | `string` |  mandatory  | C alignment CIGAR string |
-| `junction_nt` | `string` |  mandatory  | Nucleotide sequence of the junction region (CDR3 plus conserved residues; i.e., IMGT's JUNCTION) |
-| `junction_aa` | `string` |  mandatory  | Amino acid sequence of the junction region (CDR3 plus conserved residues; i.e., IMGT's JUNCTION) |
 | `v_evalue` | `float` |  | V alignment E-value (when applicable) |
 | `d_evalue` | `float` |  | D alignment E-value (when applicable) |
 | `j_evalue` | `float` |  | J alignment E-value (when applicable) |
@@ -48,7 +48,17 @@ exclude them.
 | `vdj_identity` | `float` |  | Identity for aligners that consider the full sequence as a whole |
 | `vdj_cigar` | `string` |  | VDJ alignment CIGAR string |
 | `v_start` | `integer` |  | Position of first V nucleotide in 'sequence' field |
-| `v_germ_start` | `integer` |  | Position of 'v_start' field in IMGT numbered germline V(D)J sequence |
+| `v_end` | `integer` |  | End coordinate of the V segment in 'sequence' field |
+| `v_germ_start` | `integer` |  | Alignment start position in the germline V sequence |
+| `v_germ_end` | `integer` |  | Alignment end position in the germline V sequence |
+| `d_start` | `integer` |  | Start coordinate of the D segment in 'sequence' |
+| `d_end` | `integer` |  | End coordinate of the D segment in 'sequence' |
+| `d_germ_start` | `integer` |  | Alignment start position in the germline D sequence |
+| `d_germ_end` | `integer` |  | Alignment end position in the germline D sequence |
+| `j_start` | `integer` |  | Start coordinate of the J segment in 'sequence' |
+| `j_end` | `integer` |  | End coordinate of the J segment in 'sequence' |
+| `j_germ_start` | `integer` |  | Alignment start position in the germline J sequence |
+| `j_germ_end` | `integer` |  | Alignment end position in the germline J sequence |
 | `fwr1_start` | `integer` |  | FWR1 start coordinate in sequence (transferred from germline) |
 | `fwr1_end` | `integer` |  | FWR1 end coordinate in sequence (transferred from germline) |
 | `cdr1_start` | `integer` |  | CDR1 start coord in sequence (transferred from germline) |
@@ -63,14 +73,6 @@ exclude them.
 | `cdr3_end` | `integer` |  | CDR3 end coord in sequence; excludes J-TRP or J-PHE (transferred from germline) |
 | `fwr4_start` | `integer` |  | FWR3 start coord in sequence (transferred from germline) |
 | `fwr4_end` | `integer` |  | FWR4 end coord in sequence (transferred from germline) |
-| `v_end` | `integer` |  | End coordinate of the V segment (generally inside the CDR3) |
-| `d_start` | `integer` |  | Start coordinate of the D segment |
-| `d_germ_start` | `integer` |  | Position of 'd_start' field in IMGT numbered germline V(D)J sequence |
-| `d_end` | `integer` |  | End coordinate of the D segment |
-| `j_start` | `integer` |  | Start coordinate of the J segment (generally inside the CDR3) |
-| `j_germ_start` | `integer` |  | Position of 'j_start' field in IMGT numbered germline V(D)J sequence |
-| `j_end` | `integer` |  | End coordinate of the J segment |
-| `junction_length` | `integer` |  | Number of junction nucleotides in sequence_vdj |
 | `np1_length` | `integer` |  | Number of of nucleotides between sample V and D sequences |
 | `np2_length` | `integer` |  | Number of of nucleotides between sample D and J sequences |
 | `n1_length` | `integer` |  | Nucleotides 5' of the D-segment |
@@ -81,4 +83,5 @@ exclude them.
 | `p5j_length` | `integer` |  | Palindromic nucleotides 5' of the J-segment |
 | `duplicate_count` | `integer` |  | Copy number/number of duplicate observations for this sequence (e.g., number of UMIs sharing an identical sequence, or number of identical observations of this sequence absent UMIs) |
 | `consensus_count` | `integer` |  | Number of reads contributing to the (UMI) consensus for this sequence (e.g., the sum of the number of reads for all UMIs that contribute to (this rearrangement) |
+| `cell_index` | `string` |  | Cell index for single-cell sequencing. Also used for associating paired chains (e.g., heavy/light, alpha/beta) |
 | `clone` | `string` |  | Clone assignment for this sequence |
