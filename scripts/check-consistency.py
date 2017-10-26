@@ -8,9 +8,9 @@ import yaml
 
 with open('AIRR_Minimal_Standard_Data_Elements.tsv', 'r') as ip:
     # header line present
-    assert next(ip).split()[0] == 'Collection'
+    assert next(ip).split()[0] == 'MiAIRR'
 
-    table = [line.split('\t')[5].strip() for line in ip]
+    table = [line.split('\t')[6].strip() for line in ip]
     # handle the exceptional 4 / data line
     assert table.count('') == 1
     _ = table.pop(table.index(''))
@@ -47,7 +47,7 @@ import pandas as pd
 
 miairr_table = pd.read_csv('AIRR_Minimal_Standard_Data_Elements.tsv', sep='\t', header=0, index_col=None)
 miairr_biosample_rows = miairr_table.iloc[:, 0].isin(["1 / subject", "1 / diag. & intervent.", "2 / sample", "3 / process (cell)"])
-miairr_identifiers = set(miairr_table[miairr_biosample_rows].iloc[:, 5])
+miairr_identifiers = set(miairr_table[miairr_biosample_rows].iloc[:, 6])
 
 ncbi_biosample = pd.read_excel('NCBI_implementation/templates_XLS/AIRR_BioSample_v1.0.xls', skiprows=13)
 ncbi_identifiers = set([x.lstrip('*') for x in ncbi_biosample.columns])
