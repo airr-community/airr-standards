@@ -40,6 +40,7 @@ failed = False
 
 # check for uniqueness of fields in AIRR_Minimal_Standard_Data_Elements.tsv
 if len(table) != len(set(table)):
+    print('Duplicate entries found in AIRR_Minimal_Standard_Data_Elements.tsv', file=sys.stderr)
     for k, v in Counter(table).items():
         if v > 1:
             print(f'{k:30} found {v} times in tsv when it should be unique\n', file=sys.stderr)
@@ -58,6 +59,7 @@ for key in object_map.keys():
 
     properties = [property for property in definition['properties']]
     if set(elements) != set(properties):
+        print(f'{object_map[key]} does not match TSV', file=sys.stderr)
         for field in set(properties) - set(elements):
             print(f'{field:30} is found in yaml but not tsv for {object_map[key]}', file=sys.stderr)
         for field in set(elements) - set(properties):
@@ -98,16 +100,19 @@ with open('NCBI_implementation/mapping_MiAIRR_BioSample.tsv', 'r') as ip:
     dictReader = csv.DictReader(ip, dialect='excel-tab')
     for line in dictReader:
         miairr_mapping[line['AIRR Formats WG field name']] = line['NCBI BioSample attribute']
-mapped_identifiers = [miairr_mapping.get(name, name) for name in miairr_identifiers]
+mapped_identifiers = set([miairr_mapping.get(name, name) for name in miairr_identifiers])
 
 ncbi_biosample = pd.read_excel('NCBI_implementation/templates_XLS/AIRR_BioSample_v1.0.xls', skiprows=13)
 ncbi_identifiers = set([x.lstrip('*') for x in ncbi_biosample.columns])
 
 if mapped_identifiers != ncbi_identifiers:
+    print('AIRR_Minimal_Standard_Data_Elements.tsv does not match AIRR_BioSample_v1.0.xls', file=sys.stderr)
     for field in set(mapped_identifiers) - set(ncbi_identifiers):
         print(f'{field:30} is found in MiAIRR table tsv but not in NCBI Biosample template xls', file=sys.stderr)
     for field in set(ncbi_identifiers) - set(mapped_identifiers):
         print(f'{field:30} is found in NCBI Biosample template xls but not in MiAIRR table tsv', file=sys.stderr)
     failed = True
 
-if failed: sys.exit(1)
+if failed:
+    print('consistency checks failed', file=sys.stderr)
+    sys.exit(1)
