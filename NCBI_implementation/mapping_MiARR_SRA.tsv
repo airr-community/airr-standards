@@ -1,0 +1,34 @@
+AIRR Formats WG field name	NCBI SRA attribute	Keyword relation	Mandatory SRA attribute	Note
+study_id	bioproject_accession	MAPPING	TRUE	
+sample_id	sample_name	MAPPING	TRUE	
+nucleic_acid_processing_id	library_ID	MAPPING	TRUE	
+NULL	title	DATABASE_SPECIFIC	TRUE	
+NULL	library_strategy	DATABASE_SPECIFIC	TRUE	
+NULL	library_source	DATABASE_SPECIFIC	TRUE	
+NULL	library_selection	DATABASE_SPECIFIC	TRUE	
+NULL	library_layout	DATABASE_SPECIFIC	TRUE	
+NULL	platform	DATABASE_SPECIFIC	TRUE	
+sequencing_platform	instrument_model	MAPPING	TRUE	SRA splits this information into `platform` and `instrument_model`, however the controlled vocabulary of the latter one also often contains the `platform` information. Therefore preference was given to a 1:1 mapping using `instrument_model`
+library_generation_protocol	design_description	MAPPING	TRUE	
+NULL	filetype	DATABASE_SPECIFIC	TRUE	
+NULL	filename	DATABASE_SPECIFIC	TRUE	
+NULL	filename2	DATABASE_SPECIFIC	FALSE	
+NULL	filename3	DATABASE_SPECIFIC	FALSE	
+NULL	filename4	DATABASE_SPECIFIC	FALSE	
+NULL	assembly	DATABASE_SPECIFIC	FALSE	
+template_class	template_class	AIRR_CUSTOM	FALSE	SRA keyword `library_source` is related to this field, but makes a number of distinctions (bulk vs. single-cell) that are incompatible with the current definition of `template_class`
+template_quality	template_quality	AIRR_CUSTOM	FALSE	
+template_amount	template_amount	AIRR_CUSTOM	FALSE	
+library_generation_method	library_generation_method	AIRR_CUSTOM	FALSE	SRA keyword `library_strategy` is related to this field, but uses a controlled vocubulary that is not fine-grained enough to provide the required information of MiAIRR `library_generation_method` (e.g. mode of cDNA generation, UMI, etc.)
+library_generation_kit_version	library_generation_kit_version	AIRR_CUSTOM	FALSE	
+pcr_target_locus	pcr_target_locus	AIRR_CUSTOM	FALSE	
+forward_pcr_primer_target_location	forward_pcr_primer_target_location	AIRR_CUSTOM	FALSE	
+reverse_pcr_primer_target_location	reverse_pcr_primer_target_location	AIRR_CUSTOM	FALSE	
+complete_sequences	complete_sequences	AIRR_CUSTOM	FALSE	
+physical_linkage	physical_linkage	AIRR_CUSTOM	FALSE	
+total_reads_passing_qc_filter	total_reads_passing_qc_filter	AIRR_CUSTOM	FALSE	
+read_length	read_length	AIRR_CUSTOM	FALSE	
+sequencing_facility	sequencing_facility	AIRR_CUSTOM	FALSE	
+sequencing_run_id	sequencing_run_id	AIRR_CUSTOM	FALSE	
+sequencing_run_date	sequencing_run_date	AIRR_CUSTOM	FALSE	
+sequencing_kit	sequencing_kit	AIRR_CUSTOM	FALSE	
