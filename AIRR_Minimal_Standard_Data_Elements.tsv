@@ -11,7 +11,7 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 1 / study	Relevant publications	String	Valid PubMed ID	Publications describing the rationale and/or outcome of the study	PMID85642	pub_ids
 1 / subject	Subject ID	String	Free text	Subject ID assigned by submitter, unique within study	SUB856413	subject_id
 1 / subject	Synthetic library	Boolean	TRUE/FALSE	TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)	FALSE	synthetic
-1 / subject	Organism	String	Controlled vocabulary	Binomial designation of subject’s species	Homo sapiens	organism
+1 / subject	Organism	String	Controlled vocabulary	Binomial designation of subject's species	Homo sapiens	organism
 1 / subject	Sex	String	/(male|female|pooled|hermaphrodite|intersex|not collected|not applicable)/	Biological sex of subject	female	sex
 1 / subject	Age	String	Time duration and unit	Absolute age of subject at time point `Age event`	65 a	age
 1 / subject	Age event	String	Free text	Event in the study schedule to which `Age` refers to. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.	enrollment	age_event
@@ -49,8 +49,8 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 3 / process (cell)	Processing protocol	String	Free text	Description of the methods applied to the sample including cell preparation/ isolation/enrichment and nucleic acid extraction. This should closely mirror the Materials and methods section in the manuscript	Stimulated wih anti-CD3/anti-CD28	cell_processing_protocol
 3 / process (nucl. acid)	Target substrate	String	/(DNA|RNA)/	The class of nucleic acid that was used as starting material for the following procedures	RNA	library_source
 3 / process (nucl. acid)	Target substrate quality	String	Free text	Description and results of the quality control performed on the source material	RIN 9.2	library_quality
-3 / process (nucl. acid)	Library generation method	String	Controlled vocabulary	Generic type of library generation	Oligo-dT primed 5’ RACE	library_construction_method
-3 / process (nucl. acid)	Library generation protocol	String	Free text	Description of processes applied to substrate to obtain a library that is ready for sequencing	cDNA was generated using…	library_construction_protocol
+3 / process (nucl. acid)	Library generation method	String	Controlled vocabulary	Generic type of library generation	Oligo-dT primed 5' RACE	library_construction_method
+3 / process (nucl. acid)	Library generation protocol	String	Free text	Description of processes applied to substrate to obtain a library that is ready for sequencing	cDNA was generated using	library_construction_protocol
 3 / process (nucl. acid)	Target locus for PCR	String	Free text	Designation of the target locus according to standard gene nomencleature	Constant region vs. V region amplification	target_locus_PCR
 3 / process (nucl. acid)	Forward PCR primer target location	String	Free text	Position of the most distal nucleotide templated by the forward primer or primer mix	IGHV, +23	forward_PCR_primer_target_location
 3 / process (nucl. acid)	Reverse PCR primer target location	String	Free text	Position of the most proximal nucleotide templated by the reverse primer or primer mix	IGHG, +57	reverse_PCR_primer_target_location
