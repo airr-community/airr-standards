@@ -5,7 +5,7 @@ synthetic	synthetic	AIRR_CUSTOM	FALSE
 organism	organism	IDENTICAL	TRUE	
 sex	sex	IDENTICAL	TRUE	
 age	age	IDENTICAL	TRUE	To be IDENTICAL, `age` MUST be age of subject at sampling time point. In contrast, MiAIRR also allows other reference time points for `age`
-age_event	age_event	AIRR_CUSTOM	FALSE	Value for this field MUST be `sampling` to be consistent with BioSample’s `age` definition. See `age`
+age_event	age_event	AIRR_CUSTOM	FALSE	Value for this field MUST be `sampling` to be consistent with BioSample's `age` definition. See `age`
 ancestry_population	population	MAPPED	FALSE	BioSample attributes `(super_)population_*` were not used as they encode keywords from the Coriell Institute, whose suitability for MiAIRR has not yet been fully evalutated
 ethnicity	ethnicity	IDENTICAL	FALSE	
 race	race	IDENTICAL	FALSE	
