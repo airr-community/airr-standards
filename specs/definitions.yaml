@@ -138,21 +138,25 @@ MiAIRR_NucleicAcidProcessing:
    discriminator: MiAIRR
    type: object
    properties:
-      library_source:
+      template_class:
          enum:
             - DNA
             - RNA
-      library_quality:
+      template_quality:
          type: string
-      library_construction_method:
+      template_amount:
          type: string
-      library_construction_protocol:
+      library_generation_method:
          type: string
-      target_locus_PCR:
+      library_generation_protocol:
          type: string
-      forward_PCR_primer_target_location:
+      library_generation_kit_version:
          type: string
-      reverse_PCR_primer_target_location:
+      pcr_target_locus:
+         type: string
+      forward_pcr_primer_target_location:
+         type: string
+      reverse_pcr_primer_target_location:
          type: string
       complete_sequences:
          enum:
@@ -443,19 +447,15 @@ NucleicAcidProcessing:
             - "complete & untemplated"
       physical_linkage:
          type: string
-      template_amount:
-         type: string
       total_reads_passing_qc_filter:
          type: integer
-      protocol_id:
-         type: string
-      platform:
+      sequencing_platform:
          type: string
       read_length:
          type: string
       sequencing_facility:
          type: string
-      batch_number:
+      sequencing_run_id:
          type: string
       sequencing_run_date:
          type: string
