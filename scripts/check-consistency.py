@@ -92,14 +92,21 @@ import pandas as pd
 miairr_table = pd.read_csv('AIRR_Minimal_Standard_Data_Elements.tsv', sep='\t', header=0, index_col=None)
 miairr_biosample_rows = miairr_table.iloc[:, 0].isin(["1 / subject", "1 / diag. & intervent.", "2 / sample", "3 / process (cell)"])
 miairr_identifiers = set(miairr_table[miairr_biosample_rows].iloc[:, 6])
+miairr_identifiers.add('study_id') # manually add
+miairr_mapping = {}
+with open('NCBI_implementation/mapping_MiAIRR_BioSample.tsv', 'r') as ip:
+    dictReader = csv.DictReader(ip, dialect='excel-tab')
+    for line in dictReader:
+        miairr_mapping[line['AIRR Formats WG field name']] = line['NCBI BioSample attribute']
+mapped_identifiers = [miairr_mapping.get(name, name) for name in miairr_identifiers]
 
 ncbi_biosample = pd.read_excel('NCBI_implementation/templates_XLS/AIRR_BioSample_v1.0.xls', skiprows=13)
 ncbi_identifiers = set([x.lstrip('*') for x in ncbi_biosample.columns])
 
-if miairr_identifiers != ncbi_identifiers:
-    for field in set(miairr_identifiers) - set(ncbi_identifiers):
+if mapped_identifiers != ncbi_identifiers:
+    for field in set(mapped_identifiers) - set(ncbi_identifiers):
         print(f'{field:30} is found in MiAIRR table tsv but not in NCBI Biosample template xls', file=sys.stderr)
-    for field in set(ncbi_identifiers) - set(miairr_identifiers):
+    for field in set(ncbi_identifiers) - set(mapped_identifiers):
         print(f'{field:30} is found in NCBI Biosample template xls but not in MiAIRR table tsv', file=sys.stderr)
     failed = True
 
