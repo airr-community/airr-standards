@@ -2,6 +2,6 @@ language: python
 python:
   - 3.6
 install:
-  - pip install pyyaml pandas
+  - pip install pyyaml pandas xlrd deepdiff
 script:
   - scripts/check-consistency.py
