@@ -1,4 +1,4 @@
-![Image](https://github.com/airr-community/airr-standards/raw/master/Images/miairr_logo.png)
+![Image](https://github.com/airr-community/airr-standards/raw/master/images/miairr_logo.png)
 
 _Minimum information about an Adaptive Immune Receptor Repertoire Sequencing Experiment_
 
