@@ -107,9 +107,9 @@ Sample:
          type: string
       disease_state_sample:
          type: string
-      collection_date:
+      collection_time_point_relative:
          type: string
-      collection_time_event:
+      collection_time_point_reference:
          type: string
       biomaterial_provider:
          type: string
