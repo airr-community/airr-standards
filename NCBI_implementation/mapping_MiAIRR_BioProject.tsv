@@ -1,0 +1,11 @@
+AIRR Formats WG field name	NCBI BioProject attribute	Keyword relation	Mandatory BioProject attribute	Note
+study_id	Project/ProjectID/ArchiveID/accession	MAPPED	TRUE	Key will be generated upon submission
+study_title	Project/ProjectDescr/Title	MAPPED	TRUE	
+study_description	Project/ProjectDescr/UserTerm/StudyDescription	AIRR_CUSTOM	FALSE	Key has to be specified in the “term” attribute of the “UserTerm” entry
+inclusion_exclusion_criteria	Project/ProjectDescr/Description	MAPPED	FALSE	
+grants	Project/ProjectDescr/Grant	MAPPED_NODE	FALSE	
+collected_by	Submission/Description/Organization/Contact	MAPPED_NODE	FALSE	
+lab_name	Submission/Description/Organization/Name	MAPPED	TRUE	
+lab_address	Submission/Description/Organization/Contact/Address	MAPPED_NODE	FALSE	
+submitted_by	Submission/Description/Submitter	MAPPED_NODE	TRUE	Not strictly required in the Schema, but this is under the assumption of automatic fill in
+pub_ids	Project/ProjectDescr/Publication	MAPPED_NODE	FALSE	
