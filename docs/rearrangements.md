@@ -29,23 +29,23 @@ exclude them.
 | `junction_nt_length` | `integer` |  mandatory  | Number of junction nucleotides in sequence_vdj |
 | `junction_aa` | `string` |  mandatory  | Amino acid sequence of the junction region (CDR3 plus conserved residues; i.e., IMGT's JUNCTION) |
 | `junction_aa_length` | `integer` |  | Number of junction amino acids in sequence_vdj |
-| `v_score` | `float` |  mandatory  | V alignment score |
-| `d_score` | `float` |  mandatory  | D alignment score |
-| `j_score` | `float` |  mandatory  | J alignment score |
-| `c_score` | `float` |  mandatory  | C alignment score |
+| `v_score` | `number` |  mandatory  | V alignment score |
+| `d_score` | `number` |  mandatory  | D alignment score |
+| `j_score` | `number` |  mandatory  | J alignment score |
+| `c_score` | `number` |  mandatory  | C alignment score |
 | `v_cigar` | `string` |  mandatory  | V alignment CIGAR string |
 | `d_cigar` | `string` |  mandatory  | D alignment CIGAR string |
 | `j_cigar` | `string` |  mandatory  | J alignment CIGAR string |
 | `c_cigar` | `string` |  mandatory  | C alignment CIGAR string |
-| `v_evalue` | `float` |  | V alignment E-value (when applicable) |
-| `d_evalue` | `float` |  | D alignment E-value (when applicable) |
-| `j_evalue` | `float` |  | J alignment E-value (when applicable) |
-| `v_identity` | `float` |  | V alignment identity |
-| `d_identity` | `float` |  | D alignment identity |
-| `j_identity` | `float` |  | J alignment identity |
-| `vdj_score` | `float` |  | Score for aligners that consider the full sequence as a whole |
-| `vdj_evalue` | `float` |  | E-value for aligners that consider the full sequence as a whole |
-| `vdj_identity` | `float` |  | Identity for aligners that consider the full sequence as a whole |
+| `v_evalue` | `number` |  | V alignment E-value (when applicable) |
+| `d_evalue` | `number` |  | D alignment E-value (when applicable) |
+| `j_evalue` | `number` |  | J alignment E-value (when applicable) |
+| `v_identity` | `number` |  | V alignment identity |
+| `d_identity` | `number` |  | D alignment identity |
+| `j_identity` | `number` |  | J alignment identity |
+| `vdj_score` | `number` |  | Score for aligners that consider the full sequence as a whole |
+| `vdj_evalue` | `number` |  | E-value for aligners that consider the full sequence as a whole |
+| `vdj_identity` | `number` |  | Identity for aligners that consider the full sequence as a whole |
 | `vdj_cigar` | `string` |  | VDJ alignment CIGAR string |
 | `v_start` | `integer` |  | Position of first V nucleotide in 'sequence' field |
 | `v_end` | `integer` |  | End coordinate of the V segment in 'sequence' field |

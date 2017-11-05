@@ -11,9 +11,9 @@ See the formatting overview for details on how to structure this data.
 | `segment` | `string` |  mandatory  | The gene segment for this alignment (e.g., V, D, J, C) |
 | `rev_comp` | `boolean` |  mandatory  | Sequence is reverse complemented |
 | `call` | `string` |  mandatory  | Allele assignment |
-| `score` | `float` |  mandatory  | Alignment score |
+| `score` | `number` |  mandatory  | Alignment score |
 | `cigar` | `string` |  mandatory  | Alignment CIGAR string |
-| `identity` | `float` |  mandatory  | Alignment identity (percent) |
-| `probability` | `float` |  | Alignment probability (when applicable) |
-| `loglikelihood` | `float` |  | Alignment log likelihood (when applicable) |
+| `identity` | `number` |  mandatory  | Alignment identity (percent) |
+| `probability` | `number` |  | Alignment probability (when applicable) |
+| `loglikelihood` | `number` |  | Alignment log likelihood (when applicable) |
 | `rank` | `integer` |  | Alignment rank |

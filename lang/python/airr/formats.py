@@ -218,7 +218,6 @@ class RearrangementsFile(object):
             if spec:
                 if spec['type'] == 'boolean': row[f] = self.convertBool(row[f])
                 if spec['type'] == 'integer': row[f] = self.convertInt(row[f])
-                if spec['type'] == 'float': row[f] = self.convertNumber(row[f])
                 if spec['type'] == 'number': row[f] = self.convertNumber(row[f])
         return row
 

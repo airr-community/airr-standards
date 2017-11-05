@@ -77,22 +77,22 @@ fields:
     mandatory: False
   -
     name: v_score
-    type: float
+    type: number
     doc: V alignment score
     mandatory: True
   -
     name: d_score
-    type: float
+    type: number
     doc: D alignment score
     mandatory: True
   -
     name: j_score
-    type: float
+    type: number
     doc: J alignment score
     mandatory: True
   -
     name: c_score
-    type: float
+    type: number
     doc: C alignment score
     mandatory: True
   -
@@ -117,47 +117,47 @@ fields:
     mandatory: True
   -
     name: v_evalue
-    type: float
+    type: number
     doc: V alignment E-value (when applicable)
     mandatory: False
   -
     name: d_evalue
-    type: float
+    type: number
     doc: D alignment E-value (when applicable)
     mandatory: False
   -
     name: j_evalue
-    type: float
+    type: number
     doc: J alignment E-value (when applicable)
     mandatory: False
   -
     name: v_identity
-    type: float
+    type: number
     doc:  V alignment identity
     mandatory: False
   -
     name: d_identity
-    type: float
+    type: number
     doc:  D alignment identity
     mandatory: False
   -
     name: j_identity
-    type: float
+    type: number
     doc:  J alignment identity
     mandatory: False
   -
     name: vdj_score
-    type: float
+    type: number
     doc: Score for aligners that consider the full sequence as a whole
     mandatory: False
   -
     name: vdj_evalue
-    type: float
+    type: number
     doc: E-value for aligners that consider the full sequence as a whole
     mandatory: False
   -
     name: vdj_identity
-    type: float
+    type: number
     doc: Identity for aligners that consider the full sequence as a whole
     mandatory: False
   -

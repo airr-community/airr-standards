@@ -33,7 +33,7 @@ fields:
     mandatory: True
   -
     name: score
-    type: float
+    type: number
     doc: Alignment score
     mandatory: True
   -
@@ -43,17 +43,17 @@ fields:
     mandatory: True
   -
     name: identity
-    type: float
+    type: number
     doc:  Alignment identity (percent)
     mandatory: True
   -
     name: probability
-    type: float
+    type: number
     doc: Alignment probability (when applicable)
     mandatory: False
   -
     name: loglikelihood
-    type: float
+    type: number
     doc: Alignment log likelihood (when applicable)
     mandatory: False
   -

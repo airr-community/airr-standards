@@ -73,8 +73,8 @@ useful.
 
 **Data**
 
-The main data table. Possible data types are `string`s, `boolean`s, `float`s,
-and `integer`s.
+The main data table. Possible data types are `string`s, `boolean`s, `number`s
+(floating point), and `integer`s.
 
 
 **Mandated columns**
