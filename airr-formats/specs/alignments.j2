@@ -1,0 +1,14 @@
+# `alignment` schema/format
+
+See the formatting overview for details on how to structure this data.
+
+CIGAR strings must use hard/softclipping to align the full read to the full
+germline reference segment.
+
+**Fields**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+{%- for field in fields %}
+| `{{ field.name }}` | `{{ field.type }}` | {% if field.mandatory %} mandatory {% endif %} | {{ field.doc }} |
+{%- endfor %}

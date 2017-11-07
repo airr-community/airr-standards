@@ -1,0 +1,5 @@
+include README.md
+
+# versioneer-generated
+include versioneer.py
+include airr/_version.py
