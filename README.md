@@ -21,7 +21,8 @@ AIRR sequences. The detailed data elements within these sets are defined
 
 ### How to cite?
 
-_Manuscript in preparation_
+Breden, Felix, et al. "Perspective: Reproducibility and Reuse of Adaptive Immune Receptor Repertoire Data." Frontiers in Immunology 8 (2017): 1418.
+
 <!---
 The following link could give a false impression on contribution to the MiAIRR standard, therefore please keep it
 commented out until the actual MiAIRR publication it out and can be referenced too.
