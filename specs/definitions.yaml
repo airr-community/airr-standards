@@ -507,6 +507,15 @@ SoftwareProcessing:
       data_processing_protocols:
          type: string
 
+
+Alignment:
+   properties:
+      foo:
+         type: string
+         description: placeholder so docs build
+
+
+
 # The extended rearrangement object
 Rearrangement:
    discriminator: AIRR
