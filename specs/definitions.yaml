@@ -512,10 +512,52 @@ Alignment:
    discriminator: AIRR
    type: object
    properties:
-      foo:
+      rearrangement_id:
          type: string
-         description: placeholder so docs build
-
+         description: >
+            Read/sequence identifier (identifies corresponding annotated
+            rearrangement)
+      sequence:
+         type: string
+         description: >
+            Nucleotide sequence (e.g., the "read" sequence; revcomp'd if
+            necessary)
+      segment:
+         type: string
+         description: >
+            The gene segment for this alignment (e.g., V, D, J, C)
+      rev_comp:
+         type: boolean
+         description: >
+            Sequence is reverse complemented
+      call:
+         type: string
+         description: >
+            Allele assignment
+      score:
+         type: number
+         description: >
+            Alignment score
+      cigar:
+         type: string
+         description: >
+            Alignment CIGAR string
+      identity:
+         type: number
+         description: >
+            Alignment identity (percent)
+      probability:
+         type: number
+         description: >
+            Alignment probability (when applicable)
+      loglikelihood:
+         type: number
+         description: >
+            Alignment log likelihood (when applicable)
+      rank:
+         type: integer
+         description: >
+            Alignment rank
 
 
 # The extended rearrangement object
