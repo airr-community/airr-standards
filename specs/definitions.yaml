@@ -509,6 +509,8 @@ SoftwareProcessing:
 
 
 Alignment:
+   discriminator: AIRR
+   type: object
    properties:
       foo:
          type: string
