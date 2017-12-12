@@ -9,7 +9,7 @@ import csv
 
 from prov import model
 
-from airr.specs import rearrangements
+from airr.specs import definitions
 
 
 class RearrangementsFile(object):
@@ -27,9 +27,9 @@ class RearrangementsFile(object):
         self.optionalSpecFieldNames = []
         self.additionalFieldNames = []
         self._inputFieldNames = []
-        for f in rearrangements['fields']:
-            if f['mandatory']: self.mandatoryFieldNames.append(f['name'])
-            else: self.optionalSpecFieldNames.append(f['name'])
+        for f in definitions['Rearrangement']['properties']:
+            if f in definitions['Rearrangement']['required']: self.mandatoryFieldNames.append(f)
+            else: self.optionalSpecFieldNames.append(f)
 
         # writing or reading
         if state:
@@ -78,8 +78,8 @@ class RearrangementsFile(object):
 
     # utility operations
     def specForField(self, name):
-        for f in rearrangements['fields']:
-            if f['name'] == name: return f
+        for f in definitions['Rearrangement']['properties']:
+            if f == name: return definitions['Rearrangement']['properties'][f]
         return None
 
     def convertBool(self, value):
