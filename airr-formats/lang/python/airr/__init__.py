@@ -5,9 +5,9 @@ Reference library for AIRR schema for Ig/TCR rearrangements
 from airr.formats import RearrangementsFile
 
 
-def read(filename, debug=False):
+def read(filename=None, handle=None, debug=False):
     """Open an AIRR rearrangements file and read its contents"""
-    return RearrangementsFile(False, filename=filename, debug=debug)
+    return RearrangementsFile(False, filename=filename, handle=handle, debug=debug)
 
 
 def create(filename=None, handle=None, debug=False):
