@@ -56,3 +56,8 @@ For further information about the MiAIRR standard please contact
 [2]: https://www.facebook.com/sharer/sharer.php?u=https://github.com/airr-community/airr-standards
 [3]: https://plus.google.com/share?url=https://github.com/airr-community/airr-standards
 
+### How to contribute?
+
+The AIRR Community is an open initiative and we welcome all contributions. Please review our
+[development process](https://github.com/airr-community/airr-standards/tree/master/dev_process.md)
+before contributing changes.
