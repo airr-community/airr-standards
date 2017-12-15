@@ -51,13 +51,25 @@ older versions.
 Versions and associated releases are driven by the recommendations and
 standards produced by the AIRR Community and their associated Working
 Groups, with specifications and software tools implementing those
-recommendations and standards.
+recommendations and standards. The various sub-projects within
+airr-standards do not have independent versioning but are
+interconnected together through the same version numbers. This way
+users know exactly which software versions are associated with which
+standards versions. This has the challenge that normal semantic
+version numbering (MAJOR.MINOR.PATCH) cannot be applied to the
+sub-projects, however the goal is that semantic versioning will apply
+to AIRR Standards as a whole. New and updated software tools will
+increment the PATCH number, but the MAJOR and MINOR numbers will only
+be incremented for changes to the AIRR Standards.
 
 The airr-standards repository uses release branches to maintain stable
-releases. When development on `master` is deemed ready for release,
-changes are merged to the release branch and tagged.
-
-* release-1.X.X
+releases. When development on `master` is deemed ready for release, a
+branch is created from master called release-vX.X.X where vX.X.X is
+associated release. Any bug fixes related to the release can be
+committed directly to the release branch, and when satified then the
+branch is tagged with vX.X.X to finalize the source code
+release. Additional work may occur as software tools are packaged and
+posted to package management sites.
 
 ### Code Style
 
