@@ -126,4 +126,19 @@ when it is needed.
 
 ### Code Style
 
-Follow standard conventions for the associated programming language.
+**General Guidelines**
+
+* Do not commit `.gitignore` files or IDE project files.
+
+**Python**
+
+* Follow [PEP8](https://www.python.org/dev/peps/pep-0008)
+* Use [Google style docstrings](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
+  for inline documentation.
+
+**R**
+
+* Follow the [Bioconducto style](https://bioconductor.org/developers/how-to/coding-style/),
+  except use `snake_case` for variable names and a single `#` for comments.
+* Use [roxygen2](https://github.com/klutometis/roxygen) for inline
+  documentation and namespace management.
