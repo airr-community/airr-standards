@@ -56,13 +56,19 @@ for older versions.
   specifications files that may impact others. The core team will be
   expanded as the number of sub-projects in airr-standards grows.
 
+* The priority is not to break `master` for other developers, this
+  includes renaming or deleting fields, changing schema structure, or
+  specification definitions. This type of work requires review by the
+  core team.
+
 * Members not on the core team should submit all changes as a pull
   request. This implies creating a feature branch to hold your
-  changes. Please use a meaningful unique name for your branch; these
-  branches will be removed once merged into `master` and have
-  stabilized.
+  changes, or forking the repository. Please use a meaningful unique
+  name for your branch; these branches will be removed once merged
+  into `master` and have stabilized.
 
-* Pull requests must pass checks before being merged.
+* Our goal is for `master` never to be broken. Pull requests must pass
+  checks before being merged.
 
 * Use `rebase` instead of `merge` for either bringing your feature
   branch up-to-date with the latest `master` or when merging pull
@@ -100,13 +106,13 @@ to AIRR Standards as a whole. The design is thus:
 
 * PATCH = Software updates
 
-New and updated software tools will increment the PATCH number,
-assuming that the implementation specifications have not changed. The
-current MiAIRR version is V1 (i.e. MAJOR = 1), and it is expected that
-this version will rarely change as it required formal adoption by the
-AIRR Community. Currently, MINOR = 0 as the implementation
-specifications are in pre-release form going through many
-changes. Once they are released (i.e. v1.1.0) then MINOR will be
+New and updated software tools will generally increment the PATCH
+number, assuming that the implementation specifications have not
+changed. The current MiAIRR version is V1 (i.e. MAJOR = 1), and it is
+expected that this version will rarely change as it required formal
+adoption by the AIRR Community. Currently, MINOR = 0 as the
+implementation specifications are in pre-release form going through
+many changes. Once they are released (i.e. v1.1.0) then MINOR will be
 incremented whenever a backwards incompatible change is introduced.
 
 The airr-standards repository uses release branches to maintain stable
@@ -138,7 +144,7 @@ when it is needed.
 
 **R**
 
-* Follow the [Bioconducto style](https://bioconductor.org/developers/how-to/coding-style/),
+* Follow the [Bioconductor style](https://bioconductor.org/developers/how-to/coding-style/),
   except use `snake_case` for variable names and a single `#` for comments.
 * Use [roxygen2](https://github.com/klutometis/roxygen) for inline
   documentation and namespace management.
