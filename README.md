@@ -59,5 +59,5 @@ For further information about the MiAIRR standard please contact
 ### How to contribute?
 
 The AIRR Community is an open initiative and we welcome all contributions. Please review our
-[development process](https://github.com/airr-community/airr-standards/tree/master/dev_process.md)
+[development process](https://github.com/airr-community/airr-standards/tree/master/CONTRIBUTING.md)
 before contributing changes.
