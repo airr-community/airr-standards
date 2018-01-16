@@ -1,0 +1,765 @@
+#
+# Schema definitions for AIRR standards objects
+#
+
+#
+# MiAIRR - AIRR minimal standards objects
+#
+
+# The overall study with a globally unique study_id
+MiAIRR_Study:
+   discriminator: MiAIRR
+   type: object
+   properties:
+      study_id:
+         type: string
+      study_title:
+         type: string
+      study_description:
+         type: string
+      inclusion_exclusion_criteria:
+         type: string
+      grants:
+         type: string
+      lab_name:
+         type: string
+      collected_by:
+         type: string
+      submitted_by:
+         type: string
+      lab_address:
+         type: string
+      pub_ids:
+         type: string
+
+# subject_id is unique within a study
+MiAIRR_Subject:
+   discriminator: MiAIRR
+   type: object
+   properties:
+      subject_id:
+         type: string
+      synthetic:
+         type: boolean
+      organism:
+         type: string
+      sex:
+         type: string
+      age:
+         type: string
+      age_event:
+         type: string
+      ancestry_population:
+         type: string
+      ethnicity:
+         type: string
+      race:
+         type: string
+      strain_name:
+         type: string
+      linked_subjects:
+         type: string
+      link_type:
+         type: string
+
+# minimal standards diagnosis and intervention
+MiAIRR_Diagnosis:
+   discriminator: MiAIRR
+   type: object
+   properties:
+      study_group_description:
+         type: string
+      disease_diagnosis:
+         type: string
+      disease_length:
+         type: string
+      disease_stage:
+         type: string
+      prior_therapies:
+         type: string
+      immunogen:
+         type: string
+      intervention:
+         type: string
+      medical_history:
+         type: string
+
+# minimal standards sample
+# sample_id is unique within a study
+MiAIRR_Sample:
+   discriminator: MiAIRR
+   type: object
+   properties:
+      sample_id:
+         type: string
+      sample_type:
+         type: string
+      tissue:
+         type: string
+      anatomic_site:
+         type: string
+      disease_state_sample:
+         type: string
+      collection_time_point_relative:
+         type: string
+      collection_time_point_reference:
+         type: string
+      biomaterial_provider:
+         type: string
+
+# minimal standards cell processing
+MiAIRR_CellProcessing:
+   discriminator: MiAIRR
+   type: object
+   properties:
+      tissue_processing:
+         type: string
+      cell_subset:
+         type: string
+      cell_phenotype:
+         type: string
+      single_cell:
+         type: boolean
+      cell_number:
+         type: integer
+      cells_per_reaction:
+         type: integer
+      cell_storage:
+         type: boolean
+      cell_quality:
+         type: string
+      cell_isolation:
+         type: string
+      cell_processing_protocol:
+         type: string
+
+# minimal standards nucleic acid processing
+MiAIRR_NucleicAcidProcessing:
+   discriminator: MiAIRR
+   type: object
+   properties:
+      template_class:
+         enum:
+            - DNA
+            - RNA
+      template_quality:
+         type: string
+      template_amount:
+         type: string
+      library_generation_method:
+         type: string
+      library_generation_protocol:
+         type: string
+      library_generation_kit_version:
+         type: string
+      pcr_target_locus:
+         type: string
+      forward_pcr_primer_target_location:
+         type: string
+      reverse_pcr_primer_target_location:
+         type: string
+      complete_sequences:
+         enum:
+            - partial
+            - complete
+            - "complete & untemplated"
+      physical_linkage:
+         type: string
+      total_reads_passing_qc_filter:
+         type: integer
+      sequencing_platform:
+         type: string
+      read_length:
+         type: string
+      sequencing_facility:
+         type: string
+      sequencing_run_id:
+         type: string
+      sequencing_run_date:
+         type: string
+      sequencing_kit:
+         type: string
+
+# minimal standards software processing
+MiAIRR_SoftwareProcessing:
+   discriminator: MiAIRR
+   type: object
+   properties:
+      software_versions:
+         type: string
+      paired_reads_assembly:
+         type: string
+      quality_thresholds:
+         type: string
+      primer_match_cutoffs:
+         type: string
+      collapsing_method:
+         type: string
+      data_processing_protocols:
+         type: string
+
+# The minimal standards rearrangement object
+MiAIRR_Rearrangement:
+   discriminator: MiAIRR
+   type: object
+   required:
+      - germline_database
+      - cell_index
+      - v_call
+      - d_call
+      - j_call
+      - c_call
+      - junction_nt
+      - junction_aa
+   properties:
+        germline_database:
+          type: string
+          description: >
+            Source of germline V(D)J segments, with version number or
+            date accessed (e.g. IMGT/V-QUEST Release 201736-4 (7 September 2017)) (AIRR)
+        cell_index:
+          type: integer
+          description: |
+            Cell Index (UID linking sequences from the same cell) (AIRR)
+        v_call:
+          type: string
+          description: |
+            V gene with allele (e.g. IGHV4-59*01) (AIRR)
+        d_call:
+          type: string
+          description: |
+            D gene with allele (e.g. IGHD3-10*01) (AIRR)
+        j_call:
+          type: string
+          description: |
+            J gene with allele (e.g. IGHJ4*02) (AIRR)
+        c_call:
+          type: string
+          description: |
+            C region with allele (AIRR)
+        junction_nt:
+          type: string
+          description: >
+            JUNCTION nucleotide sequence (Sequence of the CDR3
+            region (nucleotide)) (AIRR)
+        junction_aa:
+          type: string
+          description: >
+            JUNCTION amino acid sequence (Sequence of the CDR3
+            region (amino acid)) (AIRR)
+        duplicate_count:
+          type: integer
+          description: >
+           Copy number/number of duplicate observations for this sequence (e.g.,
+           number of UMIs sharing an identical sequence, or number of identical
+           observations of this sequence absent UMIs)
+
+
+#
+# AIRR standard objects
+#
+# These contain additional fields that define the
+# relationship between the objects
+#
+
+# The overall study with a globally unique study_id
+Study:
+   discriminator: AIRR
+   type: object
+   properties:
+      study_id:
+         type: string
+      study_title:
+         type: string
+      study_description:
+         type: string
+      inclusion_exclusion_criteria:
+         type: string
+      grants:
+         type: string
+      lab_name:
+         type: string
+      collected_by:
+         type: string
+      submitted_by:
+         type: string
+      lab_address:
+         type: string
+      pub_ids:
+         type: string
+
+# 1-to-n relationship between a study and its subjects
+# subject_id is unique within a study
+Subject:
+   discriminator: AIRR
+   type: object
+   properties:
+      study_id:
+         type: string
+      subject_id:
+         type: string
+      synthetic:
+         type: boolean
+      organism:
+         type: string
+      sex:
+         type: string
+      age:
+         type: string
+      age_event:
+         type: string
+      ancestry_population:
+         type: string
+      ethnicity:
+         type: string
+      race:
+         type: string
+      strain_name:
+         type: string
+      linked_subjects:
+         type: string
+      link_type:
+         type: string
+
+# 1-to-n relationship between a subject and its diagnoses
+Diagnosis:
+   discriminator: AIRR
+   type: object
+   properties:
+      study_id:
+         type: string
+      subject_id:
+         type: string
+      study_group_description:
+         type: string
+      disease_diagnosis:
+         type: string
+      disease_length:
+         type: string
+      disease_stage:
+         type: string
+      prior_therapies:
+         type: string
+      immunogen:
+         type: string
+      intervention:
+         type: string
+      medical_history:
+         type: string
+
+# 1-to-n relationship between a subject and its samples
+# sample_id is unique within a study
+Sample:
+   discriminator: AIRR
+   type: object
+   properties:
+      study_id:
+         type: string
+      subject_id:
+         type: string
+      sample_id:
+         type: string
+      sample_type:
+         type: string
+      tissue:
+         type: string
+      anatomic_site:
+         type: string
+      disease_state_sample:
+         type: string
+      collection_time_point_relative:
+         type: string
+      collection_time_point_reference:
+         type: string
+      biomaterial_provider:
+         type: string
+
+# 1-to-n relationship between a sample and processing of its cells
+# cell_processing_id is unique within a study
+CellProcessing:
+   discriminator: AIRR
+   type: object
+   properties:
+      study_id:
+         type: string
+      sample_id:
+         type: string
+      cell_processing_id:
+         type: string
+      tissue_processing:
+         type: string
+      cell_subset:
+         type: string
+      cell_phenotype:
+         type: string
+      single_cell:
+         type: boolean
+      cell_number:
+         type: integer
+      cells_per_reaction:
+         type: integer
+      cell_storage:
+         type: boolean
+      cell_quality:
+         type: string
+      cell_isolation:
+         type: string
+      cell_processing_protocol:
+         type: string
+
+# generally, a 1-to-1 relationship between a CellProcessing and processing of its nucleic acid
+# but may be 1-to-n for technical replicates.
+# nucleic_acid_processing_id is unique within a study
+NucleicAcidProcessing:
+   discriminator: AIRR
+   type: object
+   properties:
+      study_id:
+         type: string
+      cell_processing_id:
+         type: string
+      nucleic_acid_processing_id:
+         type: string
+      template_class:
+         enum:
+            - DNA
+            - RNA
+      template_quality:
+         type: string
+      template_amount:
+         type: string
+      library_generation_method:
+         type: string
+      library_generation_protocol:
+         type: string
+      library_generation_kit_version:
+         type: string
+      pcr_target_locus:
+         type: string
+      forward_pcr_primer_target_location:
+         type: string
+      reverse_pcr_primer_target_location:
+         type: string
+      complete_sequences:
+         enum:
+            - partial
+            - complete
+            - "complete & untemplated"
+      physical_linkage:
+         type: string
+      total_reads_passing_qc_filter:
+         type: integer
+      sequencing_platform:
+         type: string
+      read_length:
+         type: string
+      sequencing_facility:
+         type: string
+      sequencing_run_id:
+         type: string
+      sequencing_run_date:
+         type: string
+      sequencing_kit:
+         type: string
+
+# 1-to-1 relationship between a NucleicAcidProcessing and resultant raw sequencing files
+# filenames are unique within a study
+RawSequenceData:
+   discriminator: AIRR
+   type: object
+   properties:
+      study_id:
+         type: string
+      nucleic_acid_processing_id:
+         type: string
+      filename:
+         type: string
+      read_direction:
+         enum:
+            - forward
+            - reverse
+            - mixed
+      paired_filename:
+         type: string
+      paired_read_direction:
+         enum:
+            - forward
+            - reverse
+            - mixed
+
+# 1-to-1 relationship between a study and software processing
+SoftwareProcessing:
+   discriminator: AIRR
+   type: object
+   properties:
+      study_id:
+         type: string
+      software_versions:
+         type: string
+      paired_reads_assembly:
+         type: string
+      quality_thresholds:
+         type: string
+      primer_match_cutoffs:
+         type: string
+      collapsing_method:
+         type: string
+      data_processing_protocols:
+         type: string
+
+# The extended rearrangement object
+Rearrangement:
+   discriminator: AIRR
+   type: object
+   required:
+      - rearrangement_id
+      - rearrangement_set_id
+      - sequence
+      - germline_database
+      - functional
+      - rev_comp
+      - cell_index
+      - v_call
+      - d_call
+      - j_call
+      - c_call
+      - v_score
+      - d_score
+      - j_score
+      - c_score
+      - v_cigar
+      - d_cigar
+      - j_cigar
+      - c_cigar
+      - junction_nt
+      - junction_aa
+   properties:
+      rearrangement_id:
+         type: string
+         description: >
+            Read/sequence identifier; often identical to a read identifier, but
+            not necessarily (especially where a rearrangement is derived from a
+            multiple read consensus).
+      rearrangement_set_id:
+         type: string
+         description: Identifier for grouping rearrangements defined by study metadata
+      sequence:
+         type: string
+         description: >
+            Nucleotide sequence (e.g., the "read" sequence; revcomp'd if necessary)
+      germline_database:
+         type: string
+         description: >
+            Source of germline V(D)J segments, with version number or
+            date accessed (e.g. IMGT/V-QUEST Release 201736-4 (7 September 2017)) (AIRR)
+      functional:
+         type: boolean
+         description: VDJ sequence is predicted to be functional
+      rev_comp:
+         type: boolean
+         description: Sequence is reverse complemented
+      cell_index:
+         type: integer
+         description: |
+            Cell Index (UID linking sequences from the same cell) (AIRR)
+      v_call:
+         type: string
+         description: |
+            V gene with allele (e.g. IGHV4-59*01) (AIRR)
+      d_call:
+         type: string
+         description: |
+            D gene with allele (e.g. IGHD3-10*01) (AIRR)
+      j_call:
+         type: string
+         description: |
+            J gene with allele (e.g. IGHJ4*02) (AIRR)
+      c_call:
+         type: string
+         description: |
+            C region with allele (AIRR)
+      v_score:
+        type: number
+        description: V alignment score
+      d_score:
+        type: number
+        description: D alignment score
+      j_score:
+        type: number
+        description: J alignment score
+      c_score:
+        type: number
+        description: C alignment score
+      v_cigar:
+        type: string
+        description: V alignment CIGAR string
+      d_cigar:
+        type: string
+        description: D alignment CIGAR string
+      j_cigar:
+        type: string
+        description: J alignment CIGAR string
+      c_cigar:
+        type: string
+        description: C alignment CIGAR string
+      junction_nt:
+        type: string
+        description: >
+            JUNCTION nucleotide sequence (Sequence of the CDR3
+            region (nucleotide)) (AIRR)
+      junction_aa:
+        type: string
+        description: >
+            JUNCTION amino acid sequence (Sequence of the CDR3
+            region (amino acid)) (AIRR)
+      v_evalue:
+        type: number
+        description: V alignment E-value (when applicable)
+      d_evalue:
+        type: number
+        description: D alignment E-value (when applicable)
+      j_evalue:
+        type: number
+        description: J alignment E-value (when applicable)
+      v_identity:
+        type: number
+        description:  V alignment identity
+      d_identity:
+        type: number
+        description:  D alignment identity
+      j_identity:
+        type: number
+        description:  J alignment identity
+      vdj_score:
+        type: number
+        description: Score for aligners that consider the full sequence as a whole
+      vdj_evalue:
+        type: number
+        description: E-value for aligners that consider the full sequence as a whole
+      vdj_identity:
+        type: number
+        description: Identity for aligners that consider the full sequence as a whole
+      vdj_cigar:
+        type: string
+        description: VDJ alignment CIGAR string
+      v_start:
+        type: integer
+        description: Position of first V nucleotide in 'sequence' field
+      v_end:
+        type: integer
+        description: End coordinate of the V segment in 'sequence' field
+      v_germ_start:
+        type: integer
+        description: Alignment start position in the germline V sequence
+      v_germ_end:
+        type: integer
+        description: Alignment end position in the germline V sequence
+      d_start:
+        type: integer
+        description: Start coordinate of the D segment
+      d_end:
+        type: integer
+        description: End coordinate of the D segment
+      d_germ_start:
+        type: integer
+        description: Alignment start position in the germline D sequence
+      d_germ_end:
+        type: integer
+        description: Alignment end position in the germline D sequence
+      j_start:
+        type: integer
+        description: Start coordinate of the J segment (generally inside the CDR3)
+      j_end:
+        type: integer
+        description: End coordinate of the J segment
+      j_germ_start:
+        type: integer
+        description: Alignment start position in the germline J sequence
+      j_germ_end:
+        type: integer
+        description: Alignment start position in the germline J sequence
+      fwr1_start:
+        type: integer
+        description: FWR1 start coordinate in sequence (transferred from germline)
+      fwr1_end:
+        type: integer
+        description: FWR1 end coordinate in sequence (transferred from germline)
+      cdr1_start:
+        type: integer
+        description: CDR1 start coord in sequence (transferred from germline)
+      cdr1_end:
+        type: integer
+        description: CDR1 end coord in sequence (transferred from germline)
+      fwr2_start:
+        type: integer
+        description: FWR2 start coord in sequence (transferred from germline)
+      fwr2_end:
+        type: integer
+        description: FWR2 end coord in sequence (transferred from germline)
+      cdr2_start:
+        type: integer
+        description: CDR2 start coord in sequence (transferred from germline)
+      cdr2_end:
+        type: integer
+        description: CDR2 end coord in sequence (transferred from germline)
+      fwr3_start:
+        type: integer
+        description: FWR3 start coord in sequence (transferred from germline)
+      fwr3_end:
+        type: integer
+        description: FWR3 end coord in sequence (transferred from germline)
+      cdr3_start:
+        type: integer
+        description: CDR3 start coord in sequence (transferred from germline)
+      cdr3_end:
+        type: integer
+        description: CDR3 end coord in sequence (transferred from germline)
+      fwr4_start:
+        type: integer
+        description: FWR3 start coord in sequence (transferred from germline)
+      fwr4_end:
+        type: integer
+        description: FWR4 end coord in sequence (transferred from germline)
+      junction_length:
+        type: integer
+        description: Number of junction nucleotides in sequence_vdj
+      np1_length:
+        type: integer
+        description: Number of of nucleotides between sample V and D sequences
+      np2_length:
+        type: integer
+        description: Number of of nucleotides between sample D and J sequences
+      n1_length:
+        type: integer
+        description: Nucleotides 5' of the D-segment
+      n2_length:
+        type: integer
+        description: Nucleotides 3' of the D-segment
+      p3v_length:
+        type: integer
+        description: Palindromic nucleotides 3' of the V-segment
+      p5d_length:
+        type: integer
+        description: Palindromic nucleotides 5' of the D-segment
+      p3d_length:
+        type: integer
+        description: Palindromic nucleotides 3' of the D-segment
+      p5j_length:
+        type: integer
+        description: Palindromic nucleotides 5' of the J-segment
+      duplicate_count:
+        type: integer
+        description: >
+           Copy number/number of duplicate observations for this sequence (e.g.,
+           number of UMIs sharing an identical sequence, or number of identical
+           observations of this sequence absent UMIs)
+      consensus_count:
+        type: integer
+        description: >
+           Number of reads contributing to the (UMI) consensus for this sequence
+           (e.g., the sum of the number of reads for all UMIs that contribute to
+           (this rearrangement)
+      clone:
+        type: string
+        description: Clone assignment for this sequence
+

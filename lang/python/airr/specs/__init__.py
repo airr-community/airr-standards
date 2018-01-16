@@ -2,7 +2,7 @@ import os.path as osp
 from glob import glob
 
 from yaml import load
-
+import yamlordereddictloader
 
 # load all the YAML specs
 specs_dir = osp.dirname(__file__)
@@ -11,7 +11,7 @@ specs = {}
 for yaml_file in specs_files:
     name = osp.splitext(osp.basename(yaml_file))[0]
     with open(yaml_file, 'r') as ip:
-        spec_data = load(ip)
+        spec_data = load(ip, Loader=yamlordereddictloader.Loader)
     specs[name] = spec_data
 
 
