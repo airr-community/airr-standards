@@ -5,25 +5,25 @@ Reference library for AIRR schema for Ig/TCR rearrangements
 from airr.formats import RearrangementsFile
 
 
-def read(filename=None, handle=None, debug=False):
+def read(handle, debug=False):
     """Open an AIRR rearrangements file and read its contents"""
-    return RearrangementsFile(False, filename=filename, handle=handle, debug=debug)
+    return RearrangementsFile(False, handle, debug=debug)
 
 
-def create(filename=None, handle=None, debug=False):
+def create(handle, debug=False):
     """Create an empty AIRR rearrangements file"""
-    return RearrangementsFile(True, filename=filename, handle=handle, debug=debug)
+    return RearrangementsFile(True, handle, debug=debug)
 
 
-def createDerivation(inputFilename, outputFilename, toolEntity, activity,
+def createDerivation(inputHandle, outputHandle, toolEntity, activity,
                      namespace, namespaceURI):
     """Create a derived AIRR rearrangments file, possibly with addl annotation
     fields
     """
-    ifile = RearrangementsFile(False, filename=inputFilename)
-    ofile = RearrangementsFile(True, filename=outputFilename)
+    ifile = RearrangementsFile(False, inputHandle)
+    ofile = RearrangementsFile(True, outputHandle)
     ofile.deriveFrom(ifile)
-    ofile.addAnnotationActivity(inputFilename, outputFilename, toolEntity, activity, None, namespace, namespaceURI)
+    ofile.addAnnotationActivity(inputHandle.name, outputHandle.name, toolEntity, activity, None, namespace, namespaceURI)
     return [ifile, ofile]
 
 
