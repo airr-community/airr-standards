@@ -35,7 +35,11 @@ For step-by-step instructions on carrying out theses steps an AIRR study submiss
 
 ### How to cite?
 
-_Manuscript in preparation_
+Rubelt F _et al._
+Adaptive Immune Receptor Repertoire Community recommendations for sharing immune-repertoire sequencing data.
+Nat Immunol 18:1274 (2017)
+[[PubMed]](https://www.ncbi.nlm.nih.gov/pubmed/29144493) [[DOI]](https://doi.org/10.1038/ni.3873) [[SharedIt - free to read]](https://rdcu.be/E7sS)
+
 <!---
 The following link could give a false impression on contribution to the MiAIRR standard, therefore please keep it
 commented out until the actual MiAIRR publication it out and can be referenced too.

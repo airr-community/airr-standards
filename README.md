@@ -19,9 +19,17 @@ AIRR sequences. The detailed data elements within these sets are defined
 - [NCBI-based](https://github.com/airr-community/airr-standards/tree/master/NCBI_implementation)
 - AIRR Common Repositories - _in development_
 
-### How to cite?
+### References
 
-Breden, Felix, et al. "Perspective: Reproducibility and Reuse of Adaptive Immune Receptor Repertoire Data." Frontiers in Immunology 8 (2017): 1418.
+Rubelt F _et al._
+Adaptive Immune Receptor Repertoire Community recommendations for sharing immune-repertoire sequencing data.
+Nat Immunol 18:1274 (2017)
+[[PubMed]](https://www.ncbi.nlm.nih.gov/pubmed/29144493) [[DOI]](https://doi.org/10.1038/ni.3873) [[SharedIt - free to read]](https://rdcu.be/E7sS)
+
+Breden F _et al._
+Reproducibility and Reuse of Adaptive Immune Receptor Repertoire Data.
+Front Immunol 8:1418 (2017)
+[[PubMed]](https://www.ncbi.nlm.nih.gov/pubmed/29163494) [[DOI]](https://doi.org/10.3389/fimmu.2017.01418) <img src="https://github.com/airr-community/airr-standards/raw/master/images/logo_OA_9x14.png"  title="Open Access"/>
 
 <!---
 The following link could give a false impression on contribution to the MiAIRR standard, therefore please keep it

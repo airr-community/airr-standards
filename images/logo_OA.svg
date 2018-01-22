@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg14"
+   version="1.1"
+   height="1000"
+   width="640">
+  <defs
+     id="defs18" />
+  <metadata
+     id="metadata2">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:creator>art designer at PLoS, modified by Wikipedia users Nina, Beao, JakobVoss, and AnonMoos</dc:creator>
+        <dc:description>Open Access logo, converted into svg, designed by PLoS. This version with transparent background.</dc:description>
+        <dc:source>http://commons.wikimedia.org/wiki/File:Open_Access_logo_PLoS_white.svg</dc:source>
+        <dc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <cc:attributionName>art designer at PLoS, modified by Wikipedia users Nina, Beao, JakobVoss, and AnonMoos</cc:attributionName>
+        <cc:attributionURL>http://www.plos.org/</cc:attributionURL>
+        <dc:title></dc:title>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     style="display:inline;fill:none;stroke:#f68212;stroke-width:104.76399994"
+     id="g10">
+    <path
+       style="display:inline"
+       id="path6"
+       d="m 111.387,308.135 v -35.727 a 209.21,209.214 0 0 1 418.42,0 v 258.426" />
+    <circle
+       style="display:inline"
+       id="circle8"
+       r="256.08301"
+       cy="680.729"
+       cx="320.004" />
+  </g>
+  <circle
+     style="display:inline;fill:#f68212"
+     id="circle12"
+     r="86.428703"
+     cy="681.659"
+     cx="321.01001" />
+</svg>
