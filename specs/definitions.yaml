@@ -2,266 +2,6 @@
 # Schema definitions for AIRR standards objects
 #
 
-#
-# MiAIRR - AIRR minimal standards objects
-#
-
-# The overall study with a globally unique study_id
-MiAIRR_Study:
-   discriminator: MiAIRR
-   type: object
-   properties:
-      study_id:
-         type: string
-      study_title:
-         type: string
-      study_description:
-         type: string
-      inclusion_exclusion_criteria:
-         type: string
-      grants:
-         type: string
-      lab_name:
-         type: string
-      collected_by:
-         type: string
-      submitted_by:
-         type: string
-      lab_address:
-         type: string
-      pub_ids:
-         type: string
-
-# subject_id is unique within a study
-MiAIRR_Subject:
-   discriminator: MiAIRR
-   type: object
-   properties:
-      subject_id:
-         type: string
-      synthetic:
-         type: boolean
-      organism:
-         type: string
-      sex:
-         type: string
-      age:
-         type: string
-      age_event:
-         type: string
-      ancestry_population:
-         type: string
-      ethnicity:
-         type: string
-      race:
-         type: string
-      strain_name:
-         type: string
-      linked_subjects:
-         type: string
-      link_type:
-         type: string
-
-# minimal standards diagnosis and intervention
-MiAIRR_Diagnosis:
-   discriminator: MiAIRR
-   type: object
-   properties:
-      study_group_description:
-         type: string
-      disease_diagnosis:
-         type: string
-      disease_length:
-         type: string
-      disease_stage:
-         type: string
-      prior_therapies:
-         type: string
-      immunogen:
-         type: string
-      intervention:
-         type: string
-      medical_history:
-         type: string
-
-# minimal standards sample
-# sample_id is unique within a study
-MiAIRR_Sample:
-   discriminator: MiAIRR
-   type: object
-   properties:
-      sample_id:
-         type: string
-      sample_type:
-         type: string
-      tissue:
-         type: string
-      anatomic_site:
-         type: string
-      disease_state_sample:
-         type: string
-      collection_time_point_relative:
-         type: string
-      collection_time_point_reference:
-         type: string
-      biomaterial_provider:
-         type: string
-
-# minimal standards cell processing
-MiAIRR_CellProcessing:
-   discriminator: MiAIRR
-   type: object
-   properties:
-      tissue_processing:
-         type: string
-      cell_subset:
-         type: string
-      cell_phenotype:
-         type: string
-      single_cell:
-         type: boolean
-      cell_number:
-         type: integer
-      cells_per_reaction:
-         type: integer
-      cell_storage:
-         type: boolean
-      cell_quality:
-         type: string
-      cell_isolation:
-         type: string
-      cell_processing_protocol:
-         type: string
-
-# minimal standards nucleic acid processing
-MiAIRR_NucleicAcidProcessing:
-   discriminator: MiAIRR
-   type: object
-   properties:
-      template_class:
-         enum:
-            - DNA
-            - RNA
-      template_quality:
-         type: string
-      template_amount:
-         type: string
-      library_generation_method:
-         type: string
-      library_generation_protocol:
-         type: string
-      library_generation_kit_version:
-         type: string
-      pcr_target_locus:
-         type: string
-      forward_pcr_primer_target_location:
-         type: string
-      reverse_pcr_primer_target_location:
-         type: string
-      complete_sequences:
-         enum:
-            - partial
-            - complete
-            - "complete & untemplated"
-      physical_linkage:
-         type: string
-      total_reads_passing_qc_filter:
-         type: integer
-      sequencing_platform:
-         type: string
-      read_length:
-         type: string
-      sequencing_facility:
-         type: string
-      sequencing_run_id:
-         type: string
-      sequencing_run_date:
-         type: string
-      sequencing_kit:
-         type: string
-
-# minimal standards software processing
-MiAIRR_SoftwareProcessing:
-   discriminator: MiAIRR
-   type: object
-   properties:
-      software_versions:
-         type: string
-      paired_reads_assembly:
-         type: string
-      quality_thresholds:
-         type: string
-      primer_match_cutoffs:
-         type: string
-      collapsing_method:
-         type: string
-      data_processing_protocols:
-         type: string
-
-# The minimal standards rearrangement object
-MiAIRR_Rearrangement:
-   discriminator: MiAIRR
-   type: object
-   required:
-      - germline_database
-      - cell_index
-      - v_call
-      - d_call
-      - j_call
-      - c_call
-      - junction_nt
-      - junction_aa
-   properties:
-        germline_database:
-          type: string
-          description: >
-            Source of germline V(D)J segments, with version number or
-            date accessed (e.g. IMGT/V-QUEST Release 201736-4 (7 September 2017)) (AIRR)
-        cell_index:
-          type: integer
-          description: |
-            Cell Index (UID linking sequences from the same cell) (AIRR)
-        v_call:
-          type: string
-          description: |
-            V gene with allele (e.g. IGHV4-59*01) (AIRR)
-        d_call:
-          type: string
-          description: |
-            D gene with allele (e.g. IGHD3-10*01) (AIRR)
-        j_call:
-          type: string
-          description: |
-            J gene with allele (e.g. IGHJ4*02) (AIRR)
-        c_call:
-          type: string
-          description: |
-            C region with allele (AIRR)
-        junction_nt:
-          type: string
-          description: >
-            JUNCTION nucleotide sequence (Sequence of the CDR3
-            region (nucleotide)) (AIRR)
-        junction_aa:
-          type: string
-          description: >
-            JUNCTION amino acid sequence (Sequence of the CDR3
-            region (amino acid)) (AIRR)
-        duplicate_count:
-          type: integer
-          description: >
-           Copy number/number of duplicate observations for this sequence (e.g.,
-           number of UMIs sharing an identical sequence, or number of identical
-           observations of this sequence absent UMIs)
-
-
-#
-# AIRR standard objects
-#
-# These contain additional fields that define the
-# relationship between the objects
-#
-
 # The overall study with a globally unique study_id
 Study:
    discriminator: AIRR
@@ -269,24 +9,44 @@ Study:
    properties:
       study_id:
          type: string
+         description: Unique ID assigned by study registry
+         x-miairr: true
       study_title:
          type: string
+         description: Descriptive study title
+         x-miairr: true
       study_description:
          type: string
+         description: Generic study design
+         x-miairr: true
       inclusion_exclusion_criteria:
          type: string
+         description: List of criteria for inclusion/exclusion for the study
+         x-miairr: true
       grants:
          type: string
-      lab_name:
-         type: string
+         description: Funding agencies and grant numbers
+         x-miairr: true
       collected_by:
          type: string
-      submitted_by:
+         description: Full contact information of the corresponding author, i.e. who is legally responsible for data collection and release. This should include an e-mail address.
+         x-miairr: true
+      lab_name:
          type: string
+         description: Department of corresponding author
+         x-miairr: true
       lab_address:
          type: string
+         description: Institutional address of corresponding author
+         x-miairr: true
+      submitted_by:
+         type: string
+         description: Full contact information of the submitter, i.e. the person deposition the data
+         x-miairr: true
       pub_ids:
          type: string
+         description: Publications describing the rationale and/or outcome of the study
+         x-miairr: true
 
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
@@ -298,28 +58,52 @@ Subject:
          type: string
       subject_id:
          type: string
+         description: Subject ID assigned by submitter, unique within study
+         x-miairr: true
       synthetic:
          type: boolean
+         description: TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)
+         x-miairr: true
       organism:
          type: string
+         description: Binomial designation of subject's species
+         x-miairr: true
       sex:
          type: string
+         description: Biological sex of subject
+         x-miairr: true
       age:
          type: string
+         description: Absolute age of subject at time point `Age event`
+         x-miairr: true
       age_event:
          type: string
+         description: Event in the study schedule to which `Age` refers to. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
+         x-miairr: true
       ancestry_population:
          type: string
+         description: Broad geographic origin of ancestry (continent)
+         x-miairr: true
       ethnicity:
          type: string
+         description: Ethnic group of subject (defined as cultural/language-based membership)
+         x-miairr: true
       race:
          type: string
+         description: Racial group of subject (as defined by NIH)
+         x-miairr: true
       strain_name:
          type: string
+         description: Non-human designation of the strain or breed of animal used
+         x-miairr: true
       linked_subjects:
          type: string
+         description: Subject ID to which `Relation type` refers to
+         x-miairr: true
       link_type:
          type: string
+         description: Relation between subject and `linked_subjects`, can be genetic or environmental (e.g.exposure)
+         x-miairr: true
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
@@ -332,20 +116,36 @@ Diagnosis:
          type: string
       study_group_description:
          type: string
+         description: Designation of study arm to which the subject is assigned to
+         x-miairr: true
       disease_diagnosis:
          type: string
+         description: Diagnosis of subject
+         x-miairr: true
       disease_length:
          type: string
+         description: Time duration between initial diagnosis and current intervention
+         x-miairr: true
       disease_stage:
          type: string
+         description: Stage of disease at current intervention
+         x-miairr: true
       prior_therapies:
          type: string
+         description: List of all relevant previous therapies applied to subject for treatment of `Diagnosis`
+         x-miairr: true
       immunogen:
          type: string
+         description: Antigen, vaccine or drug applied to subject at this intervention
+         x-miairr: true
       intervention:
          type: string
+         description: Description of intervention
+         x-miairr: true
       medical_history:
          type: string
+         description: Medical history of subject that is relevant to assess the course of disease and/or treatment
+         x-miairr: true
 
 # 1-to-n relationship between a subject and its samples
 # sample_id is unique within a study
@@ -359,20 +159,36 @@ Sample:
          type: string
       sample_id:
          type: string
+         description: Sample ID assigned by submitter, unique within study
+         x-miairr: true
       sample_type:
          type: string
+         description: The way the sample was obtained, e.g. fine-needle aspirate, organ harvest, peripheral venous puncture
+         x-miairr: true
       tissue:
          type: string
+         description: The actual tissue sampled, e.g. lymph node, liver, peripheral blood
+         x-miairr: true
       anatomic_site:
          type: string
+         description: The anatomic location of the tissue, e.g. Inguinal, femur
+         x-miairr: true
       disease_state_sample:
          type: string
+         description: Histopathologic evaluation of the sample
+         x-miairr: true
       collection_time_point_relative:
          type: string
+         description: Time point at which sample was taken, relative to `Collection time event`
+         x-miairr: true
       collection_time_point_reference:
          type: string
+         description: Event in the study schedule to which `Sample collection time` relates to
+         x-miairr: true
       biomaterial_provider:
          type: string
+         description: Name and address of the entity providing the sample
+         x-miairr: true
 
 # 1-to-n relationship between a sample and processing of its cells
 # cell_processing_id is unique within a study
@@ -388,24 +204,44 @@ CellProcessing:
          type: string
       tissue_processing:
          type: string
+         description: Enzymatic digestion and/or physical methods used to isolate cells from sample
+         x-miairr: true
       cell_subset:
          type: string
+         description: Commonly-used designation of isolated cell population
+         x-miairr: true
       cell_phenotype:
          type: string
+         description: List of cellular markers and their expression levels used to isolate the cell population
+         x-miairr: true
       single_cell:
          type: boolean
+         description: TRUE if single cells were isolated into separate compartments
+         x-miairr: true
       cell_number:
          type: integer
+         description: Total number of cells that went into the experiment
+         x-miairr: true
       cells_per_reaction:
          type: integer
+         description: Number of cells for each biological replicate
+         x-miairr: true
       cell_storage:
          type: boolean
+         description: TRUE if cells were cryo-preserved between isolation and further processing
+         x-miairr: true
       cell_quality:
          type: string
+         description: Relative amount of viable cells after preparation and (if applicable) thawing
+         x-miairr: true
       cell_isolation:
          type: string
+         description: Description of the procedure used for marker-based isolation or enrich cells
+         x-miairr: true
       cell_processing_protocol:
          type: string
+         description: Description of the methods applied to the sample including cell preparation/ isolation/enrichment and nucleic acid extraction. This should closely mirror the Materials and methods section in the manuscript
+         x-miairr: true
 
 # generally, a 1-to-1 relationship between a CellProcessing and processing of its nucleic acid
 # but may be 1-to-n for technical replicates.
@@ -424,43 +260,79 @@ NucleicAcidProcessing:
          enum:
             - DNA
             - RNA
+         description: The class of nucleic acid that was used as primary starting material for the following procedures
+         x-miairr: true
       template_quality:
          type: string
+         description: Description and results of the quality control performed on the template material
+         x-miairr: true
       template_amount:
          type: string
+         description: Amount of template that went into the process
+         x-miairr: true
       library_generation_method:
          type: string
+         description: Generic type of library generation
+         x-miairr: true
       library_generation_protocol:
          type: string
+         description: Description of processes applied to substrate to obtain a library that is ready for sequencing
+         x-miairr: true
       library_generation_kit_version:
          type: string
+         description: When using a library generation protocol from a commercial provider, provide the protocol version number
+         x-miairr: true
       pcr_target_locus:
          type: string
+         description: Designation of the target locus according to standard gene nomencleature
+         x-miairr: true
       forward_pcr_primer_target_location:
          type: string
+         description: Position of the most distal nucleotide templated by the forward primer or primer mix
+         x-miairr: true
       reverse_pcr_primer_target_location:
          type: string
+         description: Position of the most proximal nucleotide templated by the reverse primer or primer mix
+         x-miairr: true
       complete_sequences:
          enum:
             - partial
             - complete
             - "complete & untemplated"
+         description: To be considered `complete`, the procedure used for library construction MUST generate sequences that 1) include the first V segment codon that encodes the mature polypeptide chain (i.e. after the leader sequence) and 2) include the last complete codon of the J segment (i.e. 1 bp 5' of the J->C splice site) and 3) provide sequence information for all positions between 1) and 2). To be considered `complete & untemplated`, the sections of the sequences defined in points 1) to 3) of the previous sentence MUST be untemplated, i.e. MUST NOT overlap with the primers used in library preparation.
+         x-miairr: true
       physical_linkage:
          type: string
+         description: Describes the mode of linkage if a method was used which physically links nucleic acids derived from distinct loci in a single-cell context
+         x-miairr: true
       total_reads_passing_qc_filter:
          type: integer
+         description: Number of usable reads for analysis
+         x-miairr: true
       sequencing_platform:
          type: string
+         description: Designation of sequencing instrument used
+         x-miairr: true
       read_length:
          type: string
+         description: Read length in bases for each direction
+         x-miairr: true
       sequencing_facility:
          type: string
+         description: Name and address of sequencing facility
+         x-miairr: true
       sequencing_run_id:
          type: string
+         description: ID of sequencing run assigned by the sequencing facility
+         x-miairr: true
       sequencing_run_date:
          type: string
+         description: Date of sequencing run
+         x-miairr: true
       sequencing_kit:
          type: string
+         description: Name, manufacturer, order and lot numbers of sequencing kit
+         x-miairr: true
 
 # 1-to-1 relationship between a NucleicAcidProcessing and resultant raw sequencing files
 # filenames are unique within a study
@@ -496,16 +368,28 @@ SoftwareProcessing:
          type: string
       software_versions:
          type: string
+         description: Version number and / or date, include company pipelines
+         x-miairr: true
       paired_reads_assembly:
          type: string
+         description: How paired end reads were assembled into a single receptor sequence
+         x-miairr: true
       quality_thresholds:
          type: string
+         description: How sequences were removed from (4) based on base quality scores
+         x-miairr: true
       primer_match_cutoffs:
          type: string
+         description: How primers were identified in the sequences, were they removed/masked/etc?
+         x-miairr: true
       collapsing_method:
          type: string
+         description: The method used for combining multiple sequences from (4) into a single sequence in (5)
+         x-miairr: true
       data_processing_protocols:
          type: string
+         description: General description of how QC is performed
+         x-miairr: true
 
 
 Alignment:
@@ -605,6 +489,7 @@ Rearrangement:
          description: >
             Source of germline V(D)J segments, with version number or
             date accessed (e.g. IMGT/V-QUEST Release 201736-4 (7 September 2017)) (AIRR)
+         x-miairr: true
       functional:
          type: boolean
          description: VDJ sequence is predicted to be functional
@@ -615,22 +500,27 @@ Rearrangement:
          type: integer
          description: |
             Cell Index (UID linking sequences from the same cell) (AIRR)
+         x-miairr: true
       v_call:
          type: string
          description: |
             V gene with allele (e.g. IGHV4-59*01) (AIRR)
+         x-miairr: true
       d_call:
          type: string
          description: |
             D gene with allele (e.g. IGHD3-10*01) (AIRR)
+         x-miairr: true
       j_call:
          type: string
          description: |
             J gene with allele (e.g. IGHJ4*02) (AIRR)
+         x-miairr: true
       c_call:
          type: string
          description: |
             C region with allele (AIRR)
+         x-miairr: true
       v_score:
         type: number
         description: V alignment score
@@ -660,11 +550,13 @@ Rearrangement:
         description: >
             JUNCTION nucleotide sequence (Sequence of the CDR3
             region (nucleotide)) (AIRR)
+        x-miairr: true
       junction_aa:
         type: string
         description: >
             JUNCTION amino acid sequence (Sequence of the CDR3
             region (amino acid)) (AIRR)
+        x-miairr: true
       v_evalue:
         type: number
         description: V alignment E-value (when applicable)
@@ -806,6 +698,7 @@ Rearrangement:
            Copy number/number of duplicate observations for this sequence (e.g.,
            number of UMIs sharing an identical sequence, or number of identical
            observations of this sequence absent UMIs)
+        x-miairr: true
       consensus_count:
         type: integer
         description: >
@@ -815,4 +708,3 @@ Rearrangement:
       clone:
         type: string
         description: Clone assignment for this sequence
-

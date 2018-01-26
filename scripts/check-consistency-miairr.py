@@ -10,14 +10,14 @@ from deepdiff import DeepDiff
 
 
 miairr_dataset_to_api_object = {
-    '1 / study': 'MiAIRR_Study',
-    '1 / subject': 'MiAIRR_Subject',
-    '1 / diag. & intervent.': 'MiAIRR_Diagnosis',
-    '2 / sample': 'MiAIRR_Sample',
-    '3 / process (cell)': 'MiAIRR_CellProcessing',
-    '3 / process (nucl. acid)': 'MiAIRR_NucleicAcidProcessing',
-    '5 / process (comput.)': 'MiAIRR_SoftwareProcessing',
-    '6 / data (proc. seq.)': 'MiAIRR_Rearrangement'}
+    '1 / study': 'Study',
+    '1 / subject': 'Subject',
+    '1 / diag. & intervent.': 'Diagnosis',
+    '2 / sample': 'Sample',
+    '3 / process (cell)': 'CellProcessing',
+    '3 / process (nucl. acid)': 'NucleicAcidProcessing',
+    '5 / process (comput.)': 'SoftwareProcessing',
+    '6 / data (proc. seq.)': 'Rearrangement'}
 
 
 with open('AIRR_Minimal_Standard_Data_Elements.tsv', 'r') as ip:
@@ -53,7 +53,7 @@ for dataset in miairr_dataset_to_api_object.keys():
         print(f'{api_object} not found in definitions.yaml.\n', file=sys.stderr)
         failed = True
         continue
-    yaml_fields = [property for property in yaml_object['properties']]
+    yaml_fields = [property for property in yaml_object['properties'] if yaml_object['properties'][property].get('x-miairr')]
     if set(tsv_fields) != set(yaml_fields):
         print(f'yaml {api_object} does not match tsv {dataset}', file=sys.stderr)
         for field in set(yaml_fields) - set(tsv_fields):
@@ -65,24 +65,24 @@ for dataset in miairr_dataset_to_api_object.keys():
 
 # check that MiAIRR object definitions contained
 # within AIRR definition
-for miairr_api_object in yaml_data.keys():
-    if yaml_data[miairr_api_object]['discriminator'] == 'MiAIRR':
-        airr_api_object = miairr_api_object.split('_')[1]
-        if airr_api_object not in yaml_data:
-            print(f'{airr_api_object} corresponding to {miairr_api_object} not found in definitions.yaml', file=sys.stderr)
-            failed = True
-            continue
+#for miairr_api_object in yaml_data.keys():
+#    if yaml_data[miairr_api_object]['discriminator'] == 'MiAIRR':
+#        airr_api_object = miairr_api_object.split('_')[1]
+#        if airr_api_object not in yaml_data:
+#            print(f'{airr_api_object} corresponding to {miairr_api_object} not found in definitions.yaml', file=sys.stderr)
+#            failed = True
+#            continue
 
-        for miairr_field in yaml_data[miairr_api_object]['properties']:
-            if miairr_field not in yaml_data[airr_api_object]['properties']:
-                print(f'{miairr_field} in {miairr_api_object} object is not in {airr_api_object} object.', file=sys.stderr)
-                failed = True
-                continue
-            ddiff = DeepDiff(yaml_data[miairr_api_object]['properties'][miairr_field], yaml_data[airr_api_object]['properties'][miairr_field], ignore_order=True)
-            if ddiff:
-                print(f'{miairr_field} in {miairr_api_object} object is not the same object in {airr_api_object}.', file=sys.stderr)
-                print(ddiff, file=sys.stderr)
-                failed = True
+#        for miairr_field in yaml_data[miairr_api_object]['properties']:
+#            if miairr_field not in yaml_data[airr_api_object]['properties']:
+#                print(f'{miairr_field} in {miairr_api_object} object is not in {airr_api_object} object.', file=sys.stderr)
+#                failed = True
+#                continue
+#            ddiff = DeepDiff(yaml_data[miairr_api_object]['properties'][miairr_field], yaml_data[airr_api_object]['properties'][miairr_field], ignore_order=True)
+#            if ddiff:
+#                print(f'{miairr_field} in {miairr_api_object} object is not the same object in {airr_api_object}.', file=sys.stderr)
+#                print(ddiff, file=sys.stderr)
+#                failed = True
 
 
 # check consistency with NCBI XML definitions, per @BusseChristian's pseudocode
