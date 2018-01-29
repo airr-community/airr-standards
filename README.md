@@ -37,6 +37,13 @@ commented out until the actual MiAIRR publication it out and can be referenced t
 [![DOI](https://zenodo.org/badge/104967269.svg)](https://zenodo.org/badge/latestdoi/104967269)
 -->
 
+***
+### How to contribute?
+
+The AIRR Community is an open initiative and we welcome all contributions. Please review our
+[development process](https://github.com/airr-community/airr-standards/tree/master/CONTRIBUTING.md)
+before contributing changes.
+
 ### Report an issue to help us improving MiAIRR
 
 [![Build Status](https://travis-ci.org/airr-community/airr-standards.svg?branch=master)](https://travis-ci.org/airr-community/airr-standards)
@@ -48,6 +55,17 @@ https://waffle.io/airr-community/airr-standards
 For further information about the MiAIRR standard please contact
 [Syed **Ahmad** Chan Bukhari](mailto:ahmad.chan@yale.edu?subject=MiAIRR%20Standard) or
 [Steven Kleinstein](mailto:steven.kleinstein@yale.edu?subject=MiAIRR%20Standard).
+
+***
+### License
+
+(c) 2015 - 2018 by Syed Ahmad Chan Bukhari, Jean-Philippe Bürckert, Christian E. Busse,
+Scott Christley, Brian Corrie, Lindsay G. Cowell, Uri Hershberg, Steven H. Kleinstein,
+Frederick A. Matsen IV, Uri Laserson, Marie-Paule Lefranc, Eline T. Luning Prak, Florian Rubelt,
+Jason Vander Heiden, Corey T. Watson
+
+[![Image](https://i.creativecommons.org/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/)
+This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
 ***
 ### Share on Social Media
@@ -63,9 +81,3 @@ For further information about the MiAIRR standard please contact
 [1]: https://twitter.com/share?url=https://github.com/airr-community/airr-standards
 [2]: https://www.facebook.com/sharer/sharer.php?u=https://github.com/airr-community/airr-standards
 [3]: https://plus.google.com/share?url=https://github.com/airr-community/airr-standards
-
-### How to contribute?
-
-The AIRR Community is an open initiative and we welcome all contributions. Please review our
-[development process](https://github.com/airr-community/airr-standards/tree/master/CONTRIBUTING.md)
-before contributing changes.
