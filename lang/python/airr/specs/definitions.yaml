@@ -94,7 +94,7 @@ Subject:
          x-miairr: true
       strain_name:
          type: string
-         description: Non-human: designation of the strain or breed of animal used
+         description: Non-human designation of the strain or breed of animal used
          x-miairr: true
       linked_subjects:
          type: string
@@ -550,13 +550,13 @@ Rearrangement:
         description: >
             JUNCTION nucleotide sequence (Sequence of the CDR3
             region (nucleotide)) (AIRR)
-         x-miairr: true
+        x-miairr: true
       junction_aa:
         type: string
         description: >
             JUNCTION amino acid sequence (Sequence of the CDR3
             region (amino acid)) (AIRR)
-         x-miairr: true
+        x-miairr: true
       v_evalue:
         type: number
         description: V alignment E-value (when applicable)
@@ -698,7 +698,7 @@ Rearrangement:
            Copy number/number of duplicate observations for this sequence (e.g.,
            number of UMIs sharing an identical sequence, or number of identical
            observations of this sequence absent UMIs)
-         x-miairr: true
+        x-miairr: true
       consensus_count:
         type: integer
         description: >
@@ -708,4 +708,3 @@ Rearrangement:
       clone:
         type: string
         description: Clone assignment for this sequence
-
