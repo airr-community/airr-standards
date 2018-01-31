@@ -1,0 +1,227 @@
+swagger: '2.0'
+info:
+  title: AIRR Common Repository API
+  version: 1.0.0
+  contact:
+    name: AIRR Community
+    url: 'http://www.airr-community.org/'
+    email: join@airr-community.org
+  description: >
+    Major Version 1 of the Adaptive Immune Receptor Repertoire (AIRR)
+    common data repository web service application programming interface (API).
+basePath: /v1
+
+definitions:
+  # The AIRR Common Repository model for repertoire metadata above the rearrangement annotation level.
+  repertoire_model:
+    type: array
+    items:
+      allOf:
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/Study'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/Subject'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/Diagnosis'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/Sample'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/CellProcessing'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/NucleicAcidProcessing'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/RawSequenceData'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/SoftwareProcessing'
+  rearrangement_model:
+    type: array
+    items:
+      allOf:
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/Rearrangement'
+
+parameters:
+  filters:
+    name: filters
+    type: string
+    in: query
+  format:
+    name: format
+    type: string
+    in: query
+  fields:
+    name: fields
+    type: array
+    items:
+      type: string
+    in: query
+  size:
+    name: size
+    type: number
+    in: query
+  from:
+    name: from
+    type: number
+    in: query
+
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/x-www-form-urlencoded
+  - application/json
+tags:
+  - name: info
+    description: Service information
+  - name: repertoires
+    description: Queries for repertoires
+  - name: rearrangements
+    description: Queries for rearrangements
+
+paths:
+  /:
+    x-swagger-router-controller: status
+    get:
+      description: |
+        Service heartbeat.
+      operationId: getStatus
+      responses:
+        '200':
+          description: |
+            Success.
+          schema:
+            type: object
+            properties:
+              result:
+                type: string
+  /info:
+    x-swagger-router-controller: status
+    get:
+      description: |
+        Service information.
+      tags:
+        - info
+      operationId: getInfo
+      responses:
+        '200':
+          description: |
+            Success.
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              version:
+                type: string
+  /swagger:
+    x-swagger-pipe: swagger_raw
+
+  /repertoire:
+    x-swagger-router-controller: repertoire
+    get:
+      description: >
+        This query service returns metadata about repertoires.
+      tags:
+        - repertoires
+      parameters:
+        - $ref: '#/parameters/filters'
+        - $ref: '#/parameters/format'
+        - $ref: '#/parameters/fields'
+        - $ref: '#/parameters/size'
+        - $ref: '#/parameters/from'
+      operationId: getRepertoire
+      responses:
+        '200':
+          description: |
+            A successful call returns an array of repertoire metadata.
+          schema:
+            $ref: '#/definitions/repertoire_model'
+        '400':
+          description: malformed request
+        '401':
+          description: authentication error
+        '403':
+          description: authorization error
+        '404':
+          description: data not found
+        '405':
+          description: method not allowed
+    post:
+      description: >
+        This query service returns metadata about repertoires.
+      tags:
+        - repertoires
+      parameters:
+        - $ref: '#/parameters/filters'
+        - $ref: '#/parameters/format'
+        - $ref: '#/parameters/fields'
+        - $ref: '#/parameters/size'
+        - $ref: '#/parameters/from'
+      operationId: postRepertoires
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of repertoire metadata.
+          schema:
+            $ref: '#/definitions/repertoire_model'
+        '400':
+          description: malformed request
+        '401':
+          description: authentication error
+        '403':
+          description: authorization error
+        '404':
+          description: data not found
+        '405':
+          description: method not allowed
+
+  /rearrangement:
+    x-swagger-router-controller: rearrangement
+    get:
+      description: >
+        This query service returns rearrangement annotation data.
+      tags:
+        - rearrangements
+      parameters:
+        - $ref: '#/parameters/filters'
+        - $ref: '#/parameters/format'
+        - $ref: '#/parameters/fields'
+        - $ref: '#/parameters/size'
+        - $ref: '#/parameters/from'
+      operationId: getRearrangements
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of rearrangement annotation data.
+          schema:
+            $ref: '#/definitions/rearrangement_model'
+        '400':
+          description: malformed request
+        '401':
+          description: authentication error
+        '403':
+          description: authorization error
+        '404':
+          description: data not found
+        '405':
+          description: method not allowed
+    post:
+      description: >
+        This query service returns rearrangement annotation data.
+      tags:
+        - rearrangements
+      parameters:
+        - $ref: '#/parameters/filters'
+        - $ref: '#/parameters/format'
+        - $ref: '#/parameters/fields'
+        - $ref: '#/parameters/size'
+        - $ref: '#/parameters/from'
+      operationId: postRearrangements
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of rearrangement annotation data.
+          schema:
+            $ref: '#/definitions/rearrangement_model'
+        '400':
+          description: malformed request
+        '401':
+          description: authentication error
+        '403':
+          description: authorization error
+        '404':
+          description: data not found
+        '405':
+          description: method not allowed
