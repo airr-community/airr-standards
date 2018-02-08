@@ -2,7 +2,7 @@
 MiAIRR Specifications and Data Submission Manual
 ================================================
 
-:Author: Christian E. Busse, Florian Rubelt and Syed Ahmad Chan Bukhari
+:Authors: Christian E. Busse, Florian Rubelt and Syed Ahmad Chan Bukhari
 
 .. role:: math(raw)
    :format: html latex
@@ -114,17 +114,18 @@ for metadata submission:
 
 #. | Click on "create new submission". You will see a form as below.
      Fill the form with required information and click on "continue".
-   | |image|
+
+.. image:: images/bioproject.png
 
 #. | If you are submitting for the first time, check “Yes” on the "new
      BioProject" or "new BioSample" options to create a new project or
      sample, respectively.
-   | |image|
+   .. image:: images/SRA.png
 
 #. | Fill in the project information. Add as much relevant information
      you can add in description. It will help later in searching the
      particular submission.
-   | |image|
+   .. image:: images/fillproject.png
 
 #. The AIRR BioSample template is not yet listed on the NCBI website.
    The template sheet ``AIRR_BioSample_V1.0.xls`` can be downloaded from
@@ -183,8 +184,6 @@ GenBank provides multiple tools (GUI and command-line) to submit data:
 
 Outline of INSDC reporting procedure
 ====================================
-
-TODO: @Ahmad Outline the reporting procedure for sections 1–4
 
 In terms of standard compliance it is currently REQUIRED [1]_ to deposit
 information for MiAIRR data sets 5 and 6 in general-purpose sequence
@@ -248,12 +247,9 @@ Element mapping
 ===============
 
 The broad strategy of element mapping to the various repositories is
-depicted in [Fig. `[table_map_set_global] <#table_map_set_global>`__]
+depicted below.
 
-Mapping of data sets 1–4 to BioProject/BioSample/SRA
-----------------------------------------------------
-
-TODO: @Ahmad :math:`\rightarrow` Include item-by-item mapping
+.. image:: images/table2.png
 
 Mapping of data set 5 to a user-defined repository
 --------------------------------------------------
