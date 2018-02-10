@@ -7,7 +7,8 @@ MiAIRR overview
    :maxdepth: 2
    :caption: Table of Contents
 
-   ncbi_manual
+   manual_miairr_ncbi
+   specification_miairr_ncbi
 
 
 .. figure:: https://github.com/airr-community/airr-standards/raw/master/images/miairr_logo.png
