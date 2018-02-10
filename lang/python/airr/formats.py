@@ -9,16 +9,12 @@ import csv
 
 from prov import model
 
-from airr.specs import rearrangements
+from airr.specs import definitions
 
 
 class RearrangementsFile(object):
 
-    def __init__(self, state, filename=None, handle=None, debug=False):
-        if not filename and not handle:
-            sys.exit("Error: filename or handle must be provided to RearrangementsFile\n")
-            return None
-
+    def __init__(self, state, handle, debug=False):
         # set logging level. for now, just True/False to issue warnings.
         self.debug = debug
 
@@ -27,20 +23,16 @@ class RearrangementsFile(object):
         self.optionalSpecFieldNames = []
         self.additionalFieldNames = []
         self._inputFieldNames = []
-        for f in rearrangements['fields']:
-            if f['mandatory']: self.mandatoryFieldNames.append(f['name'])
-            else: self.optionalSpecFieldNames.append(f['name'])
+        for f in definitions['Rearrangement']['properties']:
+            if f in definitions['Rearrangement']['required']: self.mandatoryFieldNames.append(f)
+            else: self.optionalSpecFieldNames.append(f)
 
         # writing or reading
         if state:
             # writing
             self.writableState = state
-            if filename:
-                self.dataFile = open(filename, 'w')
-                self.metaFile = open(filename + '.meta.json', 'w')
-            else:
-                self.dataFile = handle
-                self.metaFile = open(handle.name + '.meta.json', 'w')
+            self.dataFile = handle
+            self.metaFile = open(handle.name + '.meta.json', 'w')
             self.metadata = model.ProvDocument()
             self.metadata.set_default_namespace('http://airr-community.org/')
             self.wroteMetadata = False
@@ -48,18 +40,11 @@ class RearrangementsFile(object):
         else:
             # reading
             self.writableState = state
-            if filename:
-                self.dataFile = open(filename, 'r')
-                try:
-                    self.metaFile = open(filename + '.meta.json', 'r')
-                except IOError:
-                    self.metaFile = None
-            else:
-                self.dataFile = handle
-                try:
-                    self.metaFile = open(handle.name + '.meta.json', 'r')
-                except IOError:
-                    self.metaFile = None
+            self.dataFile = handle
+            try:
+                self.metaFile = open(handle.name + '.meta.json', 'r')
+            except IOError:
+                self.metaFile = None
             self.wroteMetadata = None
 
             # read metadata
@@ -78,8 +63,8 @@ class RearrangementsFile(object):
 
     # utility operations
     def specForField(self, name):
-        for f in rearrangements['fields']:
-            if f['name'] == name: return f
+        for f in definitions['Rearrangement']['properties']:
+            if f == name: return definitions['Rearrangement']['properties'][f]
         return None
 
     def convertBool(self, value):

@@ -19,15 +19,30 @@ AIRR sequences. The detailed data elements within these sets are defined
 - [NCBI-based](https://github.com/airr-community/airr-standards/tree/master/NCBI_implementation)
 - AIRR Common Repositories - _in development_
 
-### How to cite?
+### References
 
-Breden, Felix, et al. "Perspective: Reproducibility and Reuse of Adaptive Immune Receptor Repertoire Data." Frontiers in Immunology 8 (2017): 1418.
+Rubelt F _et al._
+Adaptive Immune Receptor Repertoire Community recommendations for sharing immune-repertoire sequencing data.
+Nat Immunol 18:1274 (2017)
+[[PubMed]](https://www.ncbi.nlm.nih.gov/pubmed/29144493) [[DOI]](https://doi.org/10.1038/ni.3873) [[SharedIt - free to read]](https://rdcu.be/E7sS)
+
+Breden F _et al._
+Reproducibility and Reuse of Adaptive Immune Receptor Repertoire Data.
+Front Immunol 8:1418 (2017)
+[[PubMed]](https://www.ncbi.nlm.nih.gov/pubmed/29163494) [[DOI]](https://doi.org/10.3389/fimmu.2017.01418) <img src="https://github.com/airr-community/airr-standards/raw/master/images/logo_OA_9x14.png"  title="Open Access"/>
 
 <!---
 The following link could give a false impression on contribution to the MiAIRR standard, therefore please keep it
 commented out until the actual MiAIRR publication it out and can be referenced too.
 [![DOI](https://zenodo.org/badge/104967269.svg)](https://zenodo.org/badge/latestdoi/104967269)
 -->
+
+***
+### How to contribute?
+
+The AIRR Community is an open initiative and we welcome all contributions. Please review our
+[development process](https://github.com/airr-community/airr-standards/tree/master/CONTRIBUTING.md)
+before contributing changes.
 
 ### Report an issue to help us improving MiAIRR
 
@@ -40,6 +55,17 @@ https://waffle.io/airr-community/airr-standards
 For further information about the MiAIRR standard please contact
 [Syed **Ahmad** Chan Bukhari](mailto:ahmad.chan@yale.edu?subject=MiAIRR%20Standard) or
 [Steven Kleinstein](mailto:steven.kleinstein@yale.edu?subject=MiAIRR%20Standard).
+
+***
+### License
+
+(c) 2015 - 2018 by Syed Ahmad Chan Bukhari, Jean-Philippe Bürckert, Christian E. Busse,
+Scott Christley, Brian Corrie, Lindsay G. Cowell, Uri Hershberg, Steven H. Kleinstein,
+Frederick A. Matsen IV, Uri Laserson, Marie-Paule Lefranc, Eline T. Luning Prak, Florian Rubelt,
+Jason Vander Heiden, Corey T. Watson
+
+[![Image](https://i.creativecommons.org/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/)
+This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
 ***
 ### Share on Social Media
@@ -55,9 +81,3 @@ For further information about the MiAIRR standard please contact
 [1]: https://twitter.com/share?url=https://github.com/airr-community/airr-standards
 [2]: https://www.facebook.com/sharer/sharer.php?u=https://github.com/airr-community/airr-standards
 [3]: https://plus.google.com/share?url=https://github.com/airr-community/airr-standards
-
-### How to contribute?
-
-The AIRR Community is an open initiative and we welcome all contributions. Please review our
-[development process](https://github.com/airr-community/airr-standards/tree/master/CONTRIBUTING.md)
-before contributing changes.

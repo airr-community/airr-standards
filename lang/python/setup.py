@@ -23,7 +23,7 @@ setup(name='airr-formats',
       url='https://airr-formats.readthedocs.org/',
       keywords=('AIRR bioinformatics immunoglobulin antibody adaptive immune '
                 'lymphocyte sequencing TCR CDR3'),
-      install_requires=['pyyaml', 'prov'],
+      install_requires=['pyyaml', 'prov', 'yamlordereddictloader'],
       packages=find_packages(),
       package_data={'airr': ['specs/*.yaml']},
       classifiers=['Intended Audience :: Science/Research',

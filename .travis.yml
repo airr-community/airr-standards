@@ -4,4 +4,4 @@ python:
 install:
   - pip install pyyaml pandas xlrd deepdiff jinja2 jsondiff
 script:
-  - scripts/check-consistency.py
+  - scripts/check-consistency-miairr.py
