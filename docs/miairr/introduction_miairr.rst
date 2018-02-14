@@ -1,0 +1,45 @@
+======================
+Introduction to MiAIRR
+======================
+
+Summary
+=======
+
+One of the primary initiatives of the Adaptive Immune Receptor
+Repertoire (AIRR) Community has been to develop a set of metadata
+standards for the submission of AIRR sequencing datasets. This work has
+been carried out by the `AIRR Community Minimal Standards Working Group`_.
+In order to support reproducibility, standard quality control, and data
+deposition in a common repository, the AIRR Community has agreed to six
+high-level data sets that will guide the publication, curation and
+sharing of AIRR-Seq data and metadata: Study and subject, sample
+collection, sample processing and sequencing, raw sequences, processing
+of sequence data, and processed AIRR sequences. The detailed data
+elements within these sets are defined here__.
+
+.. _`AIRR Community Minimal Standards Working Group`:
+   http://airr-community.org/working_groups/minimal_standards
+
+.. __: https://github.com/airr-community/airr-standards/blob/master/AIRR_Minimal_Standard_Data_Elements.tsv
+
+Implementations
+===============
+
+-  NCBI-based - see this document
+-  AIRR Common Repositories - *in development*
+
+References
+==========
+
+.. [Rubelt_2017] Rubelt F *et al*. AIRR Community Recommendations for
+   Sharing Immune Repertoire Sequencing Data, Nat Immunol 18:1274
+   (2017) `DOI: 10.1038/ni.3873`_
+.. _`DOI: 10.1038/ni.3873`: https://doi.org/10.1038/ni.3873
+
+.. [Breden_2017] Breden F *et al*. Reproducibility and Reuse of
+   Adaptive Immune Receptor Repertoire Data. Front Immunol 8:1418
+   (2017) `DOI: 10.3389/fimmu.2017.01418`_
+.. _`DOI: 10.3389/fimmu.2017.01418`: https://doi.org/10.3389/fimmu.2017.01418
+
+..
+   Add the Zenodo DOI once it has been updated by CERN.

@@ -29,8 +29,8 @@ information:
 6. processed sequences with a basic analysis results
 
 However, MiAIRR only describes the mandatory data items that have to be
-reported, but neither provides details how and where to deposit data
-nor specifies data types and formats. Therefore this document aims to
+reported, but neither provides details how and where to deposit data nor
+specifies data types and formats. Therefore this document aims to
 provide both a submission manual for users as well as a detailed data
 specification for developers.
 
@@ -58,8 +58,6 @@ Group. The mapping of data items in MiAIRR data sets 5 and 6 differs
 substantially in size and structure and therefore requires distinct
 reporting procedures:
 
-
-
 -  Set 5: This is free text information describing the work flow,
    tools and parameters of the sequence read processing. It is
    REQUIRED that this information is deposited as a freely available
@@ -72,7 +70,6 @@ reporting procedures:
    J segment, C region and IMGT-JUNCTION [2]_ [LIGMDB_V12]_. These will
    be deposited in a general-purpose INSDC repository, using the record
    structure described below.
-
 
 INSDC records were originally designed to hold individual Sanger
 sequences. Therefore each record will contain a header with information
@@ -257,6 +254,18 @@ study:
 -  REQUIRED: key ``V_region``. Note that this key MUST NOT be used to
    annotate V segment leader sequence [6]_ [7]_.
 
+-  REQUIRED: key ``misc_feature`` with coordinates identical to those
+   given in ``V_region``. This key MUST contain a ``/note`` qualifier
+   that contains a string as value, which describes the general type of
+   variable region described by the record. The string MUST match the
+   regular expression ::
+
+      /^(immunoglobulin (heavy|light)|T cell receptor (alpha|beta|gamma|delta)) chain variable region$/
+
+   This string will be used as record heading upon import into Genbank.
+   Note that while this behavior of Genbank is undocumented, the
+   procedure has been approved by NCBI.
+
 -  REQUIRED: key ``V_segment``, both coordinates MUST be within
    ``V_region``. Note that this key MUST NOT be used to annotate
    V segment leader sequence [6]_ [7]_.
@@ -333,14 +342,30 @@ Therefore the following procedure MUST be used:
    have a length not divisible by three. This key contains the
    following qualifiers:
 
-   -  REQUIRED: qualifier ``/codon_start`` with the assigned value
-      "1".
+   -  REQUIRED: qualifier ``/codon_start`` with the assigned value "1".
 
    -  REQUIRED: qualifier ``/function`` with the assigned value
       "JUNCTION".
 
+   -  REQUIRED: qualifier ``/product`` with an assigned value matching
+      the regular expression ::
+
+         /^(immunoglobulin (heavy|light)|T cell receptor (alpha|beta|gamma|delta)) chain junction region$/
+
+      The variable region referred to in the string MUST be the same
+      as the one given in the ``misc_feature`` key.
+
    -  RECOMMENDED: qualifier ``/inference``, indicating the tool
       used for positional inference.
+
+   -  FORBIDDEN: qualifier ``/translated``, which will be automatically
+      added by Genbank.
+
+   Note that the complete ``CDS`` key will be removed by Genbank if the
+   translation is out-of-frame.
+
+   **TODO: Clarify with NCBI whether there a fall-back/conversion to**
+   **"misc_feature" if CDS content is out-of-frame?**
 
 
 Record body
@@ -355,15 +380,7 @@ MUST contain:
 References
 ==========
 
-.. [Breden_2017] Breden F *et al*. Reproducibility and Reuse of
-   Adaptive Immune Receptor Repertoire Data. Front Immunol 8:1418
-   (2017) `DOI: 10.3389/fimmu.2017.01418`_
-.. _`DOI: 10.3389/fimmu.2017.01418`: https://doi.org/10.3389/fimmu.2017.01418
-
-.. [Rubelt_2017] Rubelt F *et al*. AIRR Community Recommendations for
-   Sharing Immune Repertoire Sequencing Data, Nat Immunol 18:1274
-   (2017) `DOI: 10.1038/ni.3873`_
-.. _`DOI: 10.1038/ni.3873`: https://doi.org/10.1038/ni.3873
+.. NOTE: Some references are defined in other documents!
 
 .. [LIGMDB_V12] IMGT-ONTOLOGY definitions.
    <http://www.imgt.org/ligmdb/label#JUNCTION>
@@ -475,6 +492,8 @@ Example record (GenBank format)
                          /rearranged
                          /note="AIRR_READ_COUNT:123”
          V_region        1..324
+         misc_feature    1..324
+                         /note="immunoglobulin heavy chain variable region"
          V_segment       1..257
                          /gene="IGHV1-34"
                          /allele="01"
@@ -490,6 +509,7 @@ Example record (GenBank format)
          CDS             <258..>290
                          /codon_start=1
                          /function="JUNCTION"
+                         /product="immunoglobulin heavy chain junction region"
                          /inference="COORDINATES:nucleotide motif:IgBLAST:1.6"
                          /translated="CARAGVYDGYTMDYW"
          C_region        325..420
@@ -504,85 +524,96 @@ Example record (GenBank format)
           361 ctgtgtgtgg aggtacaact ggctcctcgg tgactctagg atgcctggtc aagggcaact
     //
 
-
-Example record (ENA format)
----------------------------
-
-::
-
-    ID   AB123456; SV 7; linear; mRNA; EST; MUS; 420 BP.
-    XX
-    AC   AB123456;
-    XX
-    DT   01-JAN-2000 (Rel. 001, Created)
-    DT   01-JAN-2015 (Rel. 101, Last updated, Version 7)
-    XX
-    DE   <free text description>
-    XX
-    KW   <other keywords>; AIRR.
-    XX
-    OS   Mus musculus
-    OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
-    OC   Mammalia; Eutheria; Euarchontoglires; Glires; Rodentia;
-    OC   Sciurognathi; Muroidea; Muridae; Murinae; Mus.
-    XX
-    RN   [1]
-    RA   Stibbons P.;
-    RT   ;
-    RP   1-420
-    RL   Submitted (01-JAN-2000) to the INSDC.
-    RL   Center for Transcendental Immunology, Unseen University,
-    RL   Ankh-Morpork, 12345, DISCWORLD.
-    XX
-    RN   [2]
-    RA   Stibbons P.;
-    RT   Section 5 information for experiment FOO1;
-    RL   published (01-JAN-2000) on Zenodo
-    RX   DOI; 10.1000/0000-12345678.
-    XX
-    DR   BioProject; PRJNA000001.
-    DR   BioSample; SAMN000001.
-    DR   SRA; SRR0000001.
-    XX
-    FH   Key            Location/Qualifiers
-    FH
-    FT   source           1..420
-    FT                    /organism="Mus musculus"
-    FT                    /mol_type="mRNA"
-    FT                    /strain=”C57BL/6J”
-    FT                    /citation=[2]
-    FT                    /rearranged
-    FT                    /note="AIRR_READ_COUNT:123”
-    FT   V_region         1..324
-    FT   V_segment        1..257
-    FT                    /gene=”IGHV1-34”
-    FT                    /allele="01"
-    FT                    /db_xref=”IMGT/LIGM:AC073565”
-    FT   D_segment        266..272
-    FT                    /gene=”IGHD2-2”
-    FT                    /allele="01"
-    FT                    /db_xref=”IMGT/LIGM:AJ851868”
-    FT   J_segment        291..324
-    FT                    /gene=”IGHJ4”
-    FT                    /allele="01"
-    FT                    /db_xref=”IMGT/LIGM:V00770”
-    FT   CDS              <258..>290
-    FT                    /codon_start=1
-    FT                    /function=”JUNCTION”
-    FT                    /inference="COORDINATES:nucleotide motif:IgBLAST:1.6"
-    FT                    /translated="CARAGVYDGYTMDYW"
-    FT   C_region         325..420
-    FT                    /gene=”Ighg2c”
-    XX
-    SQ   Sequence 420 BP; 108 A; 108 C; 109 G; 95 T; 0 other;
-        agcctggggc ttcagtgaag atgtcctgca aggcttctgg ctacacattc actgactata       60
-        acatacactg ggtgaagcag agccatggaa agagccttga gtggattgca tatattaatc       120
-        ctaacaatgg tggttatggc tataacgaca agttcaggga caaggccaca ttgactgtcg       180
-        acaggtcatc caacacagcc tacatggggc tccgcagcct gacctctgag gactctgcag       240
-        tctattactg tgcaagagcg ggagtttacg acggatatac tatggactac tggggtcaag       300
-        gaacctcagt caccgtctcc tcagccaaaa caacagcccc atcggtctat ccactggccc       360
-        ctgtgtgtgg aggtacaact ggctcctcgg tgactctagg atgcctggtc aagggcaact       420
-    //
+..
+   !!
+   !! The follow ENA record is currently quoted as:
+   !! - this file is actually the NCBI documentation, so it should not
+   !!   be here to start with.
+   !! - it is currently unclear whether all key/qualifiers in the
+   !!   feature table (espec. ``misc_feature`` and ``/product``) would
+   !!   be used in the same way by EBI as they are by NCBI.
+   !!
+   Example record (ENA format)
+   ---------------------------
+   ::
+      ID   AB123456; SV 7; linear; mRNA; EST; MUS; 420 BP.
+      XX
+      AC   AB123456;
+      XX
+      DT   01-JAN-2000 (Rel. 001, Created)
+      DT   01-JAN-2015 (Rel. 101, Last updated, Version 7)
+      XX
+      DE   <free text description>
+      XX
+      KW   <other keywords>; AIRR.
+      XX
+      OS   Mus musculus
+      OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+      OC   Mammalia; Eutheria; Euarchontoglires; Glires; Rodentia;
+      OC   Sciurognathi; Muroidea; Muridae; Murinae; Mus.
+      XX
+      RN   [1]
+      RA   Stibbons P.;
+      RT   ;
+      RP   1-420
+      RL   Submitted (01-JAN-2000) to the INSDC.
+      RL   Center for Transcendental Immunology, Unseen University,
+      RL   Ankh-Morpork, 12345, DISCWORLD.
+      XX
+      RN   [2]
+      RA   Stibbons P.;
+      RT   Section 5 information for experiment FOO1;
+      RL   published (01-JAN-2000) on Zenodo
+      RX   DOI; 10.1000/0000-12345678.
+      XX
+      DR   BioProject; PRJNA000001.
+      DR   BioSample; SAMN000001.
+      DR   SRA; SRR0000001.
+      XX
+      FH   Key            Location/Qualifiers
+      FH
+      FT   source           1..420
+      FT                    /organism="Mus musculus"
+      FT                    /mol_type="mRNA"
+      FT                    /strain=”C57BL/6J”
+      FT                    /citation=[2]
+      FT                    /rearranged
+      FT                    /note="AIRR_READ_COUNT:123”
+      FT   V_region         1..324
+      FT   misc_feature     1..324
+      FT                    /note="immunoglobulin heavy chain variable region"
+      FT   V_segment        1..257
+      FT                    /gene=”IGHV1-34”
+      FT                    /allele="01"
+      FT                    /db_xref=”IMGT/LIGM:AC073565”
+      FT   D_segment        266..272
+      FT                    /gene=”IGHD2-2”
+      FT                    /allele="01"
+      FT                    /db_xref=”IMGT/LIGM:AJ851868”
+      FT   J_segment        291..324
+      FT                    /gene=”IGHJ4”
+      FT                    /allele="01"
+      FT                    /db_xref=”IMGT/LIGM:V00770”
+      FT   CDS              <258..>290
+      FT                    /codon_start=1
+      FT                    /function=”JUNCTION”
+      FT                    /product="immunoglobulin heavy chain junction region"
+      FT                    /inference="COORDINATES:nucleotide motif:IgBLAST:1.6"
+      FT                    /translated="CARAGVYDGYTMDYW"
+      FT   C_region         325..420
+      FT                    /gene=”Ighg2c”
+      XX
+      SQ   Sequence 420 BP; 108 A; 108 C; 109 G; 95 T; 0 other;
+          agcctggggc ttcagtgaag atgtcctgca aggcttctgg ctacacattc actgactata       60
+          acatacactg ggtgaagcag agccatggaa agagccttga gtggattgca tatattaatc       120
+          ctaacaatgg tggttatggc tataacgaca agttcaggga caaggccaca ttgactgtcg       180
+          acaggtcatc caacacagcc tacatggggc tccgcagcct gacctctgag gactctgcag       240
+          tctattactg tgcaagagcg ggagtttacg acggatatac tatggactac tggggtcaag       300
+          gaacctcagt caccgtctcc tcagccaaaa caacagcccc atcggtctat ccactggccc       360
+          ctgtgtgtgg aggtacaact ggctcctcgg tgactctagg atgcctggtc aagggcaact       420
+      //
+   !!
+   !! End of quoted block
 
 
 Glossary
