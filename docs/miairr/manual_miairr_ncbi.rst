@@ -40,7 +40,7 @@ Scope of this document
 ----------------------
 
 Provide a user manual describing the submission of AIRR data using
-the NCBI reference implementation described in :raw-latex:`\cite{rubelt_airr_2017}`.
+the NCBI reference implementation described in [Rubelt_2017]_.
 This implementation uses NCBI’s BioProject, BioSample, Sequence Read Archive (SRA)
 and GenBank repositories and metadata standards to report AIRR data.
 
@@ -72,25 +72,24 @@ Submissions via the web interface
 Submitting AIRR data and associated metadata to the Bioproject,
 BioSample and SRA repositories via NCBI’s web interface follows in
 general the submission procedure described in
-:raw-latex:`\cite{noauthor_sra_2010}`, but uses AIRR-specific template
+[NCBI_NBK47528]_, but uses AIRR-specific template
 for metadata submission:
 
 #. Go to https://submit.ncbi.nlm.nih.gov/subs/sra/ and login with your
    NCBI account (create an account if necessary).
 
-#. | Click on "create new submission". You will see a form as below.
-     Fill the form with required information and click on "continue".
+#. Click on "create new submission". You will see a form as below.
+   Fill the form with required information and click on "continue".
+   .. image:: images/bioproject.png
 
-.. image:: images/bioproject.png
-
-#. | If you are submitting for the first time, check “Yes” on the "new
-     BioProject" or "new BioSample" options to create a new project or
-     sample, respectively.
+#. If you are submitting for the first time, check “Yes” on the "new
+   BioProject" or "new BioSample" options to create a new project or
+   sample, respectively.
    .. image:: images/SRA.png
 
-#. | Fill in the project information. Add as much relevant information
-     you can add in description. It will help later in searching the
-     particular submission.
+#. Fill in the project information. Add as much relevant information
+   you can add in description. It will help later in searching the
+   particular submission.
    .. image:: images/fillproject.png
 
 #. The AIRR BioSample template is not yet listed on the NCBI website.
@@ -122,9 +121,6 @@ frequently submit AIRR-seq data to SRA using scripts to generate the XML
 files MUST ensure that the templates are identical to the current
 upstream version on Github.
 
-.. raw:: latex
-
-   \pagebreak
 
 MiAIRR data submission to GenBank
 ---------------------------------
@@ -143,6 +139,4 @@ GenBank provides multiple tools (GUI and command-line) to submit data:
    files (.sqn) for submission to GenBank, driven by multiple tabular
    unput data files. Documentation and download options can be found
    under https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/.
-
-.. raw:: latex
 
