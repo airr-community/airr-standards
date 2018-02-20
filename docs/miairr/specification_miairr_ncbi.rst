@@ -181,8 +181,9 @@ Mapping of data set 6 to INSDC
 Users should note that while the FT is standardized, the overall
 sequence record structure diverges between the three INSDC
 repositories. The following section refers to items at or above the
-hierarchy level of the FT using the ENA specification [ENA_MANUAL]_,
-the corresponding designations of GenBank are provided in parenthesis.
+hierarchy level of the FT using the GenBank specification [GENBANK_FF]_,
+the corresponding designations of ENA [ENA_MANUAL]_ are provided in
+parenthesis [11]_.
 
 
 Record header
@@ -193,24 +194,40 @@ The header MUST contain all of the following elements:
 -  REQUIRED: header structure as specified by the respective INSDC
    repository [ENA_MANUAL]_ [GENBANK_FF]_ [GENBANK_SR]_.
 
+-  FORBIDDEN: The ``DEFINITION`` entry will be autopopulated by
+   information provided in the FT part (``misc_feature``, ``/note``).
+
 -  REQUIRED: identifier of the associated SRA record (MiAIRR data
-   set 4) as ``DR`` line (GenBank: ``DBLINK``). Note that it is **not**
+   set 4) as ``DBLINK`` (ENA: ``DR`` line). Note that it is **not**
    possible to refer to individual raw reads, only the full SRA
    collections can be linked.
 
--  REQUIRED: the term "AIRR" is included in the ``KW`` line (GenBank:
-   ``KEYWORDS``).
+-  REQUIRED: in the ``KEYWORDS`` field (ENA: ``KW`` line):
+
+   -  the term "TLS"
+
+   -  the term "Targeted Locus Study"
+
+   -  the term "AIRR"
+
+   -  the term "MiAIRR:<x>.<y>" with <x> and <y> indicating the used
+      version and subversion of the MiAIRR standard.
 
 -  REQUIRED: DOI of the associated free-text record containing the
-   information on data processing (MiAIRR data set 5) as ``RX`` line
-   (GenBank: ``REMARK`` within a ``REFERENCE`` [4]_.
+   information on data processing (MiAIRR data set 5) as ``REMARK``
+   within a ``REFERENCE`` [4]_ (ENA: ``RX`` line).
+
+-  OPTIONAL: The use of `structured records`_ is currently evalutated
+   for use in future versions of the MiAIRR standard.
+
+.. _`structured records`: https://www.ncbi.nlm.nih.gov/genbank/structuredcomment/
 
 
 Feature table
 ~~~~~~~~~~~~~
 
-The feature table, indicated as ``FT`` line (GenBank: ``FEATURES``),
-MUST or SHOULD contain the following keys/qualifiers:
+The feature table, indicated by ``FEATURES`` (ENA: ``RX`` line), MUST or
+SHOULD contain the following keys/qualifiers:
 
 *General sequence information*
 ..............................
@@ -221,9 +238,9 @@ MUST or SHOULD contain the following keys/qualifiers:
 
    -  REQUIRED: qualifier ``/mol_type`` (required by [INSDC_FT]_).
 
-   -  REQUIRED: qualifier ``/citation`` pointing to the reference in
-      the header (``RN`` line, GenBank: ``REFERENCE``) that links to
-      the data set 5 document.
+   -  REQUIRED: qualifier ``/citation`` pointing to the reference in the
+      header (``REFERENCE``, ENA: ``RN`` line) that links to the data
+      set 5 document.
 
    -  REQUIRED: qualifier ``/rearranged`` [5]_.
 
@@ -243,6 +260,27 @@ MUST or SHOULD contain the following keys/qualifiers:
 
    -  RECOMMENDED: qualifier ``/strain``, if ``/organism`` is "Mus
       musculus".
+
+Note that additional qualifiers might be REQUIRED by GenBank to
+harmonize the GenBank record with the BioSample referenced by it in the
+header. A list of known BioSample keyword and GenBank qualifiers that
+MUST contain the same information can be found below. Whether (and if
+yes in which direction) the existence of a keyword/qualifiers triggers
+a requirement in the corresponding record is currently unknown. Please
+report any undocumented requirements surfacing during submission to the
+MiAIRR team.
+
++-------------------+----------------------+
+| BioSample keyword | GenBank FT qualifier |
++===================+======================+
+| ``cell type``     | ``/cell_type``       |
++-------------------+----------------------+
+| ``isolate``       | ``/isolate``         |
++-------------------+----------------------+
+| ``sex``           | ``/sex``             |
++-------------------+----------------------+
+| ``tissue``        | ``/tissue_type``     |
++-------------------+----------------------+
 
 *Segment and region annotation*
 ...............................
@@ -303,10 +341,30 @@ qualifiers:
    the inferred segment in a germline database [INSDC_XREF]_. This
    qualifier can be present multiple times, however only the first
    entry is mandatory and MUST link to the database used for the
-   segment designation given with ``/gene``.
+   segment designation given with ``/gene`` and (if present)
+   ``/allele``.
+
+   Note on referencing IMGT databases: There are two IMGT database
+   available in the controlled vocabulary [INSDC_XREF]_:
+
+   -  ``IMGT/GENE-DB``: This is the genome database, which requires
+      that a reference sequence has been mapped to genomic DNA. When
+      using this database as reference, note that you can only refer to
+      the gene symbol **not** the allele. In the case of ambiguous
+      allele calls (see below) this means that you MUST NOT annotate any
+      ``/allele`` at all. Nevertheless, this SHOULD be the default
+      database for applications using IMGT as reference, as the sequence
+      for each gene/allele is unique.
+
+   -  ``IMGT/LIGM``: This database collects sequences described in
+      INSDC databases (GenBank/ENA/DDBJ). As it might contain multiple
+      entries representing a given gene/allele, it is NOT RECOMMENDED
+      to use it unless that inference gene/allele is only present in
+      ``IMGT/LIGM`` and not in ``IMGT/GENE-DB``.
 
 -  RECOMMENDED: ``/inference`` to indicate the tool used for segment
-   inference.
+   inference. The description string SHOULD use ``COORDINATES`` as
+   category and ``aligment`` as type [INSDC_FT]_.
 
 Annotation of sequences producing multiple hits with identical scores
 is problematic and is ultimately at the discretion of the depositing
@@ -318,7 +376,8 @@ followed:
    match to the sequence, the ``/allele`` qualifier MUST NOT be used.
    As the REQUIRED ``/db_xref`` qualifier will ofter refer to a
    specific allele, all equal hits SHOULD be annoted via this qualifier
-   (which can be use multiple times).
+   (which can be use multiple times). Also see the note on the
+   limitations of the IMGT/GENE-DB reference database above.
 
 -  Ambiguous gene: Pick one, annotate using the qualifiers as noted for
    ambiguous allele.
@@ -355,24 +414,35 @@ Therefore the following procedure MUST be used:
       The variable region referred to in the string MUST be the same
       as the one given in the ``misc_feature`` key.
 
-   -  RECOMMENDED: qualifier ``/inference``, indicating the tool
-      used for positional inference.
+   -  RECOMMENDED: qualifier ``/inference``, indicating the tool used
+      for positional inference. The description string SHOULD use
+      ``COORDINATES`` as category and ``protein motif`` as type
+      [INSDC_FT]_.
 
    -  FORBIDDEN: qualifier ``/translated``, which will be automatically
       added by Genbank.
 
    Note that the complete ``CDS`` key will be removed by Genbank if the
-   translation is out-of-frame.
+   translation contains stop codons or to many "N" (exact number
+   unknown). As such a record will lack a central piece of REQUIRED
+   information it is RECOMMENDED that submitters either
 
-   **TODO: Clarify with NCBI whether there a fall-back/conversion to**
-   **"misc_feature" if CDS content is out-of-frame?**
+   -  remove the complete record or
+
+   -  replace the ``CDS`` with a ``misc_feature`` key while at the same
+      time removing the ``/codon_start`` and ``/product`` qualifiers
+
+   upfront, as described in the submission manual. If the submitter
+   chooses the replacement option, it has to be ensured that the
+   annotated coordinates are actually valid and not affect by the frame-
+   shift.
 
 
 Record body
 ~~~~~~~~~~~
 
-The record body starts with an ``SQ`` line (GenBank: ``ORIGIN``) and
-MUST contain:
+The record body starts after ``ORIGIN`` (ENA: ``SQ`` line) and MUST
+contain:
 
 -  the consensus sequence
 
@@ -450,6 +520,10 @@ Footnotes
    the `JUNCTION` tag as specified here, a motion for an
    INSDC-sanctioned key could be initiated.
 
+.. [11] Note that there is currently no submission specification for
+   ENA. This information is provided for reference only and will be
+   moved to a separate document in the future.
+
 
 Appendix
 ========
@@ -460,69 +534,73 @@ Example record (GenBank format)
 
 ::
 
-    LOCUS       AB123456                 420 bp    mRNA    linear   EST 01-JAN-2015
-    DEFINITION  <free text description>
-    ACCESSION   AB123456
-    VERSION     AB123456.7
-    KEYWORDS    <other keywords>; AIRR.
-    SOURCE      Mus musculus
-      ORGANISM  Mus musculus
-                Eukaryota; Metazoa; Chordata; Craniata; Vertebrata;
-                Euteleostomi; Mammalia; Eutheria; Euarchontoglires; Glires; Rodentia;
-                Sciurognathi; Muroidea; Muridae; Murinae; Mus.
-    REFERENCE   1  (bases 1 to 420)
-      AUTHORS   Stibbons,P.
-      TITLE     Section 5 information for experiment FOO1
-      JOURNAL   published (01-JAN-2000) on Zenodo
-      REMARK    DOI:10.1000/0000-12345678
-    REFERENCE   2  (bases 1 to 420)
-      AUTHORS   Stibbons,P.
-      TITLE     Direct Submission
-      JOURNAL   Submitted (01-JAN-2000) Center for Transcendental Immunology, Unseen
-                University, Ankh-Morpork, 12345, DISCWORLD
-    DBLINK      BioProject: PRJNA000001
-                BioSample: SAMN000001
-                Sequence Read Archive: SRR0000001
-    FEATURES             Location/Qualifiers
-         source          1..420
-                         /organism="Mus musculus"
-                         /mol_type="mRNA"
-                         /strain="C57BL/6J"
-                         /citation=[1]
-                         /rearranged
-                         /note="AIRR_READ_COUNT:123”
-         V_region        1..324
-         misc_feature    1..324
-                         /note="immunoglobulin heavy chain variable region"
-         V_segment       1..257
-                         /gene="IGHV1-34"
-                         /allele="01"
-                         /db_xref="IMGT/LIGM:AC073565"
-         D_segment       266..272
-                         /gene="IGHD2-2"
-                         /allele="01"
-                         /db_xref="IMGT/LIGM:AJ851868"
-         J_segment       291..324
-                         /gene="IGHJ4"
-                         /allele="01"
-                         /db_xref="IMGT/LIGM:V00770"
-         CDS             <258..>290
-                         /codon_start=1
-                         /function="JUNCTION"
-                         /product="immunoglobulin heavy chain junction region"
-                         /inference="COORDINATES:nucleotide motif:IgBLAST:1.6"
-                         /translated="CARAGVYDGYTMDYW"
-         C_region        325..420
-                         /gene="Ighg2c"
-    ORIGIN
-            1 agcctggggc ttcagtgaag atgtcctgca aggcttctgg ctacacattc actgactata
-           61 acatacactg ggtgaagcag agccatggaa agagccttga gtggattgca tatattaatc
-          121 ctaacaatgg tggttatggc tataacgaca agttcaggga caaggccaca ttgactgtcg
-          181 acaggtcatc caacacagcc tacatggggc tccgcagcct gacctctgag gactctgcag
-          241 tctattactg tgcaagagcg ggagtttacg acggatatac tatggactac tggggtcaag
-          301 gaacctcagt caccgtctcc tcagccaaaa caacagcccc atcggtctat ccactggccc
-          361 ctgtgtgtgg aggtacaact ggctcctcgg tgactctagg atgcctggtc aagggcaact
-    //
+   LOCUS       AB123456                 420 bp    mRNA    linear   EST 01-JAN-2015
+   DEFINITION  TLS: Mus musculus immunoglobulin heavy chain variable region,
+               sequence.
+   ACCESSION   AB123456
+   VERSION     AB123456.7
+   KEYWORDS    TLS; Targeted Locus Study; AIRR; MiAIRR:1.0.
+   SOURCE      Mus musculus
+     ORGANISM  Mus musculus
+               Eukaryota; Metazoa; Chordata; Craniata; Vertebrata;
+               Euteleostomi; Mammalia; Eutheria; Euarchontoglires; Glires;
+               Rodentia; Sciurognathi; Muroidea; Muridae; Murinae; Mus.
+   REFERENCE   1  (bases 1 to 420)
+     AUTHORS   Stibbons,P.
+     TITLE     Section 5 information for experiment FOO1
+     JOURNAL   published (01-JAN-2000) on Zenodo
+     REMARK    DOI:10.1000/0000-12345678
+   REFERENCE   2  (bases 1 to 420)
+     AUTHORS   Stibbons,P.
+     TITLE     Direct Submission
+     JOURNAL   Submitted (01-JAN-2000) Center for Transcendental Immunology,
+               Unseen University, Ankh-Morpork, 12345, DISCWORLD
+   DBLINK      BioProject: PRJNA000001
+               BioSample: SAMN000001
+               Sequence Read Archive: SRR0000001
+   FEATURES             Location/Qualifiers
+        source          1..420
+                        /organism="Mus musculus"
+                        /mol_type="mRNA"
+                        /strain="C57BL/6J"
+                        /citation=[1]
+                        /rearranged
+                        /note="AIRR_READ_COUNT:123”
+        V_region        1..324
+        misc_feature    1..324
+                        /note="immunoglobulin heavy chain variable region"
+        V_segment       1..257
+                        /gene="IGHV1-34"
+                        /allele="01"
+                        /db_xref="IMGT/LIGM:AC073565"
+                        /inference="COORDINATES:alignment:IgBLAST:1.6"
+        D_segment       266..272
+                        /gene="IGHD2-2"
+                        /allele="01"
+                        /db_xref="IMGT/LIGM:AJ851868"
+                        /inference="COORDINATES:alignment:IgBLAST:1.6"
+        J_segment       291..324
+                        /gene="IGHJ4"
+                        /allele="01"
+                        /db_xref="IMGT/LIGM:V00770"
+                        /inference="COORDINATES:alignment:IgBLAST:1.6"
+        CDS             <258..>290
+                        /codon_start=1
+                        /function="JUNCTION"
+                        /product="immunoglobulin heavy chain junction region"
+                        /inference="COORDINATES:protein motif:IgBLAST:1.6"
+                        /translated="CARAGVYDGYTMDYW"
+        C_region        325..420
+                        /gene="Ighg2c"
+   ORIGIN
+           1 agcctggggc ttcagtgaag atgtcctgca aggcttctgg ctacacattc actgactata
+          61 acatacactg ggtgaagcag agccatggaa agagccttga gtggattgca tatattaatc
+         121 ctaacaatgg tggttatggc tataacgaca agttcaggga caaggccaca ttgactgtcg
+         181 acaggtcatc caacacagcc tacatggggc tccgcagcct gacctctgag gactctgcag
+         241 tctattactg tgcaagagcg ggagtttacg acggatatac tatggactac tggggtcaag
+         301 gaacctcagt caccgtctcc tcagccaaaa caacagcccc atcggtctat ccactggccc
+         361 ctgtgtgtgg aggtacaact ggctcctcgg tgactctagg atgcctggtc aagggcaact
+   //
 
 ..
    !!
@@ -545,7 +623,7 @@ Example record (GenBank format)
       XX
       DE   <free text description>
       XX
-      KW   <other keywords>; AIRR.
+      KW   <other keywords>; AIRR; MiAIRR:1.0.
       XX
       OS   Mus musculus
       OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;

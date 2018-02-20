@@ -122,8 +122,18 @@ files MUST ensure that the templates are identical to the current
 upstream version on Github.
 
 
-MiAIRR data submission to GenBank
----------------------------------
+MiAIRR data submission to GenBank/TLS
+-------------------------------------
+
+Processed sequence data will be submitted to the "Targeted Locus Study"
+(TLS) section of GenBank. The details of this submission process are
+currently still finalized. Basically the procedure is identical to a
+conventional GenBank submission with the exception of additional
+keywords marking it as TLS submission.
+
+Non-functional records should be removed before the data submission or
+use an alternative annotation as described in the specification
+document.
 
 GenBank provides multiple tools (GUI and command-line) to submit data:
 
