@@ -127,11 +127,11 @@ MiAIRR data submission to GenBank/TLS
 
 Processed sequence data will be submitted to the "Targeted Locus Study"
 (TLS) section of GenBank. The details of this submission process are
-currently still finalized. Basically the procedure is identical to a
-conventional GenBank submission with the exception of additional
+currently still being finalized. Basically the procedure is identical to
+a conventional GenBank submission with the exception of additional
 keywords marking it as TLS submission.
 
-Non-functional records should be removed before the data submission or
+Non-productive records should be removed before the data submission or
 use an alternative annotation as described in the specification
 document.
 

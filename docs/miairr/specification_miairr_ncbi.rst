@@ -217,10 +217,10 @@ The header MUST contain all of the following elements:
    information on data processing (MiAIRR data set 5) as ``REMARK``
    within a ``REFERENCE`` [4]_ (ENA: ``RX`` line).
 
--  OPTIONAL: The use of `structured records`_ is currently evalutated
+-  OPTIONAL: The use of `structured comments`_ is currently evalutated
    for use in future versions of the MiAIRR standard.
 
-.. _`structured records`: https://www.ncbi.nlm.nih.gov/genbank/structuredcomment/
+.. _`structured comments`: https://www.ncbi.nlm.nih.gov/genbank/structuredcomment/
 
 
 Feature table
@@ -264,8 +264,8 @@ SHOULD contain the following keys/qualifiers:
 Note that additional qualifiers might be REQUIRED by GenBank to
 harmonize the GenBank record with the BioSample referenced by it in the
 header. A list of known BioSample keyword and GenBank qualifiers that
-MUST contain the same information can be found below. Whether (and if
-yes in which direction) the existence of a keyword/qualifiers triggers
+MUST contain the same information can be found below. Whether (and in
+which direction) the existence of a keyword/qualifiers triggers
 a requirement in the corresponding record is currently unknown. Please
 report any undocumented requirements surfacing during submission to the
 MiAIRR team.

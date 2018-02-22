@@ -30,7 +30,7 @@ Submission of AIRR sequencing data and metadata to NCBI's public data repositori
 4. Generate a DOI for the protocol describing how raw sequencing data were processed using [Zenodo](https://zenodo.org) or an equivalent DOI-granting service.
 5. Submit processed sequencing data with sequence-level annotations to [GenBank](https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/) using AIRR feature tags.
 
-For step-by-step instructions on carrying out theses steps an AIRR study submission, see [here](https://www.overleaf.com/read/tytddwptgkhb).
+For step-by-step instructions on carrying out theses steps an AIRR study submission, see [here](http://docs.airr-community.org/en/latest/miairr/overview.html).
 
 
 ### How to cite?
@@ -47,15 +47,6 @@ commented out until the actual MiAIRR publication it out and can be referenced t
 -->
 
 
-### Report an issue to help us improving MiAIRR
+### Further information
 
-https://waffle.io/airr-community/airr-standards
-
-
-### Contact
-
-For further information about the MiAIRR standard please contact
-[Syed **Ahmad** Chan Bukhari](mailto:ahmad.chan@yale.edu?subject=MiAIRR%20Standard) or
-[Steven Kleinstein](mailto:steven.kleinstein@yale.edu?subject=MiAIRR%20Standard).
-
-***
+For further information on this and other AIRR Community Data Standards see [here](https://github.com/airr-community/airr-standards).
