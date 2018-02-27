@@ -78,6 +78,6 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 6 / data (proc. seq.)	D gene	string	Free text	D segment gene and allele	IGHD2-2*01	d_call
 6 / data (proc. seq.)	J gene	string	Free text	J segment gene and allele	IGHJ4*01	j_call
 6 / data (proc. seq.)	C region	string	Free text	Constant region gene and allele	IGHG1	c_call
-6 / data (proc. seq.)	IMGT-JUNCTION nucleotide sequence	string	Free text	Nucleotide sequence of the IMGT-JUNCTION	TGTGCAAGAGCGGGAGTTTACGACGGATATACTATGGACTACTGG	junction_nt
+6 / data (proc. seq.)	IMGT-JUNCTION nucleotide sequence	string	Free text	Nucleotide sequence of the IMGT-JUNCTION	TGTGCAAGAGCGGGAGTTTACGACGGATATACTATGGACTACTGG	junction
 6 / data (proc. seq.)	IMGT-JUNCTION amino acid sequence	string	Free text	Amino acid sequence of the IMGT-JUNCTION	CARAGVYDGYTMDYW	junction_aa
 6 / data (proc. seq.)	Read count	integer	Number	Number of reads used to build sequence	123	duplicate_count
