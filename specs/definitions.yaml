@@ -484,11 +484,11 @@ Rearrangement:
          description: >
             Unique query sequence identifier within the file. Most often this will be the input sequence
             header or a substring thereof, but may also be a custom identifier defined by the tool in
-            cases where query sequences have been combined in some fashion prior to alignment
+            cases where query sequences have been combined in some fashion prior to alignment.
       sequence:
          type: string
          description: >
-            The query nucleotide sequence. Usually, this is the unmodified input sequence, reverse complimented,
+            The query nucleotide sequence. Usually, this is the unmodified input sequence, reverse complemented,
             if necessary. In some cases, this field may contain consensus sequences or other types of collapsed
             input sequences, if these steps are preformed prior to alignment.
       sequence_aa:
@@ -498,7 +498,7 @@ Rearrangement:
       rev_comp:
          type: boolean
          description: >
-            The alignment is on the opposite strand (reverse complemented0, with respect to the
+            The alignment is on the opposite strand (reverse complemented), with respect to the
             query sequence.
       productive:
          type: boolean
