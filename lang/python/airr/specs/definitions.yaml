@@ -498,8 +498,9 @@ Rearrangement:
       rev_comp:
          type: boolean
          description: >
-            The alignment is on the opposite strand (reverse complemented0, with respect to the
-            query sequence.
+            The alignment is on the opposite strand (reverse complemented), with respect to the
+            query sequence. All output data, such as alignment positions and sequences, are based on the
+            reverse complement of 'sequence'.
       productive:
          type: boolean
          description: >
