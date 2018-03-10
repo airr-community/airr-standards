@@ -449,180 +449,299 @@ Rearrangement:
    discriminator: AIRR
    type: object
    required:
-      - rearrangement_id
-      - rearrangement_set_id
+      - sequence_id
       - sequence
-      - germline_database
-      - functional
       - rev_comp
-      - cell_index
+      - productive
       - v_call
       - d_call
       - j_call
       - c_call
-      - v_score
-      - d_score
-      - j_score
-      - c_score
-      - v_cigar
-      - d_cigar
-      - j_cigar
-      - c_cigar
-      - junction_nt
+      - sequence_alignment
+      - germline_alignment
+      - junction
       - junction_aa
+      - v_score
+      - v_cigar
+      - d_score
+      - d_cigar
+      - j_score
+      - j_cigar
+      - c_score
+      - c_cigar
    properties:
       rearrangement_id:
          type: string
          description: >
-            Read/sequence identifier; often identical to a read identifier, but
-            not necessarily (especially where a rearrangement is derived from a
-            multiple read consensus).
+            Identifier for the Rearrangement object. May be identical to sequence_id,
+            but will usually be a univerally unique record locator for database applications.
       rearrangement_set_id:
          type: string
-         description: Identifier for grouping rearrangements defined by study metadata
+         description: >
+            Identifier for grouping Rearrangement objects.
+      sequence_id:
+         type: string
+         description: >
+            Unique query sequence identifier within the file. Most often this will be the input sequence
+            header or a substring thereof, but may also be a custom identifier defined by the tool in
+            cases where query sequences have been combined in some fashion prior to alignment.
       sequence:
          type: string
          description: >
-            Nucleotide sequence (e.g., the "read" sequence; revcomp'd if necessary)
-      germline_database:
+            The query nucleotide sequence. Usually, this is the unmodified input sequence, reverse complemented,
+            if necessary. In some cases, this field may contain consensus sequences or other types of collapsed
+            input sequences, if these steps are preformed prior to alignment.
+      sequence_aa:
          type: string
          description: >
-            Source of germline V(D)J segments, with version number or
-            date accessed (e.g. IMGT/V-QUEST Release 201736-4 (7 September 2017)) (AIRR)
-         x-miairr: true
-      functional:
-         type: boolean
-         description: VDJ sequence is predicted to be functional
+            Amino acid translation of the query nucleotide sequence.
       rev_comp:
          type: boolean
-         description: Sequence is reverse complemented
-      cell_index:
-         type: integer
-         description: |
-            Cell Index (UID linking sequences from the same cell) (AIRR)
-         x-miairr: true
+         description: >
+            The alignment is on the opposite strand (reverse complemented), with respect to the
+            query sequence.
+      productive:
+         type: boolean
+         description: >
+            True if the V(D)J sequence is predicted to be productive. Productive is typically defined using the IMGT
+            definition: (1) coding region has an open reading frame, (2) no defect in the start codon, splicing sites
+            or regulatory elements, (3) no internal stop codons and (4) an in-frame junction region.
+      vj_in_frame:
+         type: boolean
+         description: True if the V and J segment alignments are in-frame.
+      stop_codon:
+         type: boolean
+         description: True if the aligned sequence contains a stop codon.
+      locus:
+         type: string
+         description: Gene locus (chain type). For example, IGH, IGK, IGL, TRA, TRB, TRD, TRG.
       v_call:
          type: string
-         description: |
-            V gene with allele (e.g. IGHV4-59*01) (AIRR)
+         description: V gene with allele (e.g. IGHV4-59*01)
          x-miairr: true
       d_call:
          type: string
-         description: |
-            D gene with allele (e.g. IGHD3-10*01) (AIRR)
+         description: D gene with allele (e.g. IGHD3-10*01)
          x-miairr: true
       j_call:
          type: string
-         description: |
-            J gene with allele (e.g. IGHJ4*02) (AIRR)
+         description: J gene with allele (e.g. IGHJ4*02)
          x-miairr: true
       c_call:
          type: string
-         description: |
-            C region with allele (AIRR)
+         description: C region with allele
          x-miairr: true
-      v_score:
-        type: number
-        description: V alignment score
-      d_score:
-        type: number
-        description: D alignment score
-      j_score:
-        type: number
-        description: J alignment score
-      c_score:
-        type: number
-        description: C alignment score
-      v_cigar:
-        type: string
-        description: V alignment CIGAR string
-      d_cigar:
-        type: string
-        description: D alignment CIGAR string
-      j_cigar:
-        type: string
-        description: J alignment CIGAR string
-      c_cigar:
-        type: string
-        description: C alignment CIGAR string
-      junction_nt:
+      sequence_alignment:
         type: string
         description: >
-            JUNCTION nucleotide sequence (Sequence of the CDR3
-            region (nucleotide)) (AIRR)
+           Aligned portion of query sequence, including any indel corrections or numbering spacers,
+           such as IMGT-gaps. Typically, this will include only the V(D)J region, but that is not
+           a requirement.
+      sequence_alignment_aa:
+        type: string
+        description: >
+           Amino acid translation of the aligned query sequence.
+      germline_alignment:
+        type: string
+        description: >
+           Assembled, aligned, fully length inferred germline sequence spaning the same region
+           as the sequence_alignment field (typically the V(D)J region) and including the same set
+           of corrections and spacers (if any).
+      germline_alignment_aa:
+        type: string
+        description: >
+           Amino acid translation of the assembled germline sequence.
+      junction:
+        type: string
+        description: >
+           Junction region nucleotide sequence, where the junction is defined as
+           the CDR3 plus the two flanking conserved codons.
         x-miairr: true
       junction_aa:
         type: string
         description: >
-            JUNCTION amino acid sequence (Sequence of the CDR3
-            region (amino acid)) (AIRR)
+            Junction region amino acid sequence.
         x-miairr: true
-      v_evalue:
+      np1:
+        type: string
+        description: >
+           Nucleotide sequence of the combined N/P region between the V and D segments or V and J segments.
+      np1_aa:
+        type: string
+        description: >
+           Amino acid translation of the 'np1' field.
+      np2:
+        type: string
+        description: >
+           Nucleotide sequence of the combined N/P region between the D and J segments.
+      np2_aa:
+        type: string
+        description: >
+           Amino acid translation of the 'np2' field.
+      cdr1:
+        type: string
+        description: >
+           Nucleotide sequence of the aligned CDR1 region.
+      cdr1_aa:
+        type: string
+        description: >
+           Amino acid translation of the 'cdr1' field.
+      cdr2:
+        type: string
+        description: >
+           Nucleotide sequence of the aligned CDR2 region.
+      cdr2_aa:
+        type: string
+        description: >
+           Amino acid translation of the 'cdr2' field.
+      cdr3:
+        type: string
+        description: >
+           Nucleotide sequence of the aligned CDR3 region.
+      cdr3_aa:
+        type: string
+        description: >
+           Amino acid translation of the 'cdr3' field.
+      fwr1:
+        type: string
+        description: >
+           Nucleotide sequence of the aligned FWR1 region.
+      fwr1_aa:
+        type: string
+        description: >
+           Amino acid translation of the 'fwr1' field.
+      fwr2:
+        type: string
+        description: >
+           Nucleotide sequence of the aligned FWR2 region.
+      fwr2_aa:
+        type: string
+        description: >
+           Amino acid translation of the 'fwr2' field.
+      fwr3:
+        type: string
+        description: >
+           Nucleotide sequence of the aligned FWR3 region.
+      fwr3_aa:
+        type: string
+        description: >
+           Amino acid translation of the 'fwr3' field.
+      fwr4:
+        type: string
+        description: >
+           Nucleotide sequence of the aligned FWR4 region.
+      fwr4_aa:
+        type: string
+        description: >
+           Amino acid translation of the 'fwr4' field.
+      v_score:
         type: number
-        description: V alignment E-value (when applicable)
-      d_evalue:
-        type: number
-        description: D alignment E-value (when applicable)
-      j_evalue:
-        type: number
-        description: J alignment E-value (when applicable)
+        description: V alignment score
       v_identity:
         type: number
         description:  V alignment identity
+      v_evalue:
+        type: number
+        description: V alignment E-value (when applicable)
+      v_cigar:
+        type: string
+        description: V alignment CIGAR string
+      d_score:
+        type: number
+        description: D alignment score
       d_identity:
         type: number
         description:  D alignment identity
+      d_evalue:
+        type: number
+        description: D alignment E-value (when applicable)
+      d_cigar:
+        type: string
+        description: D alignment CIGAR string
+      j_score:
+        type: number
+        description: J alignment score
       j_identity:
         type: number
         description:  J alignment identity
+      j_evalue:
+        type: number
+        description: J alignment E-value (when applicable)
+      j_cigar:
+        type: string
+        description: J alignment CIGAR string
+      c_score:
+        type: number
+        description: C alignment score
+      c_cigar:
+        type: string
+        description: C alignment CIGAR string
       vdj_score:
         type: number
         description: Score for aligners that consider the full sequence as a whole
-      vdj_evalue:
-        type: number
-        description: E-value for aligners that consider the full sequence as a whole
       vdj_identity:
         type: number
         description: Identity for aligners that consider the full sequence as a whole
+      vdj_evalue:
+        type: number
+        description: E-value for aligners that consider the full sequence as a whole
       vdj_cigar:
         type: string
         description: VDJ alignment CIGAR string
-      v_start:
+      v_sequence_start:
         type: integer
-        description: Position of first V nucleotide in 'sequence' field
-      v_end:
+        description: Start position of the V segment in the query sequence.
+      v_sequence_end:
         type: integer
-        description: End coordinate of the V segment in 'sequence' field
-      v_germ_start:
+        description: End position of the V segment in the query sequence.
+      v_germline_start:
         type: integer
-        description: Alignment start position in the germline V sequence
-      v_germ_end:
+        description: Alignment start position in the V reference sequence.
+      v_germline_end:
         type: integer
-        description: Alignment end position in the germline V sequence
-      d_start:
+        description: Alignment end position in the V reference sequence.
+      v_alignment_start:
         type: integer
-        description: Start coordinate of the D segment
-      d_end:
+        description: Start position in the V segment in the 'sequence_alignment' and 'germline_alignment' fields.
+      v_alignment_end:
         type: integer
-        description: End coordinate of the D segment
-      d_germ_start:
+        description: End position in the V segment in the 'sequence_alignment' and 'germline_alignment' fields.
+      d_sequence_start:
         type: integer
-        description: Alignment start position in the germline D sequence
-      d_germ_end:
+        description: Start position of the D segment in the query sequence.
+      d_sequence_end:
         type: integer
-        description: Alignment end position in the germline D sequence
-      j_start:
+        description: End position of the D segment in the query sequence.
+      d_germline_start:
         type: integer
-        description: Start coordinate of the J segment (generally inside the CDR3)
-      j_end:
+        description: Alignment start position in the D reference sequence.
+      d_germline_end:
         type: integer
-        description: End coordinate of the J segment
-      j_germ_start:
+        description: Alignment end position in the D reference sequence.
+      d_alignment_start:
         type: integer
-        description: Alignment start position in the germline J sequence
-      j_germ_end:
+        description: Start position of the D segment in the 'sequence_alignment' and 'germline_alignment' fields.
+      d_alignment_end:
         type: integer
-        description: Alignment start position in the germline J sequence
+        description: End position of the D segment in the 'sequence_alignment' and 'germline_alignment' fields.
+      j_sequence_start:
+        type: integer
+        description: Start position of the J segment in the query sequence.
+      j_sequence_end:
+        type: integer
+        description: End position of the J segment in the query sequence.
+      j_germline_start:
+        type: integer
+        description: Alignment start position in the J reference sequence.
+      j_germline_end:
+        type: integer
+        description: Alignment end position in the J reference sequence.
+      j_alignment_start:
+        type: integer
+        description: Start position of the J segment in the 'sequence_alignment' and 'germline_alignment' fields.
+      j_alignment_end:
+        type: integer
+        description: End position of the J segment in the 'sequence_alignment' and 'germline_alignment' fields.
       fwr1_start:
         type: integer
         description: FWR1 start coordinate in sequence (transferred from germline)
@@ -705,6 +824,17 @@ Rearrangement:
            Number of reads contributing to the (UMI) consensus for this sequence
            (e.g., the sum of the number of reads for all UMIs that contribute to
            (this rearrangement)
+      cell_index:
+         type: string
+         description: >
+            Identifier linking sequences from the same cell.
+         x-miairr: true
       clone:
         type: string
         description: Clone assignment for this sequence
+      germline_database:
+         type: string
+         description: >
+            Source of germline V(D)J segments, with version number or
+            date accessed (e.g. IMGT/V-QUEST Release 201736-4 (7 September 2017)).
+         x-miairr: true
