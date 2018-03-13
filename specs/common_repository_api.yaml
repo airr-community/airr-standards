@@ -108,36 +108,35 @@ paths:
   /swagger:
     x-swagger-pipe: swagger_raw
 
-  /repertoire:
+  /repertoire/{repertoire_id}:
     x-swagger-router-controller: repertoire
     get:
       description: >
-        This query service returns metadata about repertoires.
+        Returns a repertoire based upon its identifier.
       tags:
         - repertoires
+      produces:
+        - application/json
       parameters:
-        - $ref: '#/parameters/filters'
-        - $ref: '#/parameters/format'
-        - $ref: '#/parameters/fields'
-        - $ref: '#/parameters/size'
-        - $ref: '#/parameters/from'
+        - name: repertoire_id
+          in: path
+          description: ID of repertoire to return
+          required: true
+          type: string
       operationId: getRepertoire
       responses:
         '200':
           description: |
-            A successful call returns an array of repertoire metadata.
+            A successful call returns the repertoire data.
           schema:
             $ref: '#/definitions/repertoire_model'
         '400':
-          description: malformed request
-        '401':
-          description: authentication error
-        '403':
-          description: authorization error
+          description: Invalid repertoire ID supplied
         '404':
-          description: data not found
-        '405':
-          description: method not allowed
+          description: Repertoire not found
+
+  /repertoire:
+    x-swagger-router-controller: repertoire
     post:
       description: >
         This query service returns metadata about repertoires.
@@ -149,7 +148,7 @@ paths:
         - $ref: '#/parameters/fields'
         - $ref: '#/parameters/size'
         - $ref: '#/parameters/from'
-      operationId: postRepertoires
+      operationId: queryRepertoires
       responses:
         '200':
           description: >
@@ -167,36 +166,35 @@ paths:
         '405':
           description: method not allowed
 
-  /rearrangement:
+  /rearrangement/{rearrangement_id}:
     x-swagger-router-controller: rearrangement
     get:
       description: >
-        This query service returns rearrangement annotation data.
+        Returns a rearrangement based upon its identifier.
       tags:
         - rearrangements
+      produces:
+        - application/json
       parameters:
-        - $ref: '#/parameters/filters'
-        - $ref: '#/parameters/format'
-        - $ref: '#/parameters/fields'
-        - $ref: '#/parameters/size'
-        - $ref: '#/parameters/from'
-      operationId: getRearrangements
+        - name: rearrangement_id
+          in: path
+          description: ID of rearrangement to return
+          required: true
+          type: string
+      operationId: getRearrangement
       responses:
         '200':
           description: >
-            A successful call returns an array of rearrangement annotation data.
+            A successful call returns the rearrangement annotation data.
           schema:
             $ref: '#/definitions/rearrangement_model'
         '400':
-          description: malformed request
-        '401':
-          description: authentication error
-        '403':
-          description: authorization error
+          description: Invalid rearrangement ID supplied
         '404':
-          description: data not found
-        '405':
-          description: method not allowed
+          description: Rearrangement not found
+
+  /rearrangement:
+    x-swagger-router-controller: rearrangement
     post:
       description: >
         This query service returns rearrangement annotation data.
