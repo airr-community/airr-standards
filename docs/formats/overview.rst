@@ -9,8 +9,8 @@ AIRR formats overview
    rearrangements
 
 
-Data for ``airr-formats`` objects are stored as rows in a *tab-delimited* file and
-should be compatible with any CSV reader. Metadata is stored as a companion JSON
+Data for ``Rearrangement`` objects are stored as rows in a *tab-delimited* file and
+should be compatible with any TSV reader. Metadata is stored as a companion JSON
 or YAML file according to the MiAIRR specifications.
 
 
@@ -42,7 +42,7 @@ Boolean values must be encoded as ``T`` for true and ``F`` for false.
 **Null values**
 
 *All fields can be null.* (Even for columns that are described as
-"mandatory".) This should be encoded as an empty string.
+"required".) This should be encoded as an empty string.
 
 
 **File names**
@@ -82,15 +82,15 @@ useful.
 
 **Data**
 
-The main data table. Possible data types are ``string``s, ``boolean``s, ``number``s
-(floating point), and ``integer``s.
+The main data table. Possible data types are ``string``, ``boolean``, ``number``
+(floating point), and ``integer``.
 
 
-**Mandated columns**
+**Required columns**
 
-Some of the fields specified below are "mandated" and so must always be present
+Some of the fields specified below are "required" and so must always be present
 in a rearrangements file (in the header).  Note, however, that all columns allow
-"null" values.  Therefore, mandated columns exist to define a core set of fields
+"null" values.  Therefore, required columns exist to define a core set of fields
 that are always present in the table structure, but do not mandate that a value
 be reported.
 
@@ -122,4 +122,4 @@ vocabulary restrictions. The following are valid operations.
     "N", "A space in the alignment. Used exclusively to denote the start position of the alignment in the reference. Should follow any S operators."
 
 Note, the use of either the ``=``/``X`` or ``M`` syntax is valid, but should be used consistently.
-While leading `S` and `N` operators are required, tailing `S` and `N` operators are optional.
+While leading ``S`` and ``N`` operators are required, tailing ``S`` and ``N`` operators are optional.
