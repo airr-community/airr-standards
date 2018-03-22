@@ -118,5 +118,8 @@ vocabulary restrictions. The following are valid operations.
     "M", "A positional match in the alignment. This can be either an identical (=) or differing (x) non-gap character."
     "D", "Deletion in the query (gap in the query)."
     "I", "Insertion in the query (gap in the reference)."
-    "N", "A space in the alignment. Used exclusively to denote the start position of the alignment in the reference. Should precede any S operators."
-    "S", "Positions that appear in the query, but not the reference. Used exclusively to denote the start position of the alignment in the query."
+    "S", "Positions that appear in the query, but not the reference. Used exclusively to denote the start position of the alignment in the query. Should precede any N operators."
+    "N", "A space in the alignment. Used exclusively to denote the start position of the alignment in the reference. Should follow any S operators."
+
+Note, the use of either ther ``=``/``X`` or ``M`` syntax is valid, but should be used consistently.
+While leading `S` and `N` operators are required, tailing `S` and `N` operators are optional.
