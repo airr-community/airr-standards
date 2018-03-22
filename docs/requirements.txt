@@ -1,1 +1,4 @@
-pyyaml
+pyyaml>=3.12
+recommonmark>=0.4.0
+sphinxcontrib-napoleon>=0.4.0
+../lang/python/
