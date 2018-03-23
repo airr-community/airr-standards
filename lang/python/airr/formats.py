@@ -26,8 +26,19 @@ class RearrangementsFile(object):
       dictReader (csv.DictReader): file reader object.
       dictWriter (csv.DictWriter): file writer object.
     """
+
     def __init__(self, state, handle, debug=False):
-        # set logging level. for now, just True/False to issue warnings.
+        """
+        Initialization
+
+        Arguments:
+          state (bool): whether the file is in a writeable state.
+          handle (file): file handle of the open Rearrangements file.
+          debug (bool): debug state. If True prints debug information.
+
+        Returns:
+          airr.formats.RearrangementsFile
+        """
         self.debug = debug
 
         # define fields
