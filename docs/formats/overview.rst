@@ -1,5 +1,5 @@
-AIRR formats overview
-=====================
+Data Representations
+====================
 
 .. toctree::
    :maxdepth: 2
@@ -7,7 +7,6 @@ AIRR formats overview
 
    alignments
    rearrangements
-   api
 
 
 Data for ``Rearrangement`` objects are stored as rows in a *tab-delimited* file and

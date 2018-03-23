@@ -1,7 +1,16 @@
 Python API
 ===============================
 
+Inferface
+-------------------------------
+
 .. automodule:: airr
     :members:
     :undoc-members:
-    :show-inheritance:
+
+Classes
+-------------------------------
+
+.. automodule:: airr.formats
+    :members:
+    :undoc-members:

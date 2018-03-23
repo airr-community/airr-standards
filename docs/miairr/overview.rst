@@ -1,5 +1,4 @@
-===============
-MiAIRR overview
+MiAIRR Standard
 ===============
 
 .. toctree::

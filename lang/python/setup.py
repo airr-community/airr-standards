@@ -11,7 +11,7 @@ with open('README.md', 'r') as ip:
 
 
 # Setup
-setup(name='airr-formats',
+setup(name='airr',
       version=versioneer.get_version(),
       cmdclass=versioneer.get_cmdclass(),
       author='AIRR Community',
@@ -20,9 +20,8 @@ setup(name='airr-formats',
       long_description=long_description,
       zip_safe=False,
       license='MIT',
-      url='https://airr-formats.readthedocs.org/',
-      keywords=('AIRR bioinformatics immunoglobulin antibody adaptive immune '
-                'lymphocyte sequencing TCR CDR3'),
+      url='http://docs.airr-community.org',
+      keywords=('AIRR bioinformatics immunoglobulin antibody adaptive immune lymphocyte sequencing TCR CDR3'),
       install_requires=['pyyaml', 'prov', 'yamlordereddictloader'],
       packages=find_packages(),
       package_data={'airr': ['specs/*.yaml']},

@@ -1,7 +1,6 @@
 """
 Reference library for AIRR schema for Ig/TCR rearrangements
 """
-
 from airr.formats import RearrangementsFile
 
 
