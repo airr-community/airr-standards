@@ -15,9 +15,8 @@ include
   AIRR data.
 
 .. toctree::
-    :maxdepth: 4
+    :maxdepth: 3
     :caption: Table of Contents
-    :titlesonly:
 
     miairr/overview
     formats/overview

@@ -1,7 +1,7 @@
 """
 Reference library for AIRR schema for Ig/TCR rearrangements
 """
-from airr.formats import RearrangementsFile
+from airr.formats import RearrangementReader, RearrangementWriter
 
 
 def read(handle, debug=False):
@@ -13,48 +13,44 @@ def read(handle, debug=False):
       debug (bool): debug flag. If True print debugging information to standard output.
 
     Returns:
-      airr.RearrangementsFile:  RearrangementsFile object in read mode.
+      airr.formats.RearrangementReader: open reader class.
     """
-    return RearrangementsFile(False, handle, debug=debug)
+    return RearrangementReader(handle, debug=debug)
 
 
-def create(handle, debug=False):
+def create(handle, fields=None, debug=False):
     """
     Create an empty AIRR rearrangements file
 
     Arguments:
       handle (file): output file handle.
+      fields (list): additional non-mandatory fields to add to the output.
       debug (bool): debug flag. If True print debugging information to standard output.
 
     Returns:
-      airr.RearrangementsFile:  RearrangementsFile object in write mode.
+      airr.formats.RearrangementWriter: open writer class.
     """
-    return RearrangementsFile(True, handle, debug=debug)
+    return RearrangementWriter(handle, fields=fields, debug=debug)
 
 
-def createDerivation(inputHandle, outputHandle, toolEntity, activity,
-                     namespace, namespaceURI):
+def derive(out_handle, in_handle, fields=None, debug=False):
     """
-    Create a derived AIRR rearrangments file
+    Create an empty AIRR rearrangements file with fields derived from an existing fiel
 
     Arguments:
-      inputHandle (file): input file handle.
-      outputHandle (file): output file handle.
-      toolEntity (str): TODO
-      activity (str): TODO
-      namespace (str): TODO
-      namespaceURI (str): TODO
+      out_handle (file): output file handle.
+      in_handle (file): existing file to derive fields from
+      fields (list): additional non-mandatory fields to add to the output.
+      debug (bool): debug flag. If True print debugging information to standard output.
 
     Returns:
-      list: list of two airr.RearrangementsFile objects where the first
-            object is the input reader and the second is the output writer.
+      airr.formats.RearrangementWriter: open writer class.
     """
-    ifile = RearrangementsFile(False, inputHandle)
-    ofile = RearrangementsFile(True, outputHandle)
-    ofile.deriveFrom(ifile)
-    ofile.addAnnotationActivity(inputHandle.name, outputHandle.name, toolEntity, activity, None, namespace, namespaceURI)
-
-    return [ifile, ofile]
+    reader = RearrangementReader(in_handle)
+    in_fields = list(reader.fields)
+    if fields is not None:
+        in_fields.extend([f for f in fields if f not in in_fields])
+    return RearrangementWriter(out_handle, fields=in_fields, debug=debug)
 
 
 # versioneer-generated

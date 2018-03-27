@@ -6,11 +6,19 @@ Inferface
 
 .. automodule:: airr
     :members:
-    :undoc-members:
 
 Classes
 -------------------------------
 
-.. automodule:: airr.formats
+.. autoclass:: airr.formats.RearrangementSchema
     :members:
-    :undoc-members:
+
+.. autoclass:: airr.formats.RearrangementReader
+    :members:
+    :special-members:
+    :exclude-members: fields, external_fields, __weakref__
+
+.. autoclass:: airr.formats.RearrangementWriter
+    :members:
+    :special-members:
+    :exclude-members: fields, external_fields, __weakref__

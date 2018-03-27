@@ -1,7 +1,6 @@
 """
 Reference library for AIRR schema for Ig/TCR rearrangements
 """
-
 from __future__ import print_function
 import sys
 import csv
@@ -9,22 +8,296 @@ from prov import model
 from airr.specs import definitions
 
 
-class RearrangementsFile(object):
+class RearrangementSchema:
     """
-    Class structure for I/O of files containing Rearrangment object in TSV format
+    Rearrangement schema definitions
+
+    Attributes:
+      properties (collections.OrderedDict): Rearrangement field definitions.
+      mandatory (list): mandatory Rearrangement fields.
+      optional (list): non-required Rearrangement fields.
+    """
+    properties = definitions['Rearrangement']['properties']
+    mandatory = definitions['Rearrangement']['required']
+    optional = [f for f in definitions['Rearrangement']['properties'] \
+                 if f not in definitions['Rearrangement']['required']]
+
+    @staticmethod
+    def getSpec(field):
+        """
+        Get the properties for a field
+
+        Arguments:
+          name (str): field name.
+
+        Returns:
+          collections.OrderedDict: Rearrangement definition for the field.
+        """
+        return RearrangementSchema.properties.get(field, None)
+
+    @staticmethod
+    def getType(field):
+        """
+        Get the type for a field
+
+        Arguments:
+          name (str): field name.
+
+        Returns:
+          str: the type definition for the field
+        """
+        field_spec = RearrangementSchema.properties.get(field, None)
+        field_type = field_spec.get('type', None) if field_spec else None
+        return field_type
+
+    @staticmethod
+    def convertBool(value):
+        """
+        Converts strings to boolean
+
+        Arguments:
+          value (str): logical value as a string.
+
+        Returns:
+          bool: conversion of the string to True or False.
+        """
+        if type(value) is bool:
+            return value
+        if value.upper() in [ "F", "FALSE", "NO", "N" ]:
+            return False
+        if value.upper() in [ "T", "TRUE", "YES", "Y" ]:
+            return True
+
+        return None
+
+    @staticmethod
+    def convertInt(value):
+        """
+        Converts strings to integers
+
+        Arguments:
+          value (str): integer value as a string.
+
+        Returns:
+          int: conversion of the string to an integer.
+        """
+        if type(value) is int:
+            return value
+        try:
+            return int(value)
+        except ValueError:
+            return None
+
+    @staticmethod
+    def convertNumber(value):
+        """
+        Converts strings to floats
+
+        Arguments:
+          value (str): float value as a string.
+
+        Returns:
+          float: conversion of the string to a float.
+        """
+        if type(value) is float:
+            return value
+        try:
+            return float(value)
+        except ValueError:
+            return None
+
+
+class RearrangementReader:
+    """
+    Iterator for reading Rearrangement objects in TSV format
+
+    Attributes:
+      fields (list): field names in the input Rearrangement file.
+      external_fields (list): list of fields in the input file that are not
+                              part of the Rearrangements definition.
+    """
+    @property
+    def fields(self):
+        """
+        Get list of fields
+
+        Returns:
+          list : field names.
+        """
+        return self.dict_reader.fieldnames
+
+    @property
+    def external_fields(self):
+        """
+        Get list of field that are not in the Rearrangements spec
+
+        Returns:
+          list : field names.
+        """
+        return [f for f in self.dict_reader.fieldnames \
+                if f not in RearrangementSchema.properties]
+
+    def __init__(self, handle, debug=False):
+        """
+        Initialization
+
+        Arguments:
+          handle (file): file handle of the open Rearrangements file.
+          debug (bool): debug state. If True prints debug information.
+
+        Returns:
+          airr.formats.RearrangementReader : reader object.
+        """
+        # arguments
+        self.handle = handle
+        self.debug = debug
+
+        # data reader, collect field names
+        self.dict_reader = csv.DictReader(self.handle, dialect='excel-tab')
+
+    def __iter__(self):
+        """
+        Iterator initializer
+
+        Returns:
+          airr.formats.RearrangementReader
+        """
+        return self
+
+    def __next__(self):
+        """
+        Next method
+
+        Returns:
+          dict: parsed Rearrangements data.
+        """
+        try:
+            row = next(self.dict_reader)
+        except StopIteration:
+            self.handle.close()
+            raise StopIteration
+
+        for f in row.keys():
+            spec = RearrangementSchema.getType(f)
+            if spec == 'boolean':  row[f] = RearrangementSchema.convertBool(row[f])
+            if spec == 'integer':  row[f] = RearrangementSchema.convertInt(row[f])
+            if spec == 'number':  row[f] = RearrangementSchema.convertNumber(row[f])
+
+        return row
+
+
+class RearrangementWriter:
+    """
+    Writer class for Rearrangement objects in TSV format
+
+    Attributes:
+      fields (list): field names in the output Rearrangement file.
+      external_fields (list): list of fields in the output file that are not
+                              part of the Rearrangements definition.
+    """
+    @property
+    def fields(self):
+        """
+        Get list of fields
+
+        Returns:
+          list : field names.
+        """
+        return self.dict_writer.fieldnames
+
+    @property
+    def external_fields(self):
+        """
+        Get list of field that are not in the Rearrangements spec
+
+        Returns:
+          list : field names.
+        """
+        return [f for f in self.dict_writer.fieldnames \
+                if f not in RearrangementSchema.properties]
+
+    def __init__(self, handle, fields=None, debug=False):
+        """
+        Initialization
+
+        Arguments:
+          handle (file): file handle of the open Rearrangements file.
+          fields (list) : list of non-mandatory fields to add. May fields undefined by the spec.
+          debug (bool): debug state. If True prints debug information.
+
+        Returns:
+          airr.formats.RearrangementWriter : writer object.
+        """
+        # arguments
+        self.handle = handle
+        self.debug = debug
+
+        # order fields according to spec
+        field_names = list(RearrangementSchema.mandatory)
+        if fields is not None:
+            additional_fields = []
+            for f in fields:
+                if f in RearrangementSchema.mandatory:
+                    continue
+                elif f in RearrangementSchema.optional:
+                    field_names.append(f)
+                else:
+                    additional_fields.append(f)
+            field_names.extend(additional_fields)
+
+        # open writer and write header
+        self.dict_writer = csv.DictWriter(self.handle, fieldnames=field_names,
+                                          dialect='excel-tab', extrasaction='ignore')
+        self.dict_writer.writeheader()
+
+    def close(self):
+        """
+        Closes the Rearrangement file
+        """
+        self.handle.close()
+
+    # TODO: I don't think we need this anymore
+    # def addFields(self, fields):
+    #     """
+    #     Add fields
+    #
+    #     Arguments:
+    #         fields (list): list of fields to add.
+    #
+    #     Returns:
+    #       list: updated list of undefined field names in the Rearrangement file.
+    #     """
+    #     if isinstance(fields, str):
+    #         fields = [fields]
+    #
+    #     for f in fields:
+    #         if f not in self.additional_fields or RearrangementSchema.mandatory:
+    #             self.additional_fields.append(f)
+    #
+    #     return self.additional_fields
+
+    def write(self, row):
+        """
+        Write a row to the Rearrangement file
+
+        Arguments:
+            row (dict): row to write.
+        """
+        # validate row
+        if self.debug:
+            for field in RearrangementSchema.mandatory:
+                if row.get(field, None) is None:
+                    sys.stderr.write('Warning: Record is missing AIRR mandatory field (' + field + ').\n')
+
+        self.dict_writer.writerow(row)
+
+
+class MetaWriter:
+    """
+    Class structure for AIRR standard metadata
 
     Attributes:
       debug (bool): debug state. If True prints debug information.
-      mandatoryFieldNames (list): list of fields required by the data standard present in the file.
-      optionalSpecFieldNames (list): list of optional fields defined by the data standard present in the file.
-      additionalFieldNames (list): unrecongnized fields present in the file.
-      writableState (bool) : whether the file is in a writeable state.
-      dataFile (file) : file handle of the open Rearrangements file.
-      metaFile (file): file handle of the open metadata file.
-      metaFile (prov.model.ProvDocument): metadata document.
-      wroteMetadata (bool): TODO
-      dictReader (csv.DictReader): file reader object.
-      dictWriter (csv.DictWriter): file writer object.
     """
 
     def __init__(self, state, handle, debug=False):
@@ -33,22 +306,12 @@ class RearrangementsFile(object):
 
         Arguments:
           state (bool): whether the file is in a writeable state.
-          handle (file): file handle of the open Rearrangements file.
-          debug (bool): debug state. If True prints debug information.
+          handle (file): file handle of the open metadata file.
 
         Returns:
-          airr.formats.RearrangementsFile
+          airr.formats.MetaReader
         """
         self.debug = debug
-
-        # define fields
-        self.mandatoryFieldNames = []
-        self.optionalSpecFieldNames = []
-        self.additionalFieldNames = []
-        self._inputFieldNames = []
-        for f in definitions['Rearrangement']['properties']:
-            if f in definitions['Rearrangement']['required']: self.mandatoryFieldNames.append(f)
-            else: self.optionalSpecFieldNames.append(f)
 
         # writing or reading
         if state:
@@ -61,7 +324,6 @@ class RearrangementsFile(object):
             self.metaFile = None
             self.metadata = None
             self.wroteMetadata = False
-            self.dictWriter = None
         else:
             # reading
             self.writableState = state
@@ -80,73 +342,6 @@ class RearrangementsFile(object):
                 self.metaFile.close()
                 self.metadata = model.ProvDocument.deserialize(None, text, 'json')
 
-            # data reader, collect field names
-            self.dictReader = csv.DictReader(self.dataFile, dialect='excel-tab')
-            self._inputFieldNames = self.dictReader.fieldnames
-            for f in self._inputFieldNames:
-                if f in self.mandatoryFieldNames: continue
-                if f not in self.additionalFieldNames: self.additionalFieldNames.append(f)
-
-    def specForField(self, name):
-        """
-        Don't know what this does...
-
-        Arguments:
-          name (str): field name.
-
-        Returns:
-          str: TODO.
-        """
-        for f in definitions['Rearrangement']['properties']:
-            if f == name: return definitions['Rearrangement']['properties'][f]
-
-        return None
-
-    def convertBool(self, value):
-        """
-        Converts strings to boolean
-
-        Arguments:
-          value (str): logical value as a string.
-
-        Returns:
-          bool: conversion of the string to True or False.
-        """
-        if type(value) is bool: return value
-        if value.upper() in [ "F", "FALSE", "NO", "N" ]:
-            return False
-        if value.upper() in [ "T", "TRUE", "YES", "Y" ]:
-            return True
-        return None
-
-    def convertInt(self, value):
-        """
-        Converts strings to integers
-
-        Arguments:
-          value (str): integer value as a string.
-
-        Returns:
-          int: conversion of the string to an integer.
-        """
-        if type(value) is int: return value
-        try: return int(value)
-        except ValueError: return None
-
-    def convertNumber(self, value):
-        """
-        Converts strings to floats
-
-        Arguments:
-          value (str): float value as a string.
-
-        Returns:
-          float: conversion of the string to a float.
-        """
-        if type(value) is float: return value
-        try: return float(value)
-        except ValueError: return None
-
     def close(self):
         """
         Closes the Rearrangment file
@@ -156,8 +351,6 @@ class RearrangementsFile(object):
             self.dataFile.close()
             self.dataFile = None
             self.writableState = None
-            self.dictWriter = None
-            self.dictReader = None
 
     def deriveFrom(self, anObj):
         """
@@ -284,24 +477,6 @@ class RearrangementsFile(object):
     def annotationToolForNamespace(self, namespace):
         return None
 
-    # TODO: has dead arguments
-    def addFields(self, namespace, names, types=None):
-        """
-        Add fields
-
-        Arguments:
-            namespace (str): Not used.
-            names (list): list of fields to add.
-            types (list): Not used.
-
-        Returns:
-          list: complete list of undefined field names in the Rearrangement file.
-        """
-        for name in names:
-            if name in self.mandatoryFieldNames: continue
-            if name not in self.additionalFieldNames: self.additionalFieldNames.append(name)
-        return self.additionalFieldNames
-
     def writeMetadata(self):
         """
         Write metadata document
@@ -330,19 +505,7 @@ class RearrangementsFile(object):
         Returns:
           dict: parsed Rearrangements data.
         """
-        if self.writableState: raise StopIteration
-        row = next(self.dictReader)
-        for f in row.keys():
-            spec = self.specForField(f)
-            if spec:
-                if spec['type'] == 'boolean': row[f] = self.convertBool(row[f])
-                if spec['type'] == 'integer': row[f] = self.convertInt(row[f])
-                if spec['type'] == 'number': row[f] = self.convertNumber(row[f])
-        return row
-
-    # TODO: unneeded
-    def next(self):
-        return self.__next__()
+        pass
 
     def write(self, row):
         """
@@ -353,28 +516,3 @@ class RearrangementsFile(object):
         """
         if not self.writableState: return
         if not self.wroteMetadata: self.writeMetadata()
-
-        if not self.dictWriter:
-            fieldNames = []
-            fieldNames.extend(self.mandatoryFieldNames)
-            # order according to spec
-            olist = []
-            alist = []
-            for f in self.optionalSpecFieldNames:
-                if f in self.additionalFieldNames: olist.append(f)
-            for f in self.additionalFieldNames:
-                if f not in self.optionalSpecFieldNames: alist.append(f)
-            self.additionalFieldNames = olist
-            self.additionalFieldNames.extend(alist)
-            fieldNames.extend(self.additionalFieldNames)
-            self.dictWriter = csv.DictWriter(self.dataFile, fieldnames=fieldNames, dialect='excel-tab', extrasaction='ignore')
-            self.dictWriter.writeheader()
-
-        # validate row?
-        for field in self.mandatoryFieldNames:
-            value = row.get(field, None)
-            if value is None:
-                if self.debug:
-                    sys.stderr.write('Warning: Record is missing AIRR mandatory field (' + field + ').\n')
-
-        self.dictWriter.writerow(row)

@@ -1,8 +1,8 @@
+# imports
 import os.path as osp
-from glob import glob
-
-from yaml import load
 import yamlordereddictloader
+from glob import glob
+from yaml import load
 
 # load all the YAML specs
 specs_dir = osp.dirname(__file__)
@@ -13,7 +13,6 @@ for yaml_file in specs_files:
     with open(yaml_file, 'r') as ip:
         spec_data = load(ip, Loader=yamlordereddictloader.Loader)
     specs[name] = spec_data
-
 
 # export the specs as top-level module variables
 for name in specs.keys():
