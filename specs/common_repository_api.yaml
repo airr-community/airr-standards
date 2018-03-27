@@ -76,6 +76,8 @@ paths:
     get:
       description: |
         Service heartbeat.
+      consumes:
+        - application/octet-stream
       operationId: getStatus
       responses:
         '200':
@@ -86,6 +88,7 @@ paths:
             properties:
               result:
                 type: string
+
   /info:
     x-swagger-router-controller: status
     get:
@@ -93,6 +96,8 @@ paths:
         Service information.
       tags:
         - info
+      consumes:
+        - application/octet-stream
       operationId: getInfo
       responses:
         '200':
@@ -105,6 +110,7 @@ paths:
                 type: string
               version:
                 type: string
+
   /swagger:
     x-swagger-pipe: swagger_raw
 
@@ -115,6 +121,10 @@ paths:
         Returns a repertoire based upon its identifier.
       tags:
         - repertoires
+      consumes:
+        - application/x-www-form-urlencoded
+        - application/json
+        - application/octet-stream
       produces:
         - application/json
       parameters:
@@ -137,6 +147,34 @@ paths:
 
   /repertoire:
     x-swagger-router-controller: repertoire
+    get:
+      description: >
+        This query service returns metadata about repertoires.
+      tags:
+        - repertoires
+      parameters:
+        - $ref: '#/parameters/filters'
+        - $ref: '#/parameters/format'
+        - $ref: '#/parameters/fields'
+        - $ref: '#/parameters/size'
+        - $ref: '#/parameters/from'
+      operationId: queryRepertoires
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of repertoire metadata.
+          schema:
+            $ref: '#/definitions/repertoire_model'
+        '400':
+          description: malformed request
+        '401':
+          description: authentication error
+        '403':
+          description: authorization error
+        '404':
+          description: data not found
+        '405':
+          description: method not allowed
     post:
       description: >
         This query service returns metadata about repertoires.
@@ -173,6 +211,10 @@ paths:
         Returns a rearrangement based upon its identifier.
       tags:
         - rearrangements
+      consumes:
+        - application/x-www-form-urlencoded
+        - application/json
+        - application/octet-stream
       produces:
         - application/json
       parameters:
@@ -195,6 +237,34 @@ paths:
 
   /rearrangement:
     x-swagger-router-controller: rearrangement
+    get:
+      description: >
+        This query service returns rearrangement annotation data.
+      tags:
+        - rearrangements
+      parameters:
+        - $ref: '#/parameters/filters'
+        - $ref: '#/parameters/format'
+        - $ref: '#/parameters/fields'
+        - $ref: '#/parameters/size'
+        - $ref: '#/parameters/from'
+      operationId: queryRearrangements
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of rearrangement annotation data.
+          schema:
+            $ref: '#/definitions/rearrangement_model'
+        '400':
+          description: malformed request
+        '401':
+          description: authentication error
+        '403':
+          description: authorization error
+        '404':
+          description: data not found
+        '405':
+          description: method not allowed
     post:
       description: >
         This query service returns rearrangement annotation data.
@@ -206,7 +276,7 @@ paths:
         - $ref: '#/parameters/fields'
         - $ref: '#/parameters/size'
         - $ref: '#/parameters/from'
-      operationId: postRearrangements
+      operationId: queryRearrangements
       responses:
         '200':
           description: >
