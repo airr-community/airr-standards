@@ -22,9 +22,11 @@ exclude them.
 
     * - Name
       - Type
+      - Priority
       - Description
     {%- for field, fieldprops in airr_schema.Rearrangement.properties.items() %}
     * - ``{{ field }}``
       - ``{{ fieldprops.type }}``
+      - {{ '*required*' if field in airr_schema.Rearrangement.required else '' }}
       - {{ fieldprops.description | trim }}
     {%- endfor %}
