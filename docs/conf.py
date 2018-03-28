@@ -172,8 +172,9 @@ texinfo_documents = [
 
 # Load data for schemas
 import yaml
+import yamlordereddictloader
 with open(os.path.abspath('../specs/definitions.yaml')) as ip:
-    airr_schema = yaml.load(ip)
+    airr_schema = yaml.load(ip, Loader=yamlordereddictloader.Loader)
 html_context = {
     'airr_schema': airr_schema
 }

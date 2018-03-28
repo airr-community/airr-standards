@@ -23,7 +23,7 @@ class RearrangementSchema:
                  if f not in definitions['Rearrangement']['required']]
 
     @staticmethod
-    def getSpec(field):
+    def spec(field):
         """
         Get the properties for a field
 
@@ -36,7 +36,7 @@ class RearrangementSchema:
         return RearrangementSchema.properties.get(field, None)
 
     @staticmethod
-    def getType(field):
+    def type(field):
         """
         Get the type for a field
 
@@ -51,7 +51,7 @@ class RearrangementSchema:
         return field_type
 
     @staticmethod
-    def convertBool(value):
+    def to_bool(value):
         """
         Converts strings to boolean
 
@@ -71,7 +71,7 @@ class RearrangementSchema:
         return None
 
     @staticmethod
-    def convertInt(value):
+    def to_int(value):
         """
         Converts strings to integers
 
@@ -89,7 +89,7 @@ class RearrangementSchema:
             return None
 
     @staticmethod
-    def convertNumber(value):
+    def to_float(value):
         """
         Converts strings to floats
 
@@ -178,10 +178,10 @@ class RearrangementReader:
             raise StopIteration
 
         for f in row.keys():
-            spec = RearrangementSchema.getType(f)
-            if spec == 'boolean':  row[f] = RearrangementSchema.convertBool(row[f])
-            if spec == 'integer':  row[f] = RearrangementSchema.convertInt(row[f])
-            if spec == 'number':  row[f] = RearrangementSchema.convertNumber(row[f])
+            spec = RearrangementSchema.type(f)
+            if spec == 'boolean':  row[f] = RearrangementSchema.to_bool(row[f])
+            if spec == 'integer':  row[f] = RearrangementSchema.to_int(row[f])
+            if spec == 'number':  row[f] = RearrangementSchema.to_float(row[f])
 
         return row
 
