@@ -16,9 +16,12 @@
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#
+
+# Imports
 import os
 import sys
+import yaml
+import yamlordereddictloader
 sys.path.append(os.path.abspath('.'))
 
 
@@ -31,7 +34,9 @@ sys.path.append(os.path.abspath('.'))
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['rstjinjaext']
+extensions = ['sphinx.ext.autodoc',
+              'sphinxcontrib.napoleon',
+              'rstjinjaext']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -48,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'airr-standards'
-copyright = '2017, AIRR Community'
+copyright = '2017-2018, AIRR Community'
 author = 'AIRR Community'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -78,43 +83,88 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
-
-# -- Options for HTML output ----------------------------------------------
-
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = 'alabaster'
-
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-#
-# html_theme_options = {}
+# -- Options for HTML output ------------------------------------------
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
-#
-# This is required for the alabaster theme
-# refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
-html_sidebars = {
-    '**': [
-        'relations.html',  # needs 'show_related': True theme option to display
-        'searchbox.html',
-    ]
-}
-
-
-# -- Options for HTMLHelp output ------------------------------------------
-
-# Output file base name for HTML help builder.
+# HTML help
 htmlhelp_basename = 'airr-standardsdoc'
 
+# Alabaster options
+html_theme = 'alabaster'
+html_theme_options = {'github_user': 'airr-community',
+                      'github_repo': 'airr-standards',
+                      'sidebar_includehidden': True,
+                      'extra_nav_links': {'AIRR Community': 'http://airr-community.org'}}
+html_sidebars = {'**': ['about.html',
+                        'navigation.html',
+                        'searchbox.html']}
+
+# Bootstrap options
+# import sphinx_bootstrap_theme
+# html_theme = 'bootstrap'
+# html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+# html_sidebars = {'**': ['localtoc.html']}
+
+# Theme options are theme-specific and customize the look and feel of a
+# theme further.
+# html_theme_options = {
+#     # Navigation bar title. (Default: ``project`` value)
+#     'navbar_title': 'AIRR Standards',
+#
+#     # Tab name for entire site. (Default: "Site")
+#     'navbar_site_name': 'Contents',
+#
+#     # A list of tuples containing pages or urls to link to.
+#     # Valid tuples should be in the following forms:
+#     #    (name, page)                 # a link to a page
+#     #    (name, "/aa/bb", 1)          # a link to an arbitrary relative url
+#     #    (name, "http://example.com", True) # arbitrary absolute url
+#     # Note the "1" or "True" value above as the third argument to indicate
+#     # an arbitrary url.
+#     'navbar_links': [('AIRR Community', 'http://airr-community.org', True)],
+#
+#     # Render the next and previous page links in navbar. (Default: true)
+#     'navbar_sidebarrel': True,
+#
+#     # Render the current pages TOC in the navbar. (Default: true)
+#     'navbar_pagenav': True,
+#
+#     # Tab name for the current pages TOC. (Default: "Page")
+#     'navbar_pagenav_name': 'Page',
+#
+#     # Global TOC depth for "site" navbar tab. (Default: 1)
+#     # Switching to -1 shows all levels.
+#     'globaltoc_depth': 3,
+#
+#     # Include hidden TOCs in Site navbar?
+#     #
+#     # Note: If this is "false", you cannot have mixed ``:hidden:`` and
+#     # non-hidden ``toctree`` directives in the same page, or else the build
+#     # will break.
+#     #
+#     # Values: "true" (default) or "false"
+#     'globaltoc_includehidden': 'true',
+#
+#     # HTML navbar class (Default: "navbar") to attach to <div> element.
+#     # For black navbar, do "navbar navbar-inverse"
+#     'navbar_class': 'navbar navbar-inverse',
+#
+#     # Fix navigation bar to top of page?
+#     # Values: "true" (default) or "false"
+#     'navbar_fixed_top': 'true',
+#
+#     # Location of link to source.
+#     # Options are "nav" (default), "footer" or anything else to exclude.
+#     'source_link_position': 'None',
+#
+#     # Choose Bootstrap version.
+#     # Values: "3" (default) or "2" (in quotes)
+#     'bootstrap_version': '3',
+# }
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -168,9 +218,8 @@ texinfo_documents = [
 
 
 # Load data for schemas
-import yaml
 with open(os.path.abspath('../specs/definitions.yaml')) as ip:
-    airr_schema = yaml.load(ip)
+    airr_schema = yaml.load(ip, Loader=yamlordereddictloader.Loader)
 html_context = {
     'airr_schema': airr_schema
 }

@@ -395,53 +395,70 @@ SoftwareProcessing:
 Alignment:
    discriminator: AIRR
    type: object
+   required:
+      - sequence_id
+      - segment
+      - call
+      - score
+      - cigar
    properties:
-      rearrangement_id:
+      sequence_id:
          type: string
          description: >
-            Read/sequence identifier (identifies corresponding annotated
-            rearrangement)
-      sequence:
-         type: string
-         description: >
-            Nucleotide sequence (e.g., the "read" sequence; revcomp'd if
-            necessary)
+            Unique query sequence identifier within the file. Most often this will be the input sequence
+            header or a substring thereof, but may also be a custom identifier defined by the tool in
+            cases where query sequences have been combined in some fashion prior to alignment.
       segment:
          type: string
          description: >
-            The gene segment for this alignment (e.g., V, D, J, C)
+            The gene segment for this alignment. One of V, D, J or C.
       rev_comp:
          type: boolean
          description: >
-            Sequence is reverse complemented
+            Alignment result is from the reverse complement of the query sequence.
       call:
          type: string
          description: >
-            Allele assignment
+            Allele assignment.
       score:
          type: number
          description: >
-            Alignment score
+            Alignment score.
       cigar:
          type: string
          description: >
-            Alignment CIGAR string
+            Alignment CIGAR string.
       identity:
          type: number
          description: >
-            Alignment identity (percent)
+            Alignment identity.
       probability:
          type: number
          description: >
-            Alignment probability (when applicable)
+            Alignment probability.
       loglikelihood:
          type: number
          description: >
-            Alignment log likelihood (when applicable)
+            Alignment log likelihood.
       rank:
          type: integer
          description: >
             Alignment rank
+      rearrangement_id:
+         type: string
+         description: >
+            Identifier for the Rearrangement object. May be identical to sequence_id,
+            but will usually be a univerally unique record locator for database applications.
+      rearrangement_set_id:
+         type: string
+         description: >
+            Identifier for grouping Rearrangement objects.
+      germline_database:
+         type: string
+         description: >
+            Source of germline V(D)J segments, with version number or
+            date accessed. For example, 'IMGT/GENE-DB 3.1.18 (15 March 2018)'.
+         x-miairr: true
 
 
 # The extended rearrangement object
@@ -470,15 +487,6 @@ Rearrangement:
       - c_score
       - c_cigar
    properties:
-      rearrangement_id:
-         type: string
-         description: >
-            Identifier for the Rearrangement object. May be identical to sequence_id,
-            but will usually be a univerally unique record locator for database applications.
-      rearrangement_set_id:
-         type: string
-         description: >
-            Identifier for grouping Rearrangement objects.
       sequence_id:
          type: string
          description: >
@@ -831,14 +839,23 @@ Rearrangement:
            Number of reads contributing to the (UMI) consensus for this sequence.
            For example, the sum of the number of reads for all UMIs that contribute to
            the query sequence.
-      cell_index:
+      cell_id:
          type: string
          description: >
-            Identifier defining the cell of original for the query sequence.
+            Identifier defining the cell of origin for the query sequence.
          x-miairr: true
-      clone:
+      clone_id:
         type: string
         description: Clonal cluster assignment for the query sequence.
+      rearrangement_id:
+         type: string
+         description: >
+            Identifier for the Rearrangement object. May be identical to sequence_id,
+            but will usually be a univerally unique record locator for database applications.
+      rearrangement_set_id:
+         type: string
+         description: >
+            Identifier for grouping Rearrangement objects.
       germline_database:
          type: string
          description: >

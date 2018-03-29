@@ -7,18 +7,17 @@ sequences of antibodies and T cell receptors (TCRs). Some specific efforts
 include
 
 - MiAIRR for describing minimal information about AIRR datasets, including
-  sample collection and data processing information
+  sample collection and data processing information.
 
-- File format specifications for storing large amounts of annotated AIRR data
+- Data representation (file format) specifications for storing large amounts of annotated AIRR data.
 
 - APIs for exposing a common interface to repositories/databases containing
-  AIRR data
-
+  AIRR data.
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Table of Contents
-   :titlesonly:
+    :maxdepth: 3
+    :caption: Table of Contents
 
-   miairr/overview
-   formats/overview
+    miairr/overview
+    formats/overview
+    formats/api

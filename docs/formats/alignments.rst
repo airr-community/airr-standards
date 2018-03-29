@@ -1,5 +1,6 @@
-===========================
-``alignment`` schema/format
+.. _AlignmentSchema:
+
+Alignment Schema
 ===========================
 
 See the formatting overview for details on how to structure this data.
@@ -15,9 +16,11 @@ germline reference segment.
 
     * - Name
       - Type
+      - Priority
       - Description
     {%- for field, fieldprops in airr_schema.Alignment.properties.items() %}
     * - ``{{ field }}``
       - ``{{ fieldprops.type }}``
+      - {{ '*required*' if field in airr_schema.Alignment.required else '' }}
       - {{ fieldprops.description | trim }}
     {%- endfor %}
