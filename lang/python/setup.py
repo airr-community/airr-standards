@@ -17,7 +17,7 @@ try:
 except ImportError:
     sys.exit('pip is required.\n')
 
-with open('README.md', 'r') as ip:
+with open('README.rst', 'r') as ip:
     long_description = ip.read()
 
 # Parse requirements
