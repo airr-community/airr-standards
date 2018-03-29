@@ -86,6 +86,22 @@ class RearrangementReader:
 
         return row
 
+    def validate(self):
+        """
+        Validate Rearrangements data.
+
+        Returns:
+          bool: True if passes validation, otherwise False
+        """
+        valid = True
+        # check required fields
+        required_fields = list(RearrangementSchema.mandatory)
+        for f in required_fields:
+            if f not in self.fields:
+                sys.stderr.write('ERROR: File is missing AIRR mandatory field (' + f + ').\n')
+                valid = False
+
+        return valid
 
 class RearrangementWriter:
     """
