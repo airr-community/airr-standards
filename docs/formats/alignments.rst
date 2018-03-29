@@ -16,9 +16,11 @@ germline reference segment.
 
     * - Name
       - Type
+      - Priority
       - Description
     {%- for field, fieldprops in airr_schema.Alignment.properties.items() %}
     * - ``{{ field }}``
       - ``{{ fieldprops.type }}``
+      - {{ '*required*' if field in airr_schema.Alignment.required else '' }}
       - {{ fieldprops.description | trim }}
     {%- endfor %}

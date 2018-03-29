@@ -1,7 +1,7 @@
 """
 Reference library for AIRR schema for Ig/TCR rearrangements
 """
-from airr.formats import RearrangementReader, RearrangementWriter
+from airr.io import RearrangementReader, RearrangementWriter
 
 
 def read(handle, debug=False):
@@ -13,7 +13,7 @@ def read(handle, debug=False):
       debug (bool): debug flag. If True print debugging information to standard output.
 
     Returns:
-      airr.formats.RearrangementReader: open reader class.
+      airr.io.RearrangementReader: open reader class.
     """
     return RearrangementReader(handle, debug=debug)
 
@@ -28,7 +28,7 @@ def create(handle, fields=None, debug=False):
       debug (bool): debug flag. If True print debugging information to standard output.
 
     Returns:
-      airr.formats.RearrangementWriter: open writer class.
+      airr.io.RearrangementWriter: open writer class.
     """
     return RearrangementWriter(handle, fields=fields, debug=debug)
 
@@ -44,7 +44,7 @@ def derive(out_handle, in_handle, fields=None, debug=False):
       debug (bool): debug flag. If True print debugging information to standard output.
 
     Returns:
-      airr.formats.RearrangementWriter: open writer class.
+      airr.io.RearrangementWriter: open writer class.
     """
     reader = RearrangementReader(in_handle)
     in_fields = list(reader.fields)

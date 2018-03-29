@@ -5,106 +5,7 @@ from __future__ import print_function
 import sys
 import csv
 from prov import model
-from airr.specs import definitions
-
-
-class RearrangementSchema:
-    """
-    Rearrangement schema definitions
-
-    Attributes:
-      properties (collections.OrderedDict): Rearrangement field definitions.
-      mandatory (list): mandatory Rearrangement fields.
-      optional (list): non-required Rearrangement fields.
-    """
-    properties = definitions['Rearrangement']['properties']
-    mandatory = definitions['Rearrangement']['required']
-    optional = [f for f in definitions['Rearrangement']['properties'] \
-                 if f not in definitions['Rearrangement']['required']]
-
-    @staticmethod
-    def spec(field):
-        """
-        Get the properties for a field
-
-        Arguments:
-          name (str): field name.
-
-        Returns:
-          collections.OrderedDict: Rearrangement definition for the field.
-        """
-        return RearrangementSchema.properties.get(field, None)
-
-    @staticmethod
-    def type(field):
-        """
-        Get the type for a field
-
-        Arguments:
-          name (str): field name.
-
-        Returns:
-          str: the type definition for the field
-        """
-        field_spec = RearrangementSchema.properties.get(field, None)
-        field_type = field_spec.get('type', None) if field_spec else None
-        return field_type
-
-    @staticmethod
-    def to_bool(value):
-        """
-        Converts strings to boolean
-
-        Arguments:
-          value (str): logical value as a string.
-
-        Returns:
-          bool: conversion of the string to True or False.
-        """
-        if type(value) is bool:
-            return value
-        if value.upper() in [ "F", "FALSE", "NO", "N" ]:
-            return False
-        if value.upper() in [ "T", "TRUE", "YES", "Y" ]:
-            return True
-
-        return None
-
-    @staticmethod
-    def to_int(value):
-        """
-        Converts strings to integers
-
-        Arguments:
-          value (str): integer value as a string.
-
-        Returns:
-          int: conversion of the string to an integer.
-        """
-        if type(value) is int:
-            return value
-        try:
-            return int(value)
-        except ValueError:
-            return None
-
-    @staticmethod
-    def to_float(value):
-        """
-        Converts strings to floats
-
-        Arguments:
-          value (str): float value as a string.
-
-        Returns:
-          float: conversion of the string to a float.
-        """
-        if type(value) is float:
-            return value
-        try:
-            return float(value)
-        except ValueError:
-            return None
+from airr.schema import RearrangementSchema
 
 
 class RearrangementReader:
@@ -146,7 +47,7 @@ class RearrangementReader:
           debug (bool): debug state. If True prints debug information.
 
         Returns:
-          airr.formats.RearrangementReader : reader object.
+          airr.io.RearrangementReader : reader object.
         """
         # arguments
         self.handle = handle
@@ -160,7 +61,7 @@ class RearrangementReader:
         Iterator initializer
 
         Returns:
-          airr.formats.RearrangementReader
+          airr.io.RearrangementReader
         """
         return self
 
@@ -226,7 +127,7 @@ class RearrangementWriter:
           debug (bool): debug state. If True prints debug information.
 
         Returns:
-          airr.formats.RearrangementWriter : writer object.
+          airr.io.RearrangementWriter : writer object.
         """
         # arguments
         self.handle = handle
