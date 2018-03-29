@@ -842,7 +842,7 @@ Rearrangement:
       cell_id:
          type: string
          description: >
-            Identifier defining the cell of original for the query sequence.
+            Identifier defining the cell of origin for the query sequence.
          x-miairr: true
       clone_id:
         type: string

@@ -9,7 +9,7 @@ See the formatting overview for details on how to structure this data.
 
 We work with the IMGT definitions of the junction/CDR3 regions.  Specifically,
 the IMGT ``JUNCTION`` includes the conserved cysteine and tryptophan/phenylalanine
-residues, while ``CDR3`` excludes those two residues. Therfore, our ``junction``
+residues, while ``CDR3`` excludes those two residues. Therefore, our ``junction``
 and ``junction_aa`` fields which represent the extracted sequence include the two
 conserved residues, while the coordinate fields (``cdr3_start`` and ``cdr3_end``)
 exclude them.
