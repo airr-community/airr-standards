@@ -107,8 +107,22 @@ class RearrangementReader:
         required_fields = list(RearrangementSchema.mandatory)
         for f in required_fields:
             if f not in self.fields:
-                sys.stderr.write('ERROR: File is missing AIRR mandatory field (' + f + ').\n')
+                sys.stderr.write('Warning: File is missing AIRR mandatory field (' + f + ').\n')
                 valid = False
+
+        # check sequence_id uniqueness
+        # TODO: should empty sequence_id be an error? If they are required to be unique, then yes I think...
+        row_num = 1
+        seq_ids = {}
+        for row in self:
+            if row['sequence_id'] is None:
+                sys.stderr.write('Warning: sequence_id is empty for row # ' + str(row_num) + '.\n')
+            elif len(row['sequence_id']) == 0 is None:
+                sys.stderr.write('Warning: sequence_id is empty for row # ' + str(row_num) + '.\n')
+            elif seq_ids.get(row['sequence_id']) is not None:
+                sys.stderr.write('Warning: sequence_id (' + row['sequence_id'] + ') is not unique in file.\n')
+                valid = False
+            seq_ids[row['sequence_id']] = 1
 
         return valid
 
