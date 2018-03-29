@@ -1,4 +1,6 @@
-``alignment`` schema/format
+.. _AlignmentSchema:
+
+Alignment Schema
 ===========================
 
 See the formatting overview for details on how to structure this data.

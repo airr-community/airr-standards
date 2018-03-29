@@ -1,5 +1,6 @@
-===============================
-``rearrangement`` schema/format
+.. _RearrangementSchema:
+
+Rearrangement Schema
 ===============================
 
 See the formatting overview for details on how to structure this data.

@@ -1,3 +1,5 @@
+.. _MiAIRR:
+
 MiAIRR Standard
 ===============
 
