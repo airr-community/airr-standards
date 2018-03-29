@@ -2,6 +2,8 @@
 Reference library for AIRR schema for Ig/TCR rearrangements
 """
 from airr.io import RearrangementReader, RearrangementWriter
+from collections import OrderedDict
+from itertools import chain
 
 
 def read(handle, debug=False):
@@ -10,7 +12,7 @@ def read(handle, debug=False):
 
     Arguments:
       handle (file): input file handle.
-      debug (bool): debug flag. If True print debugging information to standard output.
+      debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       airr.io.RearrangementReader: open reader class.
@@ -25,7 +27,7 @@ def create(handle, fields=None, debug=False):
     Arguments:
       handle (file): output file handle.
       fields (list): additional non-mandatory fields to add to the output.
-      debug (bool): debug flag. If True print debugging information to standard output.
+      debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       airr.io.RearrangementWriter: open writer class.
@@ -41,7 +43,7 @@ def derive(out_handle, in_handle, fields=None, debug=False):
       out_handle (file): output file handle.
       in_handle (file): existing file to derive fields from
       fields (list): additional non-mandatory fields to add to the output.
-      debug (bool): debug flag. If True print debugging information to standard output.
+      debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       airr.io.RearrangementWriter: open writer class.
@@ -61,14 +63,32 @@ def merge(out_handle, airr_files, drop=False, debug=False):
       airr_files (list): list of input files to merge.
       drop (bool): drop flag. If True then drop fields that do not exist in all input
                    files, otherwise combine fields from all input files.
-      debug (bool): debug flag. If True print debugging information to standard output.
+      debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       boolean: True if files were successfully merged, otherwise False.
     """
-    #readers = [RearrangementReader(open(f, 'r')) for f in airr_files]
+    try:
+        # gather fields from input files
+        readers = [RearrangementReader(open(f, 'r'), debug=debug) for f in airr_files]
+        field_list = [x.fields for x in readers]
+        if drop:
+            field_set = set.intersection(*map(set, field_list))
+        else:
+            field_set = set.union(*map(set, field_list))
+        field_order = OrderedDict([(f, None) for f in chain(*field_list)])
+        out_fields = [f for f in field_order if f in field_set]
 
-    return False
+        out_file = RearrangementWriter(out_handle, fields=out_fields, debug=debug)
+
+        for reader in readers:
+            for rec in reader:
+                out_file.write(rec)
+
+        out_file.close()
+        return True
+    except:
+        return False
 
 def validate(airr_files, debug=False):
     """
@@ -76,7 +96,7 @@ def validate(airr_files, debug=False):
 
     Arguments:
       in_files (list): list of input files to validate.
-      debug (bool): debug flag. If True print debugging information to standard output.
+      debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       boolean: True if all files passed validation, otherwise False
