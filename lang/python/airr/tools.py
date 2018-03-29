@@ -22,39 +22,48 @@ AIRR tools and utilities
 # Creative Commons Attribution 4.0 License for more details.
 # 
 
-import argparse
-import versioneer
+
 import airr
+import argparse
+import sys
+import versioneer
 
 def main():
     """Utility commands for AIRR Community Standards files"""
 
-    parser = argparse.ArgumentParser(add_help=False);
-    parser.description='AIRR Community Standards utility commands.'
-
+    parser = argparse.ArgumentParser(add_help=False,
+                                     description='AIRR Community Standards utility commands.')
     group_help = parser.add_argument_group('help')
-    group_help.add_argument('--version', action='version',
-                            version='%(prog)s:' + ' %s' %(versioneer.get_version()))
+    #group_help.add_argument('--version', action='version',
+    #                        version='%(prog)s:' + ' %s' %(versioneer.get_version()))
     group_help.add_argument('-h', '--help', action='help', help='show this help message and exit')
 
-    # TODO: workflow provenance
-    group_prov = parser.add_argument_group('provenance')
-    group_prov.add_argument('-p', '--provenance', action='store', dest='prov_file', default=None,
-                              help='''File name for storing workflow provenance. If specified, airr-tools
-                                   will record provenance for all activities performed.''')
-
-    # TODO: study metadata
-    group_meta = parser.add_argument_group('study metadata')
-    group_meta.add_argument('-m', '--metadata', action='store', dest='metadata_file', default=None,
-                            help='''File name containing study metadata.''')
-
+    # Setup subparsers
     subparsers = parser.add_subparsers(title='subcommands', dest='command', metavar='',
                                        help='Database operation')
     # TODO:  This is a temporary fix for Python issue 9253
     subparsers.required = True
 
+    # Define arguments common to all subcommands
+    common_parser = argparse.ArgumentParser(add_help=False)
+    common_help = common_parser.add_argument_group('help')
+    #common_help.add_argument('--version', action='version',
+    #                        version='%(prog)s:' + ' %s' %(versioneer.get_version()))
+    common_help.add_argument('-h', '--help', action='help', help='show this help message and exit')
+
+    # TODO: workflow provenance
+    group_prov = common_parser.add_argument_group('provenance')
+    group_prov.add_argument('-p', '--provenance', action='store', dest='prov_file', default=None,
+                              help='''File name for storing workflow provenance. If specified, airr-tools
+                                   will record provenance for all activities performed.''')
+
+    # TODO: study metadata
+    group_meta = common_parser.add_argument_group('study metadata')
+    group_meta.add_argument('-m', '--metadata', action='store', dest='metadata_file', default=None,
+                            help='''File name containing study metadata.''')
+
     # Subparser to merge files
-    parser_merge = subparsers.add_parser('merge', parents=[parser],
+    parser_merge = subparsers.add_parser('merge', parents=[common_parser],
                                          add_help=False,
                                          help='Merge AIRR rearrangement files.',
                                          description='Merge AIRR rearrangement files.')
@@ -70,7 +79,7 @@ def main():
     parser_merge.set_defaults(func=airr.merge)
 
     # Subparser to validate files
-    parser_validate = subparsers.add_parser('validate', parents=[parser],
+    parser_validate = subparsers.add_parser('validate', parents=[common_parser],
                                             add_help=False,
                                             help='Validate AIRR rearrangement files.',
                                             description='Validate AIRR rearrangement files.')
@@ -84,5 +93,5 @@ def main():
     print(args)
 
     if (not args):
-        args.print_help()
+        parser.print_help()
         sys.exit()
