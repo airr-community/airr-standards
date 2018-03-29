@@ -84,9 +84,9 @@ class Schema:
         """
         if type(value) is bool:
             return value
-        if value.upper() in [ "F", "FALSE", "NO", "N" ]:
+        if value.upper() in ['F', 'FALSE', 'NO', 'N']:
             return False
-        if value.upper() in [ "T", "TRUE", "YES", "Y" ]:
+        if value.upper() in ['T', 'TRUE', 'YES', 'Y']:
             return True
 
         return None
