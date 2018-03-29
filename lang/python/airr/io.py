@@ -86,6 +86,15 @@ class RearrangementReader:
 
         return row
 
+    def next(self):
+        """
+        Next method
+
+        Returns:
+          dict: parsed Rearrangements data.
+        """
+        return self.__next__()
+
     def validate(self):
         """
         Validate Rearrangements data.
