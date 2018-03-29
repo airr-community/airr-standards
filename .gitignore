@@ -96,3 +96,11 @@ ENV/
 
 # emacs backups
 *~
+
+# R packages
+*.Rproj
+.Rproj.user
+.Rhistory
+man/
+vignettes/
+!vignettes/*.Rmd
