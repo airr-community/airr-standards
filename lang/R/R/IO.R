@@ -1,0 +1,87 @@
+#### File I/O ####
+
+#' Read an AIRR Rearrangement TSV
+#' 
+#' \code{read_airr} reads a TSV container AIRR Rearrangement records.
+#'
+#' @param    file        input file path.
+#' @param    positions   if \code{TRUE} modify positional fields to 1-based indexes.
+#' 
+#' @return   A data.frame of the TSV file with appropriate type and position conversion
+#'           for fields defined in the specification.
+#'                   
+#' @seealso  See \link{write_airr} for writing to AIRR Rearrangement data.
+#' 
+#' @examples
+#' \dontrun{
+#'   # Read a TSV file with default options
+#'   df <- read_airr("file.tsv")
+#' }
+#' 
+#' @export
+read_airr <- function(file, positions=TRUE) {
+    # Define types
+    header <- names(suppressMessages(readr::read_tsv(file, n_max=1)))
+    fields <- intersect(names(RearrangementSchema[["properties"]]), header)
+    cast <- setNames(lapply(fields, function(x) RearrangementSchema[["properties"]][[x]][["cast"]]),
+                            schema_fields)
+    types <- do.call(readr::cols, cast)
+    
+    # Read file    
+    data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None")))
+    
+    # Adjust indexes
+    if (positions) {
+        start_positions <- grep("_start$", names(data), perl=TRUE)
+        if (length(start_positions) > 0) {
+            data[, start_positions] <- data[, start_positions] + 1
+        }
+    }
+
+    return(data)
+}
+
+
+#' Write an AIRR Rearrangement TSV
+#' 
+#' \code{write_airr} writes an TSV container AIRR Rearrangement records.
+#'
+#' @param    data        data.frame of Rearrangement data.
+#' @param    file        output file name.
+#' @param    positions   if \code{TRUE} modify positional fields to 0-based indexes.
+#'
+#' @return   NULL
+#' 
+#' @seealso  See \link{read_airr} for reading to AIRR Rearrangement files.
+#' 
+#' @examples
+#' \dontrun{
+#'   # Write data
+#'   write_airr(data, "file.tsv")
+#' }
+#' 
+#' @export
+write_airr <- function(data, file, positions=TRUE) {
+    ## DEBUG
+    # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
+
+    # Fill in missing required columns
+    missing <- setdiff(RearrangementSchema[["required"]], names(data))
+    data[, missing] <- NA
+    
+    # order columns
+    ordering <- c(intersect(names(RearrangementSchema[["properties"]]), names(data)),
+                  setdiff(names(data), names(RearrangementSchema[["properties"]])))
+    data <- data[, ordering]
+    
+    # Adjust indexes
+    if (positions) {
+        start_positions <- grep("_start$", names(data), perl=TRUE)
+        if (length(start_positions) > 0) {
+            data[, start_positions] <- data[, start_positions] + 1
+        }
+    }
+    
+    # Write
+    write_tsv(data, file, na="")
+}
