@@ -32,7 +32,7 @@ names is always required.
 
 To minimize ambiguity of locations/annotations, all sequence coordinates use
 Python-style semantics for locations and intervals. This means 0-indexed coords
-with half-open intervals.  See [this example](https://stackoverflow.com/a/509297/510187)
+with half-open intervals.  See `this example <https://stackoverflow.com/a/509297/510187>`__
 for additional clarity.
 
 
@@ -108,7 +108,7 @@ result of ``GROUP BY primary_key``.)
 **CIGAR specification**
 
 Alignments details are specified using the CIGAR format as defined in the
-[SAM specifications](https://samtools.github.io/hts-specs/SAMv1.pdf), with
+`SAM specifications <https://samtools.github.io/hts-specs/SAMv1.pdf>`__, with
 vocabulary restrictions. The following are valid operations.
 
 .. csv-table::
