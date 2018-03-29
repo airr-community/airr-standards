@@ -54,8 +54,16 @@ print('*****')
 print('Validate rearrangements file.')
 print('*****')
 print('*****')
+print('Validating more_data.tsv')
 valid = airr.validate(['more_data.tsv'])
 if valid:
-    print('more_data.tsv passes validation.')
+    print('PASS: more_data.tsv passes validation.')
 else:
-    print('ERROR: more_data.tsv does not pass validation.')
+    print('FAIL: more_data.tsv does not pass validation.')
+
+print('Validating bad_data.tsv')
+valid = airr.validate(['bad_data.tsv'])
+if not valid:
+    print('PASS: bad_data.tsv fails validation.')
+else:
+    print('FAIL: bad_data.tsv passed validation.')
