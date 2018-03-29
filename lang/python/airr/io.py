@@ -110,11 +110,12 @@ class RearrangementReader:
                 sys.stderr.write('Warning: File is missing AIRR mandatory field (' + f + ').\n')
                 valid = False
 
-        # check sequence_id uniqueness
-        # TODO: should empty sequence_id be an error? If they are required to be unique, then yes I think...
+        # check row values
         row_num = 1
         seq_ids = {}
         for row in self:
+            # check sequence_id uniqueness
+            # TODO: should empty sequence_id be an error? If they are required to be unique, then yes I think...
             if row['sequence_id'] is None:
                 sys.stderr.write('Warning: sequence_id is empty for row # ' + str(row_num) + '.\n')
             elif len(row['sequence_id']) == 0 is None:
@@ -123,6 +124,16 @@ class RearrangementReader:
                 sys.stderr.write('Warning: sequence_id (' + row['sequence_id'] + ') is not unique in file.\n')
                 valid = False
             seq_ids[row['sequence_id']] = 1
+
+            # check productive flag
+            if 'productive' in self.fields:
+                if row['productive'] is None:
+                    sys.stderr.write('Warning: productive is not boolean for row # ' + str(row_num) + '.\n')
+
+            # check rev_comp flag
+            if 'rev_comp' in self.fields:
+                if row['rev_comp'] is None:
+                    sys.stderr.write('Warning: rev_comp is not boolean for row # ' + str(row_num) + '.\n')
 
         return valid
 
