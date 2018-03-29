@@ -5,7 +5,7 @@ Data Representations
 
 .. toctree::
    :maxdepth: 3
-   :caption: Contents:
+   :caption: Schema
 
    alignments
    rearrangements
