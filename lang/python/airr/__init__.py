@@ -35,7 +35,7 @@ def create(handle, fields=None, debug=False):
 
 def derive(out_handle, in_handle, fields=None, debug=False):
     """
-    Create an empty AIRR rearrangements file with fields derived from an existing fiel
+    Create an empty AIRR rearrangements file with fields derived from an existing file
 
     Arguments:
       out_handle (file): output file handle.
@@ -52,6 +52,42 @@ def derive(out_handle, in_handle, fields=None, debug=False):
         in_fields.extend([f for f in fields if f not in in_fields])
     return RearrangementWriter(out_handle, fields=in_fields, debug=debug)
 
+def merge(out_handle, airr_files, drop=False, debug=False):
+    """
+    Merge one or more AIRR rearrangements files
+
+    Arguments:
+      out_handle (file): output file handle.
+      airr_files (list): list of input files to merge.
+      drop (bool): drop flag. If True then drop fields that do not exist in all input
+                   files, otherwise combine fields from all input files.
+      debug (bool): debug flag. If True print debugging information to standard output.
+
+    Returns:
+      boolean: True if files were successfully merged, otherwise False.
+    """
+    #readers = [RearrangementReader(open(f, 'r')) for f in airr_files]
+
+    return False
+
+def validate(airr_files, debug=False):
+    """
+    Validates one or more AIRR rearrangements files
+
+    Arguments:
+      in_files (list): list of input files to validate.
+      debug (bool): debug flag. If True print debugging information to standard output.
+
+    Returns:
+      boolean: True if all files passed validation, otherwise False
+    """
+    valid = True
+    for file in airr_files:
+        reader = RearrangementReader(open(file, 'r'))
+        valid &= reader.validate()
+        # TODO: how to close file?
+
+    return valid
 
 # versioneer-generated
 from ._version import get_versions
