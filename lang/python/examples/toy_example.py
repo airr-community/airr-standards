@@ -47,3 +47,15 @@ for r in airr.read(open('my_data.tsv', 'r')):
     print(r)
     mored.write(r)
 mored.close()
+
+# validate rearrangements file
+print('*****')
+print('*****')
+print('Validate rearrangements file.')
+print('*****')
+print('*****')
+valid = airr.validate(['more_data.tsv'])
+if valid:
+    print('more_data.tsv passes validation.')
+else:
+    print('ERROR: more_data.tsv does not pass validation.')
