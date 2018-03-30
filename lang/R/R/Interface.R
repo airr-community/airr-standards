@@ -1,4 +1,4 @@
-#### File I/O ####
+#### Rearrangement I/O ####
 
 #' Read an AIRR Rearrangement TSV
 #' 
@@ -21,10 +21,10 @@
 #' @export
 read_airr <- function(file, positions=TRUE) {
     # Define types
+    parsers <- c("character"="c", "logical"="l", "integer"="i", "double"="d")
     header <- names(suppressMessages(readr::read_tsv(file, n_max=1)))
-    fields <- intersect(names(RearrangementSchema[["properties"]]), header)
-    cast <- setNames(lapply(fields, function(x) RearrangementSchema[["properties"]][[x]][["cast"]]),
-                            schema_fields)
+    schema_fields <- intersect(names(RearrangementSchema), header)
+    cast <- setNames(lapply(schema_fields, function(f) parsers[RearrangementSchema[f]$type]), schema_fields)
     types <- do.call(readr::cols, cast)
     
     # Read file    
@@ -66,12 +66,12 @@ write_airr <- function(data, file, positions=TRUE) {
     # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
 
     # Fill in missing required columns
-    missing <- setdiff(RearrangementSchema[["required"]], names(data))
+    missing <- setdiff(RearrangementSchema@mandatory, names(data))
     data[, missing] <- NA
     
     # order columns
-    ordering <- c(intersect(names(RearrangementSchema[["properties"]]), names(data)),
-                  setdiff(names(data), names(RearrangementSchema[["properties"]])))
+    ordering <- c(intersect(names(RearrangementSchema), names(data)),
+                  setdiff(names(data), names(RearrangementSchema)))
     data <- data[, ordering]
     
     # Adjust indexes

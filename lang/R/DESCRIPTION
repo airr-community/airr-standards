@@ -18,7 +18,8 @@ Depends:
     R (>= 3.1.2)
 Imports:
     readr,
-    stats
+    stats,
+    stringi
 Suggests:
     knitr,
     rmarkdown,
