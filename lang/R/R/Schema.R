@@ -1,3 +1,22 @@
+#### Data ####
+
+#' Alignment Schema
+#'
+#' AIRR Alignment object schema
+#'
+#' @format   A \link{Schema} object.
+"AlignmentSchema"
+
+#' Rearrangment Schema
+#'
+#' AIRR Rearrangement object schema
+#'
+#' @format   A \link{Schema} object.
+#' 
+#' @seealso See \link{read_airr} and \link{write_airr} for reading and writing.
+"RearrangementSchema"
+
+
 #### Classes ####
 
 #' S4 class defining an AIRR standard schema
@@ -95,22 +114,3 @@ load_schema <- function(definition) {
     
     return(new("Schema", mandatory=mandatory, optional=optional, properties=properties))
 }
-
-
-#### Data ####
-
-#' Alignment Schema
-#'
-#' AIRR Alignment object schema
-#'
-#' @format   A \link{Schema} object.
-"AlignmentSchema"
-
-#' Rearrangment Schema
-#'
-#' AIRR Rearrangement object schema
-#'
-#' @format   A \link{Schema} object.
-#' 
-#' @seealso See \link{read_airr} and \link{write_airr} for reading and writing.
-"RearrangementSchema"
