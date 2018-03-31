@@ -102,5 +102,5 @@ ENV/
 .Rproj.user
 .Rhistory
 man/
-vignettes/
+vignettes/*
 !vignettes/*.Rmd
