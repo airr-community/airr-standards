@@ -73,7 +73,7 @@ read_airr <- function(file, base=c(0, 1)) {
 #' }
 #' 
 #' @export
-write_airr <- function(data, file, positions=TRUE) {
+write_airr <- function(data, file, base=c(0, 1)) {
     ## DEBUG
     # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
 
