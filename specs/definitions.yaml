@@ -799,6 +799,82 @@ Rearrangement:
       fwr4_end:
         type: integer
         description: FWR4 end position in 'sequence'.
+      v_sequence_alignment:
+        type: string
+        description: >
+           V segment aligned portion of query sequence, including any indel corrections or
+           numbering spacers, such as IMGT-gaps.
+      v_sequence_alignment_aa:
+        type: string
+        description: >
+           Amino acid translation of the V segment aligned portion of the query sequence.
+      d_sequence_alignment:
+        type: string
+        description: >
+           D segment aligned portion of query sequence, including any indel corrections or
+           numbering spacers, such as IMGT-gaps.
+      d_sequence_alignment_aa:
+        type: string
+        description: >
+           Amino acid translation of the D segment aligned portion of the query sequence.
+      j_sequence_alignment:
+        type: string
+        description: >
+           J segment aligned portion of query sequence, including any indel corrections or
+           numbering spacers, such as IMGT-gaps.
+      j_sequence_alignment_aa:
+        type: string
+        description: >
+           Amino acid translation of the J segment aligned portion of the query sequence.
+      c_sequence_alignment:
+        type: string
+        description: >
+           Constant region aligned portion of query sequence, including any indel corrections or
+           numbering spacers.
+      c_sequence_alignment_aa:
+        type: string
+        description: >
+           Amino acid translation of the constant region aligned portion of the query sequence.
+      v_germline_alignment:
+        type: string
+        description: >
+           Aligned V segment germline sequence spaning the same region
+           as the v_sequence_alignment field and including the same set
+           of corrections and spacers (if any).
+      v_germline_alignment_aa:
+        type: string
+        description: >
+           Amino acid translation of the align V segment germline sequence.
+      d_germline_alignment:
+        type: string
+        description: >
+           Aligned D segment germline sequence spaning the same region
+           as the d_sequence_alignment field and including the same set
+           of corrections and spacers (if any).
+      d_germline_alignment_aa:
+        type: string
+        description: >
+           Amino acid translation of the align D segment germline sequence.
+      j_germline_alignment:
+        type: string
+        description: >
+           Aligned J segment germline sequence spaning the same region
+           as the j_sequence_alignment field and including the same set
+           of corrections and spacers (if any).
+      j_germline_alignment_aa:
+        type: string
+        description: >
+           Amino acid translation of the align J segment germline sequence.
+      c_germline_alignment:
+        type: string
+        description: >
+           Aligned constant region germline sequence spaning the same region
+           as the c_sequence_alignment field and including the same set
+           of corrections and spacers (if any).
+      c_germline_alignment_aa:
+        type: string
+        description: >
+           Amino acid translation of the align constant region germline sequence.
       junction_length:
         type: integer
         description: Number of nucleotides in the 'junction' sequence.
