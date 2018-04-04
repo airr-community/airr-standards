@@ -81,7 +81,7 @@ write_airr <- function(data, file, base=c(0, 1)) {
     base <- match.arg(base)
     
     # Fill in missing required columns
-    missing <- setdiff(RearrangementSchema@mandatory, names(data))
+    missing <- setdiff(RearrangementSchema@required, names(data))
     data[, missing] <- NA
     
     # order columns

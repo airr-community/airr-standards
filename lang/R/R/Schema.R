@@ -4,7 +4,7 @@
 #' 
 #' \code{Schema} defines a common data structure for AIRR standards.
 #' 
-#' @slot    mandatory           \code{character} vector of required fields.
+#' @slot    required           \code{character} vector of required fields.
 #' @slot    optional            \code{character} vector of non-required fields.
 #' @slot    properties          \code{list} of field definitions.
 #'                          
@@ -15,7 +15,7 @@
 #' @aliases      Schema
 #' @exportClass  Schema
 setClass("Schema", 
-         slots=c(mandatory="character",
+         slots=c(required="character",
                  optional="character",
                  properties="list"))
 
@@ -95,8 +95,8 @@ load_schema <- function(definition) {
     # Define member attributes
     fields <- names(definition_list[["properties"]])
     properties <- definition_list[["properties"]]
-    mandatory <- definition_list[["required"]]
-    optional <- setdiff(fields, mandatory)
+    required <- definition_list[["required"]]
+    optional <- setdiff(fields, required)
     
     # Rename type and clean description
     types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="double")
@@ -107,7 +107,7 @@ load_schema <- function(definition) {
         properties[[f]][["description"]] <- stri_trim(y)
     }
     
-    return(new("Schema", mandatory=mandatory, optional=optional, properties=properties))
+    return(new("Schema", required=required, optional=optional, properties=properties))
 }
 
 
