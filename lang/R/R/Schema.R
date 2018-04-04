@@ -5,7 +5,9 @@
 #' AIRR Alignment object schema
 #'
 #' @format   A \link{Schema} object.
-"AlignmentSchema"
+#' 
+#' @export
+AlignmentSchema <- load_schema("Alignment")
 
 #' Rearrangment Schema
 #'
