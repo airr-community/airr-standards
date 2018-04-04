@@ -17,7 +17,6 @@ VignetteBuilder: knitr
 Depends:
     R (>= 3.1.2)
 Imports:
-    master,
     readr,
     stats,
     stringi
