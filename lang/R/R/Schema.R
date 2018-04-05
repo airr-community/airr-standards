@@ -95,6 +95,7 @@ load_schema <- function(definition) {
     # Define member attributes
     fields <- names(definition_list[["properties"]])
     properties <- definition_list[["properties"]]
+
     required <- definition_list[["required"]]
     optional <- setdiff(fields, required)
     
