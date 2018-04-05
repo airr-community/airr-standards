@@ -17,9 +17,10 @@ basename = lambda f: osp.splitext(osp.basename(f))[0]
 spec_files = {basename(f): f for f in glob('specs/*.yaml')}
 jinja_templates = {basename(f): f for f in glob('specs/*.j2')}
 py_files = {basename(f): f for f in glob('lang/python/airr/specs/*.yaml')}
+r_files = {basename(f): f for f in glob('lang/R/inst/extdata/*.yaml')}
 doc_files = {basename(f): f for f in glob('docs/*.md')}
 
-
+# Check python package specs
 if set(spec_files.keys()) != set(py_files.keys()):
     for spec in set(spec_files.keys()) - set(py_files.keys()):
         print('{} missing from python package'.format(spec), file=sys.stderr)
@@ -27,7 +28,15 @@ if set(spec_files.keys()) != set(py_files.keys()):
         print('{} found in python package but missing from specs/'.format(spec), file=sys.stderr)
     sys.exit(1)
 
+# Check R package specs
+if set(spec_files.keys()) != set(r_files.keys()):
+    for spec in set(spec_files.keys()) - set(r_files.keys()):
+        print('{} missing from R package'.format(spec), file=sys.stderr)
+    for spec in set(r_files.keys()) - set(spec_files.keys()):
+        print('{} found in R package but missing from specs/'.format(spec), file=sys.stderr)
+    sys.exit(1)
 
+# Check doc rendering
 if len(set(spec_files.keys()) - set(doc_files.keys())) > 0:
     for spec in set(spec_files.keys()) - set(doc_files.keys()):
         print('{} missing from rendered doc files'.format(spec), file=sys.stderr)
@@ -40,10 +49,19 @@ for spec_name in spec_files:
         gold_spec = yaml.load(ip)
     with open(py_files[spec_name], 'r') as ip:
         py_spec = yaml.load(ip)
+    with open(r_files[spec_name], 'r') as ip:
+        r_spec = yaml.load(ip)
 
+    # Check python package
     if jsondiff.diff(gold_spec, py_spec) != {}:
         print('{} spec is different from python version'.format(spec_name), file=sys.stderr)
         print(jsondiff.diff(gold_spec, py_spec), file=sys.stderr)
+        sys.exit(1)
+
+    # Check R package
+    if jsondiff.diff(gold_spec, r_spec) != {}:
+        print('{} spec is different from python version'.format(spec_name), file=sys.stderr)
+        print(jsondiff.diff(gold_spec, r_spec), file=sys.stderr)
         sys.exit(1)
 
     # check that docs have been rendered
