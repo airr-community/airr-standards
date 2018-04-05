@@ -26,7 +26,7 @@ def create(handle, fields=None, debug=False):
 
     Arguments:
       handle (file): output file handle.
-      fields (list): additional non-mandatory fields to add to the output.
+      fields (list): additional non-required fields to add to the output.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
@@ -42,7 +42,7 @@ def derive(out_handle, in_handle, fields=None, debug=False):
     Arguments:
       out_handle (file): output file handle.
       in_handle (file): existing file to derive fields from
-      fields (list): additional non-mandatory fields to add to the output.
+      fields (list): additional non-required fields to add to the output.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
