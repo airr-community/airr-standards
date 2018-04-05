@@ -23,11 +23,10 @@
 #' }
 #' 
 #' @export
-read_airr <- function(file, base=0) {
+read_airr <- function(file, base=c(0, 1)) {
     # Check arguments
-    base_choices <- c(0, 1)
-    base <- match.arg(as.character(base), base_choices)
-
+    base <- match.arg(base)
+    
     # Define types
     parsers <- c("character"="c", "logical"="l", "integer"="i", "double"="d")
     header <- names(suppressMessages(readr::read_tsv(file, n_max=1)))
@@ -74,13 +73,12 @@ read_airr <- function(file, base=0) {
 #' }
 #' 
 #' @export
-write_airr <- function(data, file, base=0) {
+write_airr <- function(data, file, base=c(0, 1)) {
     ## DEBUG
     # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
 
     # Check arguments
-    base_choices <- c(0, 1)
-    base <- match.arg(as.character(base), as.character(base_choices))
+    base <- match.arg(base)
     
     # Fill in missing required columns
     missing <- setdiff(RearrangementSchema@required, names(data))
@@ -95,7 +93,7 @@ write_airr <- function(data, file, base=0) {
     if (base == 0) {
         start_positions <- grep("_start$", names(data), perl=TRUE)
         if (length(start_positions) > 0) {
-            data[, start_positions] <- data[, start_positions] - 1
+            data[, start_positions] <- data[, start_positions] + 1
         }
     }
     
