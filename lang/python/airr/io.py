@@ -123,7 +123,7 @@ class RearrangementWriter:
 
         Arguments:
           handle (file): file handle of the open Rearrangements file.
-          fields (list) : list of non-mandatory fields to add. May fields undefined by the spec.
+          fields (list) : list of non-required fields to add. May fields undefined by the spec.
           debug (bool): debug state. If True prints debug information.
 
         Returns:
@@ -134,11 +134,11 @@ class RearrangementWriter:
         self.debug = debug
 
         # order fields according to spec
-        field_names = list(RearrangementSchema.mandatory)
+        field_names = list(RearrangementSchema.required)
         if fields is not None:
             additional_fields = []
             for f in fields:
-                if f in RearrangementSchema.mandatory:
+                if f in RearrangementSchema.required:
                     continue
                 elif f in RearrangementSchema.optional:
                     field_names.append(f)
@@ -172,7 +172,7 @@ class RearrangementWriter:
     #         fields = [fields]
     #
     #     for f in fields:
-    #         if f not in self.additional_fields or RearrangementSchema.mandatory:
+    #         if f not in self.additional_fields or RearrangementSchema.required:
     #             self.additional_fields.append(f)
     #
     #     return self.additional_fields
@@ -186,9 +186,9 @@ class RearrangementWriter:
         """
         # validate row
         if self.debug:
-            for field in RearrangementSchema.mandatory:
+            for field in RearrangementSchema.required:
                 if row.get(field, None) is None:
-                    sys.stderr.write('Warning: Record is missing AIRR mandatory field (' + field + ').\n')
+                    sys.stderr.write('Warning: Record is missing AIRR required field (' + field + ').\n')
 
         self.dict_writer.writerow(row)
 

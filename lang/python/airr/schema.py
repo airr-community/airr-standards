@@ -16,7 +16,7 @@ class Schema:
     Attributes:
       definition (collections.OrderedDict): complete schema.
       properties (collections.OrderedDict): field definitions.
-      mandatory (list): list of mandatory fields.
+      required (list): list of mandatory fields.
       optional (list): list of non-required fields.
     """
     def __init__(self, definition):
@@ -41,8 +41,8 @@ class Schema:
             raise
 
         self.properties = self.definition['properties']
-        self.mandatory = self.definition['required']
-        self.optional = [f for f in self.properties if f not in self.mandatory]
+        self.required = self.definition['required']
+        self.optional = [f for f in self.properties if f not in self.required]
 
     def spec(self, field):
         """
