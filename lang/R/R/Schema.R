@@ -1,29 +1,10 @@
-#### Data ####
-
-#' Alignment Schema
-#'
-#' AIRR Alignment object schema
-#'
-#' @format   A \link{Schema} object.
-"AlignmentSchema"
-
-#' Rearrangment Schema
-#'
-#' AIRR Rearrangement object schema
-#'
-#' @format   A \link{Schema} object.
-#' 
-#' @seealso See \link{read_airr} and \link{write_airr} for reading and writing.
-"RearrangementSchema"
-
-
 #### Classes ####
 
 #' S4 class defining an AIRR standard schema
 #' 
 #' \code{Schema} defines a common data structure for AIRR standards.
 #' 
-#' @slot    mandatory           \code{character} vector of required fields.
+#' @slot    required           \code{character} vector of required fields.
 #' @slot    optional            \code{character} vector of non-required fields.
 #' @slot    properties          \code{list} of field definitions.
 #'                          
@@ -34,7 +15,7 @@
 #' @aliases      Schema
 #' @exportClass  Schema
 setClass("Schema", 
-         slots=c(mandatory="character",
+         slots=c(required="character",
                  optional="character",
                  properties="list"))
 
@@ -58,7 +39,7 @@ setMethod("names",
 setMethod("[",
           signature(x="Schema", i="character"),
           function (x, i) { x@properties[[i]] })
-    
+
 #' @param    name  field name.
 #' 
 #' @rdname   Schema-class
@@ -69,19 +50,33 @@ setMethod("$",
           function (x, name) { x@properties[[name]] })
 
 
-#### Schema Functions ####
+#### Schema I/O ####
 
-#' Read an AIRR Rearrangement TSV
+#' Load a schema definition
 #' 
-#' \code{read_airr} reads a TSV container AIRR Rearrangement records.
+#' \code{load_schema} loads an AIRR object definition from the internal
+#' definition set.
 #'
-#' @param    file        input file path.
-#' @param    positions   if \code{TRUE} modify positional fields to 1-based indexes.
+#' @param    definition   name of the schema definition.
 #' 
-#' @return   A data.frame of the TSV file with appropriate type and position conversion
-#'           for fields defined in the specification.
-#'                   
-#' @seealso  See \link{write_airr} for writing to AIRR Rearrangement data.
+#' @return   A \link{Schema} object for the \code{definition}.
+#' 
+#' @details
+#' Valid definitions include:
+#' \itemize{
+#'   \item   \code{"Rearrangement"}
+#'   \item   \code{"Alignment"}
+#'   \item   \code{"Study"}
+#'   \item   \code{"Subject"}
+#'   \item   \code{"Diagnosis"}
+#'   \item   \code{"Sample"}
+#'   \item   \code{"CellProcessing"}
+#'   \item   \code{"NucleicAcidProcessing"}
+#'   \item   \code{"RawSequenceData"}
+#'   \item   \code{"SoftwareProcessing"}
+#' }
+#'    
+#' @seealso  See \link{Schema} for the return object.
 #' 
 #' @examples
 #' # Load the rearrangement definition
@@ -100,8 +95,9 @@ load_schema <- function(definition) {
     # Define member attributes
     fields <- names(definition_list[["properties"]])
     properties <- definition_list[["properties"]]
-    mandatory <- definition_list[["required"]]
-    optional <- setdiff(fields, mandatory)
+
+    required <- definition_list[["required"]]
+    optional <- setdiff(fields, required)
     
     # Rename type and clean description
     types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="double")
@@ -112,5 +108,28 @@ load_schema <- function(definition) {
         properties[[f]][["description"]] <- stri_trim(y)
     }
     
-    return(new("Schema", mandatory=mandatory, optional=optional, properties=properties))
+    return(new("Schema", required=required, optional=optional, properties=properties))
 }
+
+
+#### Data ####
+
+#' Alignment Schema
+#'
+#' AIRR Alignment object schema
+#'
+#' @format   A \link{Schema} object.
+#' 
+#' @export
+AlignmentSchema <- load_schema("Alignment")
+
+#' Rearrangment Schema
+#'
+#' AIRR Rearrangement object schema
+#'
+#' @format   A \link{Schema} object.
+#' 
+#' @seealso See \link{read_airr} and \link{write_airr} for reading and writing.
+#' 
+#' @export
+RearrangementSchema <- load_schema("Rearrangement")
