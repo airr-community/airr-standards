@@ -1,0 +1,31 @@
+---
+title: 'AIRR standards'
+author: "AIRR community"
+date: '`r Sys.Date()`'
+output:
+  pdf_document:
+    dev: pdf
+    fig_height: 4
+    fig_width: 7.5
+    highlight: pygments
+    toc: yes
+  md_document:
+    fig_height: 4
+    fig_width: 7.5
+    preserve_yaml: no
+    toc: yes
+  html_document:
+    fig_height: 4
+    fig_width: 7.5
+    highlight: pygments
+    theme: readable
+    toc: yes
+geometry: margin=1in
+fontsize: 11pt
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{AIRR standards}
+  %\usepackage[utf8]{inputenc}
+---
+
+# AIRR standards
