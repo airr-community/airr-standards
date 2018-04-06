@@ -22,6 +22,14 @@ elements within these sets are defined here__.
 
 .. __: https://github.com/airr-community/airr-standards/blob/master/AIRR_Minimal_Standard_Data_Elements.tsv
 
+.. Figure:: images/MiAIRR_data_elements_plain.png
+   :alt: A scheme of the MiAIRR data set and data elements
+   :figwidth: image
+
+   Schema of MiAIRR data sets and the individual data elements of each
+   set.
+
+
 Implementations
 ===============
 
@@ -32,7 +40,7 @@ References
 ==========
 
 .. [Rubelt_2017] Rubelt F *et al*. AIRR Community Recommendations for
-   Sharing Immune Repertoire Sequencing Data, Nat Immunol 18:1274
+   Sharing Immune Repertoire Sequencing Data. Nat Immunol 18:1274
    (2017) `DOI: 10.1038/ni.3873`_
 .. _`DOI: 10.1038/ni.3873`: https://doi.org/10.1038/ni.3873
 
@@ -41,5 +49,6 @@ References
    (2017) `DOI: 10.3389/fimmu.2017.01418`_
 .. _`DOI: 10.3389/fimmu.2017.01418`: https://doi.org/10.3389/fimmu.2017.01418
 
-..
-   Add the Zenodo DOI once it has been updated by CERN.
+.. [Zenodo_1185414] Release archive of the AIRR Standards repository.
+   (2015-2018) `DOI: 10.5281/zenodo.1185414`_
+.. _`DOI: 10.5281/zenodo.1185414`: https://doi.org/10.5281/zenodo.1185414
