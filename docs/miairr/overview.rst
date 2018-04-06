@@ -1,12 +1,12 @@
 .. _MiAIRR:
 
+===============
 MiAIRR Standard
 ===============
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Table of Contents
 
    introduction_miairr
-   manual_miairr_ncbi
-   specification_miairr_ncbi
+   miairr_ncbi_overview

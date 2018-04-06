@@ -16,7 +16,7 @@ AIRR sequences. The detailed data elements within these sets are defined
 
 ### Implementations
 
-- [NCBI-based](https://github.com/airr-community/airr-standards/tree/master/NCBI_implementation)
+- [NCBI-based](http://docs.airr-community.org/en/latest/miairr/miairr_ncbi_overview.html)
 - AIRR Common Repositories - _in development_
 
 ### References
