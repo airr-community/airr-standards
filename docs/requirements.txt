@@ -1,7 +1,8 @@
+sphinx>=1.4
+sphinxcontrib-autoprogram>=0.1.2
 prov>=1.5.1
 pyyaml>=3.12
 recommonmark>=0.4.0
 setuptools>=2.0
-sphinxcontrib-napoleon>=0.4.0
 yamlordereddictloader>=0.4.0
 lang/python
