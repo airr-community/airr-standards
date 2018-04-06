@@ -473,7 +473,6 @@ Rearrangement:
       - v_call
       - d_call
       - j_call
-      - c_call
       - sequence_alignment
       - germline_alignment
       - junction
@@ -484,8 +483,6 @@ Rearrangement:
       - d_cigar
       - j_score
       - j_cigar
-      - c_score
-      - c_cigar
    properties:
       sequence_id:
          type: string
@@ -643,6 +640,18 @@ Rearrangement:
         type: string
         description: >
            Amino acid translation of the 'fwr4' field.
+      score:
+        type: number
+        description: Alignment score for aligners that consider the full sequence.
+      identity:
+        type: number
+        description: Alignment fractional identity for aligners that consider the full sequence.
+      evalue:
+        type: number
+        description: Alignment E-value for aligners that consider the full sequence.
+      cigar:
+        type: string
+        description: CIGAR string for the full V(D)J alignment.
       v_score:
         type: number
         description: V alignment score.
@@ -691,18 +700,6 @@ Rearrangement:
       c_cigar:
         type: string
         description: C region alignment CIGAR string.
-      vdj_score:
-        type: number
-        description: Alignment score for aligners that consider the full sequence.
-      vdj_identity:
-        type: number
-        description: Alignment fractional identity for aligners that consider the full sequence.
-      vdj_evalue:
-        type: number
-        description: Alignment E-value for aligners that consider the full sequence.
-      vdj_cigar:
-        type: string
-        description: CIGAR string for the full V(D)J alignment.
       v_sequence_start:
         type: integer
         description: Start position of the V segment in the query sequence.
