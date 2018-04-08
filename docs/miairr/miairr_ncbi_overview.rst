@@ -4,7 +4,7 @@ MiAIRR-to-NCBI Implementation
 
 :Authors: Christian E. Busse, Florian Rubelt and Syed Ahmad Chan Bukhari
 
-.. toctree::
+.. toctree:
    :maxdepth: 2
    :caption: Table of Contents
 
