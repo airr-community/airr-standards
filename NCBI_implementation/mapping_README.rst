@@ -22,7 +22,7 @@ The tables have five columns:
    -  `IDENTICAL`: The identical keyword exists in MiAIRR and the
       NCBI repository; it defines similar content.
 
-   -  `MAPPED     `: Non-identical keywords are used by MiAIRR and NCBI
+   -  `MAPPED`: Non-identical keywords are used by MiAIRR and NCBI
       to define similar content; a 1:1 mapping of the keywords is
       required.
 
