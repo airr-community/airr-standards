@@ -6,8 +6,11 @@ Python API
 Inferface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. automodule:: airr
-    :members:
+.. autofunction:: airr.read
+
+.. autofunction:: airr.create
+
+.. autofunction:: airr.derive
 
 Classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

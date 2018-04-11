@@ -7,8 +7,8 @@ Python Library
     :hidden:
 
     api
-    news
     tools
+    news
 
 .. include:: ../../../lang/python/README.rst
 
