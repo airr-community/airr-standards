@@ -6,9 +6,10 @@ rearrangement_file <- file.path("..", "data-tests", "toy_data.tsv")
 
 test_that("read_airr", {
     tbl <- read_airr(rearrangement_file)
+    expect_true(is.data.frame(tbl))
 })
 
-test_that("write_airr", {
-    tbl <- read_airr(rearrangement_file)
-    write_airr(tbl, "test_out.tsv")
-})
+# test_that("write_airr", {
+#     tbl <- read_airr(rearrangement_file)
+#     write_airr(tbl, "test_out.tsv")
+# })
