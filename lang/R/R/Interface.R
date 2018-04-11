@@ -23,9 +23,11 @@
 #' }
 #' 
 #' @export
-read_airr <- function(file, base=c(0, 1)) {
+read_airr <- function(file, base=0 ) {
     # Check arguments
-    base <- match.arg(base)
+    base_choices <- c(0,1)
+    base <- match.arg(as.character(base), as.character(base_choices))
+    base <- as.numeric(base)
     
     # Define types
     parsers <- c("character"="c", "logical"="l", "integer"="i", "double"="d")
@@ -73,12 +75,14 @@ read_airr <- function(file, base=c(0, 1)) {
 #' }
 #' 
 #' @export
-write_airr <- function(data, file, base=c(0, 1)) {
+write_airr <- function(data, file, base=0) {
     ## DEBUG
     # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
 
     # Check arguments
-    base <- match.arg(base)
+    base_choices <- c(0,1)
+    base <- match.arg(as.character(base), as.character(base_choices))
+    base <- as.numeric(base)    
     
     # Fill in missing required columns
     missing <- setdiff(RearrangementSchema@required, names(data))
