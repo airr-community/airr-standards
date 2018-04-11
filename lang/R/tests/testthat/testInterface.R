@@ -9,7 +9,8 @@ test_that("read_airr", {
     expect_true(is.data.frame(tbl))
 })
 
-# test_that("write_airr", {
-#     tbl <- read_airr(rearrangement_file)
-#     write_airr(tbl, "test_out.tsv")
-# })
+test_that("write_airr", {
+    tbl <- read_airr(rearrangement_file)
+    write_airr(tbl, "test_out.tsv")
+    expect_true(file.exists("test_out.tsv"))
+})
