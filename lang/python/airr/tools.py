@@ -1,10 +1,6 @@
 """
 AIRR tools and utilities
 """
-
-#
-# tools.py
-#
 # Copyright (c) 2018 AIRR Community
 #
 # This file is part of the AIRR Community Standards.
@@ -20,17 +16,80 @@ AIRR tools and utilities
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # Creative Commons Attribution 4.0 License for more details.
-# 
 
-
-import airr
+# Imports
 import argparse
 import sys
 import versioneer
+from collections import OrderedDict
+from itertools import chain
+from airr.io import RearrangementReader, RearrangementWriter
 
-def main():
-    """Utility commands for AIRR Community Standards files"""
 
+def merge(out_handle, airr_files, drop=False, debug=False):
+    """
+    Merge one or more AIRR rearrangements files
+
+    Arguments:
+      out_handle (file): output file handle.
+      airr_files (list): list of input files to merge.
+      drop (bool): drop flag. If True then drop fields that do not exist in all input
+                   files, otherwise combine fields from all input files.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      bool: True if files were successfully merged, otherwise False.
+    """
+    try:
+        # gather fields from input files
+        readers = [RearrangementReader(open(f, 'r'), debug=debug) for f in airr_files]
+        field_list = [x.fields for x in readers]
+        if drop:
+            field_set = set.intersection(*map(set, field_list))
+        else:
+            field_set = set.union(*map(set, field_list))
+        field_order = OrderedDict([(f, None) for f in chain(*field_list)])
+        out_fields = [f for f in field_order if f in field_set]
+
+        out_file = RearrangementWriter(out_handle, fields=out_fields, debug=debug)
+
+        for reader in readers:
+            for rec in reader:
+                out_file.write(rec)
+
+        out_file.close()
+        return True
+    except:
+        return False
+
+
+def validate(airr_files, debug=False):
+    """
+    Validates one or more AIRR rearrangements files
+
+    Arguments:
+      in_files (list): list of input files to validate.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      boolean: True if all files passed validation, otherwise False
+    """
+    valid = True
+    for file in airr_files:
+        reader = RearrangementReader(open(file, 'r'))
+        valid &= reader.validate()
+        # TODO: how to close file?
+
+    return valid
+
+
+def define_args():
+    """
+    Define commandline arguments
+
+    Returns:
+      argparse.ArgumentParser: argument parser.
+    """
     parser = argparse.ArgumentParser(add_help=False,
                                      description='AIRR Community Standards utility commands.')
     group_help = parser.add_argument_group('help')
@@ -76,7 +135,7 @@ def main():
                                    with empty strings.''')
     group_merge.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
                              help='A list of AIRR rearrangement files.')
-    parser_merge.set_defaults(func=airr.merge)
+    parser_merge.set_defaults(func=merge)
 
     # Subparser to validate files
     parser_validate = subparsers.add_parser('validate', parents=[common_parser],
@@ -86,8 +145,16 @@ def main():
     group_validate = parser_validate.add_argument_group('validate arguments')
     group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
                                 help='A list of AIRR rearrangement files.')
-    parser_validate.set_defaults(func=airr.validate)
+    parser_validate.set_defaults(func=validate)
 
+    return parser
+
+
+def main():
+    """
+    Utility commands for AIRR Community Standards files
+    """
+    parser = define_args()
     args = parser.parse_args()
 
     print(args)
