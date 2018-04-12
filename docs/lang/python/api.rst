@@ -16,6 +16,10 @@ Inferface
 
 .. autofunction:: airr.write
 
+.. autofunction:: airr.merge
+
+.. autofunction:: airr.validate
+
 Classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
