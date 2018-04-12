@@ -27,7 +27,7 @@ import airr.interface
 
 # internal wrapper function to convert filenames into handles
 # before calling merge interface method
-def merge(out_file, airr_files, drop=False, debug=False):
+def merge_cmd(out_file, airr_files, drop=False, debug=False):
     """
     Merge one or more AIRR rearrangements files
 
@@ -42,8 +42,9 @@ def merge(out_file, airr_files, drop=False, debug=False):
       bool: True if files were successfully merged, otherwise False.
     """
     try:
-        out_handle = open(out_file, 'w')
+        # test all the input files before creating a blank output file
         airr_handles = [open(f, 'r') for f in airr_files]
+        out_handle = open(out_file, 'w')
         return airr.interface.merge(out_handle, airr_handles, drop=drop, debug=debug)
     except:
         sys.stderr.write('Error occurred while merging AIRR rearrangement files.\n')
@@ -51,7 +52,7 @@ def merge(out_file, airr_files, drop=False, debug=False):
 
 # internal wrapper function to convert filenames into handles
 # before calling validate interface method
-def validate(airr_files, debug=False):
+def validate_cmd(airr_files, debug=False):
     """
     Validates one or more AIRR rearrangements files
 
@@ -121,7 +122,7 @@ def define_args():
                                    with empty strings.''')
     group_merge.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
                              help='A list of AIRR rearrangement files.')
-    parser_merge.set_defaults(func=merge)
+    parser_merge.set_defaults(func=merge_cmd)
 
     # Subparser to validate files
     parser_validate = subparsers.add_parser('validate', parents=[common_parser],
@@ -131,7 +132,7 @@ def define_args():
     group_validate = parser_validate.add_argument_group('validate arguments')
     group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
                                 help='A list of AIRR rearrangement files.')
-    parser_validate.set_defaults(func=validate)
+    parser_validate.set_defaults(func=validate_cmd)
 
     return parser
 
@@ -153,5 +154,9 @@ def main():
     del args_dict['func']
 
     # Call tool function
-    args.func(**args_dict)
+    result = args.func(**args_dict)
 
+    # set return code to non-zero if error occurred
+    if args.__dict__['command'] == 'validate' or args.__dict__['command'] == 'merge':
+        if not result:
+            sys.exit(1)
