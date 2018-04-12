@@ -23,9 +23,9 @@
 #' }
 #' 
 #' @export
-read_airr <- function(file, base=0 ) {
+read_airr <- function(file, base=0) {
     # Check arguments
-    base_choices <- c(0,1)
+    base_choices <- c(0, 1)
     base <- match.arg(as.character(base), base_choices)
 
     # Define types
@@ -79,7 +79,7 @@ write_airr <- function(data, file, base=0) {
     # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
 
     # Check arguments
-    base_choices <- c(0,1)
+    base_choices <- c(0, 1)
     base <- match.arg(as.character(base), as.character(base_choices))
     
     # Fill in missing required columns
