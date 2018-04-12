@@ -42,7 +42,7 @@ read_airr <- function(file, base=0 ) {
     if (base == 0) {
         start_positions <- grep("_start$", names(data), perl=TRUE)
         if (length(start_positions) > 0) {
-            data[, start_positions] <- data[, start_positions] + 1
+            data[, start_positions] <- data[, start_positions] - 1
         }
     }
 
