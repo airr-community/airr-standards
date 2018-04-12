@@ -22,7 +22,17 @@ import os
 import sys
 import yaml
 import yamlordereddictloader
+from unittest.mock import MagicMock
 sys.path.append(os.path.abspath('.'))
+
+# Mock modules for ReadTheDocs
+if os.environ.get('READTHEDOCS', None) == 'True':
+    class Mock(MagicMock):
+        @classmethod
+        def __getattr__(cls, name):  return MagicMock()
+
+    mock_modules = ['pandas']
+    sys.modules.update((mod_name, Mock()) for mod_name in mock_modules)
 
 
 # -- General configuration ------------------------------------------------
