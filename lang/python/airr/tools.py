@@ -20,11 +20,10 @@ AIRR tools and utilities
 # Imports
 import argparse
 import sys
-import versioneer
 from collections import OrderedDict
 from itertools import chain
 from airr.io import RearrangementReader, RearrangementWriter
-
+import airr._version as ver
 
 def merge(out_handle, airr_files, drop=False, debug=False):
     """
@@ -93,9 +92,9 @@ def define_args():
     parser = argparse.ArgumentParser(add_help=False,
                                      description='AIRR Community Standards utility commands.')
     group_help = parser.add_argument_group('help')
-    #group_help.add_argument('--version', action='version',
-    #                        version='%(prog)s:' + ' %s' %(versioneer.get_version()))
     group_help.add_argument('-h', '--help', action='help', help='show this help message and exit')
+    group_help.add_argument('--version', action='version',
+                            version='%(prog)s: ' +  ver.get_versions()['version'])
 
     # Setup subparsers
     subparsers = parser.add_subparsers(title='subcommands', dest='command', metavar='',
@@ -106,8 +105,6 @@ def define_args():
     # Define arguments common to all subcommands
     common_parser = argparse.ArgumentParser(add_help=False)
     common_help = common_parser.add_argument_group('help')
-    #common_help.add_argument('--version', action='version',
-    #                        version='%(prog)s:' + ' %s' %(versioneer.get_version()))
     common_help.add_argument('-h', '--help', action='help', help='show this help message and exit')
 
     # TODO: workflow provenance
