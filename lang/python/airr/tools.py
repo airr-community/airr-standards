@@ -17,20 +17,23 @@ AIRR tools and utilities
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # Creative Commons Attribution 4.0 License for more details.
 
-# Imports
+# System imports
 import argparse
+import os
 import sys
 from collections import OrderedDict
 from itertools import chain
-from airr.io import RearrangementReader, RearrangementWriter
-import airr._version as ver
 
-def merge(out_handle, airr_files, drop=False, debug=False):
+# Local imports
+from airr import __version__
+from airr.io import RearrangementReader, RearrangementWriter
+
+def merge(out_file, airr_files, drop=False, debug=False):
     """
     Merge one or more AIRR rearrangements files
 
     Arguments:
-      out_handle (file): output file handle.
+      out_file (str): output file name.
       airr_files (list): list of input files to merge.
       drop (bool): drop flag. If True then drop fields that do not exist in all input
                    files, otherwise combine fields from all input files.
@@ -50,16 +53,18 @@ def merge(out_handle, airr_files, drop=False, debug=False):
         field_order = OrderedDict([(f, None) for f in chain(*field_list)])
         out_fields = [f for f in field_order if f in field_set]
 
-        out_file = RearrangementWriter(out_handle, fields=out_fields, debug=debug)
+        out_handle = open(out_file, 'w')
+        writer = RearrangementWriter(out_handle, fields=out_fields, debug=debug)
 
         for reader in readers:
             for rec in reader:
-                out_file.write(rec)
+                writer.write(rec)
 
-        out_file.close()
-        return True
+        out_handle.close()
     except:
         return False
+
+    return True
 
 
 def validate(airr_files, debug=False):
@@ -67,7 +72,7 @@ def validate(airr_files, debug=False):
     Validates one or more AIRR rearrangements files
 
     Arguments:
-      in_files (list): list of input files to validate.
+      airr_files (list): list of input files to validate.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
@@ -75,9 +80,9 @@ def validate(airr_files, debug=False):
     """
     valid = True
     for file in airr_files:
+        print('Validating: %s' % os.path.basename(file))
         reader = RearrangementReader(open(file, 'r'))
         valid &= reader.validate()
-        # TODO: how to close file?
 
     return valid
 
@@ -94,7 +99,7 @@ def define_args():
     group_help = parser.add_argument_group('help')
     group_help.add_argument('-h', '--help', action='help', help='show this help message and exit')
     group_help.add_argument('--version', action='version',
-                            version='%(prog)s: ' +  ver.get_versions()['version'])
+                            version='%(prog)s:' + ' %s' % __version__)
 
     # Setup subparsers
     subparsers = parser.add_subparsers(title='subcommands', dest='command', metavar='',
@@ -105,18 +110,20 @@ def define_args():
     # Define arguments common to all subcommands
     common_parser = argparse.ArgumentParser(add_help=False)
     common_help = common_parser.add_argument_group('help')
+    common_help.add_argument('--version', action='version',
+                             version='%(prog)s:' + ' %s' % __version__)
     common_help.add_argument('-h', '--help', action='help', help='show this help message and exit')
 
     # TODO: workflow provenance
-    group_prov = common_parser.add_argument_group('provenance')
-    group_prov.add_argument('-p', '--provenance', action='store', dest='prov_file', default=None,
-                              help='''File name for storing workflow provenance. If specified, airr-tools
-                                   will record provenance for all activities performed.''')
+    # group_prov = common_parser.add_argument_group('provenance')
+    # group_prov.add_argument('-p', '--provenance', action='store', dest='prov_file', default=None,
+    #                           help='''File name for storing workflow provenance. If specified, airr-tools
+    #                                will record provenance for all activities performed.''')
 
     # TODO: study metadata
-    group_meta = common_parser.add_argument_group('study metadata')
-    group_meta.add_argument('-m', '--metadata', action='store', dest='metadata_file', default=None,
-                            help='''File name containing study metadata.''')
+    # group_meta = common_parser.add_argument_group('study metadata')
+    # group_meta.add_argument('-m', '--metadata', action='store', dest='metadata_file', default=None,
+    #                         help='''File name containing study metadata.''')
 
     # Subparser to merge files
     parser_merge = subparsers.add_parser('merge', parents=[common_parser],
@@ -151,11 +158,18 @@ def main():
     """
     Utility commands for AIRR Community Standards files
     """
+    # Define argument parsers and print help if subcommand not specified
     parser = define_args()
-    args = parser.parse_args()
-
-    print(args)
-
-    if (not args):
+    if len(sys.argv) == 1:
         parser.print_help()
-        sys.exit()
+        sys.exit(1)
+
+    # Parse arguments
+    args = parser.parse_args()
+    args_dict = args.__dict__.copy()
+    del args_dict['command']
+    del args_dict['func']
+
+    # Call tool function
+    args.func(**args_dict)
+

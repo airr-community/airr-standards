@@ -12,6 +12,10 @@ Inferface
 
 .. autofunction:: airr.derive
 
+.. autofunction:: airr.load
+
+.. autofunction:: airr.write
+
 Classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
