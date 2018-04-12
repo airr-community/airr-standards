@@ -42,7 +42,7 @@ def get_config():
     cfg.VCS = "git"
     cfg.style = "pep440"
     cfg.tag_prefix = "v"
-    cfg.parentdir_prefix = "airr-formats-"
+    cfg.parentdir_prefix = "airr-"
     cfg.versionfile_source = "airr/_version.py"
     cfg.verbose = False
     return cfg
