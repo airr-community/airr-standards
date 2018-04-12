@@ -101,13 +101,14 @@ def write(dataframe, handle, debug=False):
 
     return True
 
-def merge(out_file, airr_files, drop=False, debug=False):
+
+def merge(out_handle, airr_handles, drop=False, debug=False):
     """
     Merge one or more AIRR rearrangements files
 
     Arguments:
-      out_file (str): output file name.
-      airr_files (list): list of input files to merge.
+      out_handle (str): output file handle.
+      airr_handles (list): list of input file handles to merge.
       drop (bool): drop flag. If True then drop fields that do not exist in all input
                    files, otherwise combine fields from all input files.
       debug (bool): debug flag. If True print debugging information to standard error.
@@ -117,7 +118,7 @@ def merge(out_file, airr_files, drop=False, debug=False):
     """
     try:
         # gather fields from input files
-        readers = [RearrangementReader(open(f, 'r'), debug=debug) for f in airr_files]
+        readers = [RearrangementReader(f, debug=debug) for f in airr_handles]
         field_list = [x.fields for x in readers]
         if drop:
             field_set = set.intersection(*map(set, field_list))
@@ -126,7 +127,6 @@ def merge(out_file, airr_files, drop=False, debug=False):
         field_order = OrderedDict([(f, None) for f in chain(*field_list)])
         out_fields = [f for f in field_order if f in field_set]
 
-        out_handle = open(out_file, 'w')
         writer = RearrangementWriter(out_handle, fields=out_fields, debug=debug)
 
         for reader in readers:
@@ -139,21 +139,22 @@ def merge(out_file, airr_files, drop=False, debug=False):
 
     return True
 
-def validate(airr_files, debug=False):
+
+def validate(airr_handles, debug=False):
     """
     Validates one or more AIRR rearrangements files
 
     Arguments:
-      airr_files (list): list of input files to validate.
+      airr_handles (list): list of input file handles to validate.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       boolean: True if all files passed validation, otherwise False
     """
     valid = True
-    for file in airr_files:
-        print('Validating: %s' % os.path.basename(file))
-        reader = RearrangementReader(open(file, 'r'))
+    for handle in airr_handles:
+        print('Validating: %s' % handle.name)
+        reader = RearrangementReader(handle)
         valid &= reader.validate()
 
     return valid

@@ -55,7 +55,7 @@ print('Validate rearrangements file.')
 print('*****')
 print('*****')
 print('Validating more_data.tsv')
-valid = airr.validate(['more_data.tsv'])
+valid = airr.validate([open('more_data.tsv', 'r')])
 if valid:
     print('PASS: more_data.tsv passes validation.')
 else:
@@ -63,7 +63,7 @@ else:
 
 # should fail validation due to missing required field
 print('Validating bad_data.tsv')
-valid = airr.validate(['bad_data.tsv'])
+valid = airr.validate([open('bad_data.tsv', 'r')])
 if not valid:
     print('PASS: bad_data.tsv fails validation.')
 else:
@@ -75,14 +75,14 @@ print('*****')
 print('Merge rearrangements files.')
 print('*****')
 print('*****')
-valid = airr.merge('merged.tsv', ['toy_data.tsv', 'toy_data.tsv'])
+valid = airr.merge(open('merged.tsv', 'w'), [open('toy_data.tsv', 'r'), open('toy_data.tsv', 'r')])
 if valid:
     print('PASS: files were merged.')
 else:
     print('FAIL: files were not merged.')
 
 # should fail validation due to duplicate sequence_ids
-valid = airr.validate(['merged.tsv'])
+valid = airr.validate([open('merged.tsv', 'r')])
 if not valid:
     print('PASS: merged.tsv fails validation.')
 else:

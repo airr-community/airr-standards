@@ -23,7 +23,51 @@ import sys
 
 # Local imports
 from airr import __version__
-from airr.interface import merge, validate
+import airr.interface
+
+# internal wrapper function to convert filenames into handles
+# before calling merge interface method
+def merge(out_file, airr_files, drop=False, debug=False):
+    """
+    Merge one or more AIRR rearrangements files
+
+    Arguments:
+      out_file (str): output file name.
+      airr_files (list): list of input files to merge.
+      drop (bool): drop flag. If True then drop fields that do not exist in all input
+                   files, otherwise combine fields from all input files.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      bool: True if files were successfully merged, otherwise False.
+    """
+    try:
+        out_handle = open(out_file, 'w')
+        airr_handles = [open(f, 'r') for f in airr_files]
+        return airr.interface.merge(out_handle, airr_handles, drop=drop, debug=debug)
+    except:
+        sys.stderr.write('Error occurred while merging AIRR rearrangement files.\n')
+        return False
+
+# internal wrapper function to convert filenames into handles
+# before calling validate interface method
+def validate(airr_files, debug=False):
+    """
+    Validates one or more AIRR rearrangements files
+
+    Arguments:
+      airr_files (list): list of input files to validate.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      boolean: True if all files passed validation, otherwise False
+    """
+    try:
+        airr_handles = [open(f, 'r') for f in airr_files]
+        return airr.interface.validate(airr_handles, debug=debug)
+    except:
+        sys.stderr.write('Error occurred while validating AIRR rearrangement files.\n')
+        return False
 
 def define_args():
     """
