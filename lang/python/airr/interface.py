@@ -87,7 +87,6 @@ def write(dataframe, handle, debug=False):
       bool: True if the file is written without error.
     """
     # TODO: test pandas.DataFrame.write_csv with converters argument as an alterative
-
     fields = dataframe.columns.tolist()
     writer = RearrangementWriter(handle, fields=fields, debug=debug)
 
