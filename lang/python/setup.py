@@ -47,6 +47,11 @@ setup(name='airr',
       install_requires=install_requires,
       packages=find_packages(),
       package_data={'airr': ['specs/*.yaml']},
+      entry_points={
+        'console_scripts': [
+            'airr-tools=airr.tools:main'
+            ],
+        },
       classifiers=['Intended Audience :: Science/Research',
                    'Natural Language :: English',
                    'Operating System :: OS Independent',

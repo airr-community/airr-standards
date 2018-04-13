@@ -84,12 +84,27 @@ class Schema:
         """
         if type(value) is bool:
             return value
-        if value.upper() in ['F', 'FALSE', 'NO', 'N']:
+        if value.upper() in ['F', 'FALSE', '0']:
             return False
-        if value.upper() in ['T', 'TRUE', 'YES', 'Y']:
+        if value.upper() in ['T', 'TRUE', '1']:
             return True
 
         return None
+
+    @staticmethod
+    def from_bool(value):
+        """
+        Converts boolean to a string
+
+        Arguments:
+          value (bool): logical value.
+
+        Returns:
+          str: conversion of True or False or 'T' or 'F'.
+        """
+        bool_map = {True: 'T', False: 'F', 'True': 'T', 'False': 'F'}
+
+        return bool_map.get(value, None)
 
     @staticmethod
     def to_int(value):
