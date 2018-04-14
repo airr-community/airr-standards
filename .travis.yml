@@ -24,8 +24,8 @@ matrix:
       before_install:
         - cd lang/R
       install:
-        - R -e 'install.packages(c("devtools", "roxygen2", "knitr"))'
-        - R -e 'devtools::install_deps()'
+        - R -e 'install.packages(c("devtools", "roxygen2"))'
+        - R -e 'devtools::install_deps(dependencies=TRUE)'
         - R -e 'devtools::document()'
       script:
         - R CMD build .
