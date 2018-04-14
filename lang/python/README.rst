@@ -1,5 +1,9 @@
 Python reference library for AIRR schema for Ig/TCR rearrangements.
 
-Install the usual manner::
+Install in the usual manner::
 
-    python setup.py install --user
+    python3 setup.py install --user
+
+The test suite can be run from the soruce directory as follows::
+
+    python3 -m unittest
