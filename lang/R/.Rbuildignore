@@ -2,7 +2,4 @@
 ^\.Rproj\.user$
 ^\.
 ~$
-^test
 ^data-raw
-^doc
-mkdocs.yml
