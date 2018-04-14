@@ -24,7 +24,7 @@ matrix:
       before_install:
         - cd lang/R
       install:
-        - R -e 'install.packages("devtools")'
+        - R -e 'install.packages(c("devtools", "roxygen2"))'
         - R -e 'devtools::document()'
         - R -e 'devtools::install_deps()'
       script:
