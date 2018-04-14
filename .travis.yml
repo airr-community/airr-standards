@@ -24,8 +24,9 @@ matrix:
       before_install:
         - cd lang/R
       install:
-        - R -e 'install.packages(c("devtools"))'
+        - R -e 'install.packages(c("devtools", "roxygen2", "knitr"))'
         - R -e 'devtools::install_deps()'
+        - R -e 'devtools::document()'
       script:
         - R CMD build .
         - R CMD check *.tar.gz --as-cran --run-donttest --timings
