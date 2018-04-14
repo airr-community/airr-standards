@@ -3,5 +3,7 @@ python:
   - 3.6
 install:
   - pip install pyyaml pandas xlrd deepdiff jinja2 jsondiff
+  - pip install -r lang/python/requirements.txt
 script:
   - scripts/check-consistency-miairr.py
+  - (cd lang/python && python setup.py install && python -m unittest)
