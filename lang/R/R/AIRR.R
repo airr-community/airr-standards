@@ -9,4 +9,5 @@
 #'                       cols col_character col_logical col_integer col_double
 #' @importFrom  stats    setNames
 #' @importFrom  stringi  stri_trim
+#' @importFrom  yaml     yaml.load_file
 NULL

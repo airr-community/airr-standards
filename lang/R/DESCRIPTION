@@ -20,10 +20,10 @@ Imports:
     methods,
     readr,
     stats,
-    stringi
+    stringi,
+    yaml
 Suggests:
     knitr,
     rmarkdown,
-    testthat,
-    yaml
+    testthat
 RoxygenNote: 6.0.1
