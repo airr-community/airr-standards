@@ -10,6 +10,8 @@ germline reference segment.
 
 **Fields**
 
+:download:`Download as TSV <../_downloads/Alignment.tsv>`.
+
 .. list-table::
     :widths: auto
     :header-rows: 1

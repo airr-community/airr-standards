@@ -232,3 +232,23 @@ texinfo_documents = [
 with open(os.path.abspath('../specs/definitions.yaml')) as ip:
     airr_schema = yaml.load(ip, Loader=yamlordereddictloader.Loader)
 html_context = {'airr_schema': airr_schema}
+
+# Write download spec files
+import csv
+dl_path = '_downloads'
+if not os.path.exists(dl_path):  os.mkdir(dl_path)
+
+# Build table for each spec
+tables = ['Rearrangement', 'Alignment']
+fields = ['Name', 'Type', 'Priority', 'Description']
+for spec in tables:
+    # Get specs
+    required = airr_schema[spec]['required']
+    properties = airr_schema[spec]['properties']
+    # Write TSV
+    with open(os.path.join(dl_path, '%s.tsv' % spec), 'w') as f:
+        writer = csv.writer(f, dialect='excel-tab')
+        rows = ([k, v['type'], 'required' if k in required else '', v['description']] \
+                for k, v in properties.items())
+        writer.writerow(fields)
+        writer.writerows(rows)
