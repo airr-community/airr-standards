@@ -73,6 +73,12 @@ def load(handle, debug=False):
       pandas.DataFrame: Rearrangement records as rows of a data frame.
     """
     # TODO: test pandas.DataFrame.read_csv with converters argument as an alterative
+    # schema = RearrangementSchema
+    # df = pd.read_csv(handle, sep='\t', header=0, index_col=None,
+    #                  dtype=schema.numpy_types(), true_values=schema.true_values,
+    #                  false_values=schema.true_values)
+    # return df
+
     reader = RearrangementReader(handle, debug=debug)
     return pd.DataFrame(list(reader))
 
@@ -89,15 +95,13 @@ def write(dataframe, handle, debug=False):
     Returns:
       bool: True if the file is written without error.
     """
-    # TODO: test pandas.DataFrame.write_csv with converters argument as an alterative
+    # TODO: test pandas.DataFrame.to_csv with converters argument as an alterative
+    # dataframe.to_csv(handle, sep='\t', header=True, index=False, encoding='utf-8')
+
     fields = dataframe.columns.tolist()
     writer = RearrangementWriter(handle, fields=fields, debug=debug)
-
-    try:
-        for __, row in dataframe.iterrows():
-            writer.write(row.to_dict())
-    except:
-        raise
+    for __, row in dataframe.iterrows():
+        writer.write(row.to_dict())
 
     return True
 

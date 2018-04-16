@@ -3,6 +3,7 @@ AIRR Data Representation Schema
 """
 
 # Imports
+import numpy as np
 import sys
 import yaml
 import yamlordereddictloader
@@ -14,11 +15,21 @@ class Schema:
     AIRR schema definitions
 
     Attributes:
-      definition (collections.OrderedDict): complete schema.
       properties (collections.OrderedDict): field definitions.
       required (list): list of mandatory fields.
       optional (list): list of non-required fields.
+      false_values (list): accepted string values for False.
+      true_values (list): accepted values for True.
     """
+    # Boolean list for pandas
+    true_values = ['True', 'true', 'TRUE', 'T', 't', '1', 1, True]
+    false_values = ['False', 'false', 'FALSE', 'F', 'f', '0', 0, False]
+
+    # Generate dicts for booleans
+    _to_bool_map = {k: True for k in true_values}
+    _to_bool_map.update({k: False for k in false_values})
+    _from_bool_map = {True: 'T', False: 'F', 'True': 'T', 'False': 'F'}
+
     def __init__(self, definition):
         """
         Initialization
@@ -56,7 +67,6 @@ class Schema:
         """
         return self.properties.get(field, None)
 
-
     def type(self, field):
         """
         Get the type for a field
@@ -71,6 +81,20 @@ class Schema:
         field_type = field_spec.get('type', None) if field_spec else None
         return field_type
 
+    def numpy_types(self):
+        type_mapping = {}
+        for property in self.properties:
+            if self.type(property) == 'boolean':
+                type_mapping[property] = np.bool
+            elif self.type(property) == 'integer':
+                type_mapping[property] = np.int64
+            elif self.type(property) == 'number':
+                type_mapping[property] = np.float64
+            elif self.type(property) == 'string':
+                type_mapping[property] = np.unicode_
+
+        return type_mapping
+
     @staticmethod
     def to_bool(value):
         """
@@ -82,14 +106,7 @@ class Schema:
         Returns:
           bool: conversion of the string to True or False.
         """
-        if type(value) is bool:
-            return value
-        if value.upper() in ['F', 'FALSE', '0']:
-            return False
-        if value.upper() in ['T', 'TRUE', '1']:
-            return True
-
-        return None
+        return Schema._to_bool_map.get(value, None)
 
     @staticmethod
     def from_bool(value):
@@ -102,9 +119,7 @@ class Schema:
         Returns:
           str: conversion of True or False or 'T' or 'F'.
         """
-        bool_map = {True: 'T', False: 'F', 'True': 'T', 'False': 'F'}
-
-        return bool_map.get(value, None)
+        return Schema._from_bool_map.get(value, None)
 
     @staticmethod
     def to_int(value):
