@@ -226,6 +226,20 @@ class RearrangementWriter:
         self.dict_writer.writerow(row)
 
 
+# TODO: pandas validation need if we load with pandas directly
+# def validate_df(df, airr_schema):
+#     valid = True
+#
+#     # check required fields
+#     missing_fields = set(airr_schema.required) - set(df.columns)
+#     if len(missing_fields) > 0:
+#         print('Warning: file is missing mandatory fields: {}'.format(', '.join(missing_fields)))
+#         valid = False
+#
+#     if not valid:
+#         raise ValueError('invalid AIRR data file')
+
+
 # class MetaWriter:
 #     """
 #     Class structure for AIRR standard metadata
