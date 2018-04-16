@@ -31,7 +31,7 @@ if os.environ.get('READTHEDOCS', None) == 'True':
         @classmethod
         def __getattr__(cls, name):  return MagicMock()
 
-    mock_modules = ['pandas']
+    mock_modules = ['numpy', 'pandas']
     sys.modules.update((mod_name, Mock()) for mod_name in mock_modules)
 
 
