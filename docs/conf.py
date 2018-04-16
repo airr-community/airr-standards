@@ -235,23 +235,20 @@ html_context = {'airr_schema': airr_schema}
 
 # Write download spec files
 import csv
-fields = ['Name', 'Type', 'Priority', 'Description']
-specs = ['Rearrangement', 'Alignment']
 dl_path = '_downloads'
 if not os.path.exists(dl_path):  os.mkdir(dl_path)
 
-# Define rows
-def build_spec(spec, schema=airr_schema):
-    rows = [{'Name': k,
-             'Type': v['type'],
-             'Priority': 'required' if k in airr_schema[spec]['required'] else '',
-             'Description': v['description']} \
-            for k, v in schema[spec]['properties'].items()]
-    return rows
-
-# Build TSVs
-for s in specs:
-    with open(os.path.join(dl_path, '%s.tsv' % s), 'w') as f:
-        writer = csv.DictWriter(f, dialect='excel-tab', fieldnames=fields)
-        writer.writeheader()
-        writer.writerows(build_spec(s))
+# Build table for each spec
+tables = ['Rearrangement', 'Alignment']
+fields = ['Name', 'Type', 'Priority', 'Description']
+for spec in tables:
+    # Get specs
+    required = airr_schema[spec]['required']
+    properties = airr_schema[spec]['properties']
+    # Write TSV
+    with open(os.path.join(dl_path, '%s.tsv' % spec), 'w') as f:
+        writer = csv.writer(f, dialect='excel-tab')
+        rows = ([k, v['type'], 'required' if k in required else '', v['description']] \
+                for k, v in properties.items())
+        writer.writerow(fields)
+        writer.writerows(rows)
