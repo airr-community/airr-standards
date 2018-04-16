@@ -3,7 +3,6 @@ Interface functions for file operations
 """
 # System imports
 import pandas as pd
-import os
 from collections import OrderedDict
 from itertools import chain
 
@@ -11,7 +10,7 @@ from itertools import chain
 from airr.io import RearrangementReader, RearrangementWriter
 
 
-def read(handle, debug=False):
+def read_rearrangement(handle, debug=False):
     """
     Open an iterator to read an AIRR rearrangements file
 
@@ -25,7 +24,7 @@ def read(handle, debug=False):
     return RearrangementReader(handle, debug=debug)
 
 
-def create(handle, fields=None, debug=False):
+def create_rearrangement(handle, fields=None, debug=False):
     """
     Create an empty AIRR rearrangements file writer
 
@@ -40,7 +39,7 @@ def create(handle, fields=None, debug=False):
     return RearrangementWriter(handle, fields=fields, debug=debug)
 
 
-def derive(out_handle, in_handle, fields=None, debug=False):
+def derive_rearrangement(out_handle, in_handle, fields=None, debug=False):
     """
     Create an empty AIRR rearrangements file with fields derived from an existing file
 
@@ -61,7 +60,7 @@ def derive(out_handle, in_handle, fields=None, debug=False):
     return RearrangementWriter(out_handle, fields=in_fields, debug=debug)
 
 
-def load(handle, debug=False):
+def load_rearrangement(handle, debug=False):
     """
     Load the contents of an AIRR rearrangements file into a data frame
 
@@ -83,7 +82,7 @@ def load(handle, debug=False):
     return pd.DataFrame(list(reader))
 
 
-def write(dataframe, handle, debug=False):
+def write_rearrangement(dataframe, handle, debug=False):
     """
     Write the contents of a data frame to an AIRR rearrangements file
 
@@ -106,7 +105,7 @@ def write(dataframe, handle, debug=False):
     return True
 
 
-def merge(out_handle, airr_handles, drop=False, debug=False):
+def merge_rearrangement(out_handle, airr_handles, drop=False, debug=False):
     """
     Merge one or more AIRR rearrangements files
 
@@ -144,7 +143,7 @@ def merge(out_handle, airr_handles, drop=False, debug=False):
     return True
 
 
-def validate(airr_handles, debug=False):
+def validate_rearrangement(airr_handles, debug=False):
     """
     Validates one or more AIRR rearrangements files
 

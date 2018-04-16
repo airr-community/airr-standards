@@ -6,19 +6,19 @@ Python API
 Inferface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. autofunction:: airr.read
+.. autofunction:: airr.read_rearrangement
 
-.. autofunction:: airr.create
+.. autofunction:: airr.create_rearrangement
 
-.. autofunction:: airr.derive
+.. autofunction:: airr.derive_rearrangement
 
-.. autofunction:: airr.load
+.. autofunction:: airr.load_rearrangement
 
-.. autofunction:: airr.write
+.. autofunction:: airr.write_rearrangement
 
-.. autofunction:: airr.merge
+.. autofunction:: airr.merge_rearrangement
 
-.. autofunction:: airr.validate
+.. autofunction:: airr.validate_rearrangement
 
 Classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
