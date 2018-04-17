@@ -6,11 +6,12 @@
 #'
 #' @param    file    input file path.
 #' @param    base    starting index for positional fields in the input file. 
-#'                   If \code{"0"}, then fields ending in \code{_start} and \code{_end}
+#'                   If \code{"0"}, then fields ending in \code{"_start"} and \code{"_end"}
 #'                   are 0-based half-open intervals (python style) in the input file 
 #'                   and will be converted to 1-based closed-intervals (R style). 
 #'                   If \code{"1"}, then these fields will not be modified.
 #' @param    schema  \code{Schema} object defining the output format.
+#' @param    ...     additional arguments to pass to \link[readr]{read_tsv}.
 #' 
 #' @return   A data.frame of the TSV file with appropriate type and position conversion
 #'           for fields defined in the specification.
@@ -26,7 +27,7 @@
 #' }
 #' 
 #' @export
-read_airr <- function(file, base=c("0", "1"), schema=RearrangementSchema) {
+read_airr <- function(file, base=c("0", "1"), schema=RearrangementSchema, ...) {
     # Check arguments
     base <- match.arg(base)
     
@@ -37,8 +38,8 @@ read_airr <- function(file, base=c("0", "1"), schema=RearrangementSchema) {
     cast <- setNames(lapply(schema_fields, function(f) parsers[schema[f]$type]), schema_fields)
     types <- do.call(readr::cols, cast)
     
-    # Read file    
-    data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None")))
+    # Read file
+    data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None"), ...))
     
     # Adjust indexes
     if (base == "0") {
@@ -57,8 +58,8 @@ read_airr <- function(file, base=c("0", "1"), schema=RearrangementSchema) {
 #' 
 #' @rdname read_airr
 #' @export
-read_rearrangement <- function(file, base=c("0", "1")) {
-    read_airr(file, base=base, schema=RearrangementSchema)
+read_rearrangement <- function(file, base=c("0", "1"), ...) {
+    read_airr(file, base=base, schema=RearrangementSchema, ...)
 }
 
 
@@ -67,8 +68,8 @@ read_rearrangement <- function(file, base=c("0", "1")) {
 #' 
 #' @rdname read_airr
 #' @export
-read_alignment <- function(file, base=c("0", "1")) {
-    read_airr(file, base=base, schema=AlignmentSchema)
+read_alignment <- function(file, base=c("0", "1"), ...) {
+    read_airr(file, base=base, schema=AlignmentSchema, ...)
 }
 
 
@@ -85,6 +86,7 @@ read_alignment <- function(file, base=c("0", "1")) {
 #'                   modified. Fields in the input \code{data} are assumed to be 
 #'                   1-based closed-intervals (R style). 
 #' @param    schema  \code{Schema} object defining the output format.
+#' @param    ...     additional arguments to pass to \link[readr]{write_tsv}.
 #'
 #' @return   NULL
 #' 
@@ -99,7 +101,7 @@ read_alignment <- function(file, base=c("0", "1")) {
 #' }
 #' 
 #' @export
-write_airr <- function(data, file, base=c("0", "1"), schema=RearrangementSchema) {
+write_airr <- function(data, file, base=c("0", "1"), schema=RearrangementSchema, ...) {
     ## DEBUG
     # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
 
@@ -124,7 +126,7 @@ write_airr <- function(data, file, base=c("0", "1"), schema=RearrangementSchema)
     }
     
     # Write
-    write_tsv(data, file, na="")
+    write_tsv(data, file, na="", ...)
 }
 
 
@@ -133,8 +135,8 @@ write_airr <- function(data, file, base=c("0", "1"), schema=RearrangementSchema)
 #' 
 #' @rdname write_airr
 #' @export
-write_rearrangement <- function(data, file, base=c("0", "1")) {
-    write_airr(data, file, base=base, schema=RearrangementSchema)
+write_rearrangement <- function(data, file, base=c("0", "1"), ...) {
+    write_airr(data, file, base=base, schema=RearrangementSchema, ...)
 }
 
 
@@ -143,6 +145,6 @@ write_rearrangement <- function(data, file, base=c("0", "1")) {
 #' 
 #' @rdname write_airr
 #' @export
-write_alignment <- function(file, base=c("0", "1")) {
-    write_airr(data, file, base=base, schema=AlignmentSchema)
+write_alignment <- function(file, base=c("0", "1"), ...) {
+    write_airr(data, file, base=base, schema=AlignmentSchema, ...)
 }
