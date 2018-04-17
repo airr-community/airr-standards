@@ -86,7 +86,7 @@ setMethod("$",
 load_schema <- function(definition) {
     # Load schema from yaml file
     spec_file <- system.file("extdata", "definitions.yaml", package="airr")
-    spec_list <- yaml::yaml.load_file(spec_file)
+    spec_list <- yaml.load_file(spec_file)
     
     # Load definition
     definition_list <- spec_list[[definition]]
