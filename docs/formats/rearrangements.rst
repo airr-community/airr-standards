@@ -17,6 +17,8 @@ exclude them.
 
 **Fields**
 
+:download:`Download as TSV <../_downloads/Rearrangement.tsv>`.
+
 .. list-table::
     :widths: auto
     :header-rows: 1

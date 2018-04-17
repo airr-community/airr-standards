@@ -1,0 +1,492 @@
+study_id:
+   miairr_set: 1
+   miairr_subset: study
+   miairr_name: Study
+   format: free text
+   example: PRJNA001
+study_title:
+   miairr_set: 1
+   miairr_subset: study
+   miairr_name: Study title
+   format: free text
+   example: Effects of sun light exposure of the Treg repertoire
+study_description:
+   miairr_set: 1
+   miairr_subset: study
+   miairr_name: Study type
+   format: controlled vocabulary
+   example: Placebo controlled phase 3 clinical trial
+inclusion_exclusion_criteria:
+   miairr_set: 1
+   miairr_subset: study
+   miairr_name: Study inclusion/exclusion criteria
+   format: free text
+   example: "Include: Clinical P. falciparum infection; Exclude: Seropositive for HIV"
+grants:
+   miairr_set: 1
+   miairr_subset: study
+   miairr_name: Grant funding agency
+   format: free text
+   example: NIH, award number R01GM987654
+collected_by:
+   miairr_set: 1
+   miairr_subset: study
+   miairr_name: Contact information (data collection)
+   format: free text
+   example: p.stibbons@unseenu.edu
+lab_name:
+   miairr_set: 1
+   miairr_subset: study
+   miairr_name: Lab name
+   format: free text
+   example: Department of Planar Immunology
+lab_address:
+   miairr_set: 1
+   miairr_subset: study
+   miairr_name: Lab address
+   format: free text
+   example: School of Medicine, Unseen University, Ankh-Morpork, Disk World
+submitted_by:
+   miairr_set: 1
+   miairr_subset: study
+   miairr_name: Contact information (data deposition)
+   format: free text
+   example: Dr. P. Stibbons
+pub_ids:
+   miairr_set: 1
+   miairr_subset: study
+   miairr_name: Relevant publications
+   format: PubMed ID
+   example: PMID85642
+subject_id:
+   miairr_set: 1
+   miairr_subset: subject
+   miairr_name: Subject ID
+   format: free text
+   example: SUB856413
+synthetic:
+   miairr_set: 1
+   miairr_subset: subject
+   miairr_name: Synthetic library
+   format: TRUE/FALSE
+   example: FALSE
+organism:
+   miairr_set: 1
+   miairr_subset: subject
+   miairr_name: Organism
+   format: controlled vocabulary
+   example: Homo sapiens
+sex:
+   miairr_set: 1
+   miairr_subset: subject
+   miairr_name: Sex
+   format: /(male|female|pooled|hermaphrodite|intersex|not collected|not applicable)/
+   example: female
+age:
+   miairr_set: 1
+   miairr_subset: subject
+   miairr_name: Age
+   format: time duration and unit
+   example: 65 a
+age_event:
+   miairr_set: 1
+   miairr_subset: subject
+   miairr_name: Age event
+   format: free text
+   example: enrollment
+ancestry_population:
+   miairr_set: 1
+   miairr_subset: subject
+   miairr_name: Ancestry population
+   format: free text
+   example: list of continents, mixed or unknown
+ethnicity:
+   miairr_set: 1
+   miairr_subset: subject
+   miairr_name: Ethnicity
+   format: free text
+   example: English, Kurds, Manchu, Yakuts (and other fields from Wikipedia)
+race:
+   miairr_set: 1
+   miairr_subset: subject
+   miairr_name: Race
+   format: free text
+   example: White, American Indian or Alaska Native, Black, Asian, Native Hawaiian or Other Pacific Islander, Other 
+strain_name:
+   miairr_set: 1
+   miairr_subset: subject
+   miairr_name: Strain name
+   format: free text
+   example: C57BL/6J
+linked_subjects:
+   miairr_set: 1
+   miairr_subset: subject
+   miairr_name: Relation to other subjects
+   format: free text
+   example: SUB1355648
+link_type:
+   miairr_set: 1
+   miairr_subset: subject
+   miairr_name: Relation type
+   format: free text
+   example: father, daughter, household
+study_group_description:
+   miairr_set: 1
+   miairr_subset: diagnosis and intervention
+   miairr_name: Study group description
+   format: free text
+   example: control
+disease_diagnosis:
+   miairr_set: 1
+   miairr_subset: diagnosis and intervention
+   miairr_name: Diagnosis
+   format: free text
+   example: Multiple myeloma
+disease_length:
+   miairr_set: 1
+   miairr_subset: diagnosis and intervention
+   miairr_name: Length of disease
+   format: time duration and unit
+   example: 23 months
+disease_stage:
+   miairr_set: 1
+   miairr_subset: diagnosis and intervention
+   miairr_name: Disease stage
+   format: free text
+   example: Stage II
+prior_therapies:
+   miairr_set: 1
+   miairr_subset: diagnosis and intervention
+   miairr_name: Prior therapies for primary disease under study
+   format: free text
+   example: melphalan/prednisone
+immunogen:
+   miairr_set: 1
+   miairr_subset: diagnosis and intervention
+   miairr_name: Immunogen/agent
+   format: free text
+   example: bortezomib
+intervention:
+   miairr_set: 1
+   miairr_subset: diagnosis and intervention
+   miairr_name: Intervention definition
+   format: free text
+   example: systemic chemotherapy, 6 cycles, 1.25 mg/m2
+medical_history:
+   miairr_set: 1
+   miairr_subset: diagnosis and intervention
+   miairr_name: Other relevant medical history
+   format: free text
+   example: MGUS, first diagnosed 5 years prior
+sample_id:
+   miairr_set: 2
+   miairr_subset: sample
+   miairr_name: Biological sample ID
+   format: free text
+   example: SUP52415
+sample_type:
+   miairr_set: 2
+   miairr_subset: sample
+   miairr_name: Sample type
+   format: free text
+   example: Biopsy
+tissue:
+   miairr_set: 2
+   miairr_subset: sample
+   miairr_name: Tissue
+   format: free text
+   example: Bone marrow
+anatomic_site:
+   miairr_set: 2
+   miairr_subset: sample
+   miairr_name: Anatomic site
+   format: free text
+   example: Iliac crest
+disease_state_sample:
+   miairr_set: 2
+   miairr_subset: sample
+   miairr_name: Disease state of sample
+   format: free text
+   example: Tumor infiltration
+collection_time_point_relative:
+   miairr_set: 2
+   miairr_subset: sample
+   miairr_name: Sample collection time
+   format: free text
+   example: 14 d
+collection_time_point_reference:
+   miairr_set: 2
+   miairr_subset: sample
+   miairr_name: Collection time event
+   format: free text
+   example: Primary vaccination
+biomaterial_provider:
+   miairr_set: 2
+   miairr_subset: sample
+   miairr_name: Biomaterial provider
+   format: free text
+   example: Tissues-R-Us, Tampa, FL, USA
+tissue_processing:
+   miairr_set: 3
+   miairr_subset: process (cell)
+   miairr_name: Tissue processing
+   format: free text
+   example: Collagenase A/Dnase I digested, followed by Percoll gradient
+cell_subset:
+   miairr_set: 3
+   miairr_subset: process (cell)
+   miairr_name: Cell subset
+   format: controlled vocabulary
+   example: Class-switched Memory B cells
+cell_phenotype:
+   miairr_set: 3
+   miairr_subset: process (cell)
+   miairr_name: Cell subset phenotype
+   format: free text
+   example: CD19+ CD38+ CD27+ IgM- IgD-
+single_cell:
+   miairr_set: 3
+   miairr_subset: process (cell)
+   miairr_name: Single-cell sort
+   format: TRUE/FALSE
+   example: FALSE
+cell_number:
+   miairr_set: 3
+   miairr_subset: process (cell)
+   miairr_name: Number of cells in experiment
+   format: number
+   example: 1000000
+cells_per_reaction:
+   miairr_set: 3
+   miairr_subset: process (cell)
+   miairr_name: Number of cells per sequencing reaction
+   format: number
+   example: 50000
+cell_storage:
+   miairr_set: 3
+   miairr_subset: process (cell)
+   miairr_name: Cell storage
+   format: TRUE/FALSE
+   example: TRUE
+cell_quality:
+   miairr_set: 3
+   miairr_subset: process (cell)
+   miairr_name: Cell quality
+   format: free text
+   example: 90% viability as determined by 7-AAD
+cell_isolation:
+   miairr_set: 3
+   miairr_subset: process (cell)
+   miairr_name: Cell isolation / enrichment procedure
+   format: free text
+   example: Cells were stained with fluorochrome labeled antibodies and then sorted on a FlowMerlin (CE) cytometer
+cell_processing_protocol:
+   miairr_set: 3
+   miairr_subset: process (cell)
+   miairr_name: Processing protocol
+   format: free text
+   example: Stimulated wih anti-CD3/anti-CD28
+template_class:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Target substrate
+   format: /(DNA|RNA)/
+   example: RNA
+template_quality:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Target substrate quality
+   format: free text
+   example: RIN 9.2
+template_amount:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Template amount
+   format: free text
+   example: 1000 ng
+library_generation_method:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Library generation method
+   format: controlled vocabulary
+   example: Oligo-dT primed 5' RACE
+library_generation_protocol:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Library generation protocol
+   format: free text
+   example: cDNA was generated using
+library_generation_kit_version:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Protocol IDs
+   format: free text
+   example: v2.1 (2016-09-15)
+pcr_target_locus:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Target locus for PCR
+   format: free text
+   example: Constant region vs. V region amplification
+forward_pcr_primer_target_location:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Forward PCR primer target location
+   format: free text
+   example: IGHV, +23
+reverse_pcr_primer_target_location:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Reverse PCR primer target location
+   format: free text
+   example: IGHG, +57
+complete_sequences:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Complete sequences
+   format: /(partial|complete|complete+untemplated)/
+   example: partial
+physical_linkage:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Physical linkage of different loci
+   format: controlled vocabulary
+   example: IGH-IGK/IGL-head/head
+total_reads_passing_qc_filter:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Total reads passing QC filter
+   format: number
+   example: 10365118
+sequencing_platform:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Sequencing platform
+   format: free text
+   example: Alumina LoSeq 1000
+read_length:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Read lengths
+   format: array of numbers
+   example: "[300,300]"
+sequencing_facility:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Sequencing facility
+   format: free text
+   example: Seqs-R-Us, Vancouver, BC, Canada
+sequencing_run_id:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Batch number
+   format: free text
+   example: 160101_M01234_0201_000000000-D2T7V
+sequencing_run_date:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Date of sequencing run
+   format: ISO8601-compliant date
+   example: 2016-12-16
+sequencing_kit:
+   miairr_set: 3
+   miairr_subset: process (nucleic acid)
+   miairr_name: Sequencing kit
+   format: free text
+   example: "FullSeq 600, Alumina, #M123456C0, 789G1HK"
+raw_data:
+   miairr_set: 4
+   miairr_subset: data (raw reads)
+   miairr_name: Raw sequence data
+   format: FASTQ
+   example: <n/a>
+software_versions:
+   miairr_set: 5
+   miairr_subset: process (computational)
+   miairr_name: Software tools and version numbers
+   format: free text
+   example: IgBLAST 1.6
+paired_reads_assembly:
+   miairr_set: 5
+   miairr_subset: process (computational)
+   miairr_name: Paired read assembly
+   format: free text
+   example: PandaSeq (minimal overlap 50, threshold 0.8)
+quality_thresholds:
+   miairr_set: 5
+   miairr_subset: process (computational)
+   miairr_name: Quality thresholds
+   format: free text
+   example: Average Phred score >=20
+primer_match_cutoffs:
+   miairr_set: 5
+   miairr_subset: process (computational)
+   miairr_name: Primer match cutoffs
+   format: free text
+   example: Hamming distance <= 2
+collapsing_method:
+   miairr_set: 5
+   miairr_subset: process (computational)
+   miairr_name: Collapsing method
+   format: free text
+   example: MUSCLE 3.8.31
+data_processing_protocols:
+   miairr_set: 5
+   miairr_subset: process (computational)
+   miairr_name: Data processing protocols
+   format: free text
+   example: Data was processed using [...]
+germline_database:
+   miairr_set: 6
+   miairr_subset: data (processed sequence)
+   miairr_name: V(D)J germline reference database
+   format: free text
+   example: ENSEMBL, Homo sapiens build 90, 2017-10-01
+cell_id:
+   miairr_set: 6
+   miairr_subset: data (processed sequence)
+   miairr_name: Cell Index
+   format: free text
+   example: W06_046_091
+v_call:
+   miairr_set: 6
+   miairr_subset: data (processed sequence)
+   miairr_name: V gene
+   format: free text
+   example: IGHV1-34*01
+d_call:
+   miairr_set: 6
+   miairr_subset: data (processed sequence)
+   miairr_name: D gene
+   format: free text
+   example: IGHD2-2*01
+j_call:
+   miairr_set: 6
+   miairr_subset: data (processed sequence)
+   miairr_name: J gene
+   format: free text
+   example: IGHJ4*01
+c_call:
+   miairr_set: 6
+   miairr_subset: data (processed sequence)
+   miairr_name: C region
+   format: free text
+   example: IGHG1
+junction:
+   miairr_set: 6
+   miairr_subset: data (processed sequence)
+   miairr_name: IMGT-JUNCTION nucleotide sequence
+   format: free text
+   example: TGTGCAAGAGCGGGAGTTTACGACGGATATACTATGGACTACTGG
+junction_aa:
+   miairr_set: 6
+   miairr_subset: data (processed sequence)
+   miairr_name: IMGT-JUNCTION amino acid sequence
+   format: free text
+   example: CARAGVYDGYTMDYW
+duplicate_count:
+   miairr_set: 6
+   miairr_subset: data (processed sequence)
+   miairr_name: Read count
+   format: number
+   example: 123

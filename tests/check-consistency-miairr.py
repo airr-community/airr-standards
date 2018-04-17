@@ -1,13 +1,11 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 
-import sys
 import csv
-from collections import Counter
-
-import yaml
 import pandas as pd
-from deepdiff import DeepDiff
-
+import sys
+import yaml
+from collections import Counter
+#from deepdiff import DeepDiff
 
 miairr_dataset_to_api_object = {
     '1 / study': 'Study',
