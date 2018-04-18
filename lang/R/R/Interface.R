@@ -145,6 +145,6 @@ write_rearrangement <- function(data, file, base=c("0", "1"), ...) {
 #' 
 #' @rdname write_airr
 #' @export
-write_alignment <- function(file, base=c("0", "1"), ...) {
+write_alignment <- function(data, file, base=c("0", "1"), ...) {
     write_airr(data, file, base=base, schema=AlignmentSchema, ...)
 }
