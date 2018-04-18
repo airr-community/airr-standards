@@ -102,7 +102,8 @@ class Schema:
         Returns:
           str: conversion of True or False or 'T' or 'F'.
         """
-        bool_map = {True: 'T', False: 'F', 'True': 'T', 'False': 'F'}
+        bool_map = {True: 'T', 'True': 'T', 'TRUE': 'T', 'T': 'T',
+                    False: 'F', 'False': 'F', 'FALSE': 'F', 'F': 'F'}
 
         return bool_map.get(value, None)
 
