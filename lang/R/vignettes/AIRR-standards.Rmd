@@ -92,8 +92,6 @@ intervals (R style). If "1", positional fields will not be modified.
 
 ```{r read_rearrangement, message=FALSE}
 library(airr)
-library(dplyr)
-library(xtable)
 
 example_data <- system.file("data", "toy_data.tsv", package="airr")
 basename(example_data)
