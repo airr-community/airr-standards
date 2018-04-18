@@ -2,62 +2,54 @@
 AIRR Data Representation Schema
 """
 
-# Imports
 import sys
+
 import yaml
-import yamlordereddictloader
+import numpy as np
 from pkg_resources import resource_stream
 
 
-class Schema:
+with resource_stream(__name__, 'specs/definitions.yaml') as f:
+    spec = yaml.load(f, Loader=yamlordereddictloader.Loader)
+
+
+class Schema(object):
     """
-    AIRR schema definitions
+    AIRR schema helper object
 
     Attributes:
-      definition (collections.OrderedDict): complete schema.
-      properties (collections.OrderedDict): field definitions.
+      data (dict): complete schema.
+      properties (dict): field definitions.
       required (list): list of mandatory fields.
-      optional (list): list of non-required fields.
     """
-    def __init__(self, definition):
+    def __init__(self, spec):
         """
         Initialization
 
         Arguments:
-          definition (string): the schema definition to load.
+          spec (dict): the schema data
 
         Returns:
-          airr.schema.Schema : schema object.
+          airr.schema.Schema : schema helper object.
         """
-        # Load object definition
-        with resource_stream(__name__, 'specs/definitions.yaml') as f:
-            spec = yaml.load(f, Loader=yamlordereddictloader.Loader)
+        self.data = spec
+        self.properties = self.data['properties']
+        self.required = self.data['required']
 
-        try:
-            self.definition = spec[definition]
-        except KeyError:
-            sys.exit('Schema definition %s cannot be found in the specifications' % definition)
-        except:
-            raise
-
-        self.properties = self.definition['properties']
-        self.required = self.definition['required']
-        self.optional = [f for f in self.properties if f not in self.required]
-
-    def spec(self, field):
+    def get_property(self, property):
         """
         Get the properties for a field
 
         Arguments:
-          name (str): field name.
+          property (str): field name.
 
         Returns:
-          collections.OrderedDict: Rearrangement definition for the field.
+          dict: definition for the field.
         """
         return self.properties.get(field, None)
 
 
-    def type(self, field):
+    def get_type(self, property):
         """
         Get the type for a field
 
@@ -67,81 +59,20 @@ class Schema:
         Returns:
           str: the type definition for the field
         """
-        field_spec = self.properties.get(field, None)
-        field_type = field_spec.get('type', None) if field_spec else None
-        return field_type
+        return self.get_property(property)['type']
 
-    @staticmethod
-    def to_bool(value):
-        """
-        Converts strings to boolean
+    def get_numpy_type_mapping(self):
+        type_mapping = {}
+        for property in self.properties:
+            if self.get_type(property) == 'boolean':
+                type_mapping[property] = np.bool
+            elif self.get_type(property) == 'integer':
+                type_mapping[property] = np.int64
+            elif self.get_type(property) == 'number':
+                type_mapping[property] = np.float64
+        return type_mapping
 
-        Arguments:
-          value (str): logical value as a string.
-
-        Returns:
-          bool: conversion of the string to True or False.
-        """
-        if type(value) is bool:
-            return value
-        if value.upper() in ['F', 'FALSE', '0']:
-            return False
-        if value.upper() in ['T', 'TRUE', '1']:
-            return True
-
-        return None
-
-    @staticmethod
-    def from_bool(value):
-        """
-        Converts boolean to a string
-
-        Arguments:
-          value (bool): logical value.
-
-        Returns:
-          str: conversion of True or False or 'T' or 'F'.
-        """
-        bool_map = {True: 'T', False: 'F', 'True': 'T', 'False': 'F'}
-
-        return bool_map.get(value, None)
-
-    @staticmethod
-    def to_int(value):
-        """
-        Converts strings to integers
-
-        Arguments:
-          value (str): integer value as a string.
-
-        Returns:
-          int: conversion of the string to an integer.
-        """
-        if type(value) is int:
-            return value
-        try:
-            return int(value)
-        except ValueError:
-            return None
-
-    @staticmethod
-    def to_float(value):
-        """
-        Converts strings to floats
-
-        Arguments:
-          value (str): float value as a string.
-
-        Returns:
-          float: conversion of the string to a float.
-        """
-        if type(value) is float:
-            return value
-        try:
-            return float(value)
-        except ValueError:
-            return None
 
 # Preloaded schema
-AlignmentSchema = Schema('Alignment')
-RearrangementSchema = Schema('Rearrangement')
+AlignmentSchema = Schema(spec['Alignment'])
+RearrangementSchema = Schema(spec['Rearrangement'])
