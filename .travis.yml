@@ -29,5 +29,5 @@ matrix:
         - R -e 'devtools::install_deps(dependencies=TRUE)'
         - R -e 'devtools::document()'
       script:
-        - R CMD build .
+        - R CMD build --install-tests .
         - R CMD check *.tar.gz --as-cran --run-donttest --timings
