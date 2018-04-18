@@ -1,14 +1,12 @@
 """
 AIRR community formats for adaptive immune receptor data.
 """
-
 import sys
 import os
 import versioneer
-from setuptools import setup, find_packages
 
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
     sys.exit('setuptools is required.')
 
