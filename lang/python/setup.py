@@ -12,11 +12,6 @@ try:
 except ImportError:
     sys.exit('setuptools is required.')
 
-try:
-    from pip.req import parse_requirements
-except ImportError:
-    sys.exit('pip is required.\n')
-
 with open('README.rst', 'r') as ip:
     long_description = ip.read()
 
