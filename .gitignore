@@ -105,3 +105,4 @@ ENV/
 man/
 **/vignettes/*
 !**/vignettes/*Rmd
+!**/vignettes/*bib

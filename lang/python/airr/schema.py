@@ -26,10 +26,10 @@ class Schema:
     false_values = ['False', 'false', 'FALSE', 'F', 'f', '0', 0, False]
 
     # Generate dicts for booleans
-    _to_bool_map = {k: True for k in true_values}
-    _to_bool_map.update({k: False for k in false_values})
-    _from_bool_map = {True: 'T', False: 'F', 'True': 'T', 'False': 'F'}
-
+    _to_bool_map = {x: True for x in true_values}
+    _to_bool_map.update({x: False for x in false_values})
+    _from_bool_map = {k: 'T' if v else 'F' for k, v in _to_bool_map.items()}
+      
     def __init__(self, definition):
         """
         Initialization
