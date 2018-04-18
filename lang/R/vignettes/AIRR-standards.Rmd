@@ -113,25 +113,4 @@ out_file <- file.path(tempdir(), "airr_out.tsv")
 write_rearrangement(airr_rearrangement, out_file, base="0")
 ```
 
-# Appendix
-
-## Rearrangement properties
-
-```{r RearrangementSchema, echo=FALSE}
-rs_table <- bind_rows(RearrangementSchema@properties, .id="id")
-rs_table[['required']] <- rs_table$id %in% RearrangementSchema@required
-knitr::kable(rs_table[,c("id", "required", "type", "description")])
-```
-
-
-## Alignment properties
-
-
-```{r AlignmentSchema, echo=FALSE}
-aln_table <- bind_rows(AlignmentSchema@properties, .id="id")
-aln_table[['required']] <- aln_table$id %in% AlignmentSchema@required
-knitr::kable(aln_table[,c("id", "required", "type", "description")])
-```
-
-
 # References
