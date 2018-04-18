@@ -18,6 +18,7 @@ test_that("read_airr", {
 
 test_that("write_airr", {
     tbl <- read_airr(rearrangement_file)
-    write_airr(tbl, "test_out.tsv")
-    expect_true(file.exists("test_out.tsv"))
+    out_file <- file.path(tempdir(), "test_out.tsv")
+    write_airr(tbl, out_file)
+    expect_true(file.exists(out_file))
 })
