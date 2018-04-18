@@ -1,7 +1,8 @@
 ---
 title: 'AIRR standards'
-author: "AIRR community"
+author: "The AIRR Community"
 date: '`r Sys.Date()`'
+bibliography: references.bib
 output:
   pdf_document:
     dev: pdf
@@ -15,11 +16,12 @@ output:
     preserve_yaml: no
     toc: yes
   html_document:
+    standalone: true
     fig_height: 4
     fig_width: 7.5
     highlight: pygments
     theme: readable
-    toc: yes
+    toc: yes 
 geometry: margin=1in
 fontsize: 11pt
 vignette: >
@@ -28,4 +30,84 @@ vignette: >
   %\usepackage[utf8]{inputenc}
 ---
 
-# AIRR standards
+# Introduction
+
+Since the use of High-throughput sequencing (HTS) was first introduced to analyze 
+immunoglobulin (B-cell receptor, antibody) and T-cell receptor repertoires 
+(@freeman2009, @robins2009, @weinstein2009), the increasing number of studies 
+making use of this technique has produced enormous amounts of data and there's a 
+pressing need to develop and adopt common standards, protocols, and policies for 
+generating and sharing data sets. The Adaptive Immune Receptor Repertoire (AIRR) 
+Community formed in 2015 to address this challenge (@breden2017) and has stablished 
+the set of minimal metadata elements (MiAIRR) required for describing published 
+AIRR datasets (@rubelt2017) as well as file formats to represent the information
+in a machine-readable form. The R package \emph{airr} allows to read and write 
+data following the AIRR format standards and this vignette provides examples on
+how to use it.
+
+## AIRR Community
+
+The motivations and goals of the AIRR Community are described in detail 
+in (@breden2017). Membership in the AIRR Community is open and is intended
+to cover all aspects of AIRR-seq technology and its uses. The profile of its
+members is diverse, and includes researches with expertise in a broad range of
+scientific and legal areas involved in the generation and analysis of immune 
+repertoire data. Through continuous cycles of dialogue and collaboration, 
+the AIRR community has developed a set of metadata standards for the publication
+and sharing of AIRR-seq datasets (MiAIRR) ((@rubelt2017)) and specific 
+machine-readable file formats to record AIRR-seq data and its annotation, 
+from the experiment level to the sequence level.
+
+
+## MiAIRR standards
+
+The Community's recommendations for a minimal set of metadata that should be 
+used to describe an AIRR-seq data set when published or when deposited in a 
+AIRR-compliant repository are described in @rubelt2017. The primary 
+aim of this effort is to make published AIRR datasets FAIR (findable, accessible, 
+interoperable, reusable).The overall goal of this standard is that sufficient 
+detail be provided such that a person skilled in the art of AIRR sequencing 
+and data analysis will be able to reproduce the experiment and data analyses 
+that were performed.
+
+Following this principles, alignments and rearrangement annotations are 
+saved in standard tab-delimited format files (TSV) and the metadata for each of 
+these files is provided in an additional YAML formatted file. The column names 
+and field names in these files have been defined by the AIRR community. 
+The use of standardized terms to refer to each piece of information and the 
+use of a defined data representation format means that MiAIRR compliant software, 
+API and databases can communicate and exchange information.
+
+# Reading AIRR formatted files
+
+The `airr` package contains the function `read_rearrangement` to read and validate
+rearragnment files following the AIRR standards. The usage is straighforward, 
+as the file format is a typical tabulated file. The argument that needs 
+attention is `base`, with possible values "0" and "1". `base` denotes the starting
+index for positional fields in the input file. Positional fields are those that 
+contain alignment coordinates and names ending in "_start" and "_end". If the
+input file is using 0-based coordinates (as in python style 0-based half-open 
+intervals), then positional fields will be converted to 1-based closed 
+intervals (R style). If "1", positional fields will not be modified.
+
+```{r read_rearrangement, message=FALSE}
+library(airr)
+
+example_data <- file.path("..", "tests", "data-tests","toy_data.tsv")
+basename(example_data)
+airr_rearrangement <- read_rearrangement(example_data, base="0")
+class(airr_rearrangement)
+head(airr_rearrangement)
+```
+
+# Writing AIRR formatted files
+
+The \emph{airr} package contains the function `write_rearrangement` to write
+rearrangement files in AIRR format.
+
+```{r write_rearrangement}
+out_file <- file.path(tempdir(), "airr_out.tsv")
+write_rearrangement(airr_rearrangement, out_file, base="0")
+```
+
+# References
