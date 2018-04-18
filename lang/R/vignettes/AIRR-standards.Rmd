@@ -93,13 +93,12 @@ intervals (R style). If "1", positional fields will not be modified.
 ```{r read_rearrangement, message=FALSE}
 library(airr)
 
-example_data <- system.file("data", "toy_data.tsv", package="airr")
+example_data <- file.path("..", "tests", "data-tests","toy_data.tsv")
 basename(example_data)
 airr_rearrangement <- read_rearrangement(example_data, base="0")
 class(airr_rearrangement)
 head(airr_rearrangement)
 ```
-
 
 # Writing AIRR formatted files
 
