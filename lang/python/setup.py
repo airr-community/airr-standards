@@ -25,12 +25,8 @@ if os.environ.get('READTHEDOCS', None) == 'True':
     # Set empty install_requires to get install to work on readthedocs
     install_requires = []
 else:
-    require_file = 'requirements.txt'
-    try:
-        requirements = parse_requirements(require_file, session=False)
-    except TypeError:
-        requirements = parse_requirements(require_file)
-    install_requires = [str(r.req) for r in requirements]
+    with open('requirements.txt') as req:
+        install_requires = req.read().splitlines()
 
 # Setup
 setup(name='airr',
@@ -47,11 +43,7 @@ setup(name='airr',
       install_requires=install_requires,
       packages=find_packages(),
       package_data={'airr': ['specs/*.yaml']},
-      entry_points={
-        'console_scripts': [
-            'airr-tools=airr.tools:main'
-            ],
-        },
+      entry_points={'console_scripts': ['airr-tools=airr.tools:main']},
       classifiers=['Intended Audience :: Science/Research',
                    'Natural Language :: English',
                    'Operating System :: OS Independent',
