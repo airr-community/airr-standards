@@ -35,7 +35,7 @@ class RearrangementReader:
           list : field names.
         """
         return [f for f in self.dict_reader.fieldnames \
-                if f not in RearrangementSchema.properties]
+                if f not in self.schema.properties]
 
     def __init__(self, handle, debug=False):
         """
@@ -51,6 +51,7 @@ class RearrangementReader:
         # arguments
         self.handle = handle
         self.debug = debug
+        self.schema = RearrangementSchema
 
         # data reader, collect field names
         self.dict_reader = csv.DictReader(self.handle, dialect='excel-tab')
@@ -78,10 +79,10 @@ class RearrangementReader:
             raise StopIteration
 
         for f in row.keys():
-            spec = RearrangementSchema.type(f)
-            if spec == 'boolean':  row[f] = RearrangementSchema.to_bool(row[f])
-            if spec == 'integer':  row[f] = RearrangementSchema.to_int(row[f])
-            if spec == 'number':  row[f] = RearrangementSchema.to_float(row[f])
+            spec = self.schema.type(f)
+            if spec == 'boolean':  row[f] = self.schema.to_bool(row[f])
+            if spec == 'integer':  row[f] = self.schema.to_int(row[f])
+            if spec == 'number':  row[f] = self.schema.to_float(row[f])
 
         return row
 
@@ -103,7 +104,7 @@ class RearrangementReader:
         """
         valid = True
         # check required fields
-        required_fields = list(RearrangementSchema.required)
+        required_fields = list(self.schema.required)
         for f in required_fields:
             if f not in self.fields:
                 sys.stderr.write('Warning: File is missing AIRR mandatory field (' + f + ').\n')
@@ -164,7 +165,7 @@ class RearrangementWriter:
           list : field names.
         """
         return [f for f in self.dict_writer.fieldnames \
-                if f not in RearrangementSchema.properties]
+                if f not in self.schema.properties]
 
     def __init__(self, handle, fields=None, debug=False):
         """
@@ -181,15 +182,16 @@ class RearrangementWriter:
         # arguments
         self.handle = handle
         self.debug = debug
+        self.schema = RearrangementSchema
 
         # order fields according to spec
-        field_names = list(RearrangementSchema.required)
+        field_names = list(self.schema.required)
         if fields is not None:
             additional_fields = []
             for f in fields:
-                if f in RearrangementSchema.required:
+                if f in self.schema.required:
                     continue
-                elif f in RearrangementSchema.optional:
+                elif f in self.schema.optional:
                     field_names.append(f)
                 else:
                     additional_fields.append(f)
@@ -215,15 +217,29 @@ class RearrangementWriter:
         """
         # validate row
         if self.debug:
-            for field in RearrangementSchema.required:
+            for field in self.schema.required:
                 if row.get(field, None) is None:
                     sys.stderr.write('Warning: Record is missing AIRR required field (' + field + ').\n')
 
         for f in row.keys():
-            spec = RearrangementSchema.type(f)
-            if spec == 'boolean':  row[f] = RearrangementSchema.from_bool(row[f])
+            spec = self.schema.type(f)
+            if spec == 'boolean':  row[f] = self.schema.from_bool(row[f])
 
         self.dict_writer.writerow(row)
+
+
+# TODO: pandas validation need if we load with pandas directly
+# def validate_df(df, airr_schema):
+#     valid = True
+#
+#     # check required fields
+#     missing_fields = set(airr_schema.required) - set(df.columns)
+#     if len(missing_fields) > 0:
+#         print('Warning: file is missing mandatory fields: {}'.format(', '.join(missing_fields)))
+#         valid = False
+#
+#     if not valid:
+#         raise ValueError('invalid AIRR data file')
 
 
 # class MetaWriter:

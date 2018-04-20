@@ -3,7 +3,6 @@ Interface functions for file operations
 """
 # System imports
 import pandas as pd
-import os
 from collections import OrderedDict
 from itertools import chain
 
@@ -11,7 +10,7 @@ from itertools import chain
 from airr.io import RearrangementReader, RearrangementWriter
 
 
-def read(handle, debug=False):
+def read_rearrangement(handle, debug=False):
     """
     Open an iterator to read an AIRR rearrangements file
 
@@ -25,7 +24,7 @@ def read(handle, debug=False):
     return RearrangementReader(handle, debug=debug)
 
 
-def create(handle, fields=None, debug=False):
+def create_rearrangement(handle, fields=None, debug=False):
     """
     Create an empty AIRR rearrangements file writer
 
@@ -40,7 +39,7 @@ def create(handle, fields=None, debug=False):
     return RearrangementWriter(handle, fields=fields, debug=debug)
 
 
-def derive(out_handle, in_handle, fields=None, debug=False):
+def derive_rearrangement(out_handle, in_handle, fields=None, debug=False):
     """
     Create an empty AIRR rearrangements file with fields derived from an existing file
 
@@ -61,7 +60,7 @@ def derive(out_handle, in_handle, fields=None, debug=False):
     return RearrangementWriter(out_handle, fields=in_fields, debug=debug)
 
 
-def load(handle, debug=False):
+def load_rearrangement(handle, debug=False):
     """
     Load the contents of an AIRR rearrangements file into a data frame
 
@@ -73,11 +72,17 @@ def load(handle, debug=False):
       pandas.DataFrame: Rearrangement records as rows of a data frame.
     """
     # TODO: test pandas.DataFrame.read_csv with converters argument as an alterative
+    # schema = RearrangementSchema
+    # df = pd.read_csv(handle, sep='\t', header=0, index_col=None,
+    #                  dtype=schema.numpy_types(), true_values=schema.true_values,
+    #                  false_values=schema.true_values)
+    # return df
+
     reader = RearrangementReader(handle, debug=debug)
     return pd.DataFrame(list(reader))
 
 
-def write(dataframe, handle, debug=False):
+def dump_rearrangement(dataframe, handle, debug=False):
     """
     Write the contents of a data frame to an AIRR rearrangements file
 
@@ -89,20 +94,18 @@ def write(dataframe, handle, debug=False):
     Returns:
       bool: True if the file is written without error.
     """
-    # TODO: test pandas.DataFrame.write_csv with converters argument as an alterative
+    # TODO: test pandas.DataFrame.to_csv with converters argument as an alterative
+    # dataframe.to_csv(handle, sep='\t', header=True, index=False, encoding='utf-8')
+
     fields = dataframe.columns.tolist()
     writer = RearrangementWriter(handle, fields=fields, debug=debug)
-
-    try:
-        for __, row in dataframe.iterrows():
-            writer.write(row.to_dict())
-    except:
-        raise
+    for __, row in dataframe.iterrows():
+        writer.write(row.to_dict())
 
     return True
 
 
-def merge(out_handle, airr_handles, drop=False, debug=False):
+def merge_rearrangement(out_handle, airr_handles, drop=False, debug=False):
     """
     Merge one or more AIRR rearrangements files
 
@@ -140,7 +143,7 @@ def merge(out_handle, airr_handles, drop=False, debug=False):
     return True
 
 
-def validate(airr_handles, debug=False):
+def validate_rearrangement(airr_handles, debug=False):
     """
     Validates one or more AIRR rearrangements files
 

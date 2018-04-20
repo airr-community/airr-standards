@@ -45,7 +45,7 @@ def merge_cmd(out_file, airr_files, drop=False, debug=False):
         # test all the input files before creating a blank output file
         airr_handles = [open(f, 'r') for f in airr_files]
         out_handle = open(out_file, 'w')
-        return airr.interface.merge(out_handle, airr_handles, drop=drop, debug=debug)
+        return airr.interface.merge_rearrangement(out_handle, airr_handles, drop=drop, debug=debug)
     except:
         sys.stderr.write('Error occurred while merging AIRR rearrangement files.\n')
         return False
@@ -65,7 +65,7 @@ def validate_cmd(airr_files, debug=False):
     """
     try:
         airr_handles = [open(f, 'r') for f in airr_files]
-        return airr.interface.validate(airr_handles, debug=debug)
+        return airr.interface.validate_rearrangement(airr_handles, debug=debug)
     except:
         sys.stderr.write('Error occurred while validating AIRR rearrangement files.\n')
         return False
