@@ -80,19 +80,19 @@ API and databases can communicate and exchange information.
 ## Reading AIRR formatted files
 
 The `airr` package contains the function `read_rearrangement` to read and validate
-rearragnment files following the AIRR standards. The usage is straighforward, 
+rearrangement files following the AIRR standards. The usage is straightforward, 
 as the file format is a typical tabulated file. The argument that needs 
-attention is `base`, with possible values "0" and "1". `base` denotes the starting
+attention is `base`, with possible values `"0"` and `"1"`. `base` denotes the starting
 index for positional fields in the input file. Positional fields are those that 
 contain alignment coordinates and names ending in "_start" and "_end". If the
 input file is using 0-based coordinates (as in python style 0-based half-open 
 intervals), then positional fields will be converted to 1-based closed 
-intervals (R style). If "1", positional fields will not be modified.
+intervals (R style). If `"1"`, positional fields will not be modified.
 
 ```{r read_rearrangement, message=FALSE}
 library(airr)
 
-example_data <- file.path("..", "tests", "data-tests","toy_data.tsv")
+example_data <- file.path("..", "tests", "data-tests", "toy_data.tsv")
 basename(example_data)
 airr_rearrangement <- read_rearrangement(example_data, base="0")
 class(airr_rearrangement)
@@ -101,7 +101,7 @@ head(airr_rearrangement)
 
 ## Writing AIRR formatted files
 
-The \emph{airr} package contains the function `write_rearrangement` to write
+The `airr` package contains the function `write_rearrangement` to write
 rearrangement files in AIRR format.
 
 ```{r write_rearrangement}
