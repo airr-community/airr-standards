@@ -7,26 +7,22 @@ Data Representations
    :maxdepth: 3
    :caption: Schema
 
-   alignments
-   rearrangements
+   Rearrangements Schema <rearrangements>
+   Alignment Schema (Experimental) <alignments>
 
 
-Data for ``Rearrangement`` objects are stored as rows in a *tab-delimited* file and
-should be compatible with any TSV reader. Metadata is stored as a companion JSON
-or YAML file according to the MiAIRR specifications.
-
+Data for ``Rearrangement`` or ``Alignment`` objects are stored as rows in a
+*tab-delimited* file and should be compatible with any TSV reader.
 
 **Encoding**
 
 The file should be encoded as ASCII or UTF-8. Everything is case-sensitive.
-
 
 **CSV dialect**
 
 The record separator is a newline ``\n`` and the field separator is a tab ``\t``.
 Fields or data should not be quoted. A header line with the AIRR-specified column
 names is always required.
-
 
 **Coordinate numbering**
 
@@ -35,31 +31,23 @@ Python-style semantics for locations and intervals. This means 0-indexed coords
 with half-open intervals.  See `this example <https://stackoverflow.com/a/509297/510187>`__
 for additional clarity.
 
-
 **Boolean values**
 
 Boolean values must be encoded as ``T`` for true and ``F`` for false.
-
 
 **Null values**
 
 *All fields can be null.* (Even for columns that are described as
 "required".) This should be encoded as an empty string.
 
-
 **File names**
 
-AIRR-formatted data files should end with ``.tsv``. If any metadata is
-incorporated into the filename, consider including it in the accompanying
-metadata file as well. Accompanying metadata files should end in ``.meta.json`` or
-``.meta.yaml``.
-
+AIRR-formatted data files should end with ``.tsv``.
 
 **Identifiers/illegal characters**
 
 Data must not contain tab or newline characters.  Data should avoid ``#`` and quote
 characters, as the result may be implementation-dependent.
-
 
 **Structure**
 
@@ -67,10 +55,6 @@ The data file has 2 sections in this order:
 
 1.  Header (single line with column names)
 2.  Data (one record per line)
-
-The metadata file should be readable as a JSON or YAML object according to the
-MiAIRR spec.
-
 
 **Header line**
 

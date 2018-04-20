@@ -22,7 +22,7 @@ with open('AIRR_Minimal_Standard_Data_Elements.tsv', 'r') as ip:
     tsv_data = list(csv.DictReader(ip, dialect='excel-tab'))
 
 
-with open('specs/definitions.yaml', 'r') as ip:
+with open('specs/airr-schema.yaml', 'r') as ip:
     yaml_data = yaml.load(ip)
 
 
@@ -39,7 +39,7 @@ if len(fields) != len(set(fields)):
     failed = True
 
 
-# check for differences in fields between specs/definitions.yaml and
+# check for differences in fields between specs/airr-schema.yaml and
 # AIRR_Minimal_Standard_Data_Elements.tsv
 for dataset in miairr_dataset_to_api_object.keys():
     api_object = miairr_dataset_to_api_object[dataset]
@@ -48,7 +48,7 @@ for dataset in miairr_dataset_to_api_object.keys():
                   if row['MiAIRR data set / subset'] == dataset]
     yaml_object = yaml_data.get(api_object, None)
     if not yaml_object:
-        print(f'{api_object} not found in definitions.yaml.\n', file=sys.stderr)
+        print(f'{api_object} not found in airr-schema.yaml.\n', file=sys.stderr)
         failed = True
         continue
     yaml_fields = [property for property in yaml_object['properties'] if yaml_object['properties'][property].get('x-miairr')]
@@ -67,7 +67,7 @@ for dataset in miairr_dataset_to_api_object.keys():
 #    if yaml_data[miairr_api_object]['discriminator'] == 'MiAIRR':
 #        airr_api_object = miairr_api_object.split('_')[1]
 #        if airr_api_object not in yaml_data:
-#            print(f'{airr_api_object} corresponding to {miairr_api_object} not found in definitions.yaml', file=sys.stderr)
+#            print(f'{airr_api_object} corresponding to {miairr_api_object} not found in airr-schema.yaml', file=sys.stderr)
 #            failed = True
 #            continue
 

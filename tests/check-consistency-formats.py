@@ -14,9 +14,9 @@ basename = lambda f: os.path.splitext(os.path.basename(f))[0]
 #spec_files = {basename(f): f for f in glob('specs/*.yaml')}
 #py_files = {basename(f): f for f in glob('lang/python/airr/specs/*.yaml')}
 #r_files = {basename(f): f for f in glob('lang/R/inst/extdata/*.yaml')}
-spec_files = {basename(f): f for f in glob('specs/definitions.yaml')}
-py_files = {basename(f): f for f in glob('lang/python/airr/specs/definitions.yaml')}
-r_files = {basename(f): f for f in glob('lang/R/inst/extdata/definitions.yaml')}
+spec_files = {basename(f): f for f in glob('specs/airr-schema.yaml')}
+py_files = {basename(f): f for f in glob('lang/python/airr/specs/airr-schema.yaml')}
+r_files = {basename(f): f for f in glob('lang/R/inst/extdata/airr-schema.yaml')}
 
 # Check python package specs
 if set(spec_files.keys()) != set(py_files.keys()):

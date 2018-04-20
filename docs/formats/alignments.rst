@@ -1,12 +1,13 @@
 .. _AlignmentSchema:
 
-Alignment Schema
-===========================
+Alignment Schema (Experimental)
+===============================
 
-See the formatting overview for details on how to structure this data.
+See the :ref:`format overview <DataRepresentations>` for details on
+how to structure this data.
 
-CIGAR strings must use hard/softclipping to align the full read to the full
-germline reference segment.
+Note, this schema definition is still experimental and should not be
+considered final.
 
 **Fields**
 

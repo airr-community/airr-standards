@@ -3,7 +3,8 @@
 Rearrangement Schema
 ===============================
 
-See the formatting overview for details on how to structure this data.
+See the :ref:`format overview <DataRepresentations>` for details on how
+to structure this data.
 
 **"Junction" versus "CDR3"**
 
@@ -13,7 +14,6 @@ residues, while ``CDR3`` excludes those two residues. Therefore, our ``junction`
 and ``junction_aa`` fields which represent the extracted sequence include the two
 conserved residues, while the coordinate fields (``cdr3_start`` and ``cdr3_end``)
 exclude them.
-
 
 **Fields**
 
