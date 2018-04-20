@@ -1,5 +1,5 @@
 ---
-title: 'AIRR standards'
+title: 'AIRR Standards Library Usage'
 author: "The AIRR Community"
 date: '`r Sys.Date()`'
 bibliography: references.bib
@@ -26,7 +26,7 @@ geometry: margin=1in
 fontsize: 11pt
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{AIRR standards}
+  %\VignetteIndexEntry{AIRR Standards}
   %\usepackage[utf8]{inputenc}
 ---
 
@@ -54,7 +54,7 @@ members is diverse, and includes researches with expertise in a broad range of
 scientific and legal areas involved in the generation and analysis of immune 
 repertoire data. Through continuous cycles of dialogue and collaboration, 
 the AIRR community has developed a set of metadata standards for the publication
-and sharing of AIRR-seq datasets (MiAIRR) ((@rubelt2017)) and specific 
+and sharing of AIRR-seq datasets (MiAIRR) (@rubelt2017) and specific 
 machine-readable file formats to record AIRR-seq data and its annotation, 
 from the experiment level to the sequence level.
 
