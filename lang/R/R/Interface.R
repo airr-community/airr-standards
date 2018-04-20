@@ -41,6 +41,9 @@ read_airr <- function(file, base=c("0", "1"), schema=RearrangementSchema, ...) {
     # Read file
     data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None"), ...))
     
+    # Validate file
+    valid_data <- validate_airr(data, schema=schema)
+    
     # Adjust indexes
     if (base == "0") {
         start_positions <- grep("_start$", names(data), perl=TRUE)
@@ -52,6 +55,62 @@ read_airr <- function(file, base=c("0", "1"), schema=RearrangementSchema, ...) {
     return(data)
 }
 
+
+#' @details
+#' \code{validate_airr} validares an AIRR data.frame
+#' 
+#' @rdname read_airr
+#' @export
+validate_airr <- function(data, schema=RearrangementSchema){
+    
+    valid <- TRUE
+    
+    # Check all required fields exist
+    missing_fields <- setdiff(schema@required, colnames(data))
+    
+    if (length(missing_fields) > 0 ) {
+        valid <- FALSE
+        warning(paste("Warning: File is missing AIRR mandatory field(s):",
+                      paste(missing_fields, collapse = ", ")))
+    }
+    
+   # Validate sequence_id: 
+   # - uniqueness
+   # - not empty
+   if ("sequence_id" %in% colnames(data)) {
+       dup_ids <- duplicated(data[['sequence_id']])
+       if (any(dup_ids)) {
+           valid <- FALSE
+           warning(paste("Warning: sequence_id(s) are not unique:",
+                         paste(data[['sequence_id']][dup_ids], collapse = ", ")))
+       }
+       empty_rows <- which(data[['sequence_id']] %in% c("None", "", NA))
+       if (length(empty_rows) > 0 ) {
+           # TODO
+           # valid <- FALSE
+           warning(paste("Warning: sequence_id is empty for row(s):",
+                         paste(empty_rows, collapse = ", ")))           
+       }
+   }
+    
+    # check logical fields
+    logical_fields <- names(which(sapply(schema@properties, 
+                                         '[[', "type") == "logical"))
+    logical_fields <- intersect(colnames(data), logical_fields)
+    if (length(logical_fields) > 0 ) {
+        for (log_field in logical_fields) {
+            not_logical <- data[[log_field]] %in% c(TRUE, FALSE) == FALSE
+            if (any(not_logical)) {
+                warning(paste("Warning: ",log_field," is not logical for row(s):",
+                              paste(which(not_logical), collapse = ", ")))            
+            } else {
+                NULL
+            }
+        }
+    }
+    
+    valid
+}
 
 #' @details
 #' \code{read_rearrangement} reads an AIRR TSV containing Rearrangement data.
