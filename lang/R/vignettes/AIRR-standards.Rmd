@@ -30,7 +30,7 @@ vignette: >
   %\usepackage[utf8]{inputenc}
 ---
 
-# Introduction
+## Introduction
 
 Since the use of High-throughput sequencing (HTS) was first introduced to analyze 
 immunoglobulin (B-cell receptor, antibody) and T-cell receptor repertoires 
@@ -45,7 +45,7 @@ in a machine-readable form. The R package \emph{airr} allows to read and write
 data following the AIRR format standards and this vignette provides examples on
 how to use it.
 
-## AIRR Community
+### AIRR Community
 
 The motivations and goals of the AIRR Community are described in detail 
 in (@breden2017). Membership in the AIRR Community is open and is intended
@@ -58,8 +58,7 @@ and sharing of AIRR-seq datasets (MiAIRR) ((@rubelt2017)) and specific
 machine-readable file formats to record AIRR-seq data and its annotation, 
 from the experiment level to the sequence level.
 
-
-## MiAIRR standards
+### MiAIRR standards
 
 The Community's recommendations for a minimal set of metadata that should be 
 used to describe an AIRR-seq data set when published or when deposited in a 
@@ -78,7 +77,7 @@ The use of standardized terms to refer to each piece of information and the
 use of a defined data representation format means that MiAIRR compliant software, 
 API and databases can communicate and exchange information.
 
-# Reading AIRR formatted files
+## Reading AIRR formatted files
 
 The `airr` package contains the function `read_rearrangement` to read and validate
 rearragnment files following the AIRR standards. The usage is straighforward, 
@@ -100,7 +99,7 @@ class(airr_rearrangement)
 head(airr_rearrangement)
 ```
 
-# Writing AIRR formatted files
+## Writing AIRR formatted files
 
 The \emph{airr} package contains the function `write_rearrangement` to write
 rearrangement files in AIRR format.
@@ -110,4 +109,4 @@ out_file <- file.path(tempdir(), "airr_out.tsv")
 write_rearrangement(airr_rearrangement, out_file, base="0")
 ```
 
-# References
+## References
