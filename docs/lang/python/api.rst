@@ -1,10 +1,10 @@
 .. _PythonAPI:
 
-Python API
--------------------------------
+API Reference
+================================================================================
 
 Inferface
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------------------------------------------
 
 .. autofunction:: airr.read_rearrangement
 
@@ -14,14 +14,14 @@ Inferface
 
 .. autofunction:: airr.load_rearrangement
 
-.. autofunction:: airr.write_rearrangement
+.. autofunction:: airr.dump_rearrangement
 
 .. autofunction:: airr.merge_rearrangement
 
 .. autofunction:: airr.validate_rearrangement
 
 Classes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------------------------------------------
 
 .. autoclass:: airr.io.RearrangementReader
     :members:
@@ -37,7 +37,7 @@ Classes
     :members:
 
 Schema
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------------------------------------------
 
 .. autodata:: airr.schema.RearrangementSchema
     :annotation: Schema object for the Rearrangement definition

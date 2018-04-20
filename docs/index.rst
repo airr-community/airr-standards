@@ -20,4 +20,4 @@ include
 
     miairr/overview
     formats/overview
-    lang/python/overview
+    Python Library <lang/python/overview>
