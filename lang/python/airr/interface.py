@@ -82,7 +82,7 @@ def load_rearrangement(handle, debug=False):
     return pd.DataFrame(list(reader))
 
 
-def write_rearrangement(dataframe, handle, debug=False):
+def dump_rearrangement(dataframe, handle, debug=False):
     """
     Write the contents of a data frame to an AIRR rearrangements file
 
