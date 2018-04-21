@@ -41,7 +41,7 @@ generating and sharing data sets. The Adaptive Immune Receptor Repertoire (AIRR)
 Community formed in 2015 to address this challenge (@breden2017) and has stablished 
 the set of minimal metadata elements (MiAIRR) required for describing published 
 AIRR datasets (@rubelt2017) as well as file formats to represent the information
-in a machine-readable form. The R package \emph{airr} allows to read and write 
+in a machine-readable form. The R package `airr` allows to read and write 
 data following the AIRR format standards and this vignette provides examples on
 how to use it.
 
