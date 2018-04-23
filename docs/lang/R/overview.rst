@@ -8,7 +8,7 @@ functions for AIRR standard formatted data files.
 
 **Download & Installation**
 
-To build from the [source code](https://github.com/airr-community/airr-standards),
+To build from the `source code <https://github.com/airr-community/airr-standards>`_,
 first install the build dependencies::
 
     install.packages(c("devtools", "roxygen2"))
