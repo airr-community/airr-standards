@@ -32,6 +32,6 @@ R commands from the package root ``lang/R``::
     :hidden:
 
     About <about>
-    vignettes/AIRR-standards
-    topics
+    vignettes/Usage-Vignette
+    Reference Topics <topics>
     Release Notes <news>
