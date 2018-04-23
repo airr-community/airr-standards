@@ -33,5 +33,5 @@ R commands from the package root ``lang/R``::
 
     About <about>
     vignettes/Usage-Vignette
-    Reference Topics <topics>
+    Reference Manul <topics>
     Release Notes <news>
