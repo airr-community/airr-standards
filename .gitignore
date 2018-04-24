@@ -103,6 +103,6 @@ ENV/
 .Rproj.user
 .Rhistory
 man/
-**/vignettes/*
-!**/vignettes/*Rmd
-!**/vignettes/*bib
+**/vignettes/*.R
+**/vignettes/*.pdf
+**/vignettes/*.html
