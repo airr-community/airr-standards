@@ -1,8 +1,7 @@
 ---
-title: 'AIRR Standards Library Usage'
+title: 'AIRR Standards Library Usage Vignette'
 author: "The AIRR Community"
 date: '`r Sys.Date()`'
-bibliography: references.bib
 output:
   pdf_document:
     dev: pdf
@@ -26,7 +25,7 @@ geometry: margin=1in
 fontsize: 11pt
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{AIRR Standards}
+  %\VignetteIndexEntry{Usage Vignette}
   %\usepackage[utf8]{inputenc}
 ---
 
@@ -34,27 +33,27 @@ vignette: >
 
 Since the use of High-throughput sequencing (HTS) was first introduced to analyze 
 immunoglobulin (B-cell receptor, antibody) and T-cell receptor repertoires 
-(@freeman2009, @robins2009, @weinstein2009), the increasing number of studies 
-making use of this technique has produced enormous amounts of data and there's a 
-pressing need to develop and adopt common standards, protocols, and policies for 
-generating and sharing data sets. The Adaptive Immune Receptor Repertoire (AIRR) 
-Community formed in 2015 to address this challenge (@breden2017) and has stablished 
-the set of minimal metadata elements (MiAIRR) required for describing published 
-AIRR datasets (@rubelt2017) as well as file formats to represent the information
-in a machine-readable form. The R package `airr` allows to read and write 
-data following the AIRR format standards and this vignette provides examples on
-how to use it.
+(Freeman et al, 2009; Robins et al, 2009; Weinstein et al, 2009), 
+the increasing number of studies making use of this technique has produced enormous 
+amounts of data and there's a pressing need to develop and adopt common standards, 
+protocols, and policies for generating and sharing data sets. The Adaptive Immune 
+Receptor Repertoire (AIRR) Community formed in 2015 to address this challenge 
+(Breden et al, 2017) and has stablished the set of minimal metadata elements (MiAIRR) 
+required for describing published AIRR datasets (Rubelt et al, 2017) as well as 
+file formats to represent the information in a machine-readable form. The R package 
+`airr` allows to read and write data following the AIRR format standards and this 
+vignette provides examples on how to use it.
 
 ### AIRR Community
 
 The motivations and goals of the AIRR Community are described in detail 
-in (@breden2017). Membership in the AIRR Community is open and is intended
+in (Breden et al, 2017). Membership in the AIRR Community is open and is intended
 to cover all aspects of AIRR-seq technology and its uses. The profile of its
 members is diverse, and includes researches with expertise in a broad range of
 scientific and legal areas involved in the generation and analysis of immune 
 repertoire data. Through continuous cycles of dialogue and collaboration, 
 the AIRR community has developed a set of metadata standards for the publication
-and sharing of AIRR-seq datasets (MiAIRR) (@rubelt2017) and specific 
+and sharing of AIRR-seq datasets (MiAIRR) (Rubelt et al, 2017) and specific 
 machine-readable file formats to record AIRR-seq data and its annotation, 
 from the experiment level to the sequence level.
 
@@ -62,7 +61,7 @@ from the experiment level to the sequence level.
 
 The Community's recommendations for a minimal set of metadata that should be 
 used to describe an AIRR-seq data set when published or when deposited in a 
-AIRR-compliant repository are described in @rubelt2017. The primary 
+AIRR-compliant repository are described in Rubelt et al, 2017. The primary 
 aim of this effort is to make published AIRR datasets FAIR (findable, accessible, 
 interoperable, reusable).The overall goal of this standard is that sufficient 
 detail be provided such that a person skilled in the art of AIRR sequencing 
@@ -110,3 +109,21 @@ write_rearrangement(airr_rearrangement, out_file, base="0")
 ```
 
 ## References
+
+1. Breden, F., E. T. Luning Prak, B. Peters, F. Rubelt, C. A. Schramm, C. E. Busse, 
+    J. A. Vander Heiden, et al. 2017. Reproducibility and Reuse of Adaptive Immune 
+    Receptor Repertoire Data. *Front Immunol* 8: 1418.
+2. Freeman, J. D., R. L. Warren, J. R. Webb, B. H. Nelson, and R. A. Holt. 2009. 
+    Profiling the T-cell receptor beta-chain repertoire by massively parallel sequencing.
+    *Genome Res* 19 (10): 1817-24.
+3. Robins, H. S., P. V. Campregher, S. K. Srivastava, A. Wacher, C. J. Turtle, 
+    O. Kahsai, S. R. Riddell, E. H. Warren, and C. S. Carlson. 2009. 
+    Comprehensive assessment of T-cell receptor beta-chain diversity in alphabeta T cells.
+    *Blood* 114 (19): 4099-4107.
+4. Rubelt, F., C. E. Busse, S. A. C. Bukhari, J. P. Burckert, E. Mariotti-Ferrandiz, 
+    L. G. Cowell, C. T. Watson, et al. 2017. Adaptive Immune Receptor Repertoire Community 
+    recommendations for sharing immune-repertoire sequencing data.
+    *Nat Immunol* 18 (12): 1274-8.
+5. Weinstein, J. A., N. Jiang, R. A. White, D. S. Fisher, and S. R. Quake. 2009.
+    High-throughput sequencing of the zebrafish antibody repertoire.
+    *Science* 324 (5928): 807-10.

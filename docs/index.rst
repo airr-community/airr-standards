@@ -21,3 +21,4 @@ include
     miairr/overview
     formats/overview
     Python Library <lang/python/overview>
+    R Library <lang/R/overview>
