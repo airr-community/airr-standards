@@ -32,6 +32,6 @@ R commands from the package root ``lang/R``::
     :hidden:
 
     About <about>
-    vignettes/Usage-Vignette
+    Usage Vignette <vignettes/Usage-Vignette>
     Reference Manul <topics>
     Release Notes <news>
