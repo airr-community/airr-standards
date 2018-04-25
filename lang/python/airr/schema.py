@@ -3,7 +3,6 @@ AIRR Data Representation Schema
 """
 
 # Imports
-import numpy as np
 import sys
 import yaml
 import yamlordereddictloader
@@ -81,19 +80,20 @@ class Schema:
         field_type = field_spec.get('type', None) if field_spec else None
         return field_type
 
-    def numpy_types(self):
-        type_mapping = {}
-        for property in self.properties:
-            if self.type(property) == 'boolean':
-                type_mapping[property] = np.bool
-            elif self.type(property) == 'integer':
-                type_mapping[property] = np.int64
-            elif self.type(property) == 'number':
-                type_mapping[property] = np.float64
-            elif self.type(property) == 'string':
-                type_mapping[property] = np.unicode_
-
-        return type_mapping
+    # import numpy as np
+    # def numpy_types(self):
+    #     type_mapping = {}
+    #     for property in self.properties:
+    #         if self.type(property) == 'boolean':
+    #             type_mapping[property] = np.bool
+    #         elif self.type(property) == 'integer':
+    #             type_mapping[property] = np.int64
+    #         elif self.type(property) == 'number':
+    #             type_mapping[property] = np.float64
+    #         elif self.type(property) == 'string':
+    #             type_mapping[property] = np.unicode_
+    #
+    #     return type_mapping
 
     @staticmethod
     def to_bool(value):
