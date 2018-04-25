@@ -169,7 +169,9 @@ write_airr <- function(data, file, base=c("0", "1"), schema=RearrangementSchema,
     
     # Fill in missing required columns
     missing <- setdiff(schema@required, names(data))
-    data[, missing] <- NA
+    if (length(missing) > 0 ) {
+        data[, missing] <- NA
+    }
     
     # order columns
     ordering <- c(intersect(names(schema), names(data)),
