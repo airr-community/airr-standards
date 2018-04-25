@@ -198,6 +198,22 @@ write_airr <- function(data, file, base=c("0", "1"), schema=RearrangementSchema,
         warning(err_msg)
     }
     
+
+    # write logical fields as T/F
+    logical_fields <- names(which(sapply(schema@properties, 
+                                         '[[', "type") == "logical"))
+    logical_fields <- intersect(colnames(data), logical_fields)
+    if (length(logical_fields) > 0 ) {
+        for (log_field in logical_fields) {
+            logical_values <- data[[log_field]] %in% c(TRUE, FALSE)
+            data[[log_field]] <- as.character(data[[log_field]])
+            if (length(logical_values) > 0 ) {
+                data[[log_field]][logical_values] <- c("T", "F")[match(data[[log_field]][logical_values],
+                                                            c("TRUE", "FALSE"))]
+            }
+        }
+    }
+    
     # Write
     write_tsv(data, file, na="", ...)
 }

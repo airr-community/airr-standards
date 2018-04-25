@@ -34,11 +34,15 @@ test_that("read_arirr applies base", {
 })
 
 
-test_that("write_airr writes a file", {
+test_that("write_airr writes a file with logicals encoded T/F", {
     tbl <- read_airr(rearrangement_file)
     out_file <- file.path(tempdir(), "test_out.tsv")
     write_airr(tbl, out_file)
     expect_true(file.exists(out_file))
+    reload_tbl <- read.delim(out_file, colClasses="character")
+    expect_true(all(reload_tbl[['rev_comp']] == "T"))
+    expect_equal(reload_tbl[['productive']],
+                 c("T","T","F","T","T","F","F","F","T"))
 })
 
 context("Rearrangement I/O - bad data")
@@ -52,9 +56,14 @@ test_that("read_airr with bad data", {
     expect_equal(w, expected_w)
 })
 
-test_that("write_airr writes a bad file with warnings", {
+test_that("write_airr writes a bad file, with warnings, with logicals T/T", {
     bad_data <- suppressWarnings(read_airr(bad_rearrangement_file, "0"))
     out_file <- file.path(tempdir(), "test_out.tsv")
     expect_warning(write_airr(bad_data, out_file))
     expect_true(file.exists(out_file))
+    reload_tbl <- read.delim(out_file, colClasses="character")
+    expect_equal(reload_tbl[['rev_comp']],
+                c("T","T","T","","T","T","T","T","T","T","T"))
+    expect_equal(reload_tbl[['productive']],
+                 c("","T","F","T","T","F","F","F","T","T","T"))
 })
