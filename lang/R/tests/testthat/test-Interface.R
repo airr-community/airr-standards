@@ -6,6 +6,14 @@ rearrangement_file <- file.path("..", "data-tests", "toy_data.tsv")
 bad_rearrangement_file <- file.path("..", "data-tests", "bad_data.tsv")
 #bad_rearrangement_file <- file.path("tests", "data-tests", "bad_data.tsv")
 
+# Expected warnings for bad_rearrangement_file
+expected_w <- c(
+    "Warning: File is missing AIRR mandatory field(s): sequence",            
+    "Warning: sequence_id(s) are not unique: IVKNQEJ01AJ44V, IVKNQEJ01AJ44V",
+    "Warning: sequence_id is empty for row(s): 7",
+    "Warning: rev_comp is not logical for row(s): 4",
+    "Warning: productive is not logical for row(s): 1"
+)
 
 #### Rearrangement I/O  ####
 
@@ -41,13 +49,12 @@ test_that("read_airr with bad data", {
     expect_false(suppressWarnings(validate_airr(bad_data)))
     # Check error messages
     w <- capture_warnings(validate_airr(bad_data))
-    expected_w <- c(
-        "Warning: File is missing AIRR mandatory field(s): sequence",            
-        "Warning: sequence_id(s) are not unique: IVKNQEJ01AJ44V, IVKNQEJ01AJ44V",
-        "Warning: sequence_id is empty for row(s): 7",
-        "Warning:  rev_comp  is not logical for row(s): 4",
-        "Warning:  productive  is not logical for row(s): 1"
-    )
     expect_equal(w, expected_w)
 })
 
+test_that("write_airr writes a bad file with warnings", {
+    bad_data <- suppressWarnings(read_airr(bad_rearrangement_file, "0"))
+    out_file <- file.path(tempdir(), "test_out.tsv")
+    expect_warning(write_airr(bad_data, out_file))
+    expect_true(file.exists(out_file))
+})
