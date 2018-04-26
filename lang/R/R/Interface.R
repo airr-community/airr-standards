@@ -101,7 +101,7 @@ validate_airr <- function(data, schema=RearrangementSchema){
         for (log_field in logical_fields) {
             not_logical <- data[[log_field]] %in% c(TRUE, FALSE) == FALSE
             if (any(not_logical)) {
-                warning(paste("Warning: ",log_field," is not logical for row(s):",
+                warning(paste("Warning:",log_field,"is not logical for row(s):",
                               paste(which(not_logical), collapse = ", ")))            
             } else {
                 NULL
@@ -163,7 +163,10 @@ read_alignment <- function(file, base=c("0", "1"), ...) {
 write_airr <- function(data, file, base=c("0", "1"), schema=RearrangementSchema, ...) {
     ## DEBUG
     # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
-
+    
+    data_name <- deparse(substitute(data))
+    schema_name <- deparse(substitute(schema))
+    
     # Check arguments
     base <- match.arg(base)
     
@@ -183,6 +186,31 @@ write_airr <- function(data, file, base=c("0", "1"), schema=RearrangementSchema,
         start_positions <- grep("_start$", names(data), perl=TRUE)
         if (length(start_positions) > 0) {
             data[, start_positions] <- data[, start_positions] - 1
+        }
+    }
+    
+    valid <- suppressWarnings(validate_airr(data, schema))
+    if (!valid) {
+        w <- names(warnings())
+        w <- gsub("Warning: *", "" ,w)
+        err_msg <- paste0(data_name, " is not a valid ", schema_name, "\n")
+        err_msg <- paste(err_msg, paste(w, collapse = "\n"))
+        warning(err_msg)
+    }
+    
+
+    # write logical fields as T/F
+    logical_fields <- names(which(sapply(schema@properties, 
+                                         '[[', "type") == "logical"))
+    logical_fields <- intersect(colnames(data), logical_fields)
+    if (length(logical_fields) > 0 ) {
+        for (log_field in logical_fields) {
+            logical_values <- data[[log_field]] %in% c(TRUE, FALSE)
+            data[[log_field]] <- as.character(data[[log_field]])
+            if (length(logical_values) > 0 ) {
+                data[[log_field]][logical_values] <- c("T", "F")[match(data[[log_field]][logical_values],
+                                                            c("TRUE", "FALSE"))]
+            }
         }
     }
     
