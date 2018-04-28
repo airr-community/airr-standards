@@ -26,11 +26,11 @@ Walkthrough
 
     **Flowchart of the example steps.**
 
-We'll use the Immcantation docker image for this example, which comes loaded
-with all the tools used in the steps that follow.
+Environment setup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: sh
-    :caption: Environment setup
+We'll use the Immcantation docker image for this example, which comes loaded
+with all the tools used in the steps that follow::
 
     # Download the image
     docker pull kleinstein/immcantation:devel
@@ -39,13 +39,13 @@ with all the tools used in the steps that follow.
     # Map the downloaded example data (~/data) to the container's /data directory
     $> docker run -it -v ~/data:/data:z kleinstein/immcantation:devel bash
 
+Generate AIRR formatted TSV files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 TSV files compliant wit hthe AIRR Data Representation standards may be
 output directly from IgBLAST v1.9+ or generated from IMGT/HighV-QUEST
 output (or IgBLAST <=1.8 ouput) using the MakeDb parser provided by
-Change-O.
-
-.. code:: sh
-    :caption: Generate AIRR formatted TSV files
+Change-O::
 
     # Generate TSV directly with IgBLAST
     $> cd /data
@@ -62,11 +62,11 @@ Change-O.
     $> MakeDb.py imgt -i HD13N_imgt.txz -s HD13N.fasta  \
           --scores --partial --format airr
 
-AIRR TSV files can be input directly in Change-O's ConvertDb-genbank
-tool to generate MiAIRR compliant files for submission to GenBank/TLS.
+Generate GenBank/TLS submission files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: sh
-    :caption: Generate GenBank/TLS submission files
+AIRR TSV files can be input directly in Change-O's ConvertDb-genbank
+tool to generate MiAIRR compliant files for submission to GenBank/TLS::
 
     # Generate ASN files from IgBLAST output
     $> ConvertDb.py genbank -d HD13M_fmt7_db-pass.tsv --format airr \
@@ -80,13 +80,13 @@ tool to generate MiAIRR compliant files for submission to GenBank/TLS.
           --tissue "peripheral blood" --cell "naive B cell" \
           --cregion c_call --id --asn -sbt HD13M.sbt
 
+Merge files and count V family usage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 AIRR TSV files from different tools and easy combined to perform analysis
 on data generated using different software. Below is shown a simple V
 family usage analysis after merging the IgBLAST and IMGT/HighV-QUEST
-outputs into a single table.
-
-.. code:: sh
-    :caption: Merge files and count V family usage
+outputs into a single table::
 
     # Count V family usage in R
     # Imports
