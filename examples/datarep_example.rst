@@ -23,6 +23,7 @@ Walkthrough
 
 .. figure:: flowchart.png
     :align: center
+    :scale: 75%
 
     **Flowchart of the example steps.**
 
@@ -117,5 +118,6 @@ outputs into a single table::
 
 .. figure:: v_usage.png
     :align: center
+    :scale: 75%
 
     **V family usage for the combined data set.**
