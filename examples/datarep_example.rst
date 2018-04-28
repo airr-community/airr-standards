@@ -29,7 +29,7 @@ Walkthrough
 We'll use the Immcantation docker image for this example, which comes loaded
 with all the tools used in the steps that follow.
 
-.. code-block:: shell
+.. code:: sh
     :caption: Environment setup
 
     # Download the image
@@ -44,7 +44,7 @@ output directly from IgBLAST v1.9+ or generated from IMGT/HighV-QUEST
 output (or IgBLAST <=1.8 ouput) using the MakeDb parser provided by
 Change-O.
 
-.. code-block:: shell
+.. code:: sh
     :caption: Generate AIRR formatted TSV files
 
     # Generate TSV directly with IgBLAST
@@ -65,7 +65,7 @@ Change-O.
 AIRR TSV files can be input directly in Change-O's ConvertDb-genbank
 tool to generate MiAIRR compliant files for submission to GenBank/TLS.
 
-.. code-block:: shell
+.. code:: sh
     :caption: Generate GenBank/TLS submission files
 
     # Generate ASN files from IgBLAST output
@@ -85,7 +85,7 @@ on data generated using different software. Below is shown a simple V
 family usage analysis after merging the IgBLAST and IMGT/HighV-QUEST
 outputs into a single table.
 
-.. code-block:: shell
+.. code:: sh
     :caption: Merge files and count V family usage
 
     # Count V family usage in R
