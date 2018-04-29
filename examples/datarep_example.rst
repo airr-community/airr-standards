@@ -6,7 +6,7 @@ AIRR-seq Data Representation Standard. The code provided demonstrates how to
 take AIRR formated data output by IgBLAST and combine it with data
 processed by IMGT/HighV-QUEST that has converted to the AIRR standard by
 Change-O. Then, the merged output of these two distinct tools is used to
-(a) create MiAIRR compliant GenBank/TSL submission files, and (b) perform
+(a) create MiAIRR compliant GenBank/TLS submission files, and (b) perform
 a simple V gene usage analysis task.
 
 Data
@@ -43,7 +43,7 @@ with all the tools used in the steps that follow::
 Generate AIRR formatted TSV files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TSV files compliant wit hthe AIRR Data Representation standards may be
+TSV files compliant with the AIRR Data Representation standards may be
 output directly from IgBLAST v1.9+ or generated from IMGT/HighV-QUEST
 output (or IgBLAST <=1.8 ouput) using the MakeDb parser provided by
 Change-O::
