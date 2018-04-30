@@ -85,16 +85,17 @@ References
 
 .. [Rubelt_2017] Rubelt F *et al*. AIRR Community Recommendations for
    Sharing Immune Repertoire Sequencing Data. Nat Immunol 18:1274
-   (2017) `[PMID: 29144493]`_ `[DOI: 10.1038/ni.3873]`_ `[SharedIt - free to read]`_
+   (2017) `[PMID: 29144493]`_ `[DOI: 10.1038/ni.3873]`_ `[PubMed Central: PMC5790180]`_
 .. _`[PMID: 29144493]`: https://www.ncbi.nlm.nih.gov/pubmed/29144493
 .. _`[DOI: 10.1038/ni.3873]`: https://doi.org/10.1038/ni.3873
-.. _`[SharedIt - free to read]`: https://rdcu.be/E7sS
+.. _`[PubMed Central: PMC5790180]`: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5790180
 
 .. [Breden_2017] Breden F *et al*. Reproducibility and Reuse of
    Adaptive Immune Receptor Repertoire Data. Front Immunol 8:1418
-   (2017) `[PMID: 29163494]`_ `[DOI: 10.3389/fimmu.2017.01418]`_
+   (2017) `[PMID: 29163494]`_ `[DOI: 10.3389/fimmu.2017.01418]`_ `[PubMed Central: PMC5671925]`_
 .. _`[PMID: 29163494]`: https://www.ncbi.nlm.nih.gov/pubmed/29163494
 .. _`[DOI: 10.3389/fimmu.2017.01418]`: https://doi.org/10.3389/fimmu.2017.01418
+.. _`[PubMed Central: PMC5671925]`: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5671925
 
 .. [Zenodo_1185414] Release archive of the AIRR Standards repository.
    (2015-2018) `[DOI: 10.5281/zenodo.1185414]`_
