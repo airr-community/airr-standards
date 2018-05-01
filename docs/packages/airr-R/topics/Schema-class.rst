@@ -6,7 +6,8 @@ Schema-class
 Description
 ~~~~~~~~~~~
 
-``Schema`` defines a common data structure for AIRR standards.
+``Schema`` defines a common data structure for AIRR Data Representation
+standards.
 
 Usage
 ~~~~~
@@ -23,6 +24,14 @@ Usage
 
     "$"(x, name)
 
+::
+
+    AlignmentSchema
+
+::
+
+    RearrangementSchema
+
 Arguments
 ~~~~~~~~~
 
@@ -32,6 +41,20 @@ i
     field name.
 name
     field name.
+
+Format
+~~~~~~
+
+A ``Schema`` object.
+
+Details
+~~~~~~~
+
+The following predefined Schema objects are defined:
+
+``AlignmentSchema``: AIRR Alignment ``Schema``.
+
+``RearrangementSchema``: AIRR Rearrangement ``Schema``.
 
 Slots
 ~~~~~
@@ -46,5 +69,7 @@ Slots
 See also
 ~~~~~~~~
 
-See `load_schema <load_schema.md>`__ loading a ``Schema`` from
-definitions file.
+See `load_schema <load_schema.html>`__ for loading a ``Schema`` from the
+definition set. See `read_airr <read_airr.html>`__,
+`write_airr <write_airr.html>`__ and `validate_airr <validate_airr.html>`__
+schema operators.

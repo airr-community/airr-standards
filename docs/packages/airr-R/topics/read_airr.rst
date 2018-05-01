@@ -17,10 +17,6 @@ Usage
 
 ::
 
-    validate_airr(data, schema = RearrangementSchema)
-
-::
-
     read_rearrangement(file, base = c("0", "1"), ...)
 
 ::
@@ -42,7 +38,7 @@ schema
     ``Schema`` object defining the output format.
 …
     additional arguments to pass to
-    `read_tsv <http://www.rdocumentation.org/packages/readr/topics/read_delim>`__.
+    `read_delim <http://www.rdocumentation.org/packages/readr/topics/read_delim>`__.
 
 Value
 ~~~~~
@@ -52,8 +48,6 @@ conversion for fields defined in the specification.
 
 Details
 ~~~~~~~
-
-``validate_airr`` validares an AIRR data.frame
 
 ``read_rearrangement`` reads an AIRR TSV containing Rearrangement data.
 
@@ -71,5 +65,5 @@ Examples
 See also
 ~~~~~~~~
 
-See `Schema <Schema-class.md>`__ for the AIRR schema object definition.
-See `write_airr <write_airr.md>`__ for writing to AIRR data.
+See `Schema <Schema-class.html>`__ for the AIRR schema object definition.
+See `write_airr <write_airr.html>`__ for writing AIRR data.
