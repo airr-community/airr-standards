@@ -107,7 +107,7 @@ License
 
 (c) 2015 - 2018 by Syed Ahmad Chan Bukhari, Jean-Philippe Bürckert,
 Christian E. Busse, Scott Christley, Brian Corrie, Lindsay G. Cowell,
-Uri Hershberg, Steven H. Kleinstein, Frederick A. Matsen IV,
+Uri Hershberg, Steven H. Kleinstein, Susanna Marquez, Frederick A. Matsen IV,
 Uri Laserson, Marie-Paule Lefranc, Eline T. Luning Prak, Florian Rubelt,
 Jason Vander Heiden, Corey T. Watson
 
