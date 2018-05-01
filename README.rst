@@ -11,11 +11,11 @@ the content and format of metadata associated with AIRR sequencing
 datasets. The primary aim of this effort is to make published AIRR
 datasets `FAIR`_ (findable, accessible, interoperable, reusable). This
 work has been a joint effort between the AIRR Community's `Minimal
-Standards`_ and `Database Representation`_ Working Groups. 
+Standards`_ and `Data Representation`_ Working Groups. 
 
 .. _`FAIR`: https://www.force11.org/group/fairgroup/fairprinciples
 .. _`Minimal Standards`: http://airr.irmacs.sfu.ca/working_groups/minimal_standards
-.. _`Database Representation`: http://airr.irmacs.sfu.ca/node/36
+.. _`Data Representation`: http://airr.irmacs.sfu.ca/node/36
 
 
 The MiAIRR Data Standard
