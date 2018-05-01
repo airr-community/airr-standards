@@ -11,14 +11,14 @@
 #'                   and will be converted to 1-based closed-intervals (R style). 
 #'                   If \code{"1"}, then these fields will not be modified.
 #' @param    schema  \code{Schema} object defining the output format.
-#' @param    ...     additional arguments to pass to \link[readr]{read_tsv}.
+#' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
 #' 
 #' @return   A data.frame of the TSV file with appropriate type and position conversion
 #'           for fields defined in the specification.
 #'                   
 #' @seealso  
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{write_airr} for writing to AIRR data.
+#' See \link{write_airr} for writing AIRR data.
 #' 
 #' @examples
 #' \dontrun{
@@ -56,10 +56,23 @@ read_airr <- function(file, base=c("0", "1"), schema=RearrangementSchema, ...) {
 }
 
 
-#' @details
-#' \code{validate_airr} validares an AIRR data.frame
+#' Validate AIRR data
 #' 
-#' @rdname read_airr
+#' \code{validate_airr} validates compliance of the contents of a data.frame 
+#' to the AIRR data standards.
+#'
+#' @param    data    data.frame to validate.
+#' @param    schema  \code{Schema} object defining the data standard.
+#'
+#' @return   Returns \code{TRUE} if the input \code{data} is compliant and
+#'           \code{FALSE} if not.
+#'           
+#' @examples
+#' \dontrun{
+#'   # Validate a data.frame against the Rearrangement schema
+#'   validate_airr(data, schema=RearrangementSchema)
+#' }
+#' 
 #' @export
 validate_airr <- function(data, schema=RearrangementSchema){
     
@@ -134,7 +147,7 @@ read_alignment <- function(file, base=c("0", "1"), ...) {
 
 #' Write an AIRR TSV
 #' 
-#' \code{write_airr} writes an TSV containing AIRR formatted records.
+#' \code{write_airr} writes a TSV containing AIRR formatted records.
 #'
 #' @param    data    data.frame of Rearrangement data.
 #' @param    file    output file name.
@@ -145,7 +158,7 @@ read_alignment <- function(file, base=c("0", "1"), ...) {
 #'                   modified. Fields in the input \code{data} are assumed to be 
 #'                   1-based closed-intervals (R style). 
 #' @param    schema  \code{Schema} object defining the output format.
-#' @param    ...     additional arguments to pass to \link[readr]{write_tsv}.
+#' @param    ...     additional arguments to pass to \link[readr]{write_delim}.
 #'
 #' @return   NULL
 #' 
@@ -155,7 +168,7 @@ read_alignment <- function(file, base=c("0", "1"), ...) {
 #' 
 #' @examples
 #' \dontrun{
-#'   # Write Rearrangement data
+#'   # Write a Rearrangement data file
 #'   write_rearrangement(data, "file.tsv")
 #' }
 #' 

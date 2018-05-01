@@ -19,6 +19,7 @@ include
     :caption: Table of Contents
 
     miairr/overview
-    formats/overview
-    Python Library <lang/python/overview>
-    R Library <lang/R/overview>
+    datarep/overview
+    Python Library <packages/airr-python/overview>
+    R Library <packages/airr-R/overview>
+    examples/overview

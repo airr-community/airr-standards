@@ -8,6 +8,10 @@ functions for AIRR standard formatted data files.
 
 **Download & Installation**
 
+To install the latest release from CRAN::
+
+    install.packages("airr")
+
 To build from the `source code <https://github.com/airr-community/airr-standards>`_,
 first install the build dependencies::
 

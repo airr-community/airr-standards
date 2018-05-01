@@ -4,7 +4,10 @@ About
 AIRR Standards Reference Library
 --------------------------------
 
-R package for importing AIRR standard formatted data.
+``airr`` is an R package for working with data formatted according to
+the AIRR Data Representation Standard. It includes the full set of
+schema definitions along with simple functions for read, write and
+validation.
 
 Dependencies
 ------------

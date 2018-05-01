@@ -6,7 +6,7 @@ write_airr
 Description
 ~~~~~~~~~~~
 
-``write_airr`` writes an TSV containing AIRR formatted records.
+``write_airr`` writes a TSV containing AIRR formatted records.
 
 Usage
 ~~~~~
@@ -41,7 +41,7 @@ schema
     ``Schema`` object defining the output format.
 …
     additional arguments to pass to
-    `write_tsv <http://www.rdocumentation.org/packages/readr/topics/write_delim>`__.
+    `write_delim <http://www.rdocumentation.org/packages/readr/topics/write_delim>`__.
 
 Details
 ~~~~~~~
@@ -58,11 +58,11 @@ Examples
 .. code:: r
 
     ### Not run:
-    # Write Rearrangement data
+    # Write a Rearrangement data file
     # write_rearrangement(data, "file.tsv")
 
 See also
 ~~~~~~~~
 
-See `Schema <Schema-class.md>`__ for the AIRR schema object definition.
-See `read_airr <read_airr.md>`__ for reading to AIRR files.
+See `Schema <Schema-class.html>`__ for the AIRR schema object definition.
+See `read_airr <read_airr.html>`__ for reading to AIRR files.

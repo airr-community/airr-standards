@@ -62,7 +62,7 @@ class Schema:
           name (str): field name.
 
         Returns:
-          collections.OrderedDict: Rearrangement definition for the field.
+          collections.OrderedDict: definition for the field.
         """
         return self.properties.get(field, None)
 
@@ -98,7 +98,7 @@ class Schema:
     @staticmethod
     def to_bool(value):
         """
-        Converts strings to boolean
+        Convert a string to a boolean
 
         Arguments:
           value (str): logical value as a string.
@@ -111,7 +111,7 @@ class Schema:
     @staticmethod
     def from_bool(value):
         """
-        Converts boolean to a string
+        Converts a boolean to a string
 
         Arguments:
           value (bool): logical value.
@@ -124,7 +124,7 @@ class Schema:
     @staticmethod
     def to_int(value):
         """
-        Converts strings to integers
+        Converts a string to an integer
 
         Arguments:
           value (str): integer value as a string.
@@ -142,7 +142,7 @@ class Schema:
     @staticmethod
     def to_float(value):
         """
-        Converts strings to floats
+        Converts a string to a float
 
         Arguments:
           value (str): float value as a string.

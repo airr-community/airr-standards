@@ -8,67 +8,54 @@ Since the use of High-throughput sequencing (HTS) was first introduced
 to analyze immunoglobulin (B-cell receptor, antibody) and T-cell
 receptor repertoires (Freeman et al, 2009; Robins et al, 2009; Weinstein
 et al, 2009), the increasing number of studies making use of this
-technique has produced enormous amounts of data and there’s a pressing
-need to develop and adopt common standards, protocols, and policies for
-generating and sharing data sets. The Adaptive Immune Receptor
-Repertoire (AIRR) Community formed in 2015 to address this challenge
-(Breden et al, 2017) and has stablished the set of minimal metadata
-elements (MiAIRR) required for describing published AIRR datasets
-(Rubelt et al, 2017) as well as file formats to represent the
-information in a machine-readable form. The R package ``airr`` allows to
-read and write data following the AIRR format standards and this
-vignette provides examples on how to use it.
+technique has produced enormous amounts of data and there exists a
+pressing need to develop and adopt common standards, protocols, and
+policies for generating and sharing data sets. The `Adaptive Immune
+Receptor Repertoire (AIRR) Community <http://airr-community.org>`__
+formed in 2015 to address this challenge (Breden et al, 2017) and has
+stablished the set of minimal metadata elements (MiAIRR) required for
+describing published AIRR datasets (Rubelt et al, 2017) as well as file
+formats to represent this data in a machine-readable form. The ``airr``
+R package provides to read, write an validate data following the AIRR
+Data Representation standards. This vignette provides a set of simple
+use examples.
 
-AIRR Community
-~~~~~~~~~~~~~~
+AIRR Data Representation Standards
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The motivations and goals of the AIRR Community are described in detail
-in (Breden et al, 2017). Membership in the AIRR Community is open and is
-intended to cover all aspects of AIRR-seq technology and its uses. The
-profile of its members is diverse, and includes researches with
-expertise in a broad range of scientific and legal areas involved in the
-generation and analysis of immune repertoire data. Through continuous
-cycles of dialogue and collaboration, the AIRR community has developed a
-set of metadata standards for the publication and sharing of AIRR-seq
-datasets (MiAIRR) (Rubelt et al, 2017) and specific machine-readable
-file formats to record AIRR-seq data and its annotation, from the
-experiment level to the sequence level.
+The AIRR Community’s recommendations for a minimal set of metadata that
+should be used to describe an AIRR-seq data set when published or
+deposited in a AIRR-compliant public repository are described in Rubelt
+et al, 2017. The primary aim of this effort is to make published AIRR
+datasets FAIR (findable, accessible, interoperable, reusable); with
+sufficient detail such that a person skilled in the art of AIRR
+sequencing and data analysis will be able to reproduce the experiment
+and data analyses that were performed.
 
-MiAIRR standards
-~~~~~~~~~~~~~~~~
-
-The Community’s recommendations for a minimal set of metadata that
-should be used to describe an AIRR-seq data set when published or when
-deposited in a AIRR-compliant repository are described in Rubelt et al,
-2017. The primary aim of this effort is to make published AIRR datasets
-FAIR (findable, accessible, interoperable, reusable).The overall goal of
-this standard is that sufficient detail be provided such that a person
-skilled in the art of AIRR sequencing and data analysis will be able to
-reproduce the experiment and data analyses that were performed.
-
-Following this principles, alignments and rearrangement annotations are
-saved in standard tab-delimited format files (TSV) and the metadata for
-each of these files is provided in an additional YAML formatted file.
-The column names and field names in these files have been defined by the
-AIRR community. The use of standardized terms to refer to each piece of
-information and the use of a defined data representation format means
-that MiAIRR compliant software, API and databases can communicate and
-exchange information.
+Following this principles, V(D)J reference alignment annotations are
+saved in standard tab-delimited format files (TSV) with associated
+metadata provided in accompanying YAML formatted files. The column names
+and field names in these files have been defined by the AIRR Community
+using a controlled vocabulary of standardized terms and types to refer
+to each piece of information.
 
 Reading AIRR formatted files
 ----------------------------
 
 The ``airr`` package contains the function ``read_rearrangement`` to
-read and validate rearrangement files following the AIRR standards. The
-usage is straightforward, as the file format is a typical tabulated
-file. The argument that needs attention is ``base``, with possible
-values ``"0"`` and ``"1"``. ``base`` denotes the starting index for
-positional fields in the input file. Positional fields are those that
-contain alignment coordinates and names ending in “_start" and “_end“.
-If the input file is using 0-based coordinates (as in python style
-0-based half-open intervals), then positional fields will be converted
-to 1-based closed intervals (R style). If ``"1"``, positional fields
-will not be modified.
+read and validate files containing Rearrangement records in the AIRR
+Data Representation standards, where a Rearrangement record describes
+the collection of optimal annotations on a single sequence that has
+undergone V(D)J reference alignment. The usage is straightforward, as
+the file format is a typical tabulated file. The argument that needs
+attention is ``base``, with possible values ``"0"`` and ``"1"``.
+``base`` denotes the starting index for positional fields in the input
+file. Positional fields are those that contain alignment coordinates and
+names ending in “_start" and “_end“. If the input file is using 0-based
+coordinates with half-open intervals (python style), as defined by the
+standard, then positional fields will be converted to 1-based closed
+intervals (R style) using the default setting of ``base="0"``. If
+``base="1"`` is specified, then positional fields will not be modified.
 
 .. code:: r
 
@@ -122,7 +109,7 @@ Writing AIRR formatted files
 ----------------------------
 
 The ``airr`` package contains the function ``write_rearrangement`` to
-write rearrangement files in AIRR format.
+write Rearrangement records to the AIRR TSV format.
 
 .. code:: r
 

@@ -14,7 +14,7 @@ class RearrangementReader:
     Attributes:
       fields (list): field names in the input Rearrangement file.
       external_fields (list): list of fields in the input file that are not
-                              part of the Rearrangements definition.
+                              part of the Rearrangement definition.
     """
     @property
     def fields(self):
@@ -29,7 +29,7 @@ class RearrangementReader:
     @property
     def external_fields(self):
         """
-        Get list of field that are not in the Rearrangements spec
+        Get list of field that are not in the Rearrangement schema
 
         Returns:
           list : field names.
@@ -42,7 +42,7 @@ class RearrangementReader:
         Initialization
 
         Arguments:
-          handle (file): file handle of the open Rearrangements file.
+          handle (file): file handle of the open Rearrangement file.
           debug (bool): debug state. If True prints debug information.
 
         Returns:
@@ -70,7 +70,7 @@ class RearrangementReader:
         Next method
 
         Returns:
-          dict: parsed Rearrangements data.
+          dict: parsed Rearrangement data.
         """
         try:
             row = next(self.dict_reader)
@@ -91,7 +91,7 @@ class RearrangementReader:
         Next method
 
         Returns:
-          dict: parsed Rearrangements data.
+          dict: parsed Rearrangement data.
         """
         return self.__next__()
 
@@ -100,7 +100,7 @@ class RearrangementReader:
         Validate Rearrangements data.
 
         Returns:
-          bool: True if passes validation, otherwise False
+          bool: True if passes validation, otherwise False.
         """
         valid = True
         # check required fields
@@ -137,6 +137,7 @@ class RearrangementReader:
 
         return valid
 
+
 class RearrangementWriter:
     """
     Writer class for Rearrangement objects in TSV format
@@ -144,7 +145,7 @@ class RearrangementWriter:
     Attributes:
       fields (list): field names in the output Rearrangement file.
       external_fields (list): list of fields in the output file that are not
-                              part of the Rearrangements definition.
+                              part of the Rearrangement definition.
     """
     @property
     def fields(self):
@@ -159,7 +160,7 @@ class RearrangementWriter:
     @property
     def external_fields(self):
         """
-        Get list of field that are not in the Rearrangements spec
+        Get list of field that are not in the Rearrangements schema
 
         Returns:
           list : field names.
@@ -173,7 +174,7 @@ class RearrangementWriter:
 
         Arguments:
           handle (file): file handle of the open Rearrangements file.
-          fields (list) : list of non-required fields to add. May fields undefined by the spec.
+          fields (list) : list of non-required fields to add. May include fields undefined by the schema.
           debug (bool): debug state. If True prints debug information.
 
         Returns:

@@ -2,13 +2,22 @@
 
 #' S4 class defining an AIRR standard schema
 #' 
-#' \code{Schema} defines a common data structure for AIRR standards.
+#' \code{Schema} defines a common data structure for AIRR Data Representation 
+#' standards.
 #' 
-#' @slot    required           \code{character} vector of required fields.
-#' @slot    optional            \code{character} vector of non-required fields.
-#' @slot    properties          \code{list} of field definitions.
-#'                          
-#' @seealso      See \link{load_schema} loading a \code{Schema} from definitions file.
+#' @slot    required    \code{character} vector of required fields.
+#' @slot    optional    \code{character} vector of non-required fields.
+#' @slot    properties  \code{list} of field definitions.
+#'                  
+#' @details
+#' The following predefined Schema objects are defined:
+#'
+#' @format
+#' A \code{Schema} object.
+#' 
+#' @seealso
+#' See \link{load_schema} for loading a \code{Schema} from the definition set.
+#' See \link{read_airr}, \link{write_airr} and \link{validate_airr} schema operators.
 #'
 #' @name         Schema-class
 #' @rdname       Schema-class
@@ -114,22 +123,12 @@ load_schema <- function(definition) {
 
 #### Data ####
 
-#' Alignment Schema
-#'
-#' AIRR Alignment object schema
-#'
-#' @format   A \link{Schema} object.
-#' 
+#' @details   \code{AlignmentSchema}: AIRR Alignment \code{Schema}.
+#' @rdname    Schema-class
 #' @export
 AlignmentSchema <- load_schema("Alignment")
 
-#' Rearrangment Schema
-#'
-#' AIRR Rearrangement object schema
-#'
-#' @format   A \link{Schema} object.
-#' 
-#' @seealso See \link{read_airr} and \link{write_airr} for reading and writing.
-#' 
+#' @details   \code{RearrangementSchema}: AIRR Rearrangement \code{Schema}.
+#' @rdname    Schema-class
 #' @export
 RearrangementSchema <- load_schema("Rearrangement")

@@ -10,6 +10,16 @@ matrix:
         - tests/check-consistency-formats.py
     - language: python
       python:
+        - 2.7
+      before_install:
+        - cd lang/python
+      install:
+        - pip install -r requirements.txt
+      script:
+        - python setup.py install
+        - python -m unittest discover
+    - language: python
+      python:
         - 3.6
       before_install:
         - cd lang/python
@@ -17,7 +27,7 @@ matrix:
         - pip install -r requirements.txt
       script:
         - python setup.py install
-        - python -m unittest
+        - python -m unittest discover
     - language: r
       r:
         - release

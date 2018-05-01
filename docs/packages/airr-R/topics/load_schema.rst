@@ -25,7 +25,7 @@ definition
 Value
 ~~~~~
 
-A `Schema <Schema-class.md>`__ object for the ``definition``.
+A `Schema <Schema-class.html>`__ object for the ``definition``.
 
 Details
 ~~~~~~~
@@ -54,4 +54,4 @@ Examples
 See also
 ~~~~~~~~
 
-See `Schema <Schema-class.md>`__ for the return object.
+See `Schema <Schema-class.html>`__ for the return object.

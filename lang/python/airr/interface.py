@@ -152,7 +152,7 @@ def validate_rearrangement(airr_handles, debug=False):
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
-      boolean: True if all files passed validation, otherwise False
+      bool: True if all files passed validation, otherwise False.
     """
     valid = True
     for handle in airr_handles:
