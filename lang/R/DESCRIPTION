@@ -8,7 +8,7 @@ Authors@R: c(person("Jason", "Vander Heiden", role=c("aut", "cre"),
                     email="susanna.marquez@yale.edu"))
 Title: AIRR Data Representation Standards
 Description: Package for working with data formatted according to the AIRR Data 
-Representation Standards.
+             Representation Standards.
 License: CC BY-SA 4.0
 URL: http://docs.airr-community.org
 BugReports: https://github.com/airr-community/airr-standards/issues
