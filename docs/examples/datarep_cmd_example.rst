@@ -21,9 +21,8 @@ example. It may be downloaded from:
 Walkthrough
 --------------------------------------------------------------------------------
 
-.. figure:: flowchart.png
+.. figure:: images/datarep_cmd_flowchart.png
     :align: center
-    :scale: 75%
 
     **Flowchart of the example steps.**
 
@@ -37,7 +36,7 @@ with all the tools used in the steps that follow::
     docker pull kleinstein/immcantation:devel
 
     # Invoke a shell session inside the Immcantation docker image
-    # Map the downloaded example data (~/data) to the container's /data directory
+    # Map example data (~/data) to the container's /data directory
     $> docker run -it -v ~/data:/data:z kleinstein/immcantation:devel bash
 
 Generate AIRR formatted TSV files
@@ -96,7 +95,7 @@ outputs into a single table::
     R> library(dplyr)
     R> library(ggplot2)
 
-    # Combine IgBLAST and IMGT/HighV-QUEST results into a single table in R
+    # Merge IgBLAST and IMGT/HighV-QUEST results
     R> db_m <- read.delim("HD13M_fmt7_db-pass.tsv")
     R> db_n <- read.delim("HD13N_imgt_db-pass.tsv")
     R> db_m$cell_type <- "memory"
@@ -107,7 +106,8 @@ outputs into a single table::
     R> db <- subset(db, grepl("IGH", v_call))
 
     # Count combined V segment usage
-    R> v_usage <- countGenes(db, "v_call", groups="cell_type", mode="family")
+    R> v_usage <- countGenes(db, "v_call", groups="cell_type",
+                             mode="family")
 
     # Plot V family usage
     R> ggplot(v_usage, aes(x=GENE, y=SEQ_FREQ, fill=cell_type)) +
@@ -116,8 +116,7 @@ outputs into a single table::
         xlab("") +
         ylab("Fraction of repertoire")
 
-.. figure:: v_usage.png
+.. figure:: images/datarep_cmd_vusage.png
     :align: center
-    :scale: 75%
 
     **V family usage for the combined data set.**
