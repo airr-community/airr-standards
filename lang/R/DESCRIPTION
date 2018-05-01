@@ -5,11 +5,13 @@ Date: 2018-05-01
 Authors@R: c(person("Jason", "Vander Heiden", role=c("aut", "cre"), 
                     email="jason.vanderheiden@yale.edu"),
              person("Susanna", "Marquez", role=c("aut"), 
-                    email="susanna.marquez@yale.edu"))
+                    email="susanna.marquez@yale.edu"),
+             person("AIRR Community", role=c("cph")))
 Title: AIRR Data Representation Standards
-Description: Package for working with data formatted according to the AIRR Data 
-             Representation Standards.
-License: CC BY-SA 4.0
+Description: Schema definitions and read, write and validation tools for data 
+    formatted in accordance with the AIRR Data Representation standards defined 
+    by the AIRR Community <http://docs.airr-community.org>.
+License: CC BY 4.0
 URL: http://docs.airr-community.org
 BugReports: https://github.com/airr-community/airr-standards/issues
 LazyData: true

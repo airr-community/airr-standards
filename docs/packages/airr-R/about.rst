@@ -21,3 +21,4 @@ Authors
 | `Jason Vander Heiden <mailto:jason.vanderheiden@yale.edu>`__ (aut,
   cre)
 | `Susanna Marquez <mailto:susanna.marquez@yale.edu>`__ (aut)
+| AIRR Community (cph)
