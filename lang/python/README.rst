@@ -7,8 +7,8 @@ Install in the usual manner from PyPI::
 
     > pip3 install airr --user
 
-Or from the `downloaded source code <https://github.com/airr-community/airr-standards>`
-directory::
+Or from the `downloaded <https://github.com/airr-community/airr-standards>`__
+source code directory::
 
     > python3 setup.py install --user
 
