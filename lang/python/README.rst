@@ -3,16 +3,22 @@ AIRR Python Reference Library
 
 **Installation**
 
-Install in the usual manner::
+Install in the usual manner from PyPI::
+
+    > pip3 install airr --user
+
+Or from the `downloaded source code <https://github.com/airr-community/airr-standards>`
+directory::
 
     > python3 setup.py install --user
 
 **Reading AIRR formatted files**
 
-The ``airr`` package contains the functions to read and write AIRR data files
+The ``airr`` package contains functions to read and write AIRR data files
 as either iterables or pandas data frames. The usage is straightforward,
-as the file format is a typical tab delimited file, but performs some additional
-validation and type conversion beyond using a standard CSV reader.
+as the file format is a typical tab delimited file, but the package
+performs some additional validation and type conversion beyond using a
+standard CSV reader.
 
 .. code-block:: python
 
