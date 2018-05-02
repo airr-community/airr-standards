@@ -88,8 +88,11 @@ setMethod("$",
 #' @seealso  See \link{Schema} for the return object.
 #' 
 #' @examples
-#' # Load the rearrangement definition
+#' # Load the Rearrangement definition
 #' schema <- load_schema("Rearrangement")
+#' 
+#' # Load the Alignment definition
+#' schema <- load_schema("Alignment")
 #' 
 #' @export
 load_schema <- function(definition) {
@@ -122,6 +125,23 @@ load_schema <- function(definition) {
 
 
 #### Data ####
+
+#' Example AIRR data
+#'
+#' Example data files compliant with the the AIRR Data Representation standards.
+#'
+#' @format
+#' \code{extdata/rearrangement-example.tsv.gz}: Rearrangement TSV file.
+#' 
+#' @examples
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' 
+#' # Load data file
+#' df <- read_rearrangement(file)
+#' 
+#' @name ExampleData
+NULL
 
 #' @details   \code{AlignmentSchema}: AIRR Alignment \code{Schema}.
 #' @rdname    Schema-class

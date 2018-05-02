@@ -35,6 +35,21 @@ Examples
 
 .. code:: r
 
-    ### Not run:
+    # Get path to the rearrangement-example file
+    file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+
+    # Load data file
+    df <- read_rearrangement(file)
+
     # Validate a data.frame against the Rearrangement schema
-    # validate_airr(data, schema=RearrangementSchema)
+    validate_airr(data, schema=RearrangementSchema)
+
+*Warning*:Warning: File is missing AIRR mandatory field(s): sequence_id,
+sequence, rev_comp, productive, v_call, d_call, j_call,
+sequence_alignment, germline_alignment, junction, junction_aa, v_cigar,
+d_cigar, j_cigar
+
+::
+
+    [1] FALSE
+

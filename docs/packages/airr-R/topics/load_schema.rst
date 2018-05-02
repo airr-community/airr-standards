@@ -48,8 +48,11 @@ Examples
 
 .. code:: r
 
-    # Load the rearrangement definition
+    # Load the Rearrangement definition
     schema <- load_schema("Rearrangement")
+
+    # Load the Alignment definition
+    schema <- load_schema("Alignment")
 
 See also
 ~~~~~~~~

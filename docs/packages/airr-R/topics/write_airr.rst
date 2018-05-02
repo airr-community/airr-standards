@@ -57,9 +57,15 @@ Examples
 
 .. code:: r
 
-    ### Not run:
+    # Get path to the rearrangement-example file
+    file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+
+    # Load data file
+    df <- read_rearrangement(file)
+
     # Write a Rearrangement data file
-    # write_rearrangement(data, "file.tsv")
+    outfile <- file.path(tempdir(), "output.tsv")
+    write_rearrangement(df, outfile)
 
 See also
 ~~~~~~~~
