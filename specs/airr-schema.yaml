@@ -54,8 +54,6 @@ Subject:
     discriminator: AIRR
     type: object
     properties:
-        study_id:
-            type: string
         subject_id:
             type: string
             description: Subject ID assigned by submitter, unique within study
@@ -110,10 +108,6 @@ Diagnosis:
     discriminator: AIRR
     type: object
     properties:
-        study_id:
-            type: string
-        subject_id:
-            type: string
         study_group_description:
             type: string
             description: Designation of study arm to which the subject is assigned to
@@ -153,10 +147,6 @@ Sample:
     discriminator: AIRR
     type: object
     properties:
-        study_id:
-            type: string
-        subject_id:
-            type: string
         sample_id:
             type: string
             description: Sample ID assigned by submitter, unique within study
@@ -196,12 +186,6 @@ CellProcessing:
     discriminator: AIRR
     type: object
     properties:
-        study_id:
-            type: string
-        sample_id:
-            type: string
-        cell_processing_id:
-            type: string
         tissue_processing:
             type: string
             description: Enzymatic digestion and/or physical methods used to isolate cells from sample
@@ -250,12 +234,6 @@ NucleicAcidProcessing:
     discriminator: AIRR
     type: object
     properties:
-        study_id:
-            type: string
-        cell_processing_id:
-            type: string
-        nucleic_acid_processing_id:
-            type: string
         template_class:
             enum:
                 - DNA
@@ -340,10 +318,6 @@ RawSequenceData:
     discriminator: AIRR
     type: object
     properties:
-        study_id:
-            type: string
-        nucleic_acid_processing_id:
-            type: string
         filename:
             type: string
         read_direction:
@@ -364,8 +338,6 @@ SoftwareProcessing:
     discriminator: AIRR
     type: object
     properties:
-        study_id:
-            type: string
         software_versions:
             type: string
             description: Version number and / or date, include company pipelines
