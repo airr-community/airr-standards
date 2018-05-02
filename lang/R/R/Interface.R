@@ -76,7 +76,7 @@ read_airr <- function(file, base=c("0", "1"), schema=RearrangementSchema, ...) {
 #' df <- read_rearrangement(file)
 #' 
 #' # Validate a data.frame against the Rearrangement schema
-#' validate_airr(data, schema=RearrangementSchema)
+#' validate_airr(df, schema=RearrangementSchema)
 #' 
 #' @export
 validate_airr <- function(data, schema=RearrangementSchema){
