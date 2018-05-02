@@ -4,22 +4,22 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 1 / study	Study type	string	Controlled vocabulary	Generic study design	Placebo controlled phase 3 clinical trial	study_description
 1 / study	Study inclusion/exclusion criteria	string	Free text	List of criteria for inclusion/exclusion for the study	Include: Clinical P. falciparum infection; Exclude: Seropositive for HIV	inclusion_exclusion_criteria
 1 / study	Grant funding agency	string	Free text	Funding agencies and grant numbers	NIH, award number R01GM987654	grants
-1 / study	Contact information (data collection)	string	Free text	Full contact information of the corresponding author, i.e. who is legally responsible for data collection and release. This should include an e-mail address.	p.stibbons@unseenu.edu	collected_by
-1 / study	Lab name	string	Free text	Department of corresponding author	Stibbons Lab	lab_name
-1 / study	Lab address	string	Free text	Institutional address of corresponding author	School of Medicine, Unseen University, Ankh-Morpork, Disk World	lab_address
-1 / study	Contact information (data deposition)	string	Free text	Full contact information of the submitter, i.e. the person deposition the data	Dr. P. Stibbons	submitted_by
+1 / study	Contact information (data collection)	string	Free text	Full contact information of the data collector, i.e. the person who is legally responsible for data collection and release. This should include an e-mail address.	Dr. P. Stibbons, p.stibbons@unseenu.edu	collected_by
+1 / study	Lab name	string	Free text	Department of data collector	Department for Planar Immunology	lab_name
+1 / study	Lab address	string	Free text	Institution and institutional address of data collector	School of Medicine, Unseen University, Ankh-Morpork, Disk World	lab_address
+1 / study	Contact information (data deposition)	string	Free text	Full contact information of the data depositor, i.e. the person submitting the data to a repository. This is supposed to be a short-lived and technical role until the submission is relased.	Adrian Turnipseed, a.turnipseed@unseenu.edu	submitted_by
 1 / study	Relevant publications	string	Valid PubMed ID	Publications describing the rationale and/or outcome of the study	PMID85642	pub_ids
 1 / subject	Subject ID	string	Free text	Subject ID assigned by submitter, unique within study	SUB856413	subject_id
 1 / subject	Synthetic library	boolean	TRUE/FALSE	TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)	FALSE	synthetic
 1 / subject	Organism	string	Controlled vocabulary	Binomial designation of subject's species	Homo sapiens	organism
 1 / subject	Sex	string	/(male|female|pooled|hermaphrodite|intersex|not collected|not applicable)/	Biological sex of subject	female	sex
 1 / subject	Age	string	Time duration and unit	Absolute age of subject at time point `Age event`	65 a	age
-1 / subject	Age event	string	Free text	Event in the study schedule to which `Age` refers to. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.	enrollment	age_event
+1 / subject	Age event	string	Free text	Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.	enrollment	age_event
 1 / subject	Ancestry population	string	Free text	Broad geographic origin of ancestry (continent)	list of continents, mixed or unknown	ancestry_population
 1 / subject	Ethnicity	string	Free text	Ethnic group of subject (defined as cultural/language-based membership)	English, Kurds, Manchu, Yakuts (and other fields from Wikipedia)	ethnicity
 1 / subject	Race	string	Free text	Racial group of subject (as defined by NIH)	White, American Indian or Alaska Native, Black, Asian, Native Hawaiian or Other Pacific Islander, Other 	race
 1 / subject	Strain name	string	Free text	Non-human: designation of the strain or breed of animal used	C57BL/6J	strain_name
-1 / subject	Relation to other subjects	string	Free text	Subject ID to which `Relation type` refers to	SUB1355648	linked_subjects
+1 / subject	Relation to other subjects	string	Free text	Subject ID to which `Relation type` refers	SUB1355648	linked_subjects
 1 / subject	Relation type	string	Free text	Relation between subject and `linked_subjects`, can be genetic or environmental (e.g.exposure)	father, daughter, household	link_type
 1 / diag. & intervent.	Study group description	string	Free text	Designation of study arm to which the subject is assigned to	control	study_group_description
 1 / diag. & intervent.	Diagnosis	string	Free text	Diagnosis of subject	Multiple myeloma	disease_diagnosis

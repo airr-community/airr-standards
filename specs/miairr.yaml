@@ -33,13 +33,13 @@ collected_by:
    miairr_subset: study
    miairr_name: Contact information (data collection)
    format: free text
-   example: p.stibbons@unseenu.edu
+   example: Dr. P. Stibbons, p.stibbons@unseenu.edu
 lab_name:
    miairr_set: 1
    miairr_subset: study
    miairr_name: Lab name
    format: free text
-   example: Department of Planar Immunology
+   example: Department for Planar Immunology
 lab_address:
    miairr_set: 1
    miairr_subset: study
@@ -51,7 +51,7 @@ submitted_by:
    miairr_subset: study
    miairr_name: Contact information (data deposition)
    format: free text
-   example: Dr. P. Stibbons
+   example: Adrian Turnipseed, a.turnipseed@unseenu.edu
 pub_ids:
    miairr_set: 1
    miairr_subset: study
