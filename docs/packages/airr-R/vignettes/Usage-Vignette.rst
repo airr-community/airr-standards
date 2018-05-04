@@ -61,12 +61,12 @@ intervals (R style) using the default setting of ``base="0"``. If
 
     library(airr)
 
-    example_data <- file.path("..", "tests", "data-tests", "toy_data.tsv")
+    example_data <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
     basename(example_data)
 
 ::
 
-    ## [1] "toy_data.tsv"
+    ## [1] "rearrangement-example.tsv.gz"
 
 .. code:: r
 
@@ -83,27 +83,24 @@ intervals (R style) using the default setting of ``base="0"``. If
 
 ::
 
-    ## # A tibble: 6 x 44
-    ##   rearrangement_id rearrangement_se… sequence_id sequence         rev_comp
-    ##   <chr>            <chr>             <chr>       <chr>            <lgl>   
-    ## 1 IVKNQEJ01BVGQ6   1                 IVKNQEJ01B… GGCCCAGGACTGGTG… TRUE    
-    ## 2 IVKNQEJ01AQVWS   1                 IVKNQEJ01A… GGCCCAGGACTGGTG… TRUE    
-    ## 3 IVKNQEJ01AOYFZ   1                 IVKNQEJ01A… GGCCCAGGACTGGTG… TRUE    
-    ## 4 IVKNQEJ01EI5S4   1                 IVKNQEJ01E… GGCCCAGGACTGGTG… TRUE    
-    ## 5 IVKNQEJ01DGRRI   1                 IVKNQEJ01D… GGCCCAGGACTGGTG… TRUE    
-    ## 6 IVKNQEJ01APN5N   1                 IVKNQEJ01A… GGCCCAGGACTGGTG… TRUE    
-    ## # ... with 39 more variables: productive <lgl>, sequence_alignment <chr>,
-    ## #   germline_alignment <chr>, v_call <chr>, d_call <chr>, j_call <chr>,
-    ## #   c_call <chr>, junction <chr>, junction_length <int>,
-    ## #   junction_aa <chr>, v_score <dbl>, d_score <dbl>, j_score <dbl>,
-    ## #   c_score <dbl>, v_cigar <chr>, d_cigar <chr>, j_cigar <chr>,
-    ## #   c_cigar <chr>, v_identity <dbl>, v_evalue <dbl>, d_identity <dbl>,
-    ## #   d_evalue <dbl>, j_identity <dbl>, j_evalue <dbl>,
+    ## # A tibble: 6 x 33
+    ##   sequence_id  sequence  rev_comp productive stop_codon vj_in_frame v_call
+    ##   <chr>        <chr>     <lgl>    <lgl>      <lgl>      <lgl>       <chr> 
+    ## 1 SRR765688.7… NNNNNNNN… FALSE    TRUE       FALSE      TRUE        IGHV2…
+    ## 2 SRR765688.3… NNNNNNNN… FALSE    TRUE       FALSE      TRUE        IGHV5…
+    ## 3 SRR765688.3… NNNNNNNN… FALSE    TRUE       FALSE      TRUE        IGHV7…
+    ## 4 SRR765688.3… NNNNNNNN… FALSE    TRUE       FALSE      TRUE        IGHV7…
+    ## 5 SRR765688.4… NNNNNNNN… FALSE    TRUE       FALSE      TRUE        IGHV7…
+    ## 6 SRR765688.1… NNNNNNNN… FALSE    FALSE      TRUE       TRUE        IGHV2…
+    ## # ... with 26 more variables: d_call <chr>, j_call <chr>, c_call <chr>,
+    ## #   sequence_alignment <chr>, germline_alignment <chr>, junction <chr>,
+    ## #   junction_aa <chr>, v_cigar <chr>, d_cigar <chr>, j_cigar <chr>,
+    ## #   junction_length <int>, np1_length <int>, np2_length <int>,
     ## #   v_sequence_start <dbl>, v_sequence_end <int>, v_germline_start <dbl>,
     ## #   v_germline_end <int>, d_sequence_start <dbl>, d_sequence_end <int>,
     ## #   d_germline_start <dbl>, d_germline_end <int>, j_sequence_start <dbl>,
     ## #   j_sequence_end <int>, j_germline_start <dbl>, j_germline_end <int>,
-    ## #   np1_length <int>, np2_length <int>, duplicate_count <int>
+    ## #   duplicate_count <int>
 
 Writing AIRR formatted files
 ----------------------------

@@ -81,7 +81,7 @@ If `base="1"` is specified, then positional fields will not be modified.
 ```{r read_rearrangement, message=FALSE}
 library(airr)
 
-example_data <- file.path("..", "tests", "data-tests", "toy_data.tsv")
+example_data <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
 basename(example_data)
 airr_rearrangement <- read_rearrangement(example_data, base="0")
 class(airr_rearrangement)
