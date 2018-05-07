@@ -77,3 +77,5 @@ values for ``library_generation_method`` are more complex:
      subsequent PCR. This is used by RNA-seq kits.
       - REQUIRES: ``template_class`` = ``RNA``
       - SRA mapping: ``RNA-Seq``, ``TRANSCRIPTOMIC``, ``RACE``
+
+   * other: Any methodology not covered above.
