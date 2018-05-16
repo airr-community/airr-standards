@@ -19,21 +19,26 @@ The tables have five columns:
 
 3. The relation between MiAIRR field name and NCBI attribute:
 
-   -  `IDENTICAL`: The identical keyword exists in MiAIRR and the
+   -  ``IDENTICAL``: The identical keyword exists in MiAIRR and the
       NCBI repository; it defines similar content.
 
-   -  `MAPPED`: Non-identical keywords are used by MiAIRR and NCBI
+   -  ``MAPPED``: Non-identical keywords are used by MiAIRR and NCBI
       to define similar content; a 1:1 mapping of the keywords is
       required.
 
-   -  `MAPPED_NODE`: Non-identical keywords are used by MiAIRR and NCBI
-      to define similar content. In addition, NCBI splits the content
-      into several sub-keys, which requires some string manipulation for
-      a 1:n mapping.
+   -  ``MAPPED_NODE``: Non-identical keywords are used by MiAIRR and
+      NCBI to define similar content. In addition, NCBI splits the
+      content into several sub-keys, which requires some string
+      manipulation for a 1:n mapping.
 
-   -  `AIRR_CUSTOM`: The NCBI repositories does *not* specify an
+   -  ``AIRR_CUSTOM``: The NCBI repositories does *not* specify an
       attribute for this content, so the MiAIRR field name is directly
       used as custom keyword.
+
+   -  ``DATABASE_SPECIFIC``: This is an NCBI specific term that has
+      no correlate in MiAIRR. This should only occur for NCBI specific
+      references or information only required during submission (e.g.
+      file names).
 
 4. Whether an attribute is required by the NCBI repository (Note that 
    *all* data elements are **required** by MiAIRR)
