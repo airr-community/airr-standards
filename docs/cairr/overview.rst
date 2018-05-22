@@ -22,7 +22,7 @@ You should also have an email from one of us at Stanford with a CEDAR link (your
 
 2- If you are new user user, you have to create an account or existing users will login through their account information
 
-3- After login into the system, you will see [MiAIRR RC2](https://cedar.staging.metadatacenter.org/dashboard?folderId=https:%2F%2Frepo.staging.metadatacenter.org%2Ffolders%2F4f2be12f-d096-4b45-8dc6-a7ec2e145f37) template.
+3- After login into the system, you will see <a href="https://cedar.staging.metadatacenter.org/dashboard?folderId=https:%2F%2Frepo.staging.metadatacenter.org%2Ffolders%2F4f2be12f-d096-4b45-8dc6-a7ec2e145f37">MiAIRR RC2</a> template.
 
 4- Right click on the template (MiAIRR RC2) file and click on the “populate” option from menu.
 
