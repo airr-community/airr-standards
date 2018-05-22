@@ -20,6 +20,7 @@ include
 
     miairr/overview
     datarep/overview
+    cairr/overview
     Python Library <packages/airr-python/overview>
     R Library <packages/airr-R/overview>
     examples/overview
