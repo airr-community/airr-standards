@@ -1,4 +1,4 @@
-CAIRR Pipeline
+CAIRR Pipeline (DRAFT)
 =====================
 
 **CAIRR is a pipeline to submit MiAIRR-compliant AIRR-seq studies to the NCBI through the CEDAR workbench**
