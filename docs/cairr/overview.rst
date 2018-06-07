@@ -34,6 +34,8 @@ You should also have an email from one of us at Stanford with a CEDAR link (your
 
 7- An upload dialogue will appear, choose NCBI SRA and upload your FASTQ file. Upon submisison you will start receiving acknowledgement messages.
 
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=Db5WqHUgpOI&t=1s" frameborder="0" allowfullscreen></iframe>
+
 **Cite MiAIRR Pipeline**
 
 To be Updated
