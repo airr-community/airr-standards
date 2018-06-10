@@ -54,7 +54,7 @@ for metadata submission:
    BioProject" or "new BioSample" options to create a new project or
    sample, respectively.
 
-  .. image:: images/sra.png
+  .. image:: ./images/sra.png
 
 #. Fill in the project information. Add as much relevant information
    you can add in description. It will help later in searching the
