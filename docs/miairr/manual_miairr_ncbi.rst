@@ -48,20 +48,26 @@ for metadata submission:
 #. Click on "create new submission". You will see a form as below.
    Fill the form with required information and click on "continue".
 
+
    .. image:: images/bioproject.png
+   
 
 #. If you are submitting for the first time, check “Yes” on the "new
    BioProject" or "new BioSample" options to create a new project or
    sample, respectively.
 
+
    .. image:: ./images/sradisplay.png
+
 
 
 #. Fill in the project information. Add as much relevant information
    you can add in description. It will help later in searching the
    particular submission.
 
+
    .. image:: ./images/fillproject.png
+
 
 #. The AIRR BioSample template is not yet listed on the NCBI website.
    The template sheet ``AIRR_BioSample_V1.0.xls`` can be downloaded from
