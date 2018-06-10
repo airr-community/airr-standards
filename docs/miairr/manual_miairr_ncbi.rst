@@ -60,7 +60,7 @@ for metadata submission:
    you can add in description. It will help later in searching the
    particular submission.
 
-   .. image:: ./images/fillproject.png
+   .. image:: _images/fillproject.png
 
 #. The AIRR BioSample template is not yet listed on the NCBI website.
    The template sheet ``AIRR_BioSample_V1.0.xls`` can be downloaded from
