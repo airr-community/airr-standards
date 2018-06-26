@@ -12,7 +12,7 @@ AIRR sequencing (AIRR-seq) has tremendous potential to understand the dynamics o
 
 **Before You Start**
 
-We assume you have already obtained an account on the system you will be testing on (either CEDAR staging (https://staging.cedar.metadatacenter.edu)  or CEDAR production (https://cedar.metadatacenter.edu). If you want to test submission to the NCBI (either their test system, or their production system), you will also need a BioProject already set up. (Soon CEDAR will allow you to create a BioProject, but not quite yet!)
+We assume you have already obtained an account on the system you will be testing on (either CEDAR staging (https://staging.cedar.metadatacenter.org)  or CEDAR production (https://cedar.metadatacenter.org). If you want to test submission to the NCBI (either their test system, or their production system), you will also need a BioProject already set up. (Soon CEDAR will allow you to create a BioProject, but not quite yet!)
 
 You should also have an email from one of us at Stanford with a CEDAR link (your template URL) to start your metadata completion process. 
 
