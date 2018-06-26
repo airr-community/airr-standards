@@ -72,7 +72,7 @@ for metadata submission:
 
 #. The AIRR BioSample template is not yet listed on the NCBI website.
    The template sheet ``AIRR_BioSample_V1.0.xls`` can be downloaded from
-   https://github.com/airr-community/airr-standards/tree/master/NCBI_implementation/NCBI%20Templates.
+   https://github.com/airr-community/airr-standards/tree/master/NCBI_implementation/templates_XLS.
    Fill in the required field and save the file as *tab-delimited* text
    file (.TSV format), then upload it.
 
@@ -92,7 +92,7 @@ Submissions via an XML template
 In addition to the web interface, NCBI provides an FTP-based solution to
 submit bulk metadata. The corresponding AIRR XML templates can be found
 under
-https://github.com/airr-community/airr-standards/tree/master/NCBI_implementation/NCBI-XML%20Templates.
+https://github.com/airr-community/airr-standards/tree/master/NCBI_implementation/templates_XLS.
 Otherwise users should refer to the current SRA file upload manual
 https://www.ncbi.nlm.nih.gov/sra/docs/submitfiles/. Users planning to
 frequently submit AIRR-seq data to SRA using scripts to generate the XML
