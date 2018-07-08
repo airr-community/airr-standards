@@ -5,7 +5,7 @@ CAIRR Pipeline
 
 **Quick Summary**
 
-Just want to get to it? Here you go. (And here’s a 2-minute YouTube video.)
+Just want to get to it? Here is a 2-minute YouTube video.
 
 .. raw:: html
 
