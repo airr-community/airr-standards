@@ -14,10 +14,17 @@ Just want to get to it? Here you go. (And here’s a 2-minute YouTube video.)
     </div>
 
 1- Click on the CREATE AIRR METADATA link below this paragraph—create an account/log in to CEDAR if you need to.
+
 2- Fill out your metadata.
+
 3- Return to your Workspace and select the metadata you just created. 
-4- To submit your metadata and associated data files, click on the Submit to Repository button in the toolbar .  .. image:: images/cedar_repo_icon.png
+
+4- To submit your metadata and associated data files, click on the Submit to Repository button in the toolbar . 
+
+   .. image:: ./images/cedar_repo_icon.png
+
 5- Choose your computer files to submit, then click “SUBMIT”.
+
 
 You should see the files load into CEDAR, which will immediately upload them into NCBI. (Note: CEDAR does not save your data files, only your metadata.) Error messages will be reported initially via CEDAR, and later via the email you provided.
 
@@ -37,7 +44,8 @@ You will need a CEDAR system account; you can self-register at  https://cedar.me
 
 Create your metadata. Click on CREATE AIRR METADATA above*, and CEDAR should open in your browser. (If you are not already logged in, you may need to log in before being redirected to the metadata page you will need to fill out.) It will look something like this. 
 
-.. image:: images/miairr_cedartemplate.png
+
+   .. image:: ./images/miairr_cedartemplate.png
 
 
 Click on any of the three metadata sections. 
