@@ -30,6 +30,8 @@ You should see the files load into CEDAR, which will immediately upload them int
 
 **CREATE AIRR METADATA** 
  
+**https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933**
+
 For more details, read on.
 
 **Introduction**
@@ -60,10 +62,10 @@ From your Workspace in CEDAR, select your metadata instance. You should now be a
 
 **Cite MiAIRR Pipeline**
 
-To be Updated.
+Musen, M. A., Bean, C. A., Cheung, K.-H., Dumontier, M., Durante, K. A., Gevaert, O., … and the CEDAR team. (2015). The center for expanded data annotation and retrieval. Journal of the American Medical Informatics Association : JAMIA, 22(6), 1148–1152. http://doi.org/10.1093/jamia/ocv048
 
 **Tell Us About It**
 
-Please let us know how it went!  If you are willing, we’d love to have your comments in a `short survey <https://www.surveymonkey.com/r/your-metadata-experience>`_., it should just take 5 minutes or so. 
+Please let us know how it went!  If you are willing, we’d love to have your comments in a `short survey <https://www.surveymonkey.com/r/your-metadata-experience>`_, it should just take 5 minutes or so. 
 
-We also welcome entry of issues and requests in our `github repository issues <https://github.com/metadatacenter/cedar-project/issues>`_., and emails can be sent to cedar-users@lists.stanford.edu. Both of these resources are publicly visible. 
+We also welcome entry of issues and requests in our `github repository issues <https://github.com/metadatacenter/cedar-project/issues>`_, and emails can be sent to cedar-users@lists.stanford.edu. Both of these resources are publicly visible. 
