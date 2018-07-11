@@ -30,9 +30,8 @@ You should see the files load into CEDAR, which will immediately upload them int
 
 **CREATE AIRR METADATA** 
  
-**https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933.**
+https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933
 
-**` <https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933>`_**
 
 For more details, read on.
 
