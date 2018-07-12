@@ -1,4 +1,6 @@
-include README.md
+include requirements.txt
+include README.rst
+include NEWS.rst
 
 # versioneer-generated
 include versioneer.py

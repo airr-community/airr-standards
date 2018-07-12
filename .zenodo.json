@@ -1,0 +1,69 @@
+{
+    "license": "cc-by", 
+    "title": "AIRR Standards", 
+    "upload_type": "software", 
+    "creators": [
+        {
+            "affiliation": "Yale University School of Medicine", 
+            "name": "Syed Ahmad Chan Bukhari"
+        }, 
+        {
+            "affiliation": "German Cancer Research Center", 
+            "name": "Christian E. Busse", 
+            "orcid": "0000-0001-7553-905X"
+        }, 
+        {
+            "affiliation": "UT Southwestern Medical Center", 
+            "name": "Scott Christley"
+        }, 
+        {
+            "affiliation": "iReceptor", 
+            "name": "Brian D. Correy"
+        }, 
+        {
+            "affiliation": "Yale University School of Medicine", 
+            "name": "Jason Vander Heiden", 
+            "orcid": "0000-0002-1474-310X"
+        }, 
+        {
+            "affiliation": "Yale University School of Medicine", 
+            "name": "Steven H. Kleinstein"
+        }, 
+        {
+            "affiliation": "Icahn School of Medicine at Mount Sinai", 
+            "name": "Uri Laserson"
+        }, 
+        {
+            "affiliation": "Fred Hutchinson Cancer Research Center", 
+            "name": "Erick Matsen", 
+            "orcid": "0000-0003-0607-6025"
+        }, 
+        {
+            "affiliation": "Stanford University School of Medicine", 
+            "name": "Florian Rubelt"
+        }
+    ], 
+    "access_right": "open", 
+    "related_identifiers": [
+        {
+            "scheme": "url", 
+            "identifier": "https://github.com/airr-community/airr-standards/tree/v1.0.1", 
+            "relation": "isSupplementTo"
+        }, 
+        {
+            "scheme": "doi", 
+            "identifier": "10.5281/zenodo.1185414", 
+            "relation": "isPartOf"
+        }
+    ], 
+    "references": [
+        "Rubelt F et al. Adaptive Immune Receptor Repertoire Community recommendations for sharing immune-repertoire sequencing data. Nat Immunol 18:1274 (2017). DOI: 10.1038/ni.3873", 
+        "Breden F et al. Reproducibility and Reuse of Adaptive Immune Receptor Repertoire Data. Front Immunol 8:1418 (2017). DOI: 10.3389/fimmu.2017.01418"
+    ], 
+    "communities": [
+        {
+            "identifier": "airr"
+        }
+    ], 
+    "language": "eng"
+}

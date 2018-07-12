@@ -1,0 +1,32 @@
+Package: airr
+Type: Package
+Version: 1.1.0
+Date: 2018-05-01
+Authors@R: c(person("Jason", "Vander Heiden", role=c("aut", "cre"), 
+                    email="jason.vanderheiden@yale.edu"),
+             person("Susanna", "Marquez", role=c("aut"), 
+                    email="susanna.marquez@yale.edu"),
+             person("AIRR Community", role=c("cph")))
+Title: AIRR Data Representation Standards
+Description: Schema definitions and read, write and validation tools for data 
+    formatted in accordance with the AIRR Data Representation standards defined 
+    by the AIRR Community <http://docs.airr-community.org>.
+License: CC BY 4.0
+URL: http://docs.airr-community.org
+BugReports: https://github.com/airr-community/airr-standards/issues
+LazyData: true
+BuildVignettes: true
+VignetteBuilder: knitr
+Depends:
+    R (>= 3.1.2)
+Imports:
+    methods,
+    readr,
+    stats,
+    stringi,
+    yaml
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat
+RoxygenNote: 6.0.1

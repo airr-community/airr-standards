@@ -65,6 +65,7 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/_downloads/
 
 # PyBuilder
 target/
@@ -96,3 +97,12 @@ ENV/
 
 # emacs backups
 *~
+
+# R packages
+*.Rproj
+.Rproj.user
+.Rhistory
+man/
+**/vignettes/*.R
+**/vignettes/*.pdf
+**/vignettes/*.html

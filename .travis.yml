@@ -1,7 +1,43 @@
-language: python
-python:
-  - 3.6
-install:
-  - pip install pyyaml pandas xlrd deepdiff jinja2 jsondiff
-script:
-  - scripts/check-consistency-miairr.py
+matrix:
+  include:
+    - language: python
+      python:
+        - 3.6
+      install:
+        - pip install pyyaml pandas xlrd deepdiff jinja2 jsondiff
+      script:
+        - tests/check-consistency-miairr.py
+        - tests/check-consistency-formats.py
+    - language: python
+      python:
+        - 2.7
+      before_install:
+        - cd lang/python
+      install:
+        - pip install -r requirements.txt
+      script:
+        - python setup.py install
+        - python -m unittest discover
+    - language: python
+      python:
+        - 3.6
+      before_install:
+        - cd lang/python
+      install:
+        - pip install -r requirements.txt
+      script:
+        - python setup.py install
+        - python -m unittest discover
+    - language: r
+      r:
+        - release
+      cache: packages
+      before_install:
+        - cd lang/R
+      install:
+        - R -e 'install.packages(c("devtools", "roxygen2"))'
+        - R -e 'devtools::install_deps(dependencies=TRUE)'
+        - R -e 'devtools::document()'
+      script:
+        - R CMD build .
+        - R CMD check *.tar.gz --as-cran --run-donttest --timings
