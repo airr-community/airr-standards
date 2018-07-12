@@ -364,6 +364,27 @@ SoftwareProcessing:
             x-miairr: true
 
 
+# the composite schema for the repertoire object
+Repertoire:
+    discriminator: AIRR
+    type: object
+    properties:
+        repertoire_id:
+            type: string
+            description: Identifier for the repertoire object.
+        study:
+            $ref: #/Study
+        subject:
+            $ref: #/Subject
+        sample:
+            allOf:
+                - $ref: #/Sample
+                - $ref: #/CellProcessing
+                - $ref: #/NucleicAcidProcessing
+        software:
+            $ref: #/SoftwareProcessing
+
+
 Alignment:
     discriminator: AIRR
     type: object
