@@ -12,3 +12,4 @@ Reference Topics
     topics/validate_airr
     topics/load_schema
     topics/Schema-class
+    topics/ExampleData

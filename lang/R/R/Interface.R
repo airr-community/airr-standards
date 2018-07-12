@@ -21,10 +21,11 @@
 #' See \link{write_airr} for writing AIRR data.
 #' 
 #' @examples
-#' \dontrun{
-#'   # Read a Rearrangement TSV file with default options
-#'   df <- read_rearrangement("file.tsv")
-#' }
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' 
+#' # Load data file
+#' df <- read_rearrangement(file)
 #' 
 #' @export
 read_airr <- function(file, base=c("0", "1"), schema=RearrangementSchema, ...) {
@@ -68,10 +69,14 @@ read_airr <- function(file, base=c("0", "1"), schema=RearrangementSchema, ...) {
 #'           \code{FALSE} if not.
 #'           
 #' @examples
-#' \dontrun{
-#'   # Validate a data.frame against the Rearrangement schema
-#'   validate_airr(data, schema=RearrangementSchema)
-#' }
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' 
+#' # Load data file
+#' df <- read_rearrangement(file)
+#' 
+#' # Validate a data.frame against the Rearrangement schema
+#' validate_airr(df, schema=RearrangementSchema)
 #' 
 #' @export
 validate_airr <- function(data, schema=RearrangementSchema){
@@ -167,10 +172,15 @@ read_alignment <- function(file, base=c("0", "1"), ...) {
 #' See \link{read_airr} for reading to AIRR files.
 #' 
 #' @examples
-#' \dontrun{
-#'   # Write a Rearrangement data file
-#'   write_rearrangement(data, "file.tsv")
-#' }
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' 
+#' # Load data file
+#' df <- read_rearrangement(file)
+#' 
+#' # Write a Rearrangement data file
+#' outfile <- file.path(tempdir(), "output.tsv")
+#' write_rearrangement(df, outfile)
 #' 
 #' @export
 write_airr <- function(data, file, base=c("0", "1"), schema=RearrangementSchema, ...) {
