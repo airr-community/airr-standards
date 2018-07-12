@@ -373,16 +373,16 @@ Repertoire:
             type: string
             description: Identifier for the repertoire object.
         study:
-            $ref: #/Study
+            $ref: '#/Study'
         subject:
-            $ref: #/Subject
+            $ref: '#/Subject'
         sample:
             allOf:
-                - $ref: #/Sample
-                - $ref: #/CellProcessing
-                - $ref: #/NucleicAcidProcessing
+                - $ref: '#/Sample'
+                - $ref: '#/CellProcessing'
+                - $ref: '#/NucleicAcidProcessing'
         software:
-            $ref: #/SoftwareProcessing
+            $ref: '#/SoftwareProcessing'
 
 
 Alignment:
