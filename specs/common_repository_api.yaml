@@ -17,19 +17,12 @@ definitions:
     type: array
     items:
       allOf:
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/Study'
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/Subject'
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/Diagnosis'
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/Sample'
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/CellProcessing'
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/NucleicAcidProcessing'
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/RawSequenceData'
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/SoftwareProcessing'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Repertoire'
   rearrangement_model:
     type: array
     items:
       allOf:
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.0.0/specs/definitions.yaml#/Rearrangement'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Rearrangement'
 
 parameters:
   filters:
