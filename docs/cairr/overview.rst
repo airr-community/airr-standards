@@ -29,7 +29,9 @@ Just want to get to it? Here is a 2-minute YouTube video.
 You should see the files load into CEDAR, which will immediately upload them into NCBI. (Note: CEDAR does not save your data files, only your metadata.) Error messages will be reported initially via CEDAR, and later via the email you provided.
 
 **CREATE AIRR METADATA** 
- 
+
+.. note:: 
+
 https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933
 
 
