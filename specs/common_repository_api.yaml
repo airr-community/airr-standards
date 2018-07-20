@@ -16,13 +16,11 @@ definitions:
   repertoire_model:
     type: array
     items:
-      allOf:
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/CRWG-API/specs/airr-schema.yaml#/Repertoire'
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/CRWG-API/specs/airr-schema.yaml#/Repertoire'
   rearrangement_model:
     type: array
     items:
-      allOf:
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/CRWG-API/specs/airr-schema.yaml#/Rearrangement'
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/CRWG-API/specs/airr-schema.yaml#/Rearrangement'
 
 parameters:
   filters:
