@@ -186,6 +186,10 @@ CellProcessing:
     discriminator: AIRR
     type: object
     properties:
+        cell_processing_id:
+            type: string
+            description: Identifier for the cell processing object, unique within study
+            x-miairr: false
         tissue_processing:
             type: string
             description: Enzymatic digestion and/or physical methods used to isolate cells from sample
@@ -234,6 +238,10 @@ NucleicAcidProcessing:
     discriminator: AIRR
     type: object
     properties:
+        nucleic_acid_processing_id:
+            type: string
+            description: Identifier for the nucleic acid processing object, unique within study
+            x-miairr: false
         template_class:
             enum:
                 - DNA
@@ -283,6 +291,16 @@ NucleicAcidProcessing:
             type: string
             description: Describes the mode of linkage if a method was used which physically links nucleic acids derived from distinct loci in a single-cell context
             x-miairr: true
+
+# 1-to-n relationship between a NucleicAcidProcessing and SequencingRun with resultant raw sequence file
+SequencingRun:
+    discriminator: AIRR
+    type: object
+    properties:
+        sequencing_run_id:
+            type: string
+            description: ID of sequencing run assigned by the sequencing facility
+            x-miairr: true
         total_reads_passing_qc_filter:
             type: integer
             description: Number of usable reads for analysis
@@ -299,10 +317,6 @@ NucleicAcidProcessing:
             type: string
             description: Name and address of sequencing facility
             x-miairr: true
-        sequencing_run_id:
-            type: string
-            description: ID of sequencing run assigned by the sequencing facility
-            x-miairr: true
         sequencing_run_date:
             type: string
             description: Date of sequencing run
@@ -311,13 +325,10 @@ NucleicAcidProcessing:
             type: string
             description: Name, manufacturer, order and lot numbers of sequencing kit
             x-miairr: true
-
-# 1-to-1 relationship between a NucleicAcidProcessing and resultant raw sequencing files
-# filenames are unique within a study
-RawSequenceData:
-    discriminator: AIRR
-    type: object
-    properties:
+        file_type:
+            enum:
+                - fasta
+                - fastq
         filename:
             type: string
         read_direction:
@@ -333,7 +344,7 @@ RawSequenceData:
                 - reverse
                 - mixed
 
-# 1-to-1 relationship between a study and software processing
+# 1-to-n relationship between the study sequence data and software processing
 SoftwareProcessing:
     discriminator: AIRR
     type: object
@@ -364,7 +375,11 @@ SoftwareProcessing:
             x-miairr: true
 
 
-# the composite schema for the repertoire object
+# The composite schema for the repertoire object
+#
+# This represents a sample repertoire as defined by the study
+# and experimentally observed by raw sequence data. A repertoire
+# can only be for one subject but may include multiple samples.
 Repertoire:
     discriminator: AIRR
     type: object
@@ -377,10 +392,29 @@ Repertoire:
         subject:
             $ref: '#/Subject'
         sample:
-            allOf:
-                - $ref: '#/Sample'
-                - $ref: '#/CellProcessing'
-                - $ref: '#/NucleicAcidProcessing'
+            type: array
+            items:
+                allOf:
+                    - $ref: '#/Sample'
+                    - $ref: '#/CellProcessing'
+                    - $ref: '#/NucleicAcidProcessing'
+                    - $ref: '#/SequencingRun'
+
+
+# 1-to-n relationship between a repertoire and rearrangement sets
+#
+# Set of annotated rearrangement sequences produced by
+# software processing upon the raw sequence data for a repertoire.
+RearrangementSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        rearrangement_set_id:
+            type: string
+            description: Identifier for the rearrangement set object.
+        repertoire_id:
+            type: string
+            description: Link to the repertoire that was processed to produce rearrangment set
         software:
             $ref: '#/SoftwareProcessing'
 
