@@ -412,19 +412,19 @@ Alignment:
         sequence_start:
             type: integer
             description: >
-                Start position of the segment in the query sequence (0-based, half-open interval).
+                Start position of the segment in the query sequence (1-based closed interval).
         sequence_end:
             type: integer
             description: >
-                End position of the segment in the query sequence (0-based, half-open interval).
+                End position of the segment in the query sequence (1-based closed interval).
         germline_start:
             type: integer
             description: >
-                Alignment start position in the reference sequence (0-based, half-open interval).
+                Alignment start position in the reference sequence (1-based closed interval).
         germline_end:
             type: integer
             description: >
-                Alignment end position in the reference sequence (0-based, half-open interval).
+                Alignment end position in the reference sequence (1-based closed interval).
         rank:
             type: integer
             description: >
@@ -681,123 +681,123 @@ Rearrangement:
         v_sequence_start:
             type: integer
             description: >
-                Start position of the V segment in the query sequence (0-based, half-open interval).
+                Start position of the V segment in the query sequence (1-based closed interval).
         v_sequence_end:
             type: integer
             description: >
-                End position of the V segment in the query sequence (0-based, half-open interval).
+                End position of the V segment in the query sequence (1-based closed interval).
         v_germline_start:
             type: integer
             description: >
-                Alignment start position in the V reference sequence (0-based, half-open interval).
+                Alignment start position in the V reference sequence (1-based closed interval).
         v_germline_end:
             type: integer
             description: >
-                Alignment end position in the V reference sequence (0-based, half-open interval).
+                Alignment end position in the V reference sequence (1-based closed interval).
         v_alignment_start:
             type: integer
             description: >
                 Start position in the V segment in the 'sequence_alignment' and 'germline_alignment' fields
-                (0-based, half-open interval).
+                (1-based closed interval).
         v_alignment_end:
             type: integer
             description: >
                 End position in the V segment in the 'sequence_alignment' and 'germline_alignment' fields
-                (0-based, half-open interval).
+                (1-based closed interval).
         d_sequence_start:
             type: integer
             description: >
-                Start position of the D segment in the query sequence (0-based, half-open interval).
+                Start position of the D segment in the query sequence (1-based closed interval).
         d_sequence_end:
             type: integer
             description: >
-                End position of the D segment in the query sequence (0-based, half-open interval).
+                End position of the D segment in the query sequence (1-based closed interval).
         d_germline_start:
             type: integer
             description: >
-                Alignment start position in the D reference sequence (0-based, half-open interval).
+                Alignment start position in the D reference sequence (1-based closed interval).
         d_germline_end:
             type: integer
             description: >
-                Alignment end position in the D reference sequence (0-based, half-open interval).
+                Alignment end position in the D reference sequence (1-based closed interval).
         d_alignment_start:
             type: integer
             description: >
                 Start position of the D segment in the 'sequence_alignment' and 'germline_alignment' fields
-                (0-based, half-open interval).
+                (1-based closed interval).
         d_alignment_end:
             type: integer
             description: >
                 End position of the D segment in the 'sequence_alignment' and 'germline_alignment' fields
-                (0-based, half-open interval).
+                (1-based closed interval).
         j_sequence_start:
             type: integer
             description: >
-                Start position of the J segment in the query sequence (0-based, half-open interval).
+                Start position of the J segment in the query sequence (1-based closed interval).
         j_sequence_end:
             type: integer
             description: >
-                End position of the J segment in the query sequence (0-based, half-open interval).
+                End position of the J segment in the query sequence (1-based closed interval).
         j_germline_start:
             type: integer
             description: >
-                Alignment start position in the J reference sequence (0-based, half-open interval).
+                Alignment start position in the J reference sequence (1-based closed interval).
         j_germline_end:
             type: integer
             description: >
-                Alignment end position in the J reference sequence (0-based, half-open interval).
+                Alignment end position in the J reference sequence (1-based closed interval).
         j_alignment_start:
             type: integer
             description: >
                 Start position of the J segment in the 'sequence_alignment' and 'germline_alignment' fields
-                (0-based, half-open interval).
+                (1-based closed interval).
         j_alignment_end:
             type: integer
             description: >
                 End position of the J segment in the 'sequence_alignment' and 'germline_alignment' fields
-                (0-based, half-open interval).
+                (1-based closed interval).
         fwr1_start:
             type: integer
-            description: FWR1 start position in the query sequence (0-based, half-open interval).
+            description: FWR1 start position in the query sequence (1-based closed interval).
         fwr1_end:
             type: integer
-            description: FWR1 end position in the query sequence (0-based, half-open interval).
+            description: FWR1 end position in the query sequence (1-based closed interval).
         cdr1_start:
             type: integer
-            description: CDR1 start position in the query sequence (0-based, half-open interval).
+            description: CDR1 start position in the query sequence (1-based closed interval).
         cdr1_end:
             type: integer
-            description: CDR1 end position in the query sequence (0-based, half-open interval).
+            description: CDR1 end position in the query sequence (1-based closed interval).
         fwr2_start:
             type: integer
-            description: FWR2 start position in the query sequence (0-based, half-open interval).
+            description: FWR2 start position in the query sequence (1-based closed interval).
         fwr2_end:
             type: integer
-            description: FWR2 end position in the query sequence (0-based, half-open interval).
+            description: FWR2 end position in the query sequence (1-based closed interval).
         cdr2_start:
             type: integer
-            description: CDR2 start position in the query sequence (0-based, half-open interval).
+            description: CDR2 start position in the query sequence (1-based closed interval).
         cdr2_end:
             type: integer
-            description: CDR2 end position in the query sequence (0-based, half-open interval).
+            description: CDR2 end position in the query sequence (1-based closed interval).
         fwr3_start:
             type: integer
-            description: FWR3 start position in the query sequence (0-based, half-open interval).
+            description: FWR3 start position in the query sequence (1-based closed interval).
         fwr3_end:
             type: integer
-            description: FWR3 end position in the query sequence (0-based, half-open interval).
+            description: FWR3 end position in the query sequence (1-based closed interval).
         cdr3_start:
             type: integer
-            description: CDR3 start position in the query sequence (0-based, half-open interval).
+            description: CDR3 start position in the query sequence (1-based closed interval).
         cdr3_end:
             type: integer
-            description: CDR3 end position in the query sequence (0-based, half-open interval).
+            description: CDR3 end position in the query sequence (1-based closed interval).
         fwr4_start:
             type: integer
-            description: FWR3 start position in the query sequence (0-based, half-open interval).
+            description: FWR3 start position in the query sequence (1-based closed interval).
         fwr4_end:
             type: integer
-            description: FWR4 end position in the query sequence (0-based, half-open interval).
+            description: FWR4 end position in the query sequence (1-based closed interval).
         v_sequence_alignment:
             type: string
             description: >

@@ -30,6 +30,6 @@ exclude them.
     {%- for field, fieldprops in airr_schema.Rearrangement.properties.items() %}
     * - ``{{ field }}``
       - ``{{ fieldprops.type }}``
-      - {{ '*required*' if field in airr_schema.Rearrangement.required else '' }}
+      - {{ '**required**' if field in airr_schema.Rearrangement.required else 'optional' }}
       - {{ fieldprops.description | trim }}
     {%- endfor %}

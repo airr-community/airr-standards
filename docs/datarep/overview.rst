@@ -26,10 +26,11 @@ names is always required.
 
 **Coordinate numbering**
 
-To minimize ambiguity of locations/annotations, all sequence coordinates use
-Python-style semantics for locations and intervals. This means 0-indexed coords
-with half-open intervals.  See `this example <https://stackoverflow.com/a/509297/510187>`__
-for additional clarity.
+All alignment sequence coordinates use the same scheme as IMGT and INSDC
+(DDBJ, ENA, GenBank), with the exception that partial coordinate information
+should not be used in favor of simply assigning the start/end of the alignment.
+Meaning, coordinates should be provided as 1-based values with closed intervals,
+without the use of ``>`` or ``<`` annotation that denoted a partial region.
 
 **Boolean values**
 

@@ -24,6 +24,6 @@ considered final.
     {%- for field, fieldprops in airr_schema.Alignment.properties.items() %}
     * - ``{{ field }}``
       - ``{{ fieldprops.type }}``
-      - {{ '*required*' if field in airr_schema.Alignment.required else '' }}
+      - {{ '**required**' if field in airr_schema.Alignment.required else 'optional' }}
       - {{ fieldprops.description | trim }}
     {%- endfor %}
