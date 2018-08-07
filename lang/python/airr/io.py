@@ -75,7 +75,6 @@ class RearrangementReader:
         try:
             row = next(self.dict_reader)
         except StopIteration:
-            self.handle.close()
             raise StopIteration
 
         for f in row.keys():
@@ -85,6 +84,12 @@ class RearrangementReader:
             if spec == 'number':  row[f] = self.schema.to_float(row[f])
 
         return row
+
+    def close(self):
+        """
+        Closes the Rearrangement file
+        """
+        self.handle.close()
 
     def next(self):
         """
@@ -199,8 +204,8 @@ class RearrangementWriter:
             field_names.extend(additional_fields)
 
         # open writer and write header
-        self.dict_writer = csv.DictWriter(self.handle, fieldnames=field_names,
-                                          dialect='excel-tab', extrasaction='ignore')
+        self.dict_writer = csv.DictWriter(self.handle, fieldnames=field_names, dialect='excel-tab',
+                                          extrasaction='ignore', lineterminator='\n')
         self.dict_writer.writeheader()
 
     def close(self):
