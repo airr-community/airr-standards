@@ -62,7 +62,8 @@ From your Workspace in CEDAR, select your metadata instance. You should now be a
 
 **Cite MiAIRR Pipeline**
 
-Musen, M. A., Bean, C. A., Cheung, K.-H., Dumontier, M., Durante, K. A., Gevaert, O., … and the CEDAR team. (2015). The center for expanded data annotation and retrieval. Journal of the American Medical Informatics Association : JAMIA, 22(6), 1148–1152. http://doi.org/10.1093/jamia/ocv048
+Bukhari, Syed Ahmad Chan, Martin J. O'Connor, Marcos Martínez-Romero, Attila L. Egyedi, Debra Debra Willrett, John Graybeal, Mark A. Musen, Florian Rubelt, Kei H. Cheung, and Steven H. Kleinstein. "The CAIRR pipeline for submitting standards-compliant B and T cell receptor repertoire sequencing studies to the NCBI." Frontiers in Immunology 9 (2018): 1877. (now in press)
+
 
 **Tell Us About It**
 
