@@ -2,15 +2,15 @@
 Interface functions for file operations
 """
 # System imports
+import sys
 import pandas as pd
 from collections import OrderedDict
 from itertools import chain
 
 # Load imports
-from airr.io import RearrangementReader, RearrangementWriter
+from airr.io import RearrangementReader, RearrangementWriter, ValidationException
 
-
-def read_rearrangement(handle, debug=False):
+def read_rearrangement(handle, debug=False, validate=False):
     """
     Open an iterator to read an AIRR rearrangements file
 
@@ -156,8 +156,27 @@ def validate_rearrangement(airr_handles, debug=False):
     """
     valid = True
     for handle in airr_handles:
-        print('Validating: %s' % handle.name)
-        reader = RearrangementReader(handle)
-        valid &= reader.validate()
+        if debug:
+            sys.stderr.write('Validating: %s\n' % handle.name)
+
+        # validates header
+        try:
+            reader = RearrangementReader(handle, validate=True)
+        except ValidationException as err:
+            valid = False
+            if debug:
+                sys.stderr.write(handle.name + ' has validation error: ' + str(err) + '\n')
+            continue
+
+        # validates rows
+        row_num = 1
+        try:
+            for r in reader:
+                row_num += 1
+        except ValidationException as err:
+            valid = False
+            if debug:
+                sys.stderr.write(handle.name + ' at row ' + str(row_num) + ' has validation error: ' + str(err) + '\n')
+            continue
 
     return valid

@@ -52,7 +52,7 @@ def merge_cmd(out_file, airr_files, drop=False, debug=False):
 
 # internal wrapper function to convert filenames into handles
 # before calling validate interface method
-def validate_cmd(airr_files, debug=False):
+def validate_cmd(airr_files, debug=True):
     """
     Validates one or more AIRR rearrangements files
 
@@ -66,8 +66,8 @@ def validate_cmd(airr_files, debug=False):
     try:
         airr_handles = [open(f, 'r') for f in airr_files]
         return airr.interface.validate_rearrangement(airr_handles, debug=debug)
-    except:
-        sys.stderr.write('Error occurred while validating AIRR rearrangement files.\n')
+    except Exception as err:
+        sys.stderr.write('Error occurred while validating AIRR rearrangement files: ' + str(err) + '\n')
         return False
 
 def define_args():
