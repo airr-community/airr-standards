@@ -30,7 +30,9 @@ matrix:
         - python -m unittest discover
     - language: r
       r:
+        - oldrel
         - release
+        - devel
       cache: packages
       before_install:
         - cd lang/R

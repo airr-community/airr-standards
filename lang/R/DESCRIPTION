@@ -30,3 +30,4 @@ Suggests:
     knitr,
     rmarkdown,
     testthat
+RoxygenNote: 6.1.0
