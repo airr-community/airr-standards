@@ -6,6 +6,11 @@ import sys
 import csv
 from airr.schema import RearrangementSchema
 
+class ValidationException(Exception):
+    """
+    Exception raised when validation errors are encountered.
+    """
+    pass
 
 class RearrangementReader:
     """
@@ -37,13 +42,17 @@ class RearrangementReader:
         return [f for f in self.dict_reader.fieldnames \
                 if f not in self.schema.properties]
 
-    def __init__(self, handle, debug=False):
+    def __init__(self, handle, debug=False, validate=False):
         """
         Initialization
 
         Arguments:
           handle (file): file handle of the open Rearrangement file.
           debug (bool): debug state. If True prints debug information.
+          validate (bool): perform validation. If True then basic validation will be
+                           performed will reading the data, and ValidationException
+                           will be raised if an error is found. Validation can be manually
+                           performed with the validate_header and validate_row functions.
 
         Returns:
           airr.io.RearrangementReader : reader object.
@@ -51,10 +60,14 @@ class RearrangementReader:
         # arguments
         self.handle = handle
         self.debug = debug
+        self.validate = validate
         self.schema = RearrangementSchema
 
         # data reader, collect field names
         self.dict_reader = csv.DictReader(self.handle, dialect='excel-tab')
+
+        if (self.validate):
+            self.validate_header()
 
     def __iter__(self):
         """
@@ -76,6 +89,9 @@ class RearrangementReader:
             row = next(self.dict_reader)
         except StopIteration:
             raise StopIteration
+
+        if (self.validate):
+            self.validate_row(row)
 
         for f in row.keys():
             spec = self.schema.type(f)
@@ -100,48 +116,46 @@ class RearrangementReader:
         """
         return self.__next__()
 
-    def validate(self):
+    def validate_header(self):
         """
-        Validate Rearrangements data.
+        Validate Rearrangements header data against schema
 
-        Returns:
-          bool: True if passes validation, otherwise False.
+        :raises: ValidationException
         """
-        valid = True
         # check required fields
+        valid = True
+        missing_fields = []
         required_fields = list(self.schema.required)
         for f in required_fields:
             if f not in self.fields:
-                sys.stderr.write('Warning: File is missing AIRR mandatory field (' + f + ').\n')
                 valid = False
+                missing_fields.append(f)
 
-        # check row values
-        row_num = 1
-        seq_ids = {}
-        for row in self:
-            # check sequence_id uniqueness
-            # TODO: should empty sequence_id be an error? If they are required to be unique, then yes I think...
-            if row.get('sequence_id') is None:
-                sys.stderr.write('Warning: sequence_id is empty for row # ' + str(row_num) + '.\n')
-            elif len(row['sequence_id']) == 0 is None:
-                sys.stderr.write('Warning: sequence_id is empty for row # ' + str(row_num) + '.\n')
-            elif seq_ids.get(row['sequence_id']) is not None:
-                sys.stderr.write('Warning: sequence_id (' + row['sequence_id'] + ') is not unique in file.\n')
-                valid = False
-            seq_ids[row['sequence_id']] = 1
+        if not valid:
+            raise ValidationException('File is missing AIRR mandatory fields (' + ','.join(missing_fields) + ').')
 
-            # check productive flag
-            if 'productive' in self.fields:
-                if row['productive'] is None:
-                    sys.stderr.write('Warning: productive is not boolean for row # ' + str(row_num) + '.\n')
+    def validate_row(self, row):
+        """
+        Validate Rearrangements row data against schema
 
-            # check rev_comp flag
-            if 'rev_comp' in self.fields:
-                if row['rev_comp'] is None:
-                    sys.stderr.write('Warning: rev_comp is not boolean for row # ' + str(row_num) + '.\n')
+        :raises: ValidationException
+        """
+        for f in row.keys():
+            # empty strings are valid
+            if type(row[f]) == type('') and len(row[f]) == 0:
+                continue
 
-        return valid
-
+            # check types
+            spec = self.schema.type(f)
+            if spec == 'boolean':
+                if self.schema.to_bool(row[f]) is None:
+                    raise ValidationException(f + ' is not boolean value')
+            if spec == 'integer':
+                if self.schema.to_int(row[f]) is None:
+                    raise ValidationException(f + ' is not integer value')
+            if spec == 'number':
+                if self.schema.to_float(row[f]) is None:
+                    raise ValidationException(f + ' is not float value fdas')
 
 class RearrangementWriter:
     """
