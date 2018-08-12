@@ -81,6 +81,11 @@ in a rearrangements file (in the header).  Note, however, that all columns allow
 that are always present in the table structure, but do not mandate that a value
 be reported.
 
+**Custom columns**
+
+There are no restrictions on inclusion of additional custom columns in the
+rearrangments file, provided such columns do not use the same name as an
+existing required or optional field.
 
 **Ordering**
 
