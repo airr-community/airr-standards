@@ -6,9 +6,9 @@ Rearrangement Schema
 See the :ref:`format overview <DataRepresentations>` for details on how
 to structure this data.
 
-**"Junction" versus "CDR3"**
+**Junction versus CDR3**
 
-We work with the IMGT definitions of the junction/CDR3 regions.  Specifically,
+We work with the IMGT definitions of the junction and CDR3 regions.  Specifically,
 the IMGT ``JUNCTION`` includes the conserved cysteine and tryptophan/phenylalanine
 residues, while ``CDR3`` excludes those two residues. Therefore, our ``junction``
 and ``junction_aa`` fields which represent the extracted sequence include the two
