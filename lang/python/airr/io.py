@@ -42,12 +42,16 @@ class RearrangementReader:
         return [f for f in self.dict_reader.fieldnames \
                 if f not in self.schema.properties]
 
-    def __init__(self, handle, debug=False, validate=False):
+    def __init__(self, handle, base=1, debug=False, validate=False):
         """
         Initialization
 
         Arguments:
           handle (file): file handle of the open Rearrangement file.
+          base (int): one of 0 or 1 specifying the coordinate schema in the input file.
+                      If 1, then the file is assumed to contain 1-based closed intervals
+                      that will be converted to python style 0-based half-open intervals
+                      for known fields. If 0, then values will be unchanged.
           debug (bool): debug state. If True prints debug information.
           validate (bool): perform validation. If True then basic validation will be
                            performed will reading the data, and ValidationException
@@ -55,10 +59,11 @@ class RearrangementReader:
                            performed with the validate_header and validate_row functions.
 
         Returns:
-          airr.io.RearrangementReader : reader object.
+          airr.io.RearrangementReader: reader object.
         """
         # arguments
         self.handle = handle
+        self.base = base
         self.debug = debug
         self.validate = validate
         self.schema = RearrangementSchema
@@ -94,10 +99,14 @@ class RearrangementReader:
             self.validate_row(row)
 
         for f in row.keys():
+            # Convert types
             spec = self.schema.type(f)
             if spec == 'boolean':  row[f] = self.schema.to_bool(row[f])
             if spec == 'integer':  row[f] = self.schema.to_int(row[f])
             if spec == 'number':  row[f] = self.schema.to_float(row[f])
+            # Adjust coordinates
+            if f.endswith('_start') and self.base == 1:
+                row[f] = row[f] - 1
 
         return row
 
@@ -106,15 +115,6 @@ class RearrangementReader:
         Closes the Rearrangement file
         """
         self.handle.close()
-
-    def next(self):
-        """
-        Next method
-
-        Returns:
-          dict: parsed Rearrangement data.
-        """
-        return self.__next__()
 
     def validate_header(self):
         """
@@ -157,6 +157,7 @@ class RearrangementReader:
                 if self.schema.to_float(row[f]) is None:
                     raise ValidationException(f + ' is not float value fdas')
 
+
 class RearrangementWriter:
     """
     Writer class for Rearrangement objects in TSV format
@@ -187,20 +188,25 @@ class RearrangementWriter:
         return [f for f in self.dict_writer.fieldnames \
                 if f not in self.schema.properties]
 
-    def __init__(self, handle, fields=None, debug=False):
+    def __init__(self, handle, fields=None, base=1, debug=False):
         """
         Initialization
 
         Arguments:
           handle (file): file handle of the open Rearrangements file.
           fields (list) : list of non-required fields to add. May include fields undefined by the schema.
+          base (int): one of 0 or 1 specifying the coordinate schema in the output file.
+                      Data provided to the write is assumed to be in python style 0-based
+                      half-open intervals. If 1, then data will be converted to 1-based
+                      closed intervals for known fields before writing. If 0, then values will be unchanged.
           debug (bool): debug state. If True prints debug information.
 
         Returns:
-          airr.io.RearrangementWriter : writer object.
+          airr.io.RearrangementWriter: writer object.
         """
         # arguments
         self.handle = handle
+        self.base = base
         self.debug = debug
         self.schema = RearrangementSchema
 
@@ -242,6 +248,10 @@ class RearrangementWriter:
                     sys.stderr.write('Warning: Record is missing AIRR required field (' + field + ').\n')
 
         for f in row.keys():
+            # Adjust coordinates
+            if f.endswith('_start') and self.base == 1:
+                row[f] = row[f] + 1
+            # Convert types
             spec = self.schema.type(f)
             if spec == 'boolean':  row[f] = self.schema.from_bool(row[f])
 
