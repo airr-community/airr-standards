@@ -3,13 +3,17 @@
 Data Representations
 ====================
 
-.. toctree::
-   :maxdepth: 3
-   :caption: Schema
+Field Definitions
+--------------------
 
-   Rearrangements Schema <rearrangements>
+.. toctree::
+   :maxdepth: 2
+
+   Rearrangement Schema <rearrangements>
    Alignment Schema (Experimental) <alignments>
 
+Format Specification
+--------------------
 
 Data for ``Rearrangement`` or ``Alignment`` objects are stored as rows in a
 *tab-delimited* file and should be compatible with any TSV reader.

@@ -108,6 +108,7 @@ htmlhelp_basename = 'airr-standardsdoc'
 html_theme = 'alabaster'
 html_theme_options = {'github_user': 'airr-community',
                       'github_repo': 'airr-standards',
+                      'github_button': True,
                       'sidebar_includehidden': True,
                       'extra_nav_links': {'AIRR Community': 'http://airr-community.org'}}
 html_sidebars = {'**': ['about.html',

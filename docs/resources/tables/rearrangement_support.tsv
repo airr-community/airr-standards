@@ -1,0 +1,16 @@
+Software	Version	Support
+AIRR Python Library	1.1	Input, output and validation
+AIRR R Library	1.1	Input, output and validation
+`IgBLAST <https://www.ncbi.nlm.nih.gov/igblast>`_	1.9	Output
+`IGoR <https://github.com/qmarcou/IGoR>`_	TBD	Input
+`Immcantation:Change-O <https://changeo.readthedocs.io>`_	0.4.1	Input, output and conversion
+`ImmuneDB <https://github.com/zsethna/OLGA>`_	0.24.0	Output
+`iReceptor <http://ireceptor.irmacs.sfu.ca>`_	2.0	Input, oOutput and conversion
+`MiXCR <https://milaboratory.com/software/mixcr>`_	2.2.1	Output
+`OLGA <https://github.com/zsethna/OLGA>`_	TBD	Input
+`Partis <https://github.com/psathyrella/partis>`_	TBD	Output
+`SONAR <https://github.com/scharch/SONAR>`_	3.0	Output
+`TRIgS <https://github.com/williamdlees/TRIgS>`_	2	Input
+`VDJServer <https://vdjserver.org>`_	1.2.0	Input and output
+`Vidjil-algo <http://www.vidjil.org>`_	2018.10	Output
+`Vidjil Web Platform <http://www.vidjil.org>`_	TBD	Input and conversion
