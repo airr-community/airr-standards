@@ -165,7 +165,7 @@ def validate_rearrangement(airr_handles, debug=False):
         except ValidationException as err:
             valid = False
             if debug:
-                sys.stderr.write(handle.name + ' has validation error: ' + str(err) + '\n')
+                sys.stderr.write('%s has validation error: %s\n' % (handle.name, err))
             continue
 
         # validates rows
@@ -176,7 +176,7 @@ def validate_rearrangement(airr_handles, debug=False):
         except ValidationException as err:
             valid = False
             if debug:
-                sys.stderr.write(handle.name + ' at row ' + str(row_num) + ' has validation error: ' + str(err) + '\n')
+                sys.stderr.write('%s at row %i has validation error: %s\n' % (handle.name, row_num, err))
             continue
 
     return valid

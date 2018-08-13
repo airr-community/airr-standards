@@ -126,7 +126,8 @@ class RearrangementReader:
         """
         Validate Rearrangements header data against schema
 
-        :raises: ValidationException
+        Raises:
+          ValidationException: raised if header fails validation.
         """
         # check required fields
         valid = True
@@ -138,13 +139,17 @@ class RearrangementReader:
                 missing_fields.append(f)
 
         if not valid:
-            raise ValidationException('File is missing AIRR mandatory fields (' + ','.join(missing_fields) + ').')
+            raise ValidationException('File is missing AIRR required fields (' + ','.join(missing_fields) + ').')
 
     def validate_row(self, row):
         """
         Validate Rearrangements row data against schema
 
-        :raises: ValidationException
+        Arguments:
+          row (dict): dictionary containing a single record.
+
+        Raises:
+          ValidationException: raised if row fails validation.
         """
         for f in row.keys():
             # empty strings are valid
@@ -155,13 +160,13 @@ class RearrangementReader:
             spec = self.schema.type(f)
             if spec == 'boolean':
                 if self.schema.to_bool(row[f]) is None:
-                    raise ValidationException(f + ' is not boolean value')
+                    raise ValidationException(f + ' is not a boolean value')
             if spec == 'integer':
                 if self.schema.to_int(row[f]) is None:
-                    raise ValidationException(f + ' is not integer value')
+                    raise ValidationException(f + ' is not an integer value')
             if spec == 'number':
                 if self.schema.to_float(row[f]) is None:
-                    raise ValidationException(f + ' is not float value fdas')
+                    raise ValidationException(f + ' is not a float value')
 
 
 class RearrangementWriter:
