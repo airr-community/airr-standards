@@ -1,5 +1,5 @@
 ---
-title: 'AIRR Standards Library Usage Vignette'
+title: 'AIRR Data Representation Reference Library Usage'
 author: "The AIRR Community"
 date: '`r Sys.Date()`'
 output:
@@ -41,8 +41,8 @@ Receptor Repertoire (AIRR) Community](http://airr-community.org) formed in
 2015 to address this challenge (Breden et al, 2017) and has stablished the set of 
 minimal metadata elements (MiAIRR) required for describing published AIRR 
 datasets (Rubelt et al, 2017) as well as file formats to represent this data in a 
-machine-readable form. The `airr` R package provides to read, write an validate data 
-following the AIRR Data Representation standards. This vignette provides a set of 
+machine-readable form. The `airr` R package provide read, write and validation of data 
+following the AIRR Data Representation schemas. This vignette provides a set of 
 simple use examples.
 
 ### AIRR Data Representation Standards
@@ -56,34 +56,35 @@ art of AIRR sequencing and data analysis will be able to reproduce the
 experiment and data analyses that were performed.
 
 Following this principles, V(D)J reference alignment annotations are 
-saved in standard tab-delimited format files (TSV) with associated metadata 
+saved in standard tab-delimited files (TSV) with associated metadata 
 provided in accompanying YAML formatted files. The column names 
-and field names in these files have been defined by the AIRR Community using 
-a controlled vocabulary of standardized terms and types to refer to each piece of 
-information.
+and field names in these files have been defined by the 
+AIRR Data Representation Working Group using a controlled vocabulary of 
+standardized terms and types to refer to each piece of information.
 
 ## Reading AIRR formatted files
 
 The `airr` package contains the function `read_rearrangement` to read and validate
-files containing Rearrangement records in the AIRR Data Representation standards,
-where a Rearrangement record describes the collection of optimal annotations on a
-single sequence that has undergone V(D)J reference alignment. 
+files containing AIRR Rearrangement records, where a Rearrangement record describes 
+the collection of optimal annotations on a single sequence that has undergone V(D)J reference alignment. 
 The usage is straightforward, as the file format is a typical tabulated file. 
 The argument that needs attention is `base`, with possible values `"0"` and `"1"`. 
 `base` denotes the starting index for positional fields in the input file. 
 Positional fields are those that contain alignment coordinates and names 
-ending in "_start" and "_end". If the input file is using 0-based coordinates 
-with half-open intervals (python style), as defined by the standard, then 
-positional fields will be converted to 1-based closed 
-intervals (R style) using the default setting of `base="0"`. 
-If `base="1"` is specified, then positional fields will not be modified.
+ending in "_start" and "_end". If the input file is using 1-based closed 
+intervals (R style), as defined by the standard, then positional fields will 
+not be modified under the default setting of `base="1"`. If the input file is using 
+0-based coordinates with half-open intervals (python style), then 
+positional fields may be converted to 1-based closed 
+intervals using the argument `base="0"`.
+
 
 ```{r read_rearrangement, message=FALSE}
 library(airr)
 
 example_data <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
 basename(example_data)
-airr_rearrangement <- read_rearrangement(example_data, base="0")
+airr_rearrangement <- read_rearrangement(example_data)
 class(airr_rearrangement)
 head(airr_rearrangement)
 ```
@@ -95,7 +96,7 @@ Rearrangement records to the AIRR TSV format.
 
 ```{r write_rearrangement}
 out_file <- file.path(tempdir(), "airr_out.tsv")
-write_rearrangement(airr_rearrangement, out_file, base="0")
+write_rearrangement(airr_rearrangement, out_file)
 ```
 
 ## References
