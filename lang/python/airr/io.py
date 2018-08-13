@@ -116,6 +116,12 @@ class RearrangementReader:
         """
         self.handle.close()
 
+    def next(self):
+        """
+        Next method
+        """
+        self.__next__()
+
     def validate_header(self):
         """
         Validate Rearrangements header data against schema
