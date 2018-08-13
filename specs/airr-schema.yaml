@@ -373,6 +373,9 @@ SoftwareProcessing:
             type: string
             description: General description of how QC is performed
             x-miairr: true
+        analysis_provenance_id:
+            type: string
+            description: Identifier for machine-readable PROV model of analysis provenance
 
 
 # The composite schema for the repertoire object
@@ -399,6 +402,10 @@ Repertoire:
                     - $ref: '#/CellProcessing'
                     - $ref: '#/NucleicAcidProcessing'
                     - $ref: '#/SequencingRun'
+        sequence_annotation:
+            type: array
+            items:
+                - $ref: '#/RearrangementSet'
 
 
 # 1-to-n relationship between a repertoire and rearrangement sets
@@ -412,9 +419,6 @@ RearrangementSet:
         rearrangement_set_id:
             type: string
             description: Identifier for the rearrangement set object.
-        repertoire_id:
-            type: string
-            description: Link to the repertoire that was processed to produce rearrangment set
         software:
             $ref: '#/SoftwareProcessing'
 
