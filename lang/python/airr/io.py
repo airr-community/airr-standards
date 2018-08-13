@@ -120,7 +120,7 @@ class RearrangementReader:
         """
         Next method
         """
-        self.__next__()
+        return self.__next__()
 
     def validate_header(self):
         """
