@@ -164,7 +164,7 @@ def validate_rearrangement(airr_handles, debug=False):
         if debug:
             sys.stderr.write('Validating: %s\n' % handle.name)
 
-        # Open reder
+        # Open reader
         reader = RearrangementReader(handle, validate=True)
 
         # Validate header
