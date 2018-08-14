@@ -4,7 +4,7 @@ Reference library for AIRR schema for Ig/TCR rearrangements
 from __future__ import print_function
 import sys
 import csv
-from airr.schema import RearrangementSchema
+from airr.schema import RearrangementSchema,ValidationError
 
 
 class RearrangementReader:
@@ -37,7 +37,7 @@ class RearrangementReader:
         return [f for f in self.dict_reader.fieldnames \
                 if f not in self.schema.properties]
 
-    def __init__(self, handle, base=1, debug=False, validate=False):
+    def __init__(self, handle, base=1, validate=False, debug=False):
         """
         Initialization
 
@@ -47,11 +47,10 @@ class RearrangementReader:
                       If 1, then the file is assumed to contain 1-based closed intervals
                       that will be converted to python style 0-based half-open intervals
                       for known fields. If 0, then values will be unchanged.
-          debug (bool): debug state. If True prints debug information.
           validate (bool): perform validation. If True then basic validation will be
-                           performed will reading the data, and ValidationException
-                           will be raised if an error is found. Validation can be manually
-                           performed with the validate_header and validate_row functions.
+                           performed will reading the data. A ValidationError exception
+                           will be raised if an error is found.
+          debug (bool): debug state. If True prints debug information.
 
         Returns:
           airr.io.RearrangementReader: reader object.
@@ -66,9 +65,6 @@ class RearrangementReader:
         # data reader, collect field names
         self.dict_reader = csv.DictReader(self.handle, dialect='excel-tab')
 
-        if (self.validate):
-            self.schema.validate_header(self.dict_reader.fieldnames)
-
     def __iter__(self):
         """
         Iterator initializer
@@ -76,6 +72,10 @@ class RearrangementReader:
         Returns:
           airr.io.RearrangementReader
         """
+        # Validate fields
+        if (self.validate):
+            self.schema.validate_header(self.dict_reader.fieldnames)
+
         return self
 
     def __next__(self):
@@ -93,15 +93,19 @@ class RearrangementReader:
         for f in row:
             # Convert types
             spec = self.schema.type(f)
-            if spec == 'boolean':  row[f] = self.schema.to_bool(row[f])
-            if spec == 'integer':  row[f] = self.schema.to_int(row[f])
-            if spec == 'number':  row[f] = self.schema.to_float(row[f])
+            if spec == 'boolean':
+                row[f] = self.schema.to_bool(row[f], validate=self.validate)
+            if spec == 'integer':
+                row[f] = self.schema.to_int(row[f], validate=self.validate)
+            if spec == 'number':
+                row[f] = self.schema.to_float(row[f], validate=self.validate)
+
             # Adjust coordinates
             if f.endswith('_start') and self.base == 1:
-                row[f] = row[f] - 1
-
-        if (self.validate):
-            self.schema.validate_row(row)
+                try:
+                    row[f] = row[f] - 1
+                except TypeError:
+                    row[f] = None
 
         return row
 
@@ -210,7 +214,11 @@ class RearrangementWriter:
         for f in row.keys():
             # Adjust coordinates
             if f.endswith('_start') and self.base == 1:
-                row[f] = row[f] + 1
+                try:
+                    row[f] = row[f] + 1
+                except TypeError:
+                    row[f] = None
+
             # Convert types
             spec = self.schema.type(f)
             if spec == 'boolean':  row[f] = self.schema.from_bool(row[f])

@@ -9,7 +9,7 @@ import yamlordereddictloader
 from pkg_resources import resource_stream
 
 
-class ValidationException(Exception):
+class ValidationError(Exception):
     """
     Exception raised when validation errors are encountered.
     """
@@ -102,67 +102,109 @@ class Schema:
     #
     #     return type_mapping
 
-    @staticmethod
-    def to_bool(value):
+    def to_bool(self, value, validate=False):
         """
         Convert a string to a boolean
 
         Arguments:
           value (str): logical value as a string.
+          validate (bool): when True raise a ValidationError for an invalid value.
+                           Otherwise, set invalid values to None.
 
         Returns:
           bool: conversion of the string to True or False.
-        """
-        return Schema._to_bool_map.get(value, None)
 
-    @staticmethod
-    def from_bool(value):
+        Raises:
+          airr.ValidationError: raised if value is invalid when validate is set True.
+        """
+        if value == '' or value is None:
+            return None
+
+        bool_value = self._to_bool_map.get(value, None)
+        if bool_value is None and validate:
+            raise ValidationError('%s is not a bool value' % value)
+        else:
+            return bool_value
+
+    def from_bool(self, value, validate=False):
         """
         Converts a boolean to a string
 
         Arguments:
           value (bool): logical value.
+          validate (bool): when True raise a ValidationError for an invalid value.
+                           Otherwise, set invalid values to None.
 
         Returns:
           str: conversion of True or False or 'T' or 'F'.
-        """
-        return Schema._from_bool_map.get(value, None)
 
-    @staticmethod
-    def to_int(value):
+        Raises:
+          airr.ValidationError: raised if value is invalid when validate is set True.
+        """
+        if value == '' or value is None:
+            return ''
+
+        str_value = self._from_bool_map.get(value, None)
+        if str_value is None and validate:
+            raise ValidationError('%s is not a bool value' % value)
+        else:
+            return str_value
+
+    def to_int(self, value, validate=False):
         """
         Converts a string to an integer
 
         Arguments:
           value (str): integer value as a string.
+          validate (bool): when True raise a ValidationError for an invalid value.
+                           Otherwise, set invalid values to None.
 
         Returns:
           int: conversion of the string to an integer.
+
+        Raises:
+          airr.ValidationError: raised if value is invalid when validate is set True.
         """
-        if type(value) is int:
+        if value == '' or value is None:
+            return None
+        if isinstance(value, int):
             return value
+
         try:
             return int(value)
         except ValueError:
-            return None
+            if validate:
+                raise ValidationError('%s is not an int value' % value)
+            else:
+                return None
 
-    @staticmethod
-    def to_float(value):
+    def to_float(self, value, validate=False):
         """
         Converts a string to a float
 
         Arguments:
           value (str): float value as a string.
+          validate (bool): when True raise a ValidationError for an invalid value.
+                           Otherwise, set invalid values to None.
 
         Returns:
           float: conversion of the string to a float.
+
+        Raises:
+          airr.ValidationError: raised if value is invalid when validate is set True.
         """
-        if type(value) is float:
+        if value == '' or value is None:
+            return None
+        if isinstance(value, float):
             return value
+
         try:
             return float(value)
         except ValueError:
-            return None
+            if validate:
+                raise ValidationError('%s is not a float value' % value)
+            else:
+                return None
 
     def validate_header(self, header):
         """
@@ -172,16 +214,16 @@ class Schema:
           header (list): list of header fields.
 
         Returns:
-          bool: True if a ValidationException exception is not raised.
+          bool: True if a ValidationError exception is not raised.
 
         Raises:
-          airr.ValidationException: raised if header fails validation.
+          airr.ValidationError: raised if header fails validation.
         """
         # Check required fields
         missing_fields = [f for f in self.required if f not in header]
 
         if missing_fields:
-            raise ValidationException('File is missing AIRR required fields (%s).' % ','.join(missing_fields))
+            raise ValidationError('File is missing AIRR required fields (%s).' % ','.join(missing_fields))
         else:
             return True
 
@@ -193,24 +235,24 @@ class Schema:
           row (dict): dictionary containing a single record.
 
         Returns:
-          bool: True if a ValidationException exception is not raised.
+          bool: True if a ValidationError exception is not raised.
 
         Raises:
-          ValidationException: raised if row fails validation.
+          airr.ValidationError: raised if row fails validation.
         """
         for f in row:
-            # empty strings are valid
+            # Empty strings are valid
             if row[f] == '' or row[f] is None:
                 continue
 
-            # check types
+            # Check types
             spec = self.type(f)
-            if spec == 'boolean' and not isinstance(row[f], bool):
-                raise ValidationException(f + ' is not a boolean value')
-            if spec == 'integer' and not isinstance(row[f], int):
-                raise ValidationException(f + ' is not an integer value')
-            if spec == 'number' and not isinstance(row[f], float):
-                raise ValidationException(f + ' is not a float value')
+            try:
+                if spec == 'boolean':  self.to_bool(row[f], validate=True)
+                if spec == 'integer':  self.to_int(row[f], validate=True)
+                if spec == 'number':  self.to_float(row[f], validate=True)
+            except ValidationError as e:
+                raise ValidationError('%s in field %s' %(e, f))
 
         return True
 

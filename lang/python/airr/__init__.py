@@ -2,7 +2,7 @@
 Reference library for AIRR schema for Ig/TCR rearrangements
 """
 from airr.interface import *
-from airr.schema import ValidationException
+from airr.schema import ValidationError
 
 # versioneer-generated
 from ._version import get_versions

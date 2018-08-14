@@ -9,20 +9,22 @@ from itertools import chain
 
 # Load imports
 from airr.io import RearrangementReader, RearrangementWriter
-from airr.schema import RearrangementSchema, ValidationException
+from airr.schema import ValidationError, RearrangementSchema
 
-def read_rearrangement(handle, debug=False, validate=False):
+def read_rearrangement(handle, validate=False, debug=False):
     """
     Open an iterator to read an AIRR rearrangements file
 
     Arguments:
       handle (file): input file handle.
+      validate (bool): whether to validate data as it is read, raising a ValidationError
+                       exception in the event of an error.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       airr.io.RearrangementReader: iterable reader class.
     """
-    return RearrangementReader(handle, debug=debug)
+    return RearrangementReader(handle, validate=validate, debug=debug)
 
 
 def create_rearrangement(handle, fields=None, debug=False):
@@ -61,12 +63,14 @@ def derive_rearrangement(out_handle, in_handle, fields=None, debug=False):
     return RearrangementWriter(out_handle, fields=in_fields, debug=debug)
 
 
-def load_rearrangement(handle, debug=False):
+def load_rearrangement(handle, validate=False, debug=False):
     """
     Load the contents of an AIRR rearrangements file into a data frame
 
     Arguments:
       handle (file): input file handle.
+      validate (bool): whether to validate data as it is read, raising a ValidationError
+                       exception in the event of an error.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
@@ -79,7 +83,7 @@ def load_rearrangement(handle, debug=False):
     #                  false_values=schema.true_values)
     # return df
 
-    reader = RearrangementReader(handle, debug=debug)
+    reader = RearrangementReader(handle, validate=validate, debug=debug)
     return pd.DataFrame(list(reader))
 
 
@@ -160,25 +164,28 @@ def validate_rearrangement(airr_handles, debug=False):
         if debug:
             sys.stderr.write('Validating: %s\n' % handle.name)
 
-        # Open reader without validation
-        reader = RearrangementReader(handle)
+        # Open reder
+        reader = RearrangementReader(handle, validate=True)
 
         # Validate header
         try:
-            RearrangementSchema.validate_header(reader.fields)
-        except ValidationException as err:
+            iter(reader)
+        except ValidationError as e:
             valid = False
             if debug:
-                sys.stderr.write('%s has validation error: %s\n' % (handle.name, err))
+                sys.stderr.write('%s has validation error: %s\n' % (handle.name, e))
 
         # Validate each row
-        for i, r in enumerate(reader, start=1):
+        i = 0
+        while True:
             try:
-                RearrangementSchema.validate_row(r)
-            except ValidationException as err:
+                i = i + 1
+                next(reader)
+            except StopIteration:
+                break
+            except ValidationError as e:
                 valid = False
                 if debug:
-                    sys.stderr.write('%s at row %i has validation error: %s\n' % (handle.name, i, err))
-                continue
+                    sys.stderr.write('%s at record %i has validation error: %s\n' % (handle.name, i, e))
 
     return valid
