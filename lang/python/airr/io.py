@@ -6,11 +6,6 @@ import sys
 import csv
 from airr.schema import RearrangementSchema
 
-class ValidationException(Exception):
-    """
-    Exception raised when validation errors are encountered.
-    """
-    pass
 
 class RearrangementReader:
     """
@@ -72,7 +67,7 @@ class RearrangementReader:
         self.dict_reader = csv.DictReader(self.handle, dialect='excel-tab')
 
         if (self.validate):
-            self.validate_header()
+            self.schema.validate_header(self.dict_reader.fieldnames)
 
     def __iter__(self):
         """
@@ -95,10 +90,7 @@ class RearrangementReader:
         except StopIteration:
             raise StopIteration
 
-        if (self.validate):
-            self.validate_row(row)
-
-        for f in row.keys():
+        for f in row:
             # Convert types
             spec = self.schema.type(f)
             if spec == 'boolean':  row[f] = self.schema.to_bool(row[f])
@@ -107,6 +99,9 @@ class RearrangementReader:
             # Adjust coordinates
             if f.endswith('_start') and self.base == 1:
                 row[f] = row[f] - 1
+
+        if (self.validate):
+            self.schema.validate_row(row)
 
         return row
 
@@ -121,52 +116,6 @@ class RearrangementReader:
         Next method
         """
         return self.__next__()
-
-    def validate_header(self):
-        """
-        Validate Rearrangements header data against schema
-
-        Raises:
-          ValidationException: raised if header fails validation.
-        """
-        # check required fields
-        valid = True
-        missing_fields = []
-        required_fields = list(self.schema.required)
-        for f in required_fields:
-            if f not in self.fields:
-                valid = False
-                missing_fields.append(f)
-
-        if not valid:
-            raise ValidationException('File is missing AIRR required fields (' + ','.join(missing_fields) + ').')
-
-    def validate_row(self, row):
-        """
-        Validate Rearrangements row data against schema
-
-        Arguments:
-          row (dict): dictionary containing a single record.
-
-        Raises:
-          ValidationException: raised if row fails validation.
-        """
-        for f in row.keys():
-            # empty strings are valid
-            if type(row[f]) == type('') and len(row[f]) == 0:
-                continue
-
-            # check types
-            spec = self.schema.type(f)
-            if spec == 'boolean':
-                if self.schema.to_bool(row[f]) is None:
-                    raise ValidationException(f + ' is not a boolean value')
-            if spec == 'integer':
-                if self.schema.to_int(row[f]) is None:
-                    raise ValidationException(f + ' is not an integer value')
-            if spec == 'number':
-                if self.schema.to_float(row[f]) is None:
-                    raise ValidationException(f + ' is not a float value')
 
 
 class RearrangementWriter:

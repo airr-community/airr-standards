@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+# imports
 import airr
 
 # read a rearrangments file

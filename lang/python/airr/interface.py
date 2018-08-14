@@ -8,7 +8,8 @@ from collections import OrderedDict
 from itertools import chain
 
 # Load imports
-from airr.io import RearrangementReader, RearrangementWriter, ValidationException
+from airr.io import RearrangementReader, RearrangementWriter
+from airr.schema import RearrangementSchema, ValidationException
 
 def read_rearrangement(handle, debug=False, validate=False):
     """
@@ -159,24 +160,25 @@ def validate_rearrangement(airr_handles, debug=False):
         if debug:
             sys.stderr.write('Validating: %s\n' % handle.name)
 
-        # validates header
+        # Open reader without validation
+        reader = RearrangementReader(handle)
+
+        # Validate header
         try:
-            reader = RearrangementReader(handle, validate=True)
+            RearrangementSchema.validate_header(reader.fields)
         except ValidationException as err:
             valid = False
             if debug:
                 sys.stderr.write('%s has validation error: %s\n' % (handle.name, err))
-            continue
 
-        # validates rows
-        row_num = 1
-        try:
-            for r in reader:
-                row_num += 1
-        except ValidationException as err:
-            valid = False
-            if debug:
-                sys.stderr.write('%s at row %i has validation error: %s\n' % (handle.name, row_num, err))
-            continue
+        # Validate each row
+        for i, r in enumerate(reader, start=1):
+            try:
+                RearrangementSchema.validate_row(r)
+            except ValidationException as err:
+                valid = False
+                if debug:
+                    sys.stderr.write('%s at row %i has validation error: %s\n' % (handle.name, i, err))
+                continue
 
     return valid

@@ -9,6 +9,13 @@ import yamlordereddictloader
 from pkg_resources import resource_stream
 
 
+class ValidationException(Exception):
+    """
+    Exception raised when validation errors are encountered.
+    """
+    pass
+
+
 class Schema:
     """
     AIRR schema definitions
@@ -156,6 +163,57 @@ class Schema:
             return float(value)
         except ValueError:
             return None
+
+    def validate_header(self, header):
+        """
+        Validate header against the schema
+
+        Arguments:
+          header (list): list of header fields.
+
+        Returns:
+          bool: True if a ValidationException exception is not raised.
+
+        Raises:
+          airr.ValidationException: raised if header fails validation.
+        """
+        # Check required fields
+        missing_fields = [f for f in self.required if f not in header]
+
+        if missing_fields:
+            raise ValidationException('File is missing AIRR required fields (%s).' % ','.join(missing_fields))
+        else:
+            return True
+
+    def validate_row(self, row):
+        """
+        Validate Rearrangements row data against schema
+
+        Arguments:
+          row (dict): dictionary containing a single record.
+
+        Returns:
+          bool: True if a ValidationException exception is not raised.
+
+        Raises:
+          ValidationException: raised if row fails validation.
+        """
+        for f in row:
+            # empty strings are valid
+            if row[f] == '' or row[f] is None:
+                continue
+
+            # check types
+            spec = self.type(f)
+            if spec == 'boolean' and not isinstance(row[f], bool):
+                raise ValidationException(f + ' is not a boolean value')
+            if spec == 'integer' and not isinstance(row[f], int):
+                raise ValidationException(f + ' is not an integer value')
+            if spec == 'number' and not isinstance(row[f], float):
+                raise ValidationException(f + ' is not a float value')
+
+        return True
+
 
 # Preloaded schema
 AlignmentSchema = Schema('Alignment')
