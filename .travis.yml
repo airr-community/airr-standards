@@ -30,12 +30,14 @@ matrix:
         - python -m unittest discover
     - language: r
       r:
-        - release
+        - devel
       sudo: false
+      cache: packages
       apt_packages:
         - libxml2-dev
         - libssl-dev
       r_binary_packages:
+        - devtools
         - roxygen2
         - testthat
       before_install:
