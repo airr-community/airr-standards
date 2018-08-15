@@ -193,5 +193,5 @@ def validate_rearrangement(filename, debug=False):
 
     # Close
     handle.close()
-    
+
     return valid
