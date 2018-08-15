@@ -32,6 +32,7 @@ matrix:
       r:
         - release
       cache: packages
+      sudo: false
       apt_packages:
         - libxml2-dev
         - libssl-dev
