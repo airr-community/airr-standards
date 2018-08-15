@@ -31,6 +31,7 @@ matrix:
     - language: r
       sudo: false
       cache: packages
+      r_check_args: --as-cran
       addons:
         apt:
           packages:
@@ -42,4 +43,5 @@ matrix:
         - testthat
       before_install:
         - cd lang/R
+      before_script:
         - R -e 'devtools::document()'
