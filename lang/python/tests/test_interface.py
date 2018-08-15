@@ -36,29 +36,26 @@ class TestInferface(unittest.TestCase):
     # @unittest.skip('-> load(): skipped\n')
     def test_load(self):
         # Good data
-        with open(self.data_good, 'r') as handle:
-            result = airr.load_rearrangement(handle)
+        result = airr.load_rearrangement(self.data_good)
         self.assertTupleEqual(result.shape, self.shape_good, 'load(): good data failed')
 
         # Bad data
-        with open(self.data_bad, 'r') as handle:
-            result = airr.load_rearrangement(handle)
+        result = airr.load_rearrangement(self.data_bad)
         self.assertTupleEqual(result.shape, self.shape_bad, 'load(): bad data failed')
 
     # @unittest.skip('-> validate(): skipped\n')
     def test_validate(self):
         # Good data
         try:
-            with open(self.data_good, 'r') as handle:
-                result = airr.validate_rearrangement([handle])
+            result = airr.validate_rearrangement(self.data_good)
             self.assertTrue(result, 'validate(): good data failed')
         except:
             self.assertTrue(False, 'validate(): good data failed')
 
         # Bad data
         try:
-            with open(self.data_bad, 'r') as handle:
-                result = airr.validate_rearrangement([handle])
+
+            result = airr.validate_rearrangement(self.data_bad)
             self.assertFalse(result, 'validate(): bad data failed')
         except:
             pass

@@ -93,12 +93,15 @@ class RearrangementReader:
         for f in row:
             # Convert types
             spec = self.schema.type(f)
-            if spec == 'boolean':
-                row[f] = self.schema.to_bool(row[f], validate=self.validate)
-            if spec == 'integer':
-                row[f] = self.schema.to_int(row[f], validate=self.validate)
-            if spec == 'number':
-                row[f] = self.schema.to_float(row[f], validate=self.validate)
+            try:
+                if spec == 'boolean':
+                    row[f] = self.schema.to_bool(row[f], validate=self.validate)
+                if spec == 'integer':
+                    row[f] = self.schema.to_int(row[f], validate=self.validate)
+                if spec == 'number':
+                    row[f] = self.schema.to_float(row[f], validate=self.validate)
+            except ValidationError as e:
+                raise ValidationError('field %s has %s' %(f, e))
 
             # Adjust coordinates
             if f.endswith('_start') and self.base == 1:

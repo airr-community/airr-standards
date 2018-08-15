@@ -53,7 +53,7 @@ class Schema:
         try:
             self.definition = spec[definition]
         except KeyError:
-            sys.exit('Schema definition %s cannot be found in the specifications' % definition)
+            raise KeyError('Schema definition %s cannot be found in the specifications' % definition)
         except:
             raise
 
@@ -122,7 +122,7 @@ class Schema:
 
         bool_value = self._to_bool_map.get(value, None)
         if bool_value is None and validate:
-            raise ValidationError('%s is not a bool value' % value)
+            raise ValidationError('invalid bool %s' % value)
         else:
             return bool_value
 
@@ -146,7 +146,7 @@ class Schema:
 
         str_value = self._from_bool_map.get(value, None)
         if str_value is None and validate:
-            raise ValidationError('%s is not a bool value' % value)
+            raise ValidationError('invalid bool %s' % value)
         else:
             return str_value
 
@@ -174,7 +174,7 @@ class Schema:
             return int(value)
         except ValueError:
             if validate:
-                raise ValidationError('%s is not an int value' % value)
+                raise ValidationError('invalid int %s'% value)
             else:
                 return None
 
@@ -202,7 +202,7 @@ class Schema:
             return float(value)
         except ValueError:
             if validate:
-                raise ValidationError('%s is not a float value' % value)
+                raise ValidationError('invalid float %s' % value)
             else:
                 return None
 
@@ -223,7 +223,7 @@ class Schema:
         missing_fields = [f for f in self.required if f not in header]
 
         if missing_fields:
-            raise ValidationError('File is missing AIRR required fields (%s).' % ','.join(missing_fields))
+            raise ValidationError('missing required fields (%s)' % ', '.join(missing_fields))
         else:
             return True
 
@@ -252,7 +252,7 @@ class Schema:
                 if spec == 'integer':  self.to_int(row[f], validate=True)
                 if spec == 'number':  self.to_float(row[f], validate=True)
             except ValidationError as e:
-                raise ValidationError('%s in field %s' %(e, f))
+                raise ValidationError('field %s has %s' %(f, e))
 
         return True
 

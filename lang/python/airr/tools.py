@@ -64,8 +64,8 @@ def validate_cmd(airr_files, debug=True):
       boolean: True if all files passed validation, otherwise False
     """
     try:
-        airr_handles = [open(f, 'r') for f in airr_files]
-        return airr.interface.validate_rearrangement(airr_handles, debug=debug)
+        valid = [airr.interface.validate_rearrangement(f, debug=debug) for f in airr_files]
+        return all(valid)
     except Exception as err:
         sys.stderr.write('Error occurred while validating AIRR rearrangement files: ' + str(err) + '\n')
         return False
