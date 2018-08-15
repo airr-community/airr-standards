@@ -42,4 +42,4 @@ matrix:
         - testthat
       before_install:
         - cd lang/R
-
+        - R -e 'devtools::document()'
