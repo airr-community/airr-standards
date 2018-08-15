@@ -30,8 +30,7 @@ matrix:
         - python -m unittest discover
     - language: r
       r:
-        - devel
-      sudo: false
+        - release
       cache: packages
       apt_packages:
         - libxml2-dev
