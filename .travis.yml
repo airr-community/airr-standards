@@ -35,13 +35,13 @@ matrix:
       addons:
         apt:
           packages:
-            - libxml2-dev
+            - libgit2-dev
             - libssl-dev
-      r_binary_packages:
+            - libxml2-dev
+      r_packages:
         - devtools
         - roxygen2
         - testthat
       before_install:
         - cd lang/R
-      before_script:
         - R -e 'devtools::document()'
