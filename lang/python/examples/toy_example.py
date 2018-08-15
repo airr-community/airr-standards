@@ -9,7 +9,7 @@ print('*****')
 print('Read a rearrangements file.')
 print('*****')
 print('*****')
-data = airr.read_rearrangement(open('toy_data.tsv', 'r'))
+data = airr.read_rearrangement('toy_data.tsv')
 print(data.fields)
 print(data.external_fields)
 for r in data:  print(r)
@@ -22,14 +22,14 @@ print('*****')
 print('Create new rearrangements file.')
 print('*****')
 print('*****')
-data = airr.read_rearrangement(open('toy_data.tsv', 'r'))
-newd = airr.create_rearrangement(open('my_data.tsv', 'w'), fields=data.fields)
+data = airr.read_rearrangement('toy_data.tsv')
+newd = airr.create_rearrangement('my_data.tsv', fields=data.fields)
 print(newd.fields)
 print(newd.external_fields)
 for r in data:  newd.write(r)
 newd.close()
 
-data = airr.read_rearrangement(open('my_data.tsv', 'r'))
+data = airr.read_rearrangement('my_data.tsv')
 print(data.fields)
 print(data.external_fields)
 for r in data:  print(r)
@@ -40,11 +40,11 @@ print('*****')
 print('Derive rearrangements file from another.')
 print('*****')
 print('*****')
-mored = airr.derive_rearrangement(open('more_data.tsv', 'w'), open('my_data.tsv', 'r'),
+mored = airr.derive_rearrangement('more_data.tsv', 'my_data.tsv',
                     fields=['new_field', 'more_annotation'])
 print(mored.fields)
 print(mored.external_fields)
-for r in airr.read_rearrangement(open('my_data.tsv', 'r')):
+for r in airr.read_rearrangement('my_data.tsv'):
     r['new_field'] = 'A'
     r['more_annotation'] = 'B'
     print(r)
@@ -58,7 +58,7 @@ print('Validate rearrangements file.')
 print('*****')
 print('*****')
 print('Validating more_data.tsv')
-valid = airr.validate_rearrangement([open('more_data.tsv', 'r')])
+valid = airr.validate_rearrangement('more_data.tsv')
 if valid:
     print('PASS: more_data.tsv passes validation.')
 else:
@@ -66,7 +66,7 @@ else:
 
 # should fail validation due to missing required field
 print('Validating bad_data.tsv')
-valid = airr.validate_rearrangement([open('bad_data.tsv', 'r')])
+valid = airr.validate_rearrangement('bad_data.tsv')
 if not valid:
     print('PASS: bad_data.tsv fails validation.')
 else:
@@ -78,15 +78,15 @@ print('*****')
 print('Merge rearrangements files.')
 print('*****')
 print('*****')
-valid = airr.merge_rearrangement(open('merged.tsv', 'w'), [open('toy_data.tsv', 'r'), open('toy_data.tsv', 'r')])
+valid = airr.merge_rearrangement('merged.tsv', ['toy_data.tsv', 'toy_data.tsv'])
 if valid:
     print('PASS: files were merged.')
 else:
     print('FAIL: files were not merged.')
 
-# should fail validation due to duplicate sequence_ids
-valid = airr.validate_rearrangement([open('merged.tsv', 'r')])
+# passes validation even though duplicate sequence_ids
+valid = airr.validate_rearrangement('merged.tsv')
 if not valid:
-    print('PASS: merged.tsv fails validation.')
+    print('FAIL: merged.tsv fails validation.')
 else:
-    print('FAIL: merged.tsv passed validation.')
+    print('PASS: merged.tsv passed validation.')
