@@ -249,7 +249,7 @@ for spec in tables:
     # Write TSV
     with open(os.path.join(dl_path, '%s.tsv' % spec), 'w') as f:
         writer = csv.writer(f, dialect='excel-tab')
-        rows = ([k, v['type'], 'required' if k in required else '', v['description']] \
+        rows = ([k, v['type'], 'required' if k in required else 'optional', v['description'].strip()] \
                 for k, v in properties.items())
         writer.writerow(fields)
         writer.writerows(rows)
