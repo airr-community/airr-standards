@@ -36,7 +36,7 @@ matrix:
       apt_packages:
         - libxml2-dev
         - libssl-dev
-      r_binary_packages:
+      r_packages:
         - devtools
         - roxygen2
         - testthat
