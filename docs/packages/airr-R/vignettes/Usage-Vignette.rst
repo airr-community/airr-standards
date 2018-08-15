@@ -16,9 +16,9 @@ formed in 2015 to address this challenge (Breden et al, 2017) and has
 stablished the set of minimal metadata elements (MiAIRR) required for
 describing published AIRR datasets (Rubelt et al, 2017) as well as file
 formats to represent this data in a machine-readable form. The ``airr``
-R package provides to read, write an validate data following the AIRR
-Data Representation standards. This vignette provides a set of simple
-use examples.
+R package provide read, write and validation of data following the AIRR
+Data Representation schemas. This vignette provides a set of simple use
+examples.
 
 AIRR Data Representation Standards
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -33,29 +33,30 @@ sequencing and data analysis will be able to reproduce the experiment
 and data analyses that were performed.
 
 Following this principles, V(D)J reference alignment annotations are
-saved in standard tab-delimited format files (TSV) with associated
-metadata provided in accompanying YAML formatted files. The column names
-and field names in these files have been defined by the AIRR Community
-using a controlled vocabulary of standardized terms and types to refer
-to each piece of information.
+saved in standard tab-delimited files (TSV) with associated metadata
+provided in accompanying YAML formatted files. The column names and
+field names in these files have been defined by the AIRR Data
+Representation Working Group using a controlled vocabulary of
+standardized terms and types to refer to each piece of information.
 
 Reading AIRR formatted files
 ----------------------------
 
 The ``airr`` package contains the function ``read_rearrangement`` to
-read and validate files containing Rearrangement records in the AIRR
-Data Representation standards, where a Rearrangement record describes
-the collection of optimal annotations on a single sequence that has
-undergone V(D)J reference alignment. The usage is straightforward, as
-the file format is a typical tabulated file. The argument that needs
-attention is ``base``, with possible values ``"0"`` and ``"1"``.
-``base`` denotes the starting index for positional fields in the input
-file. Positional fields are those that contain alignment coordinates and
-names ending in “_start" and “_end“. If the input file is using 0-based
-coordinates with half-open intervals (python style), as defined by the
-standard, then positional fields will be converted to 1-based closed
-intervals (R style) using the default setting of ``base="0"``. If
-``base="1"`` is specified, then positional fields will not be modified.
+read and validate files containing AIRR Rearrangement records, where a
+Rearrangement record describes the collection of optimal annotations on
+a single sequence that has undergone V(D)J reference alignment. The
+usage is straightforward, as the file format is a typical tabulated
+file. The argument that needs attention is ``base``, with possible
+values ``"0"`` and ``"1"``. ``base`` denotes the starting index for
+positional fields in the input file. Positional fields are those that
+contain alignment coordinates and names ending in “_start" and “_end“.
+If the input file is using 1-based closed intervals (R style), as
+defined by the standard, then positional fields will not be modified
+under the default setting of ``base="1"``. If the input file is using
+0-based coordinates with half-open intervals (python style), then
+positional fields may be converted to 1-based closed intervals using the
+argument ``base="0"``.
 
 .. code:: r
 
@@ -70,7 +71,7 @@ intervals (R style) using the default setting of ``base="0"``. If
 
 .. code:: r
 
-    airr_rearrangement <- read_rearrangement(example_data, base="0")
+    airr_rearrangement <- read_rearrangement(example_data)
     class(airr_rearrangement)
 
 ::
@@ -84,22 +85,22 @@ intervals (R style) using the default setting of ``base="0"``. If
 ::
 
     ## # A tibble: 6 x 33
-    ##   sequence_id  sequence  rev_comp productive stop_codon vj_in_frame v_call
-    ##   <chr>        <chr>     <lgl>    <lgl>      <lgl>      <lgl>       <chr> 
-    ## 1 SRR765688.7… NNNNNNNN… FALSE    TRUE       FALSE      TRUE        IGHV2…
-    ## 2 SRR765688.3… NNNNNNNN… FALSE    TRUE       FALSE      TRUE        IGHV5…
-    ## 3 SRR765688.3… NNNNNNNN… FALSE    TRUE       FALSE      TRUE        IGHV7…
-    ## 4 SRR765688.3… NNNNNNNN… FALSE    TRUE       FALSE      TRUE        IGHV7…
-    ## 5 SRR765688.4… NNNNNNNN… FALSE    TRUE       FALSE      TRUE        IGHV7…
-    ## 6 SRR765688.1… NNNNNNNN… FALSE    FALSE      TRUE       TRUE        IGHV2…
+    ##   sequence_id sequence rev_comp productive vj_in_frame stop_codon v_call
+    ##   <chr>       <chr>    <lgl>    <lgl>      <lgl>       <lgl>      <chr> 
+    ## 1 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV2…
+    ## 2 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV5…
+    ## 3 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV7…
+    ## 4 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV7…
+    ## 5 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV7…
+    ## 6 SRR765688.… NNNNNNN… FALSE    FALSE      TRUE        TRUE       IGHV2…
     ## # ... with 26 more variables: d_call <chr>, j_call <chr>, c_call <chr>,
     ## #   sequence_alignment <chr>, germline_alignment <chr>, junction <chr>,
     ## #   junction_aa <chr>, v_cigar <chr>, d_cigar <chr>, j_cigar <chr>,
+    ## #   v_sequence_start <int>, v_sequence_end <int>, v_germline_start <int>,
+    ## #   v_germline_end <int>, d_sequence_start <int>, d_sequence_end <int>,
+    ## #   d_germline_start <int>, d_germline_end <int>, j_sequence_start <int>,
+    ## #   j_sequence_end <int>, j_germline_start <int>, j_germline_end <int>,
     ## #   junction_length <int>, np1_length <int>, np2_length <int>,
-    ## #   v_sequence_start <dbl>, v_sequence_end <int>, v_germline_start <dbl>,
-    ## #   v_germline_end <int>, d_sequence_start <dbl>, d_sequence_end <int>,
-    ## #   d_germline_start <dbl>, d_germline_end <int>, j_sequence_start <dbl>,
-    ## #   j_sequence_end <int>, j_germline_start <dbl>, j_germline_end <int>,
     ## #   duplicate_count <int>
 
 Writing AIRR formatted files
@@ -111,7 +112,7 @@ write Rearrangement records to the AIRR TSV format.
 .. code:: r
 
     out_file <- file.path(tempdir(), "airr_out.tsv")
-    write_rearrangement(airr_rearrangement, out_file, base="0")
+    write_rearrangement(airr_rearrangement, out_file)
 
 References
 ----------
