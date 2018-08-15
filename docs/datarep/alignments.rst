@@ -9,7 +9,8 @@ how to structure this data.
 Note, this schema definition is still experimental and should not be
 considered final.
 
-**Fields**
+Fields
+-------------------------------
 
 :download:`Download as TSV <../_downloads/Alignment.tsv>`.
 
