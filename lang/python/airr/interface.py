@@ -2,70 +2,77 @@
 Interface functions for file operations
 """
 # System imports
+import sys
 import pandas as pd
 from collections import OrderedDict
 from itertools import chain
 
 # Load imports
 from airr.io import RearrangementReader, RearrangementWriter
+from airr.schema import ValidationError, RearrangementSchema
 
 
-def read_rearrangement(handle, debug=False):
+def read_rearrangement(filename, validate=False, debug=False):
     """
     Open an iterator to read an AIRR rearrangements file
 
     Arguments:
-      handle (file): input file handle.
+      file (str): path to the input file.
+      validate (bool): whether to validate data as it is read, raising a ValidationError
+                       exception in the event of an error.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       airr.io.RearrangementReader: iterable reader class.
     """
-    return RearrangementReader(handle, debug=debug)
+
+    return RearrangementReader(open(filename, 'r'), validate=validate, debug=debug)
 
 
-def create_rearrangement(handle, fields=None, debug=False):
+def create_rearrangement(filename, fields=None, debug=False):
     """
     Create an empty AIRR rearrangements file writer
 
     Arguments:
-      handle (file): output file handle.
+      filename (str): output file path.
       fields (list): additional non-required fields to add to the output.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       airr.io.RearrangementWriter: open writer class.
     """
-    return RearrangementWriter(handle, fields=fields, debug=debug)
+    return RearrangementWriter(open(filename, 'w+'), fields=fields, debug=debug)
 
 
-def derive_rearrangement(out_handle, in_handle, fields=None, debug=False):
+def derive_rearrangement(out_filename, in_filename, fields=None, debug=False):
     """
     Create an empty AIRR rearrangements file with fields derived from an existing file
 
     Arguments:
-      out_handle (file): output file handle.
-      in_handle (file): existing file to derive fields from
+      out_filename (str): output file path.
+      in_filename (str): existing file to derive fields from.
       fields (list): additional non-required fields to add to the output.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       airr.io.RearrangementWriter: open writer class.
     """
-    reader = RearrangementReader(in_handle)
+    reader = RearrangementReader(open(in_filename, 'r'))
     in_fields = list(reader.fields)
     if fields is not None:
         in_fields.extend([f for f in fields if f not in in_fields])
 
-    return RearrangementWriter(out_handle, fields=in_fields, debug=debug)
+    return RearrangementWriter(open(out_filename, 'w+'), fields=in_fields, debug=debug)
 
 
-def load_rearrangement(handle, debug=False):
+def load_rearrangement(filename, validate=False, debug=False):
     """
     Load the contents of an AIRR rearrangements file into a data frame
 
     Arguments:
-      handle (file): input file handle.
+      filename (str): input file path.
+      validate (bool): whether to validate data as it is read, raising a ValidationError
+                       exception in the event of an error.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
@@ -77,18 +84,19 @@ def load_rearrangement(handle, debug=False):
     #                  dtype=schema.numpy_types(), true_values=schema.true_values,
     #                  false_values=schema.true_values)
     # return df
+    with open(filename, 'r') as handle:
+        reader = RearrangementReader(handle, validate=validate, debug=debug)
+        df = pd.DataFrame(list(reader))
+    return df
 
-    reader = RearrangementReader(handle, debug=debug)
-    return pd.DataFrame(list(reader))
 
-
-def dump_rearrangement(dataframe, handle, debug=False):
+def dump_rearrangement(dataframe, filename, debug=False):
     """
     Write the contents of a data frame to an AIRR rearrangements file
 
     Arguments:
       dataframe (pandas.DataFrame): data frame of rearrangement data.
-      handle (file): output file handle.
+      filename (str): output file path.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
@@ -98,20 +106,21 @@ def dump_rearrangement(dataframe, handle, debug=False):
     # dataframe.to_csv(handle, sep='\t', header=True, index=False, encoding='utf-8')
 
     fields = dataframe.columns.tolist()
-    writer = RearrangementWriter(handle, fields=fields, debug=debug)
-    for __, row in dataframe.iterrows():
-        writer.write(row.to_dict())
+    with open(filename, 'w+') as handle:
+        writer = RearrangementWriter(handle, fields=fields, debug=debug)
+        for __, row in dataframe.iterrows():
+            writer.write(row.to_dict())
 
     return True
 
 
-def merge_rearrangement(out_handle, airr_handles, drop=False, debug=False):
+def merge_rearrangement(out_filename, in_filenames, drop=False, debug=False):
     """
     Merge one or more AIRR rearrangements files
 
     Arguments:
-      out_handle (str): output file handle.
-      airr_handles (list): list of input file handles to merge.
+      out_filename (str): output file path.
+      in_filenames (list): list of input files to merge.
       drop (bool): drop flag. If True then drop fields that do not exist in all input
                    files, otherwise combine fields from all input files.
       debug (bool): debug flag. If True print debugging information to standard error.
@@ -121,7 +130,7 @@ def merge_rearrangement(out_handle, airr_handles, drop=False, debug=False):
     """
     try:
         # gather fields from input files
-        readers = [RearrangementReader(f, debug=debug) for f in airr_handles]
+        readers = [RearrangementReader(open(f, 'r'), debug=debug) for f in in_filenames]
         field_list = [x.fields for x in readers]
         if drop:
             field_set = set.intersection(*map(set, field_list))
@@ -130,34 +139,59 @@ def merge_rearrangement(out_handle, airr_handles, drop=False, debug=False):
         field_order = OrderedDict([(f, None) for f in chain(*field_list)])
         out_fields = [f for f in field_order if f in field_set]
 
-        writer = RearrangementWriter(out_handle, fields=out_fields, debug=debug)
-
-        for reader in readers:
-            for rec in reader:
-                writer.write(rec)
-
-        out_handle.close()
+        # write input files to output file sequentially
+        with open(out_filename, 'w+') as handle:
+            writer = RearrangementWriter(handle, fields=out_fields, debug=debug)
+            for reader in readers:
+                for r in reader:  writer.write(r)
+                reader.close()
     except:
         return False
 
     return True
 
 
-def validate_rearrangement(airr_handles, debug=False):
+def validate_rearrangement(filename, debug=False):
     """
     Validates one or more AIRR rearrangements files
 
     Arguments:
-      airr_handles (list): list of input file handles to validate.
+      filename (str): path of the file to validate.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
-      bool: True if all files passed validation, otherwise False.
+      bool: True if files passed validation, otherwise False.
     """
     valid = True
-    for handle in airr_handles:
-        print('Validating: %s' % handle.name)
-        reader = RearrangementReader(handle)
-        valid &= reader.validate()
+    if debug:
+        sys.stderr.write('Validating: %s\n' % filename)
+
+    # Open reader
+    handle = open(filename, 'r')
+    reader = RearrangementReader(handle, validate=True)
+
+    # Validate header
+    try:
+        iter(reader)
+    except ValidationError as e:
+        valid = False
+        if debug:
+            sys.stderr.write('%s has validation error: %s\n' % (filename, e))
+
+    # Validate each row
+    i = 0
+    while True:
+        try:
+            i = i + 1
+            next(reader)
+        except StopIteration:
+            break
+        except ValidationError as e:
+            valid = False
+            if debug:
+                sys.stderr.write('%s at record %i has validation error: %s\n' % (filename, i, e))
+
+    # Close
+    handle.close()
 
     return valid

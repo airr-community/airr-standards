@@ -3,16 +3,22 @@
 Data Representations
 ====================
 
-.. toctree::
-   :maxdepth: 3
-   :caption: Schema
+Field Definitions
+--------------------
 
-   Rearrangements Schema <rearrangements>
+.. toctree::
+   :maxdepth: 2
+
+   Rearrangement Schema <rearrangements>
    Alignment Schema (Experimental) <alignments>
 
+Format Specification
+--------------------
 
 Data for ``Rearrangement`` or ``Alignment`` objects are stored as rows in a
 *tab-delimited* file and should be compatible with any TSV reader.
+A dataset in this context as: a TSV file, a TSV with a companion YAML file
+containing metadata, or a directory containing multiple TSV files and YAML files.
 
 **Encoding**
 
@@ -26,10 +32,11 @@ names is always required.
 
 **Coordinate numbering**
 
-To minimize ambiguity of locations/annotations, all sequence coordinates use
-Python-style semantics for locations and intervals. This means 0-indexed coords
-with half-open intervals.  See `this example <https://stackoverflow.com/a/509297/510187>`__
-for additional clarity.
+All alignment sequence coordinates use the same scheme as IMGT and INSDC
+(DDBJ, ENA, GenBank), with the exception that partial coordinate information
+should not be used in favor of simply assigning the start/end of the alignment.
+Meaning, coordinates should be provided as 1-based values with closed intervals,
+without the use of ``>`` or ``<`` annotations that denoted a partial region.
 
 **Boolean values**
 
@@ -37,8 +44,8 @@ Boolean values must be encoded as ``T`` for true and ``F`` for false.
 
 **Null values**
 
-*All fields can be null.* (Even for columns that are described as
-"required".) This should be encoded as an empty string.
+*All fields can be null.* Even for columns that are described as
+"required". A null value should be encoded as an empty string.
 
 **File names**
 
@@ -47,11 +54,11 @@ AIRR-formatted data files should end with ``.tsv``.
 **Identifiers/illegal characters**
 
 Data must not contain tab or newline characters.  Data should avoid ``#`` and quote
-characters, as the result may be implementation-dependent.
+characters, as the result may be implementation dependent.
 
 **Structure**
 
-The data file has 2 sections in this order:
+The data file has two sections in this order:
 
 1.  Header (single line with column names)
 2.  Data (one record per line)
@@ -65,35 +72,37 @@ are allowed, and should follow the same naming scheme (Python-style
 ``snake_case``). Consider submitting a pull request if the field may be broadly
 useful.
 
-
 **Data**
 
 The main data table. Possible data types are ``string``, ``boolean``, ``number``
 (floating point), and ``integer``.
 
-
 **Required columns**
 
-Some of the fields specified below are "required" and so must always be present
-in a rearrangements file (in the header).  Note, however, that all columns allow
-"null" values.  Therefore, required columns exist to define a core set of fields
-that are always present in the table structure, but do not mandate that a value
-be reported.
+Some of the fields are defined as "required" and therefore must always be present
+in the header.  Note, however, that all columns allow for null values.  Therefore,
+required columns exist to define a core set of fields that are always present in
+the table structure, but do not mandate that a value be reported.
 
+**Custom columns**
+
+There are no restrictions on inclusion of additional custom columns in the
+rearrangments file, provided such columns do not use the same name as an
+existing required or optional field.
 
 **Ordering**
 
 Unless specified otherwise, there is no requirement that the records are sorted
 in any way.  However, multiple records with the same primary key should be next
-to each other.  (Put another way, the data should be stored as if they were the
-result of ``GROUP BY primary_key``.)
-
+to each other.  Put another way, the data should be stored as if they were the
+result of ``GROUP BY primary_key``.
 
 **CIGAR specification**
 
 Alignments details are specified using the CIGAR format as defined in the
 `SAM specifications <https://samtools.github.io/hts-specs/SAMv1.pdf>`__, with
-vocabulary restrictions. The following are valid operations.
+some vocabulary restrictions on the use of clipping, skipping and padding operators.
+The following table defines the valid operator set.
 
 .. csv-table::
     :header: Operator, Description

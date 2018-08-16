@@ -4,7 +4,7 @@ Reference library for AIRR schema for Ig/TCR rearrangements
 from __future__ import print_function
 import sys
 import csv
-from airr.schema import RearrangementSchema
+from airr.schema import RearrangementSchema,ValidationError
 
 
 class RearrangementReader:
@@ -37,20 +37,29 @@ class RearrangementReader:
         return [f for f in self.dict_reader.fieldnames \
                 if f not in self.schema.properties]
 
-    def __init__(self, handle, debug=False):
+    def __init__(self, handle, base=1, validate=False, debug=False):
         """
         Initialization
 
         Arguments:
           handle (file): file handle of the open Rearrangement file.
+          base (int): one of 0 or 1 specifying the coordinate schema in the input file.
+                      If 1, then the file is assumed to contain 1-based closed intervals
+                      that will be converted to python style 0-based half-open intervals
+                      for known fields. If 0, then values will be unchanged.
+          validate (bool): perform validation. If True then basic validation will be
+                           performed will reading the data. A ValidationError exception
+                           will be raised if an error is found.
           debug (bool): debug state. If True prints debug information.
 
         Returns:
-          airr.io.RearrangementReader : reader object.
+          airr.io.RearrangementReader: reader object.
         """
         # arguments
         self.handle = handle
+        self.base = base
         self.debug = debug
+        self.validate = validate
         self.schema = RearrangementSchema
 
         # data reader, collect field names
@@ -63,6 +72,10 @@ class RearrangementReader:
         Returns:
           airr.io.RearrangementReader
         """
+        # Validate fields
+        if (self.validate):
+            self.schema.validate_header(self.dict_reader.fieldnames)
+
         return self
 
     def __next__(self):
@@ -75,67 +88,41 @@ class RearrangementReader:
         try:
             row = next(self.dict_reader)
         except StopIteration:
-            self.handle.close()
             raise StopIteration
 
-        for f in row.keys():
+        for f in row:
+            # Convert types
             spec = self.schema.type(f)
-            if spec == 'boolean':  row[f] = self.schema.to_bool(row[f])
-            if spec == 'integer':  row[f] = self.schema.to_int(row[f])
-            if spec == 'number':  row[f] = self.schema.to_float(row[f])
+            try:
+                if spec == 'boolean':
+                    row[f] = self.schema.to_bool(row[f], validate=self.validate)
+                if spec == 'integer':
+                    row[f] = self.schema.to_int(row[f], validate=self.validate)
+                if spec == 'number':
+                    row[f] = self.schema.to_float(row[f], validate=self.validate)
+            except ValidationError as e:
+                raise ValidationError('field %s has %s' %(f, e))
+
+            # Adjust coordinates
+            if f.endswith('_start') and self.base == 1:
+                try:
+                    row[f] = row[f] - 1
+                except TypeError:
+                    row[f] = None
 
         return row
+
+    def close(self):
+        """
+        Closes the Rearrangement file
+        """
+        self.handle.close()
 
     def next(self):
         """
         Next method
-
-        Returns:
-          dict: parsed Rearrangement data.
         """
         return self.__next__()
-
-    def validate(self):
-        """
-        Validate Rearrangements data.
-
-        Returns:
-          bool: True if passes validation, otherwise False.
-        """
-        valid = True
-        # check required fields
-        required_fields = list(self.schema.required)
-        for f in required_fields:
-            if f not in self.fields:
-                sys.stderr.write('Warning: File is missing AIRR mandatory field (' + f + ').\n')
-                valid = False
-
-        # check row values
-        row_num = 1
-        seq_ids = {}
-        for row in self:
-            # check sequence_id uniqueness
-            # TODO: should empty sequence_id be an error? If they are required to be unique, then yes I think...
-            if row.get('sequence_id') is None:
-                sys.stderr.write('Warning: sequence_id is empty for row # ' + str(row_num) + '.\n')
-            elif len(row['sequence_id']) == 0 is None:
-                sys.stderr.write('Warning: sequence_id is empty for row # ' + str(row_num) + '.\n')
-            elif seq_ids.get(row['sequence_id']) is not None:
-                sys.stderr.write('Warning: sequence_id (' + row['sequence_id'] + ') is not unique in file.\n')
-                valid = False
-            seq_ids[row['sequence_id']] = 1
-
-            # check productive flag
-            if 'productive' in self.fields:
-                if row['productive'] is None:
-                    sys.stderr.write('Warning: productive is not boolean for row # ' + str(row_num) + '.\n')
-
-            # check rev_comp flag
-            if 'rev_comp' in self.fields:
-                if row['rev_comp'] is None:
-                    sys.stderr.write('Warning: rev_comp is not boolean for row # ' + str(row_num) + '.\n')
-
-        return valid
 
 
 class RearrangementWriter:
@@ -168,20 +155,25 @@ class RearrangementWriter:
         return [f for f in self.dict_writer.fieldnames \
                 if f not in self.schema.properties]
 
-    def __init__(self, handle, fields=None, debug=False):
+    def __init__(self, handle, fields=None, base=1, debug=False):
         """
         Initialization
 
         Arguments:
           handle (file): file handle of the open Rearrangements file.
           fields (list) : list of non-required fields to add. May include fields undefined by the schema.
+          base (int): one of 0 or 1 specifying the coordinate schema in the output file.
+                      Data provided to the write is assumed to be in python style 0-based
+                      half-open intervals. If 1, then data will be converted to 1-based
+                      closed intervals for known fields before writing. If 0, then values will be unchanged.
           debug (bool): debug state. If True prints debug information.
 
         Returns:
-          airr.io.RearrangementWriter : writer object.
+          airr.io.RearrangementWriter: writer object.
         """
         # arguments
         self.handle = handle
+        self.base = base
         self.debug = debug
         self.schema = RearrangementSchema
 
@@ -199,8 +191,8 @@ class RearrangementWriter:
             field_names.extend(additional_fields)
 
         # open writer and write header
-        self.dict_writer = csv.DictWriter(self.handle, fieldnames=field_names,
-                                          dialect='excel-tab', extrasaction='ignore')
+        self.dict_writer = csv.DictWriter(self.handle, fieldnames=field_names, dialect='excel-tab',
+                                          extrasaction='ignore', lineterminator='\n')
         self.dict_writer.writeheader()
 
     def close(self):
@@ -223,6 +215,14 @@ class RearrangementWriter:
                     sys.stderr.write('Warning: Record is missing AIRR required field (' + field + ').\n')
 
         for f in row.keys():
+            # Adjust coordinates
+            if f.endswith('_start') and self.base == 1:
+                try:
+                    row[f] = row[f] + 1
+                except TypeError:
+                    row[f] = None
+
+            # Convert types
             spec = self.schema.type(f)
             if spec == 'boolean':  row[f] = self.schema.from_bool(row[f])
 
