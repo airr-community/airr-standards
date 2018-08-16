@@ -1,7 +1,7 @@
 Package: airr
 Type: Package
 Version: 1.2.0
-Date: 2018-08-15
+Date: 2018-08-17
 Authors@R: c(person("Jason", "Vander Heiden", role=c("aut", "cre"), 
                     email="jason.vanderheiden@yale.edu"),
              person("Susanna", "Marquez", role=c("aut"), 
