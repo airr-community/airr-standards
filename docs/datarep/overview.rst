@@ -1,7 +1,7 @@
 .. _DataRepresentations:
 
-Data Representations
-====================
+AIRR Data Representations
+=========================
 
 Field Definitions
 --------------------
