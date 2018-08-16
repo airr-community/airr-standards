@@ -19,8 +19,8 @@ include
     :caption: Table of Contents
 
     miairr/overview
-    datarep/overview
     cairr/overview
+    datarep/overview
     Python Library <packages/airr-python/overview>
     R Library <packages/airr-R/overview>
     Supporting Applications <resources/support.rst>

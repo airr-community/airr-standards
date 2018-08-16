@@ -1,6 +1,6 @@
 .. _ROverview:
 
-R Library
+AIRR R Reference Library
 ================================================================================
 
 An R library providing AIRR schema definitions and read, write, and validation
