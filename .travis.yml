@@ -29,15 +29,19 @@ matrix:
         - python setup.py install
         - python -m unittest discover
     - language: r
-      r:
-        - release
+      sudo: false
       cache: packages
+      r_check_args: --as-cran
+      addons:
+        apt:
+          packages:
+            - libgit2-dev
+            - libssl-dev
+            - libxml2-dev
+      r_packages:
+        - devtools
+        - roxygen2
+        - testthat
       before_install:
         - cd lang/R
-      install:
-        - R -e 'install.packages(c("devtools", "roxygen2"))'
-        - R -e 'devtools::install_deps(dependencies=TRUE)'
         - R -e 'devtools::document()'
-      script:
-        - R CMD build .
-        - R CMD check *.tar.gz --as-cran --run-donttest --timings

@@ -13,16 +13,16 @@ Usage
 
 ::
 
-    write_airr(data, file, base = c("0", "1"), schema = RearrangementSchema,
-    ...)
+    write_airr(data, file, base = c("1", "0"),
+    schema = RearrangementSchema, ...)
 
 ::
 
-    write_rearrangement(data, file, base = c("0", "1"), ...)
+    write_rearrangement(data, file, base = c("1", "0"), ...)
 
 ::
 
-    write_alignment(data, file, base = c("0", "1"), ...)
+    write_alignment(data, file, base = c("1", "0"), ...)
 
 Arguments
 ~~~~~~~~~
@@ -32,11 +32,12 @@ data
 file
     output file name.
 base
-    starting index for positional fields in the output file. If ``"0"``,
-    then fields ending in ``_start`` and ``_end`` will be converted to
-    0-based half-open intervals (python style) in the output file. If
-    ``"1"``, then these fields will not be modified. Fields in the input
-    ``data`` are assumed to be 1-based closed-intervals (R style).
+    starting index for positional fields in the output file. Fields in
+    the input ``data`` are assumed to be 1-based closed-intervals (R
+    style). If ``"1"``, then these fields will not be modified. If
+    ``"0"``, then fields ending in ``_start`` and ``_end`` will be
+    converted to 0-based half-open intervals (python style) in the
+    output file.
 schema
     ``Schema`` object defining the output format.
 …

@@ -13,15 +13,15 @@ Usage
 
 ::
 
-    read_airr(file, base = c("0", "1"), schema = RearrangementSchema, ...)
+    read_airr(file, base = c("1", "0"), schema = RearrangementSchema, ...)
 
 ::
 
-    read_rearrangement(file, base = c("0", "1"), ...)
+    read_rearrangement(file, base = c("1", "0"), ...)
 
 ::
 
-    read_alignment(file, base = c("0", "1"), ...)
+    read_alignment(file, base = c("1", "0"), ...)
 
 Arguments
 ~~~~~~~~~
@@ -29,11 +29,11 @@ Arguments
 file
     input file path.
 base
-    starting index for positional fields in the input file. If ``"0"``,
-    then fields ending in ``"_start"`` and ``"_end"`` are 0-based
-    half-open intervals (python style) in the input file and will be
-    converted to 1-based closed-intervals (R style). If ``"1"``, then
-    these fields will not be modified.
+    starting index for positional fields in the input file. If ``"1"``,
+    then these fields will not be modified. If ``"0"``, then fields
+    ending in ``"_start"`` and ``"_end"`` are 0-based half-open
+    intervals (python style) in the input file and will be converted to
+    1-based closed-intervals (R style).
 schema
     ``Schema`` object defining the output format.
 …

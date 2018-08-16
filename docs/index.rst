@@ -23,4 +23,5 @@ include
     cairr/overview
     Python Library <packages/airr-python/overview>
     R Library <packages/airr-R/overview>
+    Supporting Applications <resources/support.rst>
     examples/overview

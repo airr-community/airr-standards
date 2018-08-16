@@ -108,6 +108,7 @@ htmlhelp_basename = 'airr-standardsdoc'
 html_theme = 'alabaster'
 html_theme_options = {'github_user': 'airr-community',
                       'github_repo': 'airr-standards',
+                      'github_button': True,
                       'sidebar_includehidden': True,
                       'extra_nav_links': {'AIRR Community': 'http://airr-community.org'}}
 html_sidebars = {'**': ['about.html',
@@ -248,7 +249,7 @@ for spec in tables:
     # Write TSV
     with open(os.path.join(dl_path, '%s.tsv' % spec), 'w') as f:
         writer = csv.writer(f, dialect='excel-tab')
-        rows = ([k, v['type'], 'required' if k in required else '', v['description']] \
+        rows = ([k, v['type'], 'required' if k in required else 'optional', v['description'].strip()] \
                 for k, v in properties.items())
         writer.writerow(fields)
         writer.writerows(rows)
