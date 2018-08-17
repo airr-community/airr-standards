@@ -45,5 +45,6 @@ matrix:
         - testthat
       before_install:
         - cd lang/R
+        - R -e 'install.packages(c("devtools", "roxygen2", "testthat"))'
         - R -e 'devtools::document()'
       r_check_args: --as-cran
