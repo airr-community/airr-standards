@@ -49,7 +49,7 @@ The data file has two sections in this order:
 1.  Header. A single line with column names.
 2.  Data values. One record per line.
 
-A comment section preceeding the header (e.g., ``#`` or ``@`` blocks) is not part of the
+A comment section preceding the header (e.g., ``#`` or ``@`` blocks) is not part of the
 specification, but such a section is reserved for potential inclusion in a future
 release. As such, a comment section should not be included in the file as it *may*
 be incompatible with a future specification.
