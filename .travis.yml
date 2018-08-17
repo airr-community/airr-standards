@@ -39,12 +39,18 @@ matrix:
             - libgit2-dev
             - libssl-dev
             - libxml2-dev
+      r_check_args: --as-cran --run-donttest
       r_binary_packages:
         - devtools
         - roxygen2
         - testthat
       before_install:
         - cd lang/R
-        - R -e 'install.packages(c("devtools", "roxygen2", "testthat"))'
+        - R -e 'install.packages(c('devtools', 'roxygen2', 'testthat'))'
+      install:
+        - R -e 'devtools::install_deps(dep=T)'
+      before_script:
         - R -e 'devtools::document()'
-      r_check_args: --as-cran
+      script:
+        - R CMD build .
+        - R CMD check *tar.gz --as-cran --run-donttest
