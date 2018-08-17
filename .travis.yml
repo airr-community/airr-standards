@@ -46,7 +46,7 @@ matrix:
         - testthat
       before_install:
         - cd lang/R
-        - R -e 'install.packages(c('devtools', 'roxygen2', 'testthat'))'
+        - R -e 'install.packages(c("devtools", "roxygen2", "testthat"))'
       install:
         - R -e 'devtools::install_deps(dep=T)'
       before_script:
