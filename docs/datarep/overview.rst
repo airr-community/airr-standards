@@ -70,7 +70,7 @@ the table structure, but do not mandate that a value be reported.
 **Custom columns**
 
 There are no restrictions on inclusion of additional custom columns in the
-rearrangments file, provided such columns do not use the same name as an
+Rearrangements file, provided such columns do not use the same name as an
 existing required or optional field. It is recommended that custom fields
 follow the same naming scheme as existing fields. Meaning, ``snake_case``
 with narrowing scope when read from left to right. For example,
