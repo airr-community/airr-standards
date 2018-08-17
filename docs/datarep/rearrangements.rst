@@ -38,7 +38,7 @@ be the set: IGH, IGK, IGL, TRA, TRB, TRD, or TRG.
 
 Gene call examples use the IMGT nomenclature, but no specific gene or allele
 nomenclature is mandated. Species denotations may or may not be included in the
-gene name, as appropriate. For example, "Homosap IGHV4-59*01", "IGHV4-59*01" and
+gene name, as appropriate. For example, "Homo sapiens IGHV4-59*01", "IGHV4-59*01" and
 "AB019438" are all valid entries for the same allele.
 
 **Alignments**
