@@ -29,19 +29,21 @@ matrix:
         - python setup.py install
         - python -m unittest discover
     - language: r
-      sudo: false
+      r:
+        - release
+      sudo: required
       cache: packages
-      r_check_args: --as-cran
       addons:
         apt:
           packages:
             - libgit2-dev
             - libssl-dev
             - libxml2-dev
-      r_packages:
+      r_binary_packages:
         - devtools
         - roxygen2
         - testthat
       before_install:
         - cd lang/R
         - R -e 'devtools::document()'
+      r_check_args: --as-cran
