@@ -1,6 +1,10 @@
 #
 # Schema definitions for AIRR standards objects
 #
+Info:
+    description: Schema definitions for AIRR standards objects
+    version: 1.3
+    url: https://github.com/airr-community/airr-standards/releases/download/v1.3.0/airr-schema.yaml
 
 # The overall study with a globally unique study_id
 Study:
