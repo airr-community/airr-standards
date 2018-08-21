@@ -30,6 +30,7 @@ R commands from the package root ``lang/R``::
     install_deps(dependencies=T)
     document()
     install()
+    test()
 
 .. toctree::
     :maxdepth: 3
