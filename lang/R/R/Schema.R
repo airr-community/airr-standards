@@ -8,7 +8,7 @@
 #' @slot    required    \code{character} vector of required fields.
 #' @slot    optional    \code{character} vector of non-required fields.
 #' @slot    properties  \code{list} of field definitions.
-#' @slot    info        schema information.
+#' @slot    info        \code{list} schema information.
 #'                  
 #' @details
 #' The following predefined Schema objects are defined:
@@ -27,7 +27,8 @@
 setClass("Schema", 
          slots=c(required="character",
                  optional="character",
-                 properties="list"))
+                 properties="list",
+                 info="list"))
 
 
 #### Methods #####
