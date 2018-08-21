@@ -22,6 +22,7 @@ class Schema:
 
     Attributes:
       properties (collections.OrderedDict): field definitions.
+      info (collections.OrderedDict): schema info.
       required (list): list of mandatory fields.
       optional (list): list of non-required fields.
       false_values (list): accepted string values for False.
