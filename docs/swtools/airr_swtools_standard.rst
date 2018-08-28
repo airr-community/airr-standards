@@ -1,3 +1,5 @@
+.. _ToolsStandard:
+
 AIRR Software WG - Guidance for AIRR Software Tools
 ---------------------------------------------------
 
@@ -188,8 +190,9 @@ Ratification
 ------------
 
 Authors may submit tools to the AIRR Software WG requesting ratification
-against the standard. The submission must include reviewable and
-itemised evidence of compliance with each Requirement listed above.
+against the standard. The submitter should provide a completed copy
+of the :ref:`ToolsChecklist` to evidence reviewable and itemised evidence 
+of compliance with each Requirement listed above.
 
 The Software WG will, where appropriate, issue a Certificate of
 Compliance, stating the version of the tool reviewed and the version of

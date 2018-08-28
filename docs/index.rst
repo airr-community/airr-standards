@@ -13,6 +13,8 @@ include
 
 - APIs for exposing a common interface to repositories/databases containing
   AIRR data.
+  
+- A community standard for software tools, allowing conforming tools to gain community recognition.
 
 .. toctree::
     :maxdepth: 3

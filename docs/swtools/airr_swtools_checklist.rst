@@ -1,11 +1,11 @@
+.. _ToolsChecklist:
+
 AIRR Software WG - Compliance Checklist for AIRR Software Tools
 ---------------------------------------------------------------
 
 Version 1.0 (when finalised)
 
-This questionnaire should be read in conjunction with the `**Guidance
-for AIRR Software Tools Version
-1.0** <https://docs.google.com/document/d/1PvrOis2bXjIWaFDXpIvTzqipE9yGBXYSFv-CXuatD3U/edit?ts=5b3bf98e#>`__
+This questionnaire should be read in conjunction with the :ref:`ToolsStandard`
 
 Please provide comments in italics in each response box where these
 would be helpful to facilitate understanding. We kindly ask for a brief
@@ -24,7 +24,7 @@ Contact email:
 +=================+=======================================================================================================================+=============================================+
 | 1               | Where is the source code published (please provide a link)?                                                           |                                             |
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
-| 2               | Does the tool support the `*MiAIRR standard* <http://docs.airr-community.org/en/latest/index.html>`__?                | yes/no                                      |
+| 2               | Does the tool support :ref:`DataRepresentations` standards?                                                           | yes/no                                      |
 |                 |                                                                                                                       |                                             |
 |                 | Please list any other standard data formats that are supported                                                        |                                             |
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
