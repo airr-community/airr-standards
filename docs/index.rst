@@ -25,3 +25,4 @@ include
     R Library <packages/airr-R/overview>
     Supporting Applications <resources/support.rst>
     examples/overview
+    swtools/overview
