@@ -28,24 +28,24 @@ Requirements
 Tools must:
 
 1. Be published in source code form, and hosted on a publicly available
-       repository with a clear versioning system.
+   repository with a clear versioning system.
 
 2. Support community-curated standard file formats and strive for
-       modularity and interoperability with other tools. In particular,
-       tools must read and write :ref:`DataRepresentations` standards corresponding to their tool.
+   modularity and interoperability with other tools. In particular,
+   tools must read and write :ref:`DataRepresentations` standards corresponding to their tool.
 	   
 3. Include example data (in AIRR standard formats where applicable) and
-       checks for expected output from that data, in order to provide a
-       minimal example of functionality allowing users to check that the
-       software is performing as described.
+   checks for expected output from that data, in order to provide a
+   minimal example of functionality allowing users to check that the
+   software is performing as described.
 
 4. Provide information about run parameters as part of output.
 
 5. Provide a container build file that can be used to create an image
-       which encapsulates the software tool, its dependencies, and
-       required run environment. This needs to be remotely and
-       automatically built. We currently recognize two software
-       solutions, although we will adapt as software evolves:
+   which encapsulates the software tool, its dependencies, and
+   required run environment. This needs to be remotely and
+   automatically built. We currently recognize two software
+   solutions, although we will adapt as software evolves:
 
    a. A `Dockerfile`_ that automatically builds a `container
       image`_ on `Docker Hub`_
@@ -62,7 +62,7 @@ Tools must:
 .. _`Singularity Hub`: https://singularity-hub.org/	  
 		  
 6. Provide user support, clearly stating which level of support users
-       can expect, and how and from whom to obtain it.
+   can expect, and how and from whom to obtain it.
 
 Recommendation
 --------------
@@ -83,8 +83,8 @@ of reproducibility and transparency, published work should be based on
 tools (and versions of tools) that can be obtained easily by other
 researchers in the future. To that end, AIRR compliant tools must be
 published in open repositories such as GitHub or Bitbucket, and we
-encourage publishing the specifics on the version and configuration of
-tools that thave been employed.
+encourage publishing users to provide specifics on the version and 
+configuration of tools that have been employed.
 
 Community-Curated File Formats
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -104,13 +104,11 @@ Because the installation and operation of the tools in this field may be
 complex, we require example data and details of expected output, so that
 users can confirm that their installation is functioning as expected.
 Furthermore, metadata (such as for example germline gene libraries) and
-other software dependenciesshould be checked when the tool runs, and
+other software dependencies should be checked when the tool runs, and
 informative error messages issued if necessary.
 
 Dependencies and Containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Containers
 
 Containers encapsulate everything needed to run a piece of software into
 a single convenient executable that is largely independent of the user’s
@@ -120,12 +118,12 @@ on a published build script as described above) as one download option
 that users can choose:
 
 -  Containers allow users to use and evaluate a tool easily and
-       reproduce results, without the need to resolve dependencies,
-       configure the environment, etc.
+   reproduce results, without the need to resolve dependencies,
+   configure the environment, etc.
 
 -  Having these containers be automatically built also provides a
-       self-validated way to understand the fine details of installation
-       from a known starting point.
+   self-validated way to understand the fine details of installation
+   from a known starting point.
 
 To ensure that containers are up to date,they must be built
 automatically when the current release version of the tool is updated.
@@ -146,25 +144,25 @@ the `bioboxes`_ command-line standard.
 Analysis Workflows
 
 -  At the moment, we do not endorse a specific workflow technology
-       standard:
+   standard:
 
    -  Technology is evolving too rapidly for us to commit to a
-          particular workflow.
+      particular workflow.
 
    -  Typically, AIRR analysis tools have many options and modes, which
-          would make it difficult to support a ‘plug and play’
-          environment without unduly restricting functionality.
+      would make it difficult to support a ‘plug and play’
+      environment without unduly restricting functionality.
 
 -  As tools and workflows evolve, we will keep the position under review
-       and may make stronger technology recommendations in the future.
+   and may make stronger technology recommendations in the future.
 
 -  We strongly encourage authors of tools to provide concrete,
-       documented, examples of workflows that employ their tools,
-       together with sample input and output data.
+   documented, examples of workflows that employ their tools,
+   together with sample input and output data.
 
 -  Likewise we encourage authors of research publications to provide
-       documented workflows that will enable interested readers to
-       reproduce the results.
+   documented workflows that will enable interested readers to
+   reproduce the results.
 
 Standard Data Sets
 ~~~~~~~~~~~~~~~~~~

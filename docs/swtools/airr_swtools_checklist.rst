@@ -38,11 +38,11 @@ Contact email:
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
 | 5               | Is a container build file provided?                                                                                   | yes/no                                      |
 |                 |                                                                                                                       |                                             |
-|                 | Container technology used                                                                                             | Docker/Singularity/Other (please specify)   |
+|                 | Container technology used?                                                                                            | Docker/Singularity/Other (please specify)   |
 |                 |                                                                                                                       |                                             |
 |                 | Is the container automatically built as new versions are released?                                                    | yes/no                                      |
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
-| 6               | Where can users see what level of support is available (Please provide a link)?                                       |                                             |
+| 6               | Where can users see what level of support is available? (Please provide a link)                                       |                                             |
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
-| 7               | Under what software licence is the tool published (please provide the name of the licence (e.g. GPL, MIT) or a link   |                                             |
+| 7               | Under what software licence is the tool published? (please provide the name of the licence (e.g. GPL, MIT) or a link  |                                             |
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
