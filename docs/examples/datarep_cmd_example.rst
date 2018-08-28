@@ -105,7 +105,7 @@ outputs into a single table::
     # Subset to heavy chain
     R> db <- subset(db, grepl("IGH", v_call))
 
-    # Count combined V segment usage
+    # Count combined V gene usage
     R> v_usage <- countGenes(db, "v_call", groups="cell_type",
                              mode="family")
 
