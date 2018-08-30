@@ -8,4 +8,4 @@ Software Tools Standard
 
    Guidance for AIRR Software Tools <airr_swtools_standard>
    Compliance Checklist for AIRR Software Tools <airr_swtools_checklist>
-   Recommended Software Evaulation Data Sets <airr_swtools_data>
+   Recommended Software Evaluation Data Sets <airr_swtools_data>
