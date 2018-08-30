@@ -1,7 +1,7 @@
 .. _ToolsStandard:
 
 AIRR Software WG - Guidance for AIRR Software Tools
----------------------------------------------------
+===================================================
 
 Version 1.0
 
@@ -39,7 +39,7 @@ Tools must:
    minimal example of functionality allowing users to check that the
    software is performing as described.
 
-4. Provide information about run parameters as part of output.
+4. Provide information about run parameters as part of the output.
 
 5. Provide a container build file that can be used to create an image
    which encapsulates the software tool, its dependencies, and
@@ -48,7 +48,7 @@ Tools must:
    solutions, although we will adapt as software evolves:
 
    a. A `Dockerfile`_ that automatically builds a `container
-      image`_ on `Docker Hub`_
+      image`_ on `Docker Hub`_.
 		  
 .. _`Dockerfile`: https://docs.docker.com/engine/reference/builder/
 .. _`container image`: https://docs.docker.com/docker-hub/builds/
@@ -64,27 +64,30 @@ Tools must:
 6. Provide user support, clearly stating which level of support users
    can expect, and how and from whom to obtain it.
 
-Recommendation
---------------
+Recommendations
+---------------
 
 We suggest software tools be published under a license that permits free
 access, use, modification, and sharing, such as GPL, Apache 2.0, or MIT.
-However, we understand that this depends on institutional IP
+However, we understand that this depends on institutional intellectual property
 restrictions, thus it is a recommendation rather than a requirement.
 
 Explanatory Notes
 -----------------
 
-Open Source Software, Versioned Repositories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Open Source Software and Versioned Repositories
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Software tools in the AIRR field are evolving rapidly. In the interests
 of reproducibility and transparency, published work should be based on
 tools (and versions of tools) that can be obtained easily by other
 researchers in the future. To that end, AIRR compliant tools must be
-published in open repositories such as GitHub or Bitbucket, and we
+published in open repositories such as `GitHub`_ or `Bitbucket`_, and we
 encourage publishing users to provide specifics on the version and 
 configuration of tools that have been employed.
+
+.. _`GitHub`: https://github.com
+.. _`Bitbucket`: https://bitbucket.org
 
 Community-Curated File Formats
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -103,7 +106,7 @@ Example Data and Checks
 Because the installation and operation of the tools in this field may be
 complex, we require example data and details of expected output, so that
 users can confirm that their installation is functioning as expected.
-Furthermore, metadata (such as for example germline gene libraries) and
+Furthermore, metadata (for example, germline gene libraries) and
 other software dependencies should be checked when the tool runs, and
 informative error messages issued if necessary.
 
@@ -117,61 +120,28 @@ AIRR-compliant tools must provide a containerized implementation (based
 on a published build script as described above) as one download option
 that users can choose:
 
--  Containers allow users to use and evaluate a tool easily and
-   reproduce results, without the need to resolve dependencies,
-   configure the environment, etc.
++  Containers allow users to use and evaluate a tool easily and
+   reproduce results, without the need to resolve dependencies or
+   configure the environment.
 
--  Having these containers be automatically built also provides a
++  Having these containers be automatically built also provides a
    self-validated way to understand the fine details of installation
    from a known starting point.
 
-To ensure that containers are up to date,they must be built
+To ensure that containers are up to date, they must be built
 automatically when the current release version of the tool is updated.
 We will use automated builds on Docker Hub and Singularity Hub for this
 purpose. The corresponding build files document dependencies clearly,
 and make it easy for the maintainer to keep the container’s dependencies
 up to date in subsequent releases.
 
-An example Docker container is provided by the Software WG on
-`GitHub`_. This example encapsulates `IgBLAST`_, and implements
-the `bioboxes`_ command-line standard.
+An example Docker container is provided on the Software WG
+`GitHub repository <github-swwg>`_. This example encapsulates `IgBLAST`_,
+and implements the `bioboxes`_ command-line standard.
 
-.. _`GitHub`: https://github.com/airr-community/software-wg
+.. _`github-swwg`: https://github.com/airr-community/software-wg
 .. _`IgBLAST`: https://www.ncbi.nlm.nih.gov/igblast/
 .. _`bioboxes`: http://bioboxes.org
-
-
-Analysis Workflows
-
--  At the moment, we do not endorse a specific workflow technology
-   standard:
-
-   -  Technology is evolving too rapidly for us to commit to a
-      particular workflow.
-
-   -  Typically, AIRR analysis tools have many options and modes, which
-      would make it difficult to support a ‘plug and play’
-      environment without unduly restricting functionality.
-
--  As tools and workflows evolve, we will keep the position under review
-   and may make stronger technology recommendations in the future.
-
--  We strongly encourage authors of tools to provide concrete,
-   documented, examples of workflows that employ their tools,
-   together with sample input and output data.
-
--  Likewise we encourage authors of research publications to provide
-   documented workflows that will enable interested readers to
-   reproduce the results.
-
-Standard Data Sets
-~~~~~~~~~~~~~~~~~~
-
-The WG is working on the development and evaluation of simulated data
-sets. Lists of published real-world datasets are maintained in the
-`AIRR Forum Wiki`_.
-
-.. _`AIRR Forum Wiki`: https://b-t.cr/c/wiki
 
 Support Statements
 ~~~~~~~~~~~~~~~~~~
@@ -183,6 +153,30 @@ Github, that publishes support requests transparently and links
 resolutions to specific versions or releases. Users are advised to check
 that the level of support and the frequency of software updates matches
 their expectations before committing to a tool.
+
+Analysis Workflows
+~~~~~~~~~~~~~~~~~~
+
++  At the moment, we do not endorse a specific workflow technology
+   standard:
+
+   +  Technology is evolving too rapidly for us to commit to a
+      particular workflow.
+
+   +  Typically, AIRR analysis tools have many options and modes, which
+      would make it difficult to support a "plug and play"
+      environment without unduly restricting functionality.
+
++  As tools and workflows evolve, we will keep the position under review
+   and may make stronger technology recommendations in the future.
+
++  We strongly encourage authors of tools to provide concrete,
+   documented, examples of workflows that employ their tools,
+   together with sample input and output data.
+
++ Likewise we encourage authors of research publications to provide
+   documented workflows that will enable interested readers to
+   reproduce the results.
 
 Ratification
 ------------
