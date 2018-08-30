@@ -22,6 +22,7 @@ class Schema:
 
     Attributes:
       properties (collections.OrderedDict): field definitions.
+      info (collections.OrderedDict): schema info.
       required (list): list of mandatory fields.
       optional (list): list of non-required fields.
       false_values (list): accepted string values for False.
@@ -46,6 +47,10 @@ class Schema:
         Returns:
           airr.schema.Schema : schema object.
         """
+        # Info is not a valid schema
+        if definition == 'Info':
+            raise KeyError('Info is an invalid schema definition name')
+
         # Load object definition
         with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
             spec = yaml.load(f, Loader=yamlordereddictloader.Loader)
@@ -57,8 +62,22 @@ class Schema:
         except:
             raise
 
+        try:
+            self.info = spec['Info']
+        except KeyError:
+            raise KeyError('Info object cannot be found in the specifications')
+        except:
+            raise
+
         self.properties = self.definition['properties']
-        self.required = self.definition['required']
+
+        try:
+            self.required = self.definition['required']
+        except KeyError:
+            self.required = []
+        except:
+            raise
+
         self.optional = [f for f in self.properties if f not in self.required]
 
     def spec(self, field):

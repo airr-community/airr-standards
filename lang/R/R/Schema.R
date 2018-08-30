@@ -8,6 +8,7 @@
 #' @slot    required    \code{character} vector of required fields.
 #' @slot    optional    \code{character} vector of non-required fields.
 #' @slot    properties  \code{list} of field definitions.
+#' @slot    info        \code{list} schema information.
 #'                  
 #' @details
 #' The following predefined Schema objects are defined:
@@ -26,7 +27,8 @@
 setClass("Schema", 
          slots=c(required="character",
                  optional="character",
-                 properties="list"))
+                 properties="list",
+                 info="list"))
 
 
 #### Methods #####
@@ -103,7 +105,10 @@ load_schema <- function(definition) {
     # Load definition
     definition_list <- spec_list[[definition]]
     definition_list[["discriminator"]] <- definition_list[["type"]] <- NULL
-    
+
+    # schema info
+    info <- spec_list[["Info"]]
+
     # Define member attributes
     fields <- names(definition_list[["properties"]])
     properties <- definition_list[["properties"]]
@@ -120,7 +125,7 @@ load_schema <- function(definition) {
         properties[[f]][["description"]] <- stri_trim(y)
     }
     
-    return(new("Schema", required=required, optional=optional, properties=properties))
+    return(new("Schema", required=required, optional=optional, properties=properties, info=info))
 }
 
 
