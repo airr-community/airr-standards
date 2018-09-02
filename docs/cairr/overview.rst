@@ -13,7 +13,7 @@ Just want to get to it? Here is a 2-minute YouTube video.
         <iframe src="https://www.youtube.com/embed/Db5WqHUgpOI?ecver=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
-1- Click on the CREATE AIRR METADATA link below this paragraph—create an account/log in to CEDAR if you need to.
+1- Go to http://cairr.miairr.org to start a metadata instance. Create an account/log in to CEDAR if you need to.
 
 2- Fill out your metadata.
 
@@ -30,6 +30,8 @@ You should see the files load into CEDAR, which will immediately upload them int
 
 **CREATE AIRR METADATA** 
 
+Clicking on the following link will open up a metadata form in CEDAR for you to enter your AIRR metadata.
+
 http://cairr.miairr.org
 
 For more details, read on.
@@ -44,15 +46,15 @@ You will need a CEDAR system account; you can self-register at  https://cedar.me
 
 **Submission Steps**
 
-Create your metadata. Click on CREATE AIRR METADATA above*, and CEDAR should open in your browser. (If you are not already logged in, you may need to log in before being redirected to the metadata page you will need to fill out.) It will look something like this. 
+Create your metadata. Go to http://cairr.miairr.org, and CEDAR should open in your browser. (If you are not already logged in, you may need to log in before being redirected to the metadata page.) It will look something like this. 
 
 
    .. image:: ./images/miairr_cedartemplate.png
 
 
-Click on any of the three metadata sections. 
+If you do not want your metadata to be public immediately in NCBI, fill out the Submissions Release Data field at the top of the form. Then click on any of the three metadata sections to open them up.
 
-Note that our BioProject metadata can not be submitted to NCBI yet, but soon we will enable that service.
+Note that our BioProject metadata you enter can not be submitted to NCBI yet, but soon we will enable that service; meanwhile we are saving this information in CEDAR.
 
 Click on the SAVE button often; if you navigate away from the page or close the page your unsaved changes will be lost (after a warning). Use VALIDATE to validate your metadata via NCBI’s validation service. When done, use the left arrow at the top to navigate back to your Workspace. You should see your latest saved metadata there.
 
