@@ -295,11 +295,19 @@ NucleicAcidProcessing:
                 - partial
                 - complete
                 - "complete & untemplated"
-            description: To be considered `complete`, the procedure used for library construction MUST generate sequences that 1) include the first V segment codon that encodes the mature polypeptide chain (i.e. after the leader sequence) and 2) include the last complete codon of the J segment (i.e. 1 bp 5' of the J->C splice site) and 3) provide sequence information for all positions between 1) and 2). To be considered `complete & untemplated`, the sections of the sequences defined in points 1) to 3) of the previous sentence MUST be untemplated, i.e. MUST NOT overlap with the primers used in library preparation.
+            description: >
+                To be considered `complete`, the procedure used for library construction MUST generate sequences that
+                1) include the first V segment codon that encodes the mature polypeptide chain (i.e. after the
+                leader sequence) and 2) include the last complete codon of the J segment (i.e. 1 bp 5' of the J->C
+                splice site) and 3) provide sequence information for all positions between 1) and 2). To be considered
+                `complete & untemplated`, the sections of the sequences defined in points 1) to 3) of the previous
+                sentence MUST be untemplated, i.e. MUST NOT overlap with the primers used in library preparation.
             x-miairr: true
         physical_linkage:
             type: string
-            description: Describes the mode of linkage if a method was used which physically links nucleic acids derived from distinct loci in a single-cell context
+            description: >
+                Describes the mode of linkage if a method was used which physically links nucleic acids derived from
+                distinct loci in a single-cell context.
             x-miairr: true
 
 # 1-to-n relationship between a NucleicAcidProcessing and SequencingRun with resultant raw sequence file
@@ -452,7 +460,7 @@ Alignment:
         segment:
             type: string
             description: >
-                The gene segment for this alignment. One of V, D, J or C.
+                The segment for this alignment. One of V, D, J or C.
         rev_comp:
             type: boolean
             description: >
@@ -460,7 +468,7 @@ Alignment:
         call:
             type: string
             description: >
-                Allele assignment.
+                Gene assignment with allele.
         score:
             type: number
             description: >
@@ -473,7 +481,7 @@ Alignment:
             type: number
             description: >
                 Alignment E-value, p-value, likelihood, probability or other similar measure of
-                support for the segment assignment as defined by the alignment tool.
+                support for the gene assignment as defined by the alignment tool.
         cigar:
             type: string
             description: >
@@ -510,7 +518,7 @@ Alignment:
         germline_database:
             type: string
             description: >
-                Source of germline V(D)J segments, with version number or
+                Source of germline V(D)J genes with version number or
                 date accessed. For example, 'IMGT/GENE-DB 3.1.18 (15 March 2018)'.
             x-miairr: true
 
@@ -572,15 +580,15 @@ Rearrangement:
             description: Gene locus (chain type). For example, IGH, IGK, IGL, TRA, TRB, TRD, or TRG.
         v_call:
             type: string
-            description: V segment gene with allele. For example, IGHV4-59*01.
+            description: V gene with allele. For example, IGHV4-59*01.
             x-miairr: true
         d_call:
             type: string
-            description: D segment gene with allele. For example, IGHD3-10*01.
+            description: D gene with allele. For example, IGHD3-10*01.
             x-miairr: true
         j_call:
             type: string
-            description: J segment gene with allele. For example, IGHJ4*02.
+            description: J gene with allele. For example, IGHJ4*02.
             x-miairr: true
         c_call:
             type: string
@@ -691,60 +699,60 @@ Rearrangement:
                 Amino acid translation of the fwr4 field.
         v_score:
             type: number
-            description: V segment alignment score.
+            description: Alignment score for the V gene.
         v_identity:
             type: number
-            description:  V segment alignment fractional identity.
+            description: Fractional identity for the V gene alignment.
         v_support:
             type: number
             description: >
-                V segment alignment E-value, p-value, likelihood, probability or other similar measure of
-                support for the V segment assignment as defined by the alignment tool.
+                V gene alignment E-value, p-value, likelihood, probability or other similar measure of
+                support for the V gene assignment as defined by the alignment tool.
         v_cigar:
             type: string
-            description: V segment alignment CIGAR string.
+            description: CIGAR string for the V gene alignment.
         d_score:
             type: number
-            description: D segment alignment score.
+            description: Alignment score for the D gene alignment.
         d_identity:
             type: number
-            description:  D segment alignment fractional identity.
+            description: Fractional identity for the D gene alignment.
         d_support:
             type: number
             description: >
-                D segment alignment E-value, p-value, likelihood, probability or other similar measure of
-                support for the D segment assignment as defined by the alignment tool.
+                D gene alignment E-value, p-value, likelihood, probability or other similar measure of
+                support for the D gene assignment as defined by the alignment tool.
         d_cigar:
             type: string
-            description: D segment alignment CIGAR string.
+            description: CIGAR string for the D gene alignment.
         j_score:
             type: number
-            description: J segment alignment score.
+            description: Alignment score for the J gene alignment.
         j_identity:
             type: number
-            description:  J segment alignment fractional identity.
+            description: Fractional identity for the J gene alignment.
         j_support:
             type: number
             description: >
-                J segment alignment E-value, p-value, likelihood, probability or other similar measure of
-                support for the J segment assignment as defined by the alignment tool.
+                J gene alignment E-value, p-value, likelihood, probability or other similar measure of
+                support for the J gene assignment as defined by the alignment tool.
         j_cigar:
             type: string
-            description: J segment alignment CIGAR string.
+            description: CIGAR string for the J gene alignment.
         c_score:
             type: number
-            description: C region alignment score.
+            description: Alignment score for the C gene alignment.
         c_identity:
             type: number
-            description:  C region alignment fractional identity.
+            description: Fractional identity for the C gene alignment.
         c_support:
             type: number
             description: >
-                C region alignment E-value, p-value, likelihood, probability or other similar measure of
-                support for the C region assignment as defined by the alignment tool.
+                C gene alignment E-value, p-value, likelihood, probability or other similar measure of
+                support for the C gene assignment as defined by the alignment tool.
         c_cigar:
             type: string
-            description: C region alignment CIGAR string.
+            description: CIGAR string for the C gene alignment.
         v_sequence_start:
             type: integer
             description: >
@@ -756,11 +764,11 @@ Rearrangement:
         v_germline_start:
             type: integer
             description: >
-                Alignment start position in the V reference sequence (1-based closed interval).
+                Alignment start position in the V gene reference sequence (1-based closed interval).
         v_germline_end:
             type: integer
             description: >
-                Alignment end position in the V reference sequence (1-based closed interval).
+                Alignment end position in the V gene reference sequence (1-based closed interval).
         v_alignment_start:
             type: integer
             description: >
@@ -782,11 +790,11 @@ Rearrangement:
         d_germline_start:
             type: integer
             description: >
-                Alignment start position in the D reference sequence (1-based closed interval).
+                Alignment start position in the D gene reference sequence (1-based closed interval).
         d_germline_end:
             type: integer
             description: >
-                Alignment end position in the D reference sequence (1-based closed interval).
+                Alignment end position in the D gene reference sequence (1-based closed interval).
         d_alignment_start:
             type: integer
             description: >
@@ -808,11 +816,11 @@ Rearrangement:
         j_germline_start:
             type: integer
             description: >
-                Alignment start position in the J reference sequence (1-based closed interval).
+                Alignment start position in the J gene reference sequence (1-based closed interval).
         j_germline_end:
             type: integer
             description: >
-                Alignment end position in the J reference sequence (1-based closed interval).
+                Alignment end position in the J gene reference sequence (1-based closed interval).
         j_alignment_start:
             type: integer
             description: >
@@ -868,79 +876,79 @@ Rearrangement:
         v_sequence_alignment:
             type: string
             description: >
-                V segment aligned portion of query sequence, including any indel corrections or
-                numbering spacers.
+                Aligned portion of query sequence assigned to the V segment, including any
+                indel corrections or numbering spacers.
         v_sequence_alignment_aa:
             type: string
             description: >
-                Amino acid translation of the V segment aligned portion of the query sequence.
+                Amino acid translation of the v_sequence_alignment field.
         d_sequence_alignment:
             type: string
             description: >
-                D segment aligned portion of query sequence, including any indel corrections or
-                numbering spacers.
+                Aligned portion of query sequence assigned to the D segment, including any
+                indel corrections or numbering spacers.
         d_sequence_alignment_aa:
             type: string
             description: >
-                Amino acid translation of the D segment aligned portion of the query sequence.
+                Amino acid translation of the d_sequence_alignment field.
         j_sequence_alignment:
             type: string
             description: >
-                J segment aligned portion of query sequence, including any indel corrections or
-                numbering spacers.
+                Aligned portion of query sequence assigned to the J segment, including any
+                indel corrections or numbering spacers.
         j_sequence_alignment_aa:
             type: string
             description: >
-                Amino acid translation of the J segment aligned portion of the query sequence.
+                Amino acid translation of the j_sequence_alignment field.
         c_sequence_alignment:
             type: string
             description: >
-                Constant region aligned portion of query sequence, including any indel corrections or
-                numbering spacers.
+                Aligned portion of query sequence assigned to the constant region, including
+                any indel corrections or numbering spacers.
         c_sequence_alignment_aa:
             type: string
             description: >
-                Amino acid translation of the constant region aligned portion of the query sequence.
+                Amino acid translation of the c_sequence_alignment field.
         v_germline_alignment:
             type: string
             description: >
-                Aligned V segment germline sequence spaning the same region
+                Aligned V gene germline sequence spanning the same region
                 as the v_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
         v_germline_alignment_aa:
             type: string
             description: >
-                Amino acid translation of the align V segment germline sequence.
+                Amino acid translation of the v_germline_alignment field.
         d_germline_alignment:
             type: string
             description: >
-                Aligned D segment germline sequence spaning the same region
+                Aligned D gene germline sequence spanning the same region
                 as the d_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
         d_germline_alignment_aa:
             type: string
             description: >
-                Amino acid translation of the align D segment germline sequence.
+                Amino acid translation of the d_germline_alignment field.
         j_germline_alignment:
             type: string
             description: >
-                Aligned J segment germline sequence spaning the same region
+                Aligned J gene germline sequence spanning the same region
                 as the j_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
         j_germline_alignment_aa:
             type: string
             description: >
-                Amino acid translation of the align J segment germline sequence.
+                Amino acid translation of the j_germline_alignment field.
         c_germline_alignment:
             type: string
             description: >
-                Aligned constant region germline sequence spaning the same region
+                Aligned constant region germline sequence spanning the same region
                 as the c_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
         c_germline_alignment_aa:
             type: string
             description: >
-                Amino acid translation of the align constant region germline sequence.
+                Amino acid translation of the c_germline_aligment field.
         junction_length:
             type: integer
             description: Number of nucleotides in the junction sequence.
@@ -1001,6 +1009,6 @@ Rearrangement:
         germline_database:
             type: string
             description: >
-                Source of germline V(D)J segments, with version number or
+                Source of germline V(D)J genes with version number or
                 date accessed. For example, 'IMGT/GENE-DB 3.1.18 (15 March 2018)'.
             x-miairr: true
