@@ -1,5 +1,5 @@
-AIRR Standards
-==============
+AIRR Community Documentation
+============================
 
 The AIRR Community is developing a set of standards for describing, reporting,
 storing, and sharing adaptive immune receptor repertoire (AIRR) data, such as
@@ -11,6 +11,7 @@ include:
 + Data representations (file format) specifications for storing large amounts of annotated AIRR data.
 + APIs for exposing a common interface to repositories/databases containing AIRR data.
 + A community standard for software tools which will allow conforming tools to gain community recognition.
++ A database and web submission frontend for inferred germline genes
 
 .. toctree::
     :maxdepth: 3
@@ -24,3 +25,4 @@ include:
     R Library <packages/airr-R/overview>
     Supporting Applications <resources/support.rst>
     examples/overview
+    OGRE - Open Germline Repertoire Database <ogre/overview>
