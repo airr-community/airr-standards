@@ -28,14 +28,21 @@ records present at NCBI:
    sequence. The record is deposited in one of the following:
 
    *  Genbank: All inferences that have been performed on the
-      submitters own data can be submitted as ??? to Genbank. Note that
-      Genbank typically only holds data that has a physical correlate
-      which is not necessarily true for infered sequences.
+      submitters own data CAN be submitted as [???] to Genbank. Note
+      that Genbank typically only holds data that has a physical
+      correlate which is not necessarily true for infered sequences.
+      Nevertheless NCBI currently accepts this as a kind of consensus
+      building if it is performed on your own data. The Genbank record
+      MUST link to the ``select set`` record (see 3.) via the
+      ``DBLINK/DR`` field. Genbank records will be publicly available
+      independent of other publications.
 
    *  TPA (Third-party annotation): A segment of Genbank dedicated
-      inferences. Note that in contrast to Genbank, TPA does require
-      a peer-reviewed publication describing the details of the
-      inference process.
+      inferences. Also the TPA record MUST link to the ``select set``
+      record (see 3.) via the ``DBLINK/DR`` field. Note that in contrast
+      to Genbank, TPA does REQUIRE a peer-reviewed publication
+      describing the details of the inference process before the record
+      will be made publicly available.
 
    The format for both record types the Genbank format (link) with
    a standardized feature table (FT). Note that your initial submission
@@ -54,11 +61,23 @@ records present at NCBI:
 
 3. One or multiple SRA records containing the ``select set`` of reads
    from (2). The aim of these records is to document the number,
-   quality, coverage and diversity of the reads in a dataset that _potentially_  support the inference. This means that the
+   quality, coverage and diversity of the reads in a dataset that
+   _potentially_  support the inference. This means that the
    ``select set`` SHOULD be a superset of the reads that support the
-   inference. It is NOT REQUIRED that inference tools deterministically return the inferred allele upon being fed with the ``select set``.
+   inference. It is NOT REQUIRED that inference tools deterministically
+   return the inferred allele upon being fed with the ``select set``.
    Generation of the ``select set`` from the complete set is described
-   below.
+   below. When submitting the ``select set`` to SRA the metadata
+   context, i.e. the original links to project, sample and
+   (if possible) experiment) SHOULD be maintained. Reads originating
+   from multiple subjects or samples MUST NOT be pooled into a single
+   new entry. The new record SHOULD be titled "Reads from
+   <original_run_accession> supporting inference of Homo sapiens
+   immunoglobulin heavy chain variable gene” and contain a design
+   description, e.g., “Experimental workflow as described in original
+   SRA/ENA record [<run_accession>]. Gene inference was performed
+   using <software+version+parameters>. The reported reads were
+   selected based on <selection_criteria>.”
 
 
 Generating the ``select set``
@@ -71,7 +90,10 @@ REQUIRE inference tools to provide their own mechanisms. Note that it
 is currently assumed that the procedure is not fully deterministic,
 i.e. the ``select set`` cannot simply be generated using the complete
 read data and the inferred sequence, as there are additional filter
-criteria that apply.
+criteria that apply. In addition the ``select set`` SHOULD not be
+subject to any modifications that are not listed below. This includes
+UMI-based consensus building or other aggregation steps that are not
+fully transparent to a third-party.
 
 1. Assemble paired-end reads. The two reads MUST overlap. Recommended
    tool: PandaSeq
@@ -82,5 +104,7 @@ criteria that apply.
    full-length and >99.6% ID. Record all matching read ID. Recommended
    tool: NCBI BLAST
 4. Select the reads with the read ID found in (3.) from the original
-   unmerged FASTQs. Recommended tool: Christian's cryptic extractor script
+   unmerged FASTQs. Note that each ``select set`` MUST be derived from
+   a single donor and sample. Recommended tool: Christian's cryptic
+   extractor script
 5. Submit the ``select set`` to SRA
