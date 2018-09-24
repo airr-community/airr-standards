@@ -423,11 +423,10 @@ Repertoire:
         sample:
             type: array
             items:
-                allOf:
-                    - $ref: '#/Sample'
-                    - $ref: '#/CellProcessing'
-                    - $ref: '#/NucleicAcidProcessing'
-                    - $ref: '#/SequencingRun'
+                - $ref: '#/Sample'
+                - $ref: '#/CellProcessing'
+                - $ref: '#/NucleicAcidProcessing'
+                - $ref: '#/SequencingRun'
         sequence_annotation:
             type: array
             items:
