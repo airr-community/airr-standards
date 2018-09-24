@@ -63,9 +63,17 @@ Subject:
             description: TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)
             x-miairr: true
         organism:
-            type: string
+            type: object
             description: Binomial designation of subject's species
             x-miairr: true
+            x-ontology: https://www.ncbi.nlm.nih.gov/taxonomy
+            properties:
+                id:
+                    type: integer
+                    description: Taxonomy identifier (e.g. 9606)
+                name:
+                    type: string
+                    description: Species name (e.g. Homo sapiens)
         sex:
             type: string
             description: Biological sex of subject
