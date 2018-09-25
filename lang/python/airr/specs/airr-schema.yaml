@@ -73,9 +73,17 @@ Subject:
             description: TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)
             x-miairr: true
         organism:
-            type: string
+            type: object
             description: Binomial designation of subject's species
             x-miairr: true
+            x-ontology: https://www.ncbi.nlm.nih.gov/taxonomy
+            properties:
+                id:
+                    type: integer
+                    description: Taxonomy identifier (e.g. 9606)
+                name:
+                    type: string
+                    description: Species name (e.g. Homo sapiens)
         sex:
             type: string
             description: Biological sex of subject
@@ -196,6 +204,10 @@ CellProcessing:
     discriminator: AIRR
     type: object
     properties:
+        cell_processing_id:
+            type: string
+            description: Identifier for the cell processing object, unique within study
+            x-miairr: false
         tissue_processing:
             type: string
             description: Enzymatic digestion and/or physical methods used to isolate cells from sample
@@ -244,6 +256,10 @@ NucleicAcidProcessing:
     discriminator: AIRR
     type: object
     properties:
+        nucleic_acid_processing_id:
+            type: string
+            description: Identifier for the nucleic acid processing object, unique within study
+            x-miairr: false
         template_class:
             enum:
                 - DNA
@@ -301,6 +317,16 @@ NucleicAcidProcessing:
                 Describes the mode of linkage if a method was used which physically links nucleic acids derived from
                 distinct loci in a single-cell context.
             x-miairr: true
+
+# 1-to-n relationship between a NucleicAcidProcessing and SequencingRun with resultant raw sequence file
+SequencingRun:
+    discriminator: AIRR
+    type: object
+    properties:
+        sequencing_run_id:
+            type: string
+            description: ID of sequencing run assigned by the sequencing facility
+            x-miairr: true
         total_reads_passing_qc_filter:
             type: integer
             description: Number of usable reads for analysis
@@ -317,10 +343,6 @@ NucleicAcidProcessing:
             type: string
             description: Name and address of sequencing facility
             x-miairr: true
-        sequencing_run_id:
-            type: string
-            description: ID of sequencing run assigned by the sequencing facility
-            x-miairr: true
         sequencing_run_date:
             type: string
             description: Date of sequencing run
@@ -329,13 +351,10 @@ NucleicAcidProcessing:
             type: string
             description: Name, manufacturer, order and lot numbers of sequencing kit
             x-miairr: true
-
-# 1-to-1 relationship between a NucleicAcidProcessing and resultant raw sequencing files
-# filenames are unique within a study
-RawSequenceData:
-    discriminator: AIRR
-    type: object
-    properties:
+        file_type:
+            enum:
+                - fasta
+                - fastq
         filename:
             type: string
         read_direction:
@@ -351,7 +370,7 @@ RawSequenceData:
                 - reverse
                 - mixed
 
-# 1-to-1 relationship between a study and software processing
+# 1-to-n relationship between the study sequence data and software processing
 SoftwareProcessing:
     discriminator: AIRR
     type: object
@@ -380,6 +399,64 @@ SoftwareProcessing:
             type: string
             description: General description of how QC is performed
             x-miairr: true
+        analysis_provenance_id:
+            type: string
+            description: Identifier for machine-readable PROV model of analysis provenance
+
+
+# The composite schema for the repertoire object
+#
+# This represents a sample repertoire as defined by the study
+# and experimentally observed by raw sequence data. A repertoire
+# can only be for one subject but may include multiple samples.
+Repertoire:
+    discriminator: AIRR
+    type: object
+    properties:
+        repertoire_id:
+            type: string
+            description: Identifier for the repertoire object.
+        study:
+            $ref: '#/Study'
+        subject:
+            $ref: '#/Subject'
+        diagnosis:
+            type: array
+            items:
+                $ref: '#/Diagnosis'
+        sample:
+            type: array
+            items:
+                allOf:
+                    - $ref: '#/Sample'
+                    - $ref: '#/CellProcessing'
+                    - $ref: '#/NucleicAcidProcessing'
+                    - $ref: '#/SequencingRun'
+        sequence_annotation:
+            type: array
+            items:
+                $ref: '#/RearrangementSet'
+
+
+# 1-to-n relationship between a repertoire and rearrangement sets
+#
+# Set of annotated rearrangement sequences produced by
+# software processing upon the raw sequence data for a repertoire.
+RearrangementSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        rearrangement_set_id:
+            type: string
+            description: Identifier for the rearrangement set object.
+        primary_annotation:
+            type: boolean
+            description: >
+                If true, indicates this is the primary or default software processing for
+                a repertoire and its rearrangments. If false, indicates this is a secondary
+                or additional software processing.
+        software:
+            $ref: '#/SoftwareProcessing'
 
 
 Alignment:
@@ -943,10 +1020,15 @@ Rearrangement:
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
                 but will usually be a univerally unique record locator for database applications.
+        repertoire_id:
+            type: string
+            description: Identifier to the associated repertoire in study metadata.
         rearrangement_set_id:
             type: string
             description: >
-                Identifier for grouping Rearrangement objects.
+                Identifier to the sequence annotation object for the repertoire in study metadata
+                with the associated software processing for this rearrangement. If this field is
+                empty than the primary sequence annotation is assumed.
         germline_database:
             type: string
             description: >
