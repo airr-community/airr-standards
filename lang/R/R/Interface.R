@@ -6,10 +6,10 @@
 #'
 #' @param    file    input file path.
 #' @param    base    starting index for positional fields in the input file. 
+#'                   If \code{"1"}, then these fields will not be modified.
 #'                   If \code{"0"}, then fields ending in \code{"_start"} and \code{"_end"}
 #'                   are 0-based half-open intervals (python style) in the input file 
-#'                   and will be converted to 1-based closed-intervals (R style). 
-#'                   If \code{"1"}, then these fields will not be modified.
+#'                   and will be converted to 1-based closed-intervals (R style).
 #' @param    schema  \code{Schema} object defining the output format.
 #' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
 #' 
@@ -28,7 +28,7 @@
 #' df <- read_rearrangement(file)
 #' 
 #' @export
-read_airr <- function(file, base=c("0", "1"), schema=RearrangementSchema, ...) {
+read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, ...) {
     # Check arguments
     base <- match.arg(base)
     
@@ -135,7 +135,7 @@ validate_airr <- function(data, schema=RearrangementSchema){
 #' 
 #' @rdname read_airr
 #' @export
-read_rearrangement <- function(file, base=c("0", "1"), ...) {
+read_rearrangement <- function(file, base=c("1", "0"), ...) {
     read_airr(file, base=base, schema=RearrangementSchema, ...)
 }
 
@@ -145,7 +145,7 @@ read_rearrangement <- function(file, base=c("0", "1"), ...) {
 #' 
 #' @rdname read_airr
 #' @export
-read_alignment <- function(file, base=c("0", "1"), ...) {
+read_alignment <- function(file, base=c("1", "0"), ...) {
     read_airr(file, base=base, schema=AlignmentSchema, ...)
 }
 
@@ -157,11 +157,12 @@ read_alignment <- function(file, base=c("0", "1"), ...) {
 #' @param    data    data.frame of Rearrangement data.
 #' @param    file    output file name.
 #' @param    base    starting index for positional fields in the output file. 
+#'                   Fields in the input \code{data} are assumed to be 1-based 
+#'                   closed-intervals (R style). 
+#'                   If \code{"1"}, then these fields will not be modified. 
 #'                   If \code{"0"}, then fields ending in \code{_start} and \code{_end}
 #'                   will be converted to 0-based half-open intervals (python style) 
-#'                   in the output file. If \code{"1"}, then these fields will not be 
-#'                   modified. Fields in the input \code{data} are assumed to be 
-#'                   1-based closed-intervals (R style). 
+#'                   in the output file. 
 #' @param    schema  \code{Schema} object defining the output format.
 #' @param    ...     additional arguments to pass to \link[readr]{write_delim}.
 #'
@@ -183,7 +184,7 @@ read_alignment <- function(file, base=c("0", "1"), ...) {
 #' write_rearrangement(df, outfile)
 #' 
 #' @export
-write_airr <- function(data, file, base=c("0", "1"), schema=RearrangementSchema, ...) {
+write_airr <- function(data, file, base=c("1", "0"), schema=RearrangementSchema, ...) {
     ## DEBUG
     # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
     
@@ -247,7 +248,7 @@ write_airr <- function(data, file, base=c("0", "1"), schema=RearrangementSchema,
 #' 
 #' @rdname write_airr
 #' @export
-write_rearrangement <- function(data, file, base=c("0", "1"), ...) {
+write_rearrangement <- function(data, file, base=c("1", "0"), ...) {
     write_airr(data, file, base=base, schema=RearrangementSchema, ...)
 }
 
@@ -257,6 +258,6 @@ write_rearrangement <- function(data, file, base=c("0", "1"), ...) {
 #' 
 #' @rdname write_airr
 #' @export
-write_alignment <- function(data, file, base=c("0", "1"), ...) {
+write_alignment <- function(data, file, base=c("1", "0"), ...) {
     write_airr(data, file, base=base, schema=AlignmentSchema, ...)
 }

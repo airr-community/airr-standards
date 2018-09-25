@@ -32,17 +32,23 @@ class TestRearrangementReader(unittest.TestCase):
     # @unittest.skip('-> validate(): skipped\n')
     def test_validate(self):
         # Good data
-        with open(self.data_good, 'r') as handle:
-            reader = RearrangementReader(handle)
-            result = reader.validate()
-        self.assertTrue(result, 'validate(): good data failed')
+        try:
+            with open(self.data_good, 'r') as handle:
+                reader = RearrangementReader(handle, validate=True)
+                for r in reader:
+                    pass
+        except:
+            self.assertTrue(False, 'validate(): good data failed')
 
         # Bad data
-        with open(self.data_bad, 'r') as handle:
-            reader = RearrangementReader(handle)
-            result = reader.validate()
-        self.assertFalse(result, 'validate(): bad data failed')
-
+        try:
+            with open(self.data_bad, 'r') as handle:
+                reader = RearrangementReader(handle, validate=True)
+                for r in reader:
+                    pass
+            self.assertFalse(True, 'validate(): bad data failed')
+        except:
+            pass
 
 if __name__ == '__main__':
     unittest.main()

@@ -25,10 +25,10 @@ standard CSV reader.
     import airr
 
     # Create an iteratable that returns a dictionary for each row
-    reader = airr.read_rearrangement(open('input.tsv', 'r'))
+    reader = airr.read_rearrangement('input.tsv')
 
     # Load the entire file into a pandas data frame
-    df = airr.load_rearrangement(open('input.tsv', 'r'))
+    df = airr.load_rearrangement('input.tsv')
 
 **Writing AIRR formatted files**
 
@@ -43,8 +43,8 @@ operations.
     import airr
 
     # Create a writer class for iterative row output
-    writer = airr.create_rearrangement(open('output.tsv', 'w'))
+    writer = airr.create_rearrangement('output.tsv')
     for row in reader:  writer.write(row)
 
     # Write an entire pandas data frame to a file
-    airr.dump_rearrangement(df, open('file.tsv', 'w'))
+    airr.dump_rearrangement(df, 'file.tsv')

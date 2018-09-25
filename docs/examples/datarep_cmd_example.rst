@@ -1,10 +1,10 @@
-AIRR-seq Data Representation Standard Interoperability Example
+AIRR Rearrangement TSV Interoperability Example
 ================================================================================
 
 The example that follows illustrates the interoperability provided by the
-AIRR-seq Data Representation Standard. The code provided demonstrates how to
-take AIRR formated data output by IgBLAST and combine it with data
-processed by IMGT/HighV-QUEST that has converted to the AIRR standard by
+AIRR Rearrangement schema. The code provided demonstrates how to
+take AIRR formatted data output by IgBLAST and combine it with data
+processed by IMGT/HighV-QUEST that has converted to the AIRR format by
 Change-O. Then, the merged output of these two distinct tools is used to
 (a) create MiAIRR compliant GenBank/TLS submission files, and (b) perform
 a simple V gene usage analysis task.
@@ -42,7 +42,7 @@ with all the tools used in the steps that follow::
 Generate AIRR formatted TSV files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TSV files compliant with the AIRR Data Representation standards may be
+TSV files compliant with the AIRR Rearrangement schema may be
 output directly from IgBLAST v1.9+ or generated from IMGT/HighV-QUEST
 output (or IgBLAST <=1.8 ouput) using the MakeDb parser provided by
 Change-O::
@@ -105,7 +105,7 @@ outputs into a single table::
     # Subset to heavy chain
     R> db <- subset(db, grepl("IGH", v_call))
 
-    # Count combined V segment usage
+    # Count combined V gene usage
     R> v_usage <- countGenes(db, "v_call", groups="cell_type",
                              mode="family")
 
