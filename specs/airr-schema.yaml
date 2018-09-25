@@ -420,6 +420,10 @@ Repertoire:
             $ref: '#/Study'
         subject:
             $ref: '#/Subject'
+        diagnosis:
+            type: array
+            items:
+                - $ref: '#/Diagnosis'
         sample:
             type: array
             items:
