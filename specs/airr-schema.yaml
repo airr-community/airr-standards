@@ -423,7 +423,7 @@ Repertoire:
         diagnosis:
             type: array
             items:
-                - $ref: '#/Diagnosis'
+                $ref: '#/Diagnosis'
         sample:
             type: array
             items:
@@ -434,7 +434,7 @@ Repertoire:
         sequence_annotation:
             type: array
             items:
-                - $ref: '#/RearrangementSet'
+                $ref: '#/RearrangementSet'
 
 
 # 1-to-n relationship between a repertoire and rearrangement sets
