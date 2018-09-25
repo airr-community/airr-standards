@@ -431,6 +431,12 @@ RearrangementSet:
         rearrangement_set_id:
             type: string
             description: Identifier for the rearrangement set object.
+        primary_annotation:
+            type: boolean
+            description: >
+                If true, indicates this is the primary or default software processing for
+                a repertoire and its rearrangments. If false, indicates this is a secondary
+                or additional software processing.
         software:
             $ref: '#/SoftwareProcessing'
 
@@ -998,10 +1004,15 @@ Rearrangement:
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
                 but will usually be a univerally unique record locator for database applications.
+        repertoire_id:
+            type: string
+            description: Identifier to the associated repertoire in study metadata.
         rearrangement_set_id:
             type: string
             description: >
-                Identifier for grouping Rearrangement objects.
+                Identifier to the sequence annotation object for the repertoire in study metadata
+                with the associated software processing for this rearrangement. If this field is
+                empty than the primary sequence annotation is assumed.
         germline_database:
             type: string
             description: >
