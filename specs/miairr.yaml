@@ -14,8 +14,8 @@ study_description:
    miairr_set: 1
    miairr_subset: study
    miairr_name: Study type
-   format: controlled vocabulary
-   example: Placebo controlled phase 3 clinical trial
+   format: {"ontology": "NCIT", "top_node": "Study Design", "draft": true}
+   example: Case-Control Study
 inclusion_exclusion_criteria:
    miairr_set: 1
    miairr_subset: study
@@ -74,13 +74,13 @@ organism:
    miairr_set: 1
    miairr_subset: subject
    miairr_name: Organism
-   format: controlled vocabulary
+   format: {"ontology": "NCBITAXON", "top_node": "Gnathostomata", "draft": false}
    example: Homo sapiens
 sex:
    miairr_set: 1
    miairr_subset: subject
    miairr_name: Sex
-   format: /(male|female|pooled|hermaphrodite|intersex|not collected|not applicable)/
+   format: {"controlled_vocabulary": ["male", "female", "pooled", "hermaphrodite", "intersex", "not collected", "not applicable"]}
    example: female
 age:
    miairr_set: 1
@@ -236,8 +236,8 @@ cell_subset:
    miairr_set: 3
    miairr_subset: process (cell)
    miairr_name: Cell subset
-   format: controlled vocabulary
-   example: Class-switched Memory B cells
+   format: {"ontology": "CL", "top_node": "lymphocyte", "draft": true}
+   example: class switched memory B cell
 cell_phenotype:
    miairr_set: 3
    miairr_subset: process (cell)
@@ -290,7 +290,7 @@ template_class:
    miairr_set: 3
    miairr_subset: process (nucleic acid)
    miairr_name: Target substrate
-   format: /(DNA|RNA)/
+   format: {"controlled_vocabulary": ["DNA", "RNA"]}
    example: RNA
 template_quality:
    miairr_set: 3
@@ -308,8 +308,8 @@ library_generation_method:
    miairr_set: 3
    miairr_subset: process (nucleic acid)
    miairr_name: Library generation method
-   format: controlled vocabulary
-   example: Oligo-dT primed 5' RACE
+   format: {"controlled_vocabulary": ["PCR", "RT(RHP)+PCR", "RT(oligo-dT)+PCR", "RT(oligo-dT)+TS+PCR", "RT(oligo-dT)+TS(UMI)+PCR", "RT(specific)+PCR", "RT(specific)+TS+PCR", "RT(specific)+TS(UMI)+PCR", "RT(specific+UMI)+PCR", "RT(specific+UMI)+TS+PCR", "RT(specific)+TS", "other"]}
+   example: RT(oligo-dT)+TS(UMI)+PCR
 library_generation_protocol:
    miairr_set: 3
    miairr_subset: process (nucleic acid)
@@ -344,14 +344,14 @@ complete_sequences:
    miairr_set: 3
    miairr_subset: process (nucleic acid)
    miairr_name: Complete sequences
-   format: /(partial|complete|complete+untemplated)/
+   format: {"controlled_vocabulary": ["partial", "complete", "complete+untemplated"]}
    example: partial
 physical_linkage:
    miairr_set: 3
    miairr_subset: process (nucleic acid)
    miairr_name: Physical linkage of different loci
-   format: controlled vocabulary
-   example: IGH-IGK/IGL-head/head
+   format: {"controlled_vocabulary": ["none", "hetero_head-head"]}
+   example: hetero_head-head
 total_reads_passing_qc_filter:
    miairr_set: 3
    miairr_subset: process (nucleic acid)
