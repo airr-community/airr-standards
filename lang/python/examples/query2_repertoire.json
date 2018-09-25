@@ -1,0 +1,28 @@
+{
+    "filters":{
+        "op":"and",
+        "content": [
+            {
+                "op":"=",
+                "content": {
+                    "field":"subject.organism.id",
+                    "value":9606
+                }
+	    },
+	    {
+                "op":"=",
+                "content": {
+                    "field":"sample.pcr_target_locus",
+                    "value":"IGH"
+                }
+	    },
+	    {
+                "op":"contains",
+                "content": {
+                    "field":"diagnosis.disease_diagnosis",
+                    "value":"autoimmune"
+                }
+	    }
+	]
+    }
+}
