@@ -190,7 +190,9 @@ paths:
               format:
                 type: string
               fields:
-                type: string
+                type: array
+                items:
+                  type: string
               size:
                 type: number
               from:
