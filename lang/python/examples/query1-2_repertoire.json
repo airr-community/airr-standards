@@ -18,5 +18,7 @@
 	    }
 	]
     },
-    "fields":["repertoire_id", "subject", "sequence_annotation.rearrangement_set_id"]
+    "from":10,
+    "size":5,
+    "fields":["repertoire_id"]
 }
