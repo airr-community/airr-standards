@@ -8,7 +8,7 @@ Version 1.0 (when finalised)
 This questionnaire should be read in conjunction with the :ref:`ToolsStandard`.
 
 To submit your tool for ratification against the standard, please send the completed questionnaire
-to tools-standard@airr-community.org.
+to software@airrc.antibodysociety.org.
 
 Please provide comments in italics in each response box where these
 would be helpful to facilitate understanding. We kindly ask for a brief
