@@ -14,8 +14,8 @@ miairr_dataset_to_api_object = {
     '2 / sample': 'Sample',
     '3 / process (cell)': 'CellProcessing',
     '3 / process (nucl. acid)': 'NucleicAcidProcessing',
-    '3 / process (nucl. acid, pcr)': 'PCRTarget',
-    '3 / process (sequencing)': 'SequencingRun',
+    '3 / process (nucl. acid [pcr])': 'PCRTarget',
+    '3 / process (nucl. acid sequencing)': 'SequencingRun',
     '5 / process (comput.)': 'SoftwareProcessing',
     '6 / data (proc. seq.)': 'Rearrangement'}
 
