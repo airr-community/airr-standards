@@ -2,7 +2,7 @@
     "filters":{
         "op":"=",
         "content": {
-            "field":"sample.pcr_target_locus",
+            "field":"sample.pcr_target.locus",
             "value":"IGH"
         }
     },

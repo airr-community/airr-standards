@@ -249,6 +249,25 @@ CellProcessing:
             description: Description of the methods applied to the sample including cell preparation/ isolation/enrichment and nucleic acid extraction. This should closely mirror the Materials and methods section in the manuscript
             x-miairr: true
 
+# object for PCR primer targets
+PCRTarget:
+    discriminator: AIRR
+    type: object
+    properties:
+        locus:
+            type: string
+            description: Designation of the target locus according to standard gene nomencleature
+            x-miairr: true
+        forward_pcr_primer_target_location:
+            type: string
+            description: Position of the most distal nucleotide templated by the forward primer or primer mix
+            x-miairr: true
+        reverse_pcr_primer_target_location:
+            type: string
+            description: Position of the most proximal nucleotide templated by the reverse primer or primer mix
+            x-miairr: true
+
+
 # generally, a 1-to-1 relationship between a CellProcessing and processing of its nucleic acid
 # but may be 1-to-n for technical replicates.
 # nucleic_acid_processing_id is unique within a study
@@ -286,18 +305,10 @@ NucleicAcidProcessing:
             type: string
             description: When using a library generation protocol from a commercial provider, provide the protocol version number
             x-miairr: true
-        pcr_target_locus:
-            type: string
-            description: Designation of the target locus according to standard gene nomencleature
-            x-miairr: true
-        forward_pcr_primer_target_location:
-            type: string
-            description: Position of the most distal nucleotide templated by the forward primer or primer mix
-            x-miairr: true
-        reverse_pcr_primer_target_location:
-            type: string
-            description: Position of the most proximal nucleotide templated by the reverse primer or primer mix
-            x-miairr: true
+        pcr_target:
+            type: array
+            items:
+                $ref: '#/PCRTarget'
         complete_sequences:
             enum:
                 - partial
