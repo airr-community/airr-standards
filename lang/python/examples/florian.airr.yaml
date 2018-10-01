@@ -43,7 +43,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -84,7 +84,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -125,7 +125,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -166,7 +166,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -207,7 +207,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -248,7 +248,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -289,7 +289,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -330,7 +330,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -371,7 +371,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -412,7 +412,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -453,7 +453,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -494,7 +494,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -535,7 +535,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -576,7 +576,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -617,7 +617,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -658,7 +658,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -699,7 +699,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -740,7 +740,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -781,7 +781,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -822,7 +822,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -863,7 +863,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -904,7 +904,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -945,7 +945,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -986,7 +986,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1027,7 +1027,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1068,7 +1068,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1109,7 +1109,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1150,7 +1150,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1191,7 +1191,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1232,7 +1232,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1273,7 +1273,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1314,7 +1314,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1355,7 +1355,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1396,7 +1396,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1437,7 +1437,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1478,7 +1478,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1519,7 +1519,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1560,7 +1560,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1601,7 +1601,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1642,7 +1642,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1683,7 +1683,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1724,7 +1724,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1765,7 +1765,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1806,7 +1806,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1847,7 +1847,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1888,7 +1888,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1929,7 +1929,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -1970,7 +1970,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -2011,7 +2011,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -2052,7 +2052,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -2093,7 +2093,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -2134,7 +2134,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -2175,7 +2175,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -2216,7 +2216,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -2257,7 +2257,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -2298,7 +2298,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: IGH
+        - pcr_target_locus: IGH
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -2339,7 +2339,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -2380,7 +2380,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -2421,7 +2421,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq
@@ -2462,7 +2462,7 @@ Repertoire:
       cell_isolation: FACS
       template_class: RNA
       pcr_target:
-        - locus: TRB
+        - pcr_target_locus: TRB
       sequencing_platform: "Illumina MiSeq"
       read_length: "300"
       file_type: fastq

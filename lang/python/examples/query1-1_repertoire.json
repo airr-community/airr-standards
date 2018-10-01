@@ -12,7 +12,7 @@
 	    {
                 "op":"=",
                 "content": {
-                    "field":"sample.pcr_target.locus",
+                    "field":"sample.pcr_target.pcr_target_locus",
                     "value":"TRB"
                 }
 	    }
