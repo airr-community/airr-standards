@@ -254,7 +254,7 @@ PCRTarget:
     discriminator: AIRR
     type: object
     properties:
-        locus:
+        pcr_target_locus:
             type: string
             description: Designation of the target locus according to standard gene nomencleature
             x-miairr: true
