@@ -42,7 +42,7 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 3 / process (cell)	Cell subset phenotype	string	Free text	List of cellular markers and their expression levels used to isolate the cell population	CD19+ CD38+ CD27+ IgM- IgD-	cell_phenotype
 3 / process (cell)	Single-cell sort	boolean	TRUE/FALSE	TRUE if single cells were isolated into separate compartments	FALSE	single_cell
 3 / process (cell)	Number of cells in experiment	integer	Number	Total number of cells that went into the experiment	1000000	cell_number
-3 / process (cell)	Number of cells per sequencing reaction	integer	Number	Number of cells for each biological repicate	50000	cells_per_reaction
+3 / process (cell)	Number of cells per sequencing reaction	integer	Number	Number of cells for each biological replicate	50000	cells_per_reaction
 3 / process (cell)	Cell storage	boolean	TRUE/FALSE	TRUE if cells were cryo-preserved between isolation and further processing	TRUE	cell_storage
 3 / process (cell)	Cell quality	string	Free text	Relative amount of viable cells after preparation and (if applicable) thawing	90% viability as determined by 7-AAD	cell_quality
 3 / process (cell)	Cell isolation / enrichment procedure	string	Free text	Description of the procedure used for marker-based isolation or enrich cells	Cells were stained with fluorochrome labeled antibodies and then sorted on a FlowMerlin (CE) cytometer	cell_isolation
