@@ -218,7 +218,7 @@ class RearrangementWriter:
             # Adjust coordinates
             if f.endswith('_start') and self.base == 1:
                 try:
-                    row[f] = row[f] + 1
+                    row[f] = self.schema.to_int(row[f]) + 1
                 except TypeError:
                     row[f] = None
 
