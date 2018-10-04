@@ -1,3 +1,9 @@
+Version 1.2.1:  October 5, 2018
+--------------------------------------------------------------------------------
+
++ Fixed a bug in the python reference library causing start coordinate values
+  to be empty in some cases when writing data.
+
 Version 1.2.0:  August 17, 2018
 --------------------------------------------------------------------------------
 
