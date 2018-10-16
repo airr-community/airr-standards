@@ -53,7 +53,6 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 3 / process (nucl. acid)	Library generation method	string	{"controlled_vocabulary": ["PCR", "RT(RHP)+PCR", "RT(oligo-dT)+PCR", "RT(oligo-dT)+TS+PCR", "RT(oligo-dT)+TS(UMI)+PCR", "RT(specific)+PCR", "RT(specific)+TS+PCR", "RT(specific)+TS(UMI)+PCR", "RT(specific+UMI)+PCR", "RT(specific+UMI)+TS+PCR", "RT(specific)+TS", "other"]}	Generic type of library generation	RT(oligo-dT)+PCR	library_generation_method
 3 / process (nucl. acid)	Library generation protocol	string	Free text	Description of processes applied to substrate to obtain a library that is ready for sequencing	cDNA was generated using	library_generation_protocol
 3 / process (nucl. acid)	Protocol IDs	string	Free text	When using a library generation protocol from a commercial provider, provide the protocol version number	v2.1 (2016-09-15)	library_generation_kit_version
-<<<<<<< HEAD
 3 / process (nucl. acid [pcr])	Target locus for PCR	string	Free text	Designation of the target locus according to standard gene nomencleature	Constant region vs. V region amplification	pcr_target_locus
 3 / process (nucl. acid [pcr])	Forward PCR primer target location	string	Free text	Position of the most distal nucleotide templated by the forward primer or primer mix	IGHV, +23	forward_pcr_primer_target_location
 3 / process (nucl. acid [pcr])	Reverse PCR primer target location	string	Free text	Position of the most proximal nucleotide templated by the reverse primer or primer mix	IGHG, +57	reverse_pcr_primer_target_location
