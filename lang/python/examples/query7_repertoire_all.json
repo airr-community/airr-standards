@@ -1,0 +1,53 @@
+{
+    "filters":{
+        "op":"and",
+        "content": 
+        [
+            {
+                "op":"=",
+                "content": {
+                    "field":"subject.sex",
+                    "value":"F"
+                }
+	       },
+	       {
+                "op":"contains",
+                "content": {
+                    "field":"sample.disease_state",
+                    "value":"cancer"
+                }
+	       }
+           {
+                "op":"or",
+                "content":
+                [
+                    { "op":"=", "content": {"field":"subject.ethnicity", "value":"Hispanic"}},
+                    { "op":"=", "content": {"field":"subject.ethnicity", "value":"Caucasian"}},
+                    { "op":"=", "content": {"field":"subject.ethnicity", "value":"African"}}
+                ]
+           }
+           {
+                "op":"and",
+                "content": 
+                [
+                    { "op":">=", "content": {"field":"subject.age", "value":"20 y"}},
+                    { "op":"<=", "content": {"field":"subject.age", "value":"30 y"}}
+                ]
+           }           
+           {
+                "op":"or",
+                "content":
+                [
+                    { "op":"=", "content": {"field":"sample.cell_subset", "value":"Naive B Cell"}},
+                    { "op":"=", "content": {"field":"sample.cell_subset", "value":"Mature B Cell"}}
+                ]
+           }
+        ]
+    },
+    "fields":
+    [
+        "lab_name", "study_title", "inclusion_exclusion_criteria", "pub_ids", "study_id",
+        "subject_id", "tissue", "cell_subset", "cell_phenotype", "anatomic_site", "template_class",
+        "sequencing_plaform", "repertiore_rearrangement_count"
+    ]
+}
