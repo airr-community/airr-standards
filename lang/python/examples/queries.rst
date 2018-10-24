@@ -109,7 +109,7 @@ Search MiAIRR meta-data at the study/sample/subject level to return a set of rep
 
 - `query7_repertoire_female_cancer.json`_ is an example JSON query definition that returns all of the repertoires that are from female patients with a sample disease state containing the string "cancer". Features of this query are that it uses a substring "contains" query and lists all of the fields that the current iReceptor Gateway displays by default for each repertoire. It also ask for a **summary statistic** return value that is currently not supported in the API, the "repertoire rearrangement count". This value represent the total number of rearrangements for the repertoire. 
 
-- `query7_repertiore_all.json`_ is an example JSON query definition that returns all of the repertiores that satisfy the search criteria when all of the iReceptor Gateway search fields have a value in them.
+- `query7_repertoire_all.json`_ is an example JSON query definition that returns all of the repertiores that satisfy the search criteria when all of the iReceptor Gateway search selection types are used (substring, OR list, AND list, age range).
 
 .. _`query7_repertoire_female_cancer.json`: query7_repertoire_female_cancer.json
-.. _`query7_repertiore_all.json`: query7_repertiore_all.json
+.. _`query7_repertoire_all.json`: query7_repertoire_all.json
