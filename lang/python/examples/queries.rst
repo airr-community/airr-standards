@@ -112,6 +112,4 @@ Search MiAIRR meta-data at the study/sample/subject level to return a set of rep
 - `query7_repertiore_all.json`_ is an example JSON query definition that returns all of the repertiores that satisfy the search criteria when all of the iReceptor Gateway search fields have a value in them.
 
 .. _`query7_repertoire_female_cancer.json`: query7_repertoire_female_cancer.json
-
-.. _`queery7_repertoire_female_cancer.json`: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query7_repertoire_female_cancer.json
-.. _`query7_repertiore_all.json`: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query7_repertiore_all.json
+.. _`query7_repertiore_all.json`: query7_repertiore_all.json
