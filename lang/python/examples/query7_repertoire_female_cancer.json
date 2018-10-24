@@ -26,6 +26,6 @@
     [
         "lab_name", "study_title", "inclusion_exclusion_criteria", "pub_ids", "study_id",
         "subject_id", "tissue", "cell_subset", "cell_phenotype", "anatomic_site", "template_class",
-        "sequencing_plaform", "rearrangement_count_sample", "rearrangement_count_query"
+        "sequencing_plaform", "repertioire_rearrangement_count"
     ]
 }
