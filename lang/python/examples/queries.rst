@@ -101,3 +101,15 @@ Return TCRs that score highly on a position weight matrix from subjects with a p
 
 .. _`query6_repertoire.json`: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query6_repertoire.json
 .. _`query6_rearrangement.json`: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query6_rearrangement.json
+
+Query Example 7 (iReceptor Gateway v2.0 Repertoire)
+=====================
+
+Search MiAIRR meta-data at the study/sample/subject level to return a set of repertoires of interest. 
+
+- `query7_repertoire_female_cancer.json`_ is an example JSON query definition that returns all of the repertoires that are from female patients with a sample disease state containing the string "cancer".
+
+- `query7_repertiore_all.json`_ is an example JSON query definition that returns all of the repertiores that satisfy the search criteria when all of the iReceptor Gateway search fields have a value in them.
+
+.. _`query7_repertoire_female_cancer.json`: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query7_repertoire_female_cancer.json
+.. _`query7_repertiore_all.json`: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query7_repertiore_all.json
