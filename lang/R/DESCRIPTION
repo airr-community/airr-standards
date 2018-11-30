@@ -1,7 +1,7 @@
 Package: airr
 Type: Package
 Version: 1.2.0
-Date: 2018-08-17
+Date: 2018-11-30
 Authors@R: c(person("Jason", "Vander Heiden", role=c("aut", "cre"), 
                     email="jason.vanderheiden@yale.edu"),
              person("Susanna", "Marquez", role=c("aut"), 
@@ -30,4 +30,4 @@ Suggests:
     knitr,
     rmarkdown,
     testthat
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
