@@ -20,14 +20,14 @@ expected_w <- c(
 context("Rearrangement I/O - good data")
 
 test_that("read_airr loads a data.frame", {
-    tbl_0 <- read_airr(rearrangement_file, "0")
-    expect_true(is.data.frame(tbl_0))
+    tbl_1 <- read_airr(rearrangement_file, "1")
+    expect_true(is.data.frame(tbl_1))
 })
 
 test_that("read_arirr applies base", {
     tbl_0 <- read_airr(rearrangement_file, "0")
     tbl_1 <- read_airr(rearrangement_file, "1")
-    expect_true(is.data.frame(tbl_1))
+    expect_true(is.data.frame(tbl_0))
     expect_true(validate_airr(tbl_0))
     start_positions <- grep("_start$", names(tbl_0), perl=TRUE)
     expect_equivalent(tbl_0[, start_positions] - 1, tbl_1[, start_positions])
@@ -49,7 +49,7 @@ context("Rearrangement I/O - bad data")
 
 test_that("read_airr with bad data", {
     # Expect valid==FALSE
-    bad_data <- suppressWarnings(read_airr(bad_rearrangement_file, "0"))
+    bad_data <- suppressWarnings(read_airr(bad_rearrangement_file, "1"))
     expect_false(suppressWarnings(validate_airr(bad_data)))
     # Check error messages
     w <- capture_warnings(validate_airr(bad_data))
@@ -57,7 +57,7 @@ test_that("read_airr with bad data", {
 })
 
 test_that("write_airr writes a bad file, with warnings, with logicals T/T", {
-    bad_data <- suppressWarnings(read_airr(bad_rearrangement_file, "0"))
+    bad_data <- suppressWarnings(read_airr(bad_rearrangement_file, "1"))
     out_file <- file.path(tempdir(), "test_out.tsv")
     expect_warning(write_airr(bad_data, out_file))
     expect_true(file.exists(out_file))
