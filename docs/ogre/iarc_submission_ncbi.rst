@@ -35,14 +35,14 @@ records present at NCBI:
       building if it is performed on your own data. The Genbank record
       MUST link to the ``select set`` record (see 3.) via the
       ``DBLINK/DR`` field. Genbank records will be publicly available
-      independent of other publications.
+      independent of other publications. Note that the for Genbank, the ``DBLINK`` field does not appear to be available through the `BankIt <https://www.ncbi.nlm.nih.gov/WebSub/?tool=genbank>`_ submission interface. You can use ``Tbl2asn`` and ``Sequin``, and edit the ``DBLINK`` field manually (as "Sequence Read Archive" is not one of the options on the `template creation page <https://submit.ncbi.nlm.nih.gov/genbank/template/submission/>`_. A sample Genbank deposit can be found under accession `MK321694 <https://www.ncbi.nlm.nih.gov/nuccore/MK321694>`_.
 
    *  TPA (Third-party annotation): A segment of Genbank dedicated
       inferences. Also the TPA record MUST link to the ``select set``
       record (see 3.) via the ``DBLINK/DR`` field. Note that in contrast
       to Genbank, TPA does REQUIRE a peer-reviewed publication
       describing the details of the inference process before the record
-      will be made publicly available.
+      will be made publicly available. A sample TPA deposit can be found under accession `BK01573 <https://www.ncbi.nlm.nih.gov/nuccore/BK010573>`_.
 
    The format for both record types the Genbank format (link) with
    a standardized feature table (FT). Note that your initial submission
@@ -79,6 +79,7 @@ records present at NCBI:
    using <software+version+parameters>. The reported reads were
    selected based on <selection_criteria>.”
 
+**NOTE:** It is reasonably likely, in the short term, that you will encounter questions from the SRA/ENA/Genbank staff about the nature of these deposits. If so, you can respond that they are made as part of a community effort to document novel alleles with an emphasis on transparency in data provenance. You can link to the `IARC page <https://www.antibodysociety.org/inferred-allele-review-committee-iarc/>`_ and note that we worked together with IMGT and Genbank/TPA staff in designing this procedure.
 
 Generating the ``select set``
 -----------------------------
