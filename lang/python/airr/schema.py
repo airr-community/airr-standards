@@ -238,6 +238,10 @@ class Schema:
         Raises:
           airr.ValidationError: raised if header fails validation.
         """
+        # Check for missing header
+        if header is None:
+            raise ValidationError('missing header')
+
         # Check required fields
         missing_fields = [f for f in self.required if f not in header]
 
