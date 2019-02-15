@@ -85,7 +85,14 @@ Subject:
                     type: string
                     description: Species name (e.g. Homo sapiens)
         sex:
-            type: string
+            enum:
+                - male
+                - female
+                - pooled
+                - hermaphrodite
+                - intersex
+                - "not collected"
+                - "not applicable"
             description: Biological sex of subject
             x-miairr: true
         age:
@@ -294,7 +301,19 @@ NucleicAcidProcessing:
             description: Amount of template that went into the process
             x-miairr: true
         library_generation_method:
-            type: string
+            enum:
+                - "PCR"
+                - "RT(RHP)+PCR"
+                - "RT(oligo-dT)+PCR"
+                - "RT(oligo-dT)+TS+PCR"
+                - "RT(oligo-dT)+TS(UMI)+PCR"
+                - "RT(specific)+PCR"
+                - "RT(specific)+TS+PCR"
+                - "RT(specific)+TS(UMI)+PCR"
+                - "RT(specific+UMI)+PCR"
+                - "RT(specific+UMI)+TS+PCR"
+                - "RT(specific)+TS"
+                - "other"
             description: Generic type of library generation
             x-miairr: true
         library_generation_protocol:
@@ -313,7 +332,7 @@ NucleicAcidProcessing:
             enum:
                 - partial
                 - complete
-                - "complete & untemplated"
+                - "complete+untemplated"
             description: >
                 To be considered `complete`, the procedure used for library construction MUST generate sequences that
                 1) include the first V segment codon that encodes the mature polypeptide chain (i.e. after the
@@ -323,7 +342,9 @@ NucleicAcidProcessing:
                 sentence MUST be untemplated, i.e. MUST NOT overlap with the primers used in library preparation.
             x-miairr: true
         physical_linkage:
-            type: string
+            enum:
+                - none
+                - "hetero_head-head"
             description: >
                 Describes the mode of linkage if a method was used which physically links nucleic acids derived from
                 distinct loci in a single-cell context.
