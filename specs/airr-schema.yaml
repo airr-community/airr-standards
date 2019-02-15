@@ -39,19 +39,19 @@ Study:
             x-miairr: true
         collected_by:
             type: string
-            description: Full contact information of the corresponding author, i.e. who is legally responsible for data collection and release. This should include an e-mail address.
+            description: Full contact information of the data collector, i.e. the person who is legally responsible for data collection and release. This should include an e-mail address.
             x-miairr: true
         lab_name:
             type: string
-            description: Department of corresponding author
+            description: Department of data collector
             x-miairr: true
         lab_address:
             type: string
-            description: Institutional address of corresponding author
+            description: Institution and institutional address of data collector
             x-miairr: true
         submitted_by:
             type: string
-            description: Full contact information of the submitter, i.e. the person deposition the data
+            description: Full contact information of the data depositor, i.e. the person submitting the data to a repository. This is supposed to be a short-lived and technical role until the submission is relased.
             x-miairr: true
         pub_ids:
             type: string
@@ -94,7 +94,7 @@ Subject:
             x-miairr: true
         age_event:
             type: string
-            description: Event in the study schedule to which `Age` refers to. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
+            description: Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
             x-miairr: true
         ancestry_population:
             type: string
@@ -114,7 +114,7 @@ Subject:
             x-miairr: true
         linked_subjects:
             type: string
-            description: Subject ID to which `Relation type` refers to
+            description: Subject ID to which `Relation type` refers
             x-miairr: true
         link_type:
             type: string
