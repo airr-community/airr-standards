@@ -326,8 +326,8 @@ pcr_target_locus:
    miairr_set: 3
    miairr_subset: process (nucleic acid)
    miairr_name: Target locus for PCR
-   format: free text
-   example: Constant region vs. V region amplification
+   format: {"controlled_vocabulary": ["IGH", "IGI", "IGK", "IGL", "TRA", "TRB", "TRD", "TRG"]}
+   example: IGK
 forward_pcr_primer_target_location:
    miairr_set: 3
    miairr_subset: process (nucleic acid)
