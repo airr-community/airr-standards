@@ -35,22 +35,22 @@ Repertoire:
       linked_subjects: TW01B
       link_type: twin
     sample:
-      sample_id: TW01A_B_naive
-      tissue: PBMC
-      cell_subset: "Naive B cell"
-      cell_phenotype: "expression of CD20 and the absence of CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905656_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905656_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW01A_B_naive
+        tissue: PBMC
+        cell_subset: "Naive B cell"
+        cell_phenotype: "expression of CD20 and the absence of CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905656_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905656_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 6782895203975959016-242ac11c-0001-012
         software:
@@ -76,22 +76,22 @@ Repertoire:
       linked_subjects: TW01B
       link_type: twin
     sample:
-      sample_id: TW01A_B_memory
-      tissue: PBMC
-      cell_subset: "Memory B cell"
-      cell_phenotype: "expression of CD20 and CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905655_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905655_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW01A_B_memory
+        tissue: PBMC
+        cell_subset: "Memory B cell"
+        cell_phenotype: "expression of CD20 and CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905655_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905655_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 6750682949255959016-242ac11c-0001-012
         software:
@@ -117,22 +117,22 @@ Repertoire:
       linked_subjects: TW01B
       link_type: twin
     sample:
-      sample_id: TW01A_T_naive_CD4
-      tissue: PBMC
-      cell_subset: "Naive CD4+ T cell"
-      cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905659_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905659_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW01A_T_naive_CD4
+        tissue: PBMC
+        cell_subset: "Naive CD4+ T cell"
+        cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905659_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905659_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 4817022495740531176-242ac11c-0001-012
         software:
@@ -158,22 +158,22 @@ Repertoire:
       linked_subjects: TW01B
       link_type: twin
     sample:
-      sample_id: TW01A_T_naive_CD8
-      tissue: PBMC
-      cell_subset: "Naive CD8+ T cell"
-      cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905660_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905660_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW01A_T_naive_CD8
+        tissue: PBMC
+        cell_subset: "Naive CD8+ T cell"
+        cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905660_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905660_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 4846056474661491176-242ac11c-0001-012
         software:
@@ -199,22 +199,22 @@ Repertoire:
       linked_subjects: TW01B
       link_type: twin
     sample:
-      sample_id: TW01A_T_memory_CD4
-      tissue: PBMC
-      cell_subset: "Memory CD4+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905657_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905657_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW01A_T_memory_CD4
+        tissue: PBMC
+        cell_subset: "Memory CD4+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905657_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905657_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 4762991807156851176-242ac11c-0001-012
         software:
@@ -240,22 +240,22 @@ Repertoire:
       linked_subjects: TW01B
       link_type: twin
     sample:
-      sample_id: TW01A_T_memory_CD8
-      tissue: PBMC
-      cell_subset: "Memory CD8+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905658_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905658_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW01A_T_memory_CD8
+        tissue: PBMC
+        cell_subset: "Memory CD8+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905658_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905658_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 4792369383461491176-242ac11c-0001-012
         software:
@@ -281,22 +281,22 @@ Repertoire:
       linked_subjects: TW01A
       link_type: twin
     sample:
-      sample_id: TW01B_B_naive
-      tissue: PBMC
-      cell_subset: "Naive B cell"
-      cell_phenotype: "expression of CD20 and the absence of CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905662_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905662_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW01B_B_naive
+        tissue: PBMC
+        cell_subset: "Naive B cell"
+        cell_phenotype: "expression of CD20 and the absence of CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905662_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905662_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 6915652643095319016-242ac11c-0001-012
         software:
@@ -322,22 +322,22 @@ Repertoire:
       linked_subjects: TW01A
       link_type: twin
     sample:
-      sample_id: TW01B_B_memory
-      tissue: PBMC
-      cell_subset: "Memory B cell"
-      cell_phenotype: "expression of CD20 and CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905661_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905661_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW01B_B_memory
+        tissue: PBMC
+        cell_subset: "Memory B cell"
+        cell_phenotype: "expression of CD20 and CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905661_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905661_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 6851399932347159016-242ac11c-0001-012
         software:
@@ -363,22 +363,22 @@ Repertoire:
       linked_subjects: TW01A
       link_type: twin
     sample:
-      sample_id: TW01B_T_naive_CD4
-      tissue: PBMC
-      cell_subset: "Naive CD4+ T cell"
-      cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905665_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905665_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW01B_T_naive_CD4
+        tissue: PBMC
+        cell_subset: "Naive CD4+ T cell"
+        cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905665_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905665_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 4927016608191091176-242ac11c-0001-012
         software:
@@ -404,22 +404,22 @@ Repertoire:
       linked_subjects: TW01A
       link_type: twin
     sample:
-      sample_id: TW01B_T_naive_CD8
-      tissue: PBMC
-      cell_subset: "Naive CD8+ T cell"
-      cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905666_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905666_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW01B_T_naive_CD8
+        tissue: PBMC
+        cell_subset: "Naive CD8+ T cell"
+        cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905666_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905666_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 4953387707388531176-242ac11c-0001-012
         software:
@@ -445,22 +445,22 @@ Repertoire:
       linked_subjects: TW01A
       link_type: twin
     sample:
-      sample_id: TW01B_T_memory_CD4
-      tissue: PBMC
-      cell_subset: "Memory CD4+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905663_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905663_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW01B_T_memory_CD4
+        tissue: PBMC
+        cell_subset: "Memory CD4+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905663_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905663_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 4875090453582451176-242ac11c-0001-012
         software:
@@ -486,22 +486,22 @@ Repertoire:
       linked_subjects: TW01A
       link_type: twin
     sample:
-      sample_id: TW01B_T_memory_CD8
-      tissue: PBMC
-      cell_subset: "Memory CD8+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905664_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905664_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW01B_T_memory_CD8
+        tissue: PBMC
+        cell_subset: "Memory CD8+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905664_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905664_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 4901032056050291176-242ac11c-0001-012
         software:
@@ -527,22 +527,22 @@ Repertoire:
       linked_subjects: TW02B
       link_type: twin
     sample:
-      sample_id: TW02A_B_naive
-      tissue: PBMC
-      cell_subset: "Naive B cell"
-      cell_phenotype: "expression of CD20 and the absence of CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905668_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905668_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW02A_B_naive
+        tissue: PBMC
+        cell_subset: "Naive B cell"
+        cell_phenotype: "expression of CD20 and the absence of CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905668_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905668_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7000177599480599016-242ac11c-0001-012
         software:
@@ -568,22 +568,22 @@ Repertoire:
       linked_subjects: TW02B
       link_type: twin
     sample:
-      sample_id: TW02A_B_memory
-      tissue: PBMC
-      cell_subset: "Memory B cell"
-      cell_phenotype: "expression of CD20 and CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905667_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905667_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW02A_B_memory
+        tissue: PBMC
+        cell_subset: "Memory B cell"
+        cell_phenotype: "expression of CD20 and CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905667_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905667_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 6965474263728919016-242ac11c-0001-012
         software:
@@ -609,22 +609,22 @@ Repertoire:
       linked_subjects: TW02B
       link_type: twin
     sample:
-      sample_id: TW02A_T_naive_CD4
-      tissue: PBMC
-      cell_subset: "Naive CD4+ T cell"
-      cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905671_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905671_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW02A_T_naive_CD4
+        tissue: PBMC
+        cell_subset: "Naive CD4+ T cell"
+        cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905671_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905671_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5048521232994931176-242ac11c-0001-012
         software:
@@ -650,22 +650,22 @@ Repertoire:
       linked_subjects: TW02B
       link_type: twin
     sample:
-      sample_id: TW02A_T_naive_CD8
-      tissue: PBMC
-      cell_subset: "Naive CD8+ T cell"
-      cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905672_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905672_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW02A_T_naive_CD8
+        tissue: PBMC
+        cell_subset: "Naive CD8+ T cell"
+        cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905672_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905672_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5081635430847091176-242ac11c-0001-012
         software:
@@ -691,22 +691,22 @@ Repertoire:
       linked_subjects: TW02B
       link_type: twin
     sample:
-      sample_id: TW02A_T_memory_CD4
-      tissue: PBMC
-      cell_subset: "Memory CD4+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905669_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905669_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW02A_T_memory_CD4
+        tissue: PBMC
+        cell_subset: "Memory CD4+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905669_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905669_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 4976322832749171176-242ac11c-0001-012
         software:
@@ -732,22 +732,22 @@ Repertoire:
       linked_subjects: TW02B
       link_type: twin
     sample:
-      sample_id: TW02A_T_memory_CD8
-      tissue: PBMC
-      cell_subset: "Memory CD8+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905670_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905670_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW02A_T_memory_CD8
+        tissue: PBMC
+        cell_subset: "Memory CD8+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905670_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905670_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5010253074387571176-242ac11c-0001-012
         software:
@@ -773,22 +773,22 @@ Repertoire:
       linked_subjects: TW02A
       link_type: twin
     sample:
-      sample_id: TW02B_B_naive
-      tissue: PBMC
-      cell_subset: "Naive B cell"
-      cell_phenotype: "expression of CD20 and the absence of CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905674_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905674_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW02B_B_naive
+        tissue: PBMC
+        cell_subset: "Naive B cell"
+        cell_phenotype: "expression of CD20 and the absence of CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905674_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905674_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7067995133084439016-242ac11c-0001-012
         software:
@@ -814,22 +814,22 @@ Repertoire:
       linked_subjects: TW02A
       link_type: twin
     sample:
-      sample_id: TW02B_B_memory
-      tissue: PBMC
-      cell_subset: "Memory B cell"
-      cell_phenotype: "expression of CD20 and CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905673_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905673_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW02B_B_memory
+        tissue: PBMC
+        cell_subset: "Memory B cell"
+        cell_phenotype: "expression of CD20 and CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905673_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905673_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7034236690137879016-242ac11c-0001-012
         software:
@@ -855,22 +855,22 @@ Repertoire:
       linked_subjects: TW02A
       link_type: twin
     sample:
-      sample_id: TW02B_T_naive_CD4
-      tissue: PBMC
-      cell_subset: "Naive CD4+ T cell"
-      cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905677_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905677_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW02B_T_naive_CD4
+        tissue: PBMC
+        cell_subset: "Naive CD4+ T cell"
+        cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905677_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905677_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5173461831635571176-242ac11c-0001-012
         software:
@@ -896,22 +896,22 @@ Repertoire:
       linked_subjects: TW02A
       link_type: twin
     sample:
-      sample_id: TW02B_T_naive_CD8
-      tissue: PBMC
-      cell_subset: "Naive CD8+ T cell"
-      cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905678_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905678_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW02B_T_naive_CD8
+        tissue: PBMC
+        cell_subset: "Naive CD8+ T cell"
+        cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905678_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905678_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5196998252417651176-242ac11c-0001-012
         software:
@@ -937,22 +937,22 @@ Repertoire:
       linked_subjects: TW02A
       link_type: twin
     sample:
-      sample_id: TW02B_T_memory_CD4
-      tissue: PBMC
-      cell_subset: "Memory CD4+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905675_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905675_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW02B_T_memory_CD4
+        tissue: PBMC
+        cell_subset: "Memory CD4+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905675_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905675_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5115007326737011176-242ac11c-0001-012
         software:
@@ -978,22 +978,22 @@ Repertoire:
       linked_subjects: TW02A
       link_type: twin
     sample:
-      sample_id: TW02B_T_memory_CD8
-      tissue: PBMC
-      cell_subset: "Memory CD8+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905676_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905676_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW02B_T_memory_CD8
+        tissue: PBMC
+        cell_subset: "Memory CD8+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905676_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905676_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5148465121972851176-242ac11c-0001-012
         software:
@@ -1019,22 +1019,22 @@ Repertoire:
       linked_subjects: TW03B
       link_type: twin
     sample:
-      sample_id: TW03A_B_naive
-      tissue: PBMC
-      cell_subset: "Naive B cell"
-      cell_phenotype: "expression of CD20 and the absence of CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905680_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905680_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW03A_B_naive
+        tissue: PBMC
+        cell_subset: "Naive B cell"
+        cell_phenotype: "expression of CD20 and the absence of CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905680_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905680_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7140322382349079016-242ac11c-0001-012
         software:
@@ -1060,22 +1060,22 @@ Repertoire:
       linked_subjects: TW03B
       link_type: twin
     sample:
-      sample_id: TW03A_B_memory
-      tissue: PBMC
-      cell_subset: "Memory B cell"
-      cell_phenotype: "expression of CD20 and CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905679_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905679_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW03A_B_memory
+        tissue: PBMC
+        cell_subset: "Memory B cell"
+        cell_phenotype: "expression of CD20 and CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905679_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905679_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7100765733552919016-242ac11c-0001-012
         software:
@@ -1101,22 +1101,22 @@ Repertoire:
       linked_subjects: TW03B
       link_type: twin
     sample:
-      sample_id: TW03A_T_naive_CD4
-      tissue: PBMC
-      cell_subset: "Naive CD4+ T cell"
-      cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905683_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905683_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW03A_T_naive_CD4
+        tissue: PBMC
+        cell_subset: "Naive CD4+ T cell"
+        cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905683_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905683_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5275080757858931176-242ac11c-0001-012
         software:
@@ -1142,22 +1142,22 @@ Repertoire:
       linked_subjects: TW03B
       link_type: twin
     sample:
-      sample_id: TW03A_T_naive_CD8
-      tissue: PBMC
-      cell_subset: "Naive CD8+ T cell"
-      cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905684_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905684_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW03A_T_naive_CD8
+        tissue: PBMC
+        cell_subset: "Naive CD8+ T cell"
+        cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905684_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905684_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5309912942629491176-242ac11c-0001-012
         software:
@@ -1183,22 +1183,22 @@ Repertoire:
       linked_subjects: TW03B
       link_type: twin
     sample:
-      sample_id: TW03A_T_memory_CD4
-      tissue: PBMC
-      cell_subset: "Memory CD4+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905681_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905681_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW03A_T_memory_CD4
+        tissue: PBMC
+        cell_subset: "Memory CD4+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905681_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905681_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5221994962080371176-242ac11c-0001-012
         software:
@@ -1224,22 +1224,22 @@ Repertoire:
       linked_subjects: TW03B
       link_type: twin
     sample:
-      sample_id: TW03A_T_memory_CD8
-      tissue: PBMC
-      cell_subset: "Memory CD8+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905682_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905682_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW03A_T_memory_CD8
+        tissue: PBMC
+        cell_subset: "Memory CD8+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905682_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905682_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5246648074359411176-242ac11c-0001-012
         software:
@@ -1265,22 +1265,22 @@ Repertoire:
       linked_subjects: TW03A
       link_type: twin
     sample:
-      sample_id: TW03B_B_naive
-      tissue: PBMC
-      cell_subset: "Naive B cell"
-      cell_phenotype: "expression of CD20 and the absence of CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905686_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905686_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW03B_B_naive
+        tissue: PBMC
+        cell_subset: "Naive B cell"
+        cell_phenotype: "expression of CD20 and the absence of CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905686_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905686_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7214109920494359016-242ac11c-0001-012
         software:
@@ -1306,22 +1306,22 @@ Repertoire:
       linked_subjects: TW03A
       link_type: twin
     sample:
-      sample_id: TW03B_B_memory
-      tissue: PBMC
-      cell_subset: "Memory B cell"
-      cell_phenotype: "expression of CD20 and CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905685_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905685_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW03B_B_memory
+        tissue: PBMC
+        cell_subset: "Memory B cell"
+        cell_phenotype: "expression of CD20 and CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905685_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905685_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7181983565120279016-242ac11c-0001-012
         software:
@@ -1347,22 +1347,22 @@ Repertoire:
       linked_subjects: TW03A
       link_type: twin
     sample:
-      sample_id: TW03B_T_naive_CD4
-      tissue: PBMC
-      cell_subset: "Naive CD4+ T cell"
-      cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905689_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905689_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW03B_T_naive_CD4
+        tissue: PBMC
+        cell_subset: "Naive CD4+ T cell"
+        cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905689_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905689_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5402641286550131176-242ac11c-0001-012
         software:
@@ -1388,22 +1388,22 @@ Repertoire:
       linked_subjects: TW03A
       link_type: twin
     sample:
-      sample_id: TW03B_T_naive_CD8
-      tissue: PBMC
-      cell_subset: "Naive CD8+ T cell"
-      cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905690_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905690_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW03B_T_naive_CD8
+        tissue: PBMC
+        cell_subset: "Naive CD8+ T cell"
+        cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905690_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905690_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5427380298175091176-242ac11c-0001-012
         software:
@@ -1429,22 +1429,22 @@ Repertoire:
       linked_subjects: TW03A
       link_type: twin
     sample:
-      sample_id: TW03B_T_memory_CD4
-      tissue: PBMC
-      cell_subset: "Memory CD4+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905687_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905687_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW03B_T_memory_CD4
+        tissue: PBMC
+        cell_subset: "Memory CD4+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905687_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905687_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5341395052909171176-242ac11c-0001-012
         software:
@@ -1470,22 +1470,22 @@ Repertoire:
       linked_subjects: TW03A
       link_type: twin
     sample:
-      sample_id: TW03B_T_memory_CD8
-      tissue: PBMC
-      cell_subset: "Memory CD8+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905688_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905688_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW03B_T_memory_CD8
+        tissue: PBMC
+        cell_subset: "Memory CD8+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905688_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905688_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5366864208974451176-242ac11c-0001-012
         software:
@@ -1511,22 +1511,22 @@ Repertoire:
       linked_subjects: TW04B
       link_type: twin
     sample:
-      sample_id: TW04A_B_naive
-      tissue: PBMC
-      cell_subset: "Naive B cell"
-      cell_phenotype: "expression of CD20 and the absence of CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905692_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905692_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW04A_B_naive
+        tissue: PBMC
+        cell_subset: "Naive B cell"
+        cell_phenotype: "expression of CD20 and the absence of CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905692_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905692_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7291247533130519016-242ac11c-0001-012
         software:
@@ -1552,22 +1552,22 @@ Repertoire:
       linked_subjects: TW04B
       link_type: twin
     sample:
-      sample_id: TW04A_B_memory
-      tissue: PBMC
-      cell_subset: "Memory B cell"
-      cell_phenotype: "expression of CD20 and CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905691_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905691_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW04A_B_memory
+        tissue: PBMC
+        cell_subset: "Memory B cell"
+        cell_phenotype: "expression of CD20 and CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905691_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905691_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7260753265328919016-242ac11c-0001-012
         software:
@@ -1593,22 +1593,22 @@ Repertoire:
       linked_subjects: TW04B
       link_type: twin
     sample:
-      sample_id: TW04A_T_naive_CD4
-      tissue: PBMC
-      cell_subset: "Naive CD4+ T cell"
-      cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905695_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905695_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW04A_T_naive_CD4
+        tissue: PBMC
+        cell_subset: "Naive CD4+ T cell"
+        cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905695_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905695_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5496701070332531176-242ac11c-0001-012
         software:
@@ -1634,22 +1634,22 @@ Repertoire:
       linked_subjects: TW04B
       link_type: twin
     sample:
-      sample_id: TW04A_T_naive_CD8
-      tissue: PBMC
-      cell_subset: "Naive CD8+ T cell"
-      cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905696_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905696_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW04A_T_naive_CD8
+        tissue: PBMC
+        cell_subset: "Naive CD8+ T cell"
+        cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905696_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905696_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5519249648636531176-242ac11c-0001-012
         software:
@@ -1675,22 +1675,22 @@ Repertoire:
       linked_subjects: TW04B
       link_type: twin
     sample:
-      sample_id: TW04A_T_memory_CD4
-      tissue: PBMC
-      cell_subset: "Memory CD4+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905693_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905693_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW04A_T_memory_CD4
+        tissue: PBMC
+        cell_subset: "Memory CD4+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905693_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905693_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5450057725497971176-242ac11c-0001-012
         software:
@@ -1716,22 +1716,22 @@ Repertoire:
       linked_subjects: TW04B
       link_type: twin
     sample:
-      sample_id: TW04A_T_memory_CD8
-      tissue: PBMC
-      cell_subset: "Memory CD8+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905694_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905694_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW04A_T_memory_CD8
+        tissue: PBMC
+        cell_subset: "Memory CD8+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905694_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905694_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5473293498569331176-242ac11c-0001-012
         software:
@@ -1757,22 +1757,22 @@ Repertoire:
       linked_subjects: TW04A
       link_type: twin
     sample:
-      sample_id: TW04B_B_naive
-      tissue: PBMC
-      cell_subset: "Naive B cell"
-      cell_phenotype: "expression of CD20 and the absence of CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905698_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905698_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW04B_B_naive
+        tissue: PBMC
+        cell_subset: "Naive B cell"
+        cell_phenotype: "expression of CD20 and the absence of CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905698_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905698_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7351978370695959016-242ac11c-0001-012
         software:
@@ -1798,22 +1798,22 @@ Repertoire:
       linked_subjects: TW04A
       link_type: twin
     sample:
-      sample_id: TW04B_B_memory
-      tissue: PBMC
-      cell_subset: "Memory B cell"
-      cell_phenotype: "expression of CD20 and CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905697_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905697_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW04B_B_memory
+        tissue: PBMC
+        cell_subset: "Memory B cell"
+        cell_phenotype: "expression of CD20 and CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905697_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905697_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7322600794391319016-242ac11c-0001-012
         software:
@@ -1839,22 +1839,22 @@ Repertoire:
       linked_subjects: TW04A
       link_type: twin
     sample:
-      sample_id: TW04B_T_naive_CD4
-      tissue: PBMC
-      cell_subset: "Naive CD4+ T cell"
-      cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905701_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905701_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW04B_T_naive_CD4
+        tissue: PBMC
+        cell_subset: "Naive CD4+ T cell"
+        cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905701_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905701_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5593595532530291176-242ac11c-0001-012
         software:
@@ -1880,22 +1880,22 @@ Repertoire:
       linked_subjects: TW04A
       link_type: twin
     sample:
-      sample_id: TW04B_T_naive_CD8
-      tissue: PBMC
-      cell_subset: "Naive CD8+ T cell"
-      cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905702_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905702_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW04B_T_naive_CD8
+        tissue: PBMC
+        cell_subset: "Naive CD8+ T cell"
+        cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905702_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905702_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5619150587941491176-242ac11c-0001-012
         software:
@@ -1921,22 +1921,22 @@ Repertoire:
       linked_subjects: TW04A
       link_type: twin
     sample:
-      sample_id: TW04B_T_memory_CD4
-      tissue: PBMC
-      cell_subset: "Memory CD4+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905699_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905699_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW04B_T_memory_CD4
+        tissue: PBMC
+        cell_subset: "Memory CD4+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905699_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905699_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5544933553066611176-242ac11c-0001-012
         software:
@@ -1962,22 +1962,22 @@ Repertoire:
       linked_subjects: TW04A
       link_type: twin
     sample:
-      sample_id: TW04B_T_memory_CD8
-      tissue: PBMC
-      cell_subset: "Memory CD8+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905700_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905700_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW04B_T_memory_CD8
+        tissue: PBMC
+        cell_subset: "Memory CD8+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905700_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905700_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5569286017634931176-242ac11c-0001-012
         software:
@@ -2003,22 +2003,22 @@ Repertoire:
       linked_subjects: TW05B
       link_type: twin
     sample:
-      sample_id: TW05A_B_naive
-      tissue: PBMC
-      cell_subset: "Naive B cell"
-      cell_phenotype: "expression of CD20 and the absence of CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905704_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905704_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW05A_B_naive
+        tissue: PBMC
+        cell_subset: "Naive B cell"
+        cell_phenotype: "expression of CD20 and the absence of CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905704_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905704_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7411764315456279016-242ac11c-0001-012
         software:
@@ -2044,22 +2044,22 @@ Repertoire:
       linked_subjects: TW05B
       link_type: twin
     sample:
-      sample_id: TW05A_B_memory
-      tissue: PBMC
-      cell_subset: "Memory B cell"
-      cell_phenotype: "expression of CD20 and CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905703_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905703_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW05A_B_memory
+        tissue: PBMC
+        cell_subset: "Memory B cell"
+        cell_phenotype: "expression of CD20 and CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905703_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905703_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7384577172472599016-242ac11c-0001-012
         software:
@@ -2085,22 +2085,22 @@ Repertoire:
       linked_subjects: TW05B
       link_type: twin
     sample:
-      sample_id: TW05A_T_naive_CD4
-      tissue: PBMC
-      cell_subset: "Naive CD4+ T cell"
-      cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905707_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905707_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW05A_T_naive_CD4
+        tissue: PBMC
+        cell_subset: "Naive CD4+ T cell"
+        cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905707_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905707_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5690489994728051176-242ac11c-0001-012
         software:
@@ -2126,22 +2126,22 @@ Repertoire:
       linked_subjects: TW05B
       link_type: twin
     sample:
-      sample_id: TW05A_T_naive_CD8
-      tissue: PBMC
-      cell_subset: "Naive CD8+ T cell"
-      cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905708_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905708_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW05A_T_naive_CD8
+        tissue: PBMC
+        cell_subset: "Naive CD8+ T cell"
+        cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905708_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905708_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5718235483460211176-242ac11c-0001-012
         software:
@@ -2167,22 +2167,22 @@ Repertoire:
       linked_subjects: TW05B
       link_type: twin
     sample:
-      sample_id: TW05A_T_memory_CD4
-      tissue: PBMC
-      cell_subset: "Memory CD4+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905705_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905705_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW05A_T_memory_CD4
+        tissue: PBMC
+        cell_subset: "Memory CD4+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905705_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905705_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5642515210031731176-242ac11c-0001-012
         software:
@@ -2208,22 +2208,22 @@ Repertoire:
       linked_subjects: TW05B
       link_type: twin
     sample:
-      sample_id: TW05A_T_memory_CD8
-      tissue: PBMC
-      cell_subset: "Memory CD8+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905706_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905706_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW05A_T_memory_CD8
+        tissue: PBMC
+        cell_subset: "Memory CD8+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905706_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905706_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5666352278524531176-242ac11c-0001-012
         software:
@@ -2249,22 +2249,22 @@ Repertoire:
       linked_subjects: TW05A
       link_type: twin
     sample:
-      sample_id: TW05B_B_naive
-      tissue: PBMC
-      cell_subset: "Naive B cell"
-      cell_phenotype: "expression of CD20 and the absence of CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905710_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905710_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW05B_B_naive
+        tissue: PBMC
+        cell_subset: "Naive B cell"
+        cell_phenotype: "expression of CD20 and the absence of CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905710_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905710_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7457333918466839016-242ac11c-0001-012
         software:
@@ -2290,22 +2290,22 @@ Repertoire:
       linked_subjects: TW05A
       link_type: twin
     sample:
-      sample_id: TW05B_B_memory
-      tissue: PBMC
-      cell_subset: "Memory B cell"
-      cell_phenotype: "expression of CD20 and CD27"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: IGH
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905709_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905709_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW05B_B_memory
+        tissue: PBMC
+        cell_subset: "Memory B cell"
+        cell_phenotype: "expression of CD20 and CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905709_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905709_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 7434441742779159016-242ac11c-0001-012
         software:
@@ -2331,22 +2331,22 @@ Repertoire:
       linked_subjects: TW05A
       link_type: twin
     sample:
-      sample_id: TW05B_T_naive_CD4
-      tissue: PBMC
-      cell_subset: "Naive CD4+ T cell"
-      cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905713_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905713_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW05B_T_naive_CD4
+        tissue: PBMC
+        cell_subset: "Naive CD4+ T cell"
+        cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905713_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905713_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5794084605907571176-242ac11c-0001-012
         software:
@@ -2372,22 +2372,22 @@ Repertoire:
       linked_subjects: TW05A
       link_type: twin
     sample:
-      sample_id: TW05B_T_naive_CD8
-      tissue: PBMC
-      cell_subset: "Naive CD8+ T cell"
-      cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905714_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905714_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW05B_T_naive_CD8
+        tissue: PBMC
+        cell_subset: "Naive CD8+ T cell"
+        cell_phenotype: "expression of CD4, absence of CD8 and absence of CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905714_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905714_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5817706926035571176-242ac11c-0001-012
         software:
@@ -2413,22 +2413,22 @@ Repertoire:
       linked_subjects: TW05A
       link_type: twin
     sample:
-      sample_id: TW05B_T_memory_CD4
-      tissue: PBMC
-      cell_subset: "Memory CD4+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905711_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905711_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW05B_T_memory_CD4
+        tissue: PBMC
+        cell_subset: "Memory CD4+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905711_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905711_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5740268665688691176-242ac11c-0001-012
         software:
@@ -2454,22 +2454,22 @@ Repertoire:
       linked_subjects: TW05A
       link_type: twin
     sample:
-      sample_id: TW05B_T_memory_CD8
-      tissue: PBMC
-      cell_subset: "Memory CD8+ T cell"
-      cell_phenotype: "expression of CD45RO and CCR7"
-      single_cell: false
-      cell_isolation: FACS
-      template_class: RNA
-      pcr_target:
-        - pcr_target_locus: TRB
-      sequencing_platform: "Illumina MiSeq"
-      read_length: "300"
-      file_type: fastq
-      filename: SRR2905712_R1.fastq.gz
-      read_direction: forward
-      paired_filename: SRR2905712_R2.fastq.gz
-      paired_read_direction: reverse
+      - sample_id: TW05B_T_memory_CD8
+        tissue: PBMC
+        cell_subset: "Memory CD8+ T cell"
+        cell_phenotype: "expression of CD45RO and CCR7"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        file_type: fastq
+        filename: SRR2905712_R1.fastq.gz
+        read_direction: forward
+        paired_filename: SRR2905712_R2.fastq.gz
+        paired_read_direction: reverse
     sequence_annotation:
       - rearrangement_set_id: 5762989042684531176-242ac11c-0001-012
         software:
