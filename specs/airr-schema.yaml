@@ -85,6 +85,7 @@ Subject:
                     type: string
                     description: Species name (e.g. Homo sapiens)
         sex:
+            type: string
             enum:
                 - male
                 - female
@@ -262,6 +263,7 @@ PCRTarget:
     type: object
     properties:
         pcr_target_locus:
+            type: string
             enum:
                 - IGH
                 - IGI
@@ -295,6 +297,7 @@ NucleicAcidProcessing:
             description: Identifier for the nucleic acid processing object, unique within study
             x-miairr: false
         template_class:
+            type: string
             enum:
                 - DNA
                 - RNA
@@ -309,6 +312,7 @@ NucleicAcidProcessing:
             description: Amount of template that went into the process
             x-miairr: true
         library_generation_method:
+            type: string
             enum:
                 - "PCR"
                 - "RT(RHP)+PCR"
@@ -337,6 +341,7 @@ NucleicAcidProcessing:
             items:
                 $ref: '#/PCRTarget'
         complete_sequences:
+            type: string
             enum:
                 - partial
                 - complete
@@ -350,6 +355,7 @@ NucleicAcidProcessing:
                 sentence MUST be untemplated, i.e. MUST NOT overlap with the primers used in library preparation.
             x-miairr: true
         physical_linkage:
+            type: string
             enum:
                 - none
                 - "hetero_head-head"
@@ -392,12 +398,14 @@ SequencingRun:
             description: Name, manufacturer, order and lot numbers of sequencing kit
             x-miairr: true
         file_type:
+            type: string
             enum:
                 - fasta
                 - fastq
         filename:
             type: string
         read_direction:
+            type: string
             enum:
                 - forward
                 - reverse
@@ -405,6 +413,7 @@ SequencingRun:
         paired_filename:
             type: string
         paired_read_direction:
+            type: string
             enum:
                 - forward
                 - reverse
