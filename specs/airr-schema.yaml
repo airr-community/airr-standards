@@ -128,6 +128,10 @@ Subject:
             type: string
             description: Relation between subject and `linked_subjects`, can be genetic or environmental (e.g.exposure)
             x-miairr: true
+        diagnosis:
+            type: array
+            items:
+                $ref: '#/Diagnosis'
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
@@ -469,10 +473,6 @@ Repertoire:
             $ref: '#/Study'
         subject:
             $ref: '#/Subject'
-        diagnosis:
-            type: array
-            items:
-                $ref: '#/Diagnosis'
         sample:
             type: array
             items:
