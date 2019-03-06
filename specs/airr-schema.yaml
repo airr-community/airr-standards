@@ -22,51 +22,101 @@ Study:
             description: Unique ID assigned by study registry
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: study
+            x-miairr-name: Study
+            x-miairr-format: free text
+            x-miairr-example: PRJNA001
         study_title:
             type: string
             description: Descriptive study title
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: study
+            x-miairr-name: Study title
+            x-miairr-format: free text
+            x-miairr-example: Effects of sun light exposure of the Treg repertoire
         study_description:
             type: string
             description: Generic study design
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: study
+            x-miairr-name: Study type
+            x-miairr-format: {"ontology": "NCIT", "top_node": "Study Design", "draft": true}
+            x-miairr-example: Case-Control Study
         inclusion_exclusion_criteria:
             type: string
             description: List of criteria for inclusion/exclusion for the study
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: study
+            x-miairr-name: Study inclusion/exclusion criteria
+            x-miairr-format: free text
+            x-miairr-example: "Include: Clinical P. falciparum infection; Exclude: Seropositive for HIV"
         grants:
             type: string
             description: Funding agencies and grant numbers
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: study
+            x-miairr-name: Grant funding agency
+            x-miairr-format: free text
+            x-miairr-example: NIH, award number R01GM987654
         collected_by:
             type: string
             description: Full contact information of the data collector, i.e. the person who is legally responsible for data collection and release. This should include an e-mail address.
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: study
+            x-miairr-name: Contact information (data collection)
+            x-miairr-format: free text
+            x-miairr-example: Dr. P. Stibbons, p.stibbons@unseenu.edu
         lab_name:
             type: string
             description: Department of data collector
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: study
+            x-miairr-name: Lab name
+            x-miairr-format: free text
+            x-miairr-example: Department for Planar Immunology
         lab_address:
             type: string
             description: Institution and institutional address of data collector
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: study
+            x-miairr-name: Lab address
+            x-miairr-format: free text
+            x-miairr-example: School of Medicine, Unseen University, Ankh-Morpork, Disk World
         submitted_by:
             type: string
             description: Full contact information of the data depositor, i.e. the person submitting the data to a repository. This is supposed to be a short-lived and technical role until the submission is relased.
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: study
+            x-miairr-name: Contact information (data deposition)
+            x-miairr-format: free text
+            x-miairr-example: Adrian Turnipseed, a.turnipseed@unseenu.edu
         pub_ids:
             type: string
             description: Publications describing the rationale and/or outcome of the study
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: study
+            x-miairr-name: Relevant publications
+            x-miairr-format: PubMed ID
+            x-miairr-example: PMID85642
 
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
@@ -79,16 +129,31 @@ Subject:
             description: Subject ID assigned by submitter, unique within study
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: subject
+            x-miairr-name: Subject ID
+            x-miairr-format: free text
+            x-miairr-example: SUB856413
         synthetic:
             type: boolean
             description: TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)
             x-miairr-required: true
             x-miairr-nullable: false
+            x-miairr-set: 1
+            x-miairr-subset: subject
+            x-miairr-name: Synthetic library
+            x-miairr-format: TRUE/FALSE
+            x-miairr-example: FALSE
         organism:
             type: object
             description: Binomial designation of subject's species
             x-miairr-required: true
             x-miairr-nullable: false
+            x-miairr-set: 1
+            x-miairr-subset: subject
+            x-miairr-name: Organism
+            x-miairr-format: {"ontology": "NCBITAXON", "top_node": "Gnathostomata", "draft": false}
+            x-miairr-example: Homo sapiens
             x-ontology: https://www.ncbi.nlm.nih.gov/taxonomy
             properties:
                 id:
@@ -109,47 +174,92 @@ Subject:
                 - "not applicable"
             description: Biological sex of subject
             x-miairr-required: true
+            x-miairr-set: 1
+            x-miairr-subset: subject
+            x-miairr-name: Sex
+            x-miairr-format: {"controlled_vocabulary": ["male", "female", "pooled", "hermaphrodite", "intersex", "not collected", "not applicable"]}
+            x-miairr-example: female
             x-miairr-nullable: true
         age:
             type: string
             description: Absolute age of subject at time point `Age event`
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: subject
+            x-miairr-name: Age
+            x-miairr-format: time duration and unit
+            x-miairr-example: 65 a
         age_event:
             type: string
             description: Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: subject
+            x-miairr-name: Age event
+            x-miairr-format: free text
+            x-miairr-example: enrollment
         ancestry_population:
             type: string
             description: Broad geographic origin of ancestry (continent)
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: subject
+            x-miairr-name: Ancestry population
+            x-miairr-format: free text
+            x-miairr-example: list of continents, mixed or unknown
         ethnicity:
             type: string
             description: Ethnic group of subject (defined as cultural/language-based membership)
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: subject
+            x-miairr-name: Ethnicity
+            x-miairr-format: free text
+            x-miairr-example: English, Kurds, Manchu, Yakuts (and other fields from Wikipedia)
         race:
             type: string
             description: Racial group of subject (as defined by NIH)
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: subject
+            x-miairr-name: Race
+            x-miairr-format: free text
+            x-miairr-example: White, American Indian or Alaska Native, Black, Asian, Native Hawaiian or Other Pacific Islander, Other 
         strain_name:
             type: string
             description: Non-human designation of the strain or breed of animal used
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: subject
+            x-miairr-name: Strain name
+            x-miairr-format: free text
+            x-miairr-example: C57BL/6J
         linked_subjects:
             type: string
             description: Subject ID to which `Relation type` refers
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: subject
+            x-miairr-name: Relation to other subjects
+            x-miairr-format: free text
+            x-miairr-example: SUB1355648
         link_type:
             type: string
             description: Relation between subject and `linked_subjects`, can be genetic or environmental (e.g.exposure)
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: subject
+            x-miairr-name: Relation type
+            x-miairr-format: free text
+            x-miairr-example: father, daughter, household
         diagnosis:
             type: array
             items:
@@ -165,41 +275,81 @@ Diagnosis:
             description: Designation of study arm to which the subject is assigned to
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: diagnosis and intervention
+            x-miairr-name: Study group description
+            x-miairr-format: free text
+            x-miairr-example: control
         disease_diagnosis:
             type: string
             description: Diagnosis of subject
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: diagnosis and intervention
+            x-miairr-name: Diagnosis
+            x-miairr-format: free text
+            x-miairr-example: Multiple myeloma
         disease_length:
             type: string
             description: Time duration between initial diagnosis and current intervention
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: diagnosis and intervention
+            x-miairr-name: Length of disease
+            x-miairr-format: time duration and unit
+            x-miairr-example: 23 months
         disease_stage:
             type: string
             description: Stage of disease at current intervention
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: diagnosis and intervention
+            x-miairr-name: Disease stage
+            x-miairr-format: free text
+            x-miairr-example: Stage II
         prior_therapies:
             type: string
             description: List of all relevant previous therapies applied to subject for treatment of `Diagnosis`
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: diagnosis and intervention
+            x-miairr-name: Prior therapies for primary disease under study
+            x-miairr-format: free text
+            x-miairr-example: melphalan/prednisone
         immunogen:
             type: string
             description: Antigen, vaccine or drug applied to subject at this intervention
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: diagnosis and intervention
+            x-miairr-name: Immunogen/agent
+            x-miairr-format: free text
+            x-miairr-example: bortezomib
         intervention:
             type: string
             description: Description of intervention
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: diagnosis and intervention
+            x-miairr-name: Intervention definition
+            x-miairr-format: free text
+            x-miairr-example: systemic chemotherapy, 6 cycles, 1.25 mg/m2
         medical_history:
             type: string
             description: Medical history of subject that is relevant to assess the course of disease and/or treatment
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 1
+            x-miairr-subset: diagnosis and intervention
+            x-miairr-name: Other relevant medical history
+            x-miairr-format: free text
+            x-miairr-example: MGUS, first diagnosed 5 years prior
 
 # 1-to-n relationship between a subject and its samples
 # sample_id is unique within a study
@@ -212,41 +362,81 @@ Sample:
             description: Sample ID assigned by submitter, unique within study
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 2
+            x-miairr-subset: sample
+            x-miairr-name: Biological sample ID
+            x-miairr-format: free text
+            x-miairr-example: SUP52415
         sample_type:
             type: string
             description: The way the sample was obtained, e.g. fine-needle aspirate, organ harvest, peripheral venous puncture
             x-miairr-required: true
             x-miairr-nullable: false
+            x-miairr-set: 2
+            x-miairr-subset: sample
+            x-miairr-name: Sample type
+            x-miairr-format: free text
+            x-miairr-example: Biopsy
         tissue:
             type: string
             description: The actual tissue sampled, e.g. lymph node, liver, peripheral blood
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 2
+            x-miairr-subset: sample
+            x-miairr-name: Tissue
+            x-miairr-format: free text
+            x-miairr-example: Bone marrow
         anatomic_site:
             type: string
             description: The anatomic location of the tissue, e.g. Inguinal, femur
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 2
+            x-miairr-subset: sample
+            x-miairr-name: Anatomic site
+            x-miairr-format: free text
+            x-miairr-example: Iliac crest
         disease_state_sample:
             type: string
             description: Histopathologic evaluation of the sample
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 2
+            x-miairr-subset: sample
+            x-miairr-name: Disease state of sample
+            x-miairr-format: free text
+            x-miairr-example: Tumor infiltration
         collection_time_point_relative:
             type: string
             description: Time point at which sample was taken, relative to `Collection time event`
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 2
+            x-miairr-subset: sample
+            x-miairr-name: Sample collection time
+            x-miairr-format: free text
+            x-miairr-example: 14 d
         collection_time_point_reference:
             type: string
             description: Event in the study schedule to which `Sample collection time` relates to
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 2
+            x-miairr-subset: sample
+            x-miairr-name: Collection time event
+            x-miairr-format: free text
+            x-miairr-example: Primary vaccination
         biomaterial_provider:
             type: string
             description: Name and address of the entity providing the sample
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 2
+            x-miairr-subset: sample
+            x-miairr-name: Biomaterial provider
+            x-miairr-format: free text
+            x-miairr-example: Tissues-R-Us, Tampa, FL, USA
 
 # 1-to-n relationship between a sample and processing of its cells
 # cell_processing_id is unique within a study
@@ -262,51 +452,101 @@ CellProcessing:
             description: Enzymatic digestion and/or physical methods used to isolate cells from sample
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (cell)
+            x-miairr-name: Tissue processing
+            x-miairr-format: free text
+            x-miairr-example: Collagenase A/Dnase I digested, followed by Percoll gradient
         cell_subset:
             type: string
             description: Commonly-used designation of isolated cell population
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (cell)
+            x-miairr-name: Cell subset
+            x-miairr-format: {"ontology": "CL", "top_node": "lymphocyte", "draft": true}
+            x-miairr-example: class switched memory B cell
         cell_phenotype:
             type: string
             description: List of cellular markers and their expression levels used to isolate the cell population
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (cell)
+            x-miairr-name: Cell subset phenotype
+            x-miairr-format: free text
+            x-miairr-example: CD19+ CD38+ CD27+ IgM- IgD-
         single_cell:
             type: boolean
             description: TRUE if single cells were isolated into separate compartments
             x-miairr-required: true
             x-miairr-nullable: false
+            x-miairr-set: 3
+            x-miairr-subset: process (cell)
+            x-miairr-name: Single-cell sort
+            x-miairr-format: TRUE/FALSE
+            x-miairr-example: FALSE
         cell_number:
             type: integer
             description: Total number of cells that went into the experiment
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (cell)
+            x-miairr-name: Number of cells in experiment
+            x-miairr-format: number
+            x-miairr-example: 1000000
         cells_per_reaction:
             type: integer
             description: Number of cells for each biological replicate
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (cell)
+            x-miairr-name: Number of cells per sequencing reaction
+            x-miairr-format: number
+            x-miairr-example: 50000
         cell_storage:
             type: boolean
             description: TRUE if cells were cryo-preserved between isolation and further processing
             x-miairr-required: true
             x-miairr-nullable: false
+            x-miairr-set: 3
+            x-miairr-subset: process (cell)
+            x-miairr-name: Cell storage
+            x-miairr-format: TRUE/FALSE
+            x-miairr-example: TRUE
         cell_quality:
             type: string
             description: Relative amount of viable cells after preparation and (if applicable) thawing
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (cell)
+            x-miairr-name: Cell quality
+            x-miairr-format: free text
+            x-miairr-example: 90% viability as determined by 7-AAD
         cell_isolation:
             type: string
             description: Description of the procedure used for marker-based isolation or enrich cells
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (cell)
+            x-miairr-name: Cell isolation / enrichment procedure
+            x-miairr-format: free text
+            x-miairr-example: Cells were stained with fluorochrome labeled antibodies and then sorted on a FlowMerlin (CE) cytometer
         cell_processing_protocol:
             type: string
             description: Description of the methods applied to the sample including cell preparation/ isolation/enrichment and nucleic acid extraction. This should closely mirror the Materials and methods section in the manuscript
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (cell)
+            x-miairr-name: Processing protocol
+            x-miairr-format: free text
+            x-miairr-example: Stimulated wih anti-CD3/anti-CD28
 
 # object for PCR primer targets
 PCRTarget:
@@ -327,17 +567,31 @@ PCRTarget:
             description: Designation of the target locus according to IMGT nomencleature
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Target locus for PCR
+            x-miairr-format: {"controlled_vocabulary": ["IGH", "IGI", "IGK", "IGL", "TRA", "TRB", "TRD", "TRG"]}
+            x-miairr-example: IGK
         forward_pcr_primer_target_location:
             type: string
             description: Position of the most distal nucleotide templated by the forward primer or primer mix
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Forward PCR primer target location
+            x-miairr-format: free text
+            x-miairr-example: IGHV, +23
         reverse_pcr_primer_target_location:
             type: string
             description: Position of the most proximal nucleotide templated by the reverse primer or primer mix
             x-miairr-required: true
             x-miairr-nullable: true
-
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Reverse PCR primer target location
+            x-miairr-format: free text
+            x-miairr-example: IGHG, +57
 
 # generally, a 1-to-1 relationship between a CellProcessing and processing of its nucleic acid
 # but may be 1-to-n for technical replicates.
@@ -357,16 +611,31 @@ NucleicAcidProcessing:
             description: The class of nucleic acid that was used as primary starting material for the following procedures
             x-miairr-required: true
             x-miairr-nullable: false
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Target substrate
+            x-miairr-format: {"controlled_vocabulary": ["DNA", "RNA"]}
+            x-miairr-example: RNA
         template_quality:
             type: string
             description: Description and results of the quality control performed on the template material
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Target substrate quality
+            x-miairr-format: free text
+            x-miairr-example: RIN 9.2
         template_amount:
             type: string
             description: Amount of template that went into the process
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Template amount
+            x-miairr-format: free text
+            x-miairr-example: 1000 ng
         library_generation_method:
             type: string
             enum:
@@ -385,16 +654,31 @@ NucleicAcidProcessing:
             description: Generic type of library generation
             x-miairr-required: true
             x-miairr-nullable: false
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Library generation method
+            x-miairr-format: {"controlled_vocabulary": ["PCR", "RT(RHP)+PCR", "RT(oligo-dT)+PCR", "RT(oligo-dT)+TS+PCR", "RT(oligo-dT)+TS(UMI)+PCR", "RT(specific)+PCR", "RT(specific)+TS+PCR", "RT(specific)+TS(UMI)+PCR", "RT(specific+UMI)+PCR", "RT(specific+UMI)+TS+PCR", "RT(specific)+TS", "other"]}
+            x-miairr-example: RT(oligo-dT)+TS(UMI)+PCR
         library_generation_protocol:
             type: string
             description: Description of processes applied to substrate to obtain a library that is ready for sequencing
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Library generation protocol
+            x-miairr-format: free text
+            x-miairr-example: cDNA was generated using
         library_generation_kit_version:
             type: string
             description: When using a library generation protocol from a commercial provider, provide the protocol version number
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Protocol IDs
+            x-miairr-format: free text
+            x-miairr-example: v2.1 (2016-09-15)
         pcr_target:
             type: array
             items:
@@ -414,6 +698,11 @@ NucleicAcidProcessing:
                 sentence MUST be untemplated, i.e. MUST NOT overlap with the primers used in library preparation.
             x-miairr-required: true
             x-miairr-nullable: false
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Complete sequences
+            x-miairr-format: {"controlled_vocabulary": ["partial", "complete", "complete+untemplated"]}
+            x-miairr-example: partial
         physical_linkage:
             type: string
             enum:
@@ -424,6 +713,11 @@ NucleicAcidProcessing:
                 distinct loci in a single-cell context.
             x-miairr-required: true
             x-miairr-nullable: false
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Physical linkage of different loci
+            x-miairr-format: {"controlled_vocabulary": ["none", "hetero_head-head"]}
+            x-miairr-example: hetero_head-head
 
 # 1-to-n relationship between a NucleicAcidProcessing and SequencingRun with resultant raw sequence file
 SequencingRun:
@@ -435,36 +729,71 @@ SequencingRun:
             description: ID of sequencing run assigned by the sequencing facility
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Batch number
+            x-miairr-format: free text
+            x-miairr-example: 160101_M01234_0201_000000000-D2T7V
         total_reads_passing_qc_filter:
             type: integer
             description: Number of usable reads for analysis
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Total reads passing QC filter
+            x-miairr-format: number
+            x-miairr-example: 10365118
         sequencing_platform:
             type: string
             description: Designation of sequencing instrument used
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Sequencing platform
+            x-miairr-format: free text
+            x-miairr-example: Alumina LoSeq 1000
         read_length:
             type: string
             description: Read length in bases for each direction
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Read lengths
+            x-miairr-format: array of numbers
+            x-miairr-example: "[300,300]"
         sequencing_facility:
             type: string
             description: Name and address of sequencing facility
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Sequencing facility
+            x-miairr-format: free text
+            x-miairr-example: Seqs-R-Us, Vancouver, BC, Canada
         sequencing_run_date:
             type: string
             description: Date of sequencing run
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Date of sequencing run
+            x-miairr-format: ISO8601-compliant date
+            x-miairr-example: 2016-12-16
         sequencing_kit:
             type: string
             description: Name, manufacturer, order and lot numbers of sequencing kit
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 3
+            x-miairr-subset: process (nucleic acid)
+            x-miairr-name: Sequencing kit
+            x-miairr-format: free text
+            x-miairr-example: "FullSeq 600, Alumina, #M123456C0, 789G1HK"
         file_type:
             type: string
             enum:
@@ -487,6 +816,17 @@ SequencingRun:
                 - reverse
                 - mixed
 
+# # Entry from "miairr.yaml" with no matching key:
+#
+# raw_data:
+#    x-miairr-set: 4
+#    x-miairr-subset: data (raw reads)
+#    x-miairr-name: Raw sequence data
+#    x-miairr-format: FASTQ
+#    x-miairr-example: <n/a>
+#
+# # Not required for YAML, but for autogeneration of TSV matching orginal MiAIRR publication.
+
 # 1-to-n relationship between the study sequence data and software processing
 SoftwareProcessing:
     discriminator: AIRR
@@ -497,31 +837,61 @@ SoftwareProcessing:
             description: Version number and / or date, include company pipelines
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 5
+            x-miairr-subset: process (computational)
+            x-miairr-name: Software tools and version numbers
+            x-miairr-format: free text
+            x-miairr-example: IgBLAST 1.6
         paired_reads_assembly:
             type: string
             description: How paired end reads were assembled into a single receptor sequence
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 5
+            x-miairr-subset: process (computational)
+            x-miairr-name: Paired read assembly
+            x-miairr-format: free text
+            x-miairr-example: PandaSeq (minimal overlap 50, threshold 0.8)
         quality_thresholds:
             type: string
             description: How sequences were removed from (4) based on base quality scores
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 5
+            x-miairr-subset: process (computational)
+            x-miairr-name: Quality thresholds
+            x-miairr-format: free text
+            x-miairr-example: Average Phred score >=20
         primer_match_cutoffs:
             type: string
             description: How primers were identified in the sequences, were they removed/masked/etc?
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 5
+            x-miairr-subset: process (computational)
+            x-miairr-name: Primer match cutoffs
+            x-miairr-format: free text
+            x-miairr-example: Hamming distance <= 2
         collapsing_method:
             type: string
             description: The method used for combining multiple sequences from (4) into a single sequence in (5)
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 5
+            x-miairr-subset: process (computational)
+            x-miairr-name: Collapsing method
+            x-miairr-format: free text
+            x-miairr-example: MUSCLE 3.8.31
         data_processing_protocols:
             type: string
             description: General description of how QC is performed
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 5
+            x-miairr-subset: process (computational)
+            x-miairr-name: Data processing protocols
+            x-miairr-format: free text
+            x-miairr-example: Data was processed using [...]
         analysis_provenance_id:
             type: string
             description: Identifier for machine-readable PROV model of analysis provenance
@@ -654,12 +1024,14 @@ Alignment:
                 Identifier for grouping Rearrangement objects.
         germline_database:
             type: string
-            description: >
-                Source of germline V(D)J genes with version number or
-                date accessed. For example, 'IMGT/GENE-DB 3.1.18 (15 March 2018)'.
+            description: Source of germline V(D)J genes with version number or date accessed.
             x-miairr-required: true
             x-miairr-nullable: true
-
+            x-miairr-set: 6
+            x-miairr-subset: data (processed sequence)
+            x-miairr-name: V(D)J germline reference database
+            x-miairr-format: free text
+            x-miairr-example: ENSEMBL, Homo sapiens build 90, 2017-10-01
 
 # The extended rearrangement object
 Rearrangement:
@@ -721,21 +1093,41 @@ Rearrangement:
             description: V gene with allele. For example, IGHV4-59*01.
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 6
+            x-miairr-subset: data (processed sequence)
+            x-miairr-name: V gene
+            x-miairr-format: free text
+            x-miairr-example: IGHV4-59*01
         d_call:
             type: string
             description: D gene with allele. For example, IGHD3-10*01.
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 6
+            x-miairr-subset: data (processed sequence)
+            x-miairr-name: D gene
+            x-miairr-format: free text
+            x-miairr-example: IGHD3-10*01
         j_call:
             type: string
             description: J gene with allele. For example, IGHJ4*02.
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 6
+            x-miairr-subset: data (processed sequence)
+            x-miairr-name: J gene
+            x-miairr-format: free text
+            x-miairr-example: IGHJ4*02
         c_call:
             type: string
             description: C region gene with allele. For example, IGHM*01.
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 6
+            x-miairr-subset: data (processed sequence)
+            x-miairr-name: C region
+            x-miairr-format: free text
+            x-miairr-example: IGHM*01
         sequence_alignment:
             type: string
             description: >
@@ -763,12 +1155,22 @@ Rearrangement:
                 the CDR3 plus the two flanking conserved codons.
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 6
+            x-miairr-subset: data (processed sequence)
+            x-miairr-name: IMGT-JUNCTION nucleotide sequence
+            x-miairr-format: free text
+            x-miairr-example: TGTGCAAGAGCGGGAGTTTACGACGGATATACTATGGACTACTGG
         junction_aa:
             type: string
             description: >
                 Junction region amino acid sequence.
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 6
+            x-miairr-subset: data (processed sequence)
+            x-miairr-name: IMGT-JUNCTION amino acid sequence
+            x-miairr-format: free text
+            x-miairr-example: CARAGVYDGYTMDYW
         np1:
             type: string
             description: >
@@ -1134,12 +1536,22 @@ Rearrangement:
                 of identical observations of this sequence absent UMIs.
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 6
+            x-miairr-subset: data (processed sequence)
+            x-miairr-name: Read count
+            x-miairr-format: number
+            x-miairr-example: 123
         cell_id:
             type: string
             description: >
                 Identifier defining the cell of origin for the query sequence.
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 6
+            x-miairr-subset: data (processed sequence)
+            x-miairr-name: Cell Index
+            x-miairr-format: free text
+            x-miairr-example: W06_046_091
         clone_id:
             type: string
             description: Clonal cluster assignment for the query sequence.
@@ -1159,8 +1571,11 @@ Rearrangement:
                 empty than the primary sequence annotation is assumed.
         germline_database:
             type: string
-            description: >
-                Source of germline V(D)J genes with version number or
-                date accessed. For example, 'IMGT/GENE-DB 3.1.18 (15 March 2018)'.
+            description: Source of germline V(D)J genes with version number or date accessed.
             x-miairr-required: true
             x-miairr-nullable: true
+            x-miairr-set: 6
+            x-miairr-subset: data (processed sequence)
+            x-miairr-name: V(D)J germline reference database
+            x-miairr-format: free text
+            x-miairr-example: ENSEMBL, Homo sapiens build 90, 2017-10-01
