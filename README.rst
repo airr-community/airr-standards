@@ -14,8 +14,8 @@ work has been a joint effort between the AIRR Community's `Minimal
 Standards`_ and `Data Representation`_ Working Groups. 
 
 .. _`FAIR`: https://www.force11.org/group/fairgroup/fairprinciples
-.. _`Minimal Standards`: http://airr.irmacs.sfu.ca/working_groups/minimal_standards
-.. _`Data Representation`: http://airr.irmacs.sfu.ca/node/36
+.. _`Minimal Standards`: https://www.antibodysociety.org/airrc/working_groups/minimal_standards
+.. _`Data Representation`: https://www.antibodysociety.org/database-representation-working-group
 
 
 The MiAIRR Data Standard
@@ -45,7 +45,17 @@ been published together with a first implementation using the NCBI
 repository structure [Rubelt_2017]_. For further information, including
 a submission guide and a detailed specification, see `here`__.
 
-.. __: http://docs.airr-community.org/en/latest/miairr/overview.html
+.. __: https://docs.airr-community.org/en/latest/miairr/overview.html
+
+
+AIRR Standardized Data Representation
+=====================================
+
+The standardarized data representation was first published in 2018
+[Vander_Heiden_2018]_, a current version of the schema can be found
+`here`__.
+
+.. __: https://github.com/airr-community/airr-standards/blob/master/specs/airr-schema.yaml
 
 
 Implementations
@@ -54,8 +64,9 @@ Implementations
 -  `NCBI-based`_
 -  `AIRR Common Repository`_ - *in development*
 
-.. _`NCBI-based`: http://docs.airr-community.org/en/latest/miairr/miairr_ncbi_overview.html
-.. _`AIRR Common Repository`: http://airr.irmacs.sfu.ca/working_groups/repository
+.. _`NCBI-based`: https://docs.airr-community.org/en/latest/miairr/miairr_ncbi_overview.html
+.. _`AIRR Common Repository`: https://www.antibodysociety.org/airrc/working_groups/repository
+
 
 Contributions
 =============
@@ -83,6 +94,13 @@ the `issue tracker`_.
 References
 ==========
 
+.. [Vander_Heiden_2018] Vander Heiden JA *et al*. AIRR Community
+   Standardized Representations for Annotated Immune Repertoires. Front
+   Immunol 9:2206 (2018) `[PMID: 30323809]`_ `[DOI: 10.3389/fimmu.2018.02206]`_ `[PubMed Central: PMC6173121]`_
+.. _`[PMID: 30323809]`: https://www.ncbi.nlm.nih.gov/pubmed/30323809
+.. _`[DOI: 10.3389/fimmu.2018.02206]`: https://doi.org/10.3389/fimmu.2018.02206
+.. _`[PubMed Central: PMC6173121]`: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6173121
+
 .. [Rubelt_2017] Rubelt F *et al*. AIRR Community Recommendations for
    Sharing Immune Repertoire Sequencing Data. Nat Immunol 18:1274
    (2017) `[PMID: 29144493]`_ `[DOI: 10.1038/ni.3873]`_ `[PubMed Central: PMC5790180]`_
@@ -98,14 +116,14 @@ References
 .. _`[PubMed Central: PMC5671925]`: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5671925
 
 .. [Zenodo_1185414] Release archive of the AIRR Standards repository.
-   (2015-2018) `[DOI: 10.5281/zenodo.1185414]`_
+   (2015-2019) `[DOI: 10.5281/zenodo.1185414]`_
 .. _`[DOI: 10.5281/zenodo.1185414]`: https://doi.org/10.5281/zenodo.1185414
 
 
 License
 =======
 
-(c) 2015 - 2018 by Syed Ahmad Chan Bukhari, Jean-Philippe Bürckert,
+(c) 2015 - 2019 by Syed Ahmad Chan Bukhari, Jean-Philippe Bürckert,
 Christian E. Busse, Scott Christley, Brian Corrie, Lindsay G. Cowell,
 Uri Hershberg, Steven H. Kleinstein, Susanna Marquez, Frederick A. Matsen IV,
 Uri Laserson, Marie-Paule Lefranc, Eline T. Luning Prak, Florian Rubelt,
