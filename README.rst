@@ -15,7 +15,7 @@ Standards`_ and `Data Representation`_ Working Groups.
 
 .. _`FAIR`: https://www.force11.org/group/fairgroup/fairprinciples
 .. _`Minimal Standards`: https://www.antibodysociety.org/airrc/working_groups/minimal_standards
-.. _`Data Representation`: https://www.antibodysociety.org/database-representation-working-group
+.. _`Data Representation`: https://www.antibodysociety.org/airrc/working_groups/data_representation
 
 
 The MiAIRR Data Standard
