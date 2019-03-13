@@ -508,6 +508,41 @@ RearrangementSet:
             $ref: '#/SoftwareProcessing'
 
 
+# The composite schema for the flattened rearrangement set object
+#
+# A rearrangement set provides the ability to group all rearrangments
+# that have identical MiAIRR metadata characteristics. This "flattened"
+# rearrangement set object provides an easy to use mechanism to list 
+# all of the most granular MiAIRR metadata object in an easy to use, flat
+# structure. Because many of the MiAIRR entitites have 1:n relationships
+# (e.g. studies have many subjects, subjects may have multiple samples,
+# and data from a single sequencing run may have many software processes
+# applies) this format trades easy of structure and use for efficiency
+# in storage (it is not de-normalized and therefore multiple objects will
+# have repeated data).
+RearrangementSetFlat:
+    discriminator: AIRR
+    type: object
+    properties:
+        rearrangement_set_id:
+            type: string
+            description: Identifier for the rearrangement set object.
+        study:
+            $ref: '#/Study'
+        subject:
+            $ref: '#/Subject'
+        sample:
+            $ref: '#/Sample'
+        cell_processing:
+            $ref: '#/CellProcessing'
+        nucleic_acid_processing:
+            $ref: '#/NucleicAcidProcessing'
+        sequencing_run:
+            $ref: '#/SequencingRun'
+        software_processing:
+            $ref: '#/SoftwareProcessing'
+
+
 Alignment:
     discriminator: AIRR
     type: object
