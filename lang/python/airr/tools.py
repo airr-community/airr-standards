@@ -25,8 +25,7 @@ import sys
 from airr import __version__
 import airr.interface
 
-# internal wrapper function to convert filenames into handles
-# before calling merge interface method
+# internal wrapper function before calling merge interface method
 def merge_cmd(out_file, airr_files, drop=False, debug=False):
     """
     Merge one or more AIRR rearrangements files
@@ -41,17 +40,9 @@ def merge_cmd(out_file, airr_files, drop=False, debug=False):
     Returns:
       bool: True if files were successfully merged, otherwise False.
     """
-    try:
-        # test all the input files before creating a blank output file
-        airr_handles = [open(f, 'r') for f in airr_files]
-        out_handle = open(out_file, 'w')
-        return airr.interface.merge_rearrangement(out_handle, airr_handles, drop=drop, debug=debug)
-    except:
-        sys.stderr.write('Error occurred while merging AIRR rearrangement files.\n')
-        return False
+    return airr.interface.merge_rearrangement(out_file, airr_files, drop=drop, debug=debug)
 
-# internal wrapper function to convert filenames into handles
-# before calling validate interface method
+# internal wrapper function before calling validate interface method
 def validate_cmd(airr_files, debug=True):
     """
     Validates one or more AIRR rearrangements files
