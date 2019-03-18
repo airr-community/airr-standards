@@ -12,6 +12,79 @@ Info:
         name: Creative Commons Attribution 4.0 International
         url: https://creativecommons.org/licenses/by/4.0/
 
+
+# Properties that are based upon an ontology use this
+# standard schema definition
+Ontology:
+    discriminator: AIRR
+    type: object
+    properties:
+        id:
+            type: string
+            description: Identifier for the ontology term
+        value:
+            type: string
+            description: Value for the ontology term
+
+
+# MiAIRR specification extensions
+#
+# The OpenAPI specification for MiAIRR fields within the schema
+# definitions for AIRR standards objects is extended to provide a
+# number of MiAIRR specific attributes. This schema definition
+# specifies the structure, property names and data types. These
+# attributes are attached to a MiAIRR field with x-miairr property.
+MiAIRR_Attributes:
+    discriminator: AIRR
+    type: object
+    properties:
+        required:
+            type: boolean
+            description: Indicates if field is required by MiAIRR
+        nullable:
+            type: boolean
+            description: Indicates if field can have null value
+        set:
+            type: integer
+            description: MiAIRR set
+        subset:
+            type: string
+            description: MiAIRR subset
+        name:
+            type: string
+            description:
+        format:
+            type: string
+            description:
+            enum:
+                - free text
+                - ontology
+                - controlled vocabulary
+        ontology:
+            type: object
+            description: Ontology definition for field
+            properties:
+                draft:
+                    type: boolean
+                    description: Indicates if ontology definition is a draft
+                name:
+                    type: string
+                    description: Ontology name
+                url:
+                    type: string
+                    description: Ontology URL
+                top_node:
+                    type: object
+                    description: Term to use as top node for ontology
+                    properties:
+                        id:
+                            type: string
+                            description: Ontology identifer for the top node term
+                        value:
+                            type: string
+                            description: Ontology value for the top node term
+
+
 # The overall study with a globally unique study_id
 Study:
     discriminator: AIRR
@@ -38,15 +111,22 @@ Study:
             x-miairr-format: free text
             x-miairr-example: Effects of sun light exposure of the Treg repertoire
         study_description:
-            type: string
+            $ref: '#/Ontology'
             description: Generic study design
-            x-miairr-required: true
-            x-miairr-nullable: true
-            x-miairr-set: 1
-            x-miairr-subset: study
-            x-miairr-name: Study type
-            x-miairr-format: {"ontology": "NCIT", "top_node": "Study Design", "draft": true}
-            x-miairr-example: Case-Control Study
+            x-miairr:
+                required: true
+                nullable: true
+                set: 1
+                subset: study
+                name: Study type
+                format: ontology
+                ontology:
+                    draft: true
+                    name: NCIT
+                    url: https://ncit.nci.nih.gov/ncitbrowser/
+                    top_node:
+                        id: C15320
+                        value: Study Design
         inclusion_exclusion_criteria:
             type: string
             description: List of criteria for inclusion/exclusion for the study
@@ -145,23 +225,22 @@ Subject:
             x-miairr-format: TRUE/FALSE
             x-miairr-example: FALSE
         organism:
-            type: object
+            $ref: '#/Ontology'
             description: Binomial designation of subject's species
-            x-miairr-required: true
-            x-miairr-nullable: false
-            x-miairr-set: 1
-            x-miairr-subset: subject
-            x-miairr-name: Organism
-            x-miairr-format: {"ontology": "NCBITAXON", "top_node": "Gnathostomata", "draft": false}
-            x-miairr-example: Homo sapiens
-            x-ontology: https://www.ncbi.nlm.nih.gov/taxonomy
-            properties:
-                id:
-                    type: integer
-                    description: Taxonomy identifier (e.g. 9606)
-                name:
-                    type: string
-                    description: Species name (e.g. Homo sapiens)
+            x-miairr:
+                required: true
+                nullable: false
+                set: 1
+                subset: subject
+                name: Organism
+                format: ontology
+                ontology:
+                    draft: false
+                    name: NCBITAXPN
+                    url: https://www.ncbi.nlm.nih.gov/taxonomy
+                    top_node:
+                        id: 7776
+                        value: Gnathostomata
         sex:
             type: string
             enum:
