@@ -19,6 +19,7 @@ include:
     miairr/overview
     cairr/overview
     datarep/overview
+    api/overview
     AIRR Software Guidelines <swtools/overview>
     Python Library <packages/airr-python/overview>
     R Library <packages/airr-R/overview>
