@@ -15,7 +15,7 @@ considerably in definition based on the methodology used.
 Note, this schema definition is still experimental and should not be
 considered final.
 
-Format Specification
+File Format Specification
 ------------------------------
 
 The :ref:`format specification <FormatSpecification>` describes the file format

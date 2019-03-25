@@ -31,7 +31,7 @@ AIRR Rearrangement schema and comprises eight categories.
     * - Junction Lengths
       - Lengths for junction sub-regions associated with aspects of the V(D)J recombination process.
 
-Format Specification
+File Format Specification
 ------------------------------
 
 The :ref:`format specification <FormatSpecification>` describes the file format

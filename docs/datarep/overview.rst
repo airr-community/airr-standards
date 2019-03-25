@@ -38,3 +38,4 @@ Schema Definitions
    Repertoire Schema <metadata>
    Rearrangement Schema <rearrangements>
    Alignment Schema (Experimental) <alignments>
+   germline
