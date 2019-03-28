@@ -110,9 +110,9 @@ Study:
             x-miairr-name: Study title
             x-miairr-format: free text
             x-miairr-example: Effects of sun light exposure of the Treg repertoire
-        study_description:
+        study_type:
             $ref: '#/Ontology'
-            description: Generic study design
+            description: Type of study design
             x-miairr:
                 required: true
                 nullable: true
@@ -127,6 +127,9 @@ Study:
                     top_node:
                         id: C15320
                         value: Study Design
+        study_description:
+            type: string
+            description: Generic study description
         inclusion_exclusion_criteria:
             type: string
             description: List of criteria for inclusion/exclusion for the study
