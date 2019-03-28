@@ -413,7 +413,7 @@ The content of the JSON payload.
         }
       ]
     },
-    "format":"airr"
+    "format":"AIRR"
   }
 
 .. __: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query1_rearrangement.json
@@ -421,15 +421,304 @@ The content of the JSON payload.
 Request Parameters
 ~~~~~~~~~~~~~~~~~~
 
-**filters**
+The ADC API supports the follow query parameters. These are only
+applicable to the ``repertoire`` and ``rearrangement`` query
+endpoints, i.e. the HTTP ``POST`` endpoints.
 
-**format**
+.. list-table::
+    :widths: auto
+    :header-rows: 1
 
-**fields**
+    * - Parameter
+      - Default
+      - Description
+    * - ``filters``
+      - null
+      - Specifies logical expression for query critieria
+    * - ``format``
+      - JSON
+      - Specifies the API response format: JSON, AIRR TSV
+    * - ``fields``
+      - null
+      - Specifies which fields to include in the response
+    * - ``from``
+      - 0
+      - Specifies the first record to return from a set of search results
+    * - ``size``
+      - repository dependent
+      - Specifies the number of results to return
+    * - ``facets``
+      - null
+      - Provide aggregate count information for the specified fields
 
-**size and from**
+**Filters Query Parameter**
 
-**facets**
+The ``filters`` parameter enables passing complex query criteria to
+the ADC API. The parameter represents the query in a JSON object.
+
+A ``filters`` query consists of an operator (or a nested set of
+operators) with a set of ``field`` and ``value`` operands. The query
+criteria as represented in a JSON object can be considered an
+expression tree data structure where internal nodes are operators and
+child nodes are operands. The expression tree can be of any depth, and
+recursive algorithms are typically used for tree traversal.
+
+The following operators are support by the ADC API.
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Operator
+      - Operands
+      - Value Data Types
+      - Description
+      - Example
+    * - =
+      - field and value
+      - string, number, integer, or boolean
+      - equals
+      - junction_aa = "CASSYIKLN"
+    * - !=
+      - field and value
+      - string, number, integer, or boolean
+      - does not equal
+      - subject.organism.id != 9606
+    * - <
+      - field and value
+      - number, integer
+      - less than
+      - sample.cell_number < 1000
+    * - <=
+      - field and value
+      - number, integer
+      - less than or equal
+      - sample.cell_number <= 1000
+    * - >
+      - field and value
+      - number, integer
+      - greater than
+      - sample.cells_per_reaction > 10000
+    * - >=
+      - field and value
+      - number, integer
+      - greater than or equal
+      - sample.cells_per_reaction >= 10000
+    * - is
+      - field
+      - n/a
+      - is missing
+      - sample.tissue is missing
+    * - not
+      - field
+      - n/a
+      - is not missing
+      - sample.tissue is not missing
+    * - in
+      - field, multiple values in a list
+      - string, number, or integer
+      - matches a string or number in a list
+      - subject.strain_name in ["C57BL/6", "BALB/c", "NOD"]
+    * - exclude
+      - field, multiple values in a list
+      - string, number, or integer
+      - does not match any string or number in a list
+      - subject.strain_name exclude ["SCID", "NOD"]
+    * - contains
+      - field, value
+      - string
+      - contains the substring
+      - study.study_title contains "cancer"
+    * - and
+      - multiple operators
+      - n/a
+      - logical AND
+      - (subject.organism.id != 9606) and (sample.cells_per_reaction >= 10000) and (subject.strain_name exclude ["SCID", "NOD"])
+    * - or
+      - multiple operators
+      - n/a
+      - logical OR
+      - (sample.cell_number < 1000) or (sample.tissue is missing) or (subject.organism.id exclude [9606, 10090])
+
+Note that the ``not`` operator is different from a logical NOT
+operator, and the logical NOT is not needed as the other operators
+provide negation.
+
+The ``field`` operand specifies a complete property name in the AIRR
+Data Model. The Fields section below describes the available queryable
+fields.
+
+The ``value`` operand specifies one or more values when evaluating the
+operator for the ``field`` operand.
+
+A simple query with a single operator looks like this:
+
+.. code-block:: json
+
+  {
+    "filters": {
+      "op":"=",
+      "content": {
+        "field":"junction_aa",
+        "value":"CASSYIKLN"
+      }
+    }
+  }
+
+A more complex query with multiple operators looks like this:
+
+.. code-block:: json
+
+  {
+    "filters": {
+      "op":"and",
+      "content": [
+        {
+          "op":"!=",
+          "content": {
+            "field":"subject.organism.id",
+            "value":9606
+          }
+        },
+        {
+          "op":">=",
+          "content": {
+            "field":"sample.cells_per_reaction",
+            "value":"10000"
+          }
+        },
+	{
+          "op":"exclude",
+          "content": {
+            "field":"subject.organism.id",
+            "value": [9606, 10090]
+          }
+        }
+      ]
+    }
+  }
+
+**Format Query Parameter**
+
+Specifies the format of the API response. JSON is the default format
+and the only format available for all endpoints except for the
+``rearrangement`` endpoint that accepts AIRR for the :ref:`AIRR TSV
+<FormatSpecification>` format.
+
+**Fields Query Parameter**
+
+The ``fields`` parameter specifies which fields are to be included in
+the API response. By default all fields with non-null values are
+returned in the API response.
+
+**Size and From Query Parameters**
+
+The ADC API provides a pagination feature that limits the number of results returned by the API.
+
+The ``from`` query parameter specifies which record to start from when
+returning results. This allows records to be skipped. The default
+value is ``0`` indicating that the first record in the set of results
+will be returned.
+
+The ``size`` query parameters specifies the maximum number of results
+to return. The default value is specific to the data repository, and a
+maximum value may be imposed by the data repository. This is to
+prevent queries from "accidently" returning millions of records. The
+``info`` endpoint provides the data repository default and maximum
+values for the ``repertoire`` and ``rearrangement`` endpoints, which
+may have different values. A value of ``0`` indicates there is no
+limit on the number of results to return, but if the data repository
+does not support this then the default value will be used.
+
+The combination of ``from`` and ``size`` can be used to implement
+pagination in a graphical user interface, or to split a very large
+download into smaller batches. For example, if an interface displays
+10 records as a time, the request would assign ``size=10`` and
+``from=0`` to get the ten results to display on the first page. When
+the user traverses to the "next page", the request would assign
+``from=10`` to skip the first ten results and return the next ten
+results, and ``from=20`` for the next page after that, and so on.
+
+**Facets Query Parameter**
+
+The ``facets`` parameter aggregate count information for the specified
+field. Only a single field can be specified. It provides all values
+that exist for the field, and the number of records (repertoires or
+rearrangement) that have this value. The typical use of this parameter
+is for displaying aggregate information in a graphical user
+interface. The ``facets`` parameter can be used in conjunction with
+the ``filters`` parameter to get aggregate information for a set of
+search results.
+
+Here is a simple query with only the ``facets`` parameter to return
+the set of values for ``sample.pcr_target.pcr_target_locus`` and the
+count of repertoires repertoires that have each value. This query__
+can be found among the example code.
+
+.. code-block:: json
+
+  {
+    "facets":"sample.pcr_target.pcr_target_locus"
+  }
+
+Sending this query in an API request.
+
+.. code-block:: bash
+
+  curl --data @query1-3_repertoire.json https://vdjserver.org/airr/v1/repertoire
+
+Example output from the request.
+
+.. code-block:: json
+
+  [
+    {"sample.pcr_target.pcr_target_locus":[["TRB"]],"count":40},
+    {"sample.pcr_target.pcr_target_locus":[["IGH"]],"count":20}
+  ]
+
+Here is a query with both ``filters`` and ``facets`` parameters. This
+`query`_ can be found among the example code.
+
+.. code-block:: json
+
+  {
+    "filters":{
+        "op":"=",
+        "content": {
+            "field":"sample.pcr_target.pcr_target_locus",
+            "value":"IGH"
+        }
+    },
+    "facets":"subject.subject_id"
+  }
+
+Sending this query in an API request.
+
+.. code-block:: bash
+
+  curl --data @query1-4_repertoire.json https://vdjserver.org/airr/v1/repertoire
+
+Example output from the request. This result indicates there are ten
+subjects each with two IGH repertoires.
+
+.. code-block:: json
+
+  [
+    {"subject.subject_id":"TW05B","count":2},
+    {"subject.subject_id":"TW05A","count":2},
+    {"subject.subject_id":"TW03A","count":2},
+    {"subject.subject_id":"TW04A","count":2},
+    {"subject.subject_id":"TW01A","count":2},
+    {"subject.subject_id":"TW04B","count":2},
+    {"subject.subject_id":"TW02A","count":2},
+    {"subject.subject_id":"TW03B","count":2},
+    {"subject.subject_id":"TW01B","count":2},
+    {"subject.subject_id":"TW02B","count":2}
+  ]
+
+.. __: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query1-3_repertoire.json
+
+.. _`query`: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query1-4_repertoire.json
 
 AIRR Data Model
 ~~~~~~~~~~~~~~~
