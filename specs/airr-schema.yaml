@@ -909,11 +909,24 @@ SequencingRun:
 #
 # # Not required for YAML, but for autogeneration of TSV matching orginal MiAIRR publication.
 
-# 1-to-n relationship between the study sequence data and software processing
-SoftwareProcessing:
+# 1-to-n relationship between a repertoire and data processing
+#
+# Set of annotated rearrangement sequences produced by
+# data processing upon the raw sequence data for a repertoire.
+DataProcessing:
     discriminator: AIRR
     type: object
     properties:
+        data_processing_id:
+            type: string
+            description: Identifier for the data processing object.
+        primary_annotation:
+            type: boolean
+            default: false
+            description: >
+                If true, indicates this is the primary or default data processing for
+                the repertoire and its rearrangments. If false, indicates this is a secondary
+                or additional data processing.
         software_versions:
             type: string
             description: Version number and / or date, include company pipelines
@@ -1003,31 +1016,10 @@ Repertoire:
                     - $ref: '#/CellProcessing'
                     - $ref: '#/NucleicAcidProcessing'
                     - $ref: '#/SequencingRun'
-        sequence_annotation:
+        data_processing:
             type: array
             items:
-                $ref: '#/RearrangementSet'
-
-
-# 1-to-n relationship between a repertoire and rearrangement sets
-#
-# Set of annotated rearrangement sequences produced by
-# software processing upon the raw sequence data for a repertoire.
-RearrangementSet:
-    discriminator: AIRR
-    type: object
-    properties:
-        rearrangement_set_id:
-            type: string
-            description: Identifier for the rearrangement set object.
-        primary_annotation:
-            type: boolean
-            description: >
-                If true, indicates this is the primary or default software processing for
-                a repertoire and its rearrangments. If false, indicates this is a secondary
-                or additional software processing.
-        software:
-            $ref: '#/SoftwareProcessing'
+                $ref: '#/DataProcessing'
 
 
 Alignment:
@@ -1100,10 +1092,11 @@ Alignment:
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
                 but will usually be a univerally unique record locator for database applications.
-        rearrangement_set_id:
+        data_processing_id:
             type: string
             description: >
-                Identifier for grouping Rearrangement objects.
+                Identifier to the data processing object in the repertoire metadata
+                for this rearrangement. If this field is empty than the primary data processing object is assumed.
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
@@ -1645,12 +1638,11 @@ Rearrangement:
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
-        rearrangement_set_id:
+        data_processing_id:
             type: string
             description: >
-                Identifier to the sequence annotation object for the repertoire in study metadata
-                with the associated software processing for this rearrangement. If this field is
-                empty than the primary sequence annotation is assumed.
+                Identifier to the data processing object in the repertoire metadata
+                for this rearrangement. If this field is empty than the primary data processing object is assumed.
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
