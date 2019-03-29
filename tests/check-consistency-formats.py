@@ -37,11 +37,11 @@ if set(spec_files.keys()) != set(r_files.keys()):
 for spec_name in spec_files:
     # check equality of specs
     with open(spec_files[spec_name], 'r') as ip:
-        gold_spec = yaml.load(ip)
+        gold_spec = yaml.safe_load(ip)
     with open(py_files[spec_name], 'r') as ip:
-        py_spec = yaml.load(ip)
+        py_spec = yaml.safe_load(ip)
     with open(r_files[spec_name], 'r') as ip:
-        r_spec = yaml.load(ip)
+        r_spec = yaml.safe_load(ip)
 
     # Check python package
     if jsondiff.diff(gold_spec, py_spec) != {}:
