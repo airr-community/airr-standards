@@ -63,6 +63,7 @@ AIRR_Attributes:
             enum:
                 - ontology
                 - controlled vocabulary
+                - physical quantity
         ontology:
             type: object
             description: Ontology definition for field
@@ -297,6 +298,7 @@ Subject:
                 set: 1
                 subset: subject
                 name: Age
+                format: physical quantity
         age_event:
             type: string
             description: Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
@@ -417,6 +419,7 @@ Diagnosis:
                 set: 1
                 subset: diagnosis and intervention
                 name: Length of disease
+                format: physical quantity
         disease_stage:
             type: string
             description: Stage of disease at current intervention
@@ -545,6 +548,7 @@ Sample:
                 set: 2
                 subset: sample
                 name: Sample collection time
+                format: physical quantity
         collection_time_point_reference:
             type: string
             description: Event in the study schedule to which `Sample collection time` relates to
@@ -787,6 +791,7 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Template amount
+                format: physical quantity
         library_generation_method:
             type: string
             enum:
