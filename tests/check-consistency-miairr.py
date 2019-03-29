@@ -19,6 +19,14 @@ miairr_dataset_to_api_object = {
     '5 / process (comput.)': 'SoftwareProcessing',
     '6 / data (proc. seq.)': 'Rearrangement'}
 
+#
+# The MiAIRR TSV is going to be generated directly from the schema, making
+# most of these checks invalid. This script should be deprecated or reworked
+# with other checks.
+#
+
+print('Skipping MiAIRR consistency checks')
+sys.exit(0)
 
 with open('AIRR_Minimal_Standard_Data_Elements.tsv', 'r') as ip:
     tsv_data = list(csv.DictReader(ip, dialect='excel-tab'))
