@@ -51,10 +51,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905656_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 6782895203975959016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 6782895203975959016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 1602908186092376551-242ac11c-0001-012
     study:
@@ -92,10 +91,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905655_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 6750682949255959016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 6750682949255959016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 2366080924918616551-242ac11c-0001-012
     study:
@@ -133,10 +131,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905659_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 4817022495740531176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 4817022495740531176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 2541616238306136551-242ac11c-0001-012
     study:
@@ -174,10 +171,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905660_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 4846056474661491176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 4846056474661491176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 1993707260355416551-242ac11c-0001-012
     study:
@@ -215,10 +211,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905657_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 4762991807156851176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 4762991807156851176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 2197374609531736551-242ac11c-0001-012
     study:
@@ -256,10 +251,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905658_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 4792369383461491176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 4792369383461491176-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 2848663450297176551-242ac11c-0001-012
     study:
@@ -297,10 +291,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905662_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 6915652643095319016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 6915652643095319016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 2685411743376216551-242ac11c-0001-012
     study:
@@ -338,10 +331,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905661_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 6851399932347159016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 6851399932347159016-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 3438706057421656551-242ac11c-0001-012
     study:
@@ -379,10 +371,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905665_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 4927016608191091176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 4927016608191091176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 3628844259615576551-242ac11c-0001-012
     study:
@@ -420,10 +411,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905666_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 4953387707388531176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 4953387707388531176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 2989624276951896551-242ac11c-0001-012
     study:
@@ -461,10 +451,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905663_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 4875090453582451176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 4875090453582451176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 3252733973504856551-242ac11c-0001-012
     study:
@@ -502,10 +491,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905664_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 4901032056050291176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 4901032056050291176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 4181735399629656551-242ac11c-0001-012
     study:
@@ -543,10 +531,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905668_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7000177599480599016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7000177599480599016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 3924638657291096551-242ac11c-0001-012
     study:
@@ -584,10 +571,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905667_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 6965474263728919016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 6965474263728919016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 4744762662462296551-242ac11c-0001-012
     study:
@@ -625,10 +611,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905671_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5048521232994931176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5048521232994931176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 4931851437876056551-242ac11c-0001-012
     study:
@@ -666,10 +651,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905672_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5081635430847091176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5081635430847091176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 4357957907784536551-242ac11c-0001-012
     study:
@@ -707,10 +691,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905669_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 4976322832749171176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 4976322832749171176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 4476756703191896551-242ac11c-0001-012
     study:
@@ -748,10 +731,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905670_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5010253074387571176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5010253074387571176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 5531257073705816551-242ac11c-0001-012
     study:
@@ -789,10 +771,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905674_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7067995133084439016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7067995133084439016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 5215877625160536551-242ac11c-0001-012
     study:
@@ -830,10 +811,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905673_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7034236690137879016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7034236690137879016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 6205695788196696551-242ac11c-0001-012
     study:
@@ -871,10 +851,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905677_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5173461831635571176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5173461831635571176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 6393557657723736551-242ac11c-0001-012
     study:
@@ -912,10 +891,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905678_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5196998252417651176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5196998252417651176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 7158276584776536551-242ac11c-0001-012
     study:
@@ -953,10 +931,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905675_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5115007326737011176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5115007326737011176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 5953881855632216551-242ac11c-0001-012
     study:
@@ -994,10 +971,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905676_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5148465121972851176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5148465121972851176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 6819446614795096551-242ac11c-0001-012
     study:
@@ -1035,10 +1011,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905680_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7140322382349079016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7140322382349079016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 7972301736387416551-242ac11c-0001-012
     study:
@@ -1076,10 +1051,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905679_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7100765733552919016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7100765733552919016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 7461458326201176551-242ac11c-0001-012
     study:
@@ -1117,10 +1091,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905683_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5275080757858931176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5275080757858931176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 7640859110155096551-242ac11c-0001-012
     study:
@@ -1158,10 +1131,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905684_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5309912942629491176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5309912942629491176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 6964444710708056551-242ac11c-0001-012
     study:
@@ -1199,10 +1171,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905681_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5221994962080371176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5221994962080371176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 7313153105470296551-242ac11c-0001-012
     study:
@@ -1240,10 +1211,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905682_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5246648074359411176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5246648074359411176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 8112833066312536551-242ac11c-0001-012
     study:
@@ -1281,10 +1251,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905686_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7214109920494359016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7214109920494359016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 7793588147200856551-242ac11c-0001-012
     study:
@@ -1322,10 +1291,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905685_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7181983565120279016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7181983565120279016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 8602072790999896551-242ac11c-0001-012
     study:
@@ -1363,10 +1331,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905689_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5402641286550131176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5402641286550131176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 8733756488295256551-242ac11c-0001-012
     study:
@@ -1404,10 +1371,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905690_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5427380298175091176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5427380298175091176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 8263242821018456551-242ac11c-0001-012
     study:
@@ -1445,10 +1411,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905687_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5341395052909171176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5341395052909171176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 8425807333172056551-242ac11c-0001-012
     study:
@@ -1486,10 +1451,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905688_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5366864208974451176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5366864208974451176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 7885350151947415065-242ac11c-0001-012
     study:
@@ -1527,10 +1491,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905692_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7291247533130519016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7291247533130519016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 8945756074025816551-242ac11c-0001-012
     study:
@@ -1568,10 +1531,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905691_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7260753265328919016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7260753265328919016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 7309695685264535065-242ac11c-0001-012
     study:
@@ -1609,10 +1571,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905695_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5496701070332531176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5496701070332531176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 8485700680582295065-242ac11c-0001-012
     study:
@@ -1650,10 +1611,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905696_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5519249648636531176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5519249648636531176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 9084118473933975065-242ac11c-0001-012
     study:
@@ -1691,10 +1651,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905693_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5450057725497971176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5450057725497971176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 8961797805343895065-242ac11c-0001-012
     study:
@@ -1732,10 +1691,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905694_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5473293498569331176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5473293498569331176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 7745763714827415065-242ac11c-0001-012
     study:
@@ -1773,10 +1731,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905698_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7351978370695959016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7351978370695959016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 6738379135550615065-242ac11c-0001-012
     study:
@@ -1814,10 +1771,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905697_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7322600794391319016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7322600794391319016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 5624006920930455065-242ac11c-0001-012
     study:
@@ -1855,10 +1811,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905701_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5593595532530291176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5593595532530291176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 7066128089908375065-242ac11c-0001-012
     study:
@@ -1896,10 +1851,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905702_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5619150587941491176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5619150587941491176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 7591789137265815065-242ac11c-0001-012
     study:
@@ -1937,10 +1891,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905699_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5544933553066611176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5544933553066611176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 7446748091679895065-242ac11c-0001-012
     study:
@@ -1978,10 +1931,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905700_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5569286017634931176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5569286017634931176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 6576544767837335065-242ac11c-0001-012
     study:
@@ -2019,10 +1971,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905704_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7411764315456279016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7411764315456279016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 6880327804683415065-242ac11c-0001-012
     study:
@@ -2060,10 +2011,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905703_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7384577172472599016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7384577172472599016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 6088937130722455065-242ac11c-0001-012
     study:
@@ -2101,10 +2051,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905707_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5690489994728051176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5690489994728051176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 5939858815878295065-242ac11c-0001-012
     study:
@@ -2142,10 +2091,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905708_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5718235483460211176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5718235483460211176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 6389112395039895065-242ac11c-0001-012
     study:
@@ -2183,10 +2131,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905705_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5642515210031731176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5642515210031731176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 6240077029868695065-242ac11c-0001-012
     study:
@@ -2224,10 +2171,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905706_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5666352278524531176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5666352278524531176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 5462430251254935065-242ac11c-0001-012
     study:
@@ -2265,10 +2211,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905710_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7457333918466839016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7457333918466839016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 5765010697258135065-242ac11c-0001-012
     study:
@@ -2306,10 +2251,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905709_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 7434441742779159016-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 7434441742779159016-242ac11c-0001-012
+        analysis_provenance_id: 3059369183532618216-242ac11b-0001-007
 
   - repertoire_id: 5039977268020375065-242ac11c-0001-012
     study:
@@ -2347,10 +2291,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905713_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5794084605907571176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5794084605907571176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 4858300151399575065-242ac11c-0001-012
     study:
@@ -2388,10 +2331,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905714_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5817706926035571176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5817706926035571176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 5338391595746455065-242ac11c-0001-012
     study:
@@ -2429,10 +2371,9 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905711_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5740268665688691176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5740268665688691176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
 
   - repertoire_id: 5168912186246295065-242ac11c-0001-012
     study:
@@ -2470,7 +2411,6 @@ Repertoire:
         read_direction: forward
         paired_filename: SRR2905712_R2.fastq.gz
         paired_read_direction: reverse
-    sequence_annotation:
-      - rearrangement_set_id: 5762989042684531176-242ac11c-0001-012
-        software:
-          analysis_provenance_id: 651223970338378216-242ac11b-0001-007
+    data_processing:
+      - data_processing_id: 5762989042684531176-242ac11c-0001-012
+        analysis_provenance_id: 651223970338378216-242ac11b-0001-007
