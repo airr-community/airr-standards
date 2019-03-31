@@ -106,3 +106,5 @@ man/
 **/vignettes/*.R
 **/vignettes/*.pdf
 **/vignettes/*.html
+
+.vscode/
