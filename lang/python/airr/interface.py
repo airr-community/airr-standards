@@ -146,6 +146,7 @@ def merge_rearrangement(out_filename, in_filenames, drop=False, debug=False):
                 for r in reader:  writer.write(r)
                 reader.close()
     except:
+        sys.stderr.write('Error occurred while merging AIRR rearrangement files.\n')
         return False
 
     return True
