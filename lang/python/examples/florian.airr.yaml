@@ -46,11 +46,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905656_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905656_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905656_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905656_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -86,11 +87,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905655_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905655_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905655_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905655_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -126,11 +128,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905659_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905659_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905659_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905659_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -166,11 +169,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905660_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905660_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905660_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905660_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -206,11 +210,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905657_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905657_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905657_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905657_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -246,11 +251,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905658_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905658_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905658_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905658_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -286,11 +292,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905662_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905662_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905662_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905662_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -326,11 +333,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905661_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905661_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905661_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905661_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -366,11 +374,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905665_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905665_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905665_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905665_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -406,11 +415,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905666_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905666_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905666_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905666_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -446,11 +456,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905663_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905663_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905663_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905663_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -486,11 +497,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905664_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905664_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905664_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905664_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -526,11 +538,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905668_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905668_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905668_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905668_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -566,11 +579,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905667_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905667_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905667_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905667_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -606,11 +620,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905671_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905671_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905671_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905671_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -646,11 +661,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905672_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905672_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905672_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905672_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -686,11 +702,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905669_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905669_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905669_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905669_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -726,11 +743,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905670_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905670_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905670_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905670_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -766,11 +784,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905674_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905674_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905674_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905674_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -806,11 +825,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905673_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905673_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905673_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905673_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -846,11 +866,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905677_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905677_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905677_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905677_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -886,11 +907,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905678_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905678_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905678_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905678_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -926,11 +948,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905675_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905675_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905675_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905675_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -966,11 +989,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905676_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905676_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905676_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905676_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1006,11 +1030,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905680_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905680_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905680_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905680_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -1046,11 +1071,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905679_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905679_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905679_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905679_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -1086,11 +1112,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905683_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905683_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905683_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905683_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1126,11 +1153,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905684_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905684_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905684_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905684_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1166,11 +1194,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905681_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905681_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905681_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905681_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1206,11 +1235,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905682_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905682_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905682_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905682_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1246,11 +1276,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905686_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905686_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905686_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905686_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -1286,11 +1317,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905685_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905685_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905685_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905685_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -1326,11 +1358,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905689_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905689_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905689_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905689_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1366,11 +1399,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905690_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905690_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905690_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905690_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1406,11 +1440,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905687_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905687_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905687_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905687_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1446,11 +1481,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905688_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905688_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905688_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905688_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1486,11 +1522,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905692_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905692_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905692_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905692_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -1526,11 +1563,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905691_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905691_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905691_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905691_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -1566,11 +1604,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905695_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905695_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905695_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905695_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1606,11 +1645,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905696_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905696_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905696_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905696_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1646,11 +1686,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905693_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905693_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905693_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905693_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1686,11 +1727,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905694_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905694_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905694_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905694_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1726,11 +1768,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905698_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905698_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905698_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905698_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -1766,11 +1809,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905697_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905697_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905697_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905697_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -1806,11 +1850,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905701_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905701_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905701_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905701_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1846,11 +1891,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905702_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905702_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905702_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905702_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1886,11 +1932,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905699_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905699_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905699_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905699_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1926,11 +1973,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905700_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905700_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905700_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905700_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -1966,11 +2014,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905704_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905704_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905704_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905704_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -2006,11 +2055,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905703_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905703_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905703_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905703_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -2046,11 +2096,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905707_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905707_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905707_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905707_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -2086,11 +2137,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905708_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905708_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905708_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905708_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -2126,11 +2178,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905705_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905705_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905705_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905705_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -2166,11 +2219,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905706_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905706_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905706_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905706_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -2206,11 +2260,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905710_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905710_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905710_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905710_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -2246,11 +2301,12 @@ Repertoire:
           - pcr_target_locus: IGH
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905709_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905709_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905709_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905709_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 3059369183532618216-242ac11b-0001-007
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
@@ -2286,11 +2342,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905713_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905713_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905713_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905713_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -2326,11 +2383,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905714_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905714_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905714_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905714_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -2366,11 +2424,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905711_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905711_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905711_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905711_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
@@ -2406,11 +2465,12 @@ Repertoire:
           - pcr_target_locus: TRB
         sequencing_platform: "Illumina MiSeq"
         read_length: "300"
-        file_type: fastq
-        filename: SRR2905712_R1.fastq.gz
-        read_direction: forward
-        paired_filename: SRR2905712_R2.fastq.gz
-        paired_read_direction: reverse
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905712_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905712_R2.fastq.gz
+          paired_read_direction: reverse
     data_processing:
       - data_processing_id: 651223970338378216-242ac11b-0001-007
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
