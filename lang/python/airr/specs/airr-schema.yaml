@@ -34,7 +34,7 @@ Ontology:
 # specifies the structure, property names and data types. These
 # attributes are attached to an AIRR field with the x-airr property.
 
-AIRR_Attributes:
+Attributes:
     discriminator: AIRR
     type: object
     properties:
@@ -966,6 +966,17 @@ SequencingRun:
                 set: 3
                 subset: process (sequencing)
                 name: Sequencing kit
+        sequencing_files:
+            type: array
+            description: Set of sequencing files produced by the sequencing run
+            items:
+                $ref: '#/RawSequenceData'
+
+# Resultant raw sequencing files from a SequencingRun
+RawSequenceData:
+    discriminator: AIRR
+    type: object
+    properties:
         file_type:
             type: string
             description: File format for the raw reads or sequences
@@ -982,7 +993,7 @@ SequencingRun:
                 format: controlled vocabulary
         filename:
             type: string
-            description: File name for the raw reads or sequences. The first file in paired-read sequencing
+            description: File name for the raw reads or sequences.
             example: MS10R-NMonson-C7JR9_S1_R1_001.fastq
             x-airr:
                 miairr: true
@@ -993,35 +1004,8 @@ SequencingRun:
                 name: Raw sequencing data file name
         read_direction:
             type: string
-            description: Read direction for the raw reads or sequences. The first file in paired-read sequencing
+            description: Read direction for the raw reads or sequences.
             example: forward
-            enum:
-                - forward
-                - reverse
-                - mixed
-            x-airr:
-                miairr: true
-                required: true
-                nullable: true
-                set: 4
-                subset: data (raw reads)
-                name: Read direction
-                format: controlled vocabulary
-        paired_filename:
-            type: string
-            description: File name for the second file in paired-read sequencing
-            example: MS10R-NMonson-C7JR9_S1_R2_001.fastq
-            x-airr:
-                miairr: true
-                required: true
-                nullable: true
-                set: 4
-                subset: data (raw reads)
-                name: Raw sequencing data file name
-        paired_read_direction:
-            type: string
-            description: Read direction for the second file in paired-read sequencing
-            example: reverse
             enum:
                 - forward
                 - reverse

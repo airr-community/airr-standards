@@ -34,7 +34,7 @@ Ontology:
 # specifies the structure, property names and data types. These
 # attributes are attached to an AIRR field with the x-airr property.
 
-AIRR_Attributes:
+Attributes:
     discriminator: AIRR
     type: object
     properties:
