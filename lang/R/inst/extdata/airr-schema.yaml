@@ -218,6 +218,24 @@ Study:
                 set: 1
                 subset: study
                 name: Relevant publications
+        keywords_study:
+            type: array
+            items:
+                type: string
+                enum:
+                    - contains_ig
+                    - contains_tcr
+                    - contains_single_cell
+                    - contains_paired_chain
+            description: Keywords describing properties of one or more data sets in a study
+            example: "[ 'contains_ig', 'contains_paired_chain' ]"
+            x-airr:
+                miairr: true
+                required: true
+                nullable: true
+                set: 1
+                subset: study
+                name: Keywords for study
 
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
