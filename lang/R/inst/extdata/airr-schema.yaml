@@ -229,8 +229,8 @@ Study:
                     - contains_paired_chain
             description: Keywords describing properties of one or more data sets in a study
             example:
-	      - contains_ig
-	      - contains_paired_chain
+              - contains_ig
+              - contains_paired_chain
             x-airr:
                 miairr: true
                 required: true
