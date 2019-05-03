@@ -30,7 +30,7 @@ records present at NCBI:
    *  Genbank: All inferences that have been performed on the
       submitters own data CAN be submitted as [???] to Genbank. Note
       that Genbank typically only holds data that has a physical
-      correlate which is not necessarily true for infered sequences.
+      correlate which is not necessarily true for inferred sequences.
       Nevertheless NCBI currently accepts this as a kind of consensus
       building if it is performed on your own data. The Genbank record
       MUST link to the ``select set`` record (see 3.) via the
@@ -57,7 +57,7 @@ records present at NCBI:
    inference using third-party data, these records MUST be submitted
    by the original owner of the data. These record type will typically
    be present before the other. The metadata annotation of the records
-   SHOULD be MiAIRR compliant [Rebult et al.].
+   SHOULD be MiAIRR compliant [Rubelt et al.].
 
 3. One or multiple SRA records containing the ``select set`` of reads
    from (2). The aim of these records is to document the number,
@@ -99,8 +99,8 @@ fully transparent to a third-party.
 1. Assemble paired-end reads. The two reads MUST overlap. Recommended
    tool: PandaSeq
 2. Perform PHRED filtering that is equivalent to the one performed by 
-   inference pipeline.	Recommened tool: Immcantination suite
-3. Perform a `blastn` serch using the data from (2.) as query and bp
+   inference pipeline.	Recommended tool: Immcantation suite
+3. Perform a `blastn` search using the data from (2.) as query and bp
    1-312 of the inferred gene as reference library. Require matches to be
    full-length and >99.6% ID. Record all matching read ID. Recommended
    tool: NCBI BLAST
