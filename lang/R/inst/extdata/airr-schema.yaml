@@ -1382,7 +1382,7 @@ Rearrangement:
         germline_alignment:
             type: string
             description: >
-                Assembled, aligned, fully length inferred germline sequence spanning the same region
+                Assembled, aligned, full-length inferred germline sequence spanning the same region
                 as the sequence_alignment field (typically the V(D)J region) and including the same set
                 of corrections and spacers (if any).
         germline_alignment_aa:
