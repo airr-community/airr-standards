@@ -234,7 +234,7 @@ To build the package from a local source copy first install the build dependenci
 
 .. code-block:: R
 
-  install.packages(c("devtools", "knitr, "rmarkdown", "testthat"))
+  install.packages(c("devtools", "knitr", "rmarkdown", "testthat"))
 
 Then run the following R commands from the package root ``lang/R``:
 
