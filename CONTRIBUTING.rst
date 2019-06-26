@@ -143,6 +143,27 @@ fixes, should be commited to that release branch. Note: a release may
 just tag ``master`` and not create the actual release branch until later
 when it is needed.
 
+Public Releases
+---------------
+
+To provide a public release of the airr-standards library, perform the
+following checklist:
+
+-  Tag the repository
+-  Generate the release on github
+-  Upload python library to PyPI
+-  Upload R library to CRAN
+
+To upload the python library to PyPI, perform the following steps:
+
+-  something
+-  something
+
+To upload the R library to CRAN, perform the following steps:
+
+-  something
+-  something
+
 
 Development Setup
 =================
@@ -155,26 +176,71 @@ software. For all cases, you will want a local copy of the github repository.
 
   git clone https://github.com/airr-community/airr-standards.git
 
-If you will be working in a docker container, pull down the airr-standards image,
-and then run it to give yourself a bash shell. You will want to mount your local
-copy of the github repository into the container.
+If you will be working in a docker container, you can pull down the airr-standards
+image, which has all of the prerequisites installed, or you can use your own image.
+The airr-standards image provides a python3 environment.
 
 .. code-block:: bash
 
   docker pull airrc/airr-standards
+
+You will want to mount your local copy of the github repository into the container.
+This example command puts your local copy at the ``/work`` directory. Note that a copy
+of the repository exists in the image from when it is built, but don't edit that copy
+as your changes will get lost when you exist the docker container. It is suggested
+that you edit files outside of the docker container to prevent permissions issues. Also,
+avoid doing ``git`` commands inside the docker container. Certains commands that write
+data like ``git add`` or ``git commit`` can change permissions and make your local
+copy of the repository unusable.
+
+.. code-block:: bash
+
+  cd airr-standards
   docker run -v $PWD:/work -it airrc/airr-standards bash
 
 Python Library
 --------------
 
 Normal users would install the python library using ``pip`` which pulls the package
-from the internet. For development, you want to install
+from the internet. For development, you want to install from your local copy. The
+commands are similar whether in docker or directly in your machine environment.
+Starting at the top level repository directory:
+
+.. code-block:: bash
+
+  cd lang/python
+  python setup.py install
+
+If you are working directly in your machine environment, you may want to install in your
+user site packages instead of the system site packages, which can be done by adding
+the ``--user`` option to the install.
+
+.. code-block:: bash
+
+  python setup.py install --user
+
+You can run the python test suite from the same directory where you do the install command.
+
+.. code-block:: bash
+
+  python -m unittest discover
 
 R Library
 ---------
 
 Documentation
 -------------
+
+The documentation at `docs.airr-community.org` is built using ``sphinx`` in a python3
+environment. From the top level airr-standards directory, run this command to build a
+local version of the website.
+
+.. code-block:: bash
+
+  sphinx-build -a -E -b html docs docs/_build/html
+
+The documentation can then be viewed in your browser by opening the file ``docs/_build/html/index.html``.
+
 
 Code Style
 ==========
