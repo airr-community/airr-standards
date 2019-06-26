@@ -229,7 +229,29 @@ You can run the python test suite from the same directory where you do the insta
 R Library
 ---------
 
-stuff to be added here.
+Users can install the latest release from CRAN in the usual way via ``install.packages("airr")``.
+To build the package from a local source copy first install the build dependencies:
+
+.. code-block:: R
+
+  install.packages(c("devtools", "knitr, "rmarkdown", "testthat"))
+
+Then run the following R commands from the package root ``lang/R``:
+
+.. code-block:: R
+
+  library(devtools)
+  install_deps(dep=T)
+  document()
+  build()
+  install()
+
+Tests can be run from the same directory as follows:
+
+.. code-block:: R
+
+  library(devtools)
+  test()
 
 Documentation
 -------------
