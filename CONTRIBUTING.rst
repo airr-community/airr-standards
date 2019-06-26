@@ -144,6 +144,38 @@ just tag ``master`` and not create the actual release branch until later
 when it is needed.
 
 
+Development Setup
+=================
+
+Local development and testing can be performed either directly in your machine
+environment, or you can use a docker container which avoids conflicts with other
+software. For all cases, you will want a local copy of the github repository.
+
+.. code-block:: bash
+
+  git clone https://github.com/airr-community/airr-standards.git
+
+If you will be working in a docker container, pull down the airr-standards image,
+and then run it to give yourself a bash shell. You will want to mount your local
+copy of the github repository into the container.
+
+.. code-block:: bash
+
+  docker pull airrc/airr-standards
+  docker run -v $PWD:/work -it airrc/airr-standards bash
+
+Python Library
+--------------
+
+Normal users would install the python library using ``pip`` which pulls the package
+from the internet. For development, you want to install
+
+R Library
+---------
+
+Documentation
+-------------
+
 Code Style
 ==========
 
