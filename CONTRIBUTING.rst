@@ -21,31 +21,32 @@ submissions. The current sub-projects include:
 
    2. Rearrangement annotations
 
--  OpenAPI definitions:
+   3. Repertoire metadata
 
-   1. MiAIRR objects
+-  OpenAPI schema definitions:
+
+   1. Repertoire metadata
 
    2. Rearrangement annotations
 
+   3. Ontologies definitions for AIRR data elements.
+
+   4. AIRR Data Commons API
+
 -  Documentation for `docs.airr-community.org`__
 
--  Python package for reading/writing file formats
+-  Python package for reading/writing/validating file formats
+
+-  R package for reading/writing/validation file formats.
+
+-  Software WG defining standardized data sets and metrics.
 
 .. __: http://docs.airr-community.org
 
 Some future sub-projects include:
 
--  Ontologies definitions for AIRR data elements.
-
--  Common Repository WG defining standard API with associated
-   specification.
-
--  R package for file format reading/writing/validation.
-
 -  Germline Database WG defining criteria, submission protocols, and
    tools, with associated file formats and specifications.
-
--  Software WG defining standardized data sets and metrics.
 
 
 Git Structure
@@ -187,7 +188,7 @@ The airr-standards image provides a python3 environment.
 You will want to mount your local copy of the github repository into the container.
 This example command puts your local copy at the ``/work`` directory. Note that a copy
 of the repository exists in the image from when it is built, but don't edit that copy
-as your changes will get lost when you exist the docker container. It is suggested
+as your changes will get lost when you exit the docker container. It is suggested
 that you edit files outside of the docker container to prevent permissions issues. Also,
 avoid doing ``git`` commands inside the docker container. Certains commands that write
 data like ``git add`` or ``git commit`` can change permissions and make your local
@@ -228,10 +229,12 @@ You can run the python test suite from the same directory where you do the insta
 R Library
 ---------
 
+stuff to be added here.
+
 Documentation
 -------------
 
-The documentation at `docs.airr-community.org` is built using ``sphinx`` in a python3
+The documentation at `docs.airr-community.org`__ is built using ``sphinx`` in a python3
 environment. From the top level airr-standards directory, run this command to build a
 local version of the website.
 
@@ -240,6 +243,8 @@ local version of the website.
   sphinx-build -a -E -b html docs docs/_build/html
 
 The documentation can then be viewed in your browser by opening the file ``docs/_build/html/index.html``.
+
+.. __: http://docs.airr-community.org
 
 
 Code Style
