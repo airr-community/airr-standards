@@ -63,8 +63,8 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 
 # General information about the project.
-project = 'airr-standards'
-copyright = '2017-2018, AIRR Community'
+project = 'AIRR Standards'
+copyright = '2017-2019, AIRR Community'
 author = 'AIRR Community'
 
 # The version info for the project you're documenting, acts as replacement for

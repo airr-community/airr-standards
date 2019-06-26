@@ -1,5 +1,19 @@
-AIRR Standards
+.. _AIRR_Introduction:
+
+AIRR Community
 ==============
+
+The Adaptive Immune Receptor Repertoire (AIRR) Community of The Antibody Society is a
+research-driven group that is organizing and coordinating stakeholders in the use of
+next-generation sequencing (NGS) technologies to study antibody/B-cell and T-cell receptor
+repertoires. Recent advances in sequencing technology have made it possible to sample the
+immune repertoire in exquisite detail. AIRR sequencing has enormous promise for understanding
+the dynamics of the immune repertoire in vaccinology, infectious disease, autoimmunity, and
+cancer biology, but also poses substantial challenges. The AIRR Community was established
+to meet these challenges.
+
+Introduction to the AIRR Standards
+------------------------------
 
 The AIRR Community is developing a set of standards for describing, reporting,
 storing, and sharing adaptive immune receptor repertoire (AIRR) data, such as
@@ -16,13 +30,8 @@ include:
     :maxdepth: 3
     :caption: Table of Contents
 
-    miairr/overview
-    cairr/overview
-    datarep/overview
-    api/overview
-    AIRR Software Guidelines <swtools/overview>
-    Python Library <packages/airr-python/overview>
-    R Library <packages/airr-R/overview>
-    Supporting Applications <resources/support.rst>
-    examples/overview
-    appendix/terms
+    Getting Started <standards/getting_started>
+    AIRR Standards <standards/overview>
+    Software <standards/software>
+    Community <standards/community>
+    Glossary <appendix/terms>
