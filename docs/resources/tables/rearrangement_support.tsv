@@ -4,7 +4,7 @@ AIRR R Library	1.2	Input, output and validation
 `IgBLAST <https://www.ncbi.nlm.nih.gov/igblast>`_	1.11	Output
 `IGoR <https://github.com/qmarcou/IGoR>`_	TBD	Input and output
 `Immcantation:Change-O <https://changeo.readthedocs.io>`_	0.4.2	Input, output and conversion
-`ImmuneDB <https://immunedb.com>`_	0.24.0	Output
+`ImmuneDB <http://immunedb.com>`_	0.24.0	Output
 `iReceptor <http://www.ireceptor.org>`_	2.0	Input, output and conversion
 `MiXCR <https://milaboratory.com/software/mixcr>`_	2.2.1	Output
 `OLGA <https://github.com/zsethna/OLGA>`_	TBD	Input and output
