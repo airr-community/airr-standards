@@ -10,3 +10,4 @@ MiAIRR Standard
 
    introduction_miairr
    miairr_ncbi_overview
+   miairr_single_cell_extension
