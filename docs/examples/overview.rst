@@ -3,7 +3,7 @@
 Examples & Workflows
 ====================
 
-Example workflows, tutorials and use cases for AIRR Standards.
+Example workflows for the AIRR Standards.
 
 .. toctree::
    :maxdepth: 1

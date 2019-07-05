@@ -9,4 +9,4 @@ Software
     Python Library <../packages/airr-python/overview>
     R Library <../packages/airr-R/overview>
     CAIRR <../cairr/overview>
-    ADC API <../api/overview>
+    ADC API Reference Implementation <../api/reference>

@@ -10,6 +10,6 @@ AIRR Standards
 
    Study Reporting (MiAIRR) <../miairr/overview>
    Software Guidelines <../swtools/overview>
-   AIRR Data Model <../datarep/overview>
+   AIRR Data Representations <../datarep/overview>
    AIRR Data Commons <../api/overview>
    

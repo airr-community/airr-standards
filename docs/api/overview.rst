@@ -1,6 +1,6 @@
 .. _DataCommons:
 
-Data Commons REST API V1
+AIRR Data Commons API V1
 =============================
 
 The use of high-throughput sequencing for profiling B-cell and T-cell
@@ -18,18 +18,18 @@ validated. Such deposition also facilitates reuse of data for the
 generation of new hypotheses and new knowledge.
 
 The AIRR Common Repository Working Group (CRWG) developed a set of
-recommendations__ (v0.5.0) that promote the deposit, sharing, and use
+recommendations__ (v0.6.0) that promote the deposit, sharing, and use
 of AIRR sequence data. These recommendations were refined following
 community discussions at the AIRR 2016 and 2017 Community Meetings and
 were approved through a vote by the AIRR Community at the AIRR
 Community Meeting in December 2017.
 
-.. __: https://github.com/airr-community/common-repo-wg/blob/v0.5.0/recommendations.md
+.. __: https://github.com/airr-community/common-repo-wg/blob/v0.6.0/recommendations.md
 
 Overview
 --------
 
-The AIRR Data Commons (ADC) REST API provides programmatic access to
+The AIRR Data Commons (ADC) API provides programmatic access to
 query and download AIRR-seq data. The ADC API uses JSON as its
 communication format, and standard HTTP methods like ``GET`` and
 ``POST``. The ADC API is read-only and the mechanism of inclusion of
@@ -67,11 +67,11 @@ specific functionality as summarized in the following table:
     * - ``/v1/repertoire/{repertoire_id}``
       - Retrieve a repertoire given its ``repertoire_id``
       - ``GET``
-      - Upon success, returns the ``Repertoire`` information in JSON according to the :ref:`Repertoire schema <MetadataRepresentations>`.
+      - Upon success, returns the ``Repertoire`` information in JSON according to the :ref:`Repertoire schema <RepertoireSchema>`.
     * - ``/v1/repertoire``
       - Query repertoires
       - ``POST``
-      - Upon success, returns a list of ``Repertoires`` in JSON according to the :ref:`Repertoire schema <MetadataRepresentations>`.
+      - Upon success, returns a list of ``Repertoires`` in JSON according to the :ref:`Repertoire schema <RepertoireSchema>`.
     * - ``/v1/rearrangement/{rearrangement_id}``
       - Retrieve a rearrangement given its ``rearrangement_id``
       - ``GET``
@@ -199,7 +199,7 @@ Endpoints
 The ADC API V1 provides two primary endpoints for querying and
 retrieving AIRR-seq data. The ``repertoire`` endpoint allows querying
 upon any field in the :ref:`Repertoire schema
-<MetadataRepresentations>` including study, subject, sample, cell
+<RepertoireSchema>` including study, subject, sample, cell
 processing, nucleic acid processing, sequencing run, raw sequencing
 files, and data processing information. Queries on the content of raw
 sequencing files is not support but is supported on file attributes
@@ -218,7 +218,7 @@ without requiring modifications or transformation of the data.
 **Repertoire Endpoint**
 
 The ``repertoire`` endpoint provides access to all fields in
-the :ref:`Repertoire schema <MetadataRepresentations>`. There are two
+the :ref:`Repertoire schema <RepertoireSchema>`. There are two
 type of endpoints; one for retrieving a single repertoire given its
 identifier, and another for performing a query across all repertoires
 in the data repository.
@@ -280,9 +280,9 @@ The response will provide the ``Repertoire`` data in JSON format.
        "read_direction":"forward",
        "sequencing_platform":"Illumina MiSeq"}
     ],
-    "sequence_annotation":[
-      {"rearrangement_set_id":"4976322832749171176-242ac11c-0001-012",
-       "software":{"analysis_provenance_id":"651223970338378216-242ac11b-0001-007"}}
+    "data_processing":[
+      {"data_processing_id":"4976322832749171176-242ac11c-0001-012",
+       "analysis_provenance_id":"651223970338378216-242ac11b-0001-007"}
     ],
   }
 
@@ -720,15 +720,9 @@ subjects each with two IGH repertoires.
 
 .. _`query`: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query1-4_repertoire.json
 
-AIRR Data Model
-~~~~~~~~~~~~~~~
 
-Controlled Vocabularies and Ontologies
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Examples
-~~~~~~~~
-
-AIRR Compliant Data Repositories
+Reference Implementation
 --------------------------------
 
+The AIRR Community provides a reference implementation for an ADC API
+service with more information found :ref:`here <ADCAPIReference>`.
