@@ -1658,7 +1658,7 @@ Rearrangement:
             description: FWR3 end position in the query sequence (1-based closed interval).
         fwr4_start:
             type: integer
-            description: FWR3 start position in the query sequence (1-based closed interval).
+            description: FWR4 start position in the query sequence (1-based closed interval).
         fwr4_end:
             type: integer
             description: FWR4 end position in the query sequence (1-based closed interval).
