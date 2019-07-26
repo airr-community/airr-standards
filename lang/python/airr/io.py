@@ -4,6 +4,8 @@ Reference library for AIRR schema for Ig/TCR rearrangements
 from __future__ import print_function
 import sys
 import csv
+import yaml
+import json
 from airr.schema import RearrangementSchema,ValidationError
 
 
@@ -243,13 +245,59 @@ class RearrangementWriter:
 #         raise ValueError('invalid AIRR data file')
 
 
-# class MetaWriter:
-#     """
-#     Class structure for AIRR standard metadata
-#
-#     Attributes:
-#       debug (bool): debug state. If True prints debug information.
-#     """
+class RepertoireReader:
+    """
+    Read list of repertoire objects in YAML or JSON format
+    """
+
+    def __init__(self, handle, validate=False, debug=False):
+        """
+        Initialization
+
+        Arguments:
+          handle (file): file handle of the open Repertoire file.
+          validate (bool): perform validation. If True then basic validation will be
+                           performed will reading the data. A ValidationError exception
+                           will be raised if an error is found.
+          debug (bool): debug state. If True prints debug information.
+
+        Returns:
+          dictionary of repertoire objects keyed by repertoire_id.
+        """
+        # arguments
+        self.handle = handle
+        self.debug = debug
+        self.validate = validate
+        #self.schema = RepertoireSchema
+        self.info = None
+        self.repertoires = {}
+
+        md = None
+        ext = self.handle.name.split('.')[-1]
+        if ext == 'yaml' or ext == 'yml':
+            md = yaml.safe_load(handle)
+        elif ext == 'json':
+            md = json.load(handle)
+        else:
+            if debug:
+                sys.stderr.write('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
+            raise TypeError('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
+
+        if md.get('Info') is not None:
+            self.info = md['Info']
+
+        if md.get('Repertoire') is None:
+            if debug:
+                sys.stderr.write('%s is missing "Repertoire" key\n' % (self.handle.name))
+            raise KeyError('Repertoire object cannot be found in the file')
+
+        for rep in md['Repertoire']:
+            if rep.get('repertoire_id') is None:
+                if debug:
+                    sys.stderr.write('Repertoire is missing repertoire_id\n')
+                raise KeyError('Repertoire is missing repertoire_id')
+            self.repertoires[rep['repertoire_id']] = rep
+
 #
 #     def __init__(self, state, handle, debug=False):
 #         """
