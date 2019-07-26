@@ -283,3 +283,4 @@ class Schema:
 # Preloaded schema
 AlignmentSchema = Schema('Alignment')
 RearrangementSchema = Schema('Rearrangement')
+RepertoireSchema = Schema('Repertoire')
