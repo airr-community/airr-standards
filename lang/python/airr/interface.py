@@ -8,7 +8,7 @@ from collections import OrderedDict
 from itertools import chain
 
 # Load imports
-from airr.io import RearrangementReader, RearrangementWriter
+from airr.io import RearrangementReader, RearrangementWriter, RepertoireReader
 from airr.schema import ValidationError, RearrangementSchema
 
 
@@ -154,7 +154,7 @@ def merge_rearrangement(out_filename, in_filenames, drop=False, debug=False):
 
 def validate_rearrangement(filename, debug=False):
     """
-    Validates one or more AIRR rearrangements files
+    Validates an AIRR rearrangements file
 
     Arguments:
       filename (str): path of the file to validate.
@@ -196,3 +196,48 @@ def validate_rearrangement(filename, debug=False):
     handle.close()
 
     return valid
+
+
+def load_repertoire(filename, validate=False, debug=False):
+    """
+    Load an AIRR repertoire metadata file
+
+    Arguments:
+      file (str): path to the input file.
+      validate (bool): whether to validate data as it is read, raising a ValidationError
+                       exception in the event of an error.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      dictionary of repertoire objects.
+    """
+
+    return RepertoireReader(open(filename, 'r'), validate=validate, debug=debug)
+
+
+def validate_repertoire(filename, debug=False):
+    """
+    Validates an AIRR repertoire metadata file
+
+    Arguments:
+      filename (str): path of the file to validate.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      bool: True if files passed validation, otherwise False.
+    """
+    valid = True
+    if debug:
+        sys.stderr.write('Validating: %s\n' % filename)
+
+    # Open reader
+    handle = open(filename, 'r')
+    reader = RepertoireReader(handle, validate=True, debug=debug)
+
+    # Validate
+
+    # Close
+    handle.close()
+
+    return valid
+
