@@ -1721,6 +1721,9 @@ Rearrangement:
         junction_length:
             type: integer
             description: Number of nucleotides in the junction sequence.
+        junction_aa_length:
+            type: integer
+            description: Number of amino acids in the junction sequence.
         np1_length:
             type: integer
             description: Number of nucleotides between the V and D segments or V and J segments.
