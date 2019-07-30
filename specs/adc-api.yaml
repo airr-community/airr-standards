@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  title: AIRR Common Repository API
+  title: AIRR Data Commons API
   version: 1.0.0
   contact:
     name: AIRR Community
@@ -8,79 +8,53 @@ info:
     email: join@airr-community.org
   description: >
     Major Version 1 of the Adaptive Immune Receptor Repertoire (AIRR)
-    common data repository web service application programming interface (API).
-basePath: /v1
+    data repository web service application programming interface (API).
+basePath: /airr/v1
 
 definitions:
-  # The AIRR Common Repository model for list of repertoire metadata
+  # list of repertoires
   repertoire_list:
     type: array
     items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/CRWG-API/specs/airr-schema.yaml#/Repertoire'
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Repertoire'
 
   # The response object /repertoire endpoint
   repertoire_response:
     type: object
-    required:
-      - success
     properties:
-      success:
-        type: boolean
-        description: >
-          A true value indicates the service was able to properly parse and perform the query.
-          A false value indicates an error occured; the message contains more detail.
-      message:
-        type: string
-        description: Detail about the error when success=false
-      result:
+      Info:
+        type: object
+        description: Provides information about the API response
+      Repertoire:
         $ref: '#/definitions/repertoire_list'
 
-  # The AIRR Common Repository model for list of rearrangement annotations
+  # list of rearrangement annotations
   rearrangement_list:
     type: array
     items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/CRWG-API/specs/airr-schema.yaml#/Rearrangement'
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Rearrangement'
 
   # The response object /rearrangement endpoint
   rearrangement_response:
     type: object
-    required:
-      - success
+    properties:
+      Info:
+        type: object
+        description: Provides information about the API response
+      Rearrangement:
+        $ref: '#/definitions/rearrangement_list'
+
+  # error response
+  error_response:
+    type: object
     properties:
       success:
         type: boolean
         description: >
-          A true value indicates the service was able to properly parse and perform the query.
           A false value indicates an error occured; the message contains more detail.
       message:
         type: string
         description: Detail about the error when success=false
-      result:
-        $ref: '#/definitions/rearrangement_list'
-
-parameters:
-  filters:
-    name: filters
-    type: string
-    in: formData
-  format:
-    name: format
-    type: string
-    in: formData
-  fields:
-    name: fields
-    type: array
-    items:
-      type: string
-    in: formData
-  size:
-    name: size
-    type: number
-    in: formData
-  from:
-    name: from
-    type: number
-    in: formData
 
 schemes:
   - https
@@ -166,7 +140,7 @@ paths:
           description: |
             A successful call returns the repertoire data.
           schema:
-            $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/CRWG-API/specs/airr-schema.yaml#/Repertoire'
+            $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Repertoire'
         '400':
           description: Invalid repertoire ID supplied
         '404':
@@ -204,6 +178,10 @@ paths:
             A successful call returns an array of repertoire metadata.
           schema:
             $ref: '#/definitions/repertoire_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
 
   /rearrangement/{rearrangement_id}:
     x-swagger-router-controller: rearrangement
@@ -230,7 +208,7 @@ paths:
           description: >
             A successful call returns the rearrangement annotation data.
           schema:
-            $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/CRWG-API/specs/airr-schema.yaml#/Rearrangement'
+            $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Rearrangement'
         '400':
           description: Invalid rearrangement ID supplied
         '404':
@@ -244,11 +222,23 @@ paths:
       tags:
         - rearrangements
       parameters:
-        - $ref: '#/parameters/filters'
-        - $ref: '#/parameters/format'
-        - $ref: '#/parameters/fields'
-        - $ref: '#/parameters/size'
-        - $ref: '#/parameters/from'
+        - in: body
+          name: data
+          schema:
+            type: object
+            properties:
+              filters:
+                type: object
+              format:
+                type: string
+              fields:
+                type: array
+                items:
+                  type: string
+              size:
+                type: number
+              from:
+                type: number
       operationId: queryRearrangements
       responses:
         '200':

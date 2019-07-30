@@ -218,6 +218,26 @@ Study:
                 set: 1
                 subset: study
                 name: Relevant publications
+        keywords_study:
+            type: array
+            items:
+                type: string
+                enum:
+                    - contains_ig
+                    - contains_tcr
+                    - contains_single_cell
+                    - contains_paired_chain
+            description: Keywords describing properties of one or more data sets in a study
+            example:
+              - contains_ig
+              - contains_paired_chain
+            x-airr:
+                miairr: true
+                required: true
+                nullable: true
+                set: 1
+                subset: study
+                name: Keywords for study
 
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
@@ -1362,7 +1382,7 @@ Rearrangement:
         germline_alignment:
             type: string
             description: >
-                Assembled, aligned, fully length inferred germline sequence spanning the same region
+                Assembled, aligned, full-length inferred germline sequence spanning the same region
                 as the sequence_alignment field (typically the V(D)J region) and including the same set
                 of corrections and spacers (if any).
         germline_alignment_aa:
@@ -1638,7 +1658,7 @@ Rearrangement:
             description: FWR3 end position in the query sequence (1-based closed interval).
         fwr4_start:
             type: integer
-            description: FWR3 start position in the query sequence (1-based closed interval).
+            description: FWR4 start position in the query sequence (1-based closed interval).
         fwr4_end:
             type: integer
             description: FWR4 end position in the query sequence (1-based closed interval).
@@ -1768,6 +1788,19 @@ Rearrangement:
                 set: 6
                 subset: data (processed sequence)
                 name: Read count
+        pair_id:
+            type: string
+            description: >
+                Valid sequence_id that was determined by experimental or computational means to
+                be associated with the current Rearrangement on the cellular level.
+            example: ABC314159
+            x-airr:
+                miairr: true
+                required: true
+                nullable: true
+                set: 6
+                subset: data (processed sequence)
+                name: Paired-chain index
         cell_id:
             type: string
             description: >
@@ -1779,7 +1812,7 @@ Rearrangement:
                 nullable: true
                 set: 6
                 subset: data (processed sequence)
-                name: Cell Index
+                name: Cell index
         clone_id:
             type: string
             description: Clonal cluster assignment for the query sequence.
