@@ -72,9 +72,7 @@ Bukhari, Syed Ahmad Chan, Martin J. O'Connor, Marcos Martínez-Romero, Attila L.
 Tell Us About It
 ~~~~~~~~~~~~~~~~
 
-Please let us know how it went! If you are willing, we’d love to have your comments in a `short survey <https://www.surveymonkey.com/r/your-metadata-experience>`_, it should just take 5 minutes or so.
-
-We also welcome entry of issues and requests in `our GitHub repository <https://github.com/metadatacenter/cedar-project/issues>`_, and emails can be sent to cedar-users@lists.stanford.edu. Both of these resources are publicly visible.
+Please let us know how it went! If you are willing, we’d love to have your comments in a `short survey <https://www.surveymonkey.com/r/your-metadata-experience>`_, it should just take 5 minutes or so. We also welcome entry of issues and requests in `our GitHub repository <https://github.com/metadatacenter/cedar-project/issues>`_, and emails can be sent to cedar-users@lists.stanford.edu. Both of these resources are publicly visible.
 
 Support or Contact
 ~~~~~~~~~~~~~~~~~~
