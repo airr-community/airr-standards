@@ -55,7 +55,7 @@ The CEDAR template and template elements used by this pipeline are publicly avai
 
 #. Once in your workspace, you will see a metadata file called 'MiAIRR metadata'. That file contains the metadata that you have just created and that you want to submit to the NCBI. Click on the three vertical dots on the top-right corner of the file icon to see the available file options.
 
-   .. image:: images/figure.png
+   .. image:: images/CAIRR_workspace.png
 
 #. Click on the 'Submit' option to open the submission dialog.
 
