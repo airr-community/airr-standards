@@ -37,7 +37,7 @@ Submission steps:
 
    .. image:: ../cairr/images/CAIRR_metadata_2.png
 
-#. Go to your personal workspace by clicking on the left arrow (top left corner) and then on the 'Workspace' link, or by just clicking on: [https://cedar.metadatacenter.org](https://cedar.metadatacenter.org).
+#. Go to your personal workspace by clicking on the left arrow (top left corner) and then on the 'Workspace' link, or by just clicking on: https://cedar.metadatacenter.org
 
 #. Once in your workspace, you will see a metadata file called 'MiAIRR metadata'. That file contains the metadata that you have just created and that you want to submit to the NCBI. Click on the three vertical dots on the top-right corner of the file icon to see the available file options.
 
