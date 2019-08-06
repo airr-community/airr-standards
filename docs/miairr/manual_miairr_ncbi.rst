@@ -21,15 +21,13 @@ There are three main alternatives to submit AIRR data/metadata to NCBI repositor
 Option 1. Submission via the CEDAR system (CAIRR submission pipeline)
 ---------------------------------------------------------------------
 
-CEDAR's CAIRR submission pipeline helps investigators and curators to edit and validate ontology-controlled metadata. This pipeline provides a seamless interface to transmit SRA datasets to the NCBI SRA and BioSample repositories from `the CEDAR Workbench <https://cedar.metadatacenter.org>`_. 
+CEDAR's CAIRR submission pipeline helps investigators and curators to edit and validate ontology-controlled metadata. This pipeline provides a seamless interface to transmit SRA datasets to the NCBI SRA and BioSample repositories from `the CEDAR Workbench <https://cedar.metadatacenter.org>`_. Note that the CEDAR template and template elements used by this pipeline are publicly available in the following CEDAR folder: `All/Shared/Shared by CEDAR/MiAIRR <https://cedar.metadatacenter.org/dashboard?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_.
 
-The CEDAR template and template elements used by this pipeline are publicly available in the following CEDAR folder: `All/Shared/Shared by CEDAR/MiAIRR <https://cedar.metadatacenter.org/dashboard?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_.
+Submission steps:
 
-#. Click on this link: `CAIRR pipeline <https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_. If you aren't already logged in, this will take you to the CEDAR login panel.
+#. Open CEDAR's MiAIRR template by clicking on `this link <https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_. If you aren't already logged in, this will take you to the CEDAR login panel. If you are a new user, you will have to create an account on the CEDAR Workbench by `clicking here <https://auth.metadatacenter.org/auth/realms/CEDAR/login-actions/registration?client_id=cedar-angular-app>`_.
 
    .. image:: ../cairr/images/CAIRR_login.png
-
-#. Log in to the CEDAR system if necessary. If you are a new user, you will have to create an account on the CEDAR Workbench by `clicking here <https://auth.metadatacenter.org/auth/realms/CEDAR/login-actions/registration?client_id=cedar-angular-app>`_.
 
 #. After logging in into the system, you will see the 'MiAIRR' template. Fill out the template fields with your metadata. Fields with an asterisk (*) are mandatory. Your submission will fail if any mandatory fields are not completed. If information is unavailable for any mandatory field, please enter ‘not collected’, ‘not applicable’ or ‘missing’ as appropriate.
 
