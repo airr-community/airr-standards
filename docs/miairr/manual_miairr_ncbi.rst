@@ -66,7 +66,7 @@ Submission steps:
 Citing the CAIRR pipeline
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bukhari, Syed Ahmad Chan, Martin J. O'Connor, Marcos Martínez-Romero, Attila L. Egyedi, Debra Debra Willrett, John Graybeal, Mark A. Musen, Florian Rubelt, Kei H. Cheung, and Steven H. Kleinstein. "The CAIRR pipeline for submitting standards-compliant B and T cell receptor repertoire sequencing studies to the NCBI." Frontiers in Immunology 9 (2018): 1877. DOI: 10.3389/fimmu.2018.01877
+Bukhari, Syed Ahmad Chan, Martin J. O'Connor, Marcos Martínez-Romero, Attila L. Egyedi, Debra Debra Willrett, John Graybeal, Mark A. Musen, Florian Rubelt, Kei H. Cheung, and Steven H. Kleinstein. `The CAIRR pipeline for submitting standards-compliant B and T cell receptor repertoire sequencing studies to the NCBI <https://www.ncbi.nlm.nih.gov/pubmed/30166985>`_. Frontiers in Immunology 9 (2018): 1877. DOI: 10.3389/fimmu.2018.01877
 
 
 Tell Us About It
