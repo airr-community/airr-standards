@@ -39,7 +39,7 @@ The CEDAR template and template elements used by this pipeline are publicly avai
 
 #. Click on this link: `CAIRR pipeline <https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_. If you aren't already logged in, this will take you to the CEDAR login panel.
 
-   .. image:: images/figure.png
+   .. image:: images/CAIRR_login.png
 
 #. Log in to the CEDAR system if necessary. If you are a new user, you will have to create an account on the CEDAR Workbench by `clicking here <https://auth.metadatacenter.org/auth/realms/CEDAR/login-actions/registration?client_id=cedar-angular-app>`_.
 
