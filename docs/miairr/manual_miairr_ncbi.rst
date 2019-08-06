@@ -77,7 +77,7 @@ Please let us know how it went! If you are willing, we’d love to have your com
 Support or Contact
 ~~~~~~~~~~~~~~~~~~
 
-Having trouble with NCBI submission process through our pipeline? Please email to `Syed Ahmad Chan Bukhari <mailto:ahmad.chan@yale.edu>`_ or to `Marcos Martínez-Romero <mailto:marcosmr@stanford.edu>`_ or to  and we’ll help you sort it out.
+Having trouble with NCBI submission process through our pipeline? Please email to `Syed Ahmad Chan Bukhari <mailto:ahmad.chan@yale.edu>`_ or to `Marcos Martínez-Romero <mailto:marcosmr@stanford.edu>`_ and we’ll help you sort it out.
 
 Option 2. Submission via NCBI's web interface
 ---------------------------------------------
