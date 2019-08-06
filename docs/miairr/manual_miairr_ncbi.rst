@@ -67,11 +67,11 @@ The CEDAR template and template elements used by this pipeline are publicly avai
 
 #. Click on the 'Select Files' button to upload the data files. Note that the names of the selected files must match the names in the metadata file. Otherwise, you will receive an error message when trying to start the submission.
 
-   .. image:: ../cairr/images/figure.png
+   .. image:: ../cairr/images/CAIRR_submit_3.png
 
 #. Click on the 'Submit' button to start the submission. If there are not validation errors, the selected data files and the corresponding metadata will be uploaded to the NCBI servers.
 
-   .. image:: images/figure.png
+   .. image:: ../cairr/images/CAIRR_submit_4.png
 
 #. Note that the submission may take several hours or even days to be processed by the NCBI. Meanwhile, you will receive status messages about your submission in your workspace (messages icon).
 
