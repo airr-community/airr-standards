@@ -29,7 +29,7 @@ Submission steps:
 
    .. image:: ../cairr/images/CAIRR_login.png
 
-#. After logging in into the system, you will see the 'MiAIRR' template. Fill out the template fields with your metadata. Fields with an asterisk (*) are mandatory. Your submission will fail if any mandatory fields are not completed. If information is unavailable for any mandatory field, please enter ‘not collected’, ‘not applicable’ or ‘missing’ as appropriate. Note that you will need to enter a BioProject ID in the field Study ID. If you don't have a BioProject, you will have to create one at `https://submit.ncbi.nlm.nih.gov/subs/bioproject/`
+#. After logging in into the system, you will see the 'MiAIRR' template. Fill out the template fields with your metadata. Fields with an asterisk (*) are mandatory. Your submission will fail if any mandatory fields are not completed. If information is unavailable for any mandatory field, please enter ‘not collected’, ‘not applicable’ or ‘missing’ as appropriate. Note that you will need to enter a BioProject ID into the field 'Study ID'. If you don't have a BioProject yet, you can create one at `https://submit.ncbi.nlm.nih.gov/subs/bioproject/`
 
    .. image:: ../cairr/images/CAIRR_metadata_1.png
 
@@ -41,7 +41,7 @@ Submission steps:
 
 #. Once in your workspace, you will see a metadata file called 'MiAIRR metadata'. That file contains the metadata that you have just created and that you want to submit to the NCBI. Click on the three vertical dots on the top-right corner of the file icon to see the available file options.
 
-   .. image:: images/CAIRR_workspace.png
+   .. image:: ../cairr/images/CAIRR_workspace.png
 
 #. Click on the 'Submit' option to open the submission dialog.
 
