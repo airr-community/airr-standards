@@ -2,12 +2,6 @@ FROM ubuntu:18.04
 
 LABEL maintainer="AIRR Community"
 
-# uncomment these if building behind UTSW proxy
-ENV http_proxy 'http://proxy.swmed.edu:3128/'
-ENV https_proxy 'http://proxy.swmed.edu:3128/'
-ENV HTTP_PROXY 'http://proxy.swmed.edu:3128/'
-ENV HTTPS_PROXY 'http://proxy.swmed.edu:3128/'
-
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y --fix-missing \
     git \
     python3 \
