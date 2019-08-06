@@ -45,15 +45,11 @@ The CEDAR template and template elements used by this pipeline are publicly avai
 
 #. After logging in into the system, you will see the 'MiAIRR' template. Fill out the template fields with your metadata. Fields with an asterisk (*) are mandatory. Your submission will fail if any mandatory fields are not completed. If information is unavailable for any mandatory field, please enter ‘not collected’, ‘not applicable’ or ‘missing’ as appropriate.
 
-   .. image:: images/figure.png
+   .. image:: images/CAIRR_metadata_1.png
 
-#. Once your metadata is complete, click on the 'Save' button to save your metadata into your workspace.
+#. Once your metadata is complete, click on the 'Save' button to save your metadata into your workspace. You will see a message in a green box confirming that your metadata have been successfully saved, as well as a message in a yellow box letting you know that your metadata have been saved to your personal workspace.
 
-   .. image:: images/figure.png
-
-#. You will see a message in a green box confirming that your metadata have been successfully saved, as well as a message in a yellow box letting you know that your metadata have been saved to your personal workspace.
-
-   .. image:: images/figure.png
+   .. image:: images/CAIRR_metadata_2.png
 
 #. Go to your personal workspace by clicking on the left arrow (top left corner) and then on the 'Workspace' link, or by just clicking on: [https://cedar.metadatacenter.org](https://cedar.metadatacenter.org).
 
