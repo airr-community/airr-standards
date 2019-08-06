@@ -10,3 +10,5 @@ Example workflows for the AIRR Standards.
 
    datarep_cmd_example
    api_analysis_example
+   api_queries
+   
