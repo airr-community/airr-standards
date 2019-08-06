@@ -14,26 +14,14 @@ AIRR data.
 MiAIRR data submission to BioProject, BioSample and SRA
 =======================================================
 
-To facilitate AIRR data submissions to NCBI repositories, we have
-developed the NCBI-compliant metadata submission templates both for
-single and bulk AIRR data submissions. NCBI provides a web-based
-interface to create a BioProject and allows to BioSample, Sequence Read
-Archive (SRA) and GenBank metadata via tab-delimited files for single
-BioProject related data files submission. To support the bulk submission
-of metadata through the FTP, NCBI also has established an XML schema.
-This will promote the standard and provide important feedback for its
-iterative improvement. Since we propose to include a combination of raw
-and processed sequence data, the AIRR standard will sometimes need to be
-distributed and linked across multiple repositories (e.g., data in SRA
-linked to related data in GenBank). In addition, the data elements that
-comprise the standard will be mapped to ontologies in BioPortal through
-NIH CDE (Common Data Element) terms. These linkages will support more
-sophisticated validation and logical inference.
+Since we propose to include a combination of raw and processed sequence data, the AIRR standard will sometimes need to be distributed and linked across multiple repositories (e.g., data in SRA linked to related data in GenBank). In addition, the data elements that comprise the standard will be mapped to ontologies in BioPortal through NIH CDE (Common Data Element) terms. These linkages will support more sophisticated validation and logical inference.
+
+There are three main alternatives to submit AIRR data/metadata to NCBI repositories: (1) CEDAR's CAIRR pipeline; (2) NCBI's Web interface; and (3) NCBI's FTP server. These alternatives are described below:
 
 Option 1. Submission via the CEDAR system (CAIRR submission pipeline)
 ---------------------------------------------------------------------
 
-CEDAR's CAIRR submission pipeline helps investigators and curators to edit and validate ontology-controlled metadata, and it provides a seamless interface to transmit SRA datasets to the NCBI SRA and BioSample repositories from the CEDAR Workbench. 
+CEDAR's CAIRR submission pipeline helps investigators and curators to edit and validate ontology-controlled metadata. This pipeline provides a seamless interface to transmit SRA datasets to the NCBI SRA and BioSample repositories from `the CEDAR Workbench <https://cedar.metadatacenter.org>`_. 
 
 The CEDAR template and template elements used by this pipeline are publicly available in the following CEDAR folder: `All/Shared/Shared by CEDAR/MiAIRR <https://cedar.metadatacenter.org/dashboard?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_.
 
@@ -98,6 +86,13 @@ Having trouble with NCBI submission process through our pipeline? Please email t
 Option 2. Submission via NCBI's web interface
 ---------------------------------------------
 
+To facilitate AIRR data submissions to NCBI repositories, we have
+developed the NCBI-compliant metadata submission templates both for
+single and bulk AIRR data submissions. NCBI provides a web-based
+interface to create a BioProject and allows to BioSample, Sequence Read
+Archive (SRA) and GenBank metadata via tab-delimited files for single
+BioProject related data files submission.
+
 Submitting AIRR data and associated metadata to the Bioproject,
 BioSample and SRA repositories via NCBI’s web interface follows in
 general the submission procedure described in
@@ -148,8 +143,8 @@ for metadata submission:
 
 #. Complete the submission.
 
-Option 3. Submission via FTP and XML template
----------------------------------------------
+Option 3. Submission via NCBI's FTP server, using a predefined XML template
+---------------------------------------------------------------------------
 
 In addition to the web interface, NCBI provides an FTP-based solution to
 submit bulk metadata. The corresponding AIRR XML templates can be found
