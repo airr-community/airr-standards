@@ -39,17 +39,17 @@ The CEDAR template and template elements used by this pipeline are publicly avai
 
 #. Click on this link: `CAIRR pipeline <https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_. If you aren't already logged in, this will take you to the CEDAR login panel.
 
-   .. image:: images/CAIRR_login.png
+   .. image:: ../cairr/images/CAIRR_login.png
 
 #. Log in to the CEDAR system if necessary. If you are a new user, you will have to create an account on the CEDAR Workbench by `clicking here <https://auth.metadatacenter.org/auth/realms/CEDAR/login-actions/registration?client_id=cedar-angular-app>`_.
 
 #. After logging in into the system, you will see the 'MiAIRR' template. Fill out the template fields with your metadata. Fields with an asterisk (*) are mandatory. Your submission will fail if any mandatory fields are not completed. If information is unavailable for any mandatory field, please enter ‘not collected’, ‘not applicable’ or ‘missing’ as appropriate.
 
-   .. image:: images/CAIRR_metadata_1.png
+   .. image:: ../cairr/images/CAIRR_metadata_1.png
 
 #. Once your metadata is complete, click on the 'Save' button to save your metadata into your workspace. You will see a message in a green box confirming that your metadata have been successfully saved, as well as a message in a yellow box letting you know that your metadata have been saved to your personal workspace.
 
-   .. image:: images/CAIRR_metadata_2.png
+   .. image:: ../cairr/images/CAIRR_metadata_2.png
 
 #. Go to your personal workspace by clicking on the left arrow (top left corner) and then on the 'Workspace' link, or by just clicking on: [https://cedar.metadatacenter.org](https://cedar.metadatacenter.org).
 
@@ -59,15 +59,15 @@ The CEDAR template and template elements used by this pipeline are publicly avai
 
 #. Click on the 'Submit' option to open the submission dialog.
 
-   .. image:: images/CAIRR_submit_1.png
+   .. image:: ../cairr/images/CAIRR_submit_1.png
 
 #. The 'NCBI MiAIRR' option will be automatically selected. Click on 'Next' to go to the next step.
 
-   .. image:: images/figure.png
+   .. image:: ../cairr/images/CAIRR_submit_2.png
 
 #. Click on the 'Select Files' button to upload the data files. Note that the names of the selected files must match the names in the metadata file. Otherwise, you will receive an error message when trying to start the submission.
 
-   .. image:: images/figure.png
+   .. image:: ../cairr/images/figure.png
 
 #. Click on the 'Submit' button to start the submission. If there are not validation errors, the selected data files and the corresponding metadata will be uploaded to the NCBI servers.
 
