@@ -35,7 +35,7 @@ Option 1. Submission via the CEDAR system (CAIRR submission pipeline)
 
 CEDAR's CAIRR submission pipeline helps investigators and curators to edit and validate ontology-controlled metadata, and it provides a seamless interface to transmit SRA datasets to the NCBI SRA and BioSample repositories from the CEDAR Workbench. 
 
-The CEDAR template and template elements used by this pipeline are publicly available in the following CEDAR folder: [All/Shared/Shared by CEDAR/MiAIRR](https://cedar.metadatacenter.org/dashboard?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2).
+The CEDAR template and template elements used by this pipeline are publicly available in the following CEDAR folder: `All/Shared/Shared by CEDAR/MiAIRR <https://cedar.metadatacenter.org/dashboard?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_.
 
 #. Click on this link: `CAIRR pipeline <https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_. If you aren't already logged in, this will take you to the CEDAR login panel.
 
