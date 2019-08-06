@@ -75,7 +75,7 @@ The CEDAR template and template elements used by this pipeline are publicly avai
 
 #. Note that the submission may take several hours or even days to be processed by the NCBI. Meanwhile, you will receive status messages about your submission in your workspace (messages icon).
 
-   .. image:: images/figure.png
+   .. image:: ../cairr/images/CAIRR_messages.png
 
 Citing the CAIRR pipeline
 ~~~~~~~~~~~~~~~~~~~~~~~~~
