@@ -59,7 +59,7 @@ The CEDAR template and template elements used by this pipeline are publicly avai
 
 #. Click on the 'Submit' option to open the submission dialog.
 
-   .. image:: images/figure.png
+   .. image:: images/CAIRR_submit_1.png
 
 #. The 'NCBI MiAIRR' option will be automatically selected. Click on 'Next' to go to the next step.
 
