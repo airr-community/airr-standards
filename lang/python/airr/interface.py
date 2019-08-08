@@ -7,6 +7,7 @@ import pandas as pd
 from collections import OrderedDict
 from itertools import chain
 from pkg_resources import resource_filename
+import json
 import yaml
 import yamlordereddictloader
 
@@ -290,13 +291,13 @@ def write_repertoire(filename, repertoires, info=None, debug=False):
             sys.stderr.write('Repertoires parameter is not a list\n')
         raise TypeError('Repertoires parameter is not a list')
 
-    md = {}
-    md['Repertoire'] = repertoires
+    md = OrderedDict()
     if info is None:
         info = RearrangementSchema.info.copy()
         info['title'] = 'Repertoire metadata'
         info['description'] = 'Repertoire metadata written by AIRR Standards Python Library'
-        md['Info'] = info
+    md['Info'] = info
+    md['Repertoire'] = repertoires
 
     # determine file type from extension and use appropriate loader
     ext = filename.split('.')[-1]
