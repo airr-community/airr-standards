@@ -80,7 +80,7 @@ Option 2. Submission via NCBI's web interface
 
 To facilitate AIRR data submissions to NCBI repositories, we have developed the NCBI-compliant metadata submission templates both for single and bulk AIRR data submissions. NCBI provides a web-based interface to create a BioProject and allows to BioSample, Sequence Read Archive (SRA) and GenBank metadata via tab-delimited files for single BioProject related data files submission.
 
-Submitting AIRR data and associated metadata to the Bioproject, BioSample and SRA repositories via NCBI’s web interface follows in general the submission procedure described in [NCBI_NBK47528]_, but uses AIRR-specific template for metadata submission:
+Submitting AIRR data and associated metadata to the Bioproject, BioSample and SRA repositories via NCBI’s web interface follows in general the submission procedure described in `[NCBI_NBK47528] <https://www.ncbi.nlm.nih.gov/books/NBK47528/>`_, but uses AIRR-specific template for metadata submission:
 
 #. Go to https://submit.ncbi.nlm.nih.gov/subs/sra/ and login with your NCBI account (create an account if necessary).
 
