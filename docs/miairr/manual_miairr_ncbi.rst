@@ -5,7 +5,7 @@ MiAIRR-to-NCBI Submission Manual
 Scope of this document
 ======================
 
-Provide a user manual describing the submission of AIRR data using the NCBI reference implementation described in [Rubelt_2017]. This implementation uses NCBI’s BioProject, BioSample, Sequence Read Archive (SRA) and GenBank repositories and metadata standards to report AIRR data.
+Provide a user manual describing the submission of AIRR data using the NCBI reference implementation described in [Rubelt_2017]_. This implementation uses NCBI’s BioProject, BioSample, Sequence Read Archive (SRA) and GenBank repositories and metadata standards to report AIRR data.
 
 MiAIRR data submission to BioProject, BioSample and SRA
 =======================================================
@@ -17,11 +17,11 @@ There are three main alternatives to submit AIRR data/metadata to NCBI repositor
 Option 1. Submission via the CEDAR system (CAIRR submission pipeline)
 ---------------------------------------------------------------------
 
-CEDAR's CAIRR submission pipeline helps investigators and curators to edit and validate ontology-controlled metadata. This pipeline provides a seamless interface to transmit SRA datasets to the NCBI SRA and BioSample repositories from `the CEDAR Workbench <https://cedar.metadatacenter.org>`_. The pipeline can be directly be accessed at http://cairr.miairr.org. Note that the CEDAR template and template elements used by this pipeline are publicly available in the following CEDAR folder: `All/Shared/Shared by CEDAR/MiAIRR <https://cedar.metadatacenter.org/dashboard?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_.
+CEDAR's CAIRR submission pipeline helps investigators and curators to edit and validate ontology-controlled metadata. This pipeline provides a seamless interface to transmit SRA datasets to the NCBI SRA and BioSample repositories from `the CEDAR Workbench <https://cedar.metadatacenter.org>`_. The pipeline can be directly be accessed at `cairr.airr-community.org <https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933>`. Note that the CEDAR template and template elements used by this pipeline are publicly available in the following CEDAR folder: `All/Shared/Shared by CEDAR/MiAIRR <https://cedar.metadatacenter.org/dashboard?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_.
 
 Submission steps:
 
-#. Open CEDAR's MiAIRR template by clicking on http://cairr.miairr.org. If you aren't already logged in, this will take you to the CEDAR login panel. If you are a new user, you will have to create an account on the CEDAR Workbench by `clicking here <https://auth.metadatacenter.org/auth/realms/CEDAR/login-actions/registration?client_id=cedar-angular-app>`_.
+#. Open CEDAR's MiAIRR template by clicking on `cairr.airr-community.org <https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933>`. If you aren't already logged in, this will take you to the CEDAR login panel. If you are a new user, you will have to create an account on the CEDAR Workbench by `clicking here <https://auth.metadatacenter.org/auth/realms/CEDAR/login-actions/registration?client_id=cedar-angular-app>`_.
 
    .. image:: ../cairr/images/CAIRR_login.png
 
