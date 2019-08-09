@@ -5,7 +5,7 @@ MiAIRR-to-NCBI Submission Manual
 Scope of this document
 ======================
 
-Provide a user manual describing the submission of AIRR data using the NCBI reference implementation described in [Rubelt_2017]_. This implementation uses NCBI’s BioProject, BioSample, Sequence Read Archive (SRA) and GenBank repositories and metadata standards to report AIRR data.
+Provide a user manual describing the submission of AIRR data using the NCBI reference implementation described in `[Rubelt_2017] <https://doi.org/10.1038/ni.3873>`_. This implementation uses NCBI’s BioProject, BioSample, Sequence Read Archive (SRA) and GenBank repositories and metadata standards to report AIRR data.
 
 MiAIRR data submission to BioProject, BioSample and SRA
 =======================================================
