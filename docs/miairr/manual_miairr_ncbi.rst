@@ -11,7 +11,7 @@ reference implementation described in `[Rubelt_2017]
 BioProject, BioSample, Sequence Read Archive (SRA) and GenBank repositories and
 metadata standards to report AIRR data.
 
-MiAIRR data submission to BioProject, BioSample and SRA
+Step 1. MiAIRR data submission to BioProject, BioSample and SRA
 =======================================================
 
 Since we propose to include a combination of raw and processed sequence data,
@@ -21,7 +21,7 @@ Besides, the data elements that comprise the standard will be mapped to
 ontologies in BioPortal through NIH CDE (Common Data Element) terms. These
 linkages will support more sophisticated validation and logical inference.
 
-There are three main alternatives to submit AIRR data/metadata to NCBI
+There are three main alternatives to submit raw AIRR data/metadata to NCBI
 repositories: (1) CEDAR's CAIRR pipeline; (2) NCBI's Web interface; and (3)
 NCBI's FTP server. These alternatives are described below:
 
@@ -78,6 +78,8 @@ Submission steps:
 #. Note that the submission may take several hours or even days to be processed by the NCBI. Meanwhile, you will receive status messages about your submission in your workspace (messages icon).
 
    .. image:: ../cairr/images/CAIRR_messages.png
+
+#. Proceed with deposit of processed data, below.
 
 Citing the CAIRR pipeline
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -154,6 +156,8 @@ template for metadata submission:
 
 #. Complete the submission.
 
+#. Proceed with deposit of processed data, below.
+
 Option 3. Submission via NCBI's FTP server, using a predefined XML template
 ---------------------------------------------------------------------------
 
@@ -166,7 +170,8 @@ frequently submit AIRR-seq data to SRA using scripts to generate the XML files
 MUST ensure that the templates are identical to the current upstream version on
 Github.
 
-MiAIRR data submission to GenBank/TLS
+
+Step 2. Processed MiAIRR data submission to GenBank/TLS
 =====================================
 
 Processed sequence data will be submitted to the "Targeted Locus Study" (TLS)
