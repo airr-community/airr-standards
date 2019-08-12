@@ -40,7 +40,7 @@ Submission Steps
 
 The submission steps are described in the `MiAIRR-to-NCBI Submission Manual
 (Option 1. Submission via the CEDAR system)
-<https://github.com/airr-community/airr-standards/blob/master/docs/miairr/manual_miairr_ncbi.rst#option-1-submission-via-the-cedar-system-cairr-submission-pipeline>`_.
+<../miairr/manual_miairr_ncbi.rst#option-1-submission-via-the-cedar-system-cairr-submission-pipeline>`_.
 You will need a CEDAR system account; you can self-register at
 https://cedar.metadatacenter.org.  You will also need the identifier of a
 BioProject already entered in the NCBI BioProject database.
