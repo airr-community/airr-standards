@@ -41,11 +41,11 @@ CEDAR/MiAIRR
 
 Submission steps:
 
-#. Open CEDAR's MiAIRR template by clicking on `http://cairr.airr-community.org <https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933>`_. If you aren't already logged in, this will take you to the CEDAR login panel. If you are a new user, you will have to create an account on the CEDAR Workbench by `clicking here <https://auth.metadatacenter.org/auth/realms/CEDAR/login-actions/registration?client_id=cedar-angular-app>`_.
+#. Open CEDAR's MiAIRR template by clicking on `http://cairr.airr-community.org <https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933>`_. If you are not already logged in, this will take you to the CEDAR login panel. If you are a new user, you will have to create an account on the CEDAR Workbench by `clicking here <https://auth.metadatacenter.org/auth/realms/CEDAR/login-actions/registration?client_id=cedar-angular-app>`_.
 
    .. image:: ../cairr/images/CAIRR_login.png
 
-#. After logging in into the system, you will see the 'MiAIRR' template. Fill out the template fields with your metadata. Fields with an asterisk (*) are mandatory. Your submission will fail if any mandatory fields are not completed. If information is unavailable for any mandatory field, please enter 'not collected', 'not applicable' or 'missing' as appropriate. Note that you will need to enter a BioProject ID into the field 'Study ID'. If you don't have a BioProject yet, you can create one at `https://submit.ncbi.nlm.nih.gov/subs/bioproject/`
+#. After logging in into the system, you will see the 'MiAIRR' template. Fill out the template fields with your metadata. Fields with an asterisk (*) are mandatory. Your submission will fail if any mandatory fields are not completed. If information is unavailable for any mandatory field, please enter 'not collected', 'not applicable' or 'missing' as appropriate. Note that you will need to enter a BioProject ID into the field 'Study ID'. If you do not have a BioProject yet, you can create one at `https://submit.ncbi.nlm.nih.gov/subs/bioproject/`
 
    .. image:: ../cairr/images/CAIRR_metadata_1.png
 
@@ -93,7 +93,7 @@ NCBI <https://www.ncbi.nlm.nih.gov/pubmed/30166985>`_. Frontiers in Immunology
 Tell Us About It
 ~~~~~~~~~~~~~~~~
 
-Please let us know how it went! If you are willing, we'd love to have your
+Please let us know how it went! If you are willing, we would love to have your
 comments in a `short survey
 <https://www.surveymonkey.com/r/your-metadata-experience>`_, it should just
 take 5 minutes or so. We also welcome entry of issues and requests in `our
@@ -106,7 +106,7 @@ Support or Contact
 
 Having trouble with NCBI submission process through our pipeline? Please email
 to `Syed Ahmad Chan Bukhari <mailto:ahmad.chan@yale.edu>`_ or to `Marcos
-Martínez-Romero <mailto:marcosmr@stanford.edu>`_ and we'll help you sort it
+Martínez-Romero <mailto:marcosmr@stanford.edu>`_ and we will help you sort it
 out.
 
 Option 2. Submission via NCBI's web interface
