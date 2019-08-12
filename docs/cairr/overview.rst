@@ -18,14 +18,14 @@ been implemented using the National Center for Biotechnology Information (NCBI)
 repositories. Submissions of AIRR-seq data to the NCBI repositories typically
 use a combination of web-based and flat-file templates and include only a
 minimal amount of terminology validation. As a result, AIRR-seq studies  at the
-NCBI are often described using inconsistent terminologies, limiting scientists’
+NCBI are often described using inconsistent terminologies, limiting scientists'
 ability to access, find, interoperate, and reuse the data sets and to
 understand how the experiments were performed. CEDAR (Center for Expanded Data
 Annotation and Retrieval) develops technologies involving the use of data
 standards and ontologies to improve metadata quality. In order to improve
 metadata quality and ease AIRR-seq study submission process, we have developed
 an AIRR-seq data submission pipeline named CEDAR-AIRR (CAIRR). CAIRR leverages
-CEDAR’s technologies to:  i) create web-based templates whose entries are
+CEDAR's technologies to:  i) create web-based templates whose entries are
 controlled by ontology terms, ii) generate and validate metadata and iii)
 submit the ontology-linked metadata and sequence files (FASTQ) to the NCBI
 BioProject, BioSample, and Sequence Read Archive (SRA) databases. Thus, CAIRR
@@ -58,7 +58,7 @@ NCBI <https://www.ncbi.nlm.nih.gov/pubmed/30166985>`_. Frontiers in Immunology
 Tell Us About It
 ----------------
 
-Please let us know how it went!  If you are willing, we’d love to have your
+Please let us know how it went!  If you are willing, we'd love to have your
 comments in a `short survey
 <https://www.surveymonkey.com/r/your-metadata-experience>`_, it should just
 take 5 minutes or so. 
@@ -73,5 +73,5 @@ Support or Contact
 
 Having trouble with NCBI submission process through our pipeline? Please email
 to `Syed Ahmad Chan Bukhari <mailto:ahmad.chan@yale.edu>`_ or to `Marcos
-Martínez-Romero <mailto:marcosmr@stanford.edu>`_ and we’ll help you sort it
+Martínez-Romero <mailto:marcosmr@stanford.edu>`_ and we'll help you sort it
 out.
