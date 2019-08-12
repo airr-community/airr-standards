@@ -5,19 +5,39 @@ MiAIRR-to-NCBI Submission Manual
 Scope of this document
 ======================
 
-Provide a user manual describing the submission of AIRR data using the NCBI reference implementation described in `[Rubelt_2017] <https://doi.org/10.1038/ni.3873>`_. This implementation uses NCBI’s BioProject, BioSample, Sequence Read Archive (SRA) and GenBank repositories and metadata standards to report AIRR data.
+Provide a user manual describing the submission of AIRR data using the NCBI
+reference implementation described in `[Rubelt_2017]
+<https://doi.org/10.1038/ni.3873>`_. This implementation uses NCBI’s
+BioProject, BioSample, Sequence Read Archive (SRA) and GenBank repositories and
+metadata standards to report AIRR data.
 
 MiAIRR data submission to BioProject, BioSample and SRA
 =======================================================
 
-Since we propose to include a combination of raw and processed sequence data, the AIRR standard will sometimes need to be distributed and linked across multiple repositories (e.g., data in SRA linked to related data in GenBank). Besides, the data elements that comprise the standard will be mapped to ontologies in BioPortal through NIH CDE (Common Data Element) terms. These linkages will support more sophisticated validation and logical inference.
+Since we propose to include a combination of raw and processed sequence data,
+the AIRR standard will sometimes need to be distributed and linked across
+multiple repositories (e.g., data in SRA linked to related data in GenBank).
+Besides, the data elements that comprise the standard will be mapped to
+ontologies in BioPortal through NIH CDE (Common Data Element) terms. These
+linkages will support more sophisticated validation and logical inference.
 
-There are three main alternatives to submit AIRR data/metadata to NCBI repositories: (1) CEDAR's CAIRR pipeline; (2) NCBI's Web interface; and (3) NCBI's FTP server. These alternatives are described below:
+There are three main alternatives to submit AIRR data/metadata to NCBI
+repositories: (1) CEDAR's CAIRR pipeline; (2) NCBI's Web interface; and (3)
+NCBI's FTP server. These alternatives are described below:
 
 Option 1. Submission via the CEDAR system (CAIRR submission pipeline)
 ---------------------------------------------------------------------
 
-CEDAR's CAIRR submission pipeline helps investigators and curators to edit and validate ontology-controlled metadata. This pipeline provides a seamless interface to transmit SRA datasets to the NCBI SRA and BioSample repositories from `the CEDAR Workbench <https://cedar.metadatacenter.org>`_. The pipeline can be directly be accessed at `http://cairr.airr-community.org <https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933>`_. Note that the CEDAR template and template elements used by this pipeline are publicly available in the following CEDAR folder: `All/Shared/Shared by CEDAR/MiAIRR <https://cedar.metadatacenter.org/dashboard?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_.
+CEDAR's CAIRR submission pipeline helps investigators and curators to edit and
+validate ontology-controlled metadata. This pipeline provides a seamless
+interface to transmit SRA datasets to the NCBI SRA and BioSample repositories
+from `the CEDAR Workbench <https://cedar.metadatacenter.org>`_. The pipeline
+can be directly be accessed at `http://cairr.airr-community.org
+<https://cedar.metadatacenter.org/instances/create/https://repo.metadatacenter.org/templates/ea716306-5263-4f7a-9155-b7958f566933>`_.
+Note that the CEDAR template and template elements used by this pipeline are
+publicly available in the following CEDAR folder: `All/Shared/Shared by
+CEDAR/MiAIRR
+<https://cedar.metadatacenter.org/dashboard?folderId=https:%2F%2Frepo.metadatacenter.org%2Ffolders%2F4e5ce935-03ea-401a-804c-c38160c560f2>`_.
 
 Submission steps:
 
@@ -62,25 +82,47 @@ Submission steps:
 Citing the CAIRR pipeline
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bukhari, Syed Ahmad Chan, Martin J. O'Connor, Marcos Martínez-Romero, Attila L. Egyedi, Debra Debra Willrett, John Graybeal, Mark A. Musen, Florian Rubelt, Kei H. Cheung, and Steven H. Kleinstein. `The CAIRR pipeline for submitting standards-compliant B and T cell receptor repertoire sequencing studies to the NCBI <https://www.ncbi.nlm.nih.gov/pubmed/30166985>`_. Frontiers in Immunology 9 (2018): 1877. DOI: 10.3389/fimmu.2018.01877
+Bukhari, Syed Ahmad Chan, Martin J. O'Connor, Marcos Martínez-Romero, Attila L.
+Egyedi, Debra Debra Willrett, John Graybeal, Mark A. Musen, Florian Rubelt, Kei
+H. Cheung, and Steven H. Kleinstein. `The CAIRR pipeline for submitting
+standards-compliant B and T cell receptor repertoire sequencing studies to the
+NCBI <https://www.ncbi.nlm.nih.gov/pubmed/30166985>`_. Frontiers in Immunology
+9 (2018): 1877. DOI: 10.3389/fimmu.2018.01877
 
 
 Tell Us About It
 ~~~~~~~~~~~~~~~~
 
-Please let us know how it went! If you are willing, we’d love to have your comments in a `short survey <https://www.surveymonkey.com/r/your-metadata-experience>`_, it should just take 5 minutes or so. We also welcome entry of issues and requests in `our GitHub repository <https://github.com/metadatacenter/cedar-project/issues>`_, and emails can be sent to cedar-users@lists.stanford.edu. Both of these resources are publicly visible.
+Please let us know how it went! If you are willing, we’d love to have your
+comments in a `short survey
+<https://www.surveymonkey.com/r/your-metadata-experience>`_, it should just
+take 5 minutes or so. We also welcome entry of issues and requests in `our
+GitHub repository <https://github.com/metadatacenter/cedar-project/issues>`_,
+and emails can be sent to cedar-users@lists.stanford.edu. Both of these
+resources are publicly visible.
 
 Support or Contact
 ~~~~~~~~~~~~~~~~~~
 
-Having trouble with NCBI submission process through our pipeline? Please email to `Syed Ahmad Chan Bukhari <mailto:ahmad.chan@yale.edu>`_ or to `Marcos Martínez-Romero <mailto:marcosmr@stanford.edu>`_ and we’ll help you sort it out.
+Having trouble with NCBI submission process through our pipeline? Please email
+to `Syed Ahmad Chan Bukhari <mailto:ahmad.chan@yale.edu>`_ or to `Marcos
+Martínez-Romero <mailto:marcosmr@stanford.edu>`_ and we’ll help you sort it
+out.
 
 Option 2. Submission via NCBI's web interface
 ---------------------------------------------
 
-To facilitate AIRR data submissions to NCBI repositories, we have developed the NCBI-compliant metadata submission templates both for single and bulk AIRR data submissions. NCBI provides a web-based interface to create a BioProject and allows to BioSample, Sequence Read Archive (SRA) and GenBank metadata via tab-delimited files for single BioProject related data files submission.
+To facilitate AIRR data submissions to NCBI repositories, we have developed the
+NCBI-compliant metadata submission templates both for single and bulk AIRR data
+submissions. NCBI provides a web-based interface to create a BioProject and
+allows to BioSample, Sequence Read Archive (SRA) and GenBank metadata via
+tab-delimited files for single BioProject related data files submission.
 
-Submitting AIRR data and associated metadata to the Bioproject, BioSample and SRA repositories via NCBI’s web interface follows in general the submission procedure described in `[NCBI_NBK47528] <https://www.ncbi.nlm.nih.gov/books/NBK47528/>`_, but uses AIRR-specific template for metadata submission:
+Submitting AIRR data and associated metadata to the Bioproject, BioSample and
+SRA repositories via NCBI’s web interface follows in general the submission
+procedure described in `[NCBI_NBK47528]
+<https://www.ncbi.nlm.nih.gov/books/NBK47528/>`_, but uses AIRR-specific
+template for metadata submission:
 
 #. Go to https://submit.ncbi.nlm.nih.gov/subs/sra/ and login with your NCBI account (create an account if necessary).
 
@@ -115,14 +157,26 @@ Submitting AIRR data and associated metadata to the Bioproject, BioSample and SR
 Option 3. Submission via NCBI's FTP server, using a predefined XML template
 ---------------------------------------------------------------------------
 
-In addition to the web interface, NCBI provides an FTP-based solution to submit bulk metadata. The corresponding AIRR XML templates can be found under https://github.com/airr-community/airr-standards/tree/master/NCBI_implementation/templates_XLS. Otherwise users should refer to the current SRA file upload manual https://www.ncbi.nlm.nih.gov/sra/docs/submitfiles/. Users planning to frequently submit AIRR-seq data to SRA using scripts to generate the XML files MUST ensure that the templates are identical to the current upstream version on Github.
+In addition to the web interface, NCBI provides an FTP-based solution to submit
+bulk metadata. The corresponding AIRR XML templates can be found under
+https://github.com/airr-community/airr-standards/tree/master/NCBI_implementation/templates_XLS.
+Otherwise users should refer to the current SRA file upload manual
+https://www.ncbi.nlm.nih.gov/sra/docs/submitfiles/. Users planning to
+frequently submit AIRR-seq data to SRA using scripts to generate the XML files
+MUST ensure that the templates are identical to the current upstream version on
+Github.
 
 MiAIRR data submission to GenBank/TLS
 =====================================
 
-Processed sequence data will be submitted to the "Targeted Locus Study" (TLS) section of GenBank. The details of this submission process are currently still being finalized. Basically the procedure is identical to a conventional GenBank submission with the exception of additional keywords marking it as TLS submission.
+Processed sequence data will be submitted to the "Targeted Locus Study" (TLS)
+section of GenBank. The details of this submission process are currently still
+being finalized. Basically the procedure is identical to a conventional GenBank
+submission with the exception of additional keywords marking it as TLS
+submission.
 
-Non-productive records should be removed before the data submission or use an alternative annotation as described in the specification document.
+Non-productive records should be removed before the data submission or use an
+alternative annotation as described in the specification document.
 
 - Generating MiAIRR compliant GenBank/TLS submissions: https://changeo.readthedocs.io/en/stable/examples/genbank.html
 
