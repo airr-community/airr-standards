@@ -58,7 +58,7 @@ NCBI <https://www.ncbi.nlm.nih.gov/pubmed/30166985>`_. Frontiers in Immunology
 Tell Us About It
 ----------------
 
-Please let us know how it went!  If you are willing, we'd love to have your
+Please let us know how it went!  If you are willing, we would love to have your
 comments in a `short survey
 <https://www.surveymonkey.com/r/your-metadata-experience>`_, it should just
 take 5 minutes or so. 
@@ -73,5 +73,5 @@ Support or Contact
 
 Having trouble with NCBI submission process through our pipeline? Please email
 to `Syed Ahmad Chan Bukhari <mailto:ahmad.chan@yale.edu>`_ or to `Marcos
-Martínez-Romero <mailto:marcosmr@stanford.edu>`_ and we'll help you sort it
+Martínez-Romero <mailto:marcosmr@stanford.edu>`_ and we will help you sort it
 out.
