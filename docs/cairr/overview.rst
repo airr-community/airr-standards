@@ -2,10 +2,8 @@
 CAIRR Pipeline 
 ==============
 
-Introduction: The CAIRR pipeline for submitting standards-compliant B and T
-cell receptor repertoire sequencing studies to the NCBI
-
--------------------------------------------------------------------------------
+Introduction: The CAIRR pipeline for submitting standards-compliant B and T cell receptor repertoire sequencing studies to the NCBI
+-----------------------------------------------------------------------------------------------------------------------------------
 
 AIRR sequencing (AIRR-seq) has tremendous potential to understand the dynamics
 of the immune repertoire in vaccinology, infectious disease, autoimmunity, and
