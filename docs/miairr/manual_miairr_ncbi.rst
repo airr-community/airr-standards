@@ -7,7 +7,7 @@ Scope of this document
 
 Provide a user manual describing the submission of AIRR data using the NCBI
 reference implementation described in `[Rubelt_2017]
-<https://doi.org/10.1038/ni.3873>`_. This implementation uses NCBI’s
+<https://doi.org/10.1038/ni.3873>`_. This implementation uses NCBI's
 BioProject, BioSample, Sequence Read Archive (SRA) and GenBank repositories and
 metadata standards to report AIRR data.
 
@@ -45,7 +45,7 @@ Submission steps:
 
    .. image:: ../cairr/images/CAIRR_login.png
 
-#. After logging in into the system, you will see the 'MiAIRR' template. Fill out the template fields with your metadata. Fields with an asterisk (*) are mandatory. Your submission will fail if any mandatory fields are not completed. If information is unavailable for any mandatory field, please enter ‘not collected’, ‘not applicable’ or ‘missing’ as appropriate. Note that you will need to enter a BioProject ID into the field 'Study ID'. If you don't have a BioProject yet, you can create one at `https://submit.ncbi.nlm.nih.gov/subs/bioproject/`
+#. After logging in into the system, you will see the 'MiAIRR' template. Fill out the template fields with your metadata. Fields with an asterisk (*) are mandatory. Your submission will fail if any mandatory fields are not completed. If information is unavailable for any mandatory field, please enter 'not collected', 'not applicable' or 'missing' as appropriate. Note that you will need to enter a BioProject ID into the field 'Study ID'. If you don't have a BioProject yet, you can create one at `https://submit.ncbi.nlm.nih.gov/subs/bioproject/`
 
    .. image:: ../cairr/images/CAIRR_metadata_1.png
 
@@ -93,7 +93,7 @@ NCBI <https://www.ncbi.nlm.nih.gov/pubmed/30166985>`_. Frontiers in Immunology
 Tell Us About It
 ~~~~~~~~~~~~~~~~
 
-Please let us know how it went! If you are willing, we’d love to have your
+Please let us know how it went! If you are willing, we'd love to have your
 comments in a `short survey
 <https://www.surveymonkey.com/r/your-metadata-experience>`_, it should just
 take 5 minutes or so. We also welcome entry of issues and requests in `our
@@ -106,7 +106,7 @@ Support or Contact
 
 Having trouble with NCBI submission process through our pipeline? Please email
 to `Syed Ahmad Chan Bukhari <mailto:ahmad.chan@yale.edu>`_ or to `Marcos
-Martínez-Romero <mailto:marcosmr@stanford.edu>`_ and we’ll help you sort it
+Martínez-Romero <mailto:marcosmr@stanford.edu>`_ and we'll help you sort it
 out.
 
 Option 2. Submission via NCBI's web interface
@@ -119,7 +119,7 @@ allows to BioSample, Sequence Read Archive (SRA) and GenBank metadata via
 tab-delimited files for single BioProject related data files submission.
 
 Submitting AIRR data and associated metadata to the Bioproject, BioSample and
-SRA repositories via NCBI’s web interface follows in general the submission
+SRA repositories via NCBI's web interface follows in general the submission
 procedure described in `[NCBI_NBK47528]
 <https://www.ncbi.nlm.nih.gov/books/NBK47528/>`_, but uses AIRR-specific
 template for metadata submission:
@@ -184,6 +184,6 @@ GenBank provides multiple tools (GUI and command-line) to submit data:
 
 -  BankIt, a web-based submission tool with wizards to guide the submission process
 
--  Sequin, NCBI’s stand-alone submission tool with wizards to guide the submission process is available by FTP for use on for Windows, macOS and Unix platforms.
+-  Sequin, NCBI's stand-alone submission tool with wizards to guide the submission process is available by FTP for use on for Windows, macOS and Unix platforms.
 
 -  Tbl2asn is the recommended tool for the bulk data submission. It is a command-line program that automates the creation of sequence records files (.sqn) for submission to GenBank, driven by multiple tabular unput data files. Documentation and download options can be found under https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/.
