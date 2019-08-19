@@ -5,7 +5,7 @@ AIRR R Library	1.2	Input, output and validation
 `IGoR <https://github.com/qmarcou/IGoR>`_	TBD	Input and output
 `Immcantation:Change-O <https://changeo.readthedocs.io>`_	0.4.2	Input, output and conversion
 `ImmuneDB <http://immunedb.com>`_	0.24.0	Output
-`iReceptor <http://www.ireceptor.org>`_	2.0	`Input <https://github.com/sfu-ireceptor/dataloading-mongo/tree/turnkey/dataload>`_ and `output <http://www.ireceptor.org/node/97>`
+`iReceptor <http://www.ireceptor.org>`_	2.0	`Input <https://github.com/sfu-ireceptor/dataloading-mongo/tree/turnkey/dataload>`_ and `output <http://www.ireceptor.org/node/97>`_
 `MiXCR <https://milaboratory.com/software/mixcr>`_	2.2.1	Output
 `OLGA <https://github.com/zsethna/OLGA>`_	TBD	Input and output
 `Partis <https://github.com/psathyrella/partis>`_	TBD	Output
