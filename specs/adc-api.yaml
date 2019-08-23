@@ -12,6 +12,20 @@ info:
 basePath: /airr/v1
 
 definitions:
+  # Info object
+  info_object:
+    type: object
+    properties:
+      title: string
+      version: string
+      description: string
+      contact: 
+        type: object
+        properties:
+          name: string
+          url: string
+          email: string
+
   # list of repertoires
   repertoire_list:
     type: array
@@ -25,6 +39,8 @@ definitions:
       Info:
         type: object
         description: Provides information about the API response
+        properties:
+          $ref: '#/definitions/info_object'
       Repertoire:
         $ref: '#/definitions/repertoire_list'
 
