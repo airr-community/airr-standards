@@ -155,7 +155,7 @@ paths:
           description: |
             A successful call returns the repertoire data.
           schema:
-            $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Repertoire'
+            $ref: '#/definitions/repertoire_response'
         '400':
           description: Invalid repertoire ID supplied
         '404':
@@ -223,7 +223,7 @@ paths:
           description: >
             A successful call returns the rearrangement annotation data.
           schema:
-            $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Rearrangement'
+            $ref: '#/definitions/rearrangement_response'
         '400':
           description: Invalid rearrangement ID supplied
         '404':
