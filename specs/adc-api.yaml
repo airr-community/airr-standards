@@ -59,8 +59,7 @@ definitions:
     type: object
     properties:
       Info:
-        type: object
-        description: Provides information about the API response
+        $ref: '#/definitions/info_object'
       Rearrangement:
         $ref: '#/definitions/rearrangement_list'
 
