@@ -15,6 +15,7 @@ definitions:
   # Info object
   info_object:
     type: object
+    description: Provides information about the API response
     properties:
       title:
         type: string
@@ -43,13 +44,10 @@ definitions:
     type: object
     properties:
       Info:
-        type: object
-        description: Provides information about the API response
-        properties:
-          $ref: '#/definitions/info_object'
+        $ref: '#/definitions/info_object'
       Repertoire:
         $ref: '#/definitions/repertoire_list'
-
+          
   # list of rearrangement annotations
   rearrangement_list:
     type: array
