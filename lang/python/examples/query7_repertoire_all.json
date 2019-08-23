@@ -16,7 +16,7 @@
                     "field":"sample.disease_state",
                     "value":"cancer"
                 }
-	       }
+	       },
            {
                 "op":"or",
                 "content":
@@ -25,7 +25,7 @@
                     { "op":"=", "content": {"field":"subject.ethnicity", "value":"Caucasian"}},
                     { "op":"=", "content": {"field":"subject.ethnicity", "value":"African"}}
                 ]
-           }
+           },
            {
                 "op":"and",
                 "content": 
@@ -33,7 +33,7 @@
                     { "op":">=", "content": {"field":"subject.age", "value":"20 y"}},
                     { "op":"<=", "content": {"field":"subject.age", "value":"30 y"}}
                 ]
-           }           
+           },
            {
                 "op":"or",
                 "content":
