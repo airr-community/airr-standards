@@ -177,19 +177,28 @@ The content of the JSON payload.
     "fields":["repertoire_id"]
   }
 
-The response contains a list of five repertoire identifiers.
+The response contains two JSON objects, an ``Info`` object that provides information about the API response and a ``Repertoire`` object that contains the list of ``Repertoires`` that met the query search criteria. In this case, the query returns a list of five repertoire identifiers. Note the ``Info`` object is based on the ``info`` block as specified in the OpenAPI v2.0 specification.
 
 .. code-block:: json
 
-  { "success":true,
-    "result": [
-      {"repertoire_id":"4357957907784536551-242ac11c-0001-012"},
-      {"repertoire_id":"4476756703191896551-242ac11c-0001-012"},
-      {"repertoire_id":"6205695788196696551-242ac11c-0001-012"},
-      {"repertoire_id":"6393557657723736551-242ac11c-0001-012"},
-      {"repertoire_id":"7158276584776536551-242ac11c-0001-012"}
+{
+    "Info": {
+        "title": "AIRR Data Commons API",
+        "description": "API response for repertoire query",
+        "version": 1.3,
+        "contact": {
+            "name": "AIRR Community",
+            "url": "https://github.com/airr-community"
+        }
+    },
+    "Repertoire": [
+        {"repertoire_id": "4357957907784536551-242ac11c-0001-012"},
+        {"repertoire_id": "4476756703191896551-242ac11c-0001-012"},
+        {"repertoire_id": "6205695788196696551-242ac11c-0001-012"},
+        {"repertoire_id": "6393557657723736551-242ac11c-0001-012"},
+        {"repertoire_id": "7158276584776536551-242ac11c-0001-012"}
     ]
-  }
+}
 
 .. __: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query1-2_repertoire.json
 
