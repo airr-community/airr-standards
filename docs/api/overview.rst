@@ -177,7 +177,7 @@ The content of the JSON payload.
     "fields":["repertoire_id"]
   }
 
-The response contains two JSON objects, an ``Info`` object that provides information about the API response and a ``Repertoire`` object that contains the list of ``Repertoires`` that met the query search criteria. In this case, the query returns a list of five repertoire identifiers. Note the ``Info`` object is based on the ``info`` block as specified in the OpenAPI v2.0 specification.
+The response contains two JSON objects, an Info object that provides information about the API response and a Repertoire object that contains the list of Repertoires that met the query search criteria. In this case, the query returns a list of five repertoire identifiers. Note the Info object is based on the info block as specified in the OpenAPI v2.0 specification.
 
 .. code-block:: json
 
