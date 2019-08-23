@@ -182,16 +182,19 @@ The response contains two JSON objects, an Info object that provides information
 .. code-block:: json
 
 {
-    "Info": {
+    "Info":
+    {
         "title": "AIRR Data Commons API",
         "description": "API response for repertoire query",
         "version": 1.3,
-        "contact": {
+        "contact":
+	{
             "name": "AIRR Community",
             "url": "https://github.com/airr-community"
         }
     },
-    "Repertoire": [
+    "Repertoire":
+    [
         {"repertoire_id": "4357957907784536551-242ac11c-0001-012"},
         {"repertoire_id": "4476756703191896551-242ac11c-0001-012"},
         {"repertoire_id": "6205695788196696551-242ac11c-0001-012"},
