@@ -48,10 +48,6 @@ definitions:
   error_response:
     type: object
     properties:
-      success:
-        type: boolean
-        description: >
-          A false value indicates an error occured; the message contains more detail.
       message:
         type: string
         description: Detail about the error when success=false
