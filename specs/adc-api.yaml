@@ -16,15 +16,21 @@ definitions:
   info_object:
     type: object
     properties:
-      title: string
-      version: string
-      description: string
+      title:
+        type: string
+      version:
+        type: string
+      description:
+        type: string
       contact: 
         type: object
         properties:
-          name: string
-          url: string
-          email: string
+          name:
+            type: string
+          url:
+            type: string
+          email:
+            type: string
 
   # list of repertoires
   repertoire_list:
