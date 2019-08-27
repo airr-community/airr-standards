@@ -258,7 +258,7 @@ The response will provide the ``Repertoire`` data in JSON format.
        "subject_id":"TW02A",
        "synthetic":false,
        "linked_subjects":"TW02B",
-       "organism":{"id":9606,"name":"Homo sapiens"},
+       "organism":{"id":9606,"value":"Homo sapiens"},
        "age":"25yr",
        "link_type":"twin",
        "sex":"F"
