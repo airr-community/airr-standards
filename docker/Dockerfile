@@ -15,7 +15,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
 
 RUN pip3 install \
     pandas \
-    biopython
+    biopython \
+    recommonmark \
+    sphinxcontrib-autoprogram
 
 
 # Copy source
