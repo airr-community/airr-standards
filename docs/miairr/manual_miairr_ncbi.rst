@@ -12,7 +12,7 @@ BioProject, BioSample, Sequence Read Archive (SRA) and GenBank repositories and
 metadata standards to report AIRR data.
 
 Step 1. MiAIRR data submission to BioProject, BioSample and SRA
-=======================================================
+===============================================================
 
 Since we propose to include a combination of raw and processed sequence data,
 the AIRR standard will sometimes need to be distributed and linked across
@@ -172,7 +172,7 @@ Github.
 
 
 Step 2. Processed MiAIRR data submission to GenBank/TLS
-=====================================
+=======================================================
 
 Processed sequence data will be submitted to the "Targeted Locus Study" (TLS)
 section of GenBank. The details of this submission process are currently still
