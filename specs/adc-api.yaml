@@ -50,7 +50,7 @@ definitions:
     properties:
       message:
         type: string
-        description: Detail about the error when success=false
+        description: Detail about the error
 
 schemes:
   - https
