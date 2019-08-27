@@ -181,14 +181,14 @@ The response contains two JSON objects, an Info object that provides information
 
 .. code-block:: json
 
-{
+  {
     "Info":
     {
-        "title": "AIRR Data Commons API",
+        "title": "AIRR Data Commons API reference implementation",
         "description": "API response for repertoire query",
         "version": 1.3,
         "contact":
-	{
+        {
             "name": "AIRR Community",
             "url": "https://github.com/airr-community"
         }
@@ -201,7 +201,7 @@ The response contains two JSON objects, an Info object that provides information
         {"repertoire_id": "6393557657723736551-242ac11c-0001-012"},
         {"repertoire_id": "7158276584776536551-242ac11c-0001-012"}
     ]
-}
+  }
 
 .. __: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query1-2_repertoire.json
 
@@ -257,45 +257,62 @@ The response will provide the ``Repertoire`` data in JSON format.
 
 .. code-block:: json
 
-  { "repertoire_id":"4357957907784536551-242ac11c-0001-012",
-    "study":{
-       "study_id":"PRJNA300878",
-       "submitted_by":"Florian Rubelt",
-       "pub_ids":"PMID:27005435",
-       "lab_name":"Mark M. Davis",
-       "lab_address":"Stanford University",
-       "study_title":"Homo sapiens B and T cell repertoire - MZ twins"
+  {
+    "Info":
+    {
+        "title": "AIRR Data Commons API reference implementation",
+        "description": "API response for repertoire query",
+        "version": 1.3,
+        "contact":
+        {
+            "name": "AIRR Community",
+            "url": "https://github.com/airr-community"
+        }
     },
-    "subject":{
-       "subject_id":"TW02A",
-       "synthetic":false,
-       "linked_subjects":"TW02B",
-       "organism":{"id":9606,"value":"Homo sapiens"},
-       "age":"25yr",
-       "link_type":"twin",
-       "sex":"F"
-    }
-    "sample":[
-      {"sample_id":"TW02A_T_memory_CD4",
-       "pcr_target":[{"pcr_target_locus":"TRB"}],
-       "cell_isolation":"FACS",
-       "read_length":"300",
-       "cell_phenotype":"expression of CD45RO and CCR7",
-       "cell_subset":"Memory CD4+ T cell",
-       "filename":"SRR2905669_R1.fastq.gz",
-       "single_cell":false,
-       "file_type":"fastq",
-       "tissue":"PBMC",
-       "template_class":"RNA",
-       "paired_filename":"SRR2905669_R2.fastq.gz",
-       "paired_read_direction":"reverse",
-       "read_direction":"forward",
-       "sequencing_platform":"Illumina MiSeq"}
-    ],
-    "data_processing":[
-      {"data_processing_id":"4976322832749171176-242ac11c-0001-012",
-       "analysis_provenance_id":"651223970338378216-242ac11b-0001-007"}
-    ],
+    "Repertoire":
+    [
+      {
+        "repertoire_id":"4357957907784536551-242ac11c-0001-012",
+        "study":{
+           "study_id":"PRJNA300878",
+           "submitted_by":"Florian Rubelt",
+           "pub_ids":"PMID:27005435",
+           "lab_name":"Mark M. Davis",
+           "lab_address":"Stanford University",
+           "study_title":"Homo sapiens B and T cell repertoire - MZ twins"
+        },
+        "subject":{
+           "subject_id":"TW02A",
+           "synthetic":false,
+           "linked_subjects":"TW02B",
+           "organism":{"id":9606,"value":"Homo sapiens"},
+           "age":"25yr",
+           "link_type":"twin",
+           "sex":"F"
+        },
+        "sample":[
+          {"sample_id":"TW02A_T_memory_CD4",
+           "pcr_target":[{"pcr_target_locus":"TRB"}],
+           "cell_isolation":"FACS",
+           "read_length":"300",
+           "cell_phenotype":"expression of CD45RO and CCR7",
+           "cell_subset":"Memory CD4+ T cell",
+           "filename":"SRR2905669_R1.fastq.gz",
+           "single_cell":false,
+           "file_type":"fastq",
+           "tissue":"PBMC",
+           "template_class":"RNA",
+           "paired_filename":"SRR2905669_R2.fastq.gz",
+           "paired_read_direction":"reverse",
+           "read_direction":"forward",
+           "sequencing_platform":"Illumina MiSeq"}
+        ],
+        "data_processing":[
+          {"data_processing_id":"4976322832749171176-242ac11c-0001-012",
+           "analysis_provenance_id":"651223970338378216-242ac11b-0001-007"}
+        ]
+      }
+    ]
   }
 
 *Query Repertoire Example*
@@ -330,7 +347,7 @@ The content of the JSON payload.
             "value":"IGH"
           }
         },
-	{
+        {
           "op":"contains",
           "content": {
             "field":"diagnosis.disease_diagnosis",
@@ -376,10 +393,27 @@ The response will provide the ``Rearrangement`` data in JSON format.
 
 .. code-block:: json
 
-  { "rearrangement_id":"abc123",
-    "repertoire_id":"4357957907784536551-242ac11c-0001-012",
+  {
+    "Info":
+    {
+        "title": "AIRR Data Commons API reference implementation",
+        "description": "API response for rearrangement query",
+        "version": 1.3,
+        "contact":
+        {
+            "name": "AIRR Community",
+            "url": "https://github.com/airr-community"
+        }
+    },
+    "Repertoire":
+    [
+      {
+        "rearrangement_id":"abc123",
+        "repertoire_id":"4357957907784536551-242ac11c-0001-012",
 
-    "... remaining fields":"snipped for space"
+        "... remaining fields":"snipped for space"
+      }
+    ]
   }
 
 *Query Rearrangements Example*
@@ -411,8 +445,8 @@ The content of the JSON payload.
             "field":"repertoire_id",
             "value":[
               "2366080924918616551-242ac11c-0001-012",
-	      "2541616238306136551-242ac11c-0001-012",
-	      "1993707260355416551-242ac11c-0001-012"
+              "2541616238306136551-242ac11c-0001-012",
+              "1993707260355416551-242ac11c-0001-012"
             ]
           }
         },
@@ -599,7 +633,7 @@ A more complex query with multiple operators looks like this:
             "value":"10000"
           }
         },
-	{
+        {
           "op":"exclude",
           "content": {
             "field":"subject.organism.id",
