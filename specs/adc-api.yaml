@@ -104,6 +104,10 @@ paths:
             properties:
               result:
                 type: string
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
 
   /info:
     x-swagger-router-controller: status
@@ -126,6 +130,10 @@ paths:
                 type: string
               version:
                 type: string
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
 
   /swagger:
     x-swagger-pipe: swagger_raw
@@ -157,9 +165,13 @@ paths:
           schema:
             $ref: '#/definitions/repertoire_response'
         '400':
-          description: Invalid repertoire ID supplied
-        '404':
-          description: Repertoire not found
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
 
   /repertoire:
     x-swagger-router-controller: repertoire
@@ -197,6 +209,10 @@ paths:
           description: Invalid request
           schema:
             $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
 
   /rearrangement/{rearrangement_id}:
     x-swagger-router-controller: rearrangement
@@ -225,9 +241,13 @@ paths:
           schema:
             $ref: '#/definitions/rearrangement_response'
         '400':
-          description: Invalid rearrangement ID supplied
-        '404':
-          description: Rearrangement not found
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
 
   /rearrangement:
     x-swagger-router-controller: rearrangement
@@ -261,3 +281,11 @@ paths:
             A successful call returns an array of rearrangement annotation data.
           schema:
             $ref: '#/definitions/rearrangement_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
