@@ -4,12 +4,14 @@
 AIRR Standards
 ===============
 
+Information about all of the AIRR Community standards.
+
 .. toctree::
    :maxdepth: 1
    :caption: Table of Contents
 
    Study Reporting (MiAIRR) <../miairr/overview>
-   Software Guidelines <../swtools/overview>
    AIRR Data Representations <../datarep/overview>
+   Software Guidelines <../swtools/airr_swtools_standard>
    AIRR Data Commons API <../api/overview>
    
