@@ -631,7 +631,7 @@ CellProcessing:
                 ontology:
                     draft: true
                     name: CL
-                    url: https://ncit.nci.nih.gov/ncitbrowser/
+                    url: https://www.ebi.ac.uk/ols/ontologies/cl
                     top_node:
                         id: CL_0000542
                         value: lymphocyte
@@ -1884,7 +1884,7 @@ Rearrangement:
                 adc-api-optional: true
         fwr4_start:
             type: integer
-            description: FWR3 start position in the query sequence (1-based closed interval).
+            description: FWR4 start position in the query sequence (1-based closed interval).
             x-airr:
                 miairr: false
                 adc-api-optional: true
