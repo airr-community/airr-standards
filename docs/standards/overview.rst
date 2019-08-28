@@ -10,7 +10,7 @@ Information about all of the AIRR Community standards.
    :maxdepth: 1
    :caption: Table of Contents
 
-   Study Reporting (MiAIRR) <../miairr/overview>
+   Study Reporting (MiAIRR) <../miairr/introduction_miairr>
    AIRR Data Representations <../datarep/overview>
    Software Guidelines <../swtools/airr_swtools_standard>
    AIRR Data Commons API <../api/overview>
