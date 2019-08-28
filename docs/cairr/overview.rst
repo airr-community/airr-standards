@@ -1,3 +1,5 @@
+.. _CAIRR_Pipeline:
+
 ==============
 CAIRR Pipeline 
 ==============

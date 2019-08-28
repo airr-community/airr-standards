@@ -1,3 +1,5 @@
+.. _MiAIRR_NCBI_Submission_Manual:
+
 ================================================
 MiAIRR-to-NCBI Submission Manual
 ================================================

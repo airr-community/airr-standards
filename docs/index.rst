@@ -22,6 +22,7 @@ include:
 
 + The MiAIRR standard for describing minimal information about AIRR datasets, including
   sample collection and data processing information.
++ Data submission guidelines and workflows.
 + Data representations (file format) specifications for storing large amounts of annotated AIRR data.
 + API to query and download AIRR data from repositories/databases as part of the AIRR Data Commons.
 + A community standard for software tools which will allow conforming tools to gain community recognition.
@@ -34,6 +35,7 @@ include:
 
     Getting Started <standards/getting_started>
     AIRR Standards <standards/overview>
+    Data Submission and Query <standards/data_submission>
     Software <standards/software>
     Community <standards/community>
     Glossary <appendix/terms>
