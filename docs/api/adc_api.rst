@@ -766,6 +766,66 @@ subjects each with two IGH repertoires.
 
 .. _`query`: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query1-4_repertoire.json
 
+ADC API Limits and Thresholds
+-----------------------------
+
+**Repertoire endpoint query fields**
+
+It is expected that the number of repertoires in a data repository will never become so
+large such that queries become computationally expensive. A data repository might have
+thousands of repertoires across hundreds of studies, yet such numbers are easily handled
+by databases. Based upon this, the ADC API does not place limits on the repertoire endpoint
+for the fields that can be queried or the operators that can be used.
+
+**Rearrangement endpoint query fields**
+
+Unlike repertoire data, data repositories are expected to store billions of
+rearrangement records, where performing “simple” queries can quickly become computationally
+expensive. Data repositories are encouraged to optimize their databases for performance.
+Therefore, based upon a set of query use cases provided by immunology experts, a minimal
+set of required fields was defined that can be queried. These required fields are described
+in the following Table. The fields also have the AIRR extension property ``adc-api-optional: false``
+in the AIRR Schema.
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Field(s)
+      - Description
+    * - rearrangement_id, repertoire_id, data_processing_id, clone_id, cell_id, pair_id
+      - Identifiers; rearrangement_id allows for query of that specific rearrangement object in the repository, while repertoire_id and data_processing_id are links to the repertoire metadata for the rearrangement. The clone_id, cell_id, and pair_id are all identifiers that group rearrangements based on clone definition, single cell assignment, and paired chain linking.
+    * - locus, v_call, d_call, j_call, c_call, productive, junction_aa, junction_aa_length
+      - Commonly used rearrangement annotations.
+
+**Repertoire/rearrangement object size**
+
+Any single repertoire or rearrangement object has a maximum that is typically dependent
+upon the back-end database which stores the data. For MongoDB-based data repositories, the
+largest object size is 16 megabytes.
+
+**Repertoire/rearrangement query size**
+
+For MongoDB-based data repositories, a query is a document thus the query size is limited
+to the maximum document size of 16 megabytes.
+
+**Data repository specific limits**
+
+A data repository may provide additional limits. These can be retrieved from the ``info``
+endpoint. If the data repository does not provide a limit, then the ADC API default limit or
+no limit is assumed.
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Field
+      - Description
+    * - ``max_size``
+      - The maximum value for the ``size`` query parameter. Attempting to retrieve beyond this maximum may trigger an error or may only return ``max_size`` records based upon the data repository behavior.
+    * - ``max_query_size``
+      - The maximum size of the JSON query object.
+
 
 Reference Implementation
 --------------------------------
