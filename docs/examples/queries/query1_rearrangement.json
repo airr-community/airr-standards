@@ -9,7 +9,8 @@
                     "value":[
 			"2366080924918616551-242ac11c-0001-012",
 			"2541616238306136551-242ac11c-0001-012",
-			"1993707260355416551-242ac11c-0001-012"
+			"1993707260355416551-242ac11c-0001-012",
+			"1841923116114776551-242ac11c-0001-012"
 		    ]
                 }
 	    },
@@ -17,9 +18,11 @@
                 "op":"=",
                 "content": {
                     "field":"junction_aa",
-                    "value":"CASSYIKLN"
+                    "value":"CARDPRSYHAFDIW"
                 }
 	    }
 	]
-    }
+    },
+    "fields":["repertoire_id","rearrangement_id","v_call","productive"],
+    "format":"airr"
 }

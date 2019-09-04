@@ -13,9 +13,12 @@
                 "op":"=",
                 "content": {
                     "field":"sample.pcr_target.pcr_target_locus",
-                    "value":"IGH"
+                    "value":"TRB"
                 }
 	    }
 	]
-    }
+    },
+    "from":10,
+    "size":5,
+    "fields":["repertoire_id"]
 }

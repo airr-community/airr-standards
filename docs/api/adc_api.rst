@@ -136,46 +136,47 @@ The response should indicate success.
 
   {"result":"success"}
 
+**Service Info Example**
+
+The following is an example ``GET`` request to get information about the service.
+
+.. code-block:: bash
+
+  curl https://vdjserver.org/airr/v1
+
+The response provides various information.
+
+.. code-block:: json
+
+  {
+    "name": "adc-api-js-mongodb",
+    "description": "AIRR Data Commons API reference implementation",
+    "version": "1.0.0",
+    "airr_schema_version": 1.3,
+    "max_size": 1000,
+    "max_query_size": 2097152,
+    "contact": {
+      "name": "AIRR Community",
+      "url": "https://github.com/airr-community"
+    }
+  }
+
 **Query Repertoire Example**
 
 The following is an example ``POST`` request to the ``repertoire``
 endpoint of the ADC API. It queries for repertoires of human TCR beta
 receptors (``filters``), skips the first 10 results (``from``),
 requests 5 results (``size``), and requests only the ``repertoire_id``
-field (``fields``). This query__ can be found among the examples code.
+field (``fields``).
 
 .. code-block:: bash
 
   curl --data @query1-2_repertoire.json https://vdjserver.org/airr/v1/repertoire
 
-The content of the JSON payload.
+The content of the :download:`JSON payload <../examples/queries/query1-2_repertoire.json>`.
 
-.. code-block:: json
-
-  {
-    "filters": {
-      "op":"and",
-      "content": [
-        {
-          "op":"=",
-          "content": {
-            "field":"subject.organism.id",
-            "value":9606
-          }
-        },
-        {
-          "op":"=",
-          "content": {
-            "field":"sample.pcr_target.pcr_target_locus",
-            "value":"TRB"
-          }
-        }
-      ]
-    },
-    "from":10,
-    "size":5,
-    "fields":["repertoire_id"]
-  }
+.. literalinclude:: ../examples/queries/query1-2_repertoire.json
+  :language: JSON
 
 The response contains two JSON objects, an Info object that provides information about the API response and a Repertoire object that contains the list of Repertoires that met the query search criteria. In this case, the query returns a list of five repertoire identifiers. Note the Info object is based on the info block as specified in the OpenAPI v2.0 specification.
 
@@ -202,8 +203,6 @@ The response contains two JSON objects, an Info object that provides information
         {"repertoire_id": "7158276584776536551-242ac11c-0001-012"}
     ]
   }
-
-.. __: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query1-2_repertoire.json
 
 Endpoints
 ~~~~~~~~~
@@ -244,7 +243,7 @@ on the ``repertoire`` endpoint for the fields that can be queried, the
 operators that can be used, or the number of results that can be
 returned.
 
-*Retrieve a Single Repertoire Example*
+*Retrieve a Single Repertoire*
 
 Given a ``repertoire_id``, a single ``Repertoire`` object will be
 returned.
@@ -315,53 +314,22 @@ The response will provide the ``Repertoire`` data in JSON format.
     ]
   }
 
-*Query Repertoire Example*
+*Query against all Repertoires*
 
-This example queries for repertoires of human IG heavy chain receptors
-where the subject has an autoimmune diagnosis. This query__ can be
-found among the examples code.
+A query in JSON format is passed in a ``POST`` request. This example queries for
+repertoires of human IG heavy chain receptors for all studies in the data repository.
 
 .. code-block:: bash
 
   curl --data @query2_repertoire.json https://vdjserver.org/airr/v1/repertoire
 
-The content of the JSON payload.
+The content of the :download:`JSON payload <../examples/queries/query2_repertoire.json>`.
 
-.. code-block:: json
-
-  {
-    "filters": {
-      "op":"and",
-      "content": [
-        {
-          "op":"=",
-          "content": {
-            "field":"subject.organism.id",
-            "value":9606
-          }
-        },
-        {
-          "op":"=",
-          "content": {
-            "field":"sample.pcr_target.pcr_target_locus",
-            "value":"IGH"
-          }
-        },
-        {
-          "op":"contains",
-          "content": {
-            "field":"diagnosis.disease_diagnosis",
-            "value":"autoimmune"
-          }
-        }
-      ]
-    }
-  }
+.. literalinclude:: ../examples/queries/query2_repertoire.json
+  :language: JSON
 
 The response will provide a list of ``Repertoires`` in JSON
 format. The example output is not provided here due to its size.
-
-.. __: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query2_repertoire.json
 
 **Rearrangement Endpoint**
 
@@ -380,14 +348,14 @@ be queryable and only a limited set of query capabilities must be
 supported. The queryable fields are described in the Fields section
 below.
 
-*Retrieve a Single Rearrangement Example*
+*Retrieve a Single Rearrangement*
 
 Given a ``rearrangement_id``, a single ``Rearrangement`` object will
 be returned.
 
 .. code-block:: bash
 
-  curl https://vdjserver.org/airr/v1/rearrangement/abc123
+  curl https://vdjserver.org/airr/v1/rearrangement/5d6fba725dca5569326aa104
 
 The response will provide the ``Rearrangement`` data in JSON format.
 
@@ -405,64 +373,52 @@ The response will provide the ``Rearrangement`` data in JSON format.
             "url": "https://github.com/airr-community"
         }
     },
-    "Repertoire":
+    "Rearrangement":
     [
       {
-        "rearrangement_id":"abc123",
-        "repertoire_id":"4357957907784536551-242ac11c-0001-012",
+        "rearrangement_id":"5d6fba725dca5569326aa104",
+        "repertoire_id":"1841923116114776551-242ac11c-0001-012",
 
         "... remaining fields":"snipped for space"
       }
     ]
   }
 
-*Query Rearrangements Example*
+*Query against all Rearrangements*
 
 Supplying a ``repertoire_id``, when it is known, should greatly speed
 up the query as it can significantly reduce the amount of data to be
 searched, though it isn't necessary.
 
 This example queries for rearrangements with a specific junction amino
-acid sequence among a set of repertoires. The resultant data is
-requested in :ref:`AIRR TSV <FormatSpecification>` format. This
-query__ can be found among the examples.
+acid sequence among a set of repertoires. A limited set of fields is
+requested to be returned. The resultant data can be
+requested in JSON or :ref:`AIRR TSV <FormatSpecification>` format.
 
 .. code-block:: bash
 
   curl --data @query1_rearrangement.json https://vdjserver.org/airr/v1/rearrangement
 
-The content of the JSON payload.
+The content of the :download:`JSON payload <../examples/queries/query1_rearrangement.json>`.
 
-.. code-block:: json
+.. literalinclude:: ../examples/queries/query1_rearrangement.json
+  :language: JSON
 
-  {
-    "filters": {
-      "op":"and",
-      "content": [
-        {
-          "op":"in",
-          "content": {
-            "field":"repertoire_id",
-            "value":[
-              "2366080924918616551-242ac11c-0001-012",
-              "2541616238306136551-242ac11c-0001-012",
-              "1993707260355416551-242ac11c-0001-012"
-            ]
-          }
-        },
-        {
-          "op":"=",
-          "content": {
-            "field":"junction_aa",
-            "value":"CASSYIKLN"
-          }
-        }
-      ]
-    },
-    "format":"AIRR"
-  }
+Here is the response in AIRR TSV format.
 
-.. __: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query1_rearrangement.json
+.. code-block:: text
+
+  productive	v_call	rearrangement_id	repertoire_id
+  true	IGHV1-69*04	5d6fba725dca5569326aa106	1841923116114776551-242ac11c-0001-012
+  true	IGHV1-69*04	5d6fba725dca5569326aa11b	1841923116114776551-242ac11c-0001-012
+  true	IGHV1-69*10	5d6fba725dca5569326aa149	1841923116114776551-242ac11c-0001-012
+  true	IGHV1-69*04	5d6fba735dca5569326aa245	1841923116114776551-242ac11c-0001-012
+  true	IGHV1-69*04	5d6fba735dca5569326aa274	1841923116114776551-242ac11c-0001-012
+  true	IGHV1-69*04	5d6fba735dca5569326aa27b	1841923116114776551-242ac11c-0001-012
+  true	IGHV1-69*04	5d6fba735dca5569326aa27c	1841923116114776551-242ac11c-0001-012
+  true	IGHV1-24*01	5d6fba735dca5569326aa2a0	1841923116114776551-242ac11c-0001-012
+  true	IGHV1-69*04	5d6fba745dca5569326aa359	1841923116114776551-242ac11c-0001-012
+  true	IGHV1-69*04	5d6fba745dca5569326aa408	1841923116114776551-242ac11c-0001-012
 
 Request Parameters
 ~~~~~~~~~~~~~~~~~~
@@ -698,73 +654,80 @@ search results.
 
 Here is a simple query with only the ``facets`` parameter to return
 the set of values for ``sample.pcr_target.pcr_target_locus`` and the
-count of repertoires repertoires that have each value. This query__
-can be found among the example code.
+count of repertoires repertoires that have each value. The content of
+the :download:`JSON payload <../examples/queries/facets1_repertoire.json>`.
 
-.. code-block:: json
-
-  {
-    "facets":"sample.pcr_target.pcr_target_locus"
-  }
+.. literalinclude:: ../examples/queries/facets1_repertoire.json
+  :language: JSON
 
 Sending this query in an API request.
 
 .. code-block:: bash
 
-  curl --data @query1-3_repertoire.json https://vdjserver.org/airr/v1/repertoire
+  curl --data @facets1_repertoire.json https://vdjserver.org/airr/v1/repertoire
 
-Example output from the request.
-
-.. code-block:: json
-
-  [
-    {"sample.pcr_target.pcr_target_locus":[["TRB"]],"count":40},
-    {"sample.pcr_target.pcr_target_locus":[["IGH"]],"count":20}
-  ]
-
-Here is a query with both ``filters`` and ``facets`` parameters. This
-`query`_ can be found among the example code.
+The output from the request is similar to normal queries except the data is
+provided with the `Facet` key.
 
 .. code-block:: json
 
   {
-    "filters":{
-        "op":"=",
-        "content": {
-            "field":"sample.pcr_target.pcr_target_locus",
-            "value":"IGH"
-        }
+    "Info": {
+      "title": "AIRR Data Commons API reference implementation",
+      "description": "API response for repertoire query",
+      "version": 1.3,
+      "contact": {
+        "name": "AIRR Community",
+        "url": "https://github.com/airr-community"
+      }
     },
-    "facets":"subject.subject_id"
+    "Facet": [
+      {"sample.pcr_target.pcr_target_locus":[["TRB"]],"count":40},
+      {"sample.pcr_target.pcr_target_locus":[["IGH"]],"count":20}
+    ]
   }
+
+Here is a query with both ``filters`` and ``facets`` parameters, which restricts
+the data records used for the facets count. The content of
+the :download:`JSON payload <../examples/queries/facets2_repertoire.json>`.
+
+.. literalinclude:: ../examples/queries/facets2_repertoire.json
+  :language: JSON
 
 Sending this query in an API request.
 
 .. code-block:: bash
 
-  curl --data @query1-4_repertoire.json https://vdjserver.org/airr/v1/repertoire
+  curl --data @facets2_repertoire.json https://vdjserver.org/airr/v1/repertoire
 
 Example output from the request. This result indicates there are ten
 subjects each with two IGH repertoires.
 
 .. code-block:: json
 
-  [
-    {"subject.subject_id":"TW05B","count":2},
-    {"subject.subject_id":"TW05A","count":2},
-    {"subject.subject_id":"TW03A","count":2},
-    {"subject.subject_id":"TW04A","count":2},
-    {"subject.subject_id":"TW01A","count":2},
-    {"subject.subject_id":"TW04B","count":2},
-    {"subject.subject_id":"TW02A","count":2},
-    {"subject.subject_id":"TW03B","count":2},
-    {"subject.subject_id":"TW01B","count":2},
-    {"subject.subject_id":"TW02B","count":2}
-  ]
-
-.. __: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query1-3_repertoire.json
-
-.. _`query`: https://github.com/airr-community/airr-standards/blob/master/lang/python/examples/query1-4_repertoire.json
+  {
+    "Info": {
+      "title": "AIRR Data Commons API reference implementation",
+      "description": "API response for repertoire query",
+      "version": 1.3,
+      "contact": {
+        "name": "AIRR Community",
+        "url": "https://github.com/airr-community"
+      }
+    },
+    "Facet": [
+      {"subject.subject_id":"TW05B","count":2},
+      {"subject.subject_id":"TW05A","count":2},
+      {"subject.subject_id":"TW03A","count":2},
+      {"subject.subject_id":"TW04A","count":2},
+      {"subject.subject_id":"TW01A","count":2},
+      {"subject.subject_id":"TW04B","count":2},
+      {"subject.subject_id":"TW02A","count":2},
+      {"subject.subject_id":"TW03B","count":2},
+      {"subject.subject_id":"TW01B","count":2},
+      {"subject.subject_id":"TW02B","count":2}
+    ]
+  }
 
 ADC API Limits and Thresholds
 -----------------------------
