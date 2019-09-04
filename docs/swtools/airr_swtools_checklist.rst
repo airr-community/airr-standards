@@ -34,7 +34,7 @@ Contact email:
 |                 |                                                                                                                       |                                             |
 |                 | Is the example data in MiAIRR format, where applicable?                                                               | yes/no/not applicable                       |
 |                 |                                                                                                                       |                                             |
-|                 | Does the tool support or provide checks for expected output from example data?                                        | yes/no                                      |
+|                 | Does the tool provide automated checks for expected output from example data?                                         | yes/no                                      |
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
 | 4               | Does the output of the tool include a summary of the run parameters?                                                  | yes/no                                      |
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
@@ -43,6 +43,8 @@ Contact email:
 |                 | Container technology used?                                                                                            | Docker/Singularity/Other (please specify)   |
 |                 |                                                                                                                       |                                             |
 |                 | Is the container automatically built as new versions are released?                                                    | yes/no                                      |
+|                 |                                                                                                                       |                                             |
+|                 | Does the automated build run the tool against the example data and test the output?                                   | yes/no                                      |
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
 | 6               | Where can users see what level of support is available? (Please provide a link)                                       |                                             |
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+

@@ -626,7 +626,7 @@ CellProcessing:
                 ontology:
                     draft: true
                     name: CL
-                    url: https://ncit.nci.nih.gov/ncitbrowser/
+                    url: https://www.ebi.ac.uk/ols/ontologies/cl
                     top_node:
                         id: CL_0000542
                         value: lymphocyte

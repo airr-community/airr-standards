@@ -35,7 +35,7 @@ Tools must:
    tools must read and write :ref:`DataRepresentations` standards corresponding to their tool.
 	   
 3. Include example data (in AIRR standard formats where applicable) and
-   checks for expected output from that data, in order to provide a
+   an automated check for expected output from that data, in order to provide a
    minimal example of functionality allowing users to check that the
    software is performing as described.
 
@@ -44,7 +44,9 @@ Tools must:
 5. Provide a container build file that can be used to create an image
    which encapsulates the software tool, its dependencies, and
    required run environment. This needs to be remotely and
-   automatically built. We currently recognize two software
+   automatically built. The build should conclude by running the
+   example data through the tool (see point 3) and confirming that
+   the expected output is obtained. We currently recognize two software
    solutions, although we will adapt as software evolves:
 
    a. A `Dockerfile`_ that automatically builds a `container
@@ -108,7 +110,8 @@ complex, we require example data and details of expected output, so that
 users can confirm that their installation is functioning as expected.
 Furthermore, metadata (for example, germline gene libraries) and
 other software dependencies should be checked when the tool runs, and
-informative error messages issued if necessary.
+informative error messages issued if necessary. A means should be provided
+to check the expected output automatically.
 
 Dependencies and Containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
