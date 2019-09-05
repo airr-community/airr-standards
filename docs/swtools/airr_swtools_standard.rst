@@ -19,8 +19,8 @@ tools comply with this standard will, subject to ratification from the
 AIRR Software WG, be permitted to advertise their tools as being
 AIRR-compliant.
 
-.. _`Adaptive Immune Receptor Repertoire (AIRR) Community`: https://www.antibodysociety.org/airrc/
-.. _`AIRR Software Working Group`: https://www.antibodysociety.org/software-working-group/
+.. _`Adaptive Immune Receptor Repertoire (AIRR) Community`: http://airr-community.org/
+.. _`AIRR Software Working Group`: https://www.antibodysociety.org/airrc/working_groups/software/
 
 Requirements
 ------------
