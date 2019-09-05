@@ -13,7 +13,7 @@ import yamlordereddictloader
 
 # Load imports
 from airr.io import RearrangementReader, RearrangementWriter
-from airr.schema import ValidationError, RearrangementSchema
+from airr.schema import ValidationError, RearrangementSchema, RepertoireSchema
 
 
 def read_rearrangement(filename, validate=False, debug=False):
@@ -223,10 +223,10 @@ def load_repertoire(filename, validate=False, debug=False):
     # determine file type from extension and use appropriate loader
     ext = filename.split('.')[-1]
     if ext == 'yaml' or ext == 'yml':
-        with open(filename, 'r') as handle:
+        with open(filename, 'r', encoding='utf-8') as handle:
             md = yaml.load(handle, Loader=yamlordereddictloader.Loader)
     elif ext == 'json':
-        with open(filename, 'r') as handle:
+        with open(filename, 'r', encoding='utf-8') as handle:
             md = json.load(handle)
     else:
         if debug:
@@ -261,7 +261,7 @@ def validate_repertoire(filename, debug=False):
 
     # load with validate
     try:
-        load_repertoire(filename, validate=True, debug=debug)
+        data = load_repertoire(filename, validate=True, debug=debug)
     except TypeError:
         valid = False
     except KeyError:
@@ -270,6 +270,18 @@ def validate_repertoire(filename, debug=False):
         valid = False
         if debug:
             sys.stderr.write('%s has validation error: %s\n' % (filename, e))
+
+    # Validate each repertoire
+    reps = data['Repertoire']
+    i = 0
+    for r in reps:
+        try:
+            RepertoireSchema.validate_object(r)
+            i = i + 1
+        except ValidationError as e:
+            valid = False
+            if debug:
+                sys.stderr.write('%s has repertoire at array position %i with validation error: %s\n' % (filename, i, e))
 
     return valid
 

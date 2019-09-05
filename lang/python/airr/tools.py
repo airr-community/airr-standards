@@ -61,6 +61,25 @@ def validate_cmd(airr_files, debug=True):
         sys.stderr.write('Error occurred while validating AIRR rearrangement files: ' + str(err) + '\n')
         return False
 
+# internal wrapper function before calling validate interface method
+def validate_repertoire_cmd(airr_files, debug=True):
+    """
+    Validates one or more AIRR repertoire metadata files
+
+    Arguments:
+      airr_files (list): list of input files to validate.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      boolean: True if all files passed validation, otherwise False
+    """
+    try:
+        valid = [airr.interface.validate_repertoire(f, debug=debug) for f in airr_files]
+        return all(valid)
+    except Exception as err:
+        sys.stderr.write('Error occurred while validating AIRR repertoire metadata files: ' + str(err) + '\n')
+        return False
+
 def define_args():
     """
     Define commandline arguments
@@ -117,6 +136,24 @@ def define_args():
 
     # Subparser to validate files
     parser_validate = subparsers.add_parser('validate', parents=[common_parser],
+                                            add_help=False,
+                                            help='Validate AIRR files.',
+                                            description='Validate AIRR files.')
+    validate_subparser = parser_validate.add_subparsers(title='subcommands', metavar='',
+                                       help='Database operation')
+
+    # Subparser to validate repertoire files
+    parser_validate = validate_subparser.add_parser('repertoire', parents=[common_parser],
+                                            add_help=False,
+                                            help='Validate AIRR repertoire metadata files.',
+                                            description='Validate AIRR repertoire metadata files.')
+    group_validate = parser_validate.add_argument_group('validate arguments')
+    group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
+                                help='A list of AIRR repertoire metadata files.')
+    parser_validate.set_defaults(func=validate_repertoire_cmd)
+
+    # Subparser to validate rearrangement files
+    parser_validate = validate_subparser.add_parser('rearrangement', parents=[common_parser],
                                             add_help=False,
                                             help='Validate AIRR rearrangement files.',
                                             description='Validate AIRR rearrangement files.')
