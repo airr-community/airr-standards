@@ -39,6 +39,19 @@ definitions:
     items:
       $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Repertoire'
 
+  # list of facets
+  facet_list:
+    type: array
+    items:
+      type: object:
+      properties:
+        field:
+          type: string
+        value:
+          type: string
+        count:
+          type: integer
+          
   # The response object /repertoire endpoint
   repertoire_response:
     type: object
@@ -47,6 +60,8 @@ definitions:
         $ref: '#/definitions/info_object'
       Repertoire:
         $ref: '#/definitions/repertoire_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
           
   # list of rearrangement annotations
   rearrangement_list:
@@ -62,7 +77,9 @@ definitions:
         $ref: '#/definitions/info_object'
       Rearrangement:
         $ref: '#/definitions/rearrangement_list'
-
+      Facet:
+        $ref: '#/definitions/facet_list'
+  
   # error response
   error_response:
     type: object
