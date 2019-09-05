@@ -22,10 +22,10 @@ Repertoire:
         -
     subject:
       subject_id: ""
-      synthetic: null
+      synthetic: false
       organism:
         id: ""
-        name: ""
+        value: ""
       sex: ""
       age: ""
       age_event: ""
@@ -57,12 +57,12 @@ Repertoire:
         tissue_processing: ""
         cell_subset:
           id: ""
-          name: ""
+          value: ""
         cell_phenotype: ""
-        single_cell: null
+        single_cell: false
         cell_number: null
         cells_per_reaction: null
-        cell_storage: null
+        cell_storage: false
         cell_quality: ""
         cell_isolation: ""
         cell_processing_protocol: ""
@@ -77,7 +77,7 @@ Repertoire:
           - pcr_target_locus: ""
             forward_pcr_primer_target_location: ""
             reverse_pcr_primer_target_location: ""
-        complete_sequences: null
+        complete_sequences: false
         physical_linkage: "none"
         # sequencing run
         sequencing_run_id: ""
