@@ -45,10 +45,6 @@ definitions:
     items:
       type: object:
       properties:
-        field:
-          type: string
-        value:
-          type: string
         count:
           type: integer
           
