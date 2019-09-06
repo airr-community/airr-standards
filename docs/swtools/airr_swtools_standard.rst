@@ -142,7 +142,7 @@ An example Docker container is provided on the Software WG
 `GitHub repository <github-swwg>`_. This example encapsulates `IgBLAST`_,
 and implements the `bioboxes`_ command-line standard.
 
-.. _`github-swwg`: https://github.com/airr-community/software-wg
+.. _`github-swwg`:  https://github.com/airr-community/software-wg
 .. _`IgBLAST`: https://www.ncbi.nlm.nih.gov/igblast/
 .. _`bioboxes`: http://bioboxes.org
 
