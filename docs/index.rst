@@ -1,6 +1,6 @@
 .. _AIRR_Introduction:
 
-AIRR Community
+AIRR Community 
 ==============
 
 The Adaptive Immune Receptor Repertoire (AIRR) Community of The Antibody Society is a
@@ -27,7 +27,7 @@ include:
 + API to query and download AIRR data from repositories/databases as part of the AIRR Data Commons.
 + A community standard for software tools which will allow conforming tools to gain community recognition.
 + Set of reference software tools for reading, writing and validating data in the AIRR standards.
-
++ A database and web submission frontend for inferred germline genes
 
 .. toctree::
     :maxdepth: 3
