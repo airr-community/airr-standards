@@ -51,14 +51,13 @@ Tools must:
 
    a. A `Dockerfile`_ that automatically builds a `container
       image`_ on `Docker Hub`_.
+   b. A `Singularity recipe file`_ that `automatically builds a container image`_ 
+      on `Singularity Hub`_.
+
 		  
 .. _`Dockerfile`: https://docs.docker.com/engine/reference/builder/
 .. _`container image`: https://docs.docker.com/docker-hub/builds/
 .. _`Docker Hub`: https://docs.docker.com/docker-hub/
-
-   b. A `Singularity recipe file`_ that `automatically builds a container image`_ 
-      on `Singularity Hub`_.
-
 .. _`Singularity recipe file`: https://www.sylabs.io/docs/	
 .. _`automatically builds a container image`: https://github.com/singularityhub/singularityhub.github.io/wiki/Automated-Build
 .. _`Singularity Hub`: https://singularity-hub.org/	  
