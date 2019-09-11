@@ -1153,6 +1153,17 @@ DataProcessing:
                 set: 5
                 subset: process (computational)
                 name: Data processing protocols
+        germline_database:
+            type: string
+            description: Source of germline V(D)J genes with version number or date accessed.
+            example: ENSEMBL, Homo sapiens build 90, 2017-10-01
+            x-airr:
+                miairr: true
+                required: true
+                nullable: true
+                set: 6
+                subset: data (processed sequence)
+                name: V(D)J germline reference database
         analysis_provenance_id:
             type: string
             description: Identifier for machine-readable PROV model of analysis provenance
