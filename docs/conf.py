@@ -256,7 +256,7 @@ for spec in tables:
         writer.writerows(rows)
 
 # Build tables for repertoire metadata schema
-tables = ['Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing', 'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing']
+tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing', 'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing']
 for spec in tables:
     properties = airr_schema[spec]['properties']
     rows = []

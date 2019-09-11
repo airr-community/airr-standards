@@ -143,6 +143,24 @@ File Structure
 
 + The structure is the same regardless of whether the data is stored in a file or a data repository. For example, The :ref:`ADC API <DataCommons>` will return a properly structured JSON object that can be saved to a file and used directly without modification.
 
+Repertoire Fields
+------------------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - MiAIRR
+      - Description
+    {%- for field in Repertoire_schema %}
+    * - ``{{ field.name }}``
+      - ``{{ field.type }}``
+      - ``{{ field.miairr }}``
+      - {{ field.description | trim }}
+    {%- endfor %}
+
 Study Fields
 ------------------------------
 
