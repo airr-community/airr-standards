@@ -403,6 +403,7 @@ Subject:
                 name: Relation type
         diagnosis:
             type: array
+            description: Diagnosis information for subject
             items:
                 $ref: '#/Diagnosis'
 
@@ -866,6 +867,7 @@ NucleicAcidProcessing:
                 name: Protocol IDs
         pcr_target:
             type: array
+            description: Target locus information
             items:
                 $ref: '#/PCRTarget'
         complete_sequences:
