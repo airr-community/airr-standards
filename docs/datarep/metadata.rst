@@ -143,6 +143,204 @@ File Structure
 
 + The structure is the same regardless of whether the data is stored in a file or a data repository. For example, The :ref:`ADC API <DataCommons>` will return a properly structured JSON object that can be saved to a file and used directly without modification.
 
+Repertoire Fields
+------------------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - MiAIRR
+      - Description
+    {%- for field in Repertoire_schema %}
+    * - ``{{ field.name }}``
+      - ``{{ field.type }}``
+      - ``{{ field.miairr }}``
+      - {{ field.description | trim }}
+    {%- endfor %}
+
+Study Fields
+------------------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - MiAIRR
+      - Description
+    {%- for field in Study_schema %}
+    * - ``{{ field.name }}``
+      - ``{{ field.type }}``
+      - ``{{ field.miairr }}``
+      - {{ field.description | trim }}
+    {%- endfor %}
+
+Subject Fields
+------------------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - MiAIRR
+      - Description
+    {%- for field in Subject_schema %}
+    * - ``{{ field.name }}``
+      - ``{{ field.type }}``
+      - ``{{ field.miairr }}``
+      - {{ field.description | trim }}
+    {%- endfor %}
+
+Diagnosis Fields
+------------------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - MiAIRR
+      - Description
+    {%- for field in Diagnosis_schema %}
+    * - ``{{ field.name }}``
+      - ``{{ field.type }}``
+      - ``{{ field.miairr }}``
+      - {{ field.description | trim }}
+    {%- endfor %}
+
+Sample Fields
+------------------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - MiAIRR
+      - Description
+    {%- for field in Sample_schema %}
+    * - ``{{ field.name }}``
+      - ``{{ field.type }}``
+      - ``{{ field.miairr }}``
+      - {{ field.description | trim }}
+    {%- endfor %}
+
+Tissue and Cell Processing Fields
+---------------------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - MiAIRR
+      - Description
+    {%- for field in CellProcessing_schema %}
+    * - ``{{ field.name }}``
+      - ``{{ field.type }}``
+      - ``{{ field.miairr }}``
+      - {{ field.description | trim }}
+    {%- endfor %}
+
+Nucleic Acid Processing Fields
+---------------------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - MiAIRR
+      - Description
+    {%- for field in NucleicAcidProcessing_schema %}
+    * - ``{{ field.name }}``
+      - ``{{ field.type }}``
+      - ``{{ field.miairr }}``
+      - {{ field.description | trim }}
+    {%- endfor %}
+
+PCR Target Locus Fields
+---------------------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - MiAIRR
+      - Description
+    {%- for field in PCRTarget_schema %}
+    * - ``{{ field.name }}``
+      - ``{{ field.type }}``
+      - ``{{ field.miairr }}``
+      - {{ field.description | trim }}
+    {%- endfor %}
+
+Raw Sequence Data Fields
+---------------------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - MiAIRR
+      - Description
+    {%- for field in RawSequenceData_schema %}
+    * - ``{{ field.name }}``
+      - ``{{ field.type }}``
+      - ``{{ field.miairr }}``
+      - {{ field.description | trim }}
+    {%- endfor %}
+
+Sequencing Run Fields
+---------------------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - MiAIRR
+      - Description
+    {%- for field in SequencingRun_schema %}
+    * - ``{{ field.name }}``
+      - ``{{ field.type }}``
+      - ``{{ field.miairr }}``
+      - {{ field.description | trim }}
+    {%- endfor %}
+
+Data Processing Fields
+---------------------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - MiAIRR
+      - Description
+    {%- for field in DataProcessing_schema %}
+    * - ``{{ field.name }}``
+      - ``{{ field.type }}``
+      - ``{{ field.miairr }}``
+      - {{ field.description | trim }}
+    {%- endfor %}
+
 References
 -----------------------------
 

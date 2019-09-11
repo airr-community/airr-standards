@@ -254,3 +254,29 @@ for spec in tables:
                 for k, v in properties.items())
         writer.writerow(fields)
         writer.writerows(rows)
+
+# Build tables for repertoire metadata schema
+tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing', 'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing']
+for spec in tables:
+    properties = airr_schema[spec]['properties']
+    rows = []
+    for k, v in properties.items():
+        row = {}
+        row['name'] = k
+        if v.get('type'):
+            row['type'] = v['type']
+        elif v.get('$ref') == '#/Ontology':
+            row['type'] = 'Ontology object'
+        else:
+            row['type'] = 'unknown'
+        if v.get('x-airr') and v.get('x-airr').get('miairr'):
+            row['miairr'] = 'required'
+        else:
+            row['miairr'] = 'non-MiAIRR'
+        if v.get('x-airr') and v.get('x-airr').get('format'):
+            row['format'] = v['x-airr']['format']
+        else:
+            row['format'] = ''
+        row['description'] = v['description'].strip()
+        rows.append(row)
+    html_context[spec + '_schema'] = rows
