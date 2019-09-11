@@ -1180,7 +1180,7 @@ Repertoire:
     properties:
         repertoire_id:
             type: string
-            description: Identifier for the repertoire object.
+            description: Identifier for the repertoire object. This identifier should be globally unique so that repertoires from multiple studies can be combined together without conflict. The repertoire_id is used to link other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for referencing the specific Repertoire for that Rearrangement
         study:
             $ref: '#/Study'
         subject:
