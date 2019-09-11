@@ -43,7 +43,7 @@ definitions:
   facet_list:
     type: array
     items:
-      type: object:
+      type: object
       properties:
         count:
           type: integer
