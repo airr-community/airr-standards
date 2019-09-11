@@ -1185,10 +1185,13 @@ Repertoire:
             description: Identifier for the repertoire object.
         study:
             $ref: '#/Study'
+            description: Study object
         subject:
             $ref: '#/Subject'
+            description: Subject object
         sample:
             type: array
+            description: List of Sample objects
             items:
                 allOf:
                     - $ref: '#/Sample'
@@ -1197,6 +1200,7 @@ Repertoire:
                     - $ref: '#/SequencingRun'
         data_processing:
             type: array
+            description: List of Data Processing objects
             items:
                 $ref: '#/DataProcessing'
 
