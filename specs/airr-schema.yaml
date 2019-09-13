@@ -1280,17 +1280,6 @@ Alignment:
             description: >
                 Identifier to the data processing object in the repertoire metadata
                 for this rearrangement. If this field is empty than the primary data processing object is assumed.
-        germline_database:
-            type: string
-            description: Source of germline V(D)J genes with version number or date accessed.
-            example: ENSEMBL, Homo sapiens build 90, 2017-10-01
-            x-airr:
-                miairr: true
-                required: true
-                nullable: true
-                set: 6
-                subset: data (processed sequence)
-                name: V(D)J germline reference database
 
 # The extended rearrangement object
 Rearrangement:
