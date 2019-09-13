@@ -1163,7 +1163,7 @@ DataProcessing:
                 miairr: true
                 required: true
                 nullable: true
-                set: 6
+                set: 5
                 subset: data (processed sequence)
                 name: V(D)J germline reference database
         analysis_provenance_id:
