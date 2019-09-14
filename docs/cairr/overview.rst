@@ -40,8 +40,8 @@ the metadata quality of AIRR-seq studies.
 Submission Steps
 ----------------
 
-The submission steps are described in the MiAIRR-to-NCBI Submission Manual 
-(:ref:`MiAIRR_NCBI_Submission_Manual_Option_1`).
+The submission steps are described in the MiAIRR-to-NCBI Submission Manual: 
+:ref:`MiAIRR_NCBI_Submission_Manual_Option_1`.
 You will need a CEDAR system account; you can self-register at
 https://cedar.metadatacenter.org.  You will also need the identifier of a
 BioProject already entered in the NCBI BioProject database.
