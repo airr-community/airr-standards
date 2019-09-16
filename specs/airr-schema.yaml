@@ -1200,8 +1200,7 @@ Repertoire:
                     type: string
                     description: >
                         Unique ID to denote the processing that was carried out on 
-                        this sample for this study. This field should be unique within
-                        this Repertoire.
+                        this sample for this study.
                 allOf:
                     - $ref: '#/Sample'
                     - $ref: '#/CellProcessing'
