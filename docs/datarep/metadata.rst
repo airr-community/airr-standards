@@ -118,6 +118,13 @@ sample processing object, in which case ``repertoire_id`` and
 ``sample_processing_id`` will be semantically equivalent and only the
 former should be used.
 
+Finally, if it is necessary to link a ``Rearrangement`` object with a unique 
+pairing of sample processing and ``DataProcessing``, the ``repertoire_id`` of
+the ``Rearrangement`` object should be used to identify the correct ``Repertoire``
+object and then the ``data_processing_id`` should be used to identify the correct
+``DataProcessing`` metadata and the ``sample_processing_id`` should be used to
+identify the correct sample processing metadata within that ``Repertoire``.
+
 **Duality between Repertoires and Rearrangements**
 
 There is an important duality relationship between ``Repertoires`` and
