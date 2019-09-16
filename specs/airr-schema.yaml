@@ -2165,6 +2165,13 @@ Rearrangement:
             x-airr:
                 miairr: false
                 adc-api-optional: false
+        sample_id:
+            type: string
+            description: >
+                Identifier to the associated sample ID in study metadata.
+            x-airr:
+                miairr: false
+                adc-api-optional: false
         data_processing_id:
             type: string
             description: >
