@@ -28,6 +28,7 @@ repositories: (1) CEDAR's CAIRR pipeline; (2) NCBI's Web interface; and (3)
 NCBI's FTP server. These alternatives are described below:
 
 .. _MiAIRR_NCBI_Submission_Manual_Option_1:
+
 Option 1. Submission via the CEDAR system (CAIRR submission pipeline)
 ---------------------------------------------------------------------
 
