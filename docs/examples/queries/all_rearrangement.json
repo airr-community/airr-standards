@@ -48,7 +48,14 @@
                     "value":"456"
                 }
 	    },
-	    {
+        {
+                "op":"=",
+                "content": {
+                    "field":"sample_processing_id",
+                    "value":"789"
+                }
+        },
+        {
                 "op":"=",
                 "content": {
                     "field":"junction_aa",
