@@ -53,6 +53,9 @@ Attributes:
         adc-api-optional:
             type: boolean
             description: True if query support is optional for ADC API implementations. If False or undefined, an ADC API implementation must support queries upon this field.
+        deprecated:
+            type: boolean
+            description: True if the field is being deprecated from the schema.
         set:
             type: integer
             description: MiAIRR set
@@ -1280,6 +1283,13 @@ Alignment:
             description: >
                 Identifier to the data processing object in the repertoire metadata
                 for this rearrangement. If this field is empty than the primary data processing object is assumed.
+        germline_database:
+            type: string
+            description: Source of germline V(D)J genes with version number or date accessed.
+            example: ENSEMBL, Homo sapiens build 90, 2017-10-01
+            x-airr:
+                deprecated: true
+
 
 # The extended rearrangement object
 Rearrangement:
@@ -2163,4 +2173,10 @@ Rearrangement:
             x-airr:
                 miairr: false
                 adc-api-optional: false
+        germline_database:
+            type: string
+            description: Source of germline V(D)J genes with version number or date accessed.
+            example: ENSEMBL, Homo sapiens build 90, 2017-10-01
+            x-airr:
+                deprecated: true
 
