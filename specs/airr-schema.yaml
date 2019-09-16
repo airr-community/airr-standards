@@ -1231,6 +1231,11 @@ Repertoire:
             type: array
             description: List of Sample objects
             items:
+                sample_processing_id:
+                    type: string
+                    description: >
+                        Unique ID to denote the processing that was carried out on 
+                        this sample for this study.
                 allOf:
                     - $ref: '#/Sample'
                     - $ref: '#/CellProcessing'
@@ -2208,10 +2213,10 @@ Rearrangement:
             x-airr:
                 miairr: false
                 adc-api-optional: false
-        sample_id:
+        sample_processing_id:
             type: string
             description: >
-                Identifier to the associated sample ID in study metadata.
+                Identifier to the associated processing that was applied to a specific sample in the study.
             x-airr:
                 miairr: false
                 adc-api-optional: false
