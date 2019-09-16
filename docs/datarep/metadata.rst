@@ -99,6 +99,25 @@ It is expected that typical ``Repertoires`` might only have a single
 ``data_processing_id`` will be semantically equivalent and only the
 former should be used.
 
+If a ``Repertoire`` has multiple sample processing objects in the sample
+array then ``sample_processing_id`` should be used to distinguish the
+the approrpiate sample processing object within the ``Repertoire``. The 
+``Rearrangement`` object can contain a ``sample_processing_id`` to uniquely
+identify a sample processing object within a ``Repertoire``. Like
+``data_processing_id``, the ``sample_processing_id`` is only unique within
+the ``Repertoire`` so ``repertoire_id`` should first be used to get the 
+appropiate ``Repertoire`` object and then ``sample_processing_id`` should
+be used to determine the appropiate sample processing object that is associated
+with the ``Rearrangement``. If the ``Rearrangement`` object does not have a
+``sample_processing_id`` then it can be assumed that the rearrangement is
+associated with all of the samples in the ``Repertoire`` (e.g. the rearrangement
+is a collapsed rearrangement across multiple samples).
+
+It is expected that  ``Repertoires`` might often have a single
+sample processing object, in which case ``repertoire_id`` and
+``sample_processing_id`` will be semantically equivalent and only the
+former should be used.
+
 **Duality between Repertoires and Rearrangements**
 
 There is an important duality relationship between ``Repertoires`` and
