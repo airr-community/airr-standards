@@ -2217,7 +2217,10 @@ Rearrangement:
         sample_processing_id:
             type: string
             description: >
-                Identifier to the associated processing that was applied to a specific sample in the study.
+                Identifier to the associated sample processing that was applied to the sample
+                in the repertoire metadata for this arrangement. If this field is empty or missing
+                then it is assumed that this rearrangement can not be differentiated between the 
+                samples in the repertoire metadata.
             x-airr:
                 miairr: false
                 adc-api-optional: false
