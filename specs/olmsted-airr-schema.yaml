@@ -1,0 +1,196 @@
+$id: https://olmstedviz.org/input.schema.json
+$schema: https://json-schema.org/draft-07/schema#
+description: 'Olmsted dataset input file. AIRR: see Study'
+properties:
+  build:
+    description: 'Information about how a dataset was built. AIRR: see DataProcessing'
+    properties:
+      commit: {description: Commit sha of whatever build system you used to process
+          the data, type: string}
+      time: {description: Time at which build was initiated, type: string}
+    required: [commit]
+    title: Build info
+    type: object
+  clonal_families:
+    description: Information about each of the clonal families
+    items:
+      description: Clonal family of sequences deriving from a particular reassortment
+        event
+      properties:
+        cdr3_start: {description: 'Start of the CDR3 region. From partis "zero-indexed
+            indel-reversed-sequence positions of the conserved cyst and tryp/phen
+            codons". AIRR: see cdr3_start, which excludes the conserved residue and
+            uses a "1-based closed interval"', minimum: 0, type: integer}
+        d_call: {description: D gene used in rearrangement., type: string}
+        d_end: {description: 'Position in d gene at which rearrangement ends. AIRR:
+            see d_germline_end, which uses 1-based closed interval as opposed to 0-based
+            python slice convention intervals used by partis.', minimum: 0, type: integer}
+        d_start: {description: 'Position in d gene at which rearrangement starts.
+            AIRR: see d_germline_start, which uses 1-based closed interval as opposed
+            to 0-based python slice convention intervals used by partis.', minimum: 0,
+          type: integer}
+        has_seed: {description: 'Does this clonal family have a seed sequence in it?.
+            AIRR: ?', type: boolean}
+        id: {description: 'Clonal family id. AIRR: see clone_id, rearrangement_id',
+          type: string}
+        ident: &id001 {description: UUID specific to the given object, type: string}
+        j_call: {description: J gene used in rearrangement., type: string}
+        j_end: {description: 'Position in j gene at which rearrangement ends. AIRR:
+            see j_germline_end, which uses 1-based closed interval as opposed to 0-based
+            python slice convention intervals used by partis.', minimum: 0, type: integer}
+        j_start: {description: 'Position in j gene at which rearrangement starts.
+            AIRR: see j_germline_start, which uses 1-based closed interval as opposed
+            to 0-based python slice convention intervals used by partis.', minimum: 0,
+          type: integer}
+        junction_length: {description: Length of CDR3 region including both conserved
+            codons in their entirety., minimum: 0, type: integer}
+        mean_mut_freq: {description: 'Mean mutation frequency across sequences in
+            the clonal family. AIRR: ?', minimum: 0, type: number}
+        naive_seq: {description: 'Naive nucleotide sequence. AIRR: see germline_alignment',
+          type: string}
+        sample_id: {description: sample id associated with this clonal family., type: string}
+        seed_id:
+          description: 'Seed sequence id if any. AIRR: ?'
+          type: [string, 'null']
+        subject_id: {description: Id of subject from which the clonal family was sampled.,
+          type: string}
+        total_read_count: {description: 'Number of total reads represented by sequences
+            in the clonal family. AIRR: ?', minimum: 1, type: integer}
+        trees:
+          description: 'Phylogenetic trees, and possibly ancestral sequence reconstructions.
+            AIRR: ?'
+          items:
+            description: 'Phylogenetic tree and possibly ancestral state reconstruction
+              of sequences in a clonal family. AIRR: no trees in airr'
+            properties:
+              downsampled_count: {description: 'If applicable, the maximum number
+                  of sequences kept in the downsampling process', minumum: 3, type: integer}
+              downsampling_strategy: {description: 'If applicable, the downsampling
+                  method', type: string}
+              id: {description: tree id, type: string}
+              ident: *id001
+              newick: {description: Tree in newick format, type: string}
+              nodes:
+                description: Nodes in the clonal family tree and corresponding sequences
+                  and metadata
+                items:
+                  description: Information about the phylogenetic tree nodes and the
+                    sequences they represent
+                  properties:
+                    affinity:
+                      description: 'Affinity of the antibody for some antigen. Typically
+                        inverse dissociation constant k_d in simulation, and inverse
+                        ic50 in data. AIRR: no affinity in airr'
+                      type: [number, 'null']
+                    cluster_multiplicity:
+                      description: 'If clonal family sequences were downsampled by
+                        clustering, the cummulative number of times sequences in cluster
+                        were observed. AIRR: ?'
+                      minimum: 0
+                      type: [integer, 'null']
+                    cluster_timepoint_multiplicities:
+                      description: 'Sequence multiplicity, broken down by timepoint,
+                        including sequences falling in the same cluster if clustering-based
+                        downsampling was performed. AIRR: ?'
+                      items: &id002
+                        description: 'Multiplicity at a specific time. AIRR: ?'
+                        properties:
+                          multiplicity:
+                            description: Number of times sequence was observed at
+                              the given timepoint
+                            minimum: 0
+                            type: [integer, 'null']
+                          timepoint_id: {description: Id associated with the timepoint
+                              in question, type: string}
+                        type: object
+                      type: array
+                    lbi:
+                      description: 'Local branching index. AIRR: no trees in airr'
+                      type: [number, 'null']
+                    lbr:
+                      description: 'Local branching rate (derivative of lbi). AIRR:
+                        no trees in airr'
+                      type: [number, 'null']
+                    multiplicity:
+                      description: 'Number of times sequence was observed in the sample.
+                        AIRR: see duplicate_count, consensus_count'
+                      minimum: 0
+                      type: [integer, 'null']
+                    sequence_aa: {description: 'Literal amino acid sequence, aligned
+                        to other sequences in clonal family.', type: string}
+                    sequence_id: {description: Sequence id., type: string}
+                    sequencedna_seq: {description: 'Literal nucleotide sequence, aligned
+                        to other sequences in clonal family.', type: string}
+                    timepoint_id:
+                      description: 'Timepoint associated with sequence, if any. AIRR:
+                        see collection_time_point_relative'
+                      type: [string, 'null']
+                    timepoint_multiplicities:
+                      description: 'Sequence multiplicity, broken down by timepoint.
+                        AIRR: ?'
+                      items: *id002
+                      type: array
+                  required: [sequence_id, sequence, sequence_aa]
+                  title: Node
+                  type: object
+                type: array
+            required: [newick, nodes]
+            title: Tree
+            type: object
+          type: array
+        unique_seqs_count: {description: 'Number of unique sequences in the clonal
+            family. AIRR: ?', minimum: 1, type: integer}
+        v_call: {description: V gene used in rearrangement., type: string}
+        v_end: {description: 'Position in v gene at which rearrangement ends. AIRR:
+            see v_germline_end, which uses 1-based closed interval as opposed to 0-based
+            python slice convention intervals used by partis.', minimum: 0, type: integer}
+        v_start: {description: 'Position in v gene at which rearrangement starts.
+            AIRR: see v_germline_start, which uses 1-based closed interval as opposed
+            to 0-based python slice convention intervals used by partis.', minimum: 0,
+          type: integer}
+      required: [unique_seqs_count, mean_mut_freq, v_start, v_end, j_start, j_end]
+      title: Clonal Family
+      type: object
+    type: array
+  id: {description: Unique identifier for a collection of data, type: string}
+  ident: *id001
+  samples:
+    description: Information about each of the samples
+    items:
+      description: A sample is generally a collection of sequences.
+      properties:
+        id: {description: Sample id, type: string}
+        ident: *id001
+        locus: {description: B-cell Locus., type: string}
+        timepoint_id: {description: Timepoint associated with this sample (may choose
+            "merged" if data has been combined from multiple timepoints), type: string}
+      required: [locus]
+      title: Sample
+      type: object
+    type: array
+  seeds:
+    description: Information about each of the seed sequences
+    items:
+      description: 'A sequence of interest among other clonal family members. AIRR:
+        ?'
+      properties:
+        id: {description: Seed id, type: string}
+        ident: *id001
+      required: [id]
+      title: Seed
+      type: [object, 'null']
+    type: array
+  subjects:
+    description: Information about each of the subjects
+    items:
+      description: Subject from which the clonal family was sampled.
+      properties:
+        id: {description: Subjectd id, type: string}
+        ident: *id001
+      required: [id]
+      title: Subject
+      type: object
+    type: array
+required: [id, clonal_families]
+title: Olmsted Dataset
+type: object
