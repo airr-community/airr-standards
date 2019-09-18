@@ -1204,13 +1204,8 @@ Repertoire:
             type: array
             description: List of Sample objects
             items:
-                sample_processing_id:
-                    type: string
-                    description: >
-                        Unique ID to denote the processing that was carried out on 
-                        this sample for this study. This field should be unique within
-                        thie Repertoire.
                 allOf:
+                    - $ref: '#/SampleProcessing'
                     - $ref: '#/Sample'
                     - $ref: '#/CellProcessing'
                     - $ref: '#/NucleicAcidProcessing'
