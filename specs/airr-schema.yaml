@@ -1196,13 +1196,13 @@ Repertoire:
             type: array
             description: List of Sample objects
             items:
-                sample_processing_id:
-                    type: string
-                    description: >
-                        Unique ID to denote the processing that was carried out on 
-                        this sample for this study. This field should be unique within
-                        thie Repertoire.
                 allOf:
+                    - sample_processing_id:
+                          type: string
+                          description: >
+                              Unique ID to denote the processing that was carried out on
+                              this sample for this study. This field should be unique within
+                              the repertoire.
                     - $ref: '#/Sample'
                     - $ref: '#/CellProcessing'
                     - $ref: '#/NucleicAcidProcessing'
@@ -2174,13 +2174,14 @@ Rearrangement:
         sample_processing_id:
             type: string
             description: >
-                Identifier to the associated sample processing that was applied to the sample
-                in the repertoire metadata for this arrangement. If this field is empty or missing
-                then it is assumed that this rearrangement can not be differentiated between the 
-                samples in the repertoire metadata.
+                Identifier to the sample processing object in the repertoire metadata
+                for this rearrangement. If the repertoire has a single sample then
+                this field may be empty or missing. If the repertoire has multiple samples then
+                this field may be empty or missing if the sample cannot be differentiated or
+                the relationship is not maintained by the data processing.
             x-airr:
                 miairr: false
-                adc-api-optional: false
+                adc-api-optional: true
         data_processing_id:
             type: string
             description: >
