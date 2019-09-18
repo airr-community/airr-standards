@@ -1208,6 +1208,14 @@ DataProcessing:
             type: string
             description: Identifier for machine-readable PROV model of analysis provenance
 
+SampleProcessing:
+    discriminator: AIRR
+    type: object
+    properties:
+        sample_processing_id:
+            type: string
+            description: Identifier for the sample processing object. This field should be unique within the repertoire.
+
 
 # The composite schema for the repertoire object
 #
@@ -1232,12 +1240,7 @@ Repertoire:
             description: List of Sample objects
             items:
                 allOf:
-                    - sample_processing_id:
-                          type: string
-                          description: >
-                              Unique ID to denote the processing that was carried out on
-                              this sample for this study. This field should be unique within
-                              the repertoire.
+                    - $ref: '#/SampleProcessing'
                     - $ref: '#/Sample'
                     - $ref: '#/CellProcessing'
                     - $ref: '#/NucleicAcidProcessing'
