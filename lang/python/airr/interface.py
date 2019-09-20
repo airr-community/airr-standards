@@ -207,7 +207,7 @@ def load_repertoire(filename, validate=False, debug=False):
     Load an AIRR repertoire metadata file
 
     Arguments:
-      file (str): path to the input file.
+      filename (str): path to the input file.
       validate (bool): whether to validate data as it is read, raising a ValidationError
                        exception in the event of an error.
       debug (bool): debug flag. If True print debugging information to standard error.
