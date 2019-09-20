@@ -76,19 +76,12 @@ class TestInferface(unittest.TestCase):
         # Good data
         try:
             data = airr.load_repertoire(self.rep_good, validate=True)
-            reps = data['Repertoire']
-            for r in reps:
-                result = airr.schema.RepertoireSchema.validate_object(r)
-                self.assertTrue(result, 'load_repertoire(): good data failed')
         except:
             self.assertTrue(False, 'load_repertoire(): good data failed: %e' %(e))
 
         # Bad data
         try:
             data = airr.load_repertoire(self.rep_good, validate=True)
-            reps = data['Repertoire']
-            for r in reps:
-                result = airr.schema.RepertoireSchema.validate_object(r)
             self.assertFalse(True, 'load_repertoire(): bad data failed')
         except:
             pass
