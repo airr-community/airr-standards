@@ -222,7 +222,7 @@ def load_repertoire(filename, validate=False, debug=False):
 
     # determine file type from extension and use appropriate loader
     ext = filename.split('.')[-1]
-    if ext == 'yaml' or ext == 'yml':
+    if ext in ('yaml', 'yml'):
         with open(filename, 'r', encoding='utf-8') as handle:
             md = yaml.load(handle, Loader=yamlordereddictloader.Loader)
     elif ext == 'json':
