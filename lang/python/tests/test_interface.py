@@ -21,6 +21,8 @@ class TestInferface(unittest.TestCase):
         # Test data
         self.data_good = os.path.join(data_path, 'good_data.tsv')
         self.data_bad = os.path.join(data_path, 'bad_data.tsv')
+        self.rep_good = os.path.join(data_path, 'good_repertoire.airr.yaml')
+        self.rep_bad = os.path.join(data_path, 'bad_repertoire.airr.yaml')
 
         # Expected output
         self.shape_good = (9, 44)
@@ -43,6 +45,15 @@ class TestInferface(unittest.TestCase):
         result = airr.load_rearrangement(self.data_bad)
         self.assertTupleEqual(result.shape, self.shape_bad, 'load(): bad data failed')
 
+    # @unittest.skip('-> repertoire_template(): skipped\n')
+    def test_repertoire_template(self):
+        try:
+            rep = airr.repertoire_template()
+            result = airr.schema.RepertoireSchema.validate_object(rep)
+            self.assertTrue(result, 'repertoire_template(): repertoire template failed validation')
+        except:
+            self.assertTrue(False, 'repertoire_template(): repertoire template failed validation')
+
     # @unittest.skip('-> validate(): skipped\n')
     def test_validate(self):
         # Good data
@@ -60,6 +71,27 @@ class TestInferface(unittest.TestCase):
         except:
             pass
 
+    # @unittest.skip('-> load_repertoire(): skipped\n')
+    def test_load_repertoire(self):
+        # Good data
+        try:
+            data = airr.load_repertoire(self.rep_good, validate=True)
+            reps = data['Repertoire']
+            for r in reps:
+                result = airr.schema.RepertoireSchema.validate_object(r)
+                self.assertTrue(result, 'load_repertoire(): good data failed')
+        except:
+            self.assertTrue(False, 'load_repertoire(): good data failed: %e' %(e))
+
+        # Bad data
+        try:
+            data = airr.load_repertoire(self.rep_good, validate=True)
+            reps = data['Repertoire']
+            for r in reps:
+                result = airr.schema.RepertoireSchema.validate_object(r)
+            self.assertFalse(True, 'load_repertoire(): bad data failed')
+        except:
+            pass
 
 if __name__ == '__main__':
     unittest.main()
