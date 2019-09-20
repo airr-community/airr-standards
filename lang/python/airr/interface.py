@@ -239,6 +239,10 @@ def load_repertoire(filename, validate=False, debug=False):
         raise KeyError('Repertoire object cannot be found in the file')
 
     # validate if requested
+    if validate:
+        reps = md['Repertoire']
+        for r in reps:
+            RepertoireSchema.validate_object(r)
 
     # we do not perform any additional processing
     return md
