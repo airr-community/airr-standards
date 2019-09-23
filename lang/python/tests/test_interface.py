@@ -77,7 +77,7 @@ class TestInferface(unittest.TestCase):
         try:
             data = airr.load_repertoire(self.rep_good, validate=True)
         except:
-            self.assertTrue(False, 'load_repertoire(): good data failed: %e' %(e))
+            self.assertTrue(False, 'load_repertoire(): good data failed')
 
         # Bad data
         try:
