@@ -9,6 +9,7 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 1 / study	Lab address	string	Free text	Institution and institutional address of data collector	School of Medicine, Unseen University, Ankh-Morpork, Disk World	lab_address
 1 / study	Contact information (data deposition)	string	Free text	Full contact information of the data depositor, i.e. the person submitting the data to a repository. This is supposed to be a short-lived and technical role until the submission is relased.	Adrian Turnipseed, a.turnipseed@unseenu.edu	submitted_by
 1 / study	Relevant publications	string	Valid PubMed ID	Publications describing the rationale and/or outcome of the study	PMID85642	pub_ids
+1 / study	Keywords for study	string	{"controlled_vocabulary": ["contains_ig", "contains_tcr", "contains_single_cell", "contains_paired_chain"]}	Controlled vocabullary of keywords describing properties of one or more data sets in a study ()	contains_paired_chain	keywords_study
 1 / subject	Subject ID	string	Free text	Subject ID assigned by submitter, unique within study	SUB856413	subject_id
 1 / subject	Synthetic library	boolean	TRUE/FALSE	TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)	FALSE	synthetic
 1 / subject	Organism	string	{"ontology": "NCBITAXON", "top_node": "Gnathostomata", "draft": false}	Species of subject (using binomial nomenclature)	Homo sapiens	organism
@@ -72,7 +73,7 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 5 / process (comput.)	Primer match cutoffs	string	Free text	How primers were identified in the sequences, were they removed/masked/etc?		primer_match_cutoffs
 5 / process (comput.)	Collapsing method	string	Free text	The method used for combining multiple sequences from (4) into a single sequence in (5)	MUSCLE 3.8.31	collapsing_method
 5 / process (comput.)	Data processing protocols	string	Free text	General description of how QC is performed		data_processing_protocols
-6 / data (proc. seq.)	V(D)J germline reference database	string	Free text	Databases used for VDJC gene annotation plus date of retrieval / version	ENSEMBL, Homo sapiens build 90, 2017-10-01	germline_database
+5 / process (comput.)	V(D)J germline reference database	string	Free text	Databases used for VDJC gene annotation plus date of retrieval / version	ENSEMBL, Homo sapiens build 90, 2017-10-01	germline_database
 6 / data (proc. seq.)	Cell Index	string	Free text	User-specified ID for the cell from which the sequence was obtained	W06_046_091	cell_id
 6 / data (proc. seq.)	V gene	string	Free text	V segment gene and allele	IGHV1-34*01	v_call
 6 / data (proc. seq.)	D gene	string	Free text	D segment gene and allele	IGHD2-2*01	d_call

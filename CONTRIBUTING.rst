@@ -21,31 +21,32 @@ submissions. The current sub-projects include:
 
    2. Rearrangement annotations
 
--  OpenAPI definitions:
+   3. Repertoire metadata
 
-   1. MiAIRR objects
+-  OpenAPI schema definitions:
+
+   1. Repertoire metadata
 
    2. Rearrangement annotations
 
+   3. Ontologies definitions for AIRR data elements.
+
+   4. AIRR Data Commons API
+
 -  Documentation for `docs.airr-community.org`__
 
--  Python package for reading/writing file formats
+-  Python package for reading/writing/validating file formats
+
+-  R package for reading/writing/validation file formats.
+
+-  Software WG defining standardized data sets and metrics.
 
 .. __: http://docs.airr-community.org
 
 Some future sub-projects include:
 
--  Ontologies definitions for AIRR data elements.
-
--  Common Repository WG defining standard API with associated
-   specification.
-
--  R package for file format reading/writing/validation.
-
 -  Germline Database WG defining criteria, submission protocols, and
    tools, with associated file formats and specifications.
-
--  Software WG defining standardized data sets and metrics.
 
 
 Git Structure
@@ -142,6 +143,130 @@ release, which essentially should only be software updates and bug
 fixes, should be commited to that release branch. Note: a release may
 just tag ``master`` and not create the actual release branch until later
 when it is needed.
+
+Public Releases
+---------------
+
+To provide a public release of the airr-standards library, perform the
+following checklist:
+
+-  Tag the repository
+-  Generate the release on github
+-  Upload python library to PyPI
+-  Upload R library to CRAN
+
+To upload the python library to PyPI, perform the following steps:
+
+-  something
+-  something
+
+To upload the R library to CRAN, perform the following steps:
+
+-  something
+-  something
+
+
+Development Setup
+=================
+
+Local development and testing can be performed either directly in your machine
+environment, or you can use a docker container which avoids conflicts with other
+software. For all cases, you will want a local copy of the github repository.
+
+.. code-block:: bash
+
+  git clone https://github.com/airr-community/airr-standards.git
+
+If you will be working in a docker container, you can pull down the airr-standards
+image, which has all of the prerequisites installed, or you can use your own image.
+The airr-standards image provides a python3 environment.
+
+.. code-block:: bash
+
+  docker pull airrc/airr-standards
+
+You will want to mount your local copy of the github repository into the container.
+This example command puts your local copy at the ``/work`` directory. Note that a copy
+of the repository exists in the image from when it is built, but don't edit that copy
+as your changes will get lost when you exit the docker container. It is suggested
+that you edit files outside of the docker container to prevent permissions issues. Also,
+avoid doing ``git`` commands inside the docker container. Certains commands that write
+data like ``git add`` or ``git commit`` can change permissions and make your local
+copy of the repository unusable.
+
+.. code-block:: bash
+
+  cd airr-standards
+  docker run -v $PWD:/work -it airrc/airr-standards bash
+
+Python Library
+--------------
+
+Normal users would install the python library using ``pip`` which pulls the package
+from the internet. For development, you want to install from your local copy. The
+commands are similar whether in docker or directly in your machine environment.
+Starting at the top level repository directory:
+
+.. code-block:: bash
+
+  cd lang/python
+  python setup.py install
+
+If you are working directly in your machine environment, you may want to install in your
+user site packages instead of the system site packages, which can be done by adding
+the ``--user`` option to the install.
+
+.. code-block:: bash
+
+  python setup.py install --user
+
+You can run the python test suite from the same directory where you do the install command.
+
+.. code-block:: bash
+
+  python -m unittest discover
+
+R Library
+---------
+
+Users can install the latest release from CRAN in the usual way via ``install.packages("airr")``.
+To build the package from a local source copy first install the build dependencies:
+
+.. code-block:: R
+
+  install.packages(c("devtools", "knitr", "rmarkdown", "testthat"))
+
+Then run the following R commands from the package root ``lang/R``:
+
+.. code-block:: R
+
+  library(devtools)
+  install_deps(dep=T)
+  document()
+  build()
+  install()
+
+Tests can be run from the same directory as follows:
+
+.. code-block:: R
+
+  library(devtools)
+  test()
+
+Documentation
+-------------
+
+The documentation at `docs.airr-community.org`__ is built using ``sphinx`` in a python3
+environment. From the top level airr-standards directory, run this command to build a
+local version of the website.
+
+.. code-block:: bash
+
+  sphinx-build -a -E -b html docs docs/_build/html
+
+The documentation can then be viewed in your browser by opening the file ``docs/_build/html/index.html``.
+
+.. __: http://docs.airr-community.org
 
 
 Code Style

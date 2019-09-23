@@ -1,3 +1,5 @@
+.. _MiAIRR:
+
 ======================
 Introduction to MiAIRR
 ======================
@@ -30,11 +32,11 @@ elements within these sets are defined here__.
    set.
 
 
-Implementations
-===============
+Data Submission Implementations
+===============================
 
--  NCBI-based - see this document
--  AIRR Common Repositories - *in development*
+-  :ref:`National Center for Biotechnology Information (NCBI) <MiAIRR_NCBI>`
+-  AIRR Data Commons Repositories - *in development*
 
 References
 ==========
