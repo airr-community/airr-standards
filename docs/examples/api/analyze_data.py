@@ -50,15 +50,15 @@ import numpy as np
 
 # We have 4 T cell subsets
 subsets = {
-    'Naive CD4+ T cell': [0 for number in range(0,50)],
-    'Naive CD8+ T cell': [0 for number in range(0,50)],
-    'Memory CD4+ T cell': [0 for number in range(0,50)],
-    'Memory CD8+ T cell': [0 for number in range(0,50)]
+    'CL_0000895': [0 for number in range(0,50)],
+    'CL_0000900': [0 for number in range(0,50)],
+    'CL_0000897': [0 for number in range(0,50)],
+    'CL_0000909': [0 for number in range(0,50)]
     }
 
 # Load the repertoire metadata
-loader = airr.load_repertoire('repertoires.airr.json')
-repertoires = loader.repertoires
+data = airr.load_repertoire('repertoires.airr.json')
+repertoires = { obj['repertoire_id'] : obj for obj in data['Repertoire'] }
 
 # Iterate through the rearrangement data and tabulate the counts
 reader = airr.read_rearrangement('rearrangements.tsv')
@@ -66,10 +66,12 @@ for row in reader:
     # get the appropriate repertoire
     rep = repertoires[row['repertoire_id']]
     # use the cell_subset field in the repertoire
-    c = subsets[rep['sample'][0]['cell_subset']]
+    c = subsets[rep['sample'][0]['cell_subset']['id']]
     # increment the length count
     if row['junction_aa_length']:
-        #print(row['junction_aa_length'])
+        if int(row['junction_aa_length']) >= 50:
+            continue
+        #print(int(row['junction_aa_length']))
         c[int(row['junction_aa_length'])] += 1
 
 # normalize the counts so the histograms are comparable
@@ -86,10 +88,10 @@ x = np.arange(len(labels))  # the label locations
 width = 0.2  # the width of the bars
 
 fig, ax = plt.subplots()
-rects1 = ax.bar(x - width, subsets['Naive CD4+ T cell'][10:20], width/2, label='Naive CD4+ T cell')
-rects2 = ax.bar(x - width/2, subsets['Naive CD8+ T cell'][10:20], width/2, label='Naive CD8+ T cell')
-rects3 = ax.bar(x, subsets['Memory CD4+ T cell'][10:20], width/2, label='Memory CD4+ T cell')
-rects4 = ax.bar(x + width/2, subsets['Memory CD8+ T cell'][10:20], width/2, label='Memory CD8+ T cell')
+rects1 = ax.bar(x - width, subsets['CL_0000895'][10:20], width/2, label='Naive CD4+ T cell')
+rects2 = ax.bar(x - width/2, subsets['CL_0000900'][10:20], width/2, label='Naive CD8+ T cell')
+rects3 = ax.bar(x, subsets['CL_0000897'][10:20], width/2, label='Memory CD4+ T cell')
+rects4 = ax.bar(x + width/2, subsets['CL_0000909'][10:20], width/2, label='Memory CD8+ T cell')
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
 ax.set_ylabel('Relative Counts')
