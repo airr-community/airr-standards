@@ -1,0 +1,106 @@
+#
+# blank metadata template
+#
+
+Repertoire:
+  - repertoire_id: ""
+    study:
+      study_id: ""
+      study_title: ""
+      study_type:
+        id: ""
+        value: ""
+      study_description: ""
+      inclusion_exclusion_criteria: ""
+      lab_name: ""
+      lab_address: ""
+      submitted_by: ""
+      collected_by: ""
+      grants: ""
+      pub_ids: ""
+      keywords_study:
+        -
+    subject:
+      subject_id: ""
+      synthetic: false
+      organism:
+        id: ""
+        value: ""
+      sex: ""
+      age: ""
+      age_event: ""
+      ancestry_population: ""
+      ethnicity: ""
+      race: ""
+      strain_name: ""
+      linked_subjects: ""
+      link_type: ""
+      diagnosis:
+        - study_group_description: ""
+          disease_diagnosis: ""
+          disease_length: ""
+          disease_stage: ""
+          prior_therapies: ""
+          immunogen: ""
+          intervention: ""
+          medical_history: ""
+    sample:
+      - sample_id: ""
+        sample_type: ""
+        tissue: ""
+        anatomic_site: ""
+        disease_state_sample: ""
+        collection_time_point_relative: ""
+        collection_time_point_reference: ""
+        biomaterial_provider: ""
+        # cell processing
+        tissue_processing: ""
+        cell_subset:
+          id: ""
+          value: ""
+        cell_phenotype: ""
+        single_cell: false
+        cell_number: null
+        cells_per_reaction: null
+        cell_storage: false
+        cell_quality: ""
+        cell_isolation: ""
+        cell_processing_protocol: ""
+        # nucleic acid processing
+        template_class: ""
+        template_quality: ""
+        template_amount: ""
+        library_generation_method: ""
+        library_generation_protocol: ""
+        library_generation_kit_version: ""
+        pcr_target:
+          - pcr_target_locus: ""
+            forward_pcr_primer_target_location: ""
+            reverse_pcr_primer_target_location: ""
+        complete_sequences: false
+        physical_linkage: "none"
+        # sequencing run
+        sequencing_run_id: ""
+        total_reads_passing_qc_filter: null
+        sequencing_platform: ""
+        read_length: ""
+        sequencing_facility: ""
+        sequencing_run_date: ""
+        sequencing_kit: ""
+        # raw data
+        sequencing_files:
+          file_type: null
+          filename: ""
+          read_direction: ""
+          paired_filename: ""
+          paired_read_direction: ""
+    data_processing:
+      - data_processing_id: ""
+        primary_annotation: null
+        software_versions: ""
+        paired_reads_assembly: ""
+        quality_thresholds: ""
+        primer_match_cutoffs: ""
+        collapsing_method: ""
+        data_processing_protocols: ""
+        analysis_provenance_id: ""
