@@ -19,8 +19,8 @@ tools comply with this standard will, subject to ratification from the
 AIRR Software WG, be permitted to advertise their tools as being
 AIRR-compliant.
 
-.. _`Adaptive Immune Receptor Repertoire (AIRR) Community`: https://www.antibodysociety.org/airrc/
-.. _`AIRR Software Working Group`: https://www.antibodysociety.org/software-working-group/
+.. _`Adaptive Immune Receptor Repertoire (AIRR) Community`: http://airr-community.org/
+.. _`AIRR Software Working Group`: https://www.antibodysociety.org/airrc/working_groups/software/
 
 Requirements
 ------------
@@ -51,14 +51,13 @@ Tools must:
 
    a. A `Dockerfile`_ that automatically builds a `container
       image`_ on `Docker Hub`_.
+   b. A `Singularity recipe file`_ that `automatically builds a container image`_ 
+      on `Singularity Hub`_.
+
 		  
 .. _`Dockerfile`: https://docs.docker.com/engine/reference/builder/
 .. _`container image`: https://docs.docker.com/docker-hub/builds/
 .. _`Docker Hub`: https://docs.docker.com/docker-hub/
-
-   b. A `Singularity recipe file`_ that `automatically builds a container image`_ 
-      on `Singularity Hub`_.
-
 .. _`Singularity recipe file`: https://www.sylabs.io/docs/	
 .. _`automatically builds a container image`: https://github.com/singularityhub/singularityhub.github.io/wiki/Automated-Build
 .. _`Singularity Hub`: https://singularity-hub.org/	  
@@ -139,10 +138,10 @@ and make it easy for the maintainer to keep the container’s dependencies
 up to date in subsequent releases.
 
 An example Docker container is provided on the Software WG
-`GitHub repository <github-swwg>`_. This example encapsulates `IgBLAST`_,
+`Github Repository`_. This example encapsulates `IgBLAST`_,
 and implements the `bioboxes`_ command-line standard.
 
-.. _`github-swwg`: https://github.com/airr-community/software-wg
+.. _`Github Repository`: https://github.com/airr-community/software-wg
 .. _`IgBLAST`: https://www.ncbi.nlm.nih.gov/igblast/
 .. _`bioboxes`: http://bioboxes.org
 
