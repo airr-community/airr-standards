@@ -1,6 +1,8 @@
 """
 Interface functions for file operations
 """
+from __future__ import absolute_import
+
 # System imports
 import sys
 import pandas as pd
@@ -10,6 +12,7 @@ from pkg_resources import resource_filename
 import json
 import yaml
 import yamlordereddictloader
+from io import open
 
 # Load imports
 from airr.io import RearrangementReader, RearrangementWriter
