@@ -307,10 +307,10 @@ Subject:
                 subset: subject
                 name: Sex
                 format: controlled vocabulary
-        age:
-            type: string
-            description: Absolute age of subject at time point `Age event`
-            example: "65 yr"
+        age_min:
+            type: integer
+            description: lower boundary of age range
+            example: 60
             x-airr:
                 miairr: true
                 required: true
@@ -318,7 +318,33 @@ Subject:
                 set: 1
                 subset: subject
                 name: Age
-                format: physical quantity
+        age_max:
+            type: integer
+            description: upper boundary of age range
+            example: 80
+            x-airr:
+                miairr: true
+                required: true
+                nullable: true
+                set: 1
+                subset: subject
+                name: Age
+        age_unit:
+            type: string
+            enum:
+                - d
+                - w
+                - m
+                - a
+            description: unit of age range
+            example: "a"
+            x-airr:
+                miairr: true
+                required: true
+                nullable: true
+                set: 1
+                subset: subject
+                name: Age
         age_event:
             type: string
             description: Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
