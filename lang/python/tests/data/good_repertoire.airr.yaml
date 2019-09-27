@@ -26,7 +26,8 @@ Repertoire:
         id: "9606"
         value: Homo sapiens
       sex: F
-      age: 27yr
+      age_min: 27
+      age_units: years
       age_event: null
       ancestry_population: null
       ethnicity: null
@@ -119,7 +120,8 @@ Repertoire:
         id: "9606"
         value: Homo sapiens
       sex: F
-      age: 27yr
+      age_min: 27
+      age_unit: years
       age_event: null
       ancestry_population: null
       ethnicity: null
@@ -209,7 +211,8 @@ Repertoire:
         id: "9606"
         value: Homo sapiens
       sex: F
-      age: 27yr
+      age_min: 27
+      age_unit: years
       age_event: null
       ancestry_population: null
       ethnicity: null
