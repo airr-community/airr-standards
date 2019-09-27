@@ -28,6 +28,9 @@ Repertoire:
         value: ""
       sex: ""
       age: ""
+      age_min: null
+      age_max: null
+      age_unit: ""
       age_event: ""
       ancestry_population: ""
       ethnicity: ""

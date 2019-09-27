@@ -315,9 +315,13 @@ Subject:
                 subset: subject
                 name: Sex
                 format: controlled vocabulary
+        age:
+            type: string
+            x-airr:
+                deprecated: true
         age_min:
-            type: integer
-            description: lower boundary of age range
+            type: number
+            description: specific age or lower boundary of age range
             example: 60
             x-airr:
                 miairr: true
@@ -327,8 +331,8 @@ Subject:
                 subset: subject
                 name: Age
         age_max:
-            type: integer
-            description: upper boundary of age range
+            type: number
+            description: upper boundary of age range or null if specific age given in age_min
             example: 80
             x-airr:
                 miairr: true
@@ -340,12 +344,12 @@ Subject:
         age_unit:
             type: string
             enum:
-                - d
-                - w
-                - m
-                - a
+                - days
+                - weeks
+                - months
+                - years
             description: unit of age range
-            example: "a"
+            example: "years"
             x-airr:
                 miairr: true
                 required: true
