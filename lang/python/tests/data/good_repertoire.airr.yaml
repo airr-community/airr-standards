@@ -27,6 +27,7 @@ Repertoire:
         value: Homo sapiens
       sex: F
       age_min: 27
+      age_max: null
       age_units: years
       age_event: null
       ancestry_population: null
@@ -122,6 +123,7 @@ Repertoire:
         value: Homo sapiens
       sex: F
       age_min: 27
+      age_max: null
       age_unit: years
       age_event: null
       ancestry_population: null
@@ -214,6 +216,7 @@ Repertoire:
         value: Homo sapiens
       sex: F
       age_min: 27
+      age_max: null
       age_unit: years
       age_event: null
       ancestry_population: null
