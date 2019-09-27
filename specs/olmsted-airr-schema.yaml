@@ -22,12 +22,12 @@ properties:
             codons". AIRR: see cdr3_start, which excludes the conserved residue and
             uses a "1-based closed interval"', minimum: 0, type: integer}
         d_call: {description: D gene used in rearrangement., type: string}
-        d_end: {description: 'Position in d gene at which rearrangement ends. AIRR:
-            see d_germline_end, which uses 1-based closed interval as opposed to 0-based
+        d_alignment_end: {description: 'Position in rearrangement (aligned to clonal sequences)
+            at which d gene ends. AIRR: this field uses 1-based closed interval as opposed to 0-based
             python slice convention intervals used by partis.', minimum: 0, type: integer}
-        d_start: {description: 'Position in d gene at which rearrangement starts.
-            AIRR: see d_germline_start, which uses 1-based closed interval as opposed
-            to 0-based python slice convention intervals used by partis.', minimum: 0,
+        d_alignment_start: {description: 'Position in rearrangement (aligned to clonal sequences)
+            at which d gene starts. AIRR: this field uses 1-based closed interval as opposed to 0-based
+            python slice convention intervals used by partis.', minimum: 0,
           type: integer}
         has_seed: {description: 'Does this clonal family have a seed sequence in it?.
             AIRR: ?', type: boolean}
@@ -35,12 +35,12 @@ properties:
           type: string}
         ident: &id001 {description: UUID specific to the given object, type: string}
         j_call: {description: J gene used in rearrangement., type: string}
-        j_end: {description: 'Position in j gene at which rearrangement ends. AIRR:
-            see j_germline_end, which uses 1-based closed interval as opposed to 0-based
+        j_alignment_end: {description: 'Position in rearrangement (aligned to clonal sequences)
+            at which j gene ends. AIRR: this field uses 1-based closed interval as opposed to 0-based
             python slice convention intervals used by partis.', minimum: 0, type: integer}
-        j_start: {description: 'Position in j gene at which rearrangement starts.
-            AIRR: see j_germline_start, which uses 1-based closed interval as opposed
-            to 0-based python slice convention intervals used by partis.', minimum: 0,
+        j_alignment_start: {description: 'Position in rearrangement (aligned to clonal sequences)
+            at which j gene starts. AIRR: this field uses 1-based closed interval as opposed to 0-based
+            python slice convention intervals used by partis.', minimum: 0,
           type: integer}
         junction_length: {description: Length of CDR3 region including both conserved
             codons in their entirety., minimum: 0, type: integer}
@@ -141,12 +141,12 @@ properties:
         unique_seqs_count: {description: 'Number of unique sequences in the clonal
             family. AIRR: ?', minimum: 1, type: integer}
         v_call: {description: V gene used in rearrangement., type: string}
-        v_end: {description: 'Position in v gene at which rearrangement ends. AIRR:
-            see v_germline_end, which uses 1-based closed interval as opposed to 0-based
+        v_alignment_end: {description: 'Position in rearrangement (aligned to clonal sequences)
+            at which v gene ends. AIRR: this field uses 1-based closed interval as opposed to 0-based
             python slice convention intervals used by partis.', minimum: 0, type: integer}
-        v_start: {description: 'Position in v gene at which rearrangement starts.
-            AIRR: see v_germline_start, which uses 1-based closed interval as opposed
-            to 0-based python slice convention intervals used by partis.', minimum: 0,
+        v_alignment_start: {description: 'Position in rearrangement (aligned to clonal sequences)
+            at which v gene starts. AIRR: this field uses 1-based closed interval as opposed to 0-based
+            python slice convention intervals used by partis.', minimum: 0,
           type: integer}
       required: [unique_seqs_count, mean_mut_freq, v_start, v_end, j_start, j_end]
       title: Clonal Family
