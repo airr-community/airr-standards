@@ -1,15 +1,22 @@
 """
 Interface functions for file operations
 """
+from __future__ import absolute_import
+
 # System imports
 import sys
 import pandas as pd
 from collections import OrderedDict
 from itertools import chain
+from pkg_resources import resource_filename
+import json
+import yaml
+import yamlordereddictloader
+from io import open
 
 # Load imports
 from airr.io import RearrangementReader, RearrangementWriter
-from airr.schema import ValidationError, RearrangementSchema
+from airr.schema import ValidationError, RearrangementSchema, RepertoireSchema
 
 
 def read_rearrangement(filename, validate=False, debug=False):
@@ -154,7 +161,7 @@ def merge_rearrangement(out_filename, in_filenames, drop=False, debug=False):
 
 def validate_rearrangement(filename, debug=False):
     """
-    Validates one or more AIRR rearrangements files
+    Validates an AIRR rearrangements file
 
     Arguments:
       filename (str): path of the file to validate.
@@ -196,3 +203,152 @@ def validate_rearrangement(filename, debug=False):
     handle.close()
 
     return valid
+
+
+def load_repertoire(filename, validate=False, debug=False):
+    """
+    Load an AIRR repertoire metadata file
+
+    Arguments:
+      filename (str): path to the input file.
+      validate (bool): whether to validate data as it is read, raising a ValidationError
+                       exception in the event of an error.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      dictionary of repertoire objects.
+    """
+
+    # Because the repertoires are read in completely, we do not bother
+    # with a reader class.
+    md = None
+
+    # determine file type from extension and use appropriate loader
+    ext = filename.split('.')[-1]
+    if ext in ('yaml', 'yml'):
+        with open(filename, 'r', encoding='utf-8') as handle:
+            md = yaml.load(handle, Loader=yamlordereddictloader.Loader)
+    elif ext == 'json':
+        with open(filename, 'r', encoding='utf-8') as handle:
+            md = json.load(handle)
+    else:
+        if debug:
+            sys.stderr.write('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
+        raise TypeError('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
+
+    if md.get('Repertoire') is None:
+        if debug:
+            sys.stderr.write('%s is missing "Repertoire" key\n' % (filename))
+        raise KeyError('Repertoire object cannot be found in the file')
+
+    # validate if requested
+    if validate:
+        reps = md['Repertoire']
+        for r in reps:
+            RepertoireSchema.validate_object(r)
+
+    # we do not perform any additional processing
+    return md
+
+
+def validate_repertoire(filename, debug=False):
+    """
+    Validates an AIRR repertoire metadata file
+
+    Arguments:
+      filename (str): path of the file to validate.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      bool: True if files passed validation, otherwise False.
+    """
+    valid = True
+    if debug:
+        sys.stderr.write('Validating: %s\n' % filename)
+
+    # load with validate
+    try:
+        data = load_repertoire(filename, validate=True, debug=debug)
+    except TypeError:
+        valid = False
+    except KeyError:
+        valid = False
+    except ValidationError as e:
+        valid = False
+        if debug:
+            sys.stderr.write('%s has validation error: %s\n' % (filename, e))
+
+    # Validate each repertoire
+    reps = data['Repertoire']
+    i = 0
+    for r in reps:
+        try:
+            RepertoireSchema.validate_object(r)
+            i = i + 1
+        except ValidationError as e:
+            valid = False
+            if debug:
+                sys.stderr.write('%s has repertoire at array position %i with validation error: %s\n' % (filename, i, e))
+
+    return valid
+
+def write_repertoire(filename, repertoires, info=None, debug=False):
+    """
+    Write an AIRR repertoire metadata file
+
+    Arguments:
+      file (str): path to the output file.
+      repertoires (list): array of repertoire objects.
+      info (object): info object to write. Will write current AIRR Schema info if not specified.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      bool: True if the file is written without error.
+    """
+    if not isinstance(repertoires, list):
+        if debug:
+            sys.stderr.write('Repertoires parameter is not a list\n')
+        raise TypeError('Repertoires parameter is not a list')
+
+    md = OrderedDict()
+    if info is None:
+        info = RearrangementSchema.info.copy()
+        info['title'] = 'Repertoire metadata'
+        info['description'] = 'Repertoire metadata written by AIRR Standards Python Library'
+    md['Info'] = info
+    md['Repertoire'] = repertoires
+
+    # determine file type from extension and use appropriate loader
+    ext = filename.split('.')[-1]
+    if ext == 'yaml' or ext == 'yml':
+        with open(filename, 'w') as handle:
+            md = yaml.dump(md, handle, default_flow_style=False)
+    elif ext == 'json':
+        with open(filename, 'w') as handle:
+            md = json.dump(md, handle, sort_keys=False, indent=2)
+    else:
+        if debug:
+            sys.stderr.write('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
+        raise TypeError('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
+        
+    return True
+
+
+def repertoire_template():
+    """
+    Return a blank repertoire object from the template. This object has the complete
+    structure with all of the fields and all values set to None or empty string.
+
+    Returns:
+      object: Empty repertoire object
+    """
+    
+    # TODO: I suppose we should dynamically create this from the schema
+    # versus loading a template.
+
+    # Load blank template
+    f = resource_filename(__name__, 'specs/blank.airr.yaml')
+    object = load_repertoire(f)
+
+    return object['Repertoire'][0]
+
