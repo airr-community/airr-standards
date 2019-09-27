@@ -28,7 +28,7 @@ Repertoire:
       sex: F
       age_min: 27
       age_max: null
-      age_units: years
+      age_unit: years
       age_event: null
       ancestry_population: null
       ethnicity: null
