@@ -313,7 +313,7 @@ Subject:
                 deprecated: true
         age_min:
             type: number
-            description: specific age or lower boundary of age range
+            description: Specific age or lower boundary of age range.
             example: 60
             x-airr:
                 miairr: true
@@ -324,7 +324,7 @@ Subject:
                 name: Age
         age_max:
             type: number
-            description: upper boundary of age range or null if specific age given in age_min
+            description: Upper boundary of age range or equal to age_min for specific age. This field should only be null if age_min is null.
             example: 80
             x-airr:
                 miairr: true
