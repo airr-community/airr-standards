@@ -21,16 +21,7 @@
 import os
 import sys
 import yaml
-
-
-try:
-    import yamlordereddictloader
-except ImportError:
-    import pip
-    pip.main(["install", "--user", "yamlordereddictloader"])
-    import yamlordereddictloader
-
-# import yamlordereddictloader
+import yamlordereddictloader
 from unittest.mock import MagicMock
 sys.path.append(os.path.abspath('.'))
 
