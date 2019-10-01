@@ -15,7 +15,8 @@ high-level data sets that will guide the publication, curation and
 sharing of AIRR-Seq data and metadata: Study and subject, sample
 collection, sample processing and sequencing, raw sequences, processing
 of sequence data, and processed AIRR sequences. The detailed data
-elements within these sets are defined here__.
+elements within these sets can be downloaded :download:`here <../_downloads/AIRR_Minimal_Standard_Data_Elements.tsv>`.
+The former version can be found `here`__.
 
 .. _`AIRR Community Minimal Standards Working Group`:
    http://airr-community.org/working_groups/minimal_standards
