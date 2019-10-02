@@ -756,8 +756,8 @@ in the AIRR Schema.
 
     * - Field(s)
       - Description
-    * - rearrangement_id, repertoire_id, data_processing_id, clone_id, cell_id, pair_id
-      - Identifiers; rearrangement_id allows for query of that specific rearrangement object in the repository, while repertoire_id and data_processing_id are links to the repertoire metadata for the rearrangement. The clone_id, cell_id, and pair_id are all identifiers that group rearrangements based on clone definition, single cell assignment, and paired chain linking.
+    * - rearrangement_id, repertoire_id, sample_processing_id, data_processing_id, clone_id, cell_id, pair_id
+      - Identifiers; rearrangement_id allows for query of that specific rearrangement object in the repository, while repertoire_id, sample_processing_id, and data_processing_id are links to the repertoire metadata for the rearrangement. The clone_id, cell_id, and pair_id are all identifiers that group rearrangements based on clone definition, single cell assignment, and paired chain linking.
     * - locus, v_call, d_call, j_call, c_call, productive, junction_aa, junction_aa_length
       - Commonly used rearrangement annotations.
 
