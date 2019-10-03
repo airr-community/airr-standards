@@ -1363,7 +1363,7 @@ Rearrangement:
             description: Gene locus (chain type). For example, IGH, IGI, IGK, IGL, TRA, TRB, TRD, or TRG.
         v_call:
             type: string
-            description: V gene with allele. For example, IGHV4-59*01.
+            description: V gene with allele.  If referring to a know gene in a reference database such as the IMGT/Gene DB, the relevant gene/allele nomenclature should be followed (e.g. IGHV4-59*01).
             example: IGHV4-59*01
             x-airr:
                 miairr: true
@@ -1374,7 +1374,7 @@ Rearrangement:
                 name: V gene
         d_call:
             type: string
-            description: D gene with allele. For example, IGHD3-10*01.
+            description: D gene with allele.  If referring to a know gene in a reference database such as the IMGT/Gene DB, the relevant gene/allele nomenclature should be followed (e.g. IGHD3-10*01).
             example: IGHD3-10*01
             x-airr:
                 miairr: true
@@ -1385,7 +1385,7 @@ Rearrangement:
                 name: D gene
         j_call:
             type: string
-            description: J gene with allele. For example, IGHJ4*02.
+            description: J gene with allele.  If referring to a know gene in a reference database such as the IMGT/Gene DB, the relevant gene/allele nomenclature should be followed (e.g. IGHJ4*02).
             example: IGHJ4*02
             x-airr:
                 miairr: true
