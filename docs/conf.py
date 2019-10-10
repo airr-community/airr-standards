@@ -302,7 +302,7 @@ data_elements = [["MiAIRR data set", "Subset",
           "Content format",
           "MiAIRR content definition",
           "Field value example",
-          "AIRR Formats WG field name"]]
+          "AIRR Schema field name"]]
 
 
 # iterate over first level of yaml items
@@ -326,7 +326,7 @@ for key, v in airr_schema.items():
                     if "example" in str(property_values):
                         airr_field_value_example = airr_properties[airr_property]["example"]
                     else:
-                        airr_field_value_example = "NULL"
+                        airr_field_value_example = ""
 
                     if "description" in str(property_values):
                         airr_description = airr_properties[airr_property]["description"]
@@ -345,9 +345,16 @@ for key, v in airr_schema.items():
 
                         if "ontology" in airr_properties[airr_property]["x-airr"]:
 
-                            airr_format = "Ontology: " + str(list(airr_properties[airr_property]["x-airr"]["ontology"]))
+                            airr_format = "Ontology: { name: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["name"])
+                            airr_format += ", top_node: {"
+                            airr_format += "id: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["top_node"]["id"])
+                            airr_format += ", value: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["top_node"]["value"]) + "}"
+                            airr_format += ", draft: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["draft"])
+                            airr_format += ", url: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["url"])
+                            airr_format += " }"
                             # get 'type' for ontology
                             airr_data_type = airr_schema["Ontology"]["properties"]["value"]["type"]
+                            airr_field_value_example = "id: " + str(airr_properties[airr_property]["example"]["id"]) + ", value: " + str(airr_properties[airr_property]["example"]["value"])
 
                         elif "controlled vocabulary" in str(property_values):
                             airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["enum"])
@@ -357,7 +364,9 @@ for key, v in airr_schema.items():
                         if airr_data_type == "string":
                             airr_format = "Free text"
                         elif airr_data_type == "integer": #
-                            airr_format = "Any number"
+                            airr_format = "Any positive integer"
+                        elif airr_data_type == "number": #
+                            airr_format = "Any positive number"
                         elif airr_data_type == "boolean":  #
                             airr_format = "TRUE / FALSE"
 
