@@ -641,6 +641,24 @@ CellProcessing:
                 set: 3
                 subset: process (cell)
                 name: Cell subset phenotype
+        cell_species:
+            $ref: '#/Ontology'
+            description: Binomial designation of the species from which the analyzed cells originate. Important e.g., for chimeric animal models.
+            example:
+                id: 9096
+                value: Homo sapiens
+            x-airr:
+                miairr: false
+                required: false
+                nullable: true
+                format: ontology
+                ontology:
+                    draft: false
+                    name: NCBITAXON
+                    url: https://www.ncbi.nlm.nih.gov/taxonomy
+                    top_node:
+                        id: 7776
+                        value: Gnathostomata
         single_cell:
             type: boolean
             description: TRUE if single cells were isolated into separate compartments
@@ -1325,6 +1343,24 @@ Rearrangement:
         locus:
             type: string
             description: Gene locus (chain type). For example, IGH, IGI, IGK, IGL, TRA, TRB, TRD, or TRG.
+        locus_species:
+            $ref: '#/Ontology'
+            description: Binomial designation of the species from which the locus originates. Important e.g., for transgenic animal models.
+            example:
+                id: 9096
+                value: Homo sapiens
+            x-airr:
+                miairr: false
+                required: false
+                nullable: true
+                format: ontology
+                ontology:
+                    draft: false
+                    name: NCBITAXON
+                    url: https://www.ncbi.nlm.nih.gov/taxonomy
+                    top_node:
+                        id: 7776
+                        value: Gnathostomata
         v_call:
             type: string
             description: V gene with allele. For example, IGHV4-59*01.
