@@ -1,3 +1,5 @@
+.. _ApplicationSupport:
+
 Applications Supporting AIRR Standards
 ================================================================================
 

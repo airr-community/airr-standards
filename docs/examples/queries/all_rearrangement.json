@@ -1,0 +1,67 @@
+{
+    "filters":{
+        "op":"and",
+        "content": [
+            {
+                "op":"in",
+                "content": {
+                    "field":"repertoire_id",
+                    "value":[
+			"2366080924918616551-242ac11c-0001-012",
+			"2541616238306136551-242ac11c-0001-012",
+			"1993707260355416551-242ac11c-0001-012"
+		    ]
+                }
+	    },
+	    {
+                "op":"=",
+                "content": {
+                    "field":"pair_id",
+                    "value":"ABC314159"
+                }
+	    },
+	    {
+                "op":"=",
+                "content": {
+                    "field":"cell_id",
+                    "value":"W06_046_091"
+                }
+	    },
+	    {
+                "op":"=",
+                "content": {
+                    "field":"clone_id",
+                    "value":"123"
+                }
+	    },
+	    {
+                "op":"=",
+                "content": {
+                    "field":"rearrangement_id",
+                    "value":"123"
+                }
+	    },
+	    {
+                "op":"=",
+                "content": {
+                    "field":"data_processing_id",
+                    "value":"456"
+                }
+	    },
+	    {
+                "op":"=",
+                "content": {
+                    "field":"junction_aa",
+                    "value":"CASSYIKLN"
+                }
+	    },
+	    {
+                "op":">",
+                "content": {
+                    "field":"junction_aa_length",
+                    "value":10
+                }
+	    }
+	]
+    }
+}

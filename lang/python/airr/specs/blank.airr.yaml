@@ -108,4 +108,5 @@ Repertoire:
         primer_match_cutoffs: ""
         collapsing_method: ""
         data_processing_protocols: ""
+        germline_database: ""
         analysis_provenance_id: ""
