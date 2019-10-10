@@ -334,14 +334,11 @@ Subject:
                 subset: subject
                 name: Age
         age_unit:
-            type: string
-            enum:
-                - days
-                - weeks
-                - months
-                - years
+            $ref: '#/Ontology'
             description: unit of age range
-            example: "years"
+            example:
+                id: UO_0000036
+                value: year
             x-airr:
                 miairr: true
                 required: true
@@ -349,6 +346,14 @@ Subject:
                 set: 1
                 subset: subject
                 name: Age
+                format: ontology
+                ontology:
+                    draft: true
+                    name: Units of measurement ontology
+                    url: http://www.ontobee.org/ontology/UO
+                    top_node:
+                        id: UO_0000003
+                        value: time unit
         age_event:
             type: string
             description: Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.

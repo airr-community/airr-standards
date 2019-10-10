@@ -30,7 +30,9 @@ Repertoire:
       age: ""
       age_min: null
       age_max: null
-      age_unit: ""
+      age_unit:
+        id: ""
+        value: ""
       age_event: ""
       ancestry_population: ""
       ethnicity: ""
