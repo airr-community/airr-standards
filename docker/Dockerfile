@@ -17,7 +17,8 @@ RUN pip3 install \
     pandas \
     biopython \
     recommonmark \
-    sphinxcontrib-autoprogram
+    sphinxcontrib-autoprogram \
+    sphinx_bootstrap_theme
 
 
 # Copy source
