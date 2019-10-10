@@ -28,7 +28,9 @@ Repertoire:
       sex: F
       age_min: 27
       age_max: 27
-      age_unit: years
+      age_unit:
+        id: UO_0000036
+        value: year
       age_event: null
       ancestry_population: null
       ethnicity: null
@@ -124,7 +126,9 @@ Repertoire:
       sex: F
       age_min: 27
       age_max: 27
-      age_unit: years
+      age_unit:
+        id: UO_0000036
+        value: year
       age_event: null
       ancestry_population: null
       ethnicity: null
@@ -217,7 +221,9 @@ Repertoire:
       sex: F
       age_min: 27
       age_max: 27
-      age_unit: years
+      age_unit:
+        id: UO_0000036
+        value: year
       age_event: null
       ancestry_population: null
       ethnicity: null
