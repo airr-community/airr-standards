@@ -1210,7 +1210,7 @@ GenotypeSet:
             items:
                 $ref: '#/Genotype'
 
-# This enumerates the alleles and gene deletions inferred in a single subject. Included alleles may either be listed by reference to a GermlineSet, or
+# This enumerates the alleles and gene deletions inferred in a single subject. Included alleles may either be listed by reference to a GermlineSet, or 
 # listed as 'undocumented', in which case the inferred sequence is provided
 
 # Genotype of adaptive immune receptors
@@ -3350,6 +3350,28 @@ Rearrangement:
                 adc-query-support: true
                 name: Gene locus
                 format: controlled_vocabulary
+        locus_species:
+            $ref: '#/Ontology'
+            description: >
+                Binomial designation of the species from which the locus originates. Typically, this value should be
+                identical to `organism`, if which case it SHOULD NOT be set explicitly. However, there are valid
+                experimental setups in which the two might differ, e.g. transgenic animal models. If set, this key
+                will overwrite the `organism` information for all lower layers of the schema.
+            title: Locus species
+            example:
+                id: NCBITAXON:9606
+                label: Homo sapiens
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                name: Locus species
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
         v_call:
             type: string
             description: >
@@ -4343,8 +4365,8 @@ Cell:
                 name: Virtual pairing
 
 # The CellExpression object acts as a container to hold a single expression level measurement from
-# an experiment. Expression data is associated with a cell_id and the related repertoire_id and
-# data_processing_id as cell_id is not guaranteed to be unique outside the data processing for
+# an experiment. Expression data is associated with a cell_id and the related repertoire_id and 
+# data_processing_id as cell_id is not guaranteed to be unique outside the data processing for 
 # a single repertoire.
 CellExpression:
     type: object
