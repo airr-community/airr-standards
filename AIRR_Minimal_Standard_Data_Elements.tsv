@@ -75,10 +75,10 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 5 / process (comput.)	Data processing protocols	string	Free text	General description of how QC is performed		data_processing_protocols
 5 / process (comput.)	V(D)J germline reference database	string	Free text	Databases used for VDJC gene annotation plus date of retrieval / version	ENSEMBL, Homo sapiens build 90, 2017-10-01	germline_database
 6 / data (proc. seq.)	Cell Index	string	Free text	User-specified ID for the cell from which the sequence was obtained	W06_046_091	cell_id
-6 / data (proc. seq.)	V gene	string	Free text	V segment gene and allele	IGHV1-34*01	v_call
-6 / data (proc. seq.)	D gene	string	Free text	D segment gene and allele	IGHD2-2*01	d_call
-6 / data (proc. seq.)	J gene	string	Free text	J segment gene and allele	IGHJ4*01	j_call
-6 / data (proc. seq.)	C region	string	Free text	Constant region gene and allele	IGHG1	c_call
+6 / data (proc. seq.)	V gene	string	Free text	V segment gene and allele. If referring to a know gene in a reference database such as the IMGT/Gene DB, the relevant gene/allele nomenclature should be followed (e.g. IGHV4-59*01). 	IGHV1-34*01	v_call
+6 / data (proc. seq.)	D gene	string	Free text	D segment gene and allele. If referring to a know gene in a reference database such as the IMGT/Gene DB, the relevant gene/allele nomenclature should be followed (e.g. IGHD2-2*01).	IGHD2-2*01	d_call
+6 / data (proc. seq.)	J gene	string	Free text	J segment gene and allele. If referring to a know gene in a reference database such as the IMGT/Gene DB, the relevant gene/allele nomenclature should be followed (e.g. IGHJ4*0)	IGHJ4*01	j_call
+6 / data (proc. seq.)	C region	string	Free text	Constant region gene and allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB, the relevant gene/allele nomenclature should be followed (e.g., IGHM*01).	IGHM*01	c_call
 6 / data (proc. seq.)	IMGT-JUNCTION nucleotide sequence	string	Free text	Nucleotide sequence of the IMGT-JUNCTION	TGTGCAAGAGCGGGAGTTTACGACGGATATACTATGGACTACTGG	junction
 6 / data (proc. seq.)	IMGT-JUNCTION amino acid sequence	string	Free text	Amino acid sequence of the IMGT-JUNCTION	CARAGVYDGYTMDYW	junction_aa
 6 / data (proc. seq.)	Read count	integer	Number	Number of reads used to build sequence	123	duplicate_count

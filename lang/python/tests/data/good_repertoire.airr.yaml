@@ -93,6 +93,7 @@ Repertoire:
         primer_match_cutoffs: ""
         collapsing_method: ""
         data_processing_protocols: ""
+        germline_database: ""
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
 
   - repertoire_id: 1602908186092376551-242ac11c-0001-012
@@ -183,6 +184,7 @@ Repertoire:
         primer_match_cutoffs: ""
         collapsing_method: ""
         data_processing_protocols: ""
+        germline_database: ""
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
 
   - repertoire_id: 2366080924918616551-242ac11c-0001-012
@@ -273,4 +275,5 @@ Repertoire:
         primer_match_cutoffs: ""
         collapsing_method: ""
         data_processing_protocols: ""
+        germline_database: ""
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
