@@ -256,7 +256,7 @@ for spec in tables:
 
 
 # Build AIRR_Minimal_Standard_Data_Elements.tsv table
-to_Data_Elements = [["MiAIRR data set", "Subset",
+data_elements = [["MiAIRR data set", "Subset",
           "MiAIRR field designation",
           "Data type",
           "Content format",
@@ -318,12 +318,15 @@ for key, v in airr_schema.items():
                             airr_format = "Free text"
                         elif airr_data_type == "integer": #
                             airr_format = "Any number"
+                        elif airr_data_type == "boolean":  #
+                            airr_format = "TRUE / FALSE"
 
-                    to_Data_Elements.append([airr_set,airr_subset, airr_name,
+
+                    data_elements.append([airr_set,airr_subset, airr_name,
                                   airr_data_type, airr_format, airr_description,
                                   airr_field_value_example, airr_property])
 
 
 with open(os.path.join(dl_path, '%s.tsv' % "AIRR_Minimal_Standard_Data_Elements"), "w") as f:
     writer = csv.writer(f,dialect='excel-tab')
-    writer.writerows(to_Data_Elements)
+    writer.writerows(data_elements)
