@@ -294,3 +294,79 @@ for spec in tables:
         row['description'] = v['description'].strip()
         rows.append(row)
     html_context[spec + '_schema'] = rows
+
+# Build AIRR_Minimal_Standard_Data_Elements.tsv table
+data_elements = [["MiAIRR data set", "Subset",
+          "MiAIRR field designation",
+          "Data type",
+          "Content format",
+          "MiAIRR content definition",
+          "Field value example",
+          "AIRR Formats WG field name"]]
+
+
+# iterate over first level of yaml items
+for key, v in airr_schema.items():
+
+    # iterate over second level of yaml items
+    for k, v in airr_schema[key].items():
+        # get properties
+        airr_properties = airr_schema[key][k]
+        if "properties" in k:
+            for airr_property, property_values in airr_properties.items():
+                # get only miairr properties
+                if "miairr" in str(property_values) and airr_properties[airr_property]["x-airr"]["miairr"] is True:
+
+                    if "deprecated" in str(property_values): # currently none is deprecated
+                        continue
+
+                    if "'type'" in str(property_values):  # get 'type' for all properties except ontology
+                        airr_data_type = airr_properties[airr_property]["type"]
+
+                    if "example" in str(property_values):
+                        airr_field_value_example = airr_properties[airr_property]["example"]
+                    else:
+                        airr_field_value_example = "NULL"
+
+                    if "description" in str(property_values):
+                        airr_description = airr_properties[airr_property]["description"]
+
+                    if "set" in str(property_values):
+                        airr_set = airr_properties[airr_property]["x-airr"]["set"]
+
+                    if "subset" in airr_properties[airr_property]["x-airr"]:
+                        airr_subset = airr_properties[airr_property]["x-airr"]["subset"]
+
+                    if "name" in airr_properties[airr_property]["x-airr"]:
+                        airr_name = airr_properties[airr_property]["x-airr"]["name"]
+
+                    if "format" in airr_properties[airr_property]["x-airr"]:
+                        airr_format = airr_properties[airr_property]["x-airr"]["format"].capitalize()
+
+                        if "ontology" in airr_properties[airr_property]["x-airr"]:
+
+                            airr_format = "Ontology: " + str(list(airr_properties[airr_property]["x-airr"]["ontology"]))
+                            # get 'type' for ontology
+                            airr_data_type = airr_schema["Ontology"]["properties"]["value"]["type"]
+
+                        elif "controlled vocabulary" in str(property_values):
+                            airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["enum"])
+
+                    elif "format" not in airr_properties[airr_property]["x-airr"]:
+
+                        if airr_data_type == "string":
+                            airr_format = "Free text"
+                        elif airr_data_type == "integer": #
+                            airr_format = "Any number"
+                        elif airr_data_type == "boolean":  #
+                            airr_format = "TRUE / FALSE"
+
+
+                    data_elements.append([airr_set,airr_subset, airr_name,
+                                  airr_data_type, airr_format, airr_description,
+                                  airr_field_value_example, airr_property])
+
+
+with open(os.path.join(dl_path, '%s.tsv' % "AIRR_Minimal_Standard_Data_Elements"), "w") as f:
+    writer = csv.writer(f,dialect='excel-tab')
+    writer.writerows(data_elements)
