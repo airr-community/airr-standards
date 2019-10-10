@@ -19,8 +19,8 @@ agreed to six high-level data sets that will guide the publication,
 curation and sharing of AIRR-Seq data and metadata: Study and subject,
 sample collection, sample processing and sequencing, raw sequences,
 processing of sequence data, and processed AIRR sequences. The detailed
-data elements within these sets are defined
-:download:`here <../_downloads/AIRR_Minimal_Standard_Data_Elements.tsv>`.
+data elements within these sets are defined :ref:`here <MiAIRR_Elements>`
+(:download:`Download as TSV <../_downloads/AIRR_Minimal_Standard_Data_Elements.tsv>`).
 The association between these AIRR sets, the associated data elements,
 and each of the NCBI repositories is shown below:
 
