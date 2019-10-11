@@ -1,8 +1,8 @@
 #
-# Schema definitions for iReceptor Plus clone objects
+# Schema definitions for iReceptor Plus clone objects (based on ImmuneDB model)
 #
 Info:
-    title: iReceptor Plus Clone Schema
+    title: iReceptor Plus Clone Schema (based on ImmuneDB model)
     description: Schema definitions for iReceptor Plus clone objects
     version: 1.0
     contact:
