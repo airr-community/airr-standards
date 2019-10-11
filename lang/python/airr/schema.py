@@ -279,7 +279,115 @@ class Schema:
 
         return True
 
+    def validate_object(self, obj, missing=True, nonairr = True, context=None):
+        """
+        Validate Repertoire object data against schema
+
+        Arguments:
+          obj (dict): dictionary containing a single repertoire object.
+          missing (bool): provides warnings for missing optional fields.
+          nonairr (bool: provides warning for non-AIRR fields that cannot be validated.
+          context (string): used by recursion to indicate place in object hierarchy
+
+        Returns:
+          bool: True if a ValidationError exception is not raised.
+
+        Raises:
+          airr.ValidationError: raised if object fails validation.
+        """
+
+        # object has to be a dictionary
+        if not isinstance(obj, dict):
+            if context is None:
+                raise ValidationError('object is not a dictionary')
+            else:
+                raise ValidationError('field %s is not a dictionary object' %(context))
+
+        # first warn about non-AIRR fields
+        if nonairr:
+            for f in obj:
+                if context is None: full_field = f
+                else: full_field = context + '.' + f
+                if self.properties.get(f) is None:
+                    sys.stderr.write('Warning: Object has non-AIRR field that cannot be validated (' + full_field + ').\n')
+
+        # now walk through schema and check types
+        for f in self.properties:
+            if context is None: full_field = f
+            else: full_field = context + '.' + f
+
+            # check MiAIRR requirements
+            if obj.get(f) is None:
+                if obj.get(f, 'missing') == 'missing':
+                    is_null = False
+                else:
+                    is_null = True
+                spec = self.spec(f)
+                xairr = spec.get('x-airr')
+                if xairr is not None:
+                    if xairr.get('miairr'):
+                        if xairr.get('required'):
+                            if xairr.get('nullable') and is_null:
+                                continue # key is there but value is null
+                            else:
+                                if self.type(f) == 'boolean':
+                                    # booleans are tricky as they should be nullable, but the ADC API does not support that
+                                    raise ValidationError('MiAIRR required boolean field %s has null value' %(full_field))
+                                else:
+                                    raise ValidationError('MiAIRR required field %s is missing' %(full_field))
+                else:
+                    if missing and not is_null:
+                        sys.stderr.write('Warning: Object missing AIRR field (' + full_field + ').\n')
+                    continue
+
+            field_type = self.type(f)
+            if field_type is None:
+                spec = self.spec(f)
+                if spec.get('$ref') is not None:
+                    schema_name = spec['$ref'].split('/')[-1]
+                    schema = Schema(schema_name)
+                    schema.validate_object(obj[f], missing, nonairr, full_field)
+                else:
+                    raise ValidationError('Internal error: field %s in schema not handled by validation. File a bug report.' %(full_field))
+            elif field_type == 'array':
+                if not isinstance(obj[f], list):
+                    raise ValidationError('field %s is not an array' %(full_field))
+
+                spec = self.spec(f)
+                for row in obj[f]:
+                    if spec['items'].get('$ref') is not None:
+                        schema_name = spec['items']['$ref'].split('/')[-1]
+                        schema = Schema(schema_name)
+                        schema.validate_object(row, missing, nonairr, full_field)
+                    elif spec['items'].get('allOf') is not None:
+                        for s in spec['items']['allOf']:
+                            if s.get('$ref') is not None:
+                                schema_name = s['$ref'].split('/')[-1]
+                                schema = Schema(schema_name)
+                                schema.validate_object(row, missing, False, full_field)
+                    elif spec['items'].get('enum') is not None:
+                        # only the special case of study.keywords_study
+                        if not row:
+                            continue
+                        if row not in spec['items']['enum']:
+                            raise ValidationError('field %s has value "%s" not among possible enumeration values' %(full_field, row))
+                    else:
+                        raise ValidationError('Internal error: array field %s in schema not handled by validation. File a bug report.' %(full_field))
+            elif field_type == 'object':
+                raise ValidationError('Internal error: field %s in schema not handled by validation. File a bug report.' %(full_field))
+            else:
+                # check type
+                try:
+                    if field_type == 'boolean':  self.to_bool(obj[f], validate=True)
+                    if field_type == 'integer':  self.to_int(obj[f], validate=True)
+                    if field_type == 'number':  self.to_float(obj[f], validate=True)
+                except ValidationError as e:
+                    raise ValidationError('field %s has %s' %(f, e))
+
+        return True
+
 
 # Preloaded schema
 AlignmentSchema = Schema('Alignment')
 RearrangementSchema = Schema('Rearrangement')
+RepertoireSchema = Schema('Repertoire')

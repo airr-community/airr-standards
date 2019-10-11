@@ -1,0 +1,279 @@
+#
+# Example metadata
+#
+
+Repertoire:
+  - repertoire_id: 1841923116114776551-242ac11c-0001-012
+    study:
+      study_id: PRJNA300878
+      study_title: "Homo sapiens B and T cell repertoire - MZ twins"
+      study_type:
+        id: ""
+        value: ""
+      study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
+      inclusion_exclusion_criteria: ""
+      lab_name: "Mark M. Davis"
+      lab_address: "Stanford University"
+      submitted_by: "Florian Rubelt"
+      pub_ids: "PMID:27005435"
+      collected_by: ""
+      grants: ""
+      keywords_study: null
+    subject:
+      subject_id: TW01A
+      synthetic: false
+      organism:
+        id: "9606"
+        value: Homo sapiens
+      sex: F
+      age: 27yr
+      age_event: null
+      ancestry_population: null
+      ethnicity: null
+      race: null
+      strain_name: null
+      linked_subjects: TW01B
+      link_type: twin
+      diagnosis: null
+    sample:
+      - sample_id: TW01A_B_naive
+        sample_type: "peripheral venous puncture"
+        tissue: "peripheral blood"
+        tissue_processing: "Ficoll gradient"
+        cell_subset:
+          id: ""
+          value: ""
+        cell_subset:
+          id: "CL_0000788"
+          value: "naive B cell"
+        cell_phenotype: "expression of CD20 and the absence of CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+            forward_pcr_primer_target_location: ""
+            reverse_pcr_primer_target_location: ""
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905656_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905656_R2.fastq.gz
+          paired_read_direction: reverse
+        anatomic_site: ""
+        disease_state_sample: ""
+        collection_time_point_relative: ""
+        collection_time_point_reference: ""
+        biomaterial_provider: ""
+        cell_number: null
+        cells_per_reaction: null
+        cell_storage: false
+        cell_quality: ""
+        cell_processing_protocol: ""
+        template_quality: ""
+        template_amount: ""
+        library_generation_method: ""
+        library_generation_protocol: ""
+        library_generation_kit_version: ""
+        complete_sequences: false
+        physical_linkage: "none"
+        sequencing_run_id: ""
+        total_reads_passing_qc_filter: null
+        sequencing_facility: ""
+        sequencing_run_date: ""
+        sequencing_kit: ""
+    data_processing:
+      - data_processing_id: 3059369183532618216-242ac11b-0001-007
+        primary_annotation: true
+        software_versions: ""
+        paired_reads_assembly: ""
+        quality_thresholds: ""
+        primer_match_cutoffs: ""
+        collapsing_method: ""
+        data_processing_protocols: ""
+        germline_database: ""
+        analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
+
+  - repertoire_id: 1602908186092376551-242ac11c-0001-012
+    study:
+      study_id: PRJNA300878
+      study_title: "Homo sapiens B and T cell repertoire - MZ twins"
+      study_type:
+        id: ""
+        value: ""
+      study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
+      inclusion_exclusion_criteria: ""
+      lab_name: "Mark M. Davis"
+      lab_address: "Stanford University"
+      submitted_by: "Florian Rubelt"
+      pub_ids: "PMID:27005435"
+      collected_by: ""
+      grants: ""
+      keywords_study:
+        -
+    subject:
+      subject_id: TW01A
+      synthetic: false
+      organism:
+        id: "9606"
+        value: Homo sapiens
+      sex: F
+      age: 27yr
+      age_event: null
+      ancestry_population: null
+      ethnicity: null
+      race: null
+      strain_name: null
+      linked_subjects: TW01B
+      link_type: twin
+      diagnosis: null
+    sample:
+      - sample_id: TW01A_B_memory
+        sample_type: "peripheral venous puncture"
+        tissue: "peripheral blood"
+        tissue_processing: "Ficoll gradient"
+        cell_subset:
+          id: "CL_0000787"
+          value: "memory B cell"
+        cell_phenotype: "expression of CD20 and CD27"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+            forward_pcr_primer_target_location: ""
+            reverse_pcr_primer_target_location: ""
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905655_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905655_R2.fastq.gz
+          paired_read_direction: reverse
+        anatomic_site: ""
+        disease_state_sample: ""
+        collection_time_point_relative: ""
+        collection_time_point_reference: ""
+        biomaterial_provider: ""
+        cell_number: null
+        cells_per_reaction: null
+        cell_storage: false
+        cell_quality: ""
+        cell_processing_protocol: ""
+        template_quality: ""
+        template_amount: ""
+        library_generation_method: ""
+        library_generation_protocol: ""
+        library_generation_kit_version: ""
+        complete_sequences: false
+        physical_linkage: "none"
+        sequencing_run_id: ""
+        total_reads_passing_qc_filter: null
+        sequencing_facility: ""
+        sequencing_run_date: ""
+        sequencing_kit: ""
+    data_processing:
+      - data_processing_id: 3059369183532618216-242ac11b-0001-007
+        primary_annotation: true
+        software_versions: ""
+        paired_reads_assembly: ""
+        quality_thresholds: ""
+        primer_match_cutoffs: ""
+        collapsing_method: ""
+        data_processing_protocols: ""
+        germline_database: ""
+        analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
+
+  - repertoire_id: 2366080924918616551-242ac11c-0001-012
+    study:
+      study_id: PRJNA300878
+      study_title: "Homo sapiens B and T cell repertoire - MZ twins"
+      study_type:
+        id: ""
+        value: ""
+      study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
+      inclusion_exclusion_criteria: ""
+      lab_name: "Mark M. Davis"
+      lab_address: "Stanford University"
+      submitted_by: "Florian Rubelt"
+      pub_ids: "PMID:27005435"
+      collected_by: ""
+      grants: ""
+      keywords_study:
+        -
+    subject:
+      subject_id: TW01A
+      synthetic: false
+      organism:
+        id: "9606"
+        value: Homo sapiens
+      sex: F
+      age: 27yr
+      age_event: null
+      ancestry_population: null
+      ethnicity: null
+      race: null
+      strain_name: null
+      linked_subjects: TW01B
+      link_type: twin
+      diagnosis: null
+    sample:
+      - sample_id: TW01A_T_naive_CD4
+        sample_type: "peripheral venous puncture"
+        tissue: "peripheral blood"
+        tissue_processing: "Ficoll gradient"
+        cell_subset:
+          id: "CL_0000895"
+          value: "naive thymus-derived CD4-positive, alpha-beta T cell"
+        cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+            forward_pcr_primer_target_location: ""
+            reverse_pcr_primer_target_location: ""
+        sequencing_platform: "Illumina MiSeq"
+        read_length: "300"
+        sequencing_files:
+          file_type: fastq
+          filename: SRR2905659_R1.fastq.gz
+          read_direction: forward
+          paired_filename: SRR2905659_R2.fastq.gz
+          paired_read_direction: reverse
+        anatomic_site: ""
+        disease_state_sample: ""
+        collection_time_point_relative: ""
+        collection_time_point_reference: ""
+        biomaterial_provider: ""
+        cell_number: null
+        cells_per_reaction: null
+        cell_storage: false
+        cell_quality: ""
+        cell_processing_protocol: ""
+        template_quality: ""
+        template_amount: ""
+        library_generation_method: ""
+        library_generation_protocol: ""
+        library_generation_kit_version: ""
+        complete_sequences: false
+        physical_linkage: "none"
+        sequencing_run_id: ""
+        total_reads_passing_qc_filter: null
+        sequencing_facility: ""
+        sequencing_run_date: ""
+        sequencing_kit: ""
+    data_processing:
+      - data_processing_id: 651223970338378216-242ac11b-0001-007
+        primary_annotation: true
+        software_versions: ""
+        paired_reads_assembly: ""
+        quality_thresholds: ""
+        primer_match_cutoffs: ""
+        collapsing_method: ""
+        data_processing_protocols: ""
+        germline_database: ""
+        analysis_provenance_id: 4625424004665971176-242ac11c-0001-012

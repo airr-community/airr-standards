@@ -29,9 +29,11 @@ include:
 + Set of reference software tools for reading, writing and validating data in the AIRR standards.
 + A database and web submission frontend for inferred germline genes
 
+Table of Contents
+----------------------------------
+
 .. toctree::
-    :maxdepth: 3
-    :caption: Table of Contents
+    :maxdepth: 2
 
     Getting Started <standards/getting_started>
     AIRR Standards <standards/overview>

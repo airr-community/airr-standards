@@ -1,3 +1,14 @@
+Version 1.3.0:  
+--------------------------------------------------------------------------------
+
++ Updated schema to v1.3.
++ Added ``load_repertoire``, ``write_repertoire``, ``validate_repertoire`` and
+  ``repertoire_template`` to `airr.interface` for Repertoire metadata.
++ Added ``validate_object`` to `airr.schema` that will validate a single
+  repertoire object against the schema.
++ Extend ``airr-tools`` command-line program to validate both rearrangement
+  and repertoire files.
+
 Version 1.2.1:  October 5, 2018
 --------------------------------------------------------------------------------
 
