@@ -2227,7 +2227,7 @@ Rearrangement:
                 the relationship is not maintained by the data processing.
             x-airr:
                 miairr: false
-                adc-api-optional: true
+                adc-api-optional: false
         data_processing_id:
             type: string
             description: >
