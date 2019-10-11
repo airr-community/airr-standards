@@ -317,8 +317,12 @@ Subject:
                 format: controlled vocabulary
         age:
             type: string
-            description: Absolute age of subject at time point `Age event`
-            example: "65 yr"
+            x-airr:
+                deprecated: true
+        age_min:
+            type: number
+            description: Specific age or lower boundary of age range.
+            example: 60
             x-airr:
                 miairr: true
                 required: true
@@ -326,7 +330,38 @@ Subject:
                 set: 1
                 subset: subject
                 name: Age
-                format: physical quantity
+        age_max:
+            type: number
+            description: Upper boundary of age range or equal to age_min for specific age. This field should only be null if age_min is null.
+            example: 80
+            x-airr:
+                miairr: true
+                required: true
+                nullable: true
+                set: 1
+                subset: subject
+                name: Age
+        age_unit:
+            $ref: '#/Ontology'
+            description: unit of age range
+            example:
+                id: UO_0000036
+                value: year
+            x-airr:
+                miairr: true
+                required: true
+                nullable: true
+                set: 1
+                subset: subject
+                name: Age
+                format: ontology
+                ontology:
+                    draft: true
+                    name: Units of measurement ontology
+                    url: http://www.ontobee.org/ontology/UO
+                    top_node:
+                        id: UO_0000003
+                        value: time unit
         age_event:
             type: string
             description: Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
