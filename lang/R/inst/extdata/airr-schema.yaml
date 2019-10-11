@@ -1179,7 +1179,7 @@ SampleProcessing:
     properties:
         sample_processing_id:
             type: string
-            description: Identifier for the sample processing object. This field should be unique within the repertoire.
+            description: Identifier for the sample processing object. This field should be unique within the repertoire. This field can be used to uniquely identify the combination of sample, cell processing, nucleic acid processing and sequencing run information for the repertoire.
 
 
 # The composite schema for the repertoire object
