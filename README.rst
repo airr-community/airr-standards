@@ -14,8 +14,8 @@ work has been a joint effort between the AIRR Community's `Minimal
 Standards`_ and `Data Representation`_ Working Groups. 
 
 .. _`FAIR`: https://www.force11.org/group/fairgroup/fairprinciples
-.. _`Minimal Standards`: https://www.antibodysociety.org/airrc/working_groups/minimal_standards
-.. _`Data Representation`: https://www.antibodysociety.org/airrc/working_groups/data_representation
+.. _`Minimal Standards`: https://www.antibodysociety.org/the-airr-community/airr-working-groups/minimal_standards/
+.. _`Data Representation`: https://www.antibodysociety.org/the-airr-community/airr-working-groups/data_representation
 
 
 The MiAIRR Data Standard
@@ -65,7 +65,7 @@ Implementations
 -  `AIRR Common Repository`_ - *in development*
 
 .. _`NCBI-based`: https://docs.airr-community.org/en/latest/miairr/miairr_ncbi_overview.html
-.. _`AIRR Common Repository`: https://www.antibodysociety.org/airrc/working_groups/repository
+.. _`AIRR Common Repository`: https://www.antibodysociety.org/the-airr-community/airr-working-groups/repository/
 
 
 Contributions
