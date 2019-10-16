@@ -291,6 +291,10 @@ for spec in tables:
             row['format'] = v['x-airr']['format']
         else:
             row['format'] = ''
-        row['description'] = v['description'].strip()
+        if v.get('x-airr') and v.get('x-airr').get('deprecated'):
+            row['miairr'] = 'DEPRECATED'
+            row['description'] = 'DEPRECATED'
+        else:
+            row['description'] = v['description'].strip()
         rows.append(row)
     html_context[spec + '_schema'] = rows
