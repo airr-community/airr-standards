@@ -1148,6 +1148,12 @@ DataProcessing:
                 set: 5
                 subset: process (computational)
                 name: Data processing protocols
+        downsampling_strategy:
+            type: string
+            description: The downsampling method for clone processing
+        downsampled_count:
+            type: integer
+            description: The maximum number of sequences kept in the downsampling process
         analysis_provenance_id:
             type: string
             description: Identifier for machine-readable PROV model of analysis provenance
@@ -1841,32 +1847,6 @@ Rearrangement:
                 subset: data (processed sequence)
                 name: V(D)J germline reference database
 
-# Clone processing for a set of clones
-CloneProcessing:
-    discriminator: AIRR
-    type: object
-    properties:
-        clone_processing_id:
-            type: string
-            description: Identifier for the clone processing object.
-        repertoire_list:
-            type: array
-            description: list of repertoire identifiers
-            items:
-                type: string
-        software_versions:
-            type: string
-            description: Version number and / or date, include company pipelines
-        downsampling_strategy:
-            type: string
-            description: The downsampling method
-        downsampled_count:
-            type: integer
-            description: The maximum number of sequences kept in the downsampling process
-        germline_database:
-            type: string
-            description: Source of germline V(D)J genes with version number or date accessed.
-
 # A unique clone object that has been constructed from a single clone processing.
 # The information provided here is common among or aggregated across all repertoires
 # in the clone processing.
@@ -1877,9 +1857,9 @@ Clone:
         clone_id:
             type: string
             description: Identifier for the clone.
-        clone_processing_id:
+        data_processing_id:
             type: string
-            description: Identifier for the clone processing object.
+            description: Identifier for the data processing object.
         v_call:
             type: string
             description: V gene with allele. For example, IGHV4-59*01.
@@ -1983,9 +1963,9 @@ CloneRepertoire:
         clone_id:
             type: string
             description: Identifier for the clone.
-        clone_processing_id:
+        data_processing_id:
             type: string
-            description: Identifier for the clone processing object.
+            description: Identifier for the data processing object.
         repertoire_id:
             type: string
             description: Identifier for the repertoire object.
