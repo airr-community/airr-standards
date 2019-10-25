@@ -2,7 +2,7 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 1 / study	Study	string	Free text	Unique ID assigned by study registry	PRJNA001	study_id
 1 / study	Study title	string	Free text	Descriptive study title	Effects of sun light exposure of the Treg repertoire	study_title
 1 / study	Study type	string	{"ontology": "NCIT", "top_node": "Study Design", "draft": true}	Type of study design	Case-Control Study	study_type
-1 / study	Study desciption	string	Free text	Generic study description	Longer description	study_description
+1 / study	Study desciption	string	Free text	Generic study description	Long description of study	study_description
 1 / study	Study inclusion/exclusion criteria	string	Free text	List of criteria for inclusion/exclusion for the study	Include: Clinical P. falciparum infection; Exclude: Seropositive for HIV	inclusion_exclusion_criteria
 1 / study	Grant funding agency	string	Free text	Funding agencies and grant numbers	NIH, award number R01GM987654	grants
 1 / study	Contact information (data collection)	string	Free text	Full contact information of the data collector, i.e. the person who is legally responsible for data collection and release. This should include an e-mail address.	Dr. P. Stibbons, p.stibbons@unseenu.edu	collected_by
