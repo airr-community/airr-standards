@@ -1847,9 +1847,27 @@ Rearrangement:
                 subset: data (processed sequence)
                 name: V(D)J germline reference database
 
+# 1-to-n relationship between a CloneSet and the Repertoires it is derived from
+# Question: Do we want to include a direct link to `Subject` in this object?
+CloneSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        clone_set_id:
+            type: string
+            description: Identifier for the clone set object.
+        repertoire_list: #did I do this correctly?
+            type: array
+            description: List of repertoires that were processed to produce clone set
+            items:
+                - $ref: '#/Repertoire'
+        data_processing_id:
+            type: string
+            description: Indentifier for the data processing object
+            $ref: '#/DataProcessing'
+
+
 # A unique clone object that has been constructed from a single clone processing.
-# The information provided here is common among or aggregated across all repertoires
-# in the clone processing.
 Clone:
     discriminator: AIRR
     type: object
@@ -1857,9 +1875,10 @@ Clone:
         clone_id:
             type: string
             description: Identifier for the clone.
-        data_processing_id:
+        clone_set_id:
             type: string
             description: Identifier for the data processing object.
+            $ref: '#/DataProcessing' #is this right?
         v_call:
             type: string
             description: V gene with allele. For example, IGHV4-59*01.
@@ -1954,8 +1973,19 @@ Clone:
         deletions:
             type:  string
             description: Clone deletion mutations
+        CloneRepertoireList:
+            type: array
+            description: Properties of the clone members in each Repertoire
+            items:
+                - $ref: '#/CloneRepertoire'
+        TreeList:
+            type: array
+            description: Trees describing the phylogenetic structure of the clone.
+            items:
+                - $ref: '#/Tree'
 
-# Clone information for a specific repertoire within a single clone processing.
+# Clone information within a single repertoire
+# 1-to-n relatonship between Clone and Clone Repertoire
 CloneRepertoire:
     discriminator: AIRR
     type: object
@@ -1963,15 +1993,40 @@ CloneRepertoire:
         clone_id:
             type: string
             description: Identifier for the clone.
-        data_processing_id:
-            type: string
-            description: Identifier for the data processing object.
+            $ref: '#/Clone'
         repertoire_id:
             type: string
             description: Identifier for the repertoire object.
+        rearrangements:
+            type: array
+            description: List of rearrangments that are members of this Clone in this Repertoire
+            items:
+                allOf:
+                    - $ref: '#/RearrangementSet' #I think we don't need this yet...
+                    - $ref: '#/Rearrangement'
+        #some examples copied from the immunedb schema
+        instances:
+           type: integer
+           description: Clone overall instance count 
+        avg_v_identity:
+            type: string
+            description: The average V-gene NT identity across all the sequences in a clone.
+        top_copy_seq_sequence:
+            type: string
+            description: The full aligned sequence with the highest copies in the clone
+        top_copy_seq_copies:
+            type: integer
+            description: The number of copies for top_copy_seq_sequence
+        top_instance_seq_sequnence:
+            type: string
+            description: The sequence for instance with the highest copies
+        top_instance_seq_copies:
+            type: integer
+            description: The number of copies for top_instance_seq_sequence
 
 # 1-to-n relationship for a clone to its trees.
-CloneTree:
+# Is there a reason to call this 'CloneTree' instead of just 'Tree'?
+Tree:
     discriminator: AIRR
     type: object
     properties:
@@ -1981,3 +2036,34 @@ CloneTree:
         clone_id:
             type: string
             description: Identifier for the clone.
+        newick_string:
+            type: string
+            description: Newick string of the tree
+        node_list:
+            type: array
+            description: Nodes in the tree
+            items:
+                - $ref: '#/Node'
+                
+# 1-to-n relationship between Tree and Node
+Node:
+    discriminator: AIRR
+    type: object
+    properties:
+        node_id:
+            type: string
+            description: Identifier for this node, matches id in newick string
+        tree_id:
+            type: string
+            description: Identifier for the tree.
+            $ref: '#/Tree'
+        clone_id: #maybe not strictly necessary
+            type: string
+            description: Identifier for the clone.
+            $ref: '#/Clone'
+        sequence:
+            type: string
+            description: DNA sequence of this node
+        meta:
+            type: object #????
+            description: A place for users to add custom info
