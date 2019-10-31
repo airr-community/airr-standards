@@ -16,9 +16,9 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 1 / subject	Organism	string	{"ontology": "NCBITAXON", "top_node": "Gnathostomata", "draft": false}	Species of subject (using binomial nomenclature)	Homo sapiens	organism
 1 / subject	Sex	string	{"controlled_vocabulary": ["male", "female", "pooled", "hermaphrodite", "intersex", "not collected", "not applicable"]}	Biological sex of subject	female	sex
 1 / subject	Age	string	Time duration and unit	Absolute age of subject at time point `Age event`	65 a	age
-1 / subject	Age Minimum	number	Number	Specific age or lower boundary of age range.	60	age_min
-1 / subject	Age Maximum	number	Number	Upper boundary of age range or equal to age_min for specific age. This field should only be null if age_min is null.	80	age_max
-1 / subject	Age Unit	string	{"ontology": "Units of measurement ontology", "top_node": "UO_0000003", "draft": true}	Unit of age range	year	age_unit
+1 / subject	Age minimum	number	Number	Specific age or lower boundary of age range.	60	age_min
+1 / subject	Age maximum	number	Number	Upper boundary of age range or equal to age_min for specific age. This field should only be null if age_min is null.	80	age_max
+1 / subject	Aage unit	string	{"ontology": "Units of measurement ontology", "top_node": "UO_0000003", "draft": true}	Unit of age range	year	age_unit
 1 / subject	Age event	string	Free text	Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.	enrollment	age_event
 1 / subject	Ancestry population	string	Free text	Broad geographic origin of ancestry (continent)	list of continents, mixed or unknown	ancestry_population
 1 / subject	Ethnicity	string	Free text	Ethnic group of subject (defined as cultural/language-based membership)	English, Kurds, Manchu, Yakuts (and other fields from Wikipedia)	ethnicity
