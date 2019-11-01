@@ -2387,9 +2387,9 @@ Tree:
             type: string
             description: Newick string of the tree edges.
         node_list:
-            type: array
-            description: Nodes in the tree.
-            items:
+            type: object
+            description: Dictionary of nodes in the tree, keyed by node_id string
+            additionalProperties:
                 $ref: '#/Node'
 
 # 1-to-n relationship between a tree and its nodes
