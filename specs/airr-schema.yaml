@@ -2373,7 +2373,7 @@ CloneRepertoire:
             description: Identifier for the repertoire object.
 
 # 1-to-n relationship for a clone to its trees.
-CloneTree:
+Tree:
     discriminator: AIRR
     type: object
     properties:
@@ -2383,3 +2383,26 @@ CloneTree:
         clone_id:
             type: string
             description: Identifier for the clone.
+        newick_string:
+            type: string
+            description: Newick string of the tree edges.
+        node_list:
+            type: array
+            description: Nodes in the tree.
+            items:
+                $ref: '#/Node'
+
+# 1-to-n relationship between a tree and its nodes
+Node:
+    discriminator: AIRR
+    type: object
+    properties:
+        node_id:
+            type: string
+            description: Identifier for this node, matches id in newick string
+        sequence:
+            type: string
+            description: DNA sequence of this node
+        meta:
+            type: object #????
+            description: A place for users to add custom info
