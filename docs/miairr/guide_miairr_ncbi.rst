@@ -1,3 +1,5 @@
+.. _MiAIRR_NCBI_Submission_Guide:
+
 Guide for submission of AIRR-seq data to NCBI
 =============================================
 
@@ -47,7 +49,6 @@ repositories consists of five sequential steps:
 .. _`Zenodo`: https://zenodo.org
 .. _`GenBank`: https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/
 
-For step-by-step instructions on carrying out theses steps an AIRR study
-submission, see `here`__.
+The :ref:`submission manual <MiAIRR_NCBI_Submission_Manual>` provides step-by-step instructions
+on carrying out these steps for an AIRR study submission.
 
-.. __: http://docs.airr-community.org/en/latest/miairr/overview.html

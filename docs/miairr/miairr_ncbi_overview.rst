@@ -1,3 +1,5 @@
+.. _MiAIRR_NCBI:
+
 =============================
 MiAIRR-to-NCBI Implementation
 =============================

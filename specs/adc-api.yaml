@@ -12,22 +12,53 @@ info:
 basePath: /airr/v1
 
 definitions:
+  # Info object
+  info_object:
+    type: object
+    description: Provides information about the API response
+    properties:
+      title:
+        type: string
+      version:
+        type: string
+      description:
+        type: string
+      contact: 
+        type: object
+        properties:
+          name:
+            type: string
+          url:
+            type: string
+          email:
+            type: string
+
   # list of repertoires
   repertoire_list:
     type: array
     items:
       $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Repertoire'
 
+  # list of facets
+  facet_list:
+    type: array
+    items:
+      type: object
+      properties:
+        count:
+          type: integer
+          
   # The response object /repertoire endpoint
   repertoire_response:
     type: object
     properties:
       Info:
-        type: object
-        description: Provides information about the API response
+        $ref: '#/definitions/info_object'
       Repertoire:
         $ref: '#/definitions/repertoire_list'
-
+      Facet:
+        $ref: '#/definitions/facet_list'
+          
   # list of rearrangement annotations
   rearrangement_list:
     type: array
@@ -39,22 +70,19 @@ definitions:
     type: object
     properties:
       Info:
-        type: object
-        description: Provides information about the API response
+        $ref: '#/definitions/info_object'
       Rearrangement:
         $ref: '#/definitions/rearrangement_list'
-
+      Facet:
+        $ref: '#/definitions/facet_list'
+  
   # error response
   error_response:
     type: object
     properties:
-      success:
-        type: boolean
-        description: >
-          A false value indicates an error occured; the message contains more detail.
       message:
         type: string
-        description: Detail about the error when success=false
+        description: Detail about the error
 
 schemes:
   - https
@@ -89,6 +117,10 @@ paths:
             properties:
               result:
                 type: string
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
 
   /info:
     x-swagger-router-controller: status
@@ -111,6 +143,10 @@ paths:
                 type: string
               version:
                 type: string
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
 
   /swagger:
     x-swagger-pipe: swagger_raw
@@ -140,11 +176,15 @@ paths:
           description: |
             A successful call returns the repertoire data.
           schema:
-            $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Repertoire'
+            $ref: '#/definitions/repertoire_response'
         '400':
-          description: Invalid repertoire ID supplied
-        '404':
-          description: Repertoire not found
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
 
   /repertoire:
     x-swagger-router-controller: repertoire
@@ -182,6 +222,10 @@ paths:
           description: Invalid request
           schema:
             $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
 
   /rearrangement/{rearrangement_id}:
     x-swagger-router-controller: rearrangement
@@ -208,11 +252,15 @@ paths:
           description: >
             A successful call returns the rearrangement annotation data.
           schema:
-            $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Rearrangement'
+            $ref: '#/definitions/rearrangement_response'
         '400':
-          description: Invalid rearrangement ID supplied
-        '404':
-          description: Rearrangement not found
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
 
   /rearrangement:
     x-swagger-router-controller: rearrangement
@@ -246,3 +294,11 @@ paths:
             A successful call returns an array of rearrangement annotation data.
           schema:
             $ref: '#/definitions/rearrangement_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
