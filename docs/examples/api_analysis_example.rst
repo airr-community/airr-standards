@@ -50,7 +50,7 @@ data and analysis results afterwards::
     cd adc_example
 
     # Invoke a shell session inside the docker image
-    docker run -it -v .:/data airrc/airr-standards:latest bash
+    docker run -it -v $PWD:/data airrc/airr-standards:latest bash
 
 The first python script queries the data from the VDJServer data
 repository and saves them into files::
