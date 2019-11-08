@@ -5,6 +5,13 @@ AIRR Software WG - Guidance for AIRR Software Tools
 
 Version 1.0
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Table of Contents
+
+   Compliance Checklist for AIRR Software Tools <airr_swtools_checklist>
+   Recommended Software Evaluation Data Sets <airr_swtools_data>
+
 Introduction
 ------------
 

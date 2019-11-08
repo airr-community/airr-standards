@@ -15,13 +15,6 @@
                     "field":"sample.pcr_target.pcr_target_locus",
                     "value":"IGH"
                 }
-	    },
-	    {
-                "op":"contains",
-                "content": {
-                    "field":"diagnosis.disease_diagnosis",
-                    "value":"autoimmune"
-                }
 	    }
 	]
     }

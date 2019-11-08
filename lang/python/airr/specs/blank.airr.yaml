@@ -28,6 +28,11 @@ Repertoire:
         value: ""
       sex: ""
       age: ""
+      age_min: null
+      age_max: null
+      age_unit:
+        id: ""
+        value: ""
       age_event: ""
       ancestry_population: ""
       ethnicity: ""
@@ -45,7 +50,8 @@ Repertoire:
           intervention: ""
           medical_history: ""
     sample:
-      - sample_id: ""
+      - sample_processing_id: ""
+        sample_id: ""
         sample_type: ""
         tissue: ""
         anatomic_site: ""
@@ -103,4 +109,5 @@ Repertoire:
         primer_match_cutoffs: ""
         collapsing_method: ""
         data_processing_protocols: ""
+        germline_database: ""
         analysis_provenance_id: ""
