@@ -1,6 +1,6 @@
 Software	Version	Support	Reference
-AIRR Python Library	1.2	"Input, output and validation"	
-AIRR R Library	1.2	"Input, output and validation"	
+`AIRR Python Library <https://pypi.org/project/airr>`_	1.2	"Input, output and validation"	
+`AIRR R Library <https://cran.r-project.org/web/packages/airr>`_	1.2	"Input, output and validation"	
 `Decombinator <https://github.com/innate2adaptive/Decombinator>`_	4.0.1	Output	"`Oakes et al. Front Immunol, 2017. <https://doi.org/10.3389/fimmu.2017.01267>`_"
 `IgBLAST <https://www.ncbi.nlm.nih.gov/igblast>`_	1.11	Output	
 `IGoR <https://github.com/qmarcou/IGoR>`_	TBD	Input and output	

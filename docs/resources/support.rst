@@ -15,4 +15,4 @@ v1.2 of the :ref:`AIRR Rearrangement schema <RearrangementSchema>`.
    :file: tables/rearrangement_support.tsv
    :delim: tab
    :header-rows: 1
-   :widths: 30, 20, 50
+   :widths: 20, 10, 50, 20
