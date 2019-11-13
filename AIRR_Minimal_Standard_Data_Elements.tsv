@@ -36,7 +36,7 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 1 / diag. & intervent.	Other relevant medical history	string	Free text	Medical history of subject that is relevant to assess the course of disease and/or treatment	MGUS, first diagnosed 5 years prior	medical_history
 2 / sample	Biological sample ID	string	Free text	Sample ID assigned by submitter, unique within study	SUP52415	sample_id
 2 / sample	Sample type	string	Free text	The way the sample was obtained, e.g. fine-needle aspirate, organ harvest, peripheral venous puncture	Biopsy	sample_type
-2 / sample	Tissue	string	Free text	The actual tissue sampled, e.g. lymph node, liver, peripheral blood	Bone marrow	tissue
+2 / sample	Tissue	string	{"ontology": "UBERON", "top_node": "multicellular anatomical structure", "draft": true}	The actual tissue sampled, e.g. lymph node, liver, peripheral blood	bone marrow	tissue
 2 / sample	Anatomic site	string	Free text	The anatomic location of the tissue, e.g. Inguinal, femur	Iliac crest	anatomic_site
 2 / sample	Disease state of sample	string	Free text	Histopathologic evaluation of the sample	Tumor infiltration	disease_state_sample
 2 / sample	Sample collection time	string	Free text	Time point at which sample was taken, relative to `Collection time event`	14 d	collection_time_point_relative
