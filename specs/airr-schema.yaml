@@ -462,9 +462,11 @@ Diagnosis:
                 subset: diagnosis and intervention
                 name: Study group description
         disease_diagnosis:
-            type: string
+            $ref: '#/Ontology'
             description: Diagnosis of subject
-            example: Multiple myeloma
+            example:
+                id: DOID_9538
+                value: Multiple myeloma
             x-airr:
                 miairr: true
                 required: true
@@ -472,6 +474,14 @@ Diagnosis:
                 set: 1
                 subset: diagnosis and intervention
                 name: Diagnosis
+                format: ontology
+                ontology:
+                    draft: true
+                    name: DOID
+                    url: https://bioportal.bioontology.org/ontologies/DOID
+                    top_node:
+                        id: DOID_4
+                        value: disease
         disease_length:
             type: string
             description: Time duration between initial diagnosis and current intervention
