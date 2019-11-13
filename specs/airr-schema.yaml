@@ -579,9 +579,11 @@ Sample:
                 subset: sample
                 name: Sample type
         tissue:
-            type: string
+            $ref: '#/Ontology'
             description: The actual tissue sampled, e.g. lymph node, liver, peripheral blood
-            example: Bone marrow
+            example:
+                id: UBERON_0002371
+                value: bone marrow
             x-airr:
                 miairr: true
                 required: true
@@ -589,6 +591,14 @@ Sample:
                 set: 2
                 subset: sample
                 name: Tissue
+                format: ontology
+                ontology:
+                    draft: true
+                    name: UBERON
+                    url: https://bioportal.bioontology.org/ontologies/UBERON
+                    top_node:
+                        id: UBERON_0010000
+                        value: multicellular anatomical structure
         anatomic_site:
             type: string
             description: The anatomic location of the tissue, e.g. Inguinal, femur
