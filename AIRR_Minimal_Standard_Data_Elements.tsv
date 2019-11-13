@@ -27,7 +27,7 @@ MiAIRR data set / subset	MiAIRR field designation	Data type	Content format	MiAIR
 1 / subject	Relation to other subjects	string	Free text	Subject ID to which `Relation type` refers	SUB1355648	linked_subjects
 1 / subject	Relation type	string	Free text	Relation between subject and `linked_subjects`, can be genetic or environmental (e.g.exposure)	father, daughter, household	link_type
 1 / diag. & intervent.	Study group description	string	Free text	Designation of study arm to which the subject is assigned to	control	study_group_description
-1 / diag. & intervent.	Diagnosis	string	Free text	Diagnosis of subject	Multiple myeloma	disease_diagnosis
+1 / diag. & intervent.	Diagnosis	string	{"ontology": "DOID", "top_node": "disease", "draft": true}	Diagnosis of subject	Multiple myeloma	disease_diagnosis
 1 / diag. & intervent.	Length of disease	string	Time duration and unit	Time duration between initial diagnosis and current intervention	23 months	disease_length
 1 / diag. & intervent.	Disease stage	string	Free text	Stage of disease at current intervention	Stage II	disease_stage
 1 / diag. & intervent.	Prior therapies for primary disease under study	string	Free text	List of all relevant previous therapies applied to subject for treatment of `Diagnosis`	melphalan/prednisone	prior_therapies
