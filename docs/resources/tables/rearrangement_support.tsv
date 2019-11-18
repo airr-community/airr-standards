@@ -12,6 +12,6 @@ Software	Version	Support	Reference
 `Partis <https://github.com/psathyrella/partis>`_	TBD	Output	"`Ralph & Matsen. PLoS Comput Biol, 2016. <https://doi.org/10.1371/journal.pcbi.1004409>`_"
 `SONAR <https://github.com/scharch/SONAR>`_	3	Output	"`Schramm et al. Front Immunol, 2016. <https://doi.org/doi:10.3389/fimmu.2016.00372>`_"
 `TRIgS <https://github.com/williamdlees/TRIgS>`_	2	Input	"`Lees & Shepherd. J Immunol Res, 2015. <https://doi.org/10.1155/2015/323506>`_"
-`VDJServer <https://vdjserver.org>`_	1.2.0	Input and output	"`Christley et al. Front Immunol, 2018 <https://doi.org/10.3389/fimmu.2018.0097>`_"
+`VDJServer <https://vdjserver.org>`_	1.2.0	Input and output	"`Christley et al. Front Immunol, 2018 <https://doi.org/_10.3389/fimmu.2018.00976>`_"
 `Vidjil-algo <http://www.vidjil.org>`_	2018.1	Output	"`Giraud et al. BMC Genomics, 2014. <https://doi.org/10.1186/1471-2164-15-409>`_"
 `Vidjil Web Platform <http://www.vidjil.org>`_	TBD	Input and conversion	"`Duez et al. PLoS ONE, 2016. <https://doi.org/10.1371/journal.pone.0166126>`_"
