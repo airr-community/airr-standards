@@ -1444,6 +1444,14 @@ Rearrangement:
         locus:
             type: string
             description: Gene locus (chain type). For example, IGH, IGI, IGK, IGL, TRA, TRB, TRD, or TRG.
+            example: IGH
+            x-airr:
+                miairr: true
+                required: false
+                nullable: true
+                set: 6
+                subset: data (processed sequence)
+                name: Gene locus            
         v_call:
             type: string
             description: >
