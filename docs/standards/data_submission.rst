@@ -63,7 +63,7 @@ repositories are provided in a `B-T.CR forum post`_.
 
 **Germline Gene Inference and Usage**
 
-+ :ref:`OGRDB` provides a list of alleles affirmed by the AIRR Community's
++ :ref:`OGRDB <OGRDB>` provides a list of alleles affirmed by the AIRR Community's
   Inferred Allele Review Committee, together with supporting information.
 
 + `VDJbase`_ provides gene usage information derived from a growing base of AIRR-seq repertoires,
