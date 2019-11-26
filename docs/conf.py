@@ -300,18 +300,18 @@ for spec in tables:
     html_context[spec + '_schema'] = rows
 
 # Build AIRR_Minimal_Standard_Data_Elements.tsv table
-data_elements = [["MiAIRR data set", "Subset",
-          "MiAIRR field designation",
-          "Data type",
-          "Content format",
-          "MiAIRR content definition",
-          "Field value example",
-          "AIRR Schema field name"]]
+data_elements = [["Set",
+                  "Subset",
+                  "Designation",
+                  "Field",
+                  "Type",
+                  "Format",
+                  "Definition",
+                  "Example"]]
 
 
 # iterate over first level of yaml items
 for key, v in airr_schema.items():
-
     # iterate over second level of yaml items
     for k, v in airr_schema[key].items():
         # get properties
@@ -372,14 +372,14 @@ for key, v in airr_schema.items():
                         elif airr_data_type == "number": #
                             airr_format = "Any positive number"
                         elif airr_data_type == "boolean":  #
-                            airr_format = "TRUE / FALSE"
+                            airr_format = "T | F"
 
-
-                    data_elements.append([airr_set,airr_subset, airr_name,
-                                  airr_data_type, airr_format, airr_description,
-                                  airr_field_value_example, airr_property])
+                    r = [airr_set, airr_subset, airr_name, airr_property,
+                         airr_data_type, airr_format, airr_description,
+                         airr_field_value_example]
+                    data_elements.append(r)
 
 
 with open(os.path.join(dl_path, '%s.tsv' % "AIRR_Minimal_Standard_Data_Elements"), "w") as f:
-    writer = csv.writer(f,dialect='excel-tab')
+    writer = csv.writer(f, dialect='excel-tab')
     writer.writerows(data_elements)

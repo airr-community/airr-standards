@@ -15,6 +15,7 @@ of sequence data, and processed AIRR sequences.
 .. csv-table::
    :file: ../_downloads/AIRR_Minimal_Standard_Data_Elements.tsv
    :delim: tab
-   :stub-columns: 0
    :header-rows: 1
-   :widths: 10, 10, 10, 10, 10, 20, 20, 10
+   :stub-columns: 0
+   :align: left
+   :widths: 5,10,10,10,10,10,30,15
