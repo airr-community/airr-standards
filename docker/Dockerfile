@@ -18,8 +18,8 @@ RUN pip3 install \
     biopython \
     recommonmark \
     sphinxcontrib-autoprogram \
-    sphinx_bootstrap_theme
-
+    sphinx_bootstrap_theme \
+    matplotlib
 
 # Copy source
 RUN mkdir /airr-standards

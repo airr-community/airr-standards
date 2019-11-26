@@ -685,6 +685,28 @@ CellProcessing:
                 set: 3
                 subset: process (cell)
                 name: Cell subset phenotype
+        cell_species:
+            $ref: '#/Ontology'
+            description: >
+                Binomial designation of the species from which the analyzed cells originate. Typically, this value
+                should be identical to `organism`, if which case it SHOULD NOT be set explicitly. Howver, there are
+                valid experimental setups in which the two might differ, e.g. chimeric animal models. If set, this
+                key will overwrite the `organism` information for all lower layers of the schema.
+            example:
+                id: 9096
+                value: Homo sapiens
+            x-airr:
+                miairr: false
+                required: false
+                nullable: true
+                format: ontology
+                ontology:
+                    draft: false
+                    name: NCBITAXON
+                    url: https://www.ncbi.nlm.nih.gov/taxonomy
+                    top_node:
+                        id: 7776
+                        value: Gnathostomata
         single_cell:
             type: boolean
             description: TRUE if single cells were isolated into separate compartments
@@ -1208,6 +1230,14 @@ DataProcessing:
             type: string
             description: Identifier for machine-readable PROV model of analysis provenance
 
+SampleProcessing:
+    discriminator: AIRR
+    type: object
+    properties:
+        sample_processing_id:
+            type: string
+            description: Identifier for the sample processing object. This field should be unique within the repertoire. This field can be used to uniquely identify the combination of sample, cell processing, nucleic acid processing and sequencing run information for the repertoire.
+
 
 # The composite schema for the repertoire object
 #
@@ -1232,6 +1262,7 @@ Repertoire:
             description: List of Sample objects
             items:
                 allOf:
+                    - $ref: '#/SampleProcessing'
                     - $ref: '#/Sample'
                     - $ref: '#/CellProcessing'
                     - $ref: '#/NucleicAcidProcessing'
@@ -2205,6 +2236,17 @@ Rearrangement:
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
+            x-airr:
+                miairr: false
+                adc-api-optional: false
+        sample_processing_id:
+            type: string
+            description: >
+                Identifier to the sample processing object in the repertoire metadata
+                for this rearrangement. If the repertoire has a single sample then
+                this field may be empty or missing. If the repertoire has multiple samples then
+                this field may be empty or missing if the sample cannot be differentiated or
+                the relationship is not maintained by the data processing.
             x-airr:
                 miairr: false
                 adc-api-optional: false

@@ -346,7 +346,8 @@ class Schema:
                 if spec.get('$ref') is not None:
                     schema_name = spec['$ref'].split('/')[-1]
                     schema = Schema(schema_name)
-                    schema.validate_object(obj[f], missing, nonairr, full_field)
+                    if obj.get(f, 'missing') != 'missing':
+                        schema.validate_object(obj[f], missing, nonairr, full_field)
                 else:
                     raise ValidationError('Internal error: field %s in schema not handled by validation. File a bug report.' %(full_field))
             elif field_type == 'array':

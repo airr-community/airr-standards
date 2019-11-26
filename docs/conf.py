@@ -242,7 +242,6 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-
 # Load data for schemas
 with open(os.path.abspath('../specs/airr-schema.yaml')) as ip:
     airr_schema = yaml.load(ip, Loader=yamlordereddictloader.Loader)
@@ -263,10 +262,10 @@ for spec in tables:
     # Write TSV
     with open(os.path.join(dl_path, '%s.tsv' % spec), 'w') as f:
         writer = csv.writer(f, dialect='excel-tab')
-        rows = ([k, v['type'], 'required' if k in required else 'optional', v['description'].strip()] \
-                for k, v in properties.items())
         writer.writerow(fields)
-        writer.writerows(rows)
+        for k, v in properties.items():
+            row = [k, v['type'], 'required' if k in required else 'optional', v['description'].strip()]
+            writer.writerow(row)
 
 # Build tables for repertoire metadata schema
 tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
