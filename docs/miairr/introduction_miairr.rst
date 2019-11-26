@@ -17,12 +17,11 @@ high-level data sets that will guide the publication, curation and
 sharing of AIRR-Seq data and metadata: Study and subject, sample
 collection, sample processing and sequencing, raw sequences, processing
 of sequence data, and processed AIRR sequences. The detailed data
-elements within these sets are defined here__.
+elements within these sets are defined :ref:`here <MiAIRR_Elements>`
+(:download:`Download as TSV <../_downloads/AIRR_Minimal_Standard_Data_Elements.tsv>`).
 
 .. _`AIRR Community Minimal Standards Working Group`:
    http://airr-community.org/working_groups/minimal_standards
-
-.. __: https://github.com/airr-community/airr-standards/blob/master/AIRR_Minimal_Standard_Data_Elements.tsv
 
 .. Figure:: images/MiAIRR_data_elements_plain.png
    :alt: A scheme of the MiAIRR data set and data elements
@@ -31,12 +30,14 @@ elements within these sets are defined here__.
    Schema of MiAIRR data sets and the individual data elements of each
    set.
 
-
-Data Submission Implementations
+Topics
 ===============================
 
--  :ref:`National Center for Biotechnology Information (NCBI) <MiAIRR_NCBI>`
--  AIRR Data Commons Repositories - *in development*
+.. toctree::
+   :maxdepth: 2
+
+   MiAIRR Data Elements <data_elements>
+   National Center for Biotechnology Information (NCBI) Submission <miairr_ncbi_overview>
 
 References
 ==========
