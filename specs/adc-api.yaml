@@ -211,6 +211,9 @@ paths:
                 type: number
               from:
                 type: number
+              include_required:
+                type: boolean
+                default: false
       operationId: queryRepertoires
       responses:
         '200':
@@ -287,6 +290,9 @@ paths:
                 type: number
               from:
                 type: number
+              include_required:
+                type: boolean
+                default: false
       operationId: queryRearrangements
       responses:
         '200':
