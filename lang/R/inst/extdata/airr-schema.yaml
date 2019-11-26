@@ -46,7 +46,7 @@ Attributes:
             default: false
         required:
             type: boolean
-            description: Indicates if field is required by MiAIRR
+            description: Indicates if field is required by MiAIRR and/or ADC API
         nullable:
             type: boolean
             description: Indicates if field can have null value
@@ -1142,6 +1142,10 @@ DataProcessing:
         data_processing_id:
             type: string
             description: Identifier for the data processing object.
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
         primary_annotation:
             type: boolean
             default: false
@@ -1237,6 +1241,10 @@ SampleProcessing:
         sample_processing_id:
             type: string
             description: Identifier for the sample processing object. This field should be unique within the repertoire. This field can be used to uniquely identify the combination of sample, cell processing, nucleic acid processing and sequencing run information for the repertoire.
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
 
 
 # The composite schema for the repertoire object
@@ -1251,6 +1259,10 @@ Repertoire:
         repertoire_id:
             type: string
             description: Identifier for the repertoire object. This identifier should be globally unique so that repertoires from multiple studies can be combined together without conflict. The repertoire_id is used to link other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for referencing the specific Repertoire for that Rearrangement
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
         study:
             $ref: '#/Study'
             description: Study object
@@ -2224,6 +2236,8 @@ Rearrangement:
             description: Clonal cluster assignment for the query sequence.
             x-airr:
                 miairr: false
+                required: true
+                nullable: true
                 adc-api-optional: false
         rearrangement_id:
             type: string
@@ -2232,12 +2246,16 @@ Rearrangement:
                 but will usually be a univerally unique record locator for database applications.
             x-airr:
                 miairr: false
+                required: true
+                nullable: true
                 adc-api-optional: false
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
             x-airr:
                 miairr: false
+                required: true
+                nullable: true
                 adc-api-optional: false
         sample_processing_id:
             type: string
@@ -2249,6 +2267,8 @@ Rearrangement:
                 the relationship is not maintained by the data processing.
             x-airr:
                 miairr: false
+                required: true
+                nullable: true
                 adc-api-optional: false
         data_processing_id:
             type: string
@@ -2257,6 +2277,8 @@ Rearrangement:
                 for this rearrangement. If this field is empty than the primary data processing object is assumed.
             x-airr:
                 miairr: false
+                required: true
+                nullable: true
                 adc-api-optional: false
         germline_database:
             type: string
