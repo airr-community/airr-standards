@@ -329,7 +329,7 @@ Subject:
                 nullable: true
                 set: 1
                 subset: subject
-                name: Age
+                name: Age minimum
         age_max:
             type: number
             description: Upper boundary of age range or equal to age_min for specific age. This field should only be null if age_min is null.
@@ -340,7 +340,7 @@ Subject:
                 nullable: true
                 set: 1
                 subset: subject
-                name: Age
+                name: Age maximum
         age_unit:
             $ref: '#/Ontology'
             description: unit of age range
@@ -353,7 +353,7 @@ Subject:
                 nullable: true
                 set: 1
                 subset: subject
-                name: Age
+                name: Age unit
                 format: ontology
                 ontology:
                     draft: true
