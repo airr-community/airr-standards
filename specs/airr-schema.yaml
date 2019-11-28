@@ -1221,8 +1221,8 @@ DataProcessing:
                 name: Data processing protocols
         data_processing_files:
             type: string
-            description: File name (or names) for data produced by a data processing step.
-            example: MS10R-NMonson-C7JR9_S1_R1_001.igblast.airr.tsv
+            description: File name (or names) for data produced by a data processing step (e.g. annotation).
+            example: ERR1278153_aa.txz, ERR1278153_ab.txz, ERR1278153_ac.txz
             x-airr:
                 miairr: false
                 required: false
