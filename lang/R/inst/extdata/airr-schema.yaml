@@ -927,7 +927,12 @@ NucleicAcidProcessing:
                 name: Protocol IDs
         pcr_target:
             type: array
-            description: Target locus information
+            description: >
+                If a PCR step was performed that specifically targets the IG/TR loci, the target and primer locations
+                need to be provided here. This field holds an array of PCRTarget objects, so that multiplex PCR setups
+                amplifying multiple loci at the same time can be annotated using one record per locus. PCR setups not
+                targeting any specific locus must not annotate this field but select the appropriate 
+                library_generation_method instead.
             items:
                 $ref: '#/PCRTarget'
         complete_sequences:
