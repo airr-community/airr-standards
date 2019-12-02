@@ -343,7 +343,7 @@ Subject:
                 name: Age maximum
         age_unit:
             $ref: '#/Ontology'
-            description: unit of age range
+            description: Unit of age range
             example:
                 id: UO_0000036
                 value: year
