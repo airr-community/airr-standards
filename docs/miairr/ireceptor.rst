@@ -18,8 +18,10 @@ the AIRR Community standards.
 References
 ==========
 
-.. [Corrie et al.] Corrie *et al*. iReceptor: A platform for querying and analyzing antibody/B‐cell
-and T‐cell receptor repertoire data across federated repositories. Immunol Rev. 2018 Jul;284(1):24-41. `DOI: 10.1111/imr.12666`_
+.. [Corrie et al.] Corrie *et al*. 
+iReceptor: A platform for querying and analyzing antibody/B‐cell
+and T‐cell receptor repertoire data across federated repositories.
+Immunol Rev. 2018 Jul;284(1):24-41. `DOI: 10.1111/imr.12666`_
 
 .. _`DOI: 10.1111/imr.12666`: https://doi.org/10.1111/imr.12666
 
