@@ -2255,7 +2255,6 @@ Clone:
         - d_call
         - j_call
         - germline_alignment
-        - junction
     properties:
         clone_id:
             type: string
@@ -2294,20 +2293,6 @@ Clone:
             x-airr:
                 miairr: false
                 required: true
-        junction:
-            type: string
-            description: >
-                Junction region nucleotide sequence, where the junction is defined as
-                the CDR3 plus the two flanking conserved codons.
-            x-airr:
-                miairr: false
-                required: true
-        junction_aa:
-            type: string
-            description: >
-                Junction region amino acid sequence.
-            x-airr:
-                miairr: false
         junction_length:
             type: integer
             description: Number of nucleotides in the junction sequence.
@@ -2380,15 +2365,15 @@ Clone:
             x-airr:
                 miairr: false
                 required: true
-        cdr3_start:
+        junction_start:
             type: integer
-            description: CDR3 start position in the query sequence (1-based closed interval).
+            description: Junction region start position in the alignment (1-based closed interval).
             x-airr:
                 miairr: false
                 required: true
-        cdr3_end:
+        junction_end:
             type: integer
-            description: CDR3 end position in the query sequence (1-based closed interval).
+            description: Junction region end position in the alignment (1-based closed interval).
             x-airr:
                 miairr: false
                 required: true
@@ -2438,7 +2423,7 @@ Tree:
                 required: true
         node_list:
             type: object
-            description: Dictionary of nodes in the tree, keyed by node_id string
+            description: Dictionary of nodes in the tree, keyed by sequence_id string
             x-airr:
                 miairr: false
             additionalProperties:
@@ -2448,14 +2433,34 @@ Tree:
 Node:
     discriminator: AIRR
     type: object
+    required:
+        - sequence_id
+        - sequence_alignment
+        - junction
     properties:
-        node_id:
+        sequence_id:
             type: string
             description: Identifier for this node, matches id in newick string
             x-airr:
                 miairr: false
-        sequence:
+                required: true
+        sequence_alignment:
             type: string
             description: DNA sequence of this node
+            x-airr:
+                miairr: false
+                required: true
+        junction:
+            type: string
+            description: >
+                Junction region nucleotide sequence, where the junction is defined as
+                the CDR3 plus the two flanking conserved codons.
+            x-airr:
+                miairr: false
+                required: true
+        junction_aa:
+            type: string
+            description: >
+                Junction region amino acid sequence.
             x-airr:
                 miairr: false
