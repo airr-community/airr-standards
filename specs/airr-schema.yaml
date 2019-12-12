@@ -2249,6 +2249,13 @@ Rearrangement:
 Clone:
     discriminator: AIRR
     type: object
+    required:
+        - clone_id
+        - v_call
+        - d_call
+        - j_call
+        - germline_alignment
+        - junction
     properties:
         clone_id:
             type: string
@@ -2256,6 +2263,11 @@ Clone:
             x-airr:
                 miairr: false
                 required: true
+        repertoire_id:
+            type: string
+            description: Identifier to the associated repertoire in study metadata.
+            x-airr:
+                miairr: false
         data_processing_id:
             type: string
             description: Identifier for the data processing object.
@@ -2289,6 +2301,7 @@ Clone:
                 the CDR3 plus the two flanking conserved codons.
             x-airr:
                 miairr: false
+                required: true
         junction_aa:
             type: string
             description: >
