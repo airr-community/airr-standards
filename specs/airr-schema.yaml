@@ -1444,6 +1444,13 @@ Rearrangement:
         locus:
             type: string
             description: Gene locus (chain type). For example, IGH, IGI, IGK, IGL, TRA, TRB, TRD, or TRG.
+            example: IGH
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: Locus
         v_call:
             type: string
             description: >
@@ -1456,7 +1463,44 @@ Rearrangement:
                 nullable: true
                 set: 6
                 subset: data (processed sequence)
+                name: V gene with allele
+        v_subgroup:
+            type: string
+            description: >
+                V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHV4).
+            example: IGHV4
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: V gene subgroup
+        v_gene:
+            type: string
+            description: >
+                V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHV4-59).
+            example: IGHV4-59
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
                 name: V gene
+        v_allele:
+            type: string
+            description: >
+                V allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed. For example, for IGHV4-59*01 an allele
+                string of 01 should be used (not 1).
+            example: 01
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: V allele
         d_call:
             type: string
             description: >
