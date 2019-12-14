@@ -143,8 +143,8 @@ Study:
                     name: NCIT
                     url: https://ncit.nci.nih.gov/ncitbrowser/
                     top_node:
-                        id: C15320
-                        value: Study Design
+                        id: C63536
+                        value: Study
         study_description:
             type: string
             description: Generic study description
