@@ -1219,6 +1219,15 @@ DataProcessing:
                 set: 5
                 subset: process (computational)
                 name: Data processing protocols
+        data_processing_files:
+            type: string
+            description: File name (or names) for data produced by a data processing step (e.g. annotation).
+            example: ERR1278153_aa.txz, ERR1278153_ab.txz, ERR1278153_ac.txz
+            x-airr:
+                miairr: false
+                required: false
+                nullable: true
+                name: Processed data file names
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
