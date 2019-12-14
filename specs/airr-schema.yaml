@@ -1513,7 +1513,7 @@ Rearrangement:
                 nullable: true
                 set: 6
                 subset: data (processed sequence)
-                name: D gene
+                name: D gene with allele
         d_subgroup:
             type: string
             description: >
@@ -1537,7 +1537,7 @@ Rearrangement:
                 required: true
                 nullable: true
                 adc-api-optional: false
-                name: V gene
+                name: D gene
         d_allele:
             type: string
             description: >
@@ -1563,7 +1563,44 @@ Rearrangement:
                 nullable: true
                 set: 6
                 subset: data (processed sequence)
+                name: J gene with allele
+        j_subgroup:
+            type: string
+            description: >
+                J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHJ4).
+            example: IGHJ4
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: J gene subgroup
+        j_gene:
+            type: string
+            description: >
+                J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHJ4).
+            example: IGHJ4
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
                 name: J gene
+        j_allele:
+            type: string
+            description: >
+                J allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed. For example, for IGHJ4*02 an allele
+                string of 02 should be used (not 1).
+            example: 02
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: J allele
         c_call:
             type: string
             description: >
