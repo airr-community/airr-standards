@@ -1514,6 +1514,43 @@ Rearrangement:
                 set: 6
                 subset: data (processed sequence)
                 name: D gene
+        d_subgroup:
+            type: string
+            description: >
+                D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHD3).
+            example: IGHD3
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: D gene subgroup
+        d_gene:
+            type: string
+            description: >
+                D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHD3-10).
+            example: IGHD3-10
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: V gene
+        d_allele:
+            type: string
+            description: >
+                D allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed. For example, for IGHD3-10*01 an allele
+                string of 01 should be used (not 1).
+            example: 01
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: D allele
         j_call:
             type: string
             description: >
