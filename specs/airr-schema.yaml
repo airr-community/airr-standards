@@ -1614,6 +1614,43 @@ Rearrangement:
                 set: 6
                 subset: data (processed sequence)
                 name: C region
+        c_subgroup:
+            type: string
+            description: >
+                C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHM).
+            example: IGHM
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: C gene subgroup
+        c_gene:
+            type: string
+            description: >
+                C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHM).
+            example: IGHM
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: C gene
+        c_allele:
+            type: string
+            description: >
+                C allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed. For example, for IGHM*01 an allele
+                string of 01 should be used (not 1).
+            example: 01
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: C allele
         sequence_alignment:
             type: string
             description: >
