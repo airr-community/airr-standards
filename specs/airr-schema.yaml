@@ -84,7 +84,10 @@ Attributes:
                     description: Ontology name
                 url:
                     type: string
-                    description: Ontology URL. If the Ontology is included in the Open Biological and Biomedical Ontology (OBO) Foundry set of ontologies, the OBO URL link should be used (e.g. http://www.ontobee.org/ontology/ncbitaxon).
+                    description: >
+                        Ontology URL. If the Ontology is included in the Open Biological and Biomedical Ontology (OBO)
+                        Foundry set of ontologies, the OBO URL link should be used (e.g.,
+                        http://www.ontobee.org/ontology/ncbitaxon).
                 top_node:
                     type: object
                     description: Term to use as top node for ontology

@@ -84,7 +84,10 @@ Attributes:
                     description: Ontology name
                 url:
                     type: string
-                    description: Ontology URL
+                    description: >
+                        Ontology URL. If the Ontology is included in the Open Biological and Biomedical Ontology (OBO)
+                        Foundry set of ontologies, the OBO URL link should be used (e.g.,
+                        http://www.ontobee.org/ontology/ncbitaxon).
                 top_node:
                     type: object
                     description: Term to use as top node for ontology
@@ -291,7 +294,7 @@ Subject:
                 ontology:
                     draft: false
                     name: NCBITAXON
-                    url: https://www.ncbi.nlm.nih.gov/taxonomy
+                    url: http://www.ontobee.org/ontology/ncbitaxon
                     top_node:
                         id: 7776
                         value: Gnathostomata
@@ -670,7 +673,7 @@ CellProcessing:
                 ontology:
                     draft: true
                     name: CL
-                    url: https://www.ebi.ac.uk/ols/ontologies/cl
+                    url: http://www.ontobee.org/ontology/cl
                     top_node:
                         id: CL_0000542
                         value: lymphocyte
@@ -703,7 +706,7 @@ CellProcessing:
                 ontology:
                     draft: false
                     name: NCBITAXON
-                    url: https://www.ncbi.nlm.nih.gov/taxonomy
+                    url: http://www.ontobee.org/ontology/ncbitaxon
                     top_node:
                         id: 7776
                         value: Gnathostomata
