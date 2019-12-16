@@ -799,7 +799,10 @@ PCRTarget:
                 - TRB
                 - TRD
                 - TRG
-            description: Designation of the target locus according to IMGT nomencleature
+            description: >
+                Designation of the target locus. Note that this field uses a controlled vocubulary that is meant to
+                provide a generic classification of the locus, not necessarily the correct designation according to
+                a specific nomenclature.
             example: IGK
             x-airr:
                 miairr: true
@@ -1441,15 +1444,26 @@ Rearrangement:
                 adc-api-optional: true
         locus:
             type: string
-            description: Gene locus (chain type). For example, IGH, IGI, IGK, IGL, TRA, TRB, TRD, or TRG.
+            enum:
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
+            description: >
+                Gene locus (chain type). Note that this field uses a controlled vocubulary that is meant to provide a
+                generic classification of the locus, not necessarily the correct designation according to a specific
+                nomenclature.
             example: IGH
             x-airr:
-                miairr: true
-                required: false
+                miairr: false
+                required: true
                 nullable: true
-                set: 6
-                subset: data (processed sequence)
-                name: Gene locus            
+                adc-api-optional: false
+                name: Gene locus
         v_call:
             type: string
             description: >
