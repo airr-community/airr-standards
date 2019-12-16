@@ -1641,9 +1641,9 @@ Rearrangement:
         c_call:
             type: string
             description: >
-                C region gene with allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene/allele nomenclature should be followed (e.g., IGHM*01).
-            example: IGHM*01
+                Constant region gene with allele. If referring to a known reference sequence in a database, such as
+                IMGT/GENE-DB, the relevant gene/allele nomenclature should be followed (e.g., IGHG1*01).
+            example: IGHG1*01
             x-airr:
                 miairr: true
                 required: true
@@ -1654,9 +1654,10 @@ Rearrangement:
         c_subgroup:
             type: string
             description: >
-                C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed (e.g., IGHM).
-            example: IGHM
+                Subgroup of the constant region gene. For immunoglobulins, this should be informative of the isotype
+                (e.g,, IgG). If referring to a known reference sequence in a database, such as IMGT/GENE-DB, the
+                relevant gene nomenclature should be followed (e.g., IGHG).
+            example: IGHG
             x-airr:
                 miairr: false
                 required: true
@@ -1666,9 +1667,12 @@ Rearrangement:
         c_gene:
             type: string
             description: >
-                C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed (e.g., IGHM).
-            example: IGHM
+                Constant region gene. For immunoglobulins, this should be informative about the subclass, if it exists
+                for the given isotype (e.g., IgG1 for IgG). In cases in which it is contested whether a sequence
+                constitutes a gene or an allele (e.g., Ighg2a/c in M. musculus), the relevant information should be
+                encoded as gene, not as allele (i.e., here, not in c_allele). If referring to a known reference sequence
+                in a database, such as IMGT/GENE-DB, the relevant gene nomenclature should be followed (e.g., IGHG1).
+            example: IGHG1
             x-airr:
                 miairr: false
                 required: true
@@ -1678,8 +1682,10 @@ Rearrangement:
         c_allele:
             type: string
             description: >
-                C allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed. For example, for IGHM*01 an allele
+                Allele of constant region gene. In cases in which it is contested whether a sequence constitutes a gene
+                or an allele (e.g., Ighg2a/c in M. musculus), the relevant information should be encoded as gene, not as
+                allele (i.e., not here, but in c_gene). If referring to a known reference sequence in a database, such
+                as IMGT/GENE-DB, the relevant gene nomenclature should be followed. For example, for IGHG1*01 an allele
                 string of 01 should be used (not 1).
             example: 01
             x-airr:
