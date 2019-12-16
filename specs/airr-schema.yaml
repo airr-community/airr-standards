@@ -141,7 +141,7 @@ Study:
                 ontology:
                     draft: true
                     name: NCIT
-                    url: https://ncit.nci.nih.gov/ncitbrowser/
+                    url: http://www.ontobee.org/ontology/ncit
                     top_node:
                         id: C63536
                         value: Study
