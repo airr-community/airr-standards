@@ -1608,7 +1608,8 @@ Rearrangement:
         junction_aa:
             type: string
             description: >
-                Junction region amino acid sequence.
+                Junction region amino acid sequence, where the junction is defined as
+                the CDR3 plus the two flanking conserved codons.
             example: CARAGVYDGYTMDYW
             x-airr:
                 miairr: true
