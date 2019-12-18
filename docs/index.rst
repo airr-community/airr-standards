@@ -40,4 +40,5 @@ Table of Contents
     Data Submission and Query <standards/data_submission>
     Software <standards/software>
     Community <standards/community>
+    Release Notes <standards/news>
     Glossary <appendix/terms>
