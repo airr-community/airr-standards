@@ -2274,7 +2274,7 @@ Clone:
                 miairr: false
                 required: true
         sequence_id:
-            type: list
+            type: array
             description: List of sequence_ids that are members of the clone.
             x-airr:
                 miairr: false
