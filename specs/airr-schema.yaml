@@ -2253,6 +2253,7 @@ Clone:
         - clone_id
         - repertoire_id
         - data_processing_id
+        - sample_processing_id
         - germline_alignment
     properties:
         clone_id:
@@ -2269,7 +2270,13 @@ Clone:
                 required: true
         data_processing_id:
             type: string
-            description: Identifier for the data processing object.
+            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            x-airr:
+                miairr: false
+                required: true
+        sample_processing_id:
+            type: string
+            description: Identifier of the sample processing object in the repertoire metadata for this clone.
             x-airr:
                 miairr: false
                 required: true
