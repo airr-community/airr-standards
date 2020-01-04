@@ -637,7 +637,6 @@ Sample:
                 name: Biomaterial provider
 
 # 1-to-n relationship between a sample and processing of its cells
-# cell_processing_id is unique within a study
 CellProcessing:
     discriminator: AIRR
     type: object
@@ -838,7 +837,6 @@ PCRTarget:
 
 # generally, a 1-to-1 relationship between a CellProcessing and processing of its nucleic acid
 # but may be 1-to-n for technical replicates.
-# nucleic_acid_processing_id is unique within a study
 NucleicAcidProcessing:
     discriminator: AIRR
     type: object
