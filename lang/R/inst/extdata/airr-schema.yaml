@@ -639,7 +639,6 @@ Sample:
                 name: Biomaterial provider
 
 # 1-to-n relationship between a sample and processing of its cells
-# cell_processing_id is unique within a study
 CellProcessing:
     discriminator: AIRR
     type: object
@@ -802,7 +801,10 @@ PCRTarget:
                 - TRB
                 - TRD
                 - TRG
-            description: Designation of the target locus according to IMGT nomencleature
+            description: >
+                Designation of the target locus. Note that this field uses a controlled vocubulary that is meant to
+                provide a generic classification of the locus, not necessarily the correct designation according to
+                a specific nomenclature.
             example: IGK
             x-airr:
                 miairr: true
@@ -837,7 +839,6 @@ PCRTarget:
 
 # generally, a 1-to-1 relationship between a CellProcessing and processing of its nucleic acid
 # but may be 1-to-n for technical replicates.
-# nucleic_acid_processing_id is unique within a study
 NucleicAcidProcessing:
     discriminator: AIRR
     type: object
@@ -1445,7 +1446,26 @@ Rearrangement:
                 adc-api-optional: true
         locus:
             type: string
-            description: Gene locus (chain type). For example, IGH, IGI, IGK, IGL, TRA, TRB, TRD, or TRG.
+            enum:
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
+            description: >
+                Gene locus (chain type). Note that this field uses a controlled vocubulary that is meant to provide a
+                generic classification of the locus, not necessarily the correct designation according to a specific
+                nomenclature.
+            example: IGH
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: Gene locus
         v_call:
             type: string
             description: >
