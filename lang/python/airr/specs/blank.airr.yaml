@@ -19,7 +19,7 @@ Repertoire:
       grants: ""
       pub_ids: ""
       keywords_study:
-        -
+        - "bad_keyword"
     subject:
       subject_id: ""
       synthetic: false
@@ -110,6 +110,6 @@ Repertoire:
         collapsing_method: ""
         data_processing_protocols: ""
         data_processing_files:
-          - ""
+          - "FILENAME"
         germline_database: ""
         analysis_provenance_id: ""
