@@ -1223,9 +1223,14 @@ DataProcessing:
                 subset: process (computational)
                 name: Data processing protocols
         data_processing_files:
-            type: string
-            description: File name (or names) for data produced by a data processing step (e.g. annotation).
-            example: ERR1278153_aa.txz, ERR1278153_ab.txz, ERR1278153_ac.txz
+            type: array
+            items:
+                type string
+            description: Array of file names for data produced by a data processing step (e.g. annotation).
+            example:
+                - 'ERR1278153_aa.txz'
+                - 'ERR1278153_ab.txz'
+                - 'ERR1278153_ac.txz'
             x-airr:
                 miairr: false
                 required: false
