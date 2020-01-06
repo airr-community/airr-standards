@@ -19,7 +19,8 @@ Repertoire:
       grants: ""
       pub_ids: ""
       keywords_study:
-        - "bad_keyword"
+        - "contains_tcr"
+        - "contains_single_cell"
     subject:
       subject_id: ""
       synthetic: false
