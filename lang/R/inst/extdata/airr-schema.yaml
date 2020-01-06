@@ -1230,7 +1230,7 @@ DataProcessing:
         data_processing_files:
             type: array
             items:
-                type string
+                type: string
             description: Array of file names for data produced by a data processing step (e.g. annotation).
             example:
                 - 'ERR1278153_aa.txz'
