@@ -373,7 +373,13 @@ class Schema:
                         if row not in spec['items']['enum']:
                             raise ValidationError('field %s has value "%s" not among possible enumeration values' %(full_field, row))
                     elif spec['items'].get('type') is not None:
-                        sys.stderr.write('Warning: got an array value %s of type %s\n'%(row, spec['items']['type']))
+                        array_field_type = spec['items']['type']
+                        try:
+                            if array_field_type == 'boolean':  self.to_bool(row, validate=True)
+                            if array_field_type == 'integer':  self.to_int(row, validate=True)
+                            if array_field_type == 'number':  self.to_float(row, validate=True)
+                        except ValidationError as e:
+                            raise ValidationError('array field %s does not have type %s - %s' %(full_field, array_field_type, e))
                     else:
                         raise ValidationError('Internal error: array field %s in schema not handled by validation. File a bug report.' %(full_field))
             elif field_type == 'object':
