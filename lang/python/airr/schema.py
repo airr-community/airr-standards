@@ -372,6 +372,8 @@ class Schema:
                             continue
                         if row not in spec['items']['enum']:
                             raise ValidationError('field %s has value "%s" not among possible enumeration values' %(full_field, row))
+                    elif spec['items'].get('type') is not None:
+                        sys.stderr.write('Warning: got an array value %s of type %s\n'%(row, spec['items']['type']))
                     else:
                         raise ValidationError('Internal error: array field %s in schema not handled by validation. File a bug report.' %(full_field))
             elif field_type == 'object':
