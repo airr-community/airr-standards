@@ -18,7 +18,9 @@ Repertoire:
       pub_ids: "PMID:27005435"
       collected_by: ""
       grants: ""
-      keywords_study: null
+      keywords_study: 
+        - "contains_ig"
+        - "contains_tcr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -118,7 +120,8 @@ Repertoire:
       collected_by: ""
       grants: ""
       keywords_study:
-        -
+        - "contains_ig"
+        - "contains_tcr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -215,7 +218,8 @@ Repertoire:
       collected_by: ""
       grants: ""
       keywords_study:
-        -
+        - "contains_ig"
+        - "contains_tcr"
     subject:
       subject_id: TW01A
       synthetic: false
