@@ -97,8 +97,7 @@ Repertoire:
         primer_match_cutoffs: ""
         collapsing_method: ""
         data_processing_protocols: ""
-        data_processing_files:
-          - ERR1278153_aa.txz
+        data_processing_files: null
         germline_database: ""
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
 
