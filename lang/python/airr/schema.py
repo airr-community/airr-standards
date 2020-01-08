@@ -372,14 +372,18 @@ class Schema:
                             continue
                         if row not in spec['items']['enum']:
                             raise ValidationError('field %s has value "%s" not among possible enumeration values' %(full_field, row))
-                    elif spec['items'].get('type') is not None:
-                        array_field_type = spec['items']['type']
-                        try:
-                            if array_field_type == 'boolean':  self.to_bool(row, validate=True)
-                            if array_field_type == 'integer':  self.to_int(row, validate=True)
-                            if array_field_type == 'number':  self.to_float(row, validate=True)
-                        except ValidationError as e:
-                            raise ValidationError('array field %s does not have type %s - %s' %(full_field, array_field_type, e))
+                    elif spec['items'].get('type') == 'string':
+                        if not isinstance(row, str):
+                            raise ValidationError('array field %s does not have string type: %s' %(full_field, row))
+                    elif spec['items'].get('type') == 'boolean':
+                        if not isinstance(row, boolean):
+                            raise ValidationError('array field %s does not have boolean type: %s' %(full_field, row))
+                    elif spec['items'].get('type') == 'integer':
+                        if not isinstance(row, int):
+                            raise ValidationError('array field %s does not have integer type: %s' %(full_field, row))
+                    elif spec['items'].get('type') == 'number':
+                        if not isinstance(row, float):
+                            raise ValidationError('array field %s does not have number type: %s' %(full_field, row))
                     else:
                         raise ValidationError('Internal error: array field %s in schema not handled by validation. File a bug report.' %(full_field))
             elif field_type == 'object':
