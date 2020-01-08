@@ -8,19 +8,19 @@ Release Notes
 ==============
 
 
-Version 1.2.?: current
+Version 1.?.?: current
 --------------------------------------------------------------------------------
 
++ Added ontobee as default source for ``ontologies``
+ .. #296 by bussec was merged on Jan 4, 2020
 + Expanded description for ``pcr_target``
- .. #288 by bussec was merged on Dec 10, 2018
+ .. #288 by bussec was merged on Dec 10, 2019
 + Fix capitalization of ``age_unit`` description
- .. #290 by bcorrie was merged on Dec 10, 2018
+ .. #290 by bcorrie was merged on Dec 10, 2019
 + Fix name: fields for ``age`` fields
- .. #285 by bcorrie was merged on Nov 27, 2018
-+ Reverted ``locus_species`` until we resolve how to handle ontologies
- .. #281 by schristley was merged on Nov 24, 2018
-+ Added species information to ``cell_subset`` and ``locus`` fields
- .. #260 by bussec was merged on Nov 8
+ .. #285 by bcorrie was merged on Nov 27, 2019
++ Introduced ``cell_species``
+ .. #260 by bussec was merged on Nov 8, 2019; #281 Reverted ``locus_species``  by bcorrie was merged on Nov 27, 2019
 + Added ``sample_processing_id``
  .. #263 by schristley was merged on Oct 21
 + Added vocabularies/ontologies as JSON string for: Cell subset, Target substrate, Library generation method, Complete sequences, Physical linkage of different loci
