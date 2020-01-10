@@ -2288,30 +2288,44 @@ Clone:
                 miairr: false
         v_call:
             type: string
-            description: V gene with allele. For example, IGHV4-59*01.
+            description: >
+                V gene with allele of the inferred ancestral of the clone. For example, IGHV4-59*01.
             example: IGHV4-59*01
             x-airr:
                 miairr: false
         d_call:
             type: string
-            description: D gene with allele. For example, IGHD3-10*01.
+            description: >
+                D gene with allele of the inferred ancestor of the clone. For example, IGHD3-10*01.
             example: IGHD3-10*01
             x-airr:
                 miairr: false
         j_call:
             type: string
-            description: J gene with allele. For example, IGHJ4*02.
+            description: >
+                J gene with allele of the inferred ancestor of the clone. For example, IGHJ4*02.
             example: IGHJ4*02
+            x-airr:
+                miairr: false
+        junction:
+            type: string
+            description: >
+                Nucleotide sequence for the junction region of the inferred ancestor of the clone,
+                where the junction is defined as the CDR3 plus the two flanking conserved codons.
+        junction_aa:
+            type: string
+            description: >
+                Amino acid translation of the junction.
             x-airr:
                 miairr: false
         junction_length:
             type: integer
-            description: Number of nucleotides in the junction sequence.
+            description: Number of nucleotides in the junction.
             x-airr:
                 miairr: false
         junction_aa_length:
             type: integer
-            description: Number of amino acids in the junction sequence.
+            description: Number of amino acids in junction_aa.
             x-airr:
                 miairr: false
         germline_alignment:
@@ -2326,7 +2340,7 @@ Clone:
         germline_alignment_aa:
             type: string
             description: >
-                Amino acid translation of the germline_alignment.
+                Amino acid translation of germline_alignment.
             x-airr:
                 miairr: false
         v_alignment_start:
@@ -2437,22 +2451,22 @@ Node:
         sequence_id:
             type: string
             description: >
-                Identifier for this node, matches id in newick string and, where possible, sequence_id
-                in the source repertoire.
+                Identifier for this node that matches the id in the newick string and, where possible,
+                the sequence_id in the source repertoire.
             x-airr:
                 miairr: false
                 required: true
         sequence_alignment:
             type: string
             description: >
-                DNA sequence of this node, aligned to the germline_alignment for this clone, including
+                Nucleotide sequence of the node, aligned to the germline_alignment for this clone, including
                 including any indel corrections or spacers.
             x-airr:
                 miairr: false
         junction:
             type: string
             description: >
-                Junction region nucleotide sequence, where the junction is defined as
+                Junction region nucleotide sequence for the node, where the junction is defined as
                 the CDR3 plus the two flanking conserved codons.
             x-airr:
                 miairr: false
