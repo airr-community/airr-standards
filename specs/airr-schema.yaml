@@ -1214,7 +1214,10 @@ SampleProcessing:
     properties:
         sample_processing_id:
             type: string
-            description: Identifier for the sample processing object. This field should be unique within the repertoire. This field can be used to uniquely identify the combination of sample, cell processing, nucleic acid processing and sequencing run information for the repertoire.
+            description: >
+                Identifier for the sample processing object. This field should be unique within the repertoire.
+                This field can be used to uniquely identify the combination of sample, cell processing,
+                nucleic acid processing and sequencing run information for the repertoire.
 
 
 # The composite schema for the repertoire object
@@ -1228,7 +1231,11 @@ Repertoire:
     properties:
         repertoire_id:
             type: string
-            description: Identifier for the repertoire object. This identifier should be globally unique so that repertoires from multiple studies can be combined together without conflict. The repertoire_id is used to link other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for referencing the specific Repertoire for that Rearrangement
+            description: >
+                Identifier for the repertoire object. This identifier should be globally unique so that repertoires
+                from multiple studies can be combined together without conflict. The repertoire_id is used to link
+                other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for
+                referencing the specific Repertoire for that Rearrangement.
         study:
             $ref: '#/Study'
             description: Study object
@@ -2252,8 +2259,6 @@ Clone:
     required:
         - clone_id
         - repertoire_id
-        - data_processing_id
-        - sample_processing_id
         - germline_alignment
     properties:
         clone_id:
@@ -2273,13 +2278,7 @@ Clone:
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
                 miairr: false
-                required: true
-        sample_processing_id:
-            type: string
-            description: Identifier of the sample processing object in the repertoire metadata for this clone.
-            x-airr:
-                miairr: false
-                required: true
+                required: false
         sequence_id:
             type: array
             items:
@@ -2382,19 +2381,6 @@ Clone:
             description: Junction region end position in the alignment (1-based closed interval).
             x-airr:
                 miairr: false
-        junction:
-            type: string
-            description: >
-                Junction region nucleotide sequence, where the junction is defined as
-                the CDR3 plus the two flanking conserved codons.
-            x-airr:
-                miairr: false
-        junction_aa:
-            type: string
-            description: >
-                Amino acid translation of the junction.
-            x-airr:
-                miairr: false
         rearrangement_count:
             type: integer
             description: Number of rearrangements included in this clone
@@ -2413,7 +2399,7 @@ Tree:
     required:
         - tree_id
         - clone_id
-        - newick_string
+        - newick
     properties:
         tree_id:
             type: string
@@ -2427,13 +2413,13 @@ Tree:
             x-airr:
                 miairr: false
                 required: true
-        newick_string:
+        newick:
             type: string
             description: Newick string of the tree edges.
             x-airr:
                 miairr: false
                 required: true
-        node_list:
+        nodes:
             type: object
             description: Dictionary of nodes in the tree, keyed by sequence_id string
             x-airr:
