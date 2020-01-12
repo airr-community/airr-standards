@@ -46,7 +46,7 @@ Attributes:
             default: false
         required:
             type: boolean
-            description: Indicates if field is required by MiAIRR
+            description: Indicates if field is required by MiAIRR and/or ADC API
         nullable:
             type: boolean
             description: Indicates if field can have null value
@@ -84,7 +84,9 @@ Attributes:
                     description: Ontology name
                 url:
                     type: string
-                    description: Ontology URL
+                    description: >
+                        Ontology URL. If the ontology is included in the EMBL-EBI Ontology Lookup Service (OLS) set of
+                        ontologies, the OLS URL should be used (e.g., https://www.ebi.ac.uk/ols/ontologies/ncbitaxon).
                 top_node:
                     type: object
                     description: Term to use as top node for ontology
@@ -141,10 +143,10 @@ Study:
                 ontology:
                     draft: true
                     name: NCIT
-                    url: https://ncit.nci.nih.gov/ncitbrowser/
+                    url: https://www.ebi.ac.uk/ols/ontologies/ncit
                     top_node:
-                        id: C15320
-                        value: Study Design
+                        id: C63536
+                        value: Study
         study_description:
             type: string
             description: Generic study description
@@ -291,7 +293,7 @@ Subject:
                 ontology:
                     draft: false
                     name: NCBITAXON
-                    url: https://www.ncbi.nlm.nih.gov/taxonomy
+                    url: https://www.ebi.ac.uk/ols/ontologies/ncbitaxon
                     top_node:
                         id: 7776
                         value: Gnathostomata
@@ -329,7 +331,7 @@ Subject:
                 nullable: true
                 set: 1
                 subset: subject
-                name: Age
+                name: Age minimum
         age_max:
             type: number
             description: Upper boundary of age range or equal to age_min for specific age. This field should only be null if age_min is null.
@@ -340,10 +342,10 @@ Subject:
                 nullable: true
                 set: 1
                 subset: subject
-                name: Age
+                name: Age maximum
         age_unit:
             $ref: '#/Ontology'
-            description: unit of age range
+            description: Unit of age range
             example:
                 id: UO_0000036
                 value: year
@@ -353,12 +355,12 @@ Subject:
                 nullable: true
                 set: 1
                 subset: subject
-                name: Age
+                name: Age unit
                 format: ontology
                 ontology:
                     draft: true
                     name: Units of measurement ontology
-                    url: http://www.ontobee.org/ontology/UO
+                    url: https://www.ebi.ac.uk/ols/ontologies/UO
                     top_node:
                         id: UO_0000003
                         value: time unit
@@ -637,7 +639,6 @@ Sample:
                 name: Biomaterial provider
 
 # 1-to-n relationship between a sample and processing of its cells
-# cell_processing_id is unique within a study
 CellProcessing:
     discriminator: AIRR
     type: object
@@ -703,7 +704,7 @@ CellProcessing:
                 ontology:
                     draft: false
                     name: NCBITAXON
-                    url: https://www.ncbi.nlm.nih.gov/taxonomy
+                    url: https://www.ebi.ac.uk/ols/ontologies/ncbitaxon
                     top_node:
                         id: 7776
                         value: Gnathostomata
@@ -800,7 +801,10 @@ PCRTarget:
                 - TRB
                 - TRD
                 - TRG
-            description: Designation of the target locus according to IMGT nomencleature
+            description: >
+                Designation of the target locus. Note that this field uses a controlled vocubulary that is meant to
+                provide a generic classification of the locus, not necessarily the correct designation according to
+                a specific nomenclature.
             example: IGK
             x-airr:
                 miairr: true
@@ -835,7 +839,6 @@ PCRTarget:
 
 # generally, a 1-to-1 relationship between a CellProcessing and processing of its nucleic acid
 # but may be 1-to-n for technical replicates.
-# nucleic_acid_processing_id is unique within a study
 NucleicAcidProcessing:
     discriminator: AIRR
     type: object
@@ -927,7 +930,12 @@ NucleicAcidProcessing:
                 name: Protocol IDs
         pcr_target:
             type: array
-            description: Target locus information
+            description: >
+                If a PCR step was performed that specifically targets the IG/TR loci, the target and primer locations
+                need to be provided here. This field holds an array of PCRTarget objects, so that multiplex PCR setups
+                amplifying multiple loci at the same time can be annotated using one record per locus. PCR setups not
+                targeting any specific locus must not annotate this field but select the appropriate 
+                library_generation_method instead.
             items:
                 $ref: '#/PCRTarget'
         complete_sequences:
@@ -1142,6 +1150,10 @@ DataProcessing:
         data_processing_id:
             type: string
             description: Identifier for the data processing object.
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
         primary_annotation:
             type: boolean
             default: false
@@ -1240,6 +1252,10 @@ SampleProcessing:
                 Identifier for the sample processing object. This field should be unique within the repertoire.
                 This field can be used to uniquely identify the combination of sample, cell processing,
                 nucleic acid processing and sequencing run information for the repertoire.
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
 
 
 # The composite schema for the repertoire object
@@ -1258,6 +1274,10 @@ Repertoire:
                 from multiple studies can be combined together without conflict. The repertoire_id is used to link
                 other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for
                 referencing the specific Repertoire for that Rearrangement.
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
         study:
             $ref: '#/Study'
             description: Study object
@@ -1433,30 +1453,26 @@ Rearrangement:
                 adc-api-optional: true
         locus:
             type: string
-            description: Gene locus (chain type). For example, IGH, IGI, IGK, IGL, TRA, TRB, TRD, or TRG.
-        locus_species:
-            type: string
-            $ref: '#/Ontology'
+            enum:
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
             description: >
-                Binomial designation of the species from which the locus originates. Typically, this value should be
-                identical to `organism`, if which case it SHOULD NOT be set explicitly. However, there are valid
-                experimental setups in which the two might differ, e.g. transgenic animal models. If set, this key
-                will overwrite the `organism` information for all lower layers of the schema.
-            example:
-                id: 9096
-                value: Homo sapiens
+                Gene locus (chain type). Note that this field uses a controlled vocubulary that is meant to provide a
+                generic classification of the locus, not necessarily the correct designation according to a specific
+                nomenclature.
+            example: IGH
             x-airr:
                 miairr: false
-                required: false
+                required: true
                 nullable: true
-                format: ontology
-                ontology:
-                    draft: false
-                    name: NCBITAXON
-                    url: https://www.ncbi.nlm.nih.gov/taxonomy
-                    top_node:
-                        id: 7776
-                        value: Gnathostomata
+                adc-api-optional: false
+                name: Gene locus
         v_call:
             type: string
             description: >
@@ -2254,6 +2270,8 @@ Rearrangement:
             description: Clonal cluster assignment for the query sequence.
             x-airr:
                 miairr: false
+                required: true
+                nullable: true
                 adc-api-optional: false
         rearrangement_id:
             type: string
@@ -2262,12 +2280,16 @@ Rearrangement:
                 but will usually be a univerally unique record locator for database applications.
             x-airr:
                 miairr: false
+                required: true
+                nullable: true
                 adc-api-optional: false
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
             x-airr:
                 miairr: false
+                required: true
+                nullable: true
                 adc-api-optional: false
         sample_processing_id:
             type: string
@@ -2279,6 +2301,8 @@ Rearrangement:
                 the relationship is not maintained by the data processing.
             x-airr:
                 miairr: false
+                required: true
+                nullable: true
                 adc-api-optional: false
         data_processing_id:
             type: string
@@ -2287,6 +2311,8 @@ Rearrangement:
                 for this rearrangement. If this field is empty than the primary data processing object is assumed.
             x-airr:
                 miairr: false
+                required: true
+                nullable: true
                 adc-api-optional: false
         germline_database:
             type: string
