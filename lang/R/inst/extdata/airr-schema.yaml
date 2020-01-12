@@ -2250,9 +2250,8 @@ Rearrangement:
             x-airr:
                 deprecated: true
 
-# A unique clone object that has been constructed from a single clone processing.
-# The information provided here is common among or aggregated across all repertoires
-# in the clone processing.
+# A unique inferred clone object that has been constructed within a single data processing
+# for a single repertoire and a subset of its sequences and/or rearrangements.
 Clone:
     discriminator: AIRR
     type: object
@@ -2279,11 +2278,18 @@ Clone:
             x-airr:
                 miairr: false
                 required: false
-        sequence_id:
+        sequences:
             type: array
             items:
                 type: string
             description: List of sequence_ids that are members of the clone.
+            x-airr:
+                miairr: false
+        rearrangements:
+            type: array
+            items:
+                type: string
+            description: List of rearrangement_ids that are members of the clone.
             x-airr:
                 miairr: false
         v_call:
@@ -2456,6 +2462,14 @@ Node:
             x-airr:
                 miairr: false
                 required: true
+        rearrangement_id:
+            type: string
+            description: >
+                Identifier for the Rearrangement object. May be identical to sequence_id,
+                but will usually be a univerally unique record locator for database applications.
+            x-airr:
+                miairr: false
+                required: false
         sequence_alignment:
             type: string
             description: >
