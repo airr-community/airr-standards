@@ -2512,7 +2512,7 @@ Tree:
                 required: true
         nodes:
             type: object
-            description: Dictionary of nodes in the tree, keyed by node_id string
+            description: Dictionary of nodes in the tree, keyed by sequence_id string
             x-airr:
                 miairr: false
             additionalProperties:
@@ -2523,24 +2523,16 @@ Node:
     discriminator: AIRR
     type: object
     required:
-        - node_id
+        - sequence_id
     properties:
-        node_id:
-            type: string
-            description: >
-                Identifier for this node that matches the id in the newick string.
-            x-airr:
-                miairr: false
-                required: true
         sequence_id:
             type: string
             description: >
-                Identifier for the sequence. The fully annotated sequence is not stored
-                within the node but is assumed to be accessible in an external AIRR TSV
-                Rearrangement file or other file.
+                Identifier for this node that matches the id in the newick string and, where possible,
+                the sequence_id in the source repertoire.
             x-airr:
                 miairr: false
-                required: false
+                required: true
         rearrangement_id:
             type: string
             description: >
