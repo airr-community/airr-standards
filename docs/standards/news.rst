@@ -8,8 +8,10 @@ Release Notes
 ==============
 
 
-Version 1.?.?: current
+Under development (Version 1.3.0)
 --------------------------------------------------------------------------------
+
+Current changes in the development branch. When released, will include the
 
 + Added ontobee as default source for ``ontologies``
  .. #296 by bussec was merged on Jan 4, 2020
@@ -17,7 +19,7 @@ Version 1.?.?: current
  .. #288 by bussec was merged on Dec 10, 2019
 + Fix capitalization of ``age_unit`` description
  .. #290 by bcorrie was merged on Dec 10, 2019
-+ Fix name: fields for ``age`` fields
++ Fix name of ``age`` fields
  .. #285 by bcorrie was merged on Nov 27, 2019
 + Introduced ``cell_species``
  .. #260 by bussec was merged on Nov 8, 2019; #281 Reverted ``locus_species``  by bcorrie was merged on Nov 27, 2019
@@ -29,11 +31,13 @@ Version 1.?.?: current
  .. #155 by bussec was merged on Oct 16, 2018 • Approved
 + Introduced age ranges, ``age_min``, ``age_max``, and ``age_unit``
  .. #254 by franasa was merged on Oct 11 • Approved
-+ Updated schema with more concise vdj call descriptions
++ Updated schema with more concise VDJ call descriptions
  .. #257 by bcorrie was merged on Oct 7 • Approved
 
 Version 1.2.1: Oct 5, 2018
 --------------------------------------------------------------------------------
+
+Minor patch release.
 
 + Schema gene vs segment terminology corrections
  .. #153 by javh was merged on Sep 13 • Approved
@@ -45,7 +49,12 @@ Version 1.2.1: Oct 5, 2018
 Version 1.2.0: Aug 18, 2018
 --------------------------------------------------------------------------------
 
-+ Removed foreign 'study_id' fields
+Peer reviewed released of the Rearrangement schema.
+
++ Definition change for the coordinate fields of the Rearrangement and Alignment schema.
+  Coordinates are now defined as 1-based closed intervals, instead of 0-based half-open
+  intervals (as previously defined in v1.1 of the schema).
++ Removed foreign ``study_id`` fields
  .. #134 by schristley was merged on Jul 12
 + Introduced ``keywords_study`` field
  .. #200 by bussec was merged on Jun 13 • Approved
@@ -53,9 +62,11 @@ Version 1.2.0: Aug 18, 2018
 Version 1.1.0: May 3, 2018
 --------------------------------------------------------------------------------
 
-+ Added ``required`` and ``nullable`` constrains to AIRR schema
+Initial public released of the Rearrangement and Alignment schemas.
+
++ Added ``required`` and ``nullable`` constrains to AIRR schema.
  .. #182 by bussec was merged on Apr 1 • Approved
-+ Schema definitions for MiAIRR attributes and ontology
++ Schema definitions for MiAIRR attributes and ontology.
  .. #182 by bussec was merged on Apr 1 • Approved
 + Introduction of an ``x-airr`` object indicating if field is required by MiAIRR
  .. #182 by bussec was merged on Apr 1 • Approved
@@ -63,7 +74,7 @@ Version 1.1.0: May 3, 2018
  .. #182 by bussec was merged on Apr 1 • Approved
 + Rename ``study_description`` to ``study_type``
  .. #182 by bussec was merged on Apr 1 • Approved
-+ Added ``physical quantity`` format
++ Added ``physical_quantity`` format
  .. #182 by bussec was merged on Apr 1 • Approved
 + Raw sequencing files into separate schema object
  .. #182 by bussec was merged on Apr 1 • Approved
@@ -81,26 +92,28 @@ Version 1.1.0: May 3, 2018
  .. #156 by schristley was merged on Mar 4 • Approved
 + Rename ``definitions.yaml`` to ``airr-schema.yaml``
  .. #66. in progress .. #124 by javh was merged on Apr 20
-+ Removed c_call, c_score and c_cigar from required as this is not typical reference aligner output
++ Removed ``c_call``, ``c_score`` and ``c_cigar`` from required as this is not
+  typical reference aligner output
  .. #106 by javh was merged on Apr 18, 2018
-+ Renamed vdj_score, vdj_identity, vdj_evalue, and vdj_cigar to ``score``, ``identity``, ``evalue``, and ``cigar``
++ Renamed ``vdj_score``, ``vdj_identity``, ``vdj_evalue``, and ``vdj_cigar`` to ``score``,
+  ``identity``, ``evalue``, and ``cigar``
  .. #106 by javh was merged on Apr 18, 2018
-+ Added missing ``c_identity`` and ``c_evalue`` fields to Rearrangements spec
++ Added missing ``c_identity`` and ``c_evalue`` fields to ``Rearrangement`` spec
  .. #94 on Mar 22, 2018
-+ Swapped order of N and S operators in CIGAR string
++ Swapped order of `N` and `S` operators in CIGAR string
  .. #94 on Mar 22, 2018
-+ Some description clean up for consistency in Rearrangement spec
++ Some description clean up for consistency in ``Rearrangement`` spec
  .. #94 on Mar 22, 2018
 + Remove repeated objects in ``definitions.yaml``
  .. #78 on Jan 26, 2018 #53
-+ Added Alignment object to ``definitions.yaml``
++ Added ``Alignment`` object to ``definitions.yaml``
  .. #78 on Jan 26, 2018 #67
-+ Updated MiARR-Formats consistency check TSV with junction change
++ Updated MiARR format consistency check TSV with junction change
  .. #75 on Jan 9, 2018. also: #84, #85, #89
 + Changed definition from functional to productive
  .. #75 on Jan 9, 2018. also: #84,. #85,. #89
 
-
 Version 1.0.1: Jan 9, 2018
 --------------------------------------------------------------------------------
 
+MiAIRR v1 official release and initial draft of Rearrangement and Alignment schemas.
