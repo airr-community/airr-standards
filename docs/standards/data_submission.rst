@@ -53,10 +53,20 @@ query and download AIRR-seq data.
 
 + VDJServer Community Data Portal
 
-**Other Public Data Repositories**
+**Other Public AIRR-Seq Repositories**
 
 There are additional data repositories that provide access to AIRR-seq data but which
 did not implement the ADC API for programmatic access. Information about some of these
 repositories are provided in a `B-T.CR forum post`_.
 
 .. _`B-T.CR forum post`: https://b-t.cr/t/publicly-available-airr-seq-data-repositories/610
+
+**Germline Gene Inference and Usage**
+
++ OGRDB <../ogrdb/ogrdb> provides a list of alleles affirmed by the AIRR Community's 
+  Inferred Allele Review Committee, together with supporting information.
+
++ `VDJbase`_ provides gene usage information derived from a growing base of AIRR-seq repertoires,
+  including inferred genotypes and haplotypes.
+
+.. _`VDJbase`: https://www.vdjbase.org

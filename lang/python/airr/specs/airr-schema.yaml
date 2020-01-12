@@ -685,6 +685,28 @@ CellProcessing:
                 set: 3
                 subset: process (cell)
                 name: Cell subset phenotype
+        cell_species:
+            $ref: '#/Ontology'
+            description: >
+                Binomial designation of the species from which the analyzed cells originate. Typically, this value
+                should be identical to `organism`, if which case it SHOULD NOT be set explicitly. Howver, there are
+                valid experimental setups in which the two might differ, e.g. chimeric animal models. If set, this
+                key will overwrite the `organism` information for all lower layers of the schema.
+            example:
+                id: 9096
+                value: Homo sapiens
+            x-airr:
+                miairr: false
+                required: false
+                nullable: true
+                format: ontology
+                ontology:
+                    draft: false
+                    name: NCBITAXON
+                    url: https://www.ncbi.nlm.nih.gov/taxonomy
+                    top_node:
+                        id: 7776
+                        value: Gnathostomata
         single_cell:
             type: boolean
             description: TRUE if single cells were isolated into separate compartments
@@ -1412,6 +1434,29 @@ Rearrangement:
         locus:
             type: string
             description: Gene locus (chain type). For example, IGH, IGI, IGK, IGL, TRA, TRB, TRD, or TRG.
+        locus_species:
+            type: string
+            $ref: '#/Ontology'
+            description: >
+                Binomial designation of the species from which the locus originates. Typically, this value should be
+                identical to `organism`, if which case it SHOULD NOT be set explicitly. However, there are valid
+                experimental setups in which the two might differ, e.g. transgenic animal models. If set, this key
+                will overwrite the `organism` information for all lower layers of the schema.
+            example:
+                id: 9096
+                value: Homo sapiens
+            x-airr:
+                miairr: false
+                required: false
+                nullable: true
+                format: ontology
+                ontology:
+                    draft: false
+                    name: NCBITAXON
+                    url: https://www.ncbi.nlm.nih.gov/taxonomy
+                    top_node:
+                        id: 7776
+                        value: Gnathostomata
         v_call:
             type: string
             description: >

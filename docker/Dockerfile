@@ -17,8 +17,8 @@ RUN pip3 install \
     pandas \
     biopython \
     recommonmark \
-    sphinxcontrib-autoprogram
-
+    sphinxcontrib-autoprogram \
+    matplotlib
 
 # Copy source
 RUN mkdir /airr-standards

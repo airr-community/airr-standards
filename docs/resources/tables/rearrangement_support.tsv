@@ -1,16 +1,17 @@
-Software	Version	Support
-AIRR Python Library	1.2	Input, output and validation
-AIRR R Library	1.2	Input, output and validation
-`IgBLAST <https://www.ncbi.nlm.nih.gov/igblast>`_	1.11	Output
-`IGoR <https://github.com/qmarcou/IGoR>`_	TBD	Input and output
-`Immcantation:Change-O <https://changeo.readthedocs.io>`_	0.4.2	Input, output and conversion
-`ImmuneDB <http://immunedb.com>`_	0.24.0	Output
-`iReceptor <http://www.ireceptor.org>`_	2.0	`Input <https://github.com/sfu-ireceptor/dataloading-mongo/tree/turnkey/dataload>`_ and `output <http://www.ireceptor.org/node/97>`_
-`MiXCR <https://milaboratory.com/software/mixcr>`_	2.2.1	Output
-`OLGA <https://github.com/zsethna/OLGA>`_	TBD	Input and output
-`Partis <https://github.com/psathyrella/partis>`_	TBD	Output
-`SONAR <https://github.com/scharch/SONAR>`_	3.0	Output
-`TRIgS <https://github.com/williamdlees/TRIgS>`_	2	Input
-`VDJServer <https://vdjserver.org>`_	1.2.0	Input and output
-`Vidjil-algo <http://www.vidjil.org>`_	2018.10	Output
-`Vidjil Web Platform <http://www.vidjil.org>`_	TBD	Input and conversion
+Software	Version	Support	Reference
+`AIRR Python Library <https://pypi.org/project/airr>`_	1.2	"Input, output and validation"	"`Vander Heiden et al. Front Immunol, 2018. <https://doi.org/10.3389/fimmu.2018.02206>`_"
+`AIRR R Library <https://cran.r-project.org/web/packages/airr>`_	1.2	"Input, output and validation"	"`Vander Heiden et al. Front Immunol, 2018. <https://doi.org/10.3389/fimmu.2018.02206>`_"
+`Decombinator <https://github.com/innate2adaptive/Decombinator>`_	4.0.1	Output	"`Oakes et al. Front Immunol, 2017. <https://doi.org/10.3389/fimmu.2017.01267>`_"
+`IgBLAST <https://www.ncbi.nlm.nih.gov/igblast>`_	1.11	Output	"`Ye et al. Nucleic Acids Res, 2013. <https://doi.org/10.1093/nar/gkt382>`_"
+`IGoR <https://github.com/qmarcou/IGoR>`_	TBD	Input and output	"`Marcou et al. Nat Commun, 2018. <https://doi.org/10.1038/s41467-018-02832-w>`_"
+`Immcantation:Change-O <https://changeo.readthedocs.io>`_	0.4.2	"Input, output and conversion"	"`Gupta & Vander Heiden et al. Bioinformatics, 2015. <https://doi.org/10.1093/bioinformatics/btv359>`_"
+`ImmuneDB <http://immunedb.com>`_	0.24.0	Output	"`Rosenfeld et al. Front Immunol, 2018. <https://doi.org/10.3389/fimmu.2018.02107>`_"
+`iReceptor <http://www.ireceptor.org>`_	2	`Input <https://github.com/sfu-ireceptor/dataloading-mongo/tree/turnkey/dataload>`_ and `output <http://www.ireceptor.org/node/97>`_	"`Corrie et al. Immunol Rev, 2018. <https://doi.org/10.1111/imr.12666>`_"
+`MiXCR <https://milaboratory.com/software/mixcr>`_	2.2.1	Output	"`Bolotin et al. Nat Methods, 2015. <https://doi.org/10.1038/nmeth.3364>`_"
+`OLGA <https://github.com/zsethna/OLGA>`_	TBD	Input and output	"`Sethna et al. Bioinformatics, 2019. <https://doi.org/10.1093/bioinformatics/btz035>`_"
+`Partis <https://github.com/psathyrella/partis>`_	TBD	Output	"`Ralph & Matsen. PLoS Comput Biol, 2016. <https://doi.org/10.1371/journal.pcbi.1004409>`_"
+`SONAR <https://github.com/scharch/SONAR>`_	3	Output	"`Schramm et al. Front Immunol, 2016. <https://doi.org/doi:10.3389/fimmu.2016.00372>`_"
+`TRIgS <https://github.com/williamdlees/TRIgS>`_	2	Input	"`Lees & Shepherd. J Immunol Res, 2015. <https://doi.org/10.1155/2015/323506>`_"
+`VDJServer <https://vdjserver.org>`_	1.2.0	Input and output	"`Christley et al. Front Immunol, 2018 <https://doi.org/10.3389/fimmu.2018.00976>`_"
+`Vidjil-algo <http://www.vidjil.org>`_	2018.1	Output	"`Giraud et al. BMC Genomics, 2014. <https://doi.org/10.1186/1471-2164-15-409>`_"
+`Vidjil Web Platform <http://www.vidjil.org>`_	TBD	Input and conversion	"`Duez et al. PLoS ONE, 2016. <https://doi.org/10.1371/journal.pone.0166126>`_"
