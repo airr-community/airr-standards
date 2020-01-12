@@ -11,7 +11,7 @@ Release Notes
 Under development (Version 1.3.0)
 --------------------------------------------------------------------------------
 
-Current changes in the development branch. When released, will include the
+**Current changes in the development branch.**
 
 + Added ontobee as default source for ``ontologies``
  .. #296 by bussec was merged on Jan 4, 2020
@@ -37,7 +37,7 @@ Current changes in the development branch. When released, will include the
 Version 1.2.1: Oct 5, 2018
 --------------------------------------------------------------------------------
 
-Minor patch release.
+**Minor patch release.**
 
 + Schema gene vs segment terminology corrections
  .. #153 by javh was merged on Sep 13 • Approved
@@ -49,7 +49,7 @@ Minor patch release.
 Version 1.2.0: Aug 18, 2018
 --------------------------------------------------------------------------------
 
-Peer reviewed released of the Rearrangement schema.
+**Peer reviewed released of the Rearrangement schema.**
 
 + Definition change for the coordinate fields of the Rearrangement and Alignment schema.
   Coordinates are now defined as 1-based closed intervals, instead of 0-based half-open
@@ -62,7 +62,7 @@ Peer reviewed released of the Rearrangement schema.
 Version 1.1.0: May 3, 2018
 --------------------------------------------------------------------------------
 
-Initial public released of the Rearrangement and Alignment schemas.
+**Initial public released of the Rearrangement and Alignment schemas.**
 
 + Added ``required`` and ``nullable`` constrains to AIRR schema.
  .. #182 by bussec was merged on Apr 1 • Approved
@@ -116,4 +116,4 @@ Initial public released of the Rearrangement and Alignment schemas.
 Version 1.0.1: Jan 9, 2018
 --------------------------------------------------------------------------------
 
-MiAIRR v1 official release and initial draft of Rearrangement and Alignment schemas.
+**MiAIRR v1 official release and initial draft of Rearrangement and Alignment schemas.**
