@@ -84,7 +84,9 @@ Attributes:
                     description: Ontology name
                 url:
                     type: string
-                    description: Ontology URL
+                    description: >
+                        Ontology URL. If the ontology is included in the EMBL-EBI Ontology Lookup Service (OLS) set of
+                        ontologies, the OLS URL should be used (e.g., https://www.ebi.ac.uk/ols/ontologies/ncbitaxon).
                 top_node:
                     type: object
                     description: Term to use as top node for ontology
@@ -141,10 +143,10 @@ Study:
                 ontology:
                     draft: true
                     name: NCIT
-                    url: https://ncit.nci.nih.gov/ncitbrowser/
+                    url: https://www.ebi.ac.uk/ols/ontologies/ncit
                     top_node:
-                        id: C15320
-                        value: Study Design
+                        id: C63536
+                        value: Study
         study_description:
             type: string
             description: Generic study description
@@ -291,7 +293,7 @@ Subject:
                 ontology:
                     draft: false
                     name: NCBITAXON
-                    url: https://www.ncbi.nlm.nih.gov/taxonomy
+                    url: https://www.ebi.ac.uk/ols/ontologies/ncbitaxon
                     top_node:
                         id: 7776
                         value: Gnathostomata
@@ -358,7 +360,7 @@ Subject:
                 ontology:
                     draft: true
                     name: Units of measurement ontology
-                    url: http://www.ontobee.org/ontology/UO
+                    url: https://www.ebi.ac.uk/ols/ontologies/UO
                     top_node:
                         id: UO_0000003
                         value: time unit
@@ -637,7 +639,6 @@ Sample:
                 name: Biomaterial provider
 
 # 1-to-n relationship between a sample and processing of its cells
-# cell_processing_id is unique within a study
 CellProcessing:
     discriminator: AIRR
     type: object
@@ -703,7 +704,7 @@ CellProcessing:
                 ontology:
                     draft: false
                     name: NCBITAXON
-                    url: https://www.ncbi.nlm.nih.gov/taxonomy
+                    url: https://www.ebi.ac.uk/ols/ontologies/ncbitaxon
                     top_node:
                         id: 7776
                         value: Gnathostomata
@@ -800,7 +801,10 @@ PCRTarget:
                 - TRB
                 - TRD
                 - TRG
-            description: Designation of the target locus according to IMGT nomencleature
+            description: >
+                Designation of the target locus. Note that this field uses a controlled vocubulary that is meant to
+                provide a generic classification of the locus, not necessarily the correct designation according to
+                a specific nomenclature.
             example: IGK
             x-airr:
                 miairr: true
@@ -835,7 +839,6 @@ PCRTarget:
 
 # generally, a 1-to-1 relationship between a CellProcessing and processing of its nucleic acid
 # but may be 1-to-n for technical replicates.
-# nucleic_acid_processing_id is unique within a study
 NucleicAcidProcessing:
     discriminator: AIRR
     type: object
@@ -1443,7 +1446,26 @@ Rearrangement:
                 adc-api-optional: true
         locus:
             type: string
-            description: Gene locus (chain type). For example, IGH, IGI, IGK, IGL, TRA, TRB, TRD, or TRG.
+            enum:
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
+            description: >
+                Gene locus (chain type). Note that this field uses a controlled vocubulary that is meant to provide a
+                generic classification of the locus, not necessarily the correct designation according to a specific
+                nomenclature.
+            example: IGH
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+                name: Gene locus
         v_call:
             type: string
             description: >
