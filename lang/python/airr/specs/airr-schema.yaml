@@ -1360,7 +1360,7 @@ Alignment:
             type: string
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a univerally unique record locator for database applications.
+                but will usually be a universally unique record locator for database applications.
         data_processing_id:
             type: string
             description: >
@@ -1453,7 +1453,7 @@ Rearrangement:
                 - TRD
                 - TRG
             description: >
-                Gene locus (chain type). Note that this field uses a controlled vocubulary that is meant to provide a
+                Gene locus (chain type). Note that this field uses a controlled vocabulary that is meant to provide a
                 generic classification of the locus, not necessarily the correct designation according to a specific
                 nomenclature.
             example: IGH
@@ -2393,7 +2393,7 @@ Rearrangement:
             type: string
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a univerally unique record locator for database applications.
+                but will usually be a universally unique record locator for database applications.
             x-airr:
                 miairr: false
                 required: true
