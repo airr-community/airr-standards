@@ -2,6 +2,7 @@ Software	Version	Support	Reference
 `AIRR Python Library <https://pypi.org/project/airr>`_	1.2	"Input, output and validation"	"`Vander Heiden et al. Front Immunol, 2018. <https://doi.org/10.3389/fimmu.2018.02206>`_"
 `AIRR R Library <https://cran.r-project.org/web/packages/airr>`_	1.2	"Input, output and validation"	"`Vander Heiden et al. Front Immunol, 2018. <https://doi.org/10.3389/fimmu.2018.02206>`_"
 `Decombinator <https://github.com/innate2adaptive/Decombinator>`_	4.0.1	Output	"`Oakes et al. Front Immunol, 2017. <https://doi.org/10.3389/fimmu.2017.01267>`_"
+`IMGT/V-QUEST <http://www.imgt.org/IMGT_vquest/input>`_	3.5.16	Output	"`Giudicelli et al. Cold Spring Harb Protoc, 2011. <https://doi.org/10.1101/pdb.prot5633>`_"
 `IgBLAST <https://www.ncbi.nlm.nih.gov/igblast>`_	1.11	Output	"`Ye et al. Nucleic Acids Res, 2013. <https://doi.org/10.1093/nar/gkt382>`_"
 `IGoR <https://github.com/qmarcou/IGoR>`_	TBD	Input and output	"`Marcou et al. Nat Commun, 2018. <https://doi.org/10.1038/s41467-018-02832-w>`_"
 `Immcantation:Change-O <https://changeo.readthedocs.io>`_	0.4.2	"Input, output and conversion"	"`Gupta & Vander Heiden et al. Bioinformatics, 2015. <https://doi.org/10.1093/bioinformatics/btv359>`_"
