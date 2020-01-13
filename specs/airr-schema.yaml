@@ -1454,8 +1454,8 @@ Rearrangement:
         v_call:
             type: string
             description: >
-                V gene with allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01).
+                V gene with allele. If referring to a known reference sequence in a database
+                the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
             example: IGHV4-59*01
             x-airr:
                 miairr: true
@@ -1464,48 +1464,11 @@ Rearrangement:
                 set: 6
                 subset: data (processed sequence)
                 name: V gene with allele
-        v_subgroup:
-            type: string
-            description: >
-                V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed (e.g., IGHV4).
-            example: IGHV4
-            x-airr:
-                miairr: false
-                required: true
-                nullable: true
-                adc-api-optional: false
-                name: V gene subgroup
-        v_gene:
-            type: string
-            description: >
-                V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed (e.g., IGHV4-59).
-            example: IGHV4-59
-            x-airr:
-                miairr: false
-                required: true
-                nullable: true
-                adc-api-optional: false
-                name: V gene
-        v_allele:
-            type: string
-            description: >
-                V allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed. For example, for IGHV4-59*01 an allele
-                string of 01 should be used (not 1).
-            example: 01
-            x-airr:
-                miairr: false
-                required: true
-                nullable: true
-                adc-api-optional: false
-                name: V allele
         d_call:
             type: string
             description: >
-                First or only D gene with allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene/allele nomenclature should be followed (e.g., IGHD3-10*01).
+                First or only D gene with allele. If referring to a known reference sequence in a database
+                the relevant gene/allele nomenclature should be followed (e.g., IGHD3-10*01 if using IMGT/GENE-DB).
             example: IGHD3-10*01
             x-airr:
                 miairr: true
@@ -1514,85 +1477,20 @@ Rearrangement:
                 set: 6
                 subset: data (processed sequence)
                 name: D gene with allele
-        d_subgroup:
-            type: string
-            description: >
-                D subgroup of the first or only D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed (e.g., IGHD3).
-            example: IGHD3
-            x-airr:
-                miairr: false
-                required: true
-                nullable: true
-                adc-api-optional: false
-                name: D gene subgroup
-        d_gene:
-            type: string
-            description: >
-                First or only D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed (e.g., IGHD3-10).
-            example: IGHD3-10
-            x-airr:
-                miairr: false
-                required: true
-                nullable: true
-                adc-api-optional: false
-                name: D gene
-        d_allele:
-            type: string
-            description: >
-                First or only D allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed. For example, for IGHD3-10*01 an allele
-                string of 01 should be used (not 1).
-            example: 01
-            x-airr:
-                miairr: false
-                required: true
-                nullable: true
-                adc-api-optional: false
-                name: D allele
         d2_call:
             type: string
             description: >
-                Second D gene with allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene/allele nomenclature should be followed (e.g., IGHD3-10*01).
+                Second D gene with allele. If referring to a known reference sequence in a database the relevant
+                gene/allele nomenclature should be followed (e.g., IGHD3-10*01 if using IMGT/GENE-DB).
             example: IGHD3-10*01
-            x-airr:
-                miairr: false
-                adc-api-optional: true
-        d2_subgroup:
-            type: string
-            description: >
-                D subgroup of the second D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed (e.g., IGHD3).
-            example: IGHD3
-            x-airr:
-                miairr: false
-                adc-api-optional: true
-        d2_gene:
-            type: string
-            description: >
-                Second D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed (e.g., IGHD3-10).
-            example: IGHD3-10
-            x-airr:
-                miairr: false
-                adc-api-optional: true
-        d2_allele:
-            type: string
-            description: >
-                Second D allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed. For example, for IGHD3-10*01 an allele
-                string of 01 should be used (not 1).
-            example: 01
             x-airr:
                 miairr: false
                 adc-api-optional: true
         j_call:
             type: string
             description: >
-                J gene with allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene/allele nomenclature should be followed (e.g., IGHJ4*02).
+                J gene with allele. If referring to a known reference sequence in a database the relevant
+                gene/allele nomenclature should be followed (e.g., IGHJ4*02 if using IMGT/GENE-DB).
             example: IGHJ4*02
             x-airr:
                 miairr: true
@@ -1601,48 +1499,11 @@ Rearrangement:
                 set: 6
                 subset: data (processed sequence)
                 name: J gene with allele
-        j_subgroup:
-            type: string
-            description: >
-                J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed (e.g., IGHJ4).
-            example: IGHJ4
-            x-airr:
-                miairr: false
-                required: true
-                nullable: true
-                adc-api-optional: false
-                name: J gene subgroup
-        j_gene:
-            type: string
-            description: >
-                J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed (e.g., IGHJ4).
-            example: IGHJ4
-            x-airr:
-                miairr: false
-                required: true
-                nullable: true
-                adc-api-optional: false
-                name: J gene
-        j_allele:
-            type: string
-            description: >
-                J allele. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-                the relevant gene nomenclature should be followed. For example, for IGHJ4*02 an allele
-                string of 02 should be used (not 1).
-            example: 02
-            x-airr:
-                miairr: false
-                required: true
-                nullable: true
-                adc-api-optional: false
-                name: J allele
         c_call:
             type: string
             description: >
-                Constant region gene with allele. If referring to a known reference sequence in a database, such as
-                IMGT/GENE-DB, the relevant gene/allele nomenclature should be followed (e.g., IGHG1*01).
+                Constant region gene with allele. If referring to a known reference sequence in a database the
+                relevant gene/allele nomenclature should be followed (e.g., IGHG1*01 if using IMGT/GENE-DB).
             example: IGHG1*01
             x-airr:
                 miairr: true
@@ -1651,49 +1512,6 @@ Rearrangement:
                 set: 6
                 subset: data (processed sequence)
                 name: C region
-        c_subgroup:
-            type: string
-            description: >
-                Subgroup of the constant region gene. For immunoglobulins, this should be informative of the isotype
-                (e.g,, IgG). If referring to a known reference sequence in a database, such as IMGT/GENE-DB, the
-                relevant gene nomenclature should be followed (e.g., IGHG).
-            example: IGHG
-            x-airr:
-                miairr: false
-                required: true
-                nullable: true
-                adc-api-optional: false
-                name: C gene subgroup
-        c_gene:
-            type: string
-            description: >
-                Constant region gene. For immunoglobulins, this should be informative about the subclass, if it exists
-                for the given isotype (e.g., IgG1 for IgG). In cases in which it is contested whether a sequence
-                constitutes a gene or an allele (e.g., Ighg2a/c in M. musculus), the relevant information should be
-                encoded as gene, not as allele (i.e., here, not in c_allele). If referring to a known reference sequence
-                in a database, such as IMGT/GENE-DB, the relevant gene nomenclature should be followed (e.g., IGHG1).
-            example: IGHG1
-            x-airr:
-                miairr: false
-                required: true
-                nullable: true
-                adc-api-optional: false
-                name: C gene
-        c_allele:
-            type: string
-            description: >
-                Allele of constant region gene. In cases in which it is contested whether a sequence constitutes a gene
-                or an allele (e.g., Ighg2a/c in M. musculus), the relevant information should be encoded as gene, not as
-                allele (i.e., not here, but in c_gene). If referring to a known reference sequence in a database, such
-                as IMGT/GENE-DB, the relevant gene nomenclature should be followed. For example, for IGHG1*01 an allele
-                string of 01 should be used (not 1).
-            example: 01
-            x-airr:
-                miairr: false
-                required: true
-                nullable: true
-                adc-api-optional: false
-                name: C allele
         sequence_alignment:
             type: string
             description: >
