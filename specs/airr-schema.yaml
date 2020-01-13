@@ -1443,14 +1443,26 @@ Rearrangement:
                 adc-api-optional: true
         locus:
             type: string
-            description: Gene locus (chain type). For example, IGH, IGI, IGK, IGL, TRA, TRB, TRD, or TRG.
+            enum:
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
+            description: >
+                Gene locus (chain type). Note that this field uses a controlled vocubulary that is meant to provide a
+                generic classification of the locus, not necessarily the correct designation according to a specific
+                nomenclature.
             example: IGH
             x-airr:
                 miairr: false
                 required: true
                 nullable: true
                 adc-api-optional: false
-                name: Locus
+                name: Gene locus
         v_call:
             type: string
             description: >
