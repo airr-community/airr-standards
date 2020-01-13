@@ -68,9 +68,26 @@ be the set: IGH, IGK, IGL, TRA, TRB, TRD, or TRG.
 **Gene and allele names**
 
 Gene call examples use the IMGT nomenclature, but no specific gene or allele
-nomenclature is mandated. Species denotations may or may not be included in the
+nomenclature is strictly mandated. Species denotations may or may not be included in the
 gene name, as appropriate. For example, "Homo sapiens IGHV4-59*01", "IGHV4-59*01" and
 "AB019438" are all valid entries for the same allele.
+
+However, when using an established reference database to assign gene calls then
+adherence to the exact nomenclature used by the reference database is strongly
+recommended, as this will faciliate mapping to the database entries, cross-study
+comparison, and upload to public repositories.
+
+Lymphocyte receptor genes and alleles are assigned by the Immunoglobulins,
+T cell Receptors and Major Histocompatibility Nomenclature Subcommittee of the
+International Union of Immunological Societies (IUIS) and managed by
+`IMGT <http://www.imgt.org/IMGTrepertoire>`__. If a gene is listed in this system,
+the name allocated by IUIS should be used. Where a gene is not listed in this system,
+implementors should choose a suitable naming scheme, taking care to ensure that the
+names are easily distinguishable from IUIS names and are unlikely to clash with
+IUIS names allocated in the future. To ensure correct naming of identified genes,
+the use of a reference set such as the `IMGT reference data
+<http://www.imgt.org/vquest/refseqh.html>`_ is recommended and the
+reference set should be regularly updated.
 
 **Alignments**
 
