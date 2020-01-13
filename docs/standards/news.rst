@@ -13,7 +13,7 @@ Under development (Version 1.3.0)
 
 **Current changes in the development branch.**
 
-+ Added ontobee as default source for ``ontologies``
++ Added ELI OBS as default source for ``ontologies``
  .. #296 by bussec was merged on Jan 4, 2020
 + Expanded description for ``pcr_target``
  .. #288 by bussec was merged on Dec 10, 2019
