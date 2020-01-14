@@ -33,15 +33,17 @@ Therefore the following proposed extension to the MiAIRR data standard
 have been brough forward to the AIRR Community General Assembly in
 May 2019 and were ratified as provisional standard:
 
--  Add the following record structure to the AIRR schema, so that it can
-   be referenced via ``pair_id``.
-     -  keyword describing the methodology used for measurement. Note that only methods that return an absolute and quantitative measurement can be used (affinity, binding energy, etc.). Examples: "SPR", "ITC".
-     -  UID of the receptor at IEDB, which can hold additional and richer data records.
-     -  DOI of raw data measurements
-     -  n records of reactivity measurement
-        -  ``antigen``: The antigen against which the receptor was tested. For TCRs this is the combination of MHC and peptide.
-        -  ``reactivity_value``: The absolute (processed) value of the measurement.
-        -  ``reactivity_unit``: The physical unit of the measurement, e.g. M or kJ mol-1
+- Add the following record structure to the AIRR schema, so that it can
+  be referenced via ``pair_id``.
+     - keyword describing the methodology used for measurement. Note that only methods that return an absolute and quantitative measurement can be used (affinity, binding energy, etc.). Examples: "SPR", "ITC".
+     - UID of the receptor at IEDB, which can hold additional and richer data records.
+     - DOI of raw data measurements
+     - n records of reactivity measurement
+          - ``antigen``: The antigen against which the receptor was tested. For TCRs this is the combination of MHC and peptide.
+          - ``reactivity_value``: The absolute (processed) value of the measurement.
+          - ``reactivity_unit``: The physical unit of the measurement, e.g. M or kJ mol-1
+          
+
 *  Add the following record structure to the AIRR schema, so that it can
    be referenced via ``cell_id``.
    *  keyword describing the methology used to assess expression.
