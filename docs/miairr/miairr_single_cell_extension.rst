@@ -60,17 +60,17 @@ May 2019 and were ratified as provisional standard:
       *  ``expression_marker``: standardized designation of the transcript or epitope
 
 Potential issues:
-   *  ``expression_value``: Transformation is a not standardized
-      procedure, especially for FC data. Also note that no gating
-      information is provided as this raises questions about the exact
-      type of transformation (e.g. hyperbolic sine) that are often
-      difficult to answer.
-   *   ``expression_marker``: To be interoperatable, this should come
-      from an ontology. While this is simple for gene expression, flow
-      cytometry markers are more difficult as there is no unified
-      ontology for them. Also note that gene name != protein name != FC
-      marker.
-   *  ``antigen``: To allow meaningful comparisons across studies, this
-      field must be populated from a controlled vocabulary, IEDB would
-      be the obvious candidate for this, but need to check whether there
-      are any potential restrictions in terms of molecule classes.
+   * ``expression_value``: Transformation is a not standardized
+     procedure, especially for FC data. Also note that no gating
+     information is provided as this raises questions about the exact
+     type of transformation (e.g. hyperbolic sine) that are often
+     difficult to answer.
+   * ``expression_marker``: To be interoperatable, this should come
+     from an ontology. While this is simple for gene expression, flow
+     cytometry markers are more difficult as there is no unified
+     ontology for them. Also note that gene name != protein name != FC
+     marker.
+   * ``antigen``: To allow meaningful comparisons across studies, this
+     field must be populated from a controlled vocabulary, IEDB would
+     be the obvious candidate for this, but need to check whether there
+     are any potential restrictions in terms of molecule classes.
