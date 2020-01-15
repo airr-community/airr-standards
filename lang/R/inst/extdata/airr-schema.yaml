@@ -1248,7 +1248,10 @@ SampleProcessing:
     properties:
         sample_processing_id:
             type: string
-            description: Identifier for the sample processing object. This field should be unique within the repertoire. This field can be used to uniquely identify the combination of sample, cell processing, nucleic acid processing and sequencing run information for the repertoire.
+            description: >
+                Identifier for the sample processing object. This field should be unique within the repertoire.
+                This field can be used to uniquely identify the combination of sample, cell processing,
+                nucleic acid processing and sequencing run information for the repertoire.
             x-airr:
                 miairr: false
                 required: true
@@ -1266,7 +1269,11 @@ Repertoire:
     properties:
         repertoire_id:
             type: string
-            description: Identifier for the repertoire object. This identifier should be globally unique so that repertoires from multiple studies can be combined together without conflict. The repertoire_id is used to link other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for referencing the specific Repertoire for that Rearrangement
+            description: >
+                Identifier for the repertoire object. This identifier should be globally unique so that repertoires
+                from multiple studies can be combined together without conflict. The repertoire_id is used to link
+                other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for
+                referencing the specific Repertoire for that Rearrangement.
             x-airr:
                 miairr: false
                 required: true
@@ -2314,3 +2321,243 @@ Rearrangement:
             x-airr:
                 deprecated: true
 
+# A unique inferred clone object that has been constructed within a single data processing
+# for a single repertoire and a subset of its sequences and/or rearrangements.
+Clone:
+    discriminator: AIRR
+    type: object
+    required:
+        - clone_id
+        - repertoire_id
+        - germline_alignment
+    properties:
+        clone_id:
+            type: string
+            description: Identifier for the clone.
+            x-airr:
+                miairr: false
+                required: true
+        repertoire_id:
+            type: string
+            description: Identifier to the associated repertoire in study metadata.
+            x-airr:
+                miairr: false
+                required: true
+        data_processing_id:
+            type: string
+            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            x-airr:
+                miairr: false
+                required: false
+        sequences:
+            type: array
+            items:
+                type: string
+            description: List of sequence_ids that are members of the clone.
+            x-airr:
+                miairr: false
+        rearrangements:
+            type: array
+            items:
+                type: string
+            description: List of rearrangement_ids that are members of the clone.
+            x-airr:
+                miairr: false
+        v_call:
+            type: string
+            description: >
+                V gene with allele of the inferred ancestral of the clone. For example, IGHV4-59*01.
+            example: IGHV4-59*01
+            x-airr:
+                miairr: false
+        d_call:
+            type: string
+            description: >
+                D gene with allele of the inferred ancestor of the clone. For example, IGHD3-10*01.
+            example: IGHD3-10*01
+            x-airr:
+                miairr: false
+        j_call:
+            type: string
+            description: >
+                J gene with allele of the inferred ancestor of the clone. For example, IGHJ4*02.
+            example: IGHJ4*02
+            x-airr:
+                miairr: false
+        junction:
+            type: string
+            description: >
+                Nucleotide sequence for the junction region of the inferred ancestor of the clone,
+                where the junction is defined as the CDR3 plus the two flanking conserved codons.
+        junction_aa:
+            type: string
+            description: >
+                Amino acid translation of the junction.
+            x-airr:
+                miairr: false
+        junction_length:
+            type: integer
+            description: Number of nucleotides in the junction.
+            x-airr:
+                miairr: false
+        junction_aa_length:
+            type: integer
+            description: Number of amino acids in junction_aa.
+            x-airr:
+                miairr: false
+        germline_alignment:
+            type: string
+            description: >
+                Assembled, aligned, full-length inferred ancestor of the clone spanning the same region
+                as the sequence_alignment field of nodes (typically the V(D)J region) and including the
+                same set of corrections and spacers (if any).
+            x-airr:
+                miairr: false
+                required: true
+        germline_alignment_aa:
+            type: string
+            description: >
+                Amino acid translation of germline_alignment.
+            x-airr:
+                miairr: false
+        v_alignment_start:
+            type: integer
+            description: >
+                Start position in the V segment in both the sequence_alignment and germline_alignment fields
+                (1-based closed interval).
+            x-airr:
+                miairr: false
+        v_alignment_end:
+            type: integer
+            description: >
+                End position in the V segment in both the sequence_alignment and germline_alignment fields
+                (1-based closed interval).
+            x-airr:
+                miairr: false
+        d_alignment_start:
+            type: integer
+            description: >
+                Start position of the D segment in both the sequence_alignment and germline_alignment fields
+                (1-based closed interval).
+            x-airr:
+                miairr: false
+        d_alignment_end:
+            type: integer
+            description: >
+                End position of the D segment in both the sequence_alignment and germline_alignment fields
+                (1-based closed interval).
+            x-airr:
+                miairr: false
+        j_alignment_start:
+            type: integer
+            description: >
+                Start position of the J segment in both the sequence_alignment and germline_alignment fields
+                (1-based closed interval).
+            x-airr:
+                miairr: false
+        j_alignment_end:
+            type: integer
+            description: >
+                End position of the J segment in both the sequence_alignment and germline_alignment fields
+                (1-based closed interval).
+            x-airr:
+                miairr: false
+        junction_start:
+            type: integer
+            description: Junction region start position in the alignment (1-based closed interval).
+            x-airr:
+                miairr: false
+        junction_end:
+            type: integer
+            description: Junction region end position in the alignment (1-based closed interval).
+            x-airr:
+                miairr: false
+        rearrangement_count:
+            type: integer
+            description: Number of rearrangements included in this clone
+            x-airr:
+                miairr: false
+        seed_id:
+            type: string
+            Description: rearrangment id for seed, null if no seed
+            x-airr:
+                miairr: false
+
+# 1-to-n relationship for a clone to its trees.
+Tree:
+    discriminator: AIRR
+    type: object
+    required:
+        - tree_id
+        - clone_id
+        - newick
+    properties:
+        tree_id:
+            type: string
+            description: Identifier for the tree.
+            x-airr:
+                miairr: false
+                required: true
+        clone_id:
+            type: string
+            description: Identifier for the clone.
+            x-airr:
+                miairr: false
+                required: true
+        newick:
+            type: string
+            description: Newick string of the tree edges.
+            x-airr:
+                miairr: false
+                required: true
+        nodes:
+            type: object
+            description: Dictionary of nodes in the tree, keyed by sequence_id string
+            x-airr:
+                miairr: false
+            additionalProperties:
+                $ref: '#/Node'
+
+# 1-to-n relationship between a tree and its nodes
+Node:
+    discriminator: AIRR
+    type: object
+    required:
+        - sequence_id
+    properties:
+        sequence_id:
+            type: string
+            description: >
+                Identifier for this node that matches the id in the newick string and, where possible,
+                the sequence_id in the source repertoire.
+            x-airr:
+                miairr: false
+                required: true
+        rearrangement_id:
+            type: string
+            description: >
+                Identifier for the Rearrangement object. May be identical to sequence_id,
+                but will usually be a univerally unique record locator for database applications.
+            x-airr:
+                miairr: false
+                required: false
+        sequence_alignment:
+            type: string
+            description: >
+                Nucleotide sequence of the node, aligned to the germline_alignment for this clone, including
+                including any indel corrections or spacers.
+            x-airr:
+                miairr: false
+        junction:
+            type: string
+            description: >
+                Junction region nucleotide sequence for the node, where the junction is defined as
+                the CDR3 plus the two flanking conserved codons.
+            x-airr:
+                miairr: false
+        junction_aa:
+            type: string
+            description: >
+                Amino acid translation of the junction.
+            x-airr:
+                miairr: false
