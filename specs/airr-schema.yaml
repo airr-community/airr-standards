@@ -1248,7 +1248,10 @@ SampleProcessing:
     properties:
         sample_processing_id:
             type: string
-            description: Identifier for the sample processing object. This field should be unique within the repertoire. This field can be used to uniquely identify the combination of sample, cell processing, nucleic acid processing and sequencing run information for the repertoire.
+            description: >
+                Identifier for the sample processing object. This field should be unique within the repertoire.
+                This field can be used to uniquely identify the combination of sample, cell processing,
+                nucleic acid processing and sequencing run information for the repertoire.
             x-airr:
                 miairr: false
                 required: true
@@ -1266,7 +1269,11 @@ Repertoire:
     properties:
         repertoire_id:
             type: string
-            description: Identifier for the repertoire object. This identifier should be globally unique so that repertoires from multiple studies can be combined together without conflict. The repertoire_id is used to link other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for referencing the specific Repertoire for that Rearrangement
+            description: >
+                Identifier for the repertoire object. This identifier should be globally unique so that repertoires
+                from multiple studies can be combined together without conflict. The repertoire_id is used to link
+                other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for
+                referencing the specific Repertoire for that Rearrangement.
             x-airr:
                 miairr: false
                 required: true
