@@ -6,7 +6,7 @@ Introduction to VDJServer
 
 VDJServer is a cloud-based analysis portal for immune repertoire sequence data that
 provides access to a suite of tools for a complete analysis workflow, including modules
-for preprocessing and quality control of sequence reads, V(D)J gene segment assignment,
+for preprocessing and quality control of sequence reads, V(D)J gene assignment,
 repertoire characterization, and repertoire comparison. VDJServer also provides
 sophisticated visualizations for exploratory analysis. It is accessible through a standard
 web browser via a graphical user interface designed for use by immunologists, clinicians,
