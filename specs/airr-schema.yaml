@@ -1009,6 +1009,7 @@ NucleicAcidProcessing:
                 - partial
                 - complete
                 - "complete+untemplated"
+                - mixed
             description: >
                 To be considered `complete`, the procedure used for library construction MUST generate sequences that
                 1) include the first V gene codon that encodes the mature polypeptide chain (i.e. after the
@@ -1016,6 +1017,8 @@ NucleicAcidProcessing:
                 splice site) and 3) provide sequence information for all positions between 1) and 2). To be considered
                 `complete & untemplated`, the sections of the sequences defined in points 1) to 3) of the previous
                 sentence MUST be untemplated, i.e. MUST NOT overlap with the primers used in library preparation.
+                `mixed` should only be used if the procedure used for library construction will likely produce multiple
+                categories of sequences in the given experiment. It SHOULD NOT be used as a replacement of a NULL value.
             example: partial
             x-airr:
                 miairr: essential
