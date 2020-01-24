@@ -39,6 +39,7 @@ Topics
    MiAIRR Data Elements <data_elements>
    National Center for Biotechnology Information (NCBI) Submission <miairr_ncbi_overview>
    Requirement levels of fields <airr_schema_requirement_levels>
+   Metadata annotation guidelines <metadata_guidelines>
 
 References
 ==========

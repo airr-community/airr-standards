@@ -1032,16 +1032,24 @@ NucleicAcidProcessing:
             enum:
                 - none
                 - "hetero_head-head"
+                - "hetero_tail-head"
+                - "hetero_prelinked"
             description: >
-                Describes the mode of linkage if a method was used which physically links nucleic acids derived from
-                distinct loci in a single-cell context.
+                In case an experimental setup is used that physically links nucleic acids derived from distinct
+                `Rearrangements` before library preparation, this field describes the mode of that linkage. All
+                `hetero_*` terms indicate that in case of paired-read sequencing, the two reads should be expected
+                to map to distinct IG/TR loci. `*_head-head` refers to techniques that link the 5' ends of transcripts
+                in a single-cell context. `*_tail-head` refers to techniques that link the 3' end of one transcript to
+                the 5' end of another one in a single-cell context. This term does not provide any information whether
+                a continuous reading-frame between the two is generated. `*_prelinked` refers to constructs in which
+                the linkage was already present on the DNA level (e.g. scFv).
             example: hetero_head-head
             x-airr:
                 miairr: essential
                 nullable: false
                 set: 3
                 subset: process (nucleic acid)
-                name: Physical linkage of different loci
+                name: Physical linkage of different rearrangements
                 format: controlled vocabulary
 
 # 1-to-n relationship between a NucleicAcidProcessing and SequencingRun with resultant raw sequence file(s)
