@@ -2492,7 +2492,9 @@ Clone:
             x-airr:
                 miairr: false
         seed_id:
-            type: string
+            type:
+                - string
+                - "null"
             Description: rearrangment id for seed, null if no seed
             x-airr:
                 miairr: false
