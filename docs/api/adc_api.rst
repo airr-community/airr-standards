@@ -616,6 +616,13 @@ A more complex query with multiple operators looks like this:
     }
   }
 
+**Queries Against Arrays**
+
+A number of fields in the AIRR specification are arrays, such as ``study.keywords_study``. 
+A query operator applied to an array field applies that operator to each field and returns
+a boolean ``OR`` of the results of this set of operations. That is, the operator will return
+true if the operation returns true on any of the individual array elements.
+
 **Format Query Parameter**
 
 Specifies the format of the API response. JSON is the default format
