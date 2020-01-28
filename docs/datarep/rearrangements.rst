@@ -68,9 +68,14 @@ be the set: IGH, IGK, IGL, TRA, TRB, TRD, or TRG.
 **Gene and allele names**
 
 Gene call examples use the IMGT nomenclature, but no specific gene or allele
-nomenclature is mandated. Species denotations may or may not be included in the
+nomenclature is strictly mandated. Species denotations may or may not be included in the
 gene name, as appropriate. For example, "Homo sapiens IGHV4-59*01", "IGHV4-59*01" and
 "AB019438" are all valid entries for the same allele.
+
+However, when using an established reference database to assign gene calls
+adherence to the exact nomenclature used by the reference database is strongly
+recommended, as this will facilitate mapping to the database entries, cross-study
+comparison, and upload to public repositories.
 
 **Alignments**
 
