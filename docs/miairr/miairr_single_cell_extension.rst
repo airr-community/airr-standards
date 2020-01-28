@@ -18,10 +18,10 @@ processed data to allow for fast search and compare operations.
 
 In addition, we would like to be able to provide reactivity information
 for individual Ig/TCRs. Although this will often occur in a single-cell
-context, attaching the information to the ``pair_id`` (and not to
+context, attaching the information to the ``receptor_id`` (and not to
 ``cell_id``) is important as individual cells can express multiple
 receptors, e.g. due to simultaneous expression of two TCR alpha chains.
-Referencing to the reactivity record via ``pair_id`` resolves this issue
+Referencing to the reactivity record via ``receptor_id`` resolves this issue
 and at the same time allow the annotation of stochastically inferred
 chain pairs, which inherently lack a ``cell_id``.
 
@@ -34,7 +34,7 @@ have been brough forward to the AIRR Community General Assembly in
 May 2019 and were ratified as provisional standard:
 
 - Add the following record structure to the AIRR schema, so that it can
-  be referenced via ``pair_id``.
+  be referenced via ``receptor_id``.
   
   - keyword describing the methodology used for measurement. Note that
     only methods that return an absolute and quantitative measurement
