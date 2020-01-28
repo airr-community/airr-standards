@@ -2352,7 +2352,9 @@ Clone:
                 miairr: false
                 required: true
         repertoire_id:
-            type: string
+            type:
+                - string
+                - "null"
             description: Identifier to the associated repertoire in study metadata.
             x-airr:
                 miairr: false
