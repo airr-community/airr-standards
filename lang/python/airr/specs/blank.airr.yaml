@@ -19,7 +19,7 @@ Repertoire:
       grants: ""
       pub_ids: ""
       keywords_study:
-        -
+        - ""
     subject:
       subject_id: ""
       synthetic: false
@@ -109,5 +109,7 @@ Repertoire:
         primer_match_cutoffs: ""
         collapsing_method: ""
         data_processing_protocols: ""
+        data_processing_files:
+          - ""
         germline_database: ""
         analysis_provenance_id: ""

@@ -372,6 +372,18 @@ class Schema:
                             continue
                         if row not in spec['items']['enum']:
                             raise ValidationError('field %s has value "%s" not among possible enumeration values' %(full_field, row))
+                    elif spec['items'].get('type') == 'string':
+                        if not isinstance(row, str):
+                            raise ValidationError('array field %s does not have string type: %s' %(full_field, row))
+                    elif spec['items'].get('type') == 'boolean':
+                        if not isinstance(row, boolean):
+                            raise ValidationError('array field %s does not have boolean type: %s' %(full_field, row))
+                    elif spec['items'].get('type') == 'integer':
+                        if not isinstance(row, int):
+                            raise ValidationError('array field %s does not have integer type: %s' %(full_field, row))
+                    elif spec['items'].get('type') == 'number':
+                        if not isinstance(row, float):
+                            raise ValidationError('array field %s does not have number type: %s' %(full_field, row))
                     else:
                         raise ValidationError('Internal error: array field %s in schema not handled by validation. File a bug report.' %(full_field))
             elif field_type == 'object':

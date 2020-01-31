@@ -18,7 +18,9 @@ Repertoire:
       pub_ids: "PMID:27005435"
       collected_by: ""
       grants: ""
-      keywords_study: null
+      keywords_study: 
+        - "contains_ig"
+        - "contains_tcr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -97,6 +99,8 @@ Repertoire:
         primer_match_cutoffs: ""
         collapsing_method: ""
         data_processing_protocols: ""
+        data_processing_files:
+          - ""
         germline_database: ""
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
 
@@ -116,7 +120,8 @@ Repertoire:
       collected_by: ""
       grants: ""
       keywords_study:
-        -
+        - "contains_ig"
+        - "contains_tcr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -192,6 +197,8 @@ Repertoire:
         primer_match_cutoffs: ""
         collapsing_method: ""
         data_processing_protocols: ""
+        data_processing_files:
+          - ""
         germline_database: ""
         analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
 
@@ -211,7 +218,8 @@ Repertoire:
       collected_by: ""
       grants: ""
       keywords_study:
-        -
+        - "contains_ig"
+        - "contains_tcr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -287,5 +295,7 @@ Repertoire:
         primer_match_cutoffs: ""
         collapsing_method: ""
         data_processing_protocols: ""
+        data_processing_files:
+          - ""
         germline_database: ""
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
