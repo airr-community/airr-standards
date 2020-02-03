@@ -2537,7 +2537,6 @@ Clone:
     type: object
     required:
         - clone_id
-        - repertoire_id
         - germline_alignment
     properties:
         clone_id:
@@ -2552,12 +2551,16 @@ Clone:
             x-airr:
                 miairr: false
                 required: true
+                nullable: true
+                adc-api-optional: false
         data_processing_id:
             type: string
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
                 miairr: false
-                required: false
+                required: true
+                nullable: true
+                adc-api-optional: false
         sequences:
             type: array
             items:
@@ -2688,7 +2691,7 @@ Clone:
                 miairr: false
         seed_id:
             type: string
-            Description: rearrangment id for seed, null if no seed
+            Description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
             x-airr:
                 miairr: false
 
@@ -2746,7 +2749,7 @@ Node:
             type: string
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a univerally unique record locator for database applications.
+                but will usually be a universally unique record locator for database applications.
             x-airr:
                 miairr: false
                 required: false
