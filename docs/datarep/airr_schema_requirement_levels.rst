@@ -26,7 +26,7 @@ Categories of AIRR Schema Fields
    This was decided to simplify MiAIRR-compliant data annotation by
    third parties, who might perform annotation based on publicly
    available information only.
--  REQUIRED fields MUST NOT contain a value that is ``NULL`` or 
+-  REQUIRED fields MUST NOT contain a value that is ``NULL`` or
    ``NULL``-like. ``NULL``-like values currently include the terms:
 
    -  ``not_applicable``: There is no meaningful value for this key due
