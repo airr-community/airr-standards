@@ -195,4 +195,5 @@ Schema Definitions
    Repertoire Schema <metadata>
    Rearrangement Schema <rearrangements>
    Alignment Schema (Experimental) <alignments>
+   Requirement levels of fields <airr_schema_requirement_levels>
    germline
