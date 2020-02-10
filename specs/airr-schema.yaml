@@ -1468,7 +1468,7 @@ Rearrangement:
         complete_vdj:
             type: boolean
             description: >
-                True if query nucleotide sequence spans the entire V(D)J region. Meaning, the sequence
+                True if the sequence alignment spans the entire V(D)J region. Meaning, sequence_alignment
                 includes both the first V gene codon that encodes the mature polypeptide chain
                 (i.e., after the leader sequence) and the last complete codon of the
                 J gene (i.e., before the J-C splice site).
