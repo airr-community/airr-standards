@@ -203,6 +203,9 @@ paths:
                 type: object
               format:
                 type: string
+                default: json
+                enum:
+                  - json
               fields:
                 type: array
                 items:
@@ -282,6 +285,10 @@ paths:
                 type: object
               format:
                 type: string
+                default: json
+                enum:
+                  - json
+                  - tsv
               fields:
                 type: array
                 items:
