@@ -1108,7 +1108,7 @@ RawSequenceData:
                 miairr: true
                 required: true
                 nullable: true
-                set: 3
+                set: 4
                 subset: process (sequencing)
                 name: Forward read length
         paired_filename:
@@ -1146,7 +1146,7 @@ RawSequenceData:
                 miairr: true
                 required: true
                 nullable: true
-                set: 3
+                set: 4
                 subset: process (sequencing)
                 name: Paired read length
 
