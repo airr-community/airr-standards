@@ -2412,20 +2412,6 @@ Rearrangement:
                 set: 6
                 subset: data (processed sequence)
                 name: Read count
-        pair_id:
-            type: string
-            description: >
-                Valid sequence_id that was determined by experimental or computational means to
-                be associated with the current Rearrangement on the cellular level.
-            example: ABC314159
-            x-airr:
-                miairr: true
-                required: true
-                nullable: true
-                adc-api-optional: false
-                set: 6
-                subset: data (processed sequence)
-                name: Paired-chain index
         cell_id:
             type: string
             description: >
