@@ -284,7 +284,7 @@ The response will provide the ``Repertoire`` data in JSON format.
            "subject_id":"TW02A",
            "synthetic":false,
            "linked_subjects":"TW02B",
-           "organism":{"id":9606,"value":"Homo sapiens"},
+           "organism":{"id":"9606","value":"Homo sapiens"},
            "age":"25yr",
            "link_type":"twin",
            "sex":"F"
@@ -467,6 +467,10 @@ recursive algorithms are typically used for tree traversal.
 
 The following operators are support by the ADC API.
 
+.. |br| raw:: html
+
+    <br>
+
 .. list-table::
     :widths: auto
     :header-rows: 1
@@ -480,67 +484,77 @@ The following operators are support by the ADC API.
       - field and value
       - string, number, integer, or boolean
       - equals
-      - junction_aa = "CASSYIKLN"
+      - {"op":"=","content":{"field":"junction_aa","value":"CASSYIKLN"}}
     * - !=
       - field and value
       - string, number, integer, or boolean
       - does not equal
-      - subject.organism.id != 9606
+      - {"op":"!=","content":{"field":"subject.organism.id","value":"9606"}}
     * - <
       - field and value
       - number, integer
       - less than
-      - sample.cell_number < 1000
+      - {"op":"<","content":{"field":"sample.cell_number","value":1000}}
     * - <=
       - field and value
       - number, integer
       - less than or equal
-      - sample.cell_number <= 1000
+      - {"op":"<=","content":{"field":"sample.cell_number","value":1000}}
     * - >
       - field and value
       - number, integer
       - greater than
-      - sample.cells_per_reaction > 10000
+      - {"op":">","content":{"field":"sample.cells_per_reaction","value":10000}}
     * - >=
       - field and value
       - number, integer
       - greater than or equal
-      - sample.cells_per_reaction >= 10000
+      - {"op":">=","content":{"field":"sample.cells_per_reaction","value":10000}}
+    * - is missing
+      - field
+      - n/a
+      - field is missing or is null
+      - {"op":"is missing","content":{"field":"sample.tissue"}}
     * - is
       - field
       - n/a
-      - is missing
-      - sample.tissue is missing
+      - identical to "is missing" operator, provided for GDC compatibility
+      - {"op":"is","content":{"field":"sample.tissue"}}
+    * - is not missing
+      - field
+      - n/a
+      - field is not missing and is not null
+      - {"op":"is not missing","content":{"field":"sample.tissue"}}
     * - not
       - field
       - n/a
-      - is not missing
-      - sample.tissue is not missing
+      - identical to "is not missing" operator, provided for GDC compatibility
+      - {"op":"not","content":{"field":"sample.tissue"}}
     * - in
       - field, multiple values in a list
       - string, number, or integer
       - matches a string or number in a list
-      - subject.strain_name in ["C57BL/6", "BALB/c", "NOD"]
+      - {"op":"in","content":{"field":"subject.strain_name","value":["C57BL/6","BALB/c","NOD"]}}
     * - exclude
       - field, multiple values in a list
       - string, number, or integer
       - does not match any string or number in a list
-      - subject.strain_name exclude ["SCID", "NOD"]
+      - {"op":"exclude","content":{"field":"subject.strain_name","value":["SCID","NOD"]}}
     * - contains
       - field, value
       - string
       - contains the substring
-      - study.study_title contains "cancer"
+      - {"op":"contains","content":{"field":"study.study_title","value":"cancer"}}
     * - and
       - multiple operators
       - n/a
       - logical AND
-      - (subject.organism.id != 9606) and (sample.cells_per_reaction >= 10000) and (subject.strain_name exclude ["SCID", "NOD"])
+      - {"op":"and","content":[ |br| {"op":"!=","content":{"field":"subject.organism.id","value":"9606"}}, |br| {"op":">=","content":{"field":"sample.cells_per_reaction","value":10000}}, |br| {"op":"exclude","content":{"field":"subject.strain_name","value":["SCID","NOD"]}} |br| ]}
     * - or
       - multiple operators
       - n/a
       - logical OR
-      - (sample.cell_number < 1000) or (sample.tissue is missing) or (subject.organism.id exclude [9606, 10090])
+      - {"op":"and","content":[ |br| {"op":"<","content":{"field":"sample.cell_number","value":1000}}, |br| {"op":"is missing","content":{"field":"sample.tissue"}}, |br| {"op":"exclude","content":{"field":"subject.organism.id","value":["9606","10090"]}} |br| ]}
 
 Note that the ``not`` operator is different from a logical NOT
 operator, and the logical NOT is not needed as the other operators
@@ -579,7 +593,7 @@ A more complex query with multiple operators looks like this:
           "op":"!=",
           "content": {
             "field":"subject.organism.id",
-            "value":9606
+            "value":"9606"
           }
         },
         {
@@ -593,7 +607,7 @@ A more complex query with multiple operators looks like this:
           "op":"exclude",
           "content": {
             "field":"subject.organism.id",
-            "value": [9606, 10090]
+            "value": ["9606", "10090"]
           }
         }
       ]
