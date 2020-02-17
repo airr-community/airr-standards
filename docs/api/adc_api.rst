@@ -532,12 +532,12 @@ The following operators are support by the ADC API.
       - {"op":"not","content":{"field":"sample.tissue"}}
     * - in
       - field, multiple values in a list
-      - string, number, or integer
+      - array of string, number, or integer
       - matches a string or number in a list
       - {"op":"in","content":{"field":"subject.strain_name","value":["C57BL/6","BALB/c","NOD"]}}
     * - exclude
       - field, multiple values in a list
-      - string, number, or integer
+      - array of string, number, or integer
       - does not match any string or number in a list
       - {"op":"exclude","content":{"field":"subject.strain_name","value":["SCID","NOD"]}}
     * - contains
