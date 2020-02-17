@@ -1016,17 +1016,6 @@ SequencingRun:
                 set: 3
                 subset: process (sequencing)
                 name: Sequencing platform
-        read_length:
-            type: string
-            description: Read length in bases for each direction
-            example: "[300,300]"
-            x-airr:
-                miairr: true
-                required: true
-                nullable: true
-                set: 3
-                subset: process (sequencing)
-                name: Read lengths
         sequencing_facility:
             type: string
             description: Name and address of sequencing facility
@@ -1111,6 +1100,17 @@ RawSequenceData:
                 subset: data (raw reads)
                 name: Read direction
                 format: controlled vocabulary
+        read_length:
+            type: integer
+            description: Read length in bases for the first file in paired-read sequencing
+            example: 300
+            x-airr:
+                miairr: true
+                required: true
+                nullable: true
+                set: 4
+                subset: process (sequencing)
+                name: Forward read length
         paired_filename:
             type: string
             description: File name for the second file in paired-read sequencing
@@ -1138,6 +1138,17 @@ RawSequenceData:
                 subset: data (raw reads)
                 name: Read direction
                 format: controlled vocabulary
+        paired_read_length:
+            type: integer
+            description: Read length in bases for the second file in paired-read sequencing
+            example: 300
+            x-airr:
+                miairr: true
+                required: true
+                nullable: true
+                set: 4
+                subset: process (sequencing)
+                name: Paired read length
 
 # 1-to-n relationship between a repertoire and data processing
 #
@@ -2412,20 +2423,6 @@ Rearrangement:
                 set: 6
                 subset: data (processed sequence)
                 name: Read count
-        pair_id:
-            type: string
-            description: >
-                Valid sequence_id that was determined by experimental or computational means to
-                be associated with the current Rearrangement on the cellular level.
-            example: ABC314159
-            x-airr:
-                miairr: true
-                required: true
-                nullable: true
-                adc-api-optional: false
-                set: 6
-                subset: data (processed sequence)
-                name: Paired-chain index
         cell_id:
             type: string
             description: >
