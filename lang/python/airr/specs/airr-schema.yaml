@@ -1608,7 +1608,7 @@ Rearrangement:
         junction_aa:
             type: string
             description: >
-                Junction region amino acid sequence.
+                Amino acid translation of the junction.
             example: CARAGVYDGYTMDYW
             x-airr:
                 miairr: true
