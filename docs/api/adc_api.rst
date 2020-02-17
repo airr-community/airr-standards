@@ -560,9 +560,11 @@ Note that the ``not`` operator is different from a logical NOT
 operator, and the logical NOT is not needed as the other operators
 provide negation.
 
-The ``field`` operand specifies a complete property name in the AIRR
-Data Model. The Fields section below describes the available queryable
-fields.
+The ``field`` operand specifies a fully qualified property name in the AIRR
+Data Model. Fully qualified AIRR properties are either a JSON/YAML base type (``string``, ``number``,
+``integer``, or ``boolean``) or an array of one of these base types (some AIRR fields are arrays
+e.g. ``study.keywords_study``).
+The Fields section below describes the available queryable fields.
 
 The ``value`` operand specifies one or more values when evaluating the
 operator for the ``field`` operand.
