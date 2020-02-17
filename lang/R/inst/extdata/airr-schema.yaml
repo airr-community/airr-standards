@@ -1483,6 +1483,8 @@ Rearrangement:
                 sequence_alignment includes both the first V gene codon that encodes the
                 mature polypeptide chain (i.e., after the leader sequence) and the last
                 complete codon of the J gene (i.e., before the J-C splice site).
+                This does not require an absence of deletions within the internal
+                FWR and CDR regions of the alignment.
             x-airr:
                 miairr: false
                 adc-api-optional: true
