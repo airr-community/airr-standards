@@ -120,6 +120,7 @@ A typical ``POST`` query request specifies the following parameters:
 + The ``fields`` parameter specifies which data elements to be returned in the response.
 
 + The ``from`` and ``size`` parameters specify the number of results to skip and the maximum number of results to be returned in the response.
++ The ``include_required`` parameter specifies whether to include the required AIRR fields in the response. This is a mechanism to ensure that the API response is an AIRR compliant repsonse.
 
 **Service Status Example**
 
@@ -628,6 +629,15 @@ and the only format available for all endpoints except for the
 The ``fields`` parameter specifies which fields are to be included in
 the API response. By default all fields with non-null values are
 returned in the API response.
+
+**Include Required Query Parameter**
+
+The ``include_required`` parameter is a boolean parameter (default false) that specifies that
+API response should include all AIRR Standard required parameters. This is a mechanism to allow
+the user of the API to ensure that the API response is an AIRR compliant response. Note that if
+both the ``include_required`` and the ``fields`` parameter are provided, the API response will
+all of the AIRR fields and in addition will include any additional fields that are specified in
+the ``fields`` parameter.
 
 **Size and From Query Parameters**
 
