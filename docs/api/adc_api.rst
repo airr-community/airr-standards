@@ -649,7 +649,7 @@ returned in the API response.
 
 **Include Required Query Parameter**
 
-The ``include_required`` parameter is a boolean parameter (default false) that specifies that
+The ``include_required`` parameter is a boolean parameter (default false) that specifies whether the
 API response should include all AIRR Standard required parameters. This is a mechanism to allow
 the user of the API to ensure that the API response is an AIRR compliant response. Note that if
 both the ``include_required`` and the ``fields`` parameter are provided, the API response will
