@@ -64,7 +64,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'AIRR Standards'
-copyright = '2017-2019, AIRR Community'
+copyright = '2017-2020, AIRR Community'
 author = 'AIRR Community'
 
 # The version info for the project you're documenting, acts as replacement for
