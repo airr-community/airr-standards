@@ -108,6 +108,12 @@ Completed
 -  Diagnosis (``disease_diagnosis``)
 
    -  DOID_
+   -  root node
+
+      -  name: ``disease``
+      -  ID: ``DOID:4``
+      -  path: ``/disease``
+
    -  License: `CC BY`_
    -  latest release: 2018-03-02
    -  maintainer: Lynn Schriml, U Maryland, MD, US
@@ -125,6 +131,14 @@ Completed
 -  Tissue (``tissue``)
 
    -  Uberon_
+   -  root node
+
+      -  name: ``multicellular anatomical structure``
+      -  ID: ``UBERON:0010000``
+      -  path: ``/BFO_0000002/BFO_0000004/anatomical entity/material
+         anatomical entity/anatomical structure/multicellular anatomical
+         structure``
+
    -  License: `CC BY`_
    -  latest release: 2018-10-15
    -  Maintainer: Chris Mungall, LBL, CA, US
