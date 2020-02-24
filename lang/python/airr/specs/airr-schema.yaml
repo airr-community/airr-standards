@@ -464,9 +464,11 @@ Diagnosis:
                 subset: diagnosis and intervention
                 name: Study group description
         disease_diagnosis:
-            type: string
+            $ref: '#/Ontology'
             description: Diagnosis of subject
-            example: Multiple myeloma
+            example:
+                id: 9538
+                value: multiple myeloma
             x-airr:
                 miairr: true
                 required: true
@@ -474,6 +476,14 @@ Diagnosis:
                 set: 1
                 subset: diagnosis and intervention
                 name: Diagnosis
+                format: ontology
+                ontology:
+                    draft: true
+                    name: Human Disease Ontology
+                    url: https://www.ebi.ac.uk/ols/ontologies/DOID
+                    top_node:
+                        id: 4
+                        value: disease
         disease_length:
             type: string
             description: Time duration between initial diagnosis and current intervention
