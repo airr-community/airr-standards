@@ -42,7 +42,9 @@ Repertoire:
       link_type: ""
       diagnosis:
         - study_group_description: ""
-          disease_diagnosis: ""
+          disease_diagnosis:
+            id: ""
+            value: ""
           disease_length: ""
           disease_stage: ""
           prior_therapies: ""
