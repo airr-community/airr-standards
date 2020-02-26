@@ -316,7 +316,7 @@ class Schema:
             if context is None: full_field = f
             else: full_field = context + '.' + f
 
-            # check MiAIRR requirements
+            # check x-airr and MiAIRR requirements
             if obj.get(f) is None:
                 if obj.get(f, 'missing') == 'missing':
                     is_null = False
@@ -325,13 +325,13 @@ class Schema:
                 spec = self.spec(f)
                 xairr = spec.get('x-airr')
                 if xairr is not None:
-                    if xairr.get('miairr'):
-                        if xairr.get('required'):
-                            if xairr.get('nullable') and is_null:
-                                continue # key is there but value is null
-                            else:
+                    if xairr.get('nullable') and is_null:
+                        continue # key is there but value is null
+                    else:
+                        if xairr.get('miairr'):
+                            if xairr.get('required'):
                                 if self.type(f) == 'boolean':
-                                    # booleans are tricky as they should be nullable, but the ADC API does not support that
+                                    # booleans are tricky as they should be nullable, but the OpenAPI V2 does not support that well
                                     raise ValidationError('MiAIRR required boolean field %s has null value' %(full_field))
                                 else:
                                     raise ValidationError('MiAIRR required field %s is missing' %(full_field))
