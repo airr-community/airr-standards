@@ -1520,6 +1520,7 @@ Rearrangement:
                 nullable: true
                 adc-api-optional: false
                 name: Gene locus
+                format: controlled vocabulary
         v_call:
             type: string
             description: >
