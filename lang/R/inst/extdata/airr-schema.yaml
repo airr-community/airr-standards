@@ -248,6 +248,7 @@ Study:
                 set: 1
                 subset: study
                 name: Keywords for study
+                format: controlled vocabulary
 
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
@@ -1520,6 +1521,7 @@ Rearrangement:
                 nullable: true
                 adc-api-optional: false
                 name: Gene locus
+                format: controlled vocabulary
         v_call:
             type: string
             description: >
