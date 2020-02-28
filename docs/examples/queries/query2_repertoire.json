@@ -6,7 +6,7 @@
                 "op":"=",
                 "content": {
                     "field":"subject.organism.id",
-                    "value":9606
+                    "value":"9606"
                 }
 	    },
 	    {
