@@ -211,9 +211,9 @@ paths:
                 items:
                   type: string
               size:
-                type: number
+                type: integer
               from:
-                type: number
+                type: integer
               include_required:
                 type: boolean
                 default: false
@@ -294,9 +294,9 @@ paths:
                 items:
                   type: string
               size:
-                type: number
+                type: integer
               from:
-                type: number
+                type: integer
               include_required:
                 type: boolean
                 default: false
