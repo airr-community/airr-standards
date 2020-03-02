@@ -42,10 +42,10 @@ Attributes:
             type: string
             description: MiAIRR requirement level.
             enum:
-                - required
-                - recommended
-                - optional
-            default: optional
+                - essential
+                - important
+                - useful
+            default: useful
         identifier:
             type: boolean
             description: >
