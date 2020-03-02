@@ -1314,6 +1314,20 @@ Repertoire:
                 miairr: false
                 required: true
                 nullable: true
+        repertoire_name:
+            type: string
+            description: Short generic display name for the repertoire
+            x-airr:
+                miairr: false
+                required: false
+                nullable: true
+        repertoire_description:
+            type: string
+            description: Generic repertoire description
+            x-airr:
+                miairr: false
+                required: false
+                nullable: true
         study:
             $ref: '#/Study'
             description: Study object
