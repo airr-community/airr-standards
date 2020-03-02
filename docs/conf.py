@@ -276,12 +276,23 @@ for spec in tables:
     for k, v in properties.items():
         row = {}
         row['name'] = k
-        if v.get('type'):
-            row['type'] = v['type']
+        if v.get('type') == 'array':
+            if v['items'].get('$ref') is not None:
+                sn = v['items'].get('$ref').split('/')[-1]
+                row['type'] = '``array`` of :ref:`' + sn + ' <' + sn + 'Fields>`'
+            elif v['items'].get('type') is not None:
+                row['type'] = '``array`` of ``' + v['items']['type'] + '``'
+            else:
+                row['type'] = '``' + v['type'] + '``'
+        elif v.get('type'):
+            row['type'] = '``' + v['type'] + '``'
         elif v.get('$ref') == '#/Ontology':
-            row['type'] = 'Ontology object'
+            row['type'] = ':ref:`Ontology <OntoVoc>`'
+        elif v.get('$ref') is not None:
+            sn = v.get('$ref').split('/')[-1]
+            row['type'] = ':ref:`' + sn + ' <' + sn + 'Fields>`'
         else:
-            row['type'] = 'unknown'
+            row['type'] = '``unknown``'
         if v.get('x-airr') and v.get('x-airr').get('miairr'):
             row['miairr'] = 'required'
         else:
