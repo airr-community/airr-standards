@@ -360,7 +360,10 @@ for key, v in airr_schema.items():
                             airr_field_value_example = "id: " + str(airr_properties[airr_property]["example"]["id"]) + ", value: " + str(airr_properties[airr_property]["example"]["value"])
 
                         elif "controlled vocabulary" in str(property_values):
-                            airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["enum"])
+                            if airr_properties[airr_property].get("enum") is not None:
+                                airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["enum"])
+                            elif airr_properties[airr_property].get("items") is not None:
+                                airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["items"]["enum"])
 
                     elif "format" not in airr_properties[airr_property]["x-airr"]:
 
