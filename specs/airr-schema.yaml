@@ -65,6 +65,15 @@ Attributes:
         deprecated:
             type: boolean
             description: True if the field has been deprecated from the schema.
+            default: false
+        deprecated-description:
+            type: string
+            description: Information regarding the deprecation of the field.
+        deprecated-replaced-by:
+            type: array
+            items:
+                type: string
+            description: The deprecated field is replaced by this list of fields.
         set:
             type: integer
             description: MiAIRR set
