@@ -344,9 +344,8 @@ for key, v in airr_schema.items():
                         airr_name = airr_properties[airr_property]["x-airr"]["name"]
 
                     if "format" in airr_properties[airr_property]["x-airr"]:
-                        airr_format = airr_properties[airr_property]["x-airr"]["format"].capitalize()
 
-                        if "ontology" in airr_properties[airr_property]["x-airr"]:
+                        if airr_properties[airr_property]["x-airr"]["format"] == "ontology":
 
                             airr_format = "Ontology: { name: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["name"])
                             airr_format += ", top_node: {"
@@ -359,8 +358,14 @@ for key, v in airr_schema.items():
                             airr_data_type = airr_schema["Ontology"]["properties"]["value"]["type"]
                             airr_field_value_example = "id: " + str(airr_properties[airr_property]["example"]["id"]) + ", value: " + str(airr_properties[airr_property]["example"]["value"])
 
-                        elif "controlled vocabulary" in str(property_values):
-                            airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["enum"])
+                        elif airr_properties[airr_property]["x-airr"]["format"] == "controlled vocabulary":
+                            if airr_property == "keywords_study":
+                                airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["items"]["enum"])
+                            else:
+                                airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["enum"])
+
+                        elif airr_properties[airr_property]["x-airr"]["format"] == "physical quantity":
+                            airr_format = "physical quantity"
 
                     elif "format" not in airr_properties[airr_property]["x-airr"]:
 
