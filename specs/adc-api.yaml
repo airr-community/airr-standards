@@ -203,14 +203,17 @@ paths:
                 type: object
               format:
                 type: string
+                default: json
+                enum:
+                  - json
               fields:
                 type: array
                 items:
                   type: string
               size:
-                type: number
+                type: integer
               from:
-                type: number
+                type: integer
               include_required:
                 type: boolean
                 default: false
@@ -282,14 +285,18 @@ paths:
                 type: object
               format:
                 type: string
+                default: json
+                enum:
+                  - json
+                  - tsv
               fields:
                 type: array
                 items:
                   type: string
               size:
-                type: number
+                type: integer
               from:
-                type: number
+                type: integer
               include_required:
                 type: boolean
                 default: false

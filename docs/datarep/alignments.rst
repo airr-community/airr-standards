@@ -4,7 +4,7 @@ Alignment Schema (Experimental)
 ===============================
 
 An Alignment is the output from a V(D)J assignment process for a
-single V, D, J, or C gene segment for a sequence. It is not necessary
+single V, D, J, or C gene for a sequence. It is not necessary
 that the V(D)J assignment process performs a sequence alignment
 algorithm, as the schema can support any algorithmic process. Multiple
 Alignment records are supported and expected for a single sequence
