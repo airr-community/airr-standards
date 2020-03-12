@@ -61,13 +61,14 @@ Repertoire:
             forward_pcr_primer_target_location: ""
             reverse_pcr_primer_target_location: ""
         sequencing_platform: "Illumina MiSeq"
-        read_length: "300"
         sequencing_files:
           file_type: fastq
           filename: SRR2905656_R1.fastq.gz
           read_direction: forward
+          read_length: 300
           paired_filename: SRR2905656_R2.fastq.gz
           paired_read_direction: reverse
+          paired_read_length: 300
         anatomic_site: ""
         disease_state_sample: ""
         collection_time_point_relative: ""
@@ -159,13 +160,14 @@ Repertoire:
             forward_pcr_primer_target_location: ""
             reverse_pcr_primer_target_location: ""
         sequencing_platform: "Illumina MiSeq"
-        read_length: "300"
         sequencing_files:
           file_type: fastq
           filename: SRR2905655_R1.fastq.gz
           read_direction: forward
+          read_length: 300
           paired_filename: SRR2905655_R2.fastq.gz
           paired_read_direction: reverse
+          paired_read_length: 300
         anatomic_site: ""
         disease_state_sample: ""
         collection_time_point_relative: ""
@@ -257,13 +259,14 @@ Repertoire:
             forward_pcr_primer_target_location: ""
             reverse_pcr_primer_target_location: ""
         sequencing_platform: "Illumina MiSeq"
-        read_length: "300"
         sequencing_files:
           file_type: fastq
           filename: SRR2905659_R1.fastq.gz
           read_direction: forward
+          read_length: 300
           paired_filename: SRR2905659_R2.fastq.gz
           paired_read_direction: reverse
+          paired_read_length: 300
         anatomic_site: ""
         disease_state_sample: ""
         collection_time_point_relative: ""

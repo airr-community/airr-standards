@@ -42,7 +42,9 @@ Repertoire:
       link_type: ""
       diagnosis:
         - study_group_description: ""
-          disease_diagnosis: ""
+          disease_diagnosis:
+            id: ""
+            value: ""
           disease_length: ""
           disease_stage: ""
           prior_therapies: ""
@@ -89,7 +91,6 @@ Repertoire:
         sequencing_run_id: ""
         total_reads_passing_qc_filter: null
         sequencing_platform: ""
-        read_length: ""
         sequencing_facility: ""
         sequencing_run_date: ""
         sequencing_kit: ""
@@ -98,8 +99,10 @@ Repertoire:
           file_type: null
           filename: ""
           read_direction: ""
+          read_length: null
           paired_filename: ""
           paired_read_direction: ""
+          paired_read_length: null
     data_processing:
       - data_processing_id: ""
         primary_annotation: null

@@ -248,6 +248,7 @@ Study:
                 set: 1
                 subset: study
                 name: Keywords for study
+                format: controlled vocabulary
 
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
@@ -464,9 +465,11 @@ Diagnosis:
                 subset: diagnosis and intervention
                 name: Study group description
         disease_diagnosis:
-            type: string
+            $ref: '#/Ontology'
             description: Diagnosis of subject
-            example: Multiple myeloma
+            example:
+                id: 9538
+                value: multiple myeloma
             x-airr:
                 miairr: true
                 required: true
@@ -474,6 +477,14 @@ Diagnosis:
                 set: 1
                 subset: diagnosis and intervention
                 name: Diagnosis
+                format: ontology
+                ontology:
+                    draft: true
+                    name: Human Disease Ontology
+                    url: https://www.ebi.ac.uk/ols/ontologies/DOID
+                    top_node:
+                        id: 4
+                        value: disease
         disease_length:
             type: string
             description: Time duration between initial diagnosis and current intervention
@@ -1016,17 +1027,6 @@ SequencingRun:
                 set: 3
                 subset: process (sequencing)
                 name: Sequencing platform
-        read_length:
-            type: string
-            description: Read length in bases for each direction
-            example: "[300,300]"
-            x-airr:
-                miairr: true
-                required: true
-                nullable: true
-                set: 3
-                subset: process (sequencing)
-                name: Read lengths
         sequencing_facility:
             type: string
             description: Name and address of sequencing facility
@@ -1111,6 +1111,17 @@ RawSequenceData:
                 subset: data (raw reads)
                 name: Read direction
                 format: controlled vocabulary
+        read_length:
+            type: integer
+            description: Read length in bases for the first file in paired-read sequencing
+            example: 300
+            x-airr:
+                miairr: true
+                required: true
+                nullable: true
+                set: 4
+                subset: process (sequencing)
+                name: Forward read length
         paired_filename:
             type: string
             description: File name for the second file in paired-read sequencing
@@ -1138,6 +1149,17 @@ RawSequenceData:
                 subset: data (raw reads)
                 name: Read direction
                 format: controlled vocabulary
+        paired_read_length:
+            type: integer
+            description: Read length in bases for the second file in paired-read sequencing
+            example: 300
+            x-airr:
+                miairr: true
+                required: true
+                nullable: true
+                set: 4
+                subset: process (sequencing)
+                name: Paired read length
 
 # 1-to-n relationship between a repertoire and data processing
 #
@@ -1291,6 +1313,20 @@ Repertoire:
             x-airr:
                 miairr: false
                 required: true
+                nullable: true
+        repertoire_name:
+            type: string
+            description: Short generic display name for the repertoire
+            x-airr:
+                miairr: false
+                required: false
+                nullable: true
+        repertoire_description:
+            type: string
+            description: Generic repertoire description
+            x-airr:
+                miairr: false
+                required: false
                 nullable: true
         study:
             $ref: '#/Study'
@@ -1465,6 +1501,18 @@ Rearrangement:
             x-airr:
                 miairr: false
                 adc-api-optional: true
+        complete_vdj:
+            type: boolean
+            description: >
+                True if the sequence alignment spans the entire V(D)J region. Meaning,
+                sequence_alignment includes both the first V gene codon that encodes the
+                mature polypeptide chain (i.e., after the leader sequence) and the last
+                complete codon of the J gene (i.e., before the J-C splice site).
+                This does not require an absence of deletions within the internal
+                FWR and CDR regions of the alignment.
+            x-airr:
+                miairr: false
+                adc-api-optional: true
         locus:
             type: string
             enum:
@@ -1487,6 +1535,7 @@ Rearrangement:
                 nullable: true
                 adc-api-optional: false
                 name: Gene locus
+                format: controlled vocabulary
         v_call:
             type: string
             description: >
@@ -1597,7 +1646,7 @@ Rearrangement:
         junction_aa:
             type: string
             description: >
-                Junction region amino acid sequence.
+                Amino acid translation of the junction.
             example: CARAGVYDGYTMDYW
             x-airr:
                 miairr: true
@@ -2412,20 +2461,6 @@ Rearrangement:
                 set: 6
                 subset: data (processed sequence)
                 name: Read count
-        pair_id:
-            type: string
-            description: >
-                Valid sequence_id that was determined by experimental or computational means to
-                be associated with the current Rearrangement on the cellular level.
-            example: ABC314159
-            x-airr:
-                miairr: true
-                required: true
-                nullable: true
-                adc-api-optional: false
-                set: 6
-                subset: data (processed sequence)
-                name: Paired-chain index
         cell_id:
             type: string
             description: >
@@ -2502,7 +2537,6 @@ Clone:
     type: object
     required:
         - clone_id
-        - repertoire_id
         - germline_alignment
     properties:
         clone_id:
@@ -2517,12 +2551,16 @@ Clone:
             x-airr:
                 miairr: false
                 required: true
+                nullable: true
+                adc-api-optional: false
         data_processing_id:
             type: string
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
                 miairr: false
-                required: false
+                required: true
+                nullable: true
+                adc-api-optional: false
         sequences:
             type: array
             items:
@@ -2653,7 +2691,7 @@ Clone:
                 miairr: false
         seed_id:
             type: string
-            Description: rearrangment id for seed, null if no seed
+            Description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
             x-airr:
                 miairr: false
 
@@ -2711,7 +2749,7 @@ Node:
             type: string
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a univerally unique record locator for database applications.
+                but will usually be a universally unique record locator for database applications.
             x-airr:
                 miairr: false
                 required: false
