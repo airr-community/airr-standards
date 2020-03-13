@@ -34,6 +34,11 @@ Approved Ontologies
 -  Species (``organism``, :ref:`Subject <SubjectFields>`) (``cell_species``, :ref:`Tissue and Cell Processing <CellProcessingFields>`)
 
    -  NCBITAXON_
+   - root node
+   
+      - name: ``Gnathostomata``
+      - ID: ``7776``
+      
    -  license: UMLS
    -  latest release: 2018-07-06
    -  maintainer: NCBI (info@ncbi.nlm.nih.gov)
@@ -70,6 +75,11 @@ Approved Ontologies
 -  Cell subset (``cell_subset``, :ref:`Tissue and Cell Processing <CellProcessingFields>`)
 
    -  CellOntology_
+   - root node
+   
+      - name: ``lymphocyte``
+      - id: ``CL_0000542``
+      
    -  license: `CC BY`_
    -  latest release: 2018-07-11
    -  maintainer: Alexander Diehl, Buffalo, NY, US
