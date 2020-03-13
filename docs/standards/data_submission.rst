@@ -22,6 +22,12 @@ Each provides different capabilities but all comply with the MiAIRR standard.
     :caption: VDJServer Community Data Portal
 
     VDJServer Community Data Portal <../miairr/vdjserver>
+    
+.. toctree::
+    :maxdepth: 1
+    :caption: iReceptor Turnkey Repository
+
+    iReceptor Turnkey Repository <../miairr/ireceptor>
 
 Data Submission for Inferred Genes and Alleles
 ----------------------------------------------
@@ -52,6 +58,14 @@ query and download AIRR-seq data.
 + iReceptor Public Archive
 
 + VDJServer Community Data Portal
+
+**Querying the AIRR Data Commons**
+
+Each of the repositories above can be queried directly using the ADC API <../../adc-api>. In addition, the
+following tools and platforms implement web based user interfaces that use the ADC API to query repositories
+in the AIRR Data Commons:
+
++ iReceptor Gateway <../miairr/ireceptor>
 
 **Other Public AIRR-Seq Repositories**
 

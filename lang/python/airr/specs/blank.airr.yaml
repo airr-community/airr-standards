@@ -42,7 +42,9 @@ Repertoire:
       link_type: ""
       diagnosis:
         - study_group_description: ""
-          disease_diagnosis: ""
+          disease_diagnosis:
+            id: ""
+            value: ""
           disease_length: ""
           disease_stage: ""
           prior_therapies: ""
@@ -53,7 +55,9 @@ Repertoire:
       - sample_processing_id: ""
         sample_id: ""
         sample_type: ""
-        tissue: ""
+        tissue:
+          id: ""
+          value: ""
         anatomic_site: ""
         disease_state_sample: ""
         collection_time_point_relative: ""
