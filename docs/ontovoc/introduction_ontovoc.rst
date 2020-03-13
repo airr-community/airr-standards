@@ -38,6 +38,19 @@ Approved Ontologies
    -  latest release: 2018-07-06
    -  maintainer: NCBI (info@ncbi.nlm.nih.gov)
 
+-  Age unit (``age_unit``, :ref:`Subject <SubjectFields>`)
+   -  UO_
+   -  **draft**
+   -  root node
+
+      -  name: ``time unit``
+      -  ID: ``UO_0000003``
+      -  path: ``unit/time unit``
+
+   -  license: `CC BY`_ (per GH repo)
+   -  latest release: 2019-03-29
+   -  maintainer: unknown, repo: https://github.com/bio-ontology-research-group/unit-ontology
+
 -  Diagnosis (``disease_diagnosis``, :ref:`Diagnosis <DiagnosisFields>`)
 
    -  DOID_
@@ -47,7 +60,7 @@ Approved Ontologies
       -  ID: ``DOID:4``
       -  path: ``/disease``
 
-   -  License: `CC BY`_
+   -  license: `CC BY`_
    -  latest release: 2018-03-02
    -  maintainer: Lynn Schriml, U Maryland, MD, US
       (lynn.schriml@gmail.com)
@@ -72,9 +85,9 @@ Approved Ontologies
          anatomical entity/anatomical structure/multicellular anatomical
          structure``
 
-   -  License: `CC BY`_
+   -  license: `CC BY`_
    -  latest release: 2018-10-15
-   -  Maintainer: Chris Mungall, LBL, CA, US
+   -  maintainer: Chris Mungall, LBL, CA, US
       (cjmungall@lbl.gov)
 
 Topics
@@ -94,3 +107,4 @@ Topics
 .. _CellOntology: https://www.ebi.ac.uk/ols/ontologies/CL
 .. _Uberon: https://www.ebi.ac.uk/ols/ontologies/UBERON
 .. _NCIT: https://www.ebi.ac.uk/ols/ontologies/ncit
+.. _UO: https://www.ebi.ac.uk/ols/ontologies/UO
