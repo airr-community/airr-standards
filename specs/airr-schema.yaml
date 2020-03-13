@@ -479,7 +479,7 @@ Diagnosis:
                 name: Diagnosis
                 format: ontology
                 ontology:
-                    draft: true
+                    draft: false
                     name: Human Disease Ontology
                     url: https://www.ebi.ac.uk/ols/ontologies/DOID
                     top_node:
@@ -596,7 +596,7 @@ Sample:
                 name: Tissue
                 format: ontology
                 ontology:
-                    draft: true
+                    draft: false
                     name: UBERON
                     url: https://www.ebi.ac.uk/ols/ontologies/uberon
                     top_node:
@@ -690,7 +690,7 @@ CellProcessing:
                 name: Cell subset
                 format: ontology
                 ontology:
-                    draft: true
+                    draft: false
                     name: CL
                     url: https://www.ebi.ac.uk/ols/ontologies/cl
                     top_node:
