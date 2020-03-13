@@ -16,6 +16,21 @@ by AIRR-compliant databases.
 Approved Ontologies
 ===================
 
+-  Study type (``Study type``, :ref:`Study <StudyFields>`)
+
+   -  NCIT_
+   -  **draft**
+   -  root node
+
+      -  name: ``Study``
+      -  ID: ``C63536``
+      -  path: ``/Activity/Clinical or Research Activity/Research Activity/Study``
+
+   -  License: Public domain, credit of NCI is requested
+   -  latest release: 2019-09-09
+   -  maintainer: NCI (ncicbiitappssupport@mail.nih.gov)
+
+
 -  Species (``organism``, :ref:`Subject <SubjectFields>`) (``cell_species``, :ref:`Tissue and Cell Processing <CellProcessingFields>`)
 
    -  NCBITAXON_
@@ -74,7 +89,8 @@ Topics
 
 .. _CC0: https://creativecommons.org/publicdomain/zero/1.0/
 .. _`CC BY`: https://creativecommons.org/licenses/by/4.0/
-.. _NCBITAXON: https://bioportal.bioontology.org/ontologies/NCBITAXON
-.. _DOID: https://bioportal.bioontology.org/ontologies/DOID
-.. _CellOntology: https://bioportal.bioontology.org/ontologies/CL
-.. _Uberon: https://bioportal.bioontology.org/ontologies/UBERON
+.. _NCBITAXON: https://www.ebi.ac.uk/ols/ontologies/NCBITAXON
+.. _DOID: https://www.ebi.ac.uk/ols/ontologies/DOID
+.. _CellOntology: https://www.ebi.ac.uk/ols/ontologies/CL
+.. _Uberon: https://www.ebi.ac.uk/ols/ontologies/UBERON
+.. _NCIT: https://www.ebi.ac.uk/ols/ontologies/ncit
