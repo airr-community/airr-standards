@@ -248,6 +248,7 @@ Study:
                 set: 1
                 subset: study
                 name: Keywords for study
+                format: controlled vocabulary
 
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
@@ -1313,6 +1314,20 @@ Repertoire:
                 miairr: false
                 required: true
                 nullable: true
+        repertoire_name:
+            type: string
+            description: Short generic display name for the repertoire
+            x-airr:
+                miairr: false
+                required: false
+                nullable: true
+        repertoire_description:
+            type: string
+            description: Generic repertoire description
+            x-airr:
+                miairr: false
+                required: false
+                nullable: true
         study:
             $ref: '#/Study'
             description: Study object
@@ -1486,6 +1501,18 @@ Rearrangement:
             x-airr:
                 miairr: false
                 adc-api-optional: true
+        complete_vdj:
+            type: boolean
+            description: >
+                True if the sequence alignment spans the entire V(D)J region. Meaning,
+                sequence_alignment includes both the first V gene codon that encodes the
+                mature polypeptide chain (i.e., after the leader sequence) and the last
+                complete codon of the J gene (i.e., before the J-C splice site).
+                This does not require an absence of deletions within the internal
+                FWR and CDR regions of the alignment.
+            x-airr:
+                miairr: false
+                adc-api-optional: true
         locus:
             type: string
             enum:
@@ -1508,6 +1535,7 @@ Rearrangement:
                 nullable: true
                 adc-api-optional: false
                 name: Gene locus
+                format: controlled vocabulary
         v_call:
             type: string
             description: >
@@ -2509,7 +2537,6 @@ Clone:
     type: object
     required:
         - clone_id
-        - repertoire_id
         - germline_alignment
     properties:
         clone_id:
@@ -2524,12 +2551,16 @@ Clone:
             x-airr:
                 miairr: false
                 required: true
+                nullable: true
+                adc-api-optional: false
         data_processing_id:
             type: string
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
                 miairr: false
-                required: false
+                required: true
+                nullable: true
+                adc-api-optional: false
         sequences:
             type: array
             items:
@@ -2660,7 +2691,7 @@ Clone:
                 miairr: false
         seed_id:
             type: string
-            Description: rearrangment id for seed, null if no seed
+            Description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
             x-airr:
                 miairr: false
 
@@ -2718,7 +2749,7 @@ Node:
             type: string
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a univerally unique record locator for database applications.
+                but will usually be a universally unique record locator for database applications.
             x-airr:
                 miairr: false
                 required: false

@@ -351,6 +351,9 @@ class Schema:
                 else:
                     raise ValidationError('Internal error: field %s in schema not handled by validation. File a bug report.' %(full_field))
             elif field_type == 'array':
+                if not f in obj:
+                    raise ValidationError('MiAIRR required field %s is missing' %(full_field))
+
                 if not isinstance(obj[f], list):
                     raise ValidationError('field %s is not an array' %(full_field))
 

@@ -75,11 +75,11 @@ specific functionality as summarized in the following table:
     * - ``/v1/rearrangement/{rearrangement_id}``
       - Retrieve a rearrangement given its ``rearrangement_id``
       - ``GET``
-      - Upon success, returns the ``Rearrangement`` information in JSON or TSV format according to the :ref:`Rearrangement schema <RearrangementSchema>`.
+      - Upon success, returns the ``Rearrangement`` information in JSON format according to the :ref:`Rearrangement schema <RearrangementSchema>`.
     * - ``/v1/rearrangement``
       - Query rearrangements
       - ``POST``
-      - Upon success, returns a list of ``Rearrangements`` in JSON or TSV format according to the :ref:`Rearrangement schema <RearrangementSchema>`.
+      - Upon success, returns a list of ``Rearrangements`` in JSON or AIRR TSV format according to the :ref:`Rearrangement schema <RearrangementSchema>`.
 
 .. __: https://swagger.io/tools/swagger-editor/
 
@@ -569,6 +569,23 @@ The Fields section below describes the available queryable fields.
 The ``value`` operand specifies one or more values when evaluating the
 operator for the ``field`` operand.
 
+*Queries Against Arrays*
+
+A number of fields in the AIRR Data Model are arrays, such as
+``study.keywords_study`` which is an array of strings or
+``subject.diagnosis`` which is an array of ``Diagnosis`` objects. A
+query operator on an array field will apply that operator to each
+entry in the array to decide if the query filter is satisfied. The
+behavior is different for various operators. For operators such as
+``=`` and ``in``, the filter behaves like the Boolean ``OR`` over the
+array entries, that is if **any** array entry evaluates to true then
+the query filter is satisfied. For operators such as ``!=`` and
+``exclude``, the filter behaves like the Boolean ``AND`` over the
+array entries, that is **all** array entries must evaluate to true for
+the query filter to be satisfied.
+
+*Examples*
+
 A simple query with a single operator looks like this:
 
 .. code-block:: json
@@ -618,10 +635,10 @@ A more complex query with multiple operators looks like this:
 
 **Format Query Parameter**
 
-Specifies the format of the API response. JSON is the default format
-and the only format available for all endpoints except for the
-``rearrangement`` endpoint that accepts AIRR for the :ref:`AIRR TSV
-<FormatSpecification>` format.
+Specifies the format of the API response. ``json`` is the default
+format and is available for all endpoints. The ``rearrangement``
+``POST`` endpoint also accepts ``tsv`` which will provide the data in the
+:ref:`AIRR TSV <FormatSpecification>` format.
 
 **Fields Query Parameter**
 
