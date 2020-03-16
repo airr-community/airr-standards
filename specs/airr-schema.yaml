@@ -1291,6 +1291,10 @@ DataProcessing:
         analysis_provenance_id:
             type: string
             description: Identifier for machine-readable PROV model of analysis provenance
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
 
 SampleProcessing:
     discriminator: AIRR
