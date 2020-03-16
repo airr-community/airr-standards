@@ -1193,6 +1193,10 @@ DataProcessing:
                 If true, indicates this is the primary or default data processing for
                 the repertoire and its rearrangments. If false, indicates this is a secondary
                 or additional data processing.
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
         software_versions:
             type: string
             description: Version number and / or date, include company pipelines
