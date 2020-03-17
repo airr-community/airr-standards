@@ -2783,3 +2783,106 @@ Node:
                 Amino acid translation of the junction.
             x-airr:
                 miairr: false
+Cell:
+    discriminator: AIRR
+    type: object
+    required:
+        - cell_id #redefined cell_id > how to centralize it in the yaml 
+        - rearrangements
+        - repertoire_id
+        - virtual
+    properties:
+        cell_id:
+            type: string
+            description: >
+                Identifier defining the cell of origin for the query sequence.
+            example: W06_046_091
+            x-airr:
+                miairr: false
+                required: true
+                nullable: false
+                adc-api-optional: false
+                name: Cell index
+        rearrangements:
+            type: array
+            description: >
+                  Array of sequence identifiers defined for the Rearrangement object
+            items:
+                type: string
+            example: [id1, id2] #empty vs NULL? 
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+        receptors:
+            type: array
+            description: >
+                  Array of receptor identifiers defined for the Receptor object
+            items:
+                type: string
+            example: [id1, id2] #empty vs NULL? 
+            x-airr:
+                miairr: false
+                required: true
+                nullable: true
+                adc-api-optional: false
+        repertoire_id:
+                type: string
+                description: Identifier to the associated repertoire in study metadata.
+            x-airr:
+                miairr: false
+                required: true
+                nullable: false
+                adc-api-optional: false
+        data_processing_id:
+                type: string
+                description: Identifier of the data processing object in the repertoire metadata for this clone.
+            x-airr:
+                miairr: false
+                required: true
+                nullable: false
+                adc-api-optional: false        
+        expression_raw:
+            type: array
+            description:
+            properties:
+                study_method: 
+                    type: string
+                    enum: 
+                       flow cytometry
+                       single-cell transcriptome
+                    description: >
+                       keyword describing the methodology used to assess expression. This values for this field MUST come from a controlled vocabulary
+                doi:
+                    type: string
+                    description: >
+                      DOI of raw data set containing the current event
+                index:
+                    type: string
+                    description: >
+                      Index addressing the current event within the raw data set.
+        expression_tabular:
+            type: array
+            description: > 
+                Expression definitions for single-cell
+            properties:
+                expression_maker: 
+                    type: string
+                    description: >
+                       standardized designation of the transcript or epitope
+                    example: CD27
+                expression_value:
+                    type: integer
+                    description: >
+                       transformed and normalized expression level.
+                    example: 14567
+         virtual:
+            type: boolean
+            description: >
+                boolean to indicate if pairing was inferred.
+            x-airr:
+                miairr: false
+                required: true
+                nullable: false # assuming only done for sc experiments, otherwise does not exist
+                adc-api-optional: true
