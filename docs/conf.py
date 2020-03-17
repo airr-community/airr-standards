@@ -355,12 +355,12 @@ for key, v in airr_schema.items():
                     if "subset" in airr_properties[airr_property]["x-airr"]:
                         airr_subset = airr_properties[airr_property]["x-airr"]["subset"]
                     else:
-                        airr_set = ""
+                        airr_subset = ""
 
                     if "name" in airr_properties[airr_property]["x-airr"]:
                         airr_name = airr_properties[airr_property]["x-airr"]["name"]
                     else:
-                        airr_name =""
+                        airr_name = ""
 
                     if "format" in airr_properties[airr_property]["x-airr"]:
                         airr_format = airr_properties[airr_property]["x-airr"]["format"].capitalize()
