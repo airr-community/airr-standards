@@ -52,7 +52,9 @@ Attributes:
             description: Indicates if field can have null value
         adc-api-optional:
             type: boolean
-            description: True if query support is optional for ADC API implementations. If False or undefined, an ADC API implementation must support queries upon this field.
+            description: >
+                True if query support is optional for ADC API implementations. If False or undefined,
+                an ADC API implementation must support queries upon this field.
         deprecated:
             type: boolean
             description: True if the field is being deprecated from the schema.
@@ -175,7 +177,9 @@ Study:
                 name: Grant funding agency
         collected_by:
             type: string
-            description: Full contact information of the data collector, i.e. the person who is legally responsible for data collection and release. This should include an e-mail address.
+            description: >
+                Full contact information of the data collector, i.e. the person who is legally responsible for
+                data collection and release. This should include an e-mail address.
             example: Dr. P. Stibbons, p.stibbons@unseenu.edu
             x-airr:
                 miairr: true
@@ -208,7 +212,9 @@ Study:
                 name: Lab address
         submitted_by:
             type: string
-            description: Full contact information of the data depositor, i.e. the person submitting the data to a repository. This is supposed to be a short-lived and technical role until the submission is relased.
+            description: >
+                Full contact information of the data depositor, i.e. the person submitting the data to a repository.
+                This is supposed to be a short-lived and technical role until the submission is relased.
             example: Adrian Turnipseed, a.turnipseed@unseenu.edu
             x-airr:
                 miairr: true
@@ -277,7 +283,7 @@ Subject:
                 set: 1
                 subset: subject
                 name: Synthetic library
-        organism:
+        species:
             $ref: '#/Ontology'
             description: Binomial designation of subject's species
             example:
@@ -298,6 +304,13 @@ Subject:
                     top_node:
                         id: 7776
                         value: Gnathostomata
+        organism:
+            $ref: '#/Ontology'
+            description: Binomial designation of subject's species
+            x-airr:
+                deprecated: true
+                deprecated-description: Field was renamed to species for clarity.
+                deprecated-replaced-by: [species]
         sex:
             type: string
             enum:
@@ -318,10 +331,7 @@ Subject:
                 subset: subject
                 name: Sex
                 format: controlled vocabulary
-        age:
-            type: string
-            x-airr:
-                deprecated: true
+
         age_min:
             type: number
             description: Specific age or lower boundary of age range.
@@ -335,7 +345,9 @@ Subject:
                 name: Age minimum
         age_max:
             type: number
-            description: Upper boundary of age range or equal to age_min for specific age. This field should only be null if age_min is null.
+            description: >
+                Upper boundary of age range or equal to age_min for specific age.
+                This field should only be null if age_min is null.
             example: 80
             x-airr:
                 miairr: true
@@ -367,7 +379,10 @@ Subject:
                         value: time unit
         age_event:
             type: string
-            description: Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other implementations submitters need to be aware that there is currently no mechanism to encode to potential delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
+            description: >
+                Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other
+                implementations submitters need to be aware that there is currently no mechanism to encode to potential
+                delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
             example: enrollment
             x-airr:
                 miairr: true
@@ -376,6 +391,12 @@ Subject:
                 set: 1
                 subset: subject
                 name: Age event
+        age:
+            type: string
+            x-airr:
+                deprecated: true
+                deprecated-description: Split into two fields to specify as an age range.
+                deprecated-replaced-by: [age_min, age_max]
         ancestry_population:
             type: string
             description: Broad geographic origin of ancestry (continent)
