@@ -153,12 +153,18 @@ following checklist:
 -  Upload python library to PyPI
 -  Upload R library to CRAN
 
-Deprecation
------------
+Field Deprecation
+-----------------
 
-Deprecated schema fields should remain in the schema files and be labeled
-with the appropriate ``x-airr`` tags that denote deprecation, explain the
-rationale, and specify the replacement fields (if any). For example:
+Deprecated schema fields should remain in the schema until at least
+the next ``MAJOR`` version number. Preferably, deprecated schema fields
+should be retained indefinitely, unless there is a clear need to remove
+them.
+
+Deprecated fields which appeared in a previous official release must be
+labeled with the appropriate ``x-airr`` tags that denote deprecation,
+explain the rationale, and specify the replacement fields (if any).
+For example:
 
 .. code-block:: yaml
 
