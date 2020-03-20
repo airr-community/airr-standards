@@ -23,7 +23,7 @@ Repertoire:
     subject:
       subject_id: ""
       synthetic: false
-      organism:
+      species:
         id: ""
         value: ""
       sex: ""
