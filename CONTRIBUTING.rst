@@ -115,9 +115,7 @@ sub-projects, however the goal is that semantic versioning will apply
 to AIRR Standards as a whole. The design is thus:
 
 -  MAJOR = MiAIRR version
-
 -  MINOR = Implementation specifications
-
 -  PATCH = Software updates
 
 New and updated software tools will generally increment the PATCH
@@ -155,15 +153,21 @@ following checklist:
 -  Upload python library to PyPI
 -  Upload R library to CRAN
 
-To upload the python library to PyPI, perform the following steps:
+Deprecation
+-----------
 
--  something
--  something
+Deprecated schema fields should remain in the schema files and be labeled
+with the appropriate ``x-airr`` tags that denote deprecation, explain the
+rationale, and specify the replacement fields (if any). For example:
 
-To upload the R library to CRAN, perform the following steps:
+.. code-block:: yaml
 
--  something
--  something
+  organism:
+    description: Binomial designation of subject's species
+      x-airr:
+        deprecated: true
+        deprecated-description: Field was renamed to species for clarity.
+        deprecated-replaced-by: [species]
 
 
 Development Setup
