@@ -24,7 +24,7 @@ Repertoire:
     subject:
       subject_id: TW01A
       synthetic: false
-      organism:
+      species:
         id: "9606"
         value: Homo sapiens
       sex: F
@@ -128,7 +128,7 @@ Repertoire:
     subject:
       subject_id: TW01A
       synthetic: false
-      organism:
+      species:
         id: "9606"
         value: Homo sapiens
       sex: F
@@ -229,7 +229,7 @@ Repertoire:
     subject:
       subject_id: TW01A
       synthetic: false
-      organism:
+      species:
         id: "9606"
         value: Homo sapiens
       sex: F
