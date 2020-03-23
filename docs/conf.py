@@ -344,15 +344,23 @@ for key, v in airr_schema.items():
 
                     if "description" in str(property_values):
                         airr_description = airr_properties[airr_property]["description"]
+                    else:
+                        airr_description = ""
 
-                    if "set" in str(property_values):
+                    if "'set'" in str(property_values):
                         airr_set = airr_properties[airr_property]["x-airr"]["set"]
+                    else:
+                        airr_set = ""
 
                     if "subset" in airr_properties[airr_property]["x-airr"]:
                         airr_subset = airr_properties[airr_property]["x-airr"]["subset"]
+                    else:
+                        airr_subset = ""
 
                     if "name" in airr_properties[airr_property]["x-airr"]:
                         airr_name = airr_properties[airr_property]["x-airr"]["name"]
+                    else:
+                        airr_name = ""
 
                     if "format" in airr_properties[airr_property]["x-airr"]:
                         airr_format = airr_properties[airr_property]["x-airr"]["format"].capitalize()
