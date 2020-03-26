@@ -127,7 +127,7 @@ Study:
             description: Unique ID assigned by study registry
             example: PRJNA001
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -138,7 +138,7 @@ Study:
             description: Descriptive study title
             example: Effects of sun light exposure of the Treg repertoire
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -151,7 +151,7 @@ Study:
                 id: C15197
                 value: Case-Control Study
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -174,7 +174,7 @@ Study:
             description: List of criteria for inclusion/exclusion for the study
             example: "Include: Clinical P. falciparum infection; Exclude: Seropositive for HIV"
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -185,7 +185,7 @@ Study:
             description: Funding agencies and grant numbers
             example: NIH, award number R01GM987654
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -198,7 +198,7 @@ Study:
                 data collection and release. This should include an e-mail address.
             example: Dr. P. Stibbons, p.stibbons@unseenu.edu
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -209,7 +209,7 @@ Study:
             description: Department of data collector
             example: Department for Planar Immunology
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -220,7 +220,7 @@ Study:
             description: Institution and institutional address of data collector
             example: School of Medicine, Unseen University, Ankh-Morpork, Disk World
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -233,7 +233,7 @@ Study:
                 This is supposed to be a short-lived and technical role until the submission is relased.
             example: Adrian Turnipseed, a.turnipseed@unseenu.edu
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -244,7 +244,7 @@ Study:
             description: Publications describing the rationale and/or outcome of the study
             example: "PMID:85642"
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -264,7 +264,7 @@ Study:
               - contains_ig
               - contains_paired_chain
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -283,7 +283,7 @@ Subject:
             description: Subject ID assigned by submitter, unique within study
             example: SUB856413
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -293,7 +293,7 @@ Subject:
             type: boolean
             description: TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)
             x-airr:
-                miairr: true
+                miairr: essential
                 required: true
                 nullable: false
                 set: 1
@@ -306,7 +306,7 @@ Subject:
                 id: 9096
                 value: Homo sapiens
             x-airr:
-                miairr: true
+                miairr: essential
                 required: true
                 nullable: false
                 set: 1
@@ -340,7 +340,7 @@ Subject:
             description: Biological sex of subject
             example: female
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -353,7 +353,7 @@ Subject:
             description: Specific age or lower boundary of age range.
             example: 60
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -366,7 +366,7 @@ Subject:
                 This field should only be null if age_min is null.
             example: 80
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -379,7 +379,7 @@ Subject:
                 id: UO_0000036
                 value: year
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -401,7 +401,7 @@ Subject:
                 delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
             example: enrollment
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -418,7 +418,7 @@ Subject:
             description: Broad geographic origin of ancestry (continent)
             example: list of continents, mixed or unknown
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -429,7 +429,7 @@ Subject:
             description: Ethnic group of subject (defined as cultural/language-based membership)
             example: English, Kurds, Manchu, Yakuts (and other fields from Wikipedia)
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -440,7 +440,7 @@ Subject:
             description: Racial group of subject (as defined by NIH)
             example: White, American Indian or Alaska Native, Black, Asian, Native Hawaiian or Other Pacific Islander, Other 
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -451,7 +451,7 @@ Subject:
             description: Non-human designation of the strain or breed of animal used
             example: C57BL/6J
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -462,7 +462,7 @@ Subject:
             description: Subject ID to which `Relation type` refers
             example: SUB1355648
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -473,7 +473,7 @@ Subject:
             description: Relation between subject and `linked_subjects`, can be genetic or environmental (e.g.exposure)
             example: father, daughter, household
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -495,7 +495,7 @@ Diagnosis:
             description: Designation of study arm to which the subject is assigned to
             example: control
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -508,7 +508,7 @@ Diagnosis:
                 id: 9538
                 value: multiple myeloma
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -527,7 +527,7 @@ Diagnosis:
             description: Time duration between initial diagnosis and current intervention
             example: 23 months
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -539,7 +539,7 @@ Diagnosis:
             description: Stage of disease at current intervention
             example: Stage II
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -550,7 +550,7 @@ Diagnosis:
             description: List of all relevant previous therapies applied to subject for treatment of `Diagnosis`
             example: melphalan/prednisone
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -561,7 +561,7 @@ Diagnosis:
             description: Antigen, vaccine or drug applied to subject at this intervention
             example: bortezomib
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -572,7 +572,7 @@ Diagnosis:
             description: Description of intervention
             example: systemic chemotherapy, 6 cycles, 1.25 mg/m2
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -583,7 +583,7 @@ Diagnosis:
             description: Medical history of subject that is relevant to assess the course of disease and/or treatment
             example: MGUS, first diagnosed 5 years prior
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 1
@@ -601,7 +601,7 @@ Sample:
             description: Sample ID assigned by submitter, unique within study
             example: SUP52415
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 2
@@ -612,7 +612,7 @@ Sample:
             description: The way the sample was obtained, e.g. fine-needle aspirate, organ harvest, peripheral venous puncture
             example: Biopsy
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 2
@@ -625,7 +625,7 @@ Sample:
                 id: UBERON_0002371
                 value: bone marrow
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 2
@@ -644,7 +644,7 @@ Sample:
             description: The anatomic location of the tissue, e.g. Inguinal, femur
             example: Iliac crest
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 2
@@ -655,7 +655,7 @@ Sample:
             description: Histopathologic evaluation of the sample
             example: Tumor infiltration
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 2
@@ -666,7 +666,7 @@ Sample:
             description: Time point at which sample was taken, relative to `Collection time event`
             example: "14 d"
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 2
@@ -678,7 +678,7 @@ Sample:
             description: Event in the study schedule to which `Sample collection time` relates to
             example: Primary vaccination
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 2
@@ -689,7 +689,7 @@ Sample:
             description: Name and address of the entity providing the sample
             example: Tissues-R-Us, Tampa, FL, USA
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 2
@@ -706,7 +706,7 @@ CellProcessing:
             description: Enzymatic digestion and/or physical methods used to isolate cells from sample
             example: Collagenase A/Dnase I digested, followed by Percoll gradient
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -719,7 +719,7 @@ CellProcessing:
                 id: CL_0000972
                 value: class switched memory B cell
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -738,7 +738,7 @@ CellProcessing:
             description: List of cellular markers and their expression levels used to isolate the cell population
             example: CD19+ CD38+ CD27+ IgM- IgD-
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -755,7 +755,6 @@ CellProcessing:
                 id: 9096
                 value: Homo sapiens
             x-airr:
-                miairr: false
                 required: false
                 nullable: true
                 format: ontology
@@ -770,7 +769,7 @@ CellProcessing:
             type: boolean
             description: TRUE if single cells were isolated into separate compartments
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -781,7 +780,7 @@ CellProcessing:
             description: Total number of cells that went into the experiment
             example: 1000000
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -792,7 +791,7 @@ CellProcessing:
             description: Number of cells for each biological replicate
             example: 50000
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -803,7 +802,7 @@ CellProcessing:
             description: TRUE if cells were cryo-preserved between isolation and further processing
             example: TRUE
             x-airr:
-                miairr: true
+                miairr: essential
                 required: true
                 nullable: false
                 set: 3
@@ -814,7 +813,7 @@ CellProcessing:
             description: Relative amount of viable cells after preparation and (if applicable) thawing
             example: 90% viability as determined by 7-AAD
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -825,7 +824,7 @@ CellProcessing:
             description: Description of the procedure used for marker-based isolation or enrich cells
             example: Cells were stained with fluorochrome labeled antibodies and then sorted on a FlowMerlin (CE) cytometer
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -836,7 +835,7 @@ CellProcessing:
             description: Description of the methods applied to the sample including cell preparation/ isolation/enrichment and nucleic acid extraction. This should closely mirror the Materials and methods section in the manuscript
             example: Stimulated wih anti-CD3/anti-CD28
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -865,7 +864,7 @@ PCRTarget:
                 a specific nomenclature.
             example: IGK
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -877,7 +876,7 @@ PCRTarget:
             description: Position of the most distal nucleotide templated by the forward primer or primer mix
             example: IGHV, +23
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -888,7 +887,7 @@ PCRTarget:
             description: Position of the most proximal nucleotide templated by the reverse primer or primer mix
             example: IGHG, +57
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -909,7 +908,7 @@ NucleicAcidProcessing:
             description: The class of nucleic acid that was used as primary starting material for the following procedures
             example: RNA
             x-airr:
-                miairr: true
+                miairr: essential
                 required: true
                 nullable: false
                 set: 3
@@ -921,7 +920,7 @@ NucleicAcidProcessing:
             description: Description and results of the quality control performed on the template material
             example: RIN 9.2
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -932,7 +931,7 @@ NucleicAcidProcessing:
             description: Amount of template that went into the process
             example: 1000 ng
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -957,7 +956,7 @@ NucleicAcidProcessing:
             description: Generic type of library generation
             example: RT(oligo-dT)+TS(UMI)+PCR
             x-airr:
-                miairr: true
+                miairr: essential
                 required: true
                 nullable: false
                 set: 3
@@ -969,7 +968,7 @@ NucleicAcidProcessing:
             description: Description of processes applied to substrate to obtain a library that is ready for sequencing
             example: cDNA was generated using
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -980,7 +979,7 @@ NucleicAcidProcessing:
             description: When using a library generation protocol from a commercial provider, provide the protocol version number
             example: v2.1 (2016-09-15)
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -1011,7 +1010,7 @@ NucleicAcidProcessing:
                 sentence MUST be untemplated, i.e. MUST NOT overlap with the primers used in library preparation.
             example: partial
             x-airr:
-                miairr: true
+                miairr: essential
                 required: true
                 nullable: false
                 set: 3
@@ -1028,7 +1027,7 @@ NucleicAcidProcessing:
                 distinct loci in a single-cell context.
             example: hetero_head-head
             x-airr:
-                miairr: true
+                miairr: essential
                 required: true
                 nullable: false
                 set: 3
@@ -1046,7 +1045,7 @@ SequencingRun:
             description: ID of sequencing run assigned by the sequencing facility
             example: 160101_M01234_0201_000000000-D2T7V
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -1057,7 +1056,7 @@ SequencingRun:
             description: Number of usable reads for analysis
             example: 10365118
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -1068,7 +1067,7 @@ SequencingRun:
             description: Designation of sequencing instrument used
             example: Alumina LoSeq 1000
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -1079,7 +1078,7 @@ SequencingRun:
             description: Name and address of sequencing facility
             example: Seqs-R-Us, Vancouver, BC, Canada
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -1091,7 +1090,7 @@ SequencingRun:
             format: date
             example: 2016-12-16
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -1102,7 +1101,7 @@ SequencingRun:
             description: Name, manufacturer, order and lot numbers of sequencing kit
             example: "FullSeq 600, Alumina, #M123456C0, 789G1HK"
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 3
@@ -1124,7 +1123,7 @@ RawSequenceData:
                 - fasta
                 - fastq
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 4
@@ -1136,7 +1135,7 @@ RawSequenceData:
             description: File name for the raw reads or sequences. The first file in paired-read sequencing
             example: MS10R-NMonson-C7JR9_S1_R1_001.fastq
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 4
@@ -1151,7 +1150,7 @@ RawSequenceData:
                 - reverse
                 - mixed
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 4
@@ -1163,7 +1162,7 @@ RawSequenceData:
             description: Read length in bases for the first file in paired-read sequencing
             example: 300
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 4
@@ -1174,7 +1173,7 @@ RawSequenceData:
             description: File name for the second file in paired-read sequencing
             example: MS10R-NMonson-C7JR9_S1_R2_001.fastq
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 4
@@ -1189,7 +1188,7 @@ RawSequenceData:
                 - reverse
                 - mixed
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 4
@@ -1201,7 +1200,7 @@ RawSequenceData:
             description: Read length in bases for the second file in paired-read sequencing
             example: 300
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 4
@@ -1220,7 +1219,6 @@ DataProcessing:
             type: string
             description: Identifier for the data processing object.
             x-airr:
-                miairr: false
                 required: true
                 nullable: true
         primary_annotation:
@@ -1235,7 +1233,7 @@ DataProcessing:
             description: Version number and / or date, include company pipelines
             example: IgBLAST 1.6
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 5
@@ -1246,7 +1244,7 @@ DataProcessing:
             description: How paired end reads were assembled into a single receptor sequence
             example: PandaSeq (minimal overlap 50, threshold 0.8)
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 5
@@ -1257,7 +1255,7 @@ DataProcessing:
             description: How sequences were removed from (4) based on base quality scores
             example: Average Phred score >=20
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 5
@@ -1268,7 +1266,7 @@ DataProcessing:
             description: How primers were identified in the sequences, were they removed/masked/etc?
             example: Hamming distance <= 2
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 5
@@ -1279,7 +1277,7 @@ DataProcessing:
             description: The method used for combining multiple sequences from (4) into a single sequence in (5)
             example: MUSCLE 3.8.31
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 5
@@ -1290,7 +1288,7 @@ DataProcessing:
             description: General description of how QC is performed
             example: Data was processed using [...]
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 5
@@ -1306,7 +1304,6 @@ DataProcessing:
                 - 'ERR1278153_ab.txz'
                 - 'ERR1278153_ac.txz'
             x-airr:
-                miairr: false
                 required: false
                 nullable: true
                 name: Processed data file names
@@ -1315,7 +1312,7 @@ DataProcessing:
             description: Source of germline V(D)J genes with version number or date accessed.
             example: ENSEMBL, Homo sapiens build 90, 2017-10-01
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 5
@@ -1336,7 +1333,6 @@ SampleProcessing:
                 This field can be used to uniquely identify the combination of sample, cell processing,
                 nucleic acid processing and sequencing run information for the repertoire.
             x-airr:
-                miairr: false
                 required: true
                 nullable: true
 
@@ -1358,21 +1354,18 @@ Repertoire:
                 other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for
                 referencing the specific Repertoire for that Rearrangement.
             x-airr:
-                miairr: false
                 required: true
                 nullable: true
         repertoire_name:
             type: string
             description: Short generic display name for the repertoire
             x-airr:
-                miairr: false
                 required: false
                 nullable: true
         repertoire_description:
             type: string
             description: Generic repertoire description
             x-airr:
-                miairr: false
                 required: false
                 nullable: true
         study:
@@ -1508,7 +1501,6 @@ Rearrangement:
                 header or a substring thereof, but may also be a custom identifier defined by the tool in
                 cases where query sequences have been combined in some fashion prior to alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         sequence:
             type: string
@@ -1517,14 +1509,12 @@ Rearrangement:
                 reverse complemented if necessary. In some cases, this field may contain consensus sequences or
                 other types of collapsed input sequences if these steps are performed prior to alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         sequence_aa:
             type: string
             description: >
                 Amino acid translation of the query nucleotide sequence.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         rev_comp:
             type: boolean
@@ -1540,13 +1530,11 @@ Rearrangement:
             type: boolean
             description: True if the V and J gene alignments are in-frame.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         stop_codon:
             type: boolean
             description: True if the aligned sequence contains a stop codon.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         complete_vdj:
             type: boolean
@@ -1558,7 +1546,6 @@ Rearrangement:
                 This does not require an absence of deletions within the internal
                 FWR and CDR regions of the alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         locus:
             type: string
@@ -1577,7 +1564,6 @@ Rearrangement:
                 nomenclature.
             example: IGH
             x-airr:
-                miairr: false
                 required: true
                 nullable: true
                 adc-api-optional: false
@@ -1590,7 +1576,7 @@ Rearrangement:
                 the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
             example: IGHV4-59*01
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 6
@@ -1603,7 +1589,7 @@ Rearrangement:
                 the relevant gene/allele nomenclature should be followed (e.g., IGHD3-10*01 if using IMGT/GENE-DB).
             example: IGHD3-10*01
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 6
@@ -1616,7 +1602,6 @@ Rearrangement:
                 gene/allele nomenclature should be followed (e.g., IGHD3-10*01 if using IMGT/GENE-DB).
             example: IGHD3-10*01
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_call:
             type: string
@@ -1625,7 +1610,7 @@ Rearrangement:
                 gene/allele nomenclature should be followed (e.g., IGHJ4*02 if using IMGT/GENE-DB).
             example: IGHJ4*02
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 6
@@ -1638,7 +1623,7 @@ Rearrangement:
                 relevant gene/allele nomenclature should be followed (e.g., IGHG1*01 if using IMGT/GENE-DB).
             example: IGHG1*01
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 set: 6
@@ -1651,14 +1636,12 @@ Rearrangement:
                 such as IMGT-gaps. Typically, this will include only the V(D)J region, but that is not
                 a requirement.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the aligned query sequence.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         germline_alignment:
             type: string
@@ -1667,14 +1650,12 @@ Rearrangement:
                 as the sequence_alignment field (typically the V(D)J region) and including the same set
                 of corrections and spacers (if any).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the assembled germline sequence.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         junction:
             type: string
@@ -1683,7 +1664,7 @@ Rearrangement:
                 the CDR3 plus the two flanking conserved codons.
             example: TGTGCAAGAGCGGGAGTTTACGACGGATATACTATGGACTACTGG
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 adc-api-optional: true
@@ -1696,7 +1677,7 @@ Rearrangement:
                 Amino acid translation of the junction.
             example: CARAGVYDGYTMDYW
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 adc-api-optional: false
@@ -1709,14 +1690,12 @@ Rearrangement:
                 Nucleotide sequence of the combined N/P region between the V gene and
                 first D gene alignment or between the V gene and J gene alignments.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         np1_aa:
             type: string
             description: >
                 Amino acid translation of the np1 field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         np2:
             type: string
@@ -1724,14 +1703,12 @@ Rearrangement:
                 Nucleotide sequence of the combined N/P region between either the first D gene and J gene
                 alignments or the first D gene and second D gene alignments.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         np2_aa:
             type: string
             description: >
                 Amino acid translation of the np2 field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         np3:
             type: string
@@ -1739,124 +1716,106 @@ Rearrangement:
                 Nucleotide sequence of the combined N/P region between the second D gene
                 and J gene alignments.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         np3_aa:
             type: string
             description: >
                 Amino acid translation of the np3 field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         cdr1:
             type: string
             description: >
                 Nucleotide sequence of the aligned CDR1 region.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         cdr1_aa:
             type: string
             description: >
                 Amino acid translation of the cdr1 field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         cdr2:
             type: string
             description: >
                 Nucleotide sequence of the aligned CDR2 region.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         cdr2_aa:
             type: string
             description: >
                 Amino acid translation of the cdr2 field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         cdr3:
             type: string
             description: >
                 Nucleotide sequence of the aligned CDR3 region.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         cdr3_aa:
             type: string
             description: >
                 Amino acid translation of the cdr3 field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr1:
             type: string
             description: >
                 Nucleotide sequence of the aligned FWR1 region.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr1_aa:
             type: string
             description: >
                 Amino acid translation of the fwr1 field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr2:
             type: string
             description: >
                 Nucleotide sequence of the aligned FWR2 region.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr2_aa:
             type: string
             description: >
                 Amino acid translation of the fwr2 field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr3:
             type: string
             description: >
                 Nucleotide sequence of the aligned FWR3 region.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr3_aa:
             type: string
             description: >
                 Amino acid translation of the fwr3 field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr4:
             type: string
             description: >
                 Nucleotide sequence of the aligned FWR4 region.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr4_aa:
             type: string
             description: >
                 Amino acid translation of the fwr4 field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_score:
             type: number
             description: Alignment score for the V gene.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_identity:
             type: number
             description: Fractional identity for the V gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_support:
             type: number
@@ -1864,25 +1823,21 @@ Rearrangement:
                 V gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the V gene assignment as defined by the alignment tool.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_cigar:
             type: string
             description: CIGAR string for the V gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_score:
             type: number
             description: Alignment score for the first or only D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_identity:
             type: number
             description: Fractional identity for the first or only D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_support:
             type: number
@@ -1890,25 +1845,21 @@ Rearrangement:
                 D gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the first or only D gene as defined by the alignment tool.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_cigar:
             type: string
             description: CIGAR string for the first or only D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_score:
             type: number
             description: Alignment score for the second D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_identity:
             type: number
             description: Fractional identity for the second D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_support:
             type: number
@@ -1916,25 +1867,21 @@ Rearrangement:
                 D gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the second D gene as defined by the alignment tool.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_cigar:
             type: string
             description: CIGAR string for the second D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_score:
             type: number
             description: Alignment score for the J gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_identity:
             type: number
             description: Fractional identity for the J gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_support:
             type: number
@@ -1942,25 +1889,21 @@ Rearrangement:
                 J gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the J gene assignment as defined by the alignment tool.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_cigar:
             type: string
             description: CIGAR string for the J gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         c_score:
             type: number
             description: Alignment score for the C gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         c_identity:
             type: number
             description: Fractional identity for the C gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         c_support:
             type: number
@@ -1968,41 +1911,35 @@ Rearrangement:
                 C gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the C gene assignment as defined by the alignment tool.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         c_cigar:
             type: string
             description: CIGAR string for the C gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_sequence_start:
             type: integer
             description: >
                 Start position of the V gene in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_sequence_end:
             type: integer
             description: >
                 End position of the V gene in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_germline_start:
             type: integer
             description: >
                 Alignment start position in the V gene reference sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_germline_end:
             type: integer
             description: >
                 Alignment end position in the V gene reference sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_alignment_start:
             type: integer
@@ -2010,7 +1947,6 @@ Rearrangement:
                 Start position of the V gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_alignment_end:
             type: integer
@@ -2018,7 +1954,6 @@ Rearrangement:
                 End position of the V gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_sequence_start:
             type: integer
@@ -2026,7 +1961,6 @@ Rearrangement:
                 Start position of the first or only D gene in the query sequence.
                 (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_sequence_end:
             type: integer
@@ -2034,7 +1968,6 @@ Rearrangement:
                 End position of the first or only D gene in the query sequence.
                 (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_germline_start:
             type: integer
@@ -2042,7 +1975,6 @@ Rearrangement:
                 Alignment start position in the D gene reference sequence for the first or only
                 D gene (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_germline_end:
             type: integer
@@ -2050,7 +1982,6 @@ Rearrangement:
                 Alignment end position in the D gene reference sequence for the first or only
                 D gene (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_alignment_start:
             type: integer
@@ -2058,7 +1989,6 @@ Rearrangement:
                 Start position of the first or only D gene in both the sequence_alignment
                 and germline_alignment fields (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_alignment_end:
             type: integer
@@ -2066,35 +1996,30 @@ Rearrangement:
                 End position of the first or only D gene in both the sequence_alignment
                 and germline_alignment fields (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_sequence_start:
             type: integer
             description: >
                 Start position of the second D gene in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_sequence_end:
             type: integer
             description: >
                 End position of the second D gene in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_germline_start:
             type: integer
             description: >
                 Alignment start position in the second D gene reference sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_germline_end:
             type: integer
             description: >
                 Alignment end position in the second D gene reference sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_alignment_start:
             type: integer
@@ -2102,7 +2027,6 @@ Rearrangement:
                 Start position of the second D gene alignment in both the sequence_alignment and
                 germline_alignment fields (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_alignment_end:
             type: integer
@@ -2110,35 +2034,30 @@ Rearrangement:
                 End position of the second D gene alignment in both the sequence_alignment and
                 germline_alignment fields (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_sequence_start:
             type: integer
             description: >
                 Start position of the J gene in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_sequence_end:
             type: integer
             description: >
                 End position of the J gene in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_germline_start:
             type: integer
             description: >
                 Alignment start position in the J gene reference sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_germline_end:
             type: integer
             description: >
                 Alignment end position in the J gene reference sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_alignment_start:
             type: integer
@@ -2146,7 +2065,6 @@ Rearrangement:
                 Start position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_alignment_end:
             type: integer
@@ -2154,91 +2072,76 @@ Rearrangement:
                 End position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         cdr1_start:
             type: integer
             description: CDR1 start position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         cdr1_end:
             type: integer
             description: CDR1 end position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         cdr2_start:
             type: integer
             description: CDR2 start position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         cdr2_end:
             type: integer
             description: CDR2 end position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         cdr3_start:
             type: integer
             description: CDR3 start position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         cdr3_end:
             type: integer
             description: CDR3 end position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr1_start:
             type: integer
             description: FWR1 start position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr1_end:
             type: integer
             description: FWR1 end position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr2_start:
             type: integer
             description: FWR2 start position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr2_end:
             type: integer
             description: FWR2 end position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr3_start:
             type: integer
             description: FWR3 start position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr3_end:
             type: integer
             description: FWR3 end position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr4_start:
             type: integer
             description: FWR4 start position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         fwr4_end:
             type: integer
             description: FWR4 end position in the query sequence (1-based closed interval).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_sequence_alignment:
             type: string
@@ -2246,14 +2149,12 @@ Rearrangement:
                 Aligned portion of query sequence assigned to the V gene, including any
                 indel corrections or numbering spacers.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the v_sequence_alignment field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_sequence_alignment:
             type: string
@@ -2261,14 +2162,12 @@ Rearrangement:
                 Aligned portion of query sequence assigned to the first or only D gene, including any
                 indel corrections or numbering spacers.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the d_sequence_alignment field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_sequence_alignment:
             type: string
@@ -2276,14 +2175,12 @@ Rearrangement:
                 Aligned portion of query sequence assigned to the second D gene, including any
                 indel corrections or numbering spacers.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the d2_sequence_alignment field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_sequence_alignment:
             type: string
@@ -2291,14 +2188,12 @@ Rearrangement:
                 Aligned portion of query sequence assigned to the J gene, including any
                 indel corrections or numbering spacers.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the j_sequence_alignment field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         c_sequence_alignment:
             type: string
@@ -2306,14 +2201,12 @@ Rearrangement:
                 Aligned portion of query sequence assigned to the constant region, including
                 any indel corrections or numbering spacers.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         c_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the c_sequence_alignment field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_germline_alignment:
             type: string
@@ -2322,14 +2215,12 @@ Rearrangement:
                 as the v_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         v_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the v_germline_alignment field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_germline_alignment:
             type: string
@@ -2338,14 +2229,12 @@ Rearrangement:
                 as the d_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the d_germline_alignment field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_germline_alignment:
             type: string
@@ -2354,14 +2243,12 @@ Rearrangement:
                 as the d2_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         d2_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the d2_germline_alignment field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_germline_alignment:
             type: string
@@ -2370,14 +2257,12 @@ Rearrangement:
                 as the j_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         j_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the j_germline_alignment field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         c_germline_alignment:
             type: string
@@ -2386,26 +2271,22 @@ Rearrangement:
                 as the c_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
             x-airr:
-                miairr: false
                 adc-api-optional: true
         c_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the c_germline_aligment field.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         junction_length:
             type: integer
             description: Number of nucleotides in the junction sequence.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         junction_aa_length:
             type: integer
             description: Number of amino acids in the junction sequence.
             x-airr:
-                miairr: false
                 adc-api-optional: false
         np1_length:
             type: integer
@@ -2413,7 +2294,6 @@ Rearrangement:
                 Number of nucleotides between the V gene and first D gene alignments or
                 between the V gene and J gene alignments.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         np2_length:
             type: integer
@@ -2421,68 +2301,57 @@ Rearrangement:
                 Number of nucleotides between either the first D gene and J gene alignments
                 or the first D gene and second D gene alignments.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         np3_length:
             type: integer
             description: >
                 Number of nucleotides between the second D gene and J gene alignments.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         n1_length:
             type: integer
             description: Number of untemplated nucleotides 5' of the first or only D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         n2_length:
             type: integer
             description: Number of untemplated nucleotides 3' of the first or only D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         n3_length:
             type: integer
             description: Number of untemplated nucleotides 3' of the second D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         p3v_length:
             type: integer
             description: Number of palindromic nucleotides 3' of the V gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         p5d_length:
             type: integer
             description: Number of palindromic nucleotides 5' of the first or only D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         p3d_length:
             type: integer
             description: Number of palindromic nucleotides 3' of the first or only D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         p5d2_length:
             type: integer
             description: Number of palindromic nucleotides 5' of the second D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         p3d2_length:
             type: integer
             description: Number of palindromic nucleotides 3' of the second D gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         p5j_length:
             type: integer
             description: Number of palindromic nucleotides 5' of the J gene alignment.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         consensus_count:
             type: integer
@@ -2491,7 +2360,6 @@ Rearrangement:
                 For example, the sum of the number of reads for all UMIs that contribute to
                 the query sequence.
             x-airr:
-                miairr: false
                 adc-api-optional: true
         duplicate_count:
             type: integer
@@ -2501,7 +2369,7 @@ Rearrangement:
                 of identical observations of this sequence absent UMIs.
             example: 123
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 adc-api-optional: true
@@ -2514,7 +2382,7 @@ Rearrangement:
                 Identifier defining the cell of origin for the query sequence.
             example: W06_046_091
             x-airr:
-                miairr: true
+                miairr: important
                 required: true
                 nullable: true
                 adc-api-optional: false
@@ -2525,7 +2393,6 @@ Rearrangement:
             type: string
             description: Clonal cluster assignment for the query sequence.
             x-airr:
-                miairr: false
                 required: true
                 nullable: true
                 adc-api-optional: false
@@ -2535,7 +2402,6 @@ Rearrangement:
                 Identifier for the Rearrangement object. May be identical to sequence_id,
                 but will usually be a universally unique record locator for database applications.
             x-airr:
-                miairr: false
                 required: true
                 nullable: true
                 adc-api-optional: false
@@ -2543,7 +2409,6 @@ Rearrangement:
             type: string
             description: Identifier to the associated repertoire in study metadata.
             x-airr:
-                miairr: false
                 required: true
                 nullable: true
                 adc-api-optional: false
@@ -2556,7 +2421,6 @@ Rearrangement:
                 this field may be empty or missing if the sample cannot be differentiated or
                 the relationship is not maintained by the data processing.
             x-airr:
-                miairr: false
                 required: true
                 nullable: true
                 adc-api-optional: false
@@ -2566,7 +2430,6 @@ Rearrangement:
                 Identifier to the data processing object in the repertoire metadata
                 for this rearrangement. If this field is empty than the primary data processing object is assumed.
             x-airr:
-                miairr: false
                 required: true
                 nullable: true
                 adc-api-optional: false
@@ -2590,13 +2453,11 @@ Clone:
             type: string
             description: Identifier for the clone.
             x-airr:
-                miairr: false
                 required: true
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
             x-airr:
-                miairr: false
                 required: true
                 nullable: true
                 adc-api-optional: false
@@ -2604,7 +2465,6 @@ Clone:
             type: string
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
-                miairr: false
                 required: true
                 nullable: true
                 adc-api-optional: false
@@ -2614,35 +2474,30 @@ Clone:
                 type: string
             description: List of sequence_ids that are members of the clone.
             x-airr:
-                miairr: false
         rearrangements:
             type: array
             items:
                 type: string
             description: List of rearrangement_ids that are members of the clone.
             x-airr:
-                miairr: false
         v_call:
             type: string
             description: >
                 V gene with allele of the inferred ancestral of the clone. For example, IGHV4-59*01.
             example: IGHV4-59*01
             x-airr:
-                miairr: false
         d_call:
             type: string
             description: >
                 D gene with allele of the inferred ancestor of the clone. For example, IGHD3-10*01.
             example: IGHD3-10*01
             x-airr:
-                miairr: false
         j_call:
             type: string
             description: >
                 J gene with allele of the inferred ancestor of the clone. For example, IGHJ4*02.
             example: IGHJ4*02
             x-airr:
-                miairr: false
         junction:
             type: string
             description: >
@@ -2653,17 +2508,14 @@ Clone:
             description: >
                 Amino acid translation of the junction.
             x-airr:
-                miairr: false
         junction_length:
             type: integer
             description: Number of nucleotides in the junction.
             x-airr:
-                miairr: false
         junction_aa_length:
             type: integer
             description: Number of amino acids in junction_aa.
             x-airr:
-                miairr: false
         germline_alignment:
             type: string
             description: >
@@ -2671,76 +2523,64 @@ Clone:
                 as the sequence_alignment field of nodes (typically the V(D)J region) and including the
                 same set of corrections and spacers (if any).
             x-airr:
-                miairr: false
                 required: true
         germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of germline_alignment.
             x-airr:
-                miairr: false
         v_alignment_start:
             type: integer
             description: >
                 Start position in the V gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                miairr: false
         v_alignment_end:
             type: integer
             description: >
                 End position in the V gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                miairr: false
         d_alignment_start:
             type: integer
             description: >
                 Start position of the D gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                miairr: false
         d_alignment_end:
             type: integer
             description: >
                 End position of the D gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                miairr: false
         j_alignment_start:
             type: integer
             description: >
                 Start position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                miairr: false
         j_alignment_end:
             type: integer
             description: >
                 End position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                miairr: false
         junction_start:
             type: integer
             description: Junction region start position in the alignment (1-based closed interval).
             x-airr:
-                miairr: false
         junction_end:
             type: integer
             description: Junction region end position in the alignment (1-based closed interval).
             x-airr:
-                miairr: false
         rearrangement_count:
             type: integer
             description: Number of rearrangements included in this clone
             x-airr:
-                miairr: false
         seed_id:
             type: string
             Description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
             x-airr:
-                miairr: false
 
 # 1-to-n relationship for a clone to its trees.
 Tree:
@@ -2755,25 +2595,21 @@ Tree:
             type: string
             description: Identifier for the tree.
             x-airr:
-                miairr: false
                 required: true
         clone_id:
             type: string
             description: Identifier for the clone.
             x-airr:
-                miairr: false
                 required: true
         newick:
             type: string
             description: Newick string of the tree edges.
             x-airr:
-                miairr: false
                 required: true
         nodes:
             type: object
             description: Dictionary of nodes in the tree, keyed by sequence_id string
             x-airr:
-                miairr: false
             additionalProperties:
                 $ref: '#/Node'
 
@@ -2790,7 +2626,6 @@ Node:
                 Identifier for this node that matches the id in the newick string and, where possible,
                 the sequence_id in the source repertoire.
             x-airr:
-                miairr: false
                 required: true
         rearrangement_id:
             type: string
@@ -2798,7 +2633,6 @@ Node:
                 Identifier for the Rearrangement object. May be identical to sequence_id,
                 but will usually be a universally unique record locator for database applications.
             x-airr:
-                miairr: false
                 required: false
         sequence_alignment:
             type: string
@@ -2806,17 +2640,14 @@ Node:
                 Nucleotide sequence of the node, aligned to the germline_alignment for this clone, including
                 including any indel corrections or spacers.
             x-airr:
-                miairr: false
         junction:
             type: string
             description: >
                 Junction region nucleotide sequence for the node, where the junction is defined as
                 the CDR3 plus the two flanking conserved codons.
             x-airr:
-                miairr: false
         junction_aa:
             type: string
             description: >
                 Amino acid translation of the junction.
             x-airr:
-                miairr: false
