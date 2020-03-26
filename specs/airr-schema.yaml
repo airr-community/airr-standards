@@ -44,7 +44,7 @@ Attributes:
             enum:
                 - essential
                 - important
-                - useful
+                - defined
             default: useful
         identifier:
             type: boolean

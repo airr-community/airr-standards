@@ -37,27 +37,43 @@ Ontology:
 Attributes:
     discriminator: AIRR
     type: object
-    required:
-        - miairr
     properties:
         miairr:
-            type: boolean
-            description: True if a MiAIRR field
-            default: false
-        required:
-            type: boolean
-            description: Indicates if field is required by MiAIRR and/or ADC API
-        nullable:
-            type: boolean
-            description: Indicates if field can have null value
-        adc-api-optional:
+            type: string
+            description: MiAIRR requirement level.
+            enum:
+                - essential
+                - important
+                - defined
+            default: useful
+        identifier:
             type: boolean
             description: >
-                True if query support is optional for ADC API implementations. If False or undefined,
-                an ADC API implementation must support queries upon this field.
+                True if the field is an identifier required to link metadata and/or individual
+                sequence records across objects in the complete AIRR Data Model and ADC API.
+            default: false
+        adc-query-support:
+            type: boolean
+            description: >
+                True if an ADC API implementation must support queries on the field.
+                If false, query support for the field in ADC API implementations is optional.
+            default: false
+        nullable:
+            type: boolean
+            description: True if the field may have a null value.
+            default: true
         deprecated:
             type: boolean
-            description: True if the field is being deprecated from the schema.
+            description: True if the field has been deprecated from the schema.
+            default: false
+        deprecated-description:
+            type: string
+            description: Information regarding the deprecation of the field.
+        deprecated-replaced-by:
+            type: array
+            items:
+                type: string
+            description: The deprecated field is replaced by this list of fields.
         set:
             type: integer
             description: MiAIRR set
