@@ -420,7 +420,7 @@ Subject:
             x-airr:
                 deprecated: true
                 deprecated-description: Split into two fields to specify as an age range.
-                deprecated-replaced-by: [age_min, age_max]
+                deprecated-replaced-by: [age_min, age_max, age_unit]
         ancestry_population:
             type: string
             description: Broad geographic origin of ancestry (continent)
@@ -444,7 +444,7 @@ Subject:
         race:
             type: string
             description: Racial group of subject (as defined by NIH)
-            example: White, American Indian or Alaska Native, Black, Asian, Native Hawaiian or Other Pacific Islander, Other 
+            example: White, American Indian or Alaska Native, Black, Asian, Native Hawaiian or Other Pacific Islander, Other
             x-airr:
                 miairr: important
                 nullable: true
@@ -999,7 +999,7 @@ NucleicAcidProcessing:
                 If a PCR step was performed that specifically targets the IG/TR loci, the target and primer locations
                 need to be provided here. This field holds an array of PCRTarget objects, so that multiplex PCR setups
                 amplifying multiple loci at the same time can be annotated using one record per locus. PCR setups not
-                targeting any specific locus must not annotate this field but select the appropriate 
+                targeting any specific locus must not annotate this field but select the appropriate
                 library_generation_method instead.
             items:
                 $ref: '#/PCRTarget'
@@ -1356,20 +1356,10 @@ Repertoire:
     type: object
     required:
         - repertoire_id
-        - locus
-        - v_call
-        - d_call
-        - j_call
-        - c_call
-        - junction
-        - junction_aa
-        - duplicate_count
-        - cell_id
-        - clone_id
-        - rearrangement_id
-        - repertoire_id
-        - sample_processing_id
-        - data_processing_id
+        - study
+        - subject
+        - sample
+        - data_processing
     properties:
         repertoire_id:
             type: string
@@ -1494,6 +1484,8 @@ Alignment:
             example: ENSEMBL, Homo sapiens build 90, 2017-10-01
             x-airr:
                 deprecated: true
+                deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
+                deprecated-replaced-by: [DataProcessing:germline_database]
 
 
 # The extended rearrangement object
@@ -2199,6 +2191,8 @@ Rearrangement:
             example: ENSEMBL, Homo sapiens build 90, 2017-10-01
             x-airr:
                 deprecated: true
+                deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
+                deprecated-replaced-by: [DataProcessing:germline_database]
 
 # A unique inferred clone object that has been constructed within a single data processing
 # for a single repertoire and a subset of its sequences and/or rearrangements.
@@ -2207,8 +2201,6 @@ Clone:
     type: object
     required:
         - clone_id
-        - repertoire_id
-        - data_processing_id
         - germline_alignment
     properties:
         clone_id:
