@@ -1526,19 +1526,16 @@ Rearrangement:
                 Unique query sequence identifier within the file. Most often this will be the input sequence
                 header or a substring thereof, but may also be a custom identifier defined by the tool in
                 cases where query sequences have been combined in some fashion prior to alignment.
-            x-airr:
         sequence:
             type: string
             description: >
                 The query nucleotide sequence. Usually, this is the unmodified input sequence, which may be
                 reverse complemented if necessary. In some cases, this field may contain consensus sequences or
                 other types of collapsed input sequences if these steps are performed prior to alignment.
-            x-airr:
         sequence_aa:
             type: string
             description: >
                 Amino acid translation of the query nucleotide sequence.
-            x-airr:
         rev_comp:
             type: boolean
             description: >
@@ -1552,11 +1549,9 @@ Rearrangement:
         vj_in_frame:
             type: boolean
             description: True if the V and J gene alignments are in-frame.
-            x-airr:
         stop_codon:
             type: boolean
             description: True if the aligned sequence contains a stop codon.
-            x-airr:
         complete_vdj:
             type: boolean
             description: >
@@ -1566,7 +1561,6 @@ Rearrangement:
                 complete codon of the J gene (i.e., before the J-C splice site).
                 This does not require an absence of deletions within the internal
                 FWR and CDR regions of the alignment.
-            x-airr:
         locus:
             type: string
             enum:
@@ -1618,7 +1612,6 @@ Rearrangement:
                 Second D gene with allele. If referring to a known reference sequence in a database the relevant
                 gene/allele nomenclature should be followed (e.g., IGHD3-10*01 if using IMGT/GENE-DB).
             example: IGHD3-10*01
-            x-airr:
         j_call:
             type: string
             description: >
@@ -1649,24 +1642,20 @@ Rearrangement:
                 Aligned portion of query sequence, including any indel corrections or numbering spacers,
                 such as IMGT-gaps. Typically, this will include only the V(D)J region, but that is not
                 a requirement.
-            x-airr:
         sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the aligned query sequence.
-            x-airr:
         germline_alignment:
             type: string
             description: >
                 Assembled, aligned, full-length inferred germline sequence spanning the same region
                 as the sequence_alignment field (typically the V(D)J region) and including the same set
                 of corrections and spacers (if any).
-            x-airr:
         germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the assembled germline sequence.
-            x-airr:
         junction:
             type: string
             description: >
@@ -1696,501 +1685,402 @@ Rearrangement:
             description: >
                 Nucleotide sequence of the combined N/P region between the V gene and
                 first D gene alignment or between the V gene and J gene alignments.
-            x-airr:
         np1_aa:
             type: string
             description: >
                 Amino acid translation of the np1 field.
-            x-airr:
         np2:
             type: string
             description: >
                 Nucleotide sequence of the combined N/P region between either the first D gene and J gene
                 alignments or the first D gene and second D gene alignments.
-            x-airr:
         np2_aa:
             type: string
             description: >
                 Amino acid translation of the np2 field.
-            x-airr:
         np3:
             type: string
             description: >
                 Nucleotide sequence of the combined N/P region between the second D gene
                 and J gene alignments.
-            x-airr:
         np3_aa:
             type: string
             description: >
                 Amino acid translation of the np3 field.
-            x-airr:
         cdr1:
             type: string
             description: >
                 Nucleotide sequence of the aligned CDR1 region.
-            x-airr:
         cdr1_aa:
             type: string
             description: >
                 Amino acid translation of the cdr1 field.
-            x-airr:
         cdr2:
             type: string
             description: >
                 Nucleotide sequence of the aligned CDR2 region.
-            x-airr:
         cdr2_aa:
             type: string
             description: >
                 Amino acid translation of the cdr2 field.
-            x-airr:
         cdr3:
             type: string
             description: >
                 Nucleotide sequence of the aligned CDR3 region.
-            x-airr:
         cdr3_aa:
             type: string
             description: >
                 Amino acid translation of the cdr3 field.
-            x-airr:
         fwr1:
             type: string
             description: >
                 Nucleotide sequence of the aligned FWR1 region.
-            x-airr:
         fwr1_aa:
             type: string
             description: >
                 Amino acid translation of the fwr1 field.
-            x-airr:
         fwr2:
             type: string
             description: >
                 Nucleotide sequence of the aligned FWR2 region.
-            x-airr:
         fwr2_aa:
             type: string
             description: >
                 Amino acid translation of the fwr2 field.
-            x-airr:
         fwr3:
             type: string
             description: >
                 Nucleotide sequence of the aligned FWR3 region.
-            x-airr:
         fwr3_aa:
             type: string
             description: >
                 Amino acid translation of the fwr3 field.
-            x-airr:
         fwr4:
             type: string
             description: >
                 Nucleotide sequence of the aligned FWR4 region.
-            x-airr:
         fwr4_aa:
             type: string
             description: >
                 Amino acid translation of the fwr4 field.
-            x-airr:
         v_score:
             type: number
             description: Alignment score for the V gene.
-            x-airr:
         v_identity:
             type: number
             description: Fractional identity for the V gene alignment.
-            x-airr:
         v_support:
             type: number
             description: >
                 V gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the V gene assignment as defined by the alignment tool.
-            x-airr:
         v_cigar:
             type: string
             description: CIGAR string for the V gene alignment.
-            x-airr:
         d_score:
             type: number
             description: Alignment score for the first or only D gene alignment.
-            x-airr:
         d_identity:
             type: number
             description: Fractional identity for the first or only D gene alignment.
-            x-airr:
         d_support:
             type: number
             description: >
                 D gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the first or only D gene as defined by the alignment tool.
-            x-airr:
         d_cigar:
             type: string
             description: CIGAR string for the first or only D gene alignment.
-            x-airr:
         d2_score:
             type: number
             description: Alignment score for the second D gene alignment.
-            x-airr:
         d2_identity:
             type: number
             description: Fractional identity for the second D gene alignment.
-            x-airr:
         d2_support:
             type: number
             description: >
                 D gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the second D gene as defined by the alignment tool.
-            x-airr:
         d2_cigar:
             type: string
             description: CIGAR string for the second D gene alignment.
-            x-airr:
         j_score:
             type: number
             description: Alignment score for the J gene alignment.
-            x-airr:
         j_identity:
             type: number
             description: Fractional identity for the J gene alignment.
-            x-airr:
         j_support:
             type: number
             description: >
                 J gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the J gene assignment as defined by the alignment tool.
-            x-airr:
         j_cigar:
             type: string
             description: CIGAR string for the J gene alignment.
-            x-airr:
         c_score:
             type: number
             description: Alignment score for the C gene alignment.
-            x-airr:
         c_identity:
             type: number
             description: Fractional identity for the C gene alignment.
-            x-airr:
         c_support:
             type: number
             description: >
                 C gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the C gene assignment as defined by the alignment tool.
-            x-airr:
         c_cigar:
             type: string
             description: CIGAR string for the C gene alignment.
-            x-airr:
         v_sequence_start:
             type: integer
             description: >
                 Start position of the V gene in the query sequence (1-based closed interval).
-            x-airr:
         v_sequence_end:
             type: integer
             description: >
                 End position of the V gene in the query sequence (1-based closed interval).
-            x-airr:
         v_germline_start:
             type: integer
             description: >
                 Alignment start position in the V gene reference sequence (1-based closed interval).
-            x-airr:
         v_germline_end:
             type: integer
             description: >
                 Alignment end position in the V gene reference sequence (1-based closed interval).
-            x-airr:
         v_alignment_start:
             type: integer
             description: >
                 Start position of the V gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
-            x-airr:
         v_alignment_end:
             type: integer
             description: >
                 End position of the V gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
-            x-airr:
         d_sequence_start:
             type: integer
             description: >
                 Start position of the first or only D gene in the query sequence.
                 (1-based closed interval).
-            x-airr:
         d_sequence_end:
             type: integer
             description: >
                 End position of the first or only D gene in the query sequence.
                 (1-based closed interval).
-            x-airr:
         d_germline_start:
             type: integer
             description: >
                 Alignment start position in the D gene reference sequence for the first or only
                 D gene (1-based closed interval).
-            x-airr:
         d_germline_end:
             type: integer
             description: >
                 Alignment end position in the D gene reference sequence for the first or only
                 D gene (1-based closed interval).
-            x-airr:
         d_alignment_start:
             type: integer
             description: >
                 Start position of the first or only D gene in both the sequence_alignment
                 and germline_alignment fields (1-based closed interval).
-            x-airr:
         d_alignment_end:
             type: integer
             description: >
                 End position of the first or only D gene in both the sequence_alignment
                 and germline_alignment fields (1-based closed interval).
-            x-airr:
         d2_sequence_start:
             type: integer
             description: >
                 Start position of the second D gene in the query sequence (1-based closed interval).
-            x-airr:
         d2_sequence_end:
             type: integer
             description: >
                 End position of the second D gene in the query sequence (1-based closed interval).
-            x-airr:
         d2_germline_start:
             type: integer
             description: >
                 Alignment start position in the second D gene reference sequence (1-based closed interval).
-            x-airr:
         d2_germline_end:
             type: integer
             description: >
                 Alignment end position in the second D gene reference sequence (1-based closed interval).
-            x-airr:
         d2_alignment_start:
             type: integer
             description: >
                 Start position of the second D gene alignment in both the sequence_alignment and
                 germline_alignment fields (1-based closed interval).
-            x-airr:
         d2_alignment_end:
             type: integer
             description: >
                 End position of the second D gene alignment in both the sequence_alignment and
                 germline_alignment fields (1-based closed interval).
-            x-airr:
         j_sequence_start:
             type: integer
             description: >
                 Start position of the J gene in the query sequence (1-based closed interval).
-            x-airr:
         j_sequence_end:
             type: integer
             description: >
                 End position of the J gene in the query sequence (1-based closed interval).
-            x-airr:
         j_germline_start:
             type: integer
             description: >
                 Alignment start position in the J gene reference sequence (1-based closed interval).
-            x-airr:
         j_germline_end:
             type: integer
             description: >
                 Alignment end position in the J gene reference sequence (1-based closed interval).
-            x-airr:
         j_alignment_start:
             type: integer
             description: >
                 Start position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
-            x-airr:
         j_alignment_end:
             type: integer
             description: >
                 End position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
-            x-airr:
         cdr1_start:
             type: integer
             description: CDR1 start position in the query sequence (1-based closed interval).
-            x-airr:
         cdr1_end:
             type: integer
             description: CDR1 end position in the query sequence (1-based closed interval).
-            x-airr:
         cdr2_start:
             type: integer
             description: CDR2 start position in the query sequence (1-based closed interval).
-            x-airr:
         cdr2_end:
             type: integer
             description: CDR2 end position in the query sequence (1-based closed interval).
-            x-airr:
         cdr3_start:
             type: integer
             description: CDR3 start position in the query sequence (1-based closed interval).
-            x-airr:
         cdr3_end:
             type: integer
             description: CDR3 end position in the query sequence (1-based closed interval).
-            x-airr:
         fwr1_start:
             type: integer
             description: FWR1 start position in the query sequence (1-based closed interval).
-            x-airr:
         fwr1_end:
             type: integer
             description: FWR1 end position in the query sequence (1-based closed interval).
-            x-airr:
         fwr2_start:
             type: integer
             description: FWR2 start position in the query sequence (1-based closed interval).
-            x-airr:
         fwr2_end:
             type: integer
             description: FWR2 end position in the query sequence (1-based closed interval).
-            x-airr:
         fwr3_start:
             type: integer
             description: FWR3 start position in the query sequence (1-based closed interval).
-            x-airr:
         fwr3_end:
             type: integer
             description: FWR3 end position in the query sequence (1-based closed interval).
-            x-airr:
         fwr4_start:
             type: integer
             description: FWR4 start position in the query sequence (1-based closed interval).
-            x-airr:
         fwr4_end:
             type: integer
             description: FWR4 end position in the query sequence (1-based closed interval).
-            x-airr:
         v_sequence_alignment:
             type: string
             description: >
                 Aligned portion of query sequence assigned to the V gene, including any
                 indel corrections or numbering spacers.
-            x-airr:
         v_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the v_sequence_alignment field.
-            x-airr:
         d_sequence_alignment:
             type: string
             description: >
                 Aligned portion of query sequence assigned to the first or only D gene, including any
                 indel corrections or numbering spacers.
-            x-airr:
         d_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the d_sequence_alignment field.
-            x-airr:
         d2_sequence_alignment:
             type: string
             description: >
                 Aligned portion of query sequence assigned to the second D gene, including any
                 indel corrections or numbering spacers.
-            x-airr:
         d2_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the d2_sequence_alignment field.
-            x-airr:
         j_sequence_alignment:
             type: string
             description: >
                 Aligned portion of query sequence assigned to the J gene, including any
                 indel corrections or numbering spacers.
-            x-airr:
         j_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the j_sequence_alignment field.
-            x-airr:
         c_sequence_alignment:
             type: string
             description: >
                 Aligned portion of query sequence assigned to the constant region, including
                 any indel corrections or numbering spacers.
-            x-airr:
         c_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the c_sequence_alignment field.
-            x-airr:
         v_germline_alignment:
             type: string
             description: >
                 Aligned V gene germline sequence spanning the same region
                 as the v_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
-            x-airr:
         v_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the v_germline_alignment field.
-            x-airr:
         d_germline_alignment:
             type: string
             description: >
                 Aligned D gene germline sequence spanning the same region
                 as the d_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
-            x-airr:
         d_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the d_germline_alignment field.
-            x-airr:
         d2_germline_alignment:
             type: string
             description: >
                 Aligned D gene germline sequence spanning the same region
                 as the d2_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
-            x-airr:
         d2_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the d2_germline_alignment field.
-            x-airr:
         j_germline_alignment:
             type: string
             description: >
                 Aligned J gene germline sequence spanning the same region
                 as the j_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
-            x-airr:
         j_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the j_germline_alignment field.
-            x-airr:
         c_germline_alignment:
             type: string
             description: >
                 Aligned constant region germline sequence spanning the same region
                 as the c_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
-            x-airr:
         c_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the c_germline_aligment field.
-            x-airr:
         junction_length:
             type: integer
             description: Number of nucleotides in the junction sequence.
-            x-airr:
         junction_aa_length:
             type: integer
             description: Number of amino acids in the junction sequence.
@@ -2201,61 +2091,48 @@ Rearrangement:
             description: >
                 Number of nucleotides between the V gene and first D gene alignments or
                 between the V gene and J gene alignments.
-            x-airr:
         np2_length:
             type: integer
             description: >
                 Number of nucleotides between either the first D gene and J gene alignments
                 or the first D gene and second D gene alignments.
-            x-airr:
         np3_length:
             type: integer
             description: >
                 Number of nucleotides between the second D gene and J gene alignments.
-            x-airr:
         n1_length:
             type: integer
             description: Number of untemplated nucleotides 5' of the first or only D gene alignment.
-            x-airr:
         n2_length:
             type: integer
             description: Number of untemplated nucleotides 3' of the first or only D gene alignment.
-            x-airr:
         n3_length:
             type: integer
             description: Number of untemplated nucleotides 3' of the second D gene alignment.
-            x-airr:
         p3v_length:
             type: integer
             description: Number of palindromic nucleotides 3' of the V gene alignment.
-            x-airr:
         p5d_length:
             type: integer
             description: Number of palindromic nucleotides 5' of the first or only D gene alignment.
-            x-airr:
         p3d_length:
             type: integer
             description: Number of palindromic nucleotides 3' of the first or only D gene alignment.
-            x-airr:
         p5d2_length:
             type: integer
             description: Number of palindromic nucleotides 5' of the second D gene alignment.
-            x-airr:
         p3d2_length:
             type: integer
             description: Number of palindromic nucleotides 3' of the second D gene alignment.
-            x-airr:
         p5j_length:
             type: integer
             description: Number of palindromic nucleotides 5' of the J gene alignment.
-            x-airr:
         consensus_count:
             type: integer
             description: >
                 Number of reads contributing to the (UMI) consensus for this sequence.
                 For example, the sum of the number of reads for all UMIs that contribute to
                 the query sequence.
-            x-airr:
         duplicate_count:
             type: integer
             description: >
@@ -2341,7 +2218,6 @@ Clone:
         clone_id:
             type: string
             description: Identifier for the clone.
-            x-airr:
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
@@ -2359,31 +2235,26 @@ Clone:
             items:
                 type: string
             description: List of sequence_ids that are members of the clone.
-            x-airr:
         rearrangements:
             type: array
             items:
                 type: string
             description: List of rearrangement_ids that are members of the clone.
-            x-airr:
         v_call:
             type: string
             description: >
                 V gene with allele of the inferred ancestral of the clone. For example, IGHV4-59*01.
             example: IGHV4-59*01
-            x-airr:
         d_call:
             type: string
             description: >
                 D gene with allele of the inferred ancestor of the clone. For example, IGHD3-10*01.
             example: IGHD3-10*01
-            x-airr:
         j_call:
             type: string
             description: >
                 J gene with allele of the inferred ancestor of the clone. For example, IGHJ4*02.
             example: IGHJ4*02
-            x-airr:
         junction:
             type: string
             description: >
@@ -2393,79 +2264,64 @@ Clone:
             type: string
             description: >
                 Amino acid translation of the junction.
-            x-airr:
         junction_length:
             type: integer
             description: Number of nucleotides in the junction.
-            x-airr:
         junction_aa_length:
             type: integer
             description: Number of amino acids in junction_aa.
-            x-airr:
         germline_alignment:
             type: string
             description: >
                 Assembled, aligned, full-length inferred ancestor of the clone spanning the same region
                 as the sequence_alignment field of nodes (typically the V(D)J region) and including the
                 same set of corrections and spacers (if any).
-            x-airr:
         germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of germline_alignment.
-            x-airr:
         v_alignment_start:
             type: integer
             description: >
                 Start position in the V gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
-            x-airr:
         v_alignment_end:
             type: integer
             description: >
                 End position in the V gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
-            x-airr:
         d_alignment_start:
             type: integer
             description: >
                 Start position of the D gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
-            x-airr:
         d_alignment_end:
             type: integer
             description: >
                 End position of the D gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
-            x-airr:
         j_alignment_start:
             type: integer
             description: >
                 Start position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
-            x-airr:
         j_alignment_end:
             type: integer
             description: >
                 End position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
-            x-airr:
         junction_start:
             type: integer
             description: Junction region start position in the alignment (1-based closed interval).
-            x-airr:
         junction_end:
             type: integer
             description: Junction region end position in the alignment (1-based closed interval).
-            x-airr:
         rearrangement_count:
             type: integer
             description: Number of rearrangements included in this clone
-            x-airr:
         seed_id:
             type: string
             Description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
-            x-airr:
 
 # 1-to-n relationship for a clone to its trees.
 Tree:
@@ -2479,19 +2335,15 @@ Tree:
         tree_id:
             type: string
             description: Identifier for the tree.
-            x-airr:
         clone_id:
             type: string
             description: Identifier for the clone.
-            x-airr:
         newick:
             type: string
             description: Newick string of the tree edges.
-            x-airr:
         nodes:
             type: object
             description: Dictionary of nodes in the tree, keyed by sequence_id string
-            x-airr:
             additionalProperties:
                 $ref: '#/Node'
 
@@ -2507,7 +2359,6 @@ Node:
             description: >
                 Identifier for this node that matches the id in the newick string and, where possible,
                 the sequence_id in the source repertoire.
-            x-airr:
         rearrangement_id:
             type: string
             description: >
@@ -2520,15 +2371,12 @@ Node:
             description: >
                 Nucleotide sequence of the node, aligned to the germline_alignment for this clone, including
                 including any indel corrections or spacers.
-            x-airr:
         junction:
             type: string
             description: >
                 Junction region nucleotide sequence for the node, where the junction is defined as
                 the CDR3 plus the two flanking conserved codons.
-            x-airr:
         junction_aa:
             type: string
             description: >
                 Amino acid translation of the junction.
-            x-airr:
