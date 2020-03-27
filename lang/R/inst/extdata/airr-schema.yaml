@@ -767,7 +767,6 @@ CellProcessing:
                 id: 9096
                 value: Homo sapiens
             x-airr:
-                required: false
                 nullable: true
                 format: ontology
                 ontology:
@@ -1315,7 +1314,6 @@ DataProcessing:
                 - 'ERR1278153_ab.txz'
                 - 'ERR1278153_ac.txz'
             x-airr:
-                required: false
                 nullable: true
                 name: Processed data file names
         germline_database:
@@ -1386,13 +1384,11 @@ Repertoire:
             type: string
             description: Short generic display name for the repertoire
             x-airr:
-                required: false
                 nullable: true
         repertoire_description:
             type: string
             description: Generic repertoire description
             x-airr:
-                required: false
                 nullable: true
         study:
             $ref: '#/Study'
@@ -2364,8 +2360,6 @@ Node:
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
                 but will usually be a universally unique record locator for database applications.
-            x-airr:
-                required: false
         sequence_alignment:
             type: string
             description: >
