@@ -121,6 +121,18 @@ Attributes:
 Study:
     discriminator: AIRR
     type: object
+    required:
+        - study_id
+        - study_title
+        - study_type
+        - inclusion_exclusion_criteria
+        - grants
+        - collected_by
+        - lab_name
+        - lab_address
+        - submitted_by
+        - pub_ids
+        - keywords_study
     properties:
         study_id:
             type: string
@@ -128,7 +140,6 @@ Study:
             example: PRJNA001
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: study
@@ -139,7 +150,6 @@ Study:
             example: Effects of sun light exposure of the Treg repertoire
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: study
@@ -152,7 +162,6 @@ Study:
                 value: Case-Control Study
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: study
@@ -175,7 +184,6 @@ Study:
             example: "Include: Clinical P. falciparum infection; Exclude: Seropositive for HIV"
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: study
@@ -186,7 +194,6 @@ Study:
             example: NIH, award number R01GM987654
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: study
@@ -199,7 +206,6 @@ Study:
             example: Dr. P. Stibbons, p.stibbons@unseenu.edu
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: study
@@ -210,7 +216,6 @@ Study:
             example: Department for Planar Immunology
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: study
@@ -221,7 +226,6 @@ Study:
             example: School of Medicine, Unseen University, Ankh-Morpork, Disk World
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: study
@@ -234,7 +238,6 @@ Study:
             example: Adrian Turnipseed, a.turnipseed@unseenu.edu
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: study
@@ -245,7 +248,6 @@ Study:
             example: "PMID:85642"
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: study
@@ -265,7 +267,6 @@ Study:
               - contains_paired_chain
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: study
@@ -277,6 +278,21 @@ Study:
 Subject:
     discriminator: AIRR
     type: object
+    required:
+        - subject_id
+        - synthetic
+        - species
+        - sex
+        - age_min
+        - age_max
+        - age_unit
+        - age_event
+        - ancestry_population
+        - ethnicity
+        - race
+        - strain_name
+        - linked_subjects
+        - link_type
     properties:
         subject_id:
             type: string
@@ -284,7 +300,6 @@ Subject:
             example: SUB856413
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: subject
@@ -294,7 +309,6 @@ Subject:
             description: TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)
             x-airr:
                 miairr: essential
-                required: true
                 nullable: false
                 set: 1
                 subset: subject
@@ -307,7 +321,6 @@ Subject:
                 value: Homo sapiens
             x-airr:
                 miairr: essential
-                required: true
                 nullable: false
                 set: 1
                 subset: subject
@@ -341,7 +354,6 @@ Subject:
             example: female
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: subject
@@ -354,7 +366,6 @@ Subject:
             example: 60
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: subject
@@ -367,7 +378,6 @@ Subject:
             example: 80
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: subject
@@ -380,7 +390,6 @@ Subject:
                 value: year
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: subject
@@ -402,7 +411,6 @@ Subject:
             example: enrollment
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: subject
@@ -419,7 +427,6 @@ Subject:
             example: list of continents, mixed or unknown
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: subject
@@ -430,7 +437,6 @@ Subject:
             example: English, Kurds, Manchu, Yakuts (and other fields from Wikipedia)
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: subject
@@ -441,7 +447,6 @@ Subject:
             example: White, American Indian or Alaska Native, Black, Asian, Native Hawaiian or Other Pacific Islander, Other 
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: subject
@@ -452,7 +457,6 @@ Subject:
             example: C57BL/6J
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: subject
@@ -463,7 +467,6 @@ Subject:
             example: SUB1355648
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: subject
@@ -474,7 +477,6 @@ Subject:
             example: father, daughter, household
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: subject
@@ -489,6 +491,15 @@ Subject:
 Diagnosis:
     discriminator: AIRR
     type: object
+    required:
+        - study_group_description
+        - disease_diagnosis
+        - disease_length
+        - disease_stage
+        - prior_therapies
+        - immunogen
+        - intervention
+        - medical_history
     properties:
         study_group_description:
             type: string
@@ -496,7 +507,6 @@ Diagnosis:
             example: control
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: diagnosis and intervention
@@ -509,7 +519,6 @@ Diagnosis:
                 value: multiple myeloma
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: diagnosis and intervention
@@ -528,7 +537,6 @@ Diagnosis:
             example: 23 months
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: diagnosis and intervention
@@ -540,7 +548,6 @@ Diagnosis:
             example: Stage II
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: diagnosis and intervention
@@ -551,7 +558,6 @@ Diagnosis:
             example: melphalan/prednisone
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: diagnosis and intervention
@@ -562,7 +568,6 @@ Diagnosis:
             example: bortezomib
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: diagnosis and intervention
@@ -573,7 +578,6 @@ Diagnosis:
             example: systemic chemotherapy, 6 cycles, 1.25 mg/m2
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: diagnosis and intervention
@@ -584,7 +588,6 @@ Diagnosis:
             example: MGUS, first diagnosed 5 years prior
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 1
                 subset: diagnosis and intervention
@@ -595,6 +598,15 @@ Diagnosis:
 Sample:
     discriminator: AIRR
     type: object
+    required:
+        - sample_id
+        - sample_type
+        - tissue
+        - anatomic_site
+        - disease_state_sample
+        - collection_time_point_relative
+        - collection_time_point_reference
+        - biomaterial_provider
     properties:
         sample_id:
             type: string
@@ -602,7 +614,6 @@ Sample:
             example: SUP52415
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 2
                 subset: sample
@@ -613,7 +624,6 @@ Sample:
             example: Biopsy
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 2
                 subset: sample
@@ -626,7 +636,6 @@ Sample:
                 value: bone marrow
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 2
                 subset: sample
@@ -645,7 +654,6 @@ Sample:
             example: Iliac crest
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 2
                 subset: sample
@@ -656,7 +664,6 @@ Sample:
             example: Tumor infiltration
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 2
                 subset: sample
@@ -667,7 +674,6 @@ Sample:
             example: "14 d"
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 2
                 subset: sample
@@ -679,7 +685,6 @@ Sample:
             example: Primary vaccination
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 2
                 subset: sample
@@ -690,7 +695,6 @@ Sample:
             example: Tissues-R-Us, Tampa, FL, USA
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 2
                 subset: sample
@@ -700,6 +704,17 @@ Sample:
 CellProcessing:
     discriminator: AIRR
     type: object
+    required:
+        - tissue_processing
+        - cell_subset
+        - cell_phenotype
+        - single_cell
+        - cell_number
+        - cells_per_reaction
+        - cell_storage
+        - cell_quality
+        - cell_isolation
+        - cell_processing_protocol
     properties:
         tissue_processing:
             type: string
@@ -707,7 +722,6 @@ CellProcessing:
             example: Collagenase A/Dnase I digested, followed by Percoll gradient
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (cell)
@@ -720,7 +734,6 @@ CellProcessing:
                 value: class switched memory B cell
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (cell)
@@ -739,7 +752,6 @@ CellProcessing:
             example: CD19+ CD38+ CD27+ IgM- IgD-
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (cell)
@@ -770,7 +782,6 @@ CellProcessing:
             description: TRUE if single cells were isolated into separate compartments
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (cell)
@@ -781,7 +792,6 @@ CellProcessing:
             example: 1000000
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (cell)
@@ -792,7 +802,6 @@ CellProcessing:
             example: 50000
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (cell)
@@ -803,7 +812,6 @@ CellProcessing:
             example: TRUE
             x-airr:
                 miairr: essential
-                required: true
                 nullable: false
                 set: 3
                 subset: process (cell)
@@ -814,7 +822,6 @@ CellProcessing:
             example: 90% viability as determined by 7-AAD
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (cell)
@@ -825,7 +832,6 @@ CellProcessing:
             example: Cells were stained with fluorochrome labeled antibodies and then sorted on a FlowMerlin (CE) cytometer
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (cell)
@@ -836,7 +842,6 @@ CellProcessing:
             example: Stimulated wih anti-CD3/anti-CD28
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (cell)
@@ -846,6 +851,10 @@ CellProcessing:
 PCRTarget:
     discriminator: AIRR
     type: object
+    required:
+        - pcr_target_locus
+        - forward_pcr_primer_target_location
+        - reverse_pcr_primer_target_location
     properties:
         pcr_target_locus:
             type: string
@@ -865,7 +874,6 @@ PCRTarget:
             example: IGK
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (nucleic acid [pcr])
@@ -877,7 +885,6 @@ PCRTarget:
             example: IGHV, +23
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (nucleic acid [pcr])
@@ -888,7 +895,6 @@ PCRTarget:
             example: IGHG, +57
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (nucleic acid [pcr])
@@ -899,6 +905,15 @@ PCRTarget:
 NucleicAcidProcessing:
     discriminator: AIRR
     type: object
+    required:
+        - template_class
+        - template_quality
+        - template_amount
+        - library_generation_method
+        - library_generation_protocol
+        - library_generation_kit_version
+        - complete_sequences
+        - physical_linkage
     properties:
         template_class:
             type: string
@@ -909,7 +924,6 @@ NucleicAcidProcessing:
             example: RNA
             x-airr:
                 miairr: essential
-                required: true
                 nullable: false
                 set: 3
                 subset: process (nucleic acid)
@@ -921,7 +935,6 @@ NucleicAcidProcessing:
             example: RIN 9.2
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (nucleic acid)
@@ -932,7 +945,6 @@ NucleicAcidProcessing:
             example: 1000 ng
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (nucleic acid)
@@ -957,7 +969,6 @@ NucleicAcidProcessing:
             example: RT(oligo-dT)+TS(UMI)+PCR
             x-airr:
                 miairr: essential
-                required: true
                 nullable: false
                 set: 3
                 subset: process (nucleic acid)
@@ -969,7 +980,6 @@ NucleicAcidProcessing:
             example: cDNA was generated using
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (nucleic acid)
@@ -980,7 +990,6 @@ NucleicAcidProcessing:
             example: v2.1 (2016-09-15)
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (nucleic acid)
@@ -1011,7 +1020,6 @@ NucleicAcidProcessing:
             example: partial
             x-airr:
                 miairr: essential
-                required: true
                 nullable: false
                 set: 3
                 subset: process (nucleic acid)
@@ -1028,7 +1036,6 @@ NucleicAcidProcessing:
             example: hetero_head-head
             x-airr:
                 miairr: essential
-                required: true
                 nullable: false
                 set: 3
                 subset: process (nucleic acid)
@@ -1039,6 +1046,13 @@ NucleicAcidProcessing:
 SequencingRun:
     discriminator: AIRR
     type: object
+    required:
+        - sequencing_run_id
+        - total_reads_passing_qc_filter
+        - sequencing_platform
+        - sequencing_facility
+        - sequencing_run_date
+        - sequencing_kit
     properties:
         sequencing_run_id:
             type: string
@@ -1046,7 +1060,6 @@ SequencingRun:
             example: 160101_M01234_0201_000000000-D2T7V
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (sequencing)
@@ -1057,7 +1070,6 @@ SequencingRun:
             example: 10365118
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (sequencing)
@@ -1068,7 +1080,6 @@ SequencingRun:
             example: Alumina LoSeq 1000
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (sequencing)
@@ -1079,7 +1090,6 @@ SequencingRun:
             example: Seqs-R-Us, Vancouver, BC, Canada
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (sequencing)
@@ -1091,7 +1101,6 @@ SequencingRun:
             example: 2016-12-16
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (sequencing)
@@ -1102,7 +1111,6 @@ SequencingRun:
             example: "FullSeq 600, Alumina, #M123456C0, 789G1HK"
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 3
                 subset: process (sequencing)
@@ -1115,6 +1123,14 @@ SequencingRun:
 RawSequenceData:
     discriminator: AIRR
     type: object
+    required:
+        - file_type
+        - filename
+        - read_direction
+        - read_length
+        - paired_filename
+        - paired_read_direction
+        - paired_read_length
     properties:
         file_type:
             type: string
@@ -1124,7 +1140,6 @@ RawSequenceData:
                 - fastq
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 4
                 subset: data (raw reads)
@@ -1136,7 +1151,6 @@ RawSequenceData:
             example: MS10R-NMonson-C7JR9_S1_R1_001.fastq
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 4
                 subset: data (raw reads)
@@ -1151,7 +1165,6 @@ RawSequenceData:
                 - mixed
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 4
                 subset: data (raw reads)
@@ -1163,7 +1176,6 @@ RawSequenceData:
             example: 300
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 4
                 subset: process (sequencing)
@@ -1174,7 +1186,6 @@ RawSequenceData:
             example: MS10R-NMonson-C7JR9_S1_R2_001.fastq
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 4
                 subset: data (raw reads)
@@ -1189,7 +1200,6 @@ RawSequenceData:
                 - mixed
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 4
                 subset: data (raw reads)
@@ -1201,7 +1211,6 @@ RawSequenceData:
             example: 300
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 4
                 subset: process (sequencing)
@@ -1214,12 +1223,20 @@ RawSequenceData:
 DataProcessing:
     discriminator: AIRR
     type: object
+    required:
+        - data_processing_id
+        - software_versions
+        - paired_reads_assembly
+        - quality_thresholds
+        - primer_match_cutoffs
+        - collapsing_method
+        - data_processing_protocols
+        - germline_database
     properties:
         data_processing_id:
             type: string
             description: Identifier for the data processing object.
             x-airr:
-                required: true
                 nullable: true
         primary_annotation:
             type: boolean
@@ -1234,7 +1251,6 @@ DataProcessing:
             example: IgBLAST 1.6
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 5
                 subset: process (computational)
@@ -1245,7 +1261,6 @@ DataProcessing:
             example: PandaSeq (minimal overlap 50, threshold 0.8)
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 5
                 subset: process (computational)
@@ -1256,7 +1271,6 @@ DataProcessing:
             example: Average Phred score >=20
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 5
                 subset: process (computational)
@@ -1267,7 +1281,6 @@ DataProcessing:
             example: Hamming distance <= 2
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 5
                 subset: process (computational)
@@ -1278,7 +1291,6 @@ DataProcessing:
             example: MUSCLE 3.8.31
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 5
                 subset: process (computational)
@@ -1289,7 +1301,6 @@ DataProcessing:
             example: Data was processed using [...]
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 5
                 subset: process (computational)
@@ -1313,7 +1324,6 @@ DataProcessing:
             example: ENSEMBL, Homo sapiens build 90, 2017-10-01
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 5
                 subset: data (processed sequence)
@@ -1325,6 +1335,8 @@ DataProcessing:
 SampleProcessing:
     discriminator: AIRR
     type: object
+    required:
+        - sample_processing_id
     properties:
         sample_processing_id:
             type: string
@@ -1333,7 +1345,6 @@ SampleProcessing:
                 This field can be used to uniquely identify the combination of sample, cell processing,
                 nucleic acid processing and sequencing run information for the repertoire.
             x-airr:
-                required: true
                 nullable: true
 
 
@@ -1345,6 +1356,22 @@ SampleProcessing:
 Repertoire:
     discriminator: AIRR
     type: object
+    required:
+        - repertoire_id
+        - locus
+        - v_call
+        - d_call
+        - j_call
+        - c_call
+        - junction
+        - junction_aa
+        - duplicate_count
+        - cell_id
+        - clone_id
+        - rearrangement_id
+        - repertoire_id
+        - sample_processing_id
+        - data_processing_id
     properties:
         repertoire_id:
             type: string
@@ -1354,7 +1381,6 @@ Repertoire:
                 other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for
                 referencing the specific Repertoire for that Rearrangement.
             x-airr:
-                required: true
                 nullable: true
         repertoire_name:
             type: string
@@ -1564,7 +1590,6 @@ Rearrangement:
                 nomenclature.
             example: IGH
             x-airr:
-                required: true
                 nullable: true
                 adc-api-optional: false
                 name: Gene locus
@@ -1577,7 +1602,6 @@ Rearrangement:
             example: IGHV4-59*01
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 6
                 subset: data (processed sequence)
@@ -1590,7 +1614,6 @@ Rearrangement:
             example: IGHD3-10*01
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 6
                 subset: data (processed sequence)
@@ -1611,7 +1634,6 @@ Rearrangement:
             example: IGHJ4*02
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 6
                 subset: data (processed sequence)
@@ -1624,7 +1646,6 @@ Rearrangement:
             example: IGHG1*01
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 set: 6
                 subset: data (processed sequence)
@@ -1665,7 +1686,6 @@ Rearrangement:
             example: TGTGCAAGAGCGGGAGTTTACGACGGATATACTATGGACTACTGG
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 adc-api-optional: true
                 set: 6
@@ -1678,7 +1698,6 @@ Rearrangement:
             example: CARAGVYDGYTMDYW
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 adc-api-optional: false
                 set: 6
@@ -2370,7 +2389,6 @@ Rearrangement:
             example: 123
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 adc-api-optional: true
                 set: 6
@@ -2383,7 +2401,6 @@ Rearrangement:
             example: W06_046_091
             x-airr:
                 miairr: important
-                required: true
                 nullable: true
                 adc-api-optional: false
                 set: 6
@@ -2393,7 +2410,6 @@ Rearrangement:
             type: string
             description: Clonal cluster assignment for the query sequence.
             x-airr:
-                required: true
                 nullable: true
                 adc-api-optional: false
         rearrangement_id:
@@ -2402,14 +2418,12 @@ Rearrangement:
                 Identifier for the Rearrangement object. May be identical to sequence_id,
                 but will usually be a universally unique record locator for database applications.
             x-airr:
-                required: true
                 nullable: true
                 adc-api-optional: false
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
             x-airr:
-                required: true
                 nullable: true
                 adc-api-optional: false
         sample_processing_id:
@@ -2421,7 +2435,6 @@ Rearrangement:
                 this field may be empty or missing if the sample cannot be differentiated or
                 the relationship is not maintained by the data processing.
             x-airr:
-                required: true
                 nullable: true
                 adc-api-optional: false
         data_processing_id:
@@ -2430,7 +2443,6 @@ Rearrangement:
                 Identifier to the data processing object in the repertoire metadata
                 for this rearrangement. If this field is empty than the primary data processing object is assumed.
             x-airr:
-                required: true
                 nullable: true
                 adc-api-optional: false
         germline_database:
@@ -2447,25 +2459,24 @@ Clone:
     type: object
     required:
         - clone_id
+        - repertoire_id
+        - data_processing_id
         - germline_alignment
     properties:
         clone_id:
             type: string
             description: Identifier for the clone.
             x-airr:
-                required: true
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
             x-airr:
-                required: true
                 nullable: true
                 adc-api-optional: false
         data_processing_id:
             type: string
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
-                required: true
                 nullable: true
                 adc-api-optional: false
         sequences:
@@ -2523,7 +2534,6 @@ Clone:
                 as the sequence_alignment field of nodes (typically the V(D)J region) and including the
                 same set of corrections and spacers (if any).
             x-airr:
-                required: true
         germline_alignment_aa:
             type: string
             description: >
@@ -2595,17 +2605,14 @@ Tree:
             type: string
             description: Identifier for the tree.
             x-airr:
-                required: true
         clone_id:
             type: string
             description: Identifier for the clone.
             x-airr:
-                required: true
         newick:
             type: string
             description: Newick string of the tree edges.
             x-airr:
-                required: true
         nodes:
             type: object
             description: Dictionary of nodes in the tree, keyed by sequence_id string
@@ -2626,7 +2633,6 @@ Node:
                 Identifier for this node that matches the id in the newick string and, where possible,
                 the sequence_id in the source repertoire.
             x-airr:
-                required: true
         rearrangement_id:
             type: string
             description: >
