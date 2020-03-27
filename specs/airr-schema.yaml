@@ -1527,7 +1527,6 @@ Rearrangement:
                 header or a substring thereof, but may also be a custom identifier defined by the tool in
                 cases where query sequences have been combined in some fashion prior to alignment.
             x-airr:
-                adc-api-optional: true
         sequence:
             type: string
             description: >
@@ -1535,13 +1534,11 @@ Rearrangement:
                 reverse complemented if necessary. In some cases, this field may contain consensus sequences or
                 other types of collapsed input sequences if these steps are performed prior to alignment.
             x-airr:
-                adc-api-optional: true
         sequence_aa:
             type: string
             description: >
                 Amino acid translation of the query nucleotide sequence.
             x-airr:
-                adc-api-optional: true
         rev_comp:
             type: boolean
             description: >
@@ -1556,12 +1553,10 @@ Rearrangement:
             type: boolean
             description: True if the V and J gene alignments are in-frame.
             x-airr:
-                adc-api-optional: true
         stop_codon:
             type: boolean
             description: True if the aligned sequence contains a stop codon.
             x-airr:
-                adc-api-optional: true
         complete_vdj:
             type: boolean
             description: >
@@ -1572,7 +1567,6 @@ Rearrangement:
                 This does not require an absence of deletions within the internal
                 FWR and CDR regions of the alignment.
             x-airr:
-                adc-api-optional: true
         locus:
             type: string
             enum:
@@ -1591,7 +1585,7 @@ Rearrangement:
             example: IGH
             x-airr:
                 nullable: true
-                adc-api-optional: false
+                adc-query-support: true
                 name: Gene locus
                 format: controlled vocabulary
         v_call:
@@ -1625,7 +1619,6 @@ Rearrangement:
                 gene/allele nomenclature should be followed (e.g., IGHD3-10*01 if using IMGT/GENE-DB).
             example: IGHD3-10*01
             x-airr:
-                adc-api-optional: true
         j_call:
             type: string
             description: >
@@ -1657,13 +1650,11 @@ Rearrangement:
                 such as IMGT-gaps. Typically, this will include only the V(D)J region, but that is not
                 a requirement.
             x-airr:
-                adc-api-optional: true
         sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the aligned query sequence.
             x-airr:
-                adc-api-optional: true
         germline_alignment:
             type: string
             description: >
@@ -1671,13 +1662,11 @@ Rearrangement:
                 as the sequence_alignment field (typically the V(D)J region) and including the same set
                 of corrections and spacers (if any).
             x-airr:
-                adc-api-optional: true
         germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the assembled germline sequence.
             x-airr:
-                adc-api-optional: true
         junction:
             type: string
             description: >
@@ -1687,7 +1676,6 @@ Rearrangement:
             x-airr:
                 miairr: important
                 nullable: true
-                adc-api-optional: true
                 set: 6
                 subset: data (processed sequence)
                 name: IMGT-JUNCTION nucleotide sequence
@@ -1699,7 +1687,7 @@ Rearrangement:
             x-airr:
                 miairr: important
                 nullable: true
-                adc-api-optional: false
+                adc-query-support: true
                 set: 6
                 subset: data (processed sequence)
                 name: IMGT-JUNCTION amino acid sequence
@@ -1709,524 +1697,436 @@ Rearrangement:
                 Nucleotide sequence of the combined N/P region between the V gene and
                 first D gene alignment or between the V gene and J gene alignments.
             x-airr:
-                adc-api-optional: true
         np1_aa:
             type: string
             description: >
                 Amino acid translation of the np1 field.
             x-airr:
-                adc-api-optional: true
         np2:
             type: string
             description: >
                 Nucleotide sequence of the combined N/P region between either the first D gene and J gene
                 alignments or the first D gene and second D gene alignments.
             x-airr:
-                adc-api-optional: true
         np2_aa:
             type: string
             description: >
                 Amino acid translation of the np2 field.
             x-airr:
-                adc-api-optional: true
         np3:
             type: string
             description: >
                 Nucleotide sequence of the combined N/P region between the second D gene
                 and J gene alignments.
             x-airr:
-                adc-api-optional: true
         np3_aa:
             type: string
             description: >
                 Amino acid translation of the np3 field.
             x-airr:
-                adc-api-optional: true
         cdr1:
             type: string
             description: >
                 Nucleotide sequence of the aligned CDR1 region.
             x-airr:
-                adc-api-optional: true
         cdr1_aa:
             type: string
             description: >
                 Amino acid translation of the cdr1 field.
             x-airr:
-                adc-api-optional: true
         cdr2:
             type: string
             description: >
                 Nucleotide sequence of the aligned CDR2 region.
             x-airr:
-                adc-api-optional: true
         cdr2_aa:
             type: string
             description: >
                 Amino acid translation of the cdr2 field.
             x-airr:
-                adc-api-optional: true
         cdr3:
             type: string
             description: >
                 Nucleotide sequence of the aligned CDR3 region.
             x-airr:
-                adc-api-optional: true
         cdr3_aa:
             type: string
             description: >
                 Amino acid translation of the cdr3 field.
             x-airr:
-                adc-api-optional: true
         fwr1:
             type: string
             description: >
                 Nucleotide sequence of the aligned FWR1 region.
             x-airr:
-                adc-api-optional: true
         fwr1_aa:
             type: string
             description: >
                 Amino acid translation of the fwr1 field.
             x-airr:
-                adc-api-optional: true
         fwr2:
             type: string
             description: >
                 Nucleotide sequence of the aligned FWR2 region.
             x-airr:
-                adc-api-optional: true
         fwr2_aa:
             type: string
             description: >
                 Amino acid translation of the fwr2 field.
             x-airr:
-                adc-api-optional: true
         fwr3:
             type: string
             description: >
                 Nucleotide sequence of the aligned FWR3 region.
             x-airr:
-                adc-api-optional: true
         fwr3_aa:
             type: string
             description: >
                 Amino acid translation of the fwr3 field.
             x-airr:
-                adc-api-optional: true
         fwr4:
             type: string
             description: >
                 Nucleotide sequence of the aligned FWR4 region.
             x-airr:
-                adc-api-optional: true
         fwr4_aa:
             type: string
             description: >
                 Amino acid translation of the fwr4 field.
             x-airr:
-                adc-api-optional: true
         v_score:
             type: number
             description: Alignment score for the V gene.
             x-airr:
-                adc-api-optional: true
         v_identity:
             type: number
             description: Fractional identity for the V gene alignment.
             x-airr:
-                adc-api-optional: true
         v_support:
             type: number
             description: >
                 V gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the V gene assignment as defined by the alignment tool.
             x-airr:
-                adc-api-optional: true
         v_cigar:
             type: string
             description: CIGAR string for the V gene alignment.
             x-airr:
-                adc-api-optional: true
         d_score:
             type: number
             description: Alignment score for the first or only D gene alignment.
             x-airr:
-                adc-api-optional: true
         d_identity:
             type: number
             description: Fractional identity for the first or only D gene alignment.
             x-airr:
-                adc-api-optional: true
         d_support:
             type: number
             description: >
                 D gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the first or only D gene as defined by the alignment tool.
             x-airr:
-                adc-api-optional: true
         d_cigar:
             type: string
             description: CIGAR string for the first or only D gene alignment.
             x-airr:
-                adc-api-optional: true
         d2_score:
             type: number
             description: Alignment score for the second D gene alignment.
             x-airr:
-                adc-api-optional: true
         d2_identity:
             type: number
             description: Fractional identity for the second D gene alignment.
             x-airr:
-                adc-api-optional: true
         d2_support:
             type: number
             description: >
                 D gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the second D gene as defined by the alignment tool.
             x-airr:
-                adc-api-optional: true
         d2_cigar:
             type: string
             description: CIGAR string for the second D gene alignment.
             x-airr:
-                adc-api-optional: true
         j_score:
             type: number
             description: Alignment score for the J gene alignment.
             x-airr:
-                adc-api-optional: true
         j_identity:
             type: number
             description: Fractional identity for the J gene alignment.
             x-airr:
-                adc-api-optional: true
         j_support:
             type: number
             description: >
                 J gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the J gene assignment as defined by the alignment tool.
             x-airr:
-                adc-api-optional: true
         j_cigar:
             type: string
             description: CIGAR string for the J gene alignment.
             x-airr:
-                adc-api-optional: true
         c_score:
             type: number
             description: Alignment score for the C gene alignment.
             x-airr:
-                adc-api-optional: true
         c_identity:
             type: number
             description: Fractional identity for the C gene alignment.
             x-airr:
-                adc-api-optional: true
         c_support:
             type: number
             description: >
                 C gene alignment E-value, p-value, likelihood, probability or other similar measure of
                 support for the C gene assignment as defined by the alignment tool.
             x-airr:
-                adc-api-optional: true
         c_cigar:
             type: string
             description: CIGAR string for the C gene alignment.
             x-airr:
-                adc-api-optional: true
         v_sequence_start:
             type: integer
             description: >
                 Start position of the V gene in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         v_sequence_end:
             type: integer
             description: >
                 End position of the V gene in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         v_germline_start:
             type: integer
             description: >
                 Alignment start position in the V gene reference sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         v_germline_end:
             type: integer
             description: >
                 Alignment end position in the V gene reference sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         v_alignment_start:
             type: integer
             description: >
                 Start position of the V gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         v_alignment_end:
             type: integer
             description: >
                 End position of the V gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         d_sequence_start:
             type: integer
             description: >
                 Start position of the first or only D gene in the query sequence.
                 (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         d_sequence_end:
             type: integer
             description: >
                 End position of the first or only D gene in the query sequence.
                 (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         d_germline_start:
             type: integer
             description: >
                 Alignment start position in the D gene reference sequence for the first or only
                 D gene (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         d_germline_end:
             type: integer
             description: >
                 Alignment end position in the D gene reference sequence for the first or only
                 D gene (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         d_alignment_start:
             type: integer
             description: >
                 Start position of the first or only D gene in both the sequence_alignment
                 and germline_alignment fields (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         d_alignment_end:
             type: integer
             description: >
                 End position of the first or only D gene in both the sequence_alignment
                 and germline_alignment fields (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         d2_sequence_start:
             type: integer
             description: >
                 Start position of the second D gene in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         d2_sequence_end:
             type: integer
             description: >
                 End position of the second D gene in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         d2_germline_start:
             type: integer
             description: >
                 Alignment start position in the second D gene reference sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         d2_germline_end:
             type: integer
             description: >
                 Alignment end position in the second D gene reference sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         d2_alignment_start:
             type: integer
             description: >
                 Start position of the second D gene alignment in both the sequence_alignment and
                 germline_alignment fields (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         d2_alignment_end:
             type: integer
             description: >
                 End position of the second D gene alignment in both the sequence_alignment and
                 germline_alignment fields (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         j_sequence_start:
             type: integer
             description: >
                 Start position of the J gene in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         j_sequence_end:
             type: integer
             description: >
                 End position of the J gene in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         j_germline_start:
             type: integer
             description: >
                 Alignment start position in the J gene reference sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         j_germline_end:
             type: integer
             description: >
                 Alignment end position in the J gene reference sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         j_alignment_start:
             type: integer
             description: >
                 Start position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         j_alignment_end:
             type: integer
             description: >
                 End position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         cdr1_start:
             type: integer
             description: CDR1 start position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         cdr1_end:
             type: integer
             description: CDR1 end position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         cdr2_start:
             type: integer
             description: CDR2 start position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         cdr2_end:
             type: integer
             description: CDR2 end position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         cdr3_start:
             type: integer
             description: CDR3 start position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         cdr3_end:
             type: integer
             description: CDR3 end position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         fwr1_start:
             type: integer
             description: FWR1 start position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         fwr1_end:
             type: integer
             description: FWR1 end position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         fwr2_start:
             type: integer
             description: FWR2 start position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         fwr2_end:
             type: integer
             description: FWR2 end position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         fwr3_start:
             type: integer
             description: FWR3 start position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         fwr3_end:
             type: integer
             description: FWR3 end position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         fwr4_start:
             type: integer
             description: FWR4 start position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         fwr4_end:
             type: integer
             description: FWR4 end position in the query sequence (1-based closed interval).
             x-airr:
-                adc-api-optional: true
         v_sequence_alignment:
             type: string
             description: >
                 Aligned portion of query sequence assigned to the V gene, including any
                 indel corrections or numbering spacers.
             x-airr:
-                adc-api-optional: true
         v_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the v_sequence_alignment field.
             x-airr:
-                adc-api-optional: true
         d_sequence_alignment:
             type: string
             description: >
                 Aligned portion of query sequence assigned to the first or only D gene, including any
                 indel corrections or numbering spacers.
             x-airr:
-                adc-api-optional: true
         d_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the d_sequence_alignment field.
             x-airr:
-                adc-api-optional: true
         d2_sequence_alignment:
             type: string
             description: >
                 Aligned portion of query sequence assigned to the second D gene, including any
                 indel corrections or numbering spacers.
             x-airr:
-                adc-api-optional: true
         d2_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the d2_sequence_alignment field.
             x-airr:
-                adc-api-optional: true
         j_sequence_alignment:
             type: string
             description: >
                 Aligned portion of query sequence assigned to the J gene, including any
                 indel corrections or numbering spacers.
             x-airr:
-                adc-api-optional: true
         j_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the j_sequence_alignment field.
             x-airr:
-                adc-api-optional: true
         c_sequence_alignment:
             type: string
             description: >
                 Aligned portion of query sequence assigned to the constant region, including
                 any indel corrections or numbering spacers.
             x-airr:
-                adc-api-optional: true
         c_sequence_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the c_sequence_alignment field.
             x-airr:
-                adc-api-optional: true
         v_germline_alignment:
             type: string
             description: >
@@ -2234,13 +2134,11 @@ Rearrangement:
                 as the v_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
             x-airr:
-                adc-api-optional: true
         v_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the v_germline_alignment field.
             x-airr:
-                adc-api-optional: true
         d_germline_alignment:
             type: string
             description: >
@@ -2248,13 +2146,11 @@ Rearrangement:
                 as the d_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
             x-airr:
-                adc-api-optional: true
         d_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the d_germline_alignment field.
             x-airr:
-                adc-api-optional: true
         d2_germline_alignment:
             type: string
             description: >
@@ -2262,13 +2158,11 @@ Rearrangement:
                 as the d2_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
             x-airr:
-                adc-api-optional: true
         d2_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the d2_germline_alignment field.
             x-airr:
-                adc-api-optional: true
         j_germline_alignment:
             type: string
             description: >
@@ -2276,13 +2170,11 @@ Rearrangement:
                 as the j_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
             x-airr:
-                adc-api-optional: true
         j_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the j_germline_alignment field.
             x-airr:
-                adc-api-optional: true
         c_germline_alignment:
             type: string
             description: >
@@ -2290,88 +2182,73 @@ Rearrangement:
                 as the c_sequence_alignment field and including the same set
                 of corrections and spacers (if any).
             x-airr:
-                adc-api-optional: true
         c_germline_alignment_aa:
             type: string
             description: >
                 Amino acid translation of the c_germline_aligment field.
             x-airr:
-                adc-api-optional: true
         junction_length:
             type: integer
             description: Number of nucleotides in the junction sequence.
             x-airr:
-                adc-api-optional: true
         junction_aa_length:
             type: integer
             description: Number of amino acids in the junction sequence.
             x-airr:
-                adc-api-optional: false
+                adc-query-support: true
         np1_length:
             type: integer
             description: >
                 Number of nucleotides between the V gene and first D gene alignments or
                 between the V gene and J gene alignments.
             x-airr:
-                adc-api-optional: true
         np2_length:
             type: integer
             description: >
                 Number of nucleotides between either the first D gene and J gene alignments
                 or the first D gene and second D gene alignments.
             x-airr:
-                adc-api-optional: true
         np3_length:
             type: integer
             description: >
                 Number of nucleotides between the second D gene and J gene alignments.
             x-airr:
-                adc-api-optional: true
         n1_length:
             type: integer
             description: Number of untemplated nucleotides 5' of the first or only D gene alignment.
             x-airr:
-                adc-api-optional: true
         n2_length:
             type: integer
             description: Number of untemplated nucleotides 3' of the first or only D gene alignment.
             x-airr:
-                adc-api-optional: true
         n3_length:
             type: integer
             description: Number of untemplated nucleotides 3' of the second D gene alignment.
             x-airr:
-                adc-api-optional: true
         p3v_length:
             type: integer
             description: Number of palindromic nucleotides 3' of the V gene alignment.
             x-airr:
-                adc-api-optional: true
         p5d_length:
             type: integer
             description: Number of palindromic nucleotides 5' of the first or only D gene alignment.
             x-airr:
-                adc-api-optional: true
         p3d_length:
             type: integer
             description: Number of palindromic nucleotides 3' of the first or only D gene alignment.
             x-airr:
-                adc-api-optional: true
         p5d2_length:
             type: integer
             description: Number of palindromic nucleotides 5' of the second D gene alignment.
             x-airr:
-                adc-api-optional: true
         p3d2_length:
             type: integer
             description: Number of palindromic nucleotides 3' of the second D gene alignment.
             x-airr:
-                adc-api-optional: true
         p5j_length:
             type: integer
             description: Number of palindromic nucleotides 5' of the J gene alignment.
             x-airr:
-                adc-api-optional: true
         consensus_count:
             type: integer
             description: >
@@ -2379,7 +2256,6 @@ Rearrangement:
                 For example, the sum of the number of reads for all UMIs that contribute to
                 the query sequence.
             x-airr:
-                adc-api-optional: true
         duplicate_count:
             type: integer
             description: >
@@ -2390,7 +2266,6 @@ Rearrangement:
             x-airr:
                 miairr: important
                 nullable: true
-                adc-api-optional: true
                 set: 6
                 subset: data (processed sequence)
                 name: Read count
@@ -2402,7 +2277,7 @@ Rearrangement:
             x-airr:
                 miairr: important
                 nullable: true
-                adc-api-optional: false
+                adc-query-support: true
                 set: 6
                 subset: data (processed sequence)
                 name: Cell index
@@ -2411,7 +2286,7 @@ Rearrangement:
             description: Clonal cluster assignment for the query sequence.
             x-airr:
                 nullable: true
-                adc-api-optional: false
+                adc-query-support: true
         rearrangement_id:
             type: string
             description: >
@@ -2419,13 +2294,13 @@ Rearrangement:
                 but will usually be a universally unique record locator for database applications.
             x-airr:
                 nullable: true
-                adc-api-optional: false
+                adc-query-support: true
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
             x-airr:
                 nullable: true
-                adc-api-optional: false
+                adc-query-support: true
         sample_processing_id:
             type: string
             description: >
@@ -2436,7 +2311,7 @@ Rearrangement:
                 the relationship is not maintained by the data processing.
             x-airr:
                 nullable: true
-                adc-api-optional: false
+                adc-query-support: true
         data_processing_id:
             type: string
             description: >
@@ -2444,7 +2319,7 @@ Rearrangement:
                 for this rearrangement. If this field is empty than the primary data processing object is assumed.
             x-airr:
                 nullable: true
-                adc-api-optional: false
+                adc-query-support: true
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
@@ -2472,13 +2347,13 @@ Clone:
             description: Identifier to the associated repertoire in study metadata.
             x-airr:
                 nullable: true
-                adc-api-optional: false
+                adc-query-support: true
         data_processing_id:
             type: string
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
                 nullable: true
-                adc-api-optional: false
+                adc-query-support: true
         sequences:
             type: array
             items:
