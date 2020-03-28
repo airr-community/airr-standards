@@ -45,8 +45,3 @@ following annotation SHOULD/MUST be used:
    term MUST be used. VHH (i.e. camelid) libraries SHOULD annotate
    ``none`` as there is only a single rearrangement envolved.
 
-References
-==========
-
-.. [RFC2119] Key words for use in RFCs to Indicate Requirement Levels
-   <https://tools.ietf.org/html/rfc2119>
