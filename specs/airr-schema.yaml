@@ -810,8 +810,8 @@ CellProcessing:
             description: TRUE if cells were cryo-preserved between isolation and further processing
             example: TRUE
             x-airr:
-                miairr: essential
-                nullable: false
+                miairr: important
+                nullable: true
                 set: 3
                 subset: process (cell)
                 name: Cell storage
