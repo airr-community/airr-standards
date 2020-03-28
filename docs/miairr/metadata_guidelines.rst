@@ -28,7 +28,7 @@ following annotation SHOULD/MUST be used:
 -  In general, ``Subject`` should be interpreted as the initial library
    that undergoes a mutation/selection procedure.
 -  ``synthetic``: MUST be set to ``true``
--  ``organism``:  It is assumed that every synthetic library is derived
+-  ``species``:  It is assumed that every synthetic library is derived
    from V and J genes that exist in some vertebrate species. This field
    SHOULD encode this species. Importantly, it MUST NOT encode the
    phage vector, the bacterial host or the comparable biological
