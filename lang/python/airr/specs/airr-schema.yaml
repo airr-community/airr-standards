@@ -1646,9 +1646,11 @@ Rearrangement:
         sequence_id:
             type: string
             description: >
-                Unique query sequence identifier within the file. Most often this will be the input sequence
+                Unique query sequence identifier for the Rearrangment. Most often this will be the input sequence
                 header or a substring thereof, but may also be a custom identifier defined by the tool in
-                cases where query sequences have been combined in some fashion prior to alignment.
+                cases where query sequences have been combined in some fashion prior to alignment. When
+                downloaded from an AIRR Data Commons repository, this will usually be a universally unique
+                record locator for linking with other objects in the AIRR Data Model.
             x-airr:
                 adc-query-support: true
                 identifier: true
@@ -2300,14 +2302,6 @@ Rearrangement:
                 nullable: true
                 adc-query-support: true
                 identifier: true
-        rearrangement_id:
-            type: string
-            description: >
-                Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a universally unique record locator for database applications.
-            x-airr:
-                nullable: true
-                adc-query-support: true
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
