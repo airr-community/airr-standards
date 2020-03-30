@@ -182,10 +182,12 @@ Repertoire Fields
       - Description
     {%- for field in Repertoire_schema %}
     * - ``{{ field.name }}``
-      - ``{{ field.type }}``
+      - {{ field.type }}
       - ``{{ field.miairr }}``
       - {{ field.description | trim }}
     {%- endfor %}
+
+.. _StudyFields:
 
 Study Fields
 ------------------------------
@@ -200,10 +202,12 @@ Study Fields
       - Description
     {%- for field in Study_schema %}
     * - ``{{ field.name }}``
-      - ``{{ field.type }}``
+      - {{ field.type }}
       - ``{{ field.miairr }}``
       - {{ field.description | trim }}
     {%- endfor %}
+
+.. _SubjectFields:
 
 Subject Fields
 ------------------------------
@@ -218,10 +222,12 @@ Subject Fields
       - Description
     {%- for field in Subject_schema %}
     * - ``{{ field.name }}``
-      - ``{{ field.type }}``
+      - {{ field.type }}
       - ``{{ field.miairr }}``
       - {{ field.description | trim }}
     {%- endfor %}
+
+.. _DiagnosisFields:
 
 Diagnosis Fields
 ------------------------------
@@ -236,10 +242,12 @@ Diagnosis Fields
       - Description
     {%- for field in Diagnosis_schema %}
     * - ``{{ field.name }}``
-      - ``{{ field.type }}``
+      - {{ field.type }}
       - ``{{ field.miairr }}``
       - {{ field.description | trim }}
     {%- endfor %}
+
+.. _SampleFields:
 
 Sample Fields
 ------------------------------
@@ -254,10 +262,12 @@ Sample Fields
       - Description
     {%- for field in Sample_schema %}
     * - ``{{ field.name }}``
-      - ``{{ field.type }}``
+      - {{ field.type }}
       - ``{{ field.miairr }}``
       - {{ field.description | trim }}
     {%- endfor %}
+
+.. _CellProcessingFields:
 
 Tissue and Cell Processing Fields
 ---------------------------------
@@ -272,10 +282,12 @@ Tissue and Cell Processing Fields
       - Description
     {%- for field in CellProcessing_schema %}
     * - ``{{ field.name }}``
-      - ``{{ field.type }}``
+      - {{ field.type }}
       - ``{{ field.miairr }}``
       - {{ field.description | trim }}
     {%- endfor %}
+
+.. _NucleicAcidProcessingFields:
 
 Nucleic Acid Processing Fields
 ---------------------------------
@@ -290,10 +302,12 @@ Nucleic Acid Processing Fields
       - Description
     {%- for field in NucleicAcidProcessing_schema %}
     * - ``{{ field.name }}``
-      - ``{{ field.type }}``
+      - {{ field.type }}
       - ``{{ field.miairr }}``
       - {{ field.description | trim }}
     {%- endfor %}
+
+.. _PCRTargetFields:
 
 PCR Target Locus Fields
 ---------------------------------
@@ -308,10 +322,12 @@ PCR Target Locus Fields
       - Description
     {%- for field in PCRTarget_schema %}
     * - ``{{ field.name }}``
-      - ``{{ field.type }}``
+      - {{ field.type }}
       - ``{{ field.miairr }}``
       - {{ field.description | trim }}
     {%- endfor %}
+
+.. _RawSequenceDataFields:
 
 Raw Sequence Data Fields
 ---------------------------------
@@ -326,10 +342,12 @@ Raw Sequence Data Fields
       - Description
     {%- for field in RawSequenceData_schema %}
     * - ``{{ field.name }}``
-      - ``{{ field.type }}``
+      - {{ field.type }}
       - ``{{ field.miairr }}``
       - {{ field.description | trim }}
     {%- endfor %}
+
+.. _SequencingRunFields:
 
 Sequencing Run Fields
 ---------------------------------
@@ -344,10 +362,12 @@ Sequencing Run Fields
       - Description
     {%- for field in SequencingRun_schema %}
     * - ``{{ field.name }}``
-      - ``{{ field.type }}``
+      - {{ field.type }}
       - ``{{ field.miairr }}``
       - {{ field.description | trim }}
     {%- endfor %}
+
+.. _DataProcessingFields:
 
 Data Processing Fields
 ---------------------------------
@@ -362,14 +382,8 @@ Data Processing Fields
       - Description
     {%- for field in DataProcessing_schema %}
     * - ``{{ field.name }}``
-      - ``{{ field.type }}``
+      - {{ field.type }}
       - ``{{ field.miairr }}``
       - {{ field.description | trim }}
     {%- endfor %}
 
-References
------------------------------
-
-The metadata API defines the set of fields in the metadata. INCLUDE LINK.
-
-An example metadata file is included in the repository as ``florian.airr.yaml``.

@@ -38,20 +38,6 @@ Topics
 
    MiAIRR Data Elements <data_elements>
    National Center for Biotechnology Information (NCBI) Submission <miairr_ncbi_overview>
+   Requirement levels of fields <../datarep/airr_schema_requirement_levels>
+   Metadata annotation guidelines <metadata_guidelines>
 
-References
-==========
-
-.. [Rubelt_2017] Rubelt F *et al*. AIRR Community Recommendations for
-   Sharing Immune Repertoire Sequencing Data. Nat Immunol 18:1274
-   (2017) `DOI: 10.1038/ni.3873`_
-.. _`DOI: 10.1038/ni.3873`: https://doi.org/10.1038/ni.3873
-
-.. [Breden_2017] Breden F *et al*. Reproducibility and Reuse of
-   Adaptive Immune Receptor Repertoire Data. Front Immunol 8:1418
-   (2017) `DOI: 10.3389/fimmu.2017.01418`_
-.. _`DOI: 10.3389/fimmu.2017.01418`: https://doi.org/10.3389/fimmu.2017.01418
-
-.. [Zenodo_1185414] Release archive of the AIRR Standards repository.
-   (2015-2018) `DOI: 10.5281/zenodo.1185414`_
-.. _`DOI: 10.5281/zenodo.1185414`: https://doi.org/10.5281/zenodo.1185414

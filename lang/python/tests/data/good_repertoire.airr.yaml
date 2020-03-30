@@ -24,7 +24,7 @@ Repertoire:
     subject:
       subject_id: TW01A
       synthetic: false
-      organism:
+      species:
         id: "9606"
         value: Homo sapiens
       sex: F
@@ -44,7 +44,9 @@ Repertoire:
     sample:
       - sample_id: TW01A_B_naive
         sample_type: "peripheral venous puncture"
-        tissue: "peripheral blood"
+        tissue:
+          id: "UBERON_0000178"
+          value: "blood"
         tissue_processing: "Ficoll gradient"
         cell_subset:
           id: ""
@@ -126,7 +128,7 @@ Repertoire:
     subject:
       subject_id: TW01A
       synthetic: false
-      organism:
+      species:
         id: "9606"
         value: Homo sapiens
       sex: F
@@ -146,7 +148,9 @@ Repertoire:
     sample:
       - sample_id: TW01A_B_memory
         sample_type: "peripheral venous puncture"
-        tissue: "peripheral blood"
+        tissue:
+          id: "UBERON_0000178"
+          value: "blood"
         tissue_processing: "Ficoll gradient"
         cell_subset:
           id: "CL_0000787"
@@ -225,7 +229,7 @@ Repertoire:
     subject:
       subject_id: TW01A
       synthetic: false
-      organism:
+      species:
         id: "9606"
         value: Homo sapiens
       sex: F
@@ -245,7 +249,9 @@ Repertoire:
     sample:
       - sample_id: TW01A_T_naive_CD4
         sample_type: "peripheral venous puncture"
-        tissue: "peripheral blood"
+        tissue:
+          id: "UBERON_0000178"
+          value: "blood"
         tissue_processing: "Ficoll gradient"
         cell_subset:
           id: "CL_0000895"

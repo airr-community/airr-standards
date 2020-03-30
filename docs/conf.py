@@ -64,7 +64,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'AIRR Standards'
-copyright = '2017-2019, AIRR Community'
+copyright = '2017-2020, AIRR Community'
 author = 'AIRR Community'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -276,12 +276,23 @@ for spec in tables:
     for k, v in properties.items():
         row = {}
         row['name'] = k
-        if v.get('type'):
-            row['type'] = v['type']
+        if v.get('type') == 'array':
+            if v['items'].get('$ref') is not None:
+                sn = v['items'].get('$ref').split('/')[-1]
+                row['type'] = '``array`` of :ref:`' + sn + ' <' + sn + 'Fields>`'
+            elif v['items'].get('type') is not None:
+                row['type'] = '``array`` of ``' + v['items']['type'] + '``'
+            else:
+                row['type'] = '``' + v['type'] + '``'
+        elif v.get('type'):
+            row['type'] = '``' + v['type'] + '``'
         elif v.get('$ref') == '#/Ontology':
-            row['type'] = 'Ontology object'
+            row['type'] = ':ref:`Ontology <OntoVoc>`'
+        elif v.get('$ref') is not None:
+            sn = v.get('$ref').split('/')[-1]
+            row['type'] = ':ref:`' + sn + ' <' + sn + 'Fields>`'
         else:
-            row['type'] = 'unknown'
+            row['type'] = '``unknown``'
         if v.get('x-airr') and v.get('x-airr').get('miairr'):
             row['miairr'] = 'required'
         else:
@@ -333,15 +344,23 @@ for key, v in airr_schema.items():
 
                     if "description" in str(property_values):
                         airr_description = airr_properties[airr_property]["description"]
+                    else:
+                        airr_description = ""
 
-                    if "set" in str(property_values):
+                    if "'set'" in str(property_values):
                         airr_set = airr_properties[airr_property]["x-airr"]["set"]
+                    else:
+                        airr_set = ""
 
                     if "subset" in airr_properties[airr_property]["x-airr"]:
                         airr_subset = airr_properties[airr_property]["x-airr"]["subset"]
+                    else:
+                        airr_subset = ""
 
                     if "name" in airr_properties[airr_property]["x-airr"]:
                         airr_name = airr_properties[airr_property]["x-airr"]["name"]
+                    else:
+                        airr_name = ""
 
                     if "format" in airr_properties[airr_property]["x-airr"]:
                         airr_format = airr_properties[airr_property]["x-airr"]["format"].capitalize()
@@ -360,7 +379,10 @@ for key, v in airr_schema.items():
                             airr_field_value_example = "id: " + str(airr_properties[airr_property]["example"]["id"]) + ", value: " + str(airr_properties[airr_property]["example"]["value"])
 
                         elif "controlled vocabulary" in str(property_values):
-                            airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["enum"])
+                            if airr_properties[airr_property].get("enum") is not None:
+                                airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["enum"])
+                            elif airr_properties[airr_property].get("items") is not None:
+                                airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["items"]["enum"])
 
                     elif "format" not in airr_properties[airr_property]["x-airr"]:
 
