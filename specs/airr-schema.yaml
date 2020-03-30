@@ -1338,6 +1338,7 @@ DataProcessing:
             x-airr:
                 nullable: true
                 adc-query-support: true
+                identifier: true
         primary_annotation:
             type: boolean
             default: false
@@ -1348,6 +1349,7 @@ DataProcessing:
             x-airr:
                 nullable: false
                 adc-query-support: true
+                identifier: true
         software_versions:
             type: string
             description: Version number and / or date, include company pipelines
@@ -1460,6 +1462,7 @@ SampleProcessing:
             x-airr:
                 nullable: true
                 adc-query-support: true
+                identifier: true
 
 
 # The composite schema for the repertoire object
@@ -1487,6 +1490,7 @@ Repertoire:
             x-airr:
                 nullable: true
                 adc-query-support: true
+                identifier: true
         repertoire_name:
             type: string
             description: Short generic display name for the repertoire
@@ -1647,6 +1651,7 @@ Rearrangement:
                 cases where query sequences have been combined in some fashion prior to alignment.
             x-airr:
                 adc-query-support: true
+                identifier: true
         sequence:
             type: string
             description: >
@@ -2284,6 +2289,7 @@ Rearrangement:
                 miairr: important
                 nullable: true
                 adc-query-support: true
+                identifier: true
                 set: 6
                 subset: data (processed sequence)
                 name: Cell index
@@ -2293,6 +2299,7 @@ Rearrangement:
             x-airr:
                 nullable: true
                 adc-query-support: true
+                identifier: true
         rearrangement_id:
             type: string
             description: >
@@ -2307,6 +2314,7 @@ Rearrangement:
             x-airr:
                 nullable: true
                 adc-query-support: true
+                identifier: true
         sample_processing_id:
             type: string
             description: >
@@ -2318,6 +2326,7 @@ Rearrangement:
             x-airr:
                 nullable: true
                 adc-query-support: true
+                identifier: true
         data_processing_id:
             type: string
             description: >
@@ -2326,6 +2335,7 @@ Rearrangement:
             x-airr:
                 nullable: true
                 adc-query-support: true
+                identifier: true
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
