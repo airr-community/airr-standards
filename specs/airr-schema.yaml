@@ -801,6 +801,7 @@ CellProcessing:
         - tissue_processing
         - cell_subset
         - cell_phenotype
+        - cell_species
         - single_cell
         - cell_number
         - cells_per_reaction
@@ -1417,6 +1418,7 @@ DataProcessing:
         - primer_match_cutoffs
         - collapsing_method
         - data_processing_protocols
+        - data_processing_files
         - germline_database
     properties:
         data_processing_id:
