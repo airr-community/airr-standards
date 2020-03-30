@@ -10,15 +10,87 @@ Purpose of this Document
 This document describes the RECOMMENDED ways to provide metadata
 annotation for various experimental setups.
 
+
 Clarification of Terms
 ======================
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in [RFC2119]_.
+*  The key words "MUST", "MUST NOT", "REQUIRED", "SHOULD", "SHOULD NOT",
+   "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+   interpreted as described in [RFC2119]_.
 
-Synthetic Libraries
-===================
+
+Individual fields
+=================
+
+library_generation_method
+-------------------------
+
+The ``library_generation_method`` describes how the nucleic acid
+annotated in ``template_class`` that encodes the V(D)J-rearrangement
+it reverse-transcribed, amplified and/or otherwise prepared for further
+processing. Typically this procedure will precede further NGS platform-
+specific steps, however these procedures MAY be combined. The field
+uses a controlled vocabulary, the individual values are described below:
+
+
++--------------------+-------------------------------+----------------------------------+
+| ``template_class`` | ``library_generation_method`` | Methodology                      |
++====================+===============================+==================================+
+| ``DNA``            |  ``PCR``                      | Conventional PCR on genomic DNA  |
+|                    |                               | of a vertebrate host (requires:  |
+|                    |                               | ``synthetic`` == ``false`` )     |
++                    |                               +----------------------------------+
+|                    |                               | Conventional PCR on DNA of a     |
+|                    |                               | synthetic library (requires:     |
+|                    |                               | ``synthetic`` == ``true`` )      |
++--------------------+-------------------------------+----------------------------------+
+| ``RNA``            | ``RT(RHP)+PCR``               | RT-PCR using random hexamer      |
+|                    |                               | primers                          |
+|                    +-------------------------------+----------------------------------+
+|                    | ``RT(oligo-dT)+PCR``          | RT-PCR using oligo-dT primers    |
+|                    +-------------------------------+----------------------------------+
+|                    | ``RT(oligo-dT)+TS+PCR``       | 5'-RACE PCR (i.e. RT is followed |
+|                    |                               | by a template switch (TS) step)  |
+|                    |                               | using oligo-dT primers           |
+|                    +-------------------------------+----------------------------------+
+|                    | ``RT(oligo-dT)+TS(UMI)+PCR``  | 5'-RACE PCR using oligo-dT       |
+|                    |                               | primers and template switch      |
+|                    |                               | primers containing unique        |
+|                    |                               | molecular identifiers (UMI),     |
+|                    |                               | i.e., the 5' end is UMI-coded    |
+|                    +-------------------------------+----------------------------------+
+|                    | ``RT(specific)+PCR``          | RT-PCR using transcript-specific |
+|                    |                               | primers                          |
+|                    +-------------------------------+----------------------------------+
+|                    | ``RT(specific)+TS+PCR``       | 5'-RACE PCR using transcript-    |
+|                    |                               | specific primers                 |
+|                    +-------------------------------+----------------------------------+
+|                    | ``RT(specific)+TS(UMI)+PCR``  | 5'-RACE PCR using transcript-    |
+|                    |                               | specific primers and template    |
+|                    |                               | switch primers containing UMIs   |
+|                    +-------------------------------+----------------------------------+
+|                    | ``RT(specific+UMI)+PCR``      | RT-PCR using transcript-specific |
+|                    |                               | primers containing UMIs (i.e.,   |
+|                    |                               | the 3' end is UMI-coded)         |
+|                    +-------------------------------+----------------------------------+
+|                    | ``RT(specific+UMI)+TS+PCR``   | 5'-RACE PCR using transcript-    |
+|                    |                               | specific primers containing UMIs |
+|                    |                               | (i.e., the 3' end is UMI-coded)  |
+|                    +-------------------------------+----------------------------------+
+|                    | ``RT(specific)+TS``           | RT-based generation of dsDNA     |
+|                    |                               | **without** subsequent PCR. This |
+|                    |                               | is used by RNA-seq kits.         |
++--------------------+-------------------------------+----------------------------------+
+| any                |  ``other``                    | Any methodology not covered      |
+|                    |                               | above                            |
++--------------------+-------------------------------+----------------------------------+
+
+
+Specific Use Cases and Experimental Setups
+==========================================
+
+Synthetic libraries
+-------------------
 
 In synthetic libraries (e.g. phage or yeast display), particles present
 genetically engineered constructs (e.g. scFv fusion receptors) on their
