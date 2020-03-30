@@ -318,7 +318,7 @@ data_elements = [["Set",
                   "Format",
                   "Definition",
                   "Example",
-                  "MiAIRR Requirement Levels"]]
+                  "Requirement"]]
 
 # iterate over first level of yaml items
 for key, v in airr_schema.items():
