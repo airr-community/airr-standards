@@ -356,7 +356,8 @@ Subject:
             x-airr:
                 deprecated: true
                 deprecated-description: Field was renamed to species for clarity.
-                deprecated-replaced-by: [species]
+                deprecated-replaced-by:
+                  - species
         sex:
             type: string
             enum:
@@ -442,7 +443,10 @@ Subject:
             x-airr:
                 deprecated: true
                 deprecated-description: Split into two fields to specify as an age range.
-                deprecated-replaced-by: [age_min, age_max, age_unit]
+                deprecated-replaced-by:
+                  - age_min
+                  - age_max
+                  - age_unit
         ancestry_population:
             type: string
             description: Broad geographic origin of ancestry (continent)
@@ -1620,7 +1624,8 @@ Alignment:
             x-airr:
                 deprecated: true
                 deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
-                deprecated-replaced-by: [DataProcessing:germline_database]
+                deprecated-replaced-by:
+                  - "DataProcessing:germline_database"
 
 
 # The extended rearrangement object
@@ -2330,6 +2335,27 @@ Rearrangement:
                 nullable: true
                 adc-query-support: true
                 identifier: true
+        rearrangement_id:
+            type: string
+            description: >
+                Identifier for the Rearrangement object. May be identical to sequence_id,
+                but will usually be a univerally unique record locator for database applications.
+            x-airr:
+                deprecated: true
+                deprecated-description: Field has been merged with sequence_id to avoid confusion.
+                deprecated-replaced-by:
+                  - sequence_id
+        rearrangement_set_id:
+            type: string
+            description: >
+                Identifier for grouping Rearrangement objects.
+            x-airr:
+                deprecated: true
+                deprecated-description: Field has been replaced by other specialized identifiers.
+                deprecated-replaced-by:
+                  - repertoire_id
+                  - sample_processing_id
+                  - data_processing_id
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
@@ -2337,7 +2363,8 @@ Rearrangement:
             x-airr:
                 deprecated: true
                 deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
-                deprecated-replaced-by: [DataProcessing:germline_database]
+                deprecated-replaced-by:
+                  - "DataProcessing:germline_database"
 
 # A unique inferred clone object that has been constructed within a single data processing
 # for a single repertoire and a subset of its sequences and/or rearrangements.
