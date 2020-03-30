@@ -18,4 +18,4 @@ of sequence data, and processed AIRR sequences.
    :header-rows: 1
    :stub-columns: 0
    :align: left
-   :widths: 5,10,10,10,10,10,30,15
+   :widths: 5,10,10,10,10,10,25,10,10
