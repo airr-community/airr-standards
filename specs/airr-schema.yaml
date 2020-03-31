@@ -2798,10 +2798,9 @@ Cell:
                 Identifier defining the cell of origin for the query sequence.
             example: W06_046_091
             x-airr:
-                miairr: false
-                required: true
-                nullable: false
-                adc-api-optional: false
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
                 name: Cell index
         rearrangements:
             type: array
@@ -2811,10 +2810,9 @@ Cell:
                 type: string
             example: [id1, id2] #empty vs NULL? 
             x-airr:
-                miairr: false
-                required: true
+                miairr: defined
                 nullable: true
-                adc-api-optional: false
+                adc-api-optional: true
         receptors:
             type: array
             description: >
@@ -2823,26 +2821,23 @@ Cell:
                 type: string
             example: [id1, id2] #empty vs NULL? 
             x-airr:
-                miairr: false
-                required: true
+                miairr: defined
                 nullable: true
-                adc-api-optional: false
+                adc-api-optional: true
         repertoire_id:
                 type: string
                 description: Identifier to the associated repertoire in study metadata.
             x-airr:
-                miairr: false
-                required: true
-                nullable: false
-                adc-api-optional: false
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
         data_processing_id:
                 type: string
                 description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
-                miairr: false
-                required: true
-                nullable: false
-                adc-api-optional: false        
+                miairr: defined
+                nullable: true
+                adc-api-optional: true        
         expression_raw:
             type: array
             description:
@@ -2882,7 +2877,6 @@ Cell:
             description: >
                 boolean to indicate if pairing was inferred.
             x-airr:
-                miairr: false
-                required: true
-                nullable: false # assuming only done for sc experiments, otherwise does not exist
+                miairr: defined
+                nullable: true # assuming only done for sc experiments, otherwise does not exist
                 adc-api-optional: true
