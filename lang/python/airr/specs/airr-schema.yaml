@@ -2781,8 +2781,6 @@ Node:
             type: string
             description: >
                 Amino acid translation of the junction.
-            x-airr:
-                miairr: false
 Cell:
     discriminator: AIRR
     type: object
