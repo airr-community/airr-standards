@@ -178,6 +178,9 @@ Study:
             type: string
             description: Generic study description
             example: Longer description
+            x-airr:
+                nullable: true
+                name: Study description
         inclusion_exclusion_criteria:
             type: string
             description: List of criteria for inclusion/exclusion for the study
@@ -1248,6 +1251,7 @@ DataProcessing:
             description: Identifier for the data processing object.
             x-airr:
                 nullable: true
+                name: Data processing ID
         primary_annotation:
             type: boolean
             default: false
@@ -1355,6 +1359,7 @@ SampleProcessing:
                 nucleic acid processing and sequencing run information for the repertoire.
             x-airr:
                 nullable: true
+                name: Sample processing ID
 
 
 # The composite schema for the repertoire object
@@ -1386,11 +1391,13 @@ Repertoire:
             description: Short generic display name for the repertoire
             x-airr:
                 nullable: true
+                name: Repertoire name
         repertoire_description:
             type: string
             description: Generic repertoire description
             x-airr:
                 nullable: true
+                name: Repertoire description
         study:
             $ref: '#/Study'
             description: Study object
