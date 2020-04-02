@@ -183,6 +183,7 @@ Study:
             example: Longer description
             x-airr:
                 nullable: true
+                name: Study description
                 adc-query-support: true
         inclusion_exclusion_criteria:
             type: string
@@ -1341,6 +1342,7 @@ DataProcessing:
             description: Identifier for the data processing object.
             x-airr:
                 nullable: true
+                name: Data processing ID
                 adc-query-support: true
                 identifier: true
         primary_annotation:
@@ -1465,6 +1467,7 @@ SampleProcessing:
                 nucleic acid processing and sequencing run information for the repertoire.
             x-airr:
                 nullable: true
+                name: Sample processing ID
                 adc-query-support: true
                 identifier: true
 
@@ -1500,12 +1503,14 @@ Repertoire:
             description: Short generic display name for the repertoire
             x-airr:
                 nullable: true
+                name: Repertoire name
                 adc-query-support: true
         repertoire_description:
             type: string
             description: Generic repertoire description
             x-airr:
                 nullable: true
+                name: Repertoire description
                 adc-query-support: true
         study:
             $ref: '#/Study'
