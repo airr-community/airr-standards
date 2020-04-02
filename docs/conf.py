@@ -320,6 +320,16 @@ data_elements = [["Set",
                   "Example",
                   "Requirement"]]
 
+
+# func to chop down long strings of the table
+def wrap_col(string, str_length=11):
+    if [x for x in string.split(" ") if len(x) > 25]:
+        parts = [string[i:i + str_length].strip() for i in range(0, len(string), str_length)]
+        return ('\n'.join(parts) + '\n')
+    else:
+        return (string)
+
+
 # iterate over first level of yaml items
 for key, v in airr_schema.items():
     # iterate over second level of yaml items
@@ -362,14 +372,12 @@ for key, v in airr_schema.items():
 
                         if "ontology" in airr_properties[airr_property]["x-airr"]:
 
-                            airr_format = "Ontology: { name: " + str(
-                                airr_properties[airr_property]["x-airr"]["ontology"]["name"])
-                            airr_format += ", top_node: {"
-                            airr_format += "id: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["top_node"]["id"])
-                            airr_format += ", value: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["top_node"]["value"]) + "}"
-                            airr_format += ", draft: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["draft"])
-                            airr_format += ", url: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["url"])
-                            airr_format += " }"
+                            base_dic = airr_properties[airr_property]["x-airr"]["ontology"]
+                            ontology_format = (str(base_dic["name"]), str(base_dic["url"]),
+                            str(base_dic["top_node"]["id"]),str(base_dic["top_node"]["value"]), str(base_dic["draft"]))
+                            # replace name with url-linked name
+                            airr_format = "Ontology: { name: `%s <%s/>`_ , top_node: { id: %s, value: %s}, draft: %s}"%(
+                                ontology_format)
                             # get 'type' for ontology
                             airr_data_type = airr_schema["Ontology"]["properties"]["value"]["type"]
                             airr_field_value_example = "id: " + str(airr_properties[airr_property]["example"]["id"]) + ", value: " + str(airr_properties[airr_property]["example"]["value"])
@@ -390,6 +398,9 @@ for key, v in airr_schema.items():
                             airr_format = "Any positive number"
                         elif airr_data_type == "boolean":  #
                             airr_format = "T | F"
+
+                    # airr_property = wrap_col(airr_property)
+                    airr_field_value_example = wrap_col(str(airr_field_value_example))
 
                     r = [airr_set, airr_subset, airr_name, airr_property,
                          airr_data_type, airr_format, airr_description,
