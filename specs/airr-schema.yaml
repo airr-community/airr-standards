@@ -401,7 +401,7 @@ Subject:
         race:
             type: string
             description: Racial group of subject (as defined by NIH)
-            example: White, American Indian or Alaska Native, Black, Asian, Native Hawaiian or Other Pacific Islander, Other 
+            example: White, American Indian or Alaska Native, Black, Asian, Native Hawaiian or Other Pacific Islander, Other
             x-airr:
                 miairr: true
                 required: true
@@ -955,7 +955,7 @@ NucleicAcidProcessing:
                 If a PCR step was performed that specifically targets the IG/TR loci, the target and primer locations
                 need to be provided here. This field holds an array of PCRTarget objects, so that multiplex PCR setups
                 amplifying multiple loci at the same time can be annotated using one record per locus. PCR setups not
-                targeting any specific locus must not annotate this field but select the appropriate 
+                targeting any specific locus must not annotate this field but select the appropriate
                 library_generation_method instead.
             items:
                 $ref: '#/PCRTarget'
@@ -2781,11 +2781,14 @@ Node:
             type: string
             description: >
                 Amino acid translation of the junction.
+
+# The cell object acts as point of reference for all data that can be related
+# to an individual cell, either by direct observation or inference.
 Cell:
     discriminator: AIRR
     type: object
     required:
-        - cell_id #redefined cell_id > how to centralize it in the yaml 
+        - cell_id #redefined cell_id > how to centralize it in the yaml
         - rearrangements
         - repertoire_id
         - virtual
@@ -2806,7 +2809,7 @@ Cell:
                   Array of sequence identifiers defined for the Rearrangement object
             items:
                 type: string
-            example: [id1, id2] #empty vs NULL? 
+            example: [id1, id2] #empty vs NULL?
             x-airr:
                 miairr: defined
                 nullable: true
@@ -2817,32 +2820,32 @@ Cell:
                   Array of receptor identifiers defined for the Receptor object
             items:
                 type: string
-            example: [id1, id2] #empty vs NULL? 
+            example: [id1, id2] #empty vs NULL?
             x-airr:
                 miairr: defined
                 nullable: true
                 adc-api-optional: true
         repertoire_id:
-                type: string
-                description: Identifier to the associated repertoire in study metadata.
+            type: string
+            description: Identifier to the associated repertoire in study metadata.
             x-airr:
                 miairr: defined
                 nullable: true
                 adc-api-optional: true
         data_processing_id:
-                type: string
-                description: Identifier of the data processing object in the repertoire metadata for this clone.
+            type: string
+            description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
                 miairr: defined
                 nullable: true
-                adc-api-optional: true        
+                adc-api-optional: true
         expression_raw:
             type: array
             description:
             properties:
-                study_method: 
+                study_method:
                     type: string
-                    enum: 
+                    enum:
                        flow cytometry
                        single-cell transcriptome
                     description: >
@@ -2857,10 +2860,10 @@ Cell:
                       Index addressing the current event within the raw data set.
         expression_tabular:
             type: array
-            description: > 
+            description: >
                 Expression definitions for single-cell
             properties:
-                expression_maker: 
+                expression_maker:
                     type: string
                     description: >
                        standardized designation of the transcript or epitope
@@ -2870,7 +2873,7 @@ Cell:
                     description: >
                        transformed and normalized expression level.
                     example: 14567
-         virtual:
+        virtual:
             type: boolean
             description: >
                 boolean to indicate if pairing was inferred.
