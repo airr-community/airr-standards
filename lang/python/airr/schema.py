@@ -431,16 +431,16 @@ RearrangementSchema = Schema('Rearrangement')
 RepertoireSchema = Schema('Repertoire')
 
 CachedSchema = {
-    "Repertoire": Schema('Repertoire'),
-    "Ontology": Schema('Ontology'),
-    "Study": Schema('Study'),
-    "Subject": Schema('Subject'),
-    "Diagnosis": Schema('Diagnosis'),
-    "CellProcessing": Schema('CellProcessing'),
-    "PCRTarget": Schema('PCRTarget'),
-    "NucleicAcidProcessing": Schema('NucleicAcidProcessing'),
-    "SequencingRun": Schema('SequencingRun'),
-    "RawSequenceData": Schema('RawSequenceData'),
-    "DataProcessing": Schema('DataProcessing'),
-    "SampleProcessing": Schema('SampleProcessing')
+    'Repertoire': Schema('Repertoire'),
+    'Ontology': Schema('Ontology'),
+    'Study': Schema('Study'),
+    'Subject': Schema('Subject'),
+    'Diagnosis': Schema('Diagnosis'),
+    'CellProcessing': Schema('CellProcessing'),
+    'PCRTarget': Schema('PCRTarget'),
+    'NucleicAcidProcessing': Schema('NucleicAcidProcessing'),
+    'SequencingRun': Schema('SequencingRun'),
+    'RawSequenceData': Schema('RawSequenceData'),
+    'DataProcessing': Schema('DataProcessing'),
+    'SampleProcessing': Schema('SampleProcessing')
 }

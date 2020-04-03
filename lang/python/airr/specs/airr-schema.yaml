@@ -358,7 +358,7 @@ Subject:
                 deprecated: true
                 deprecated-description: Field was renamed to species for clarity.
                 deprecated-replaced-by:
-                  - species
+                    - species
         sex:
             type: string
             enum:
@@ -445,9 +445,9 @@ Subject:
                 deprecated: true
                 deprecated-description: Split into two fields to specify as an age range.
                 deprecated-replaced-by:
-                  - age_min
-                  - age_max
-                  - age_unit
+                    - age_min
+                    - age_max
+                    - age_unit
         ancestry_population:
             type: string
             description: Broad geographic origin of ancestry (continent)
@@ -1630,7 +1630,7 @@ Alignment:
                 deprecated: true
                 deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
                 deprecated-replaced-by:
-                  - "DataProcessing:germline_database"
+                    - "DataProcessing:germline_database"
 
 
 # The extended rearrangement object
@@ -2349,7 +2349,7 @@ Rearrangement:
                 deprecated: true
                 deprecated-description: Field has been merged with sequence_id to avoid confusion.
                 deprecated-replaced-by:
-                  - sequence_id
+                    - sequence_id
         rearrangement_set_id:
             type: string
             description: >
@@ -2358,9 +2358,9 @@ Rearrangement:
                 deprecated: true
                 deprecated-description: Field has been replaced by other specialized identifiers.
                 deprecated-replaced-by:
-                  - repertoire_id
-                  - sample_processing_id
-                  - data_processing_id
+                    - repertoire_id
+                    - sample_processing_id
+                    - data_processing_id
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
@@ -2369,7 +2369,7 @@ Rearrangement:
                 deprecated: true
                 deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
                 deprecated-replaced-by:
-                  - "DataProcessing:germline_database"
+                    - "DataProcessing:germline_database"
 
 # A unique inferred clone object that has been constructed within a single data processing
 # for a single repertoire and a subset of its sequences and/or rearrangements.
@@ -2399,12 +2399,8 @@ Clone:
             type: array
             items:
                 type: string
-            description: List of sequence_ids that are members of the clone.
-        rearrangements:
-            type: array
-            items:
-                type: string
-            description: List of rearrangement_ids that are members of the clone.
+            description: >
+                List sequence_id strings that act as keys to the Rearrangement records for members of the clone.
         v_call:
             type: string
             description: >
@@ -2481,9 +2477,9 @@ Clone:
         junction_end:
             type: integer
             description: Junction region end position in the alignment (1-based closed interval).
-        rearrangement_count:
+        sequence_count:
             type: integer
-            description: Number of rearrangements included in this clone
+            description: Number of Rearrangement records (sequences) included in this clone
         seed_id:
             type: string
             Description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
@@ -2522,13 +2518,8 @@ Node:
         sequence_id:
             type: string
             description: >
-                Identifier for this node that matches the id in the newick string and, where possible,
+                Identifier for this node that matches the identifier in the newick string and, where possible,
                 the sequence_id in the source repertoire.
-        rearrangement_id:
-            type: string
-            description: >
-                Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a universally unique record locator for database applications.
         sequence_alignment:
             type: string
             description: >
