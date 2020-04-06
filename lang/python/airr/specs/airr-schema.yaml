@@ -141,6 +141,7 @@ Study:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: study
                 name: Study ID
@@ -151,6 +152,7 @@ Study:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: study
                 name: Study title
@@ -163,6 +165,7 @@ Study:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: study
                 name: Study type
@@ -178,6 +181,10 @@ Study:
             type: string
             description: Generic study description
             example: Longer description
+            x-airr:
+                nullable: true
+                name: Study description
+                adc-query-support: true
         inclusion_exclusion_criteria:
             type: string
             description: List of criteria for inclusion/exclusion for the study
@@ -185,6 +192,7 @@ Study:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: study
                 name: Study inclusion/exclusion criteria
@@ -195,6 +203,7 @@ Study:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: study
                 name: Grant funding agency
@@ -207,6 +216,7 @@ Study:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: study
                 name: Contact information (data collection)
@@ -217,6 +227,7 @@ Study:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: study
                 name: Lab name
@@ -227,6 +238,7 @@ Study:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: study
                 name: Lab address
@@ -239,6 +251,7 @@ Study:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: study
                 name: Contact information (data deposition)
@@ -249,6 +262,7 @@ Study:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: study
                 name: Relevant publications
@@ -268,6 +282,7 @@ Study:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: study
                 name: Keywords for study
@@ -301,6 +316,7 @@ Subject:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Subject ID
@@ -310,6 +326,7 @@ Subject:
             x-airr:
                 miairr: essential
                 nullable: false
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Synthetic library
@@ -322,6 +339,7 @@ Subject:
             x-airr:
                 miairr: essential
                 nullable: false
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Organism
@@ -339,7 +357,8 @@ Subject:
             x-airr:
                 deprecated: true
                 deprecated-description: Field was renamed to species for clarity.
-                deprecated-replaced-by: [species]
+                deprecated-replaced-by:
+                    - species
         sex:
             type: string
             enum:
@@ -355,6 +374,7 @@ Subject:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Sex
@@ -367,6 +387,7 @@ Subject:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Age minimum
@@ -379,6 +400,7 @@ Subject:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Age maximum
@@ -391,6 +413,7 @@ Subject:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Age unit
@@ -412,6 +435,7 @@ Subject:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Age event
@@ -420,7 +444,10 @@ Subject:
             x-airr:
                 deprecated: true
                 deprecated-description: Split into two fields to specify as an age range.
-                deprecated-replaced-by: [age_min, age_max, age_unit]
+                deprecated-replaced-by:
+                    - age_min
+                    - age_max
+                    - age_unit
         ancestry_population:
             type: string
             description: Broad geographic origin of ancestry (continent)
@@ -428,6 +455,7 @@ Subject:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Ancestry population
@@ -438,6 +466,7 @@ Subject:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Ethnicity
@@ -448,6 +477,7 @@ Subject:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Race
@@ -458,6 +488,7 @@ Subject:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Strain name
@@ -468,6 +499,7 @@ Subject:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Relation to other subjects
@@ -478,6 +510,7 @@ Subject:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: subject
                 name: Relation type
@@ -486,6 +519,9 @@ Subject:
             description: Diagnosis information for subject
             items:
                 $ref: '#/Diagnosis'
+            x-airr:
+                nullable: false
+                adc-query-support: true
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
@@ -508,6 +544,7 @@ Diagnosis:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: diagnosis and intervention
                 name: Study group description
@@ -520,6 +557,7 @@ Diagnosis:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: diagnosis and intervention
                 name: Diagnosis
@@ -538,6 +576,7 @@ Diagnosis:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: diagnosis and intervention
                 name: Length of disease
@@ -549,6 +588,7 @@ Diagnosis:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: diagnosis and intervention
                 name: Disease stage
@@ -559,6 +599,7 @@ Diagnosis:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: diagnosis and intervention
                 name: Prior therapies for primary disease under study
@@ -569,6 +610,7 @@ Diagnosis:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: diagnosis and intervention
                 name: Immunogen/agent
@@ -579,6 +621,7 @@ Diagnosis:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: diagnosis and intervention
                 name: Intervention definition
@@ -589,6 +632,7 @@ Diagnosis:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 1
                 subset: diagnosis and intervention
                 name: Other relevant medical history
@@ -615,6 +659,7 @@ Sample:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 2
                 subset: sample
                 name: Biological sample ID
@@ -625,6 +670,7 @@ Sample:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 2
                 subset: sample
                 name: Sample type
@@ -637,6 +683,7 @@ Sample:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 2
                 subset: sample
                 name: Tissue
@@ -655,6 +702,7 @@ Sample:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 2
                 subset: sample
                 name: Anatomic site
@@ -665,6 +713,7 @@ Sample:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 2
                 subset: sample
                 name: Disease state of sample
@@ -675,6 +724,7 @@ Sample:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 2
                 subset: sample
                 name: Sample collection time
@@ -686,6 +736,7 @@ Sample:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 2
                 subset: sample
                 name: Collection time event
@@ -696,6 +747,7 @@ Sample:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 2
                 subset: sample
                 name: Biomaterial provider
@@ -723,6 +775,7 @@ CellProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (cell)
                 name: Tissue processing
@@ -735,6 +788,7 @@ CellProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (cell)
                 name: Cell subset
@@ -753,6 +807,7 @@ CellProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (cell)
                 name: Cell subset phenotype
@@ -768,6 +823,7 @@ CellProcessing:
                 value: Homo sapiens
             x-airr:
                 nullable: true
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: false
@@ -782,6 +838,7 @@ CellProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (cell)
                 name: Single-cell sort
@@ -792,6 +849,7 @@ CellProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (cell)
                 name: Number of cells in experiment
@@ -802,6 +860,7 @@ CellProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (cell)
                 name: Number of cells per sequencing reaction
@@ -812,6 +871,7 @@ CellProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (cell)
                 name: Cell storage
@@ -822,6 +882,7 @@ CellProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (cell)
                 name: Cell quality
@@ -832,6 +893,7 @@ CellProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (cell)
                 name: Cell isolation / enrichment procedure
@@ -842,6 +904,7 @@ CellProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (cell)
                 name: Processing protocol
@@ -874,6 +937,7 @@ PCRTarget:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (nucleic acid [pcr])
                 name: Target locus for PCR
@@ -885,6 +949,7 @@ PCRTarget:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (nucleic acid [pcr])
                 name: Forward PCR primer target location
@@ -895,6 +960,7 @@ PCRTarget:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (nucleic acid [pcr])
                 name: Reverse PCR primer target location
@@ -924,6 +990,7 @@ NucleicAcidProcessing:
             x-airr:
                 miairr: essential
                 nullable: false
+                adc-query-support: true
                 set: 3
                 subset: process (nucleic acid)
                 name: Target substrate
@@ -935,6 +1002,7 @@ NucleicAcidProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (nucleic acid)
                 name: Target substrate quality
@@ -945,6 +1013,7 @@ NucleicAcidProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (nucleic acid)
                 name: Template amount
@@ -969,6 +1038,7 @@ NucleicAcidProcessing:
             x-airr:
                 miairr: essential
                 nullable: false
+                adc-query-support: true
                 set: 3
                 subset: process (nucleic acid)
                 name: Library generation method
@@ -980,6 +1050,7 @@ NucleicAcidProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (nucleic acid)
                 name: Library generation protocol
@@ -990,6 +1061,7 @@ NucleicAcidProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (nucleic acid)
                 name: Protocol IDs
@@ -1003,6 +1075,9 @@ NucleicAcidProcessing:
                 library_generation_method instead.
             items:
                 $ref: '#/PCRTarget'
+            x-airr:
+                nullable: false
+                adc-query-support: true
         complete_sequences:
             type: string
             enum:
@@ -1023,6 +1098,7 @@ NucleicAcidProcessing:
             x-airr:
                 miairr: essential
                 nullable: false
+                adc-query-support: true
                 set: 3
                 subset: process (nucleic acid)
                 name: Complete sequences
@@ -1047,6 +1123,7 @@ NucleicAcidProcessing:
             x-airr:
                 miairr: essential
                 nullable: false
+                adc-query-support: true
                 set: 3
                 subset: process (nucleic acid)
                 name: Physical linkage of different rearrangements
@@ -1071,6 +1148,7 @@ SequencingRun:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (sequencing)
                 name: Batch number
@@ -1081,6 +1159,7 @@ SequencingRun:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (sequencing)
                 name: Total reads passing QC filter
@@ -1091,6 +1170,7 @@ SequencingRun:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (sequencing)
                 name: Sequencing platform
@@ -1101,6 +1181,7 @@ SequencingRun:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (sequencing)
                 name: Sequencing facility
@@ -1112,6 +1193,7 @@ SequencingRun:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (sequencing)
                 name: Date of sequencing run
@@ -1122,12 +1204,16 @@ SequencingRun:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 3
                 subset: process (sequencing)
                 name: Sequencing kit
         sequencing_files:
             $ref: '#/RawSequenceData'
             description: Set of sequencing files produced by the sequencing run
+            x-airr:
+                nullable: false
+                adc-query-support: true
 
 # Resultant raw sequencing files from a SequencingRun
 RawSequenceData:
@@ -1151,6 +1237,7 @@ RawSequenceData:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 4
                 subset: data (raw reads)
                 name: Raw sequencing data file type
@@ -1162,6 +1249,7 @@ RawSequenceData:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 4
                 subset: data (raw reads)
                 name: Raw sequencing data file name
@@ -1176,6 +1264,7 @@ RawSequenceData:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 4
                 subset: data (raw reads)
                 name: Read direction
@@ -1187,6 +1276,7 @@ RawSequenceData:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 4
                 subset: process (sequencing)
                 name: Forward read length
@@ -1197,6 +1287,7 @@ RawSequenceData:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 4
                 subset: data (raw reads)
                 name: Raw sequencing data file name
@@ -1211,6 +1302,7 @@ RawSequenceData:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 4
                 subset: data (raw reads)
                 name: Read direction
@@ -1222,6 +1314,7 @@ RawSequenceData:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 4
                 subset: process (sequencing)
                 name: Paired read length
@@ -1235,6 +1328,7 @@ DataProcessing:
     type: object
     required:
         - data_processing_id
+        - primary_annotation
         - software_versions
         - paired_reads_assembly
         - quality_thresholds
@@ -1248,6 +1342,9 @@ DataProcessing:
             description: Identifier for the data processing object.
             x-airr:
                 nullable: true
+                name: Data processing ID
+                adc-query-support: true
+                identifier: true
         primary_annotation:
             type: boolean
             default: false
@@ -1255,6 +1352,10 @@ DataProcessing:
                 If true, indicates this is the primary or default data processing for
                 the repertoire and its rearrangments. If false, indicates this is a secondary
                 or additional data processing.
+            x-airr:
+                nullable: false
+                adc-query-support: true
+                identifier: true
         software_versions:
             type: string
             description: Version number and / or date, include company pipelines
@@ -1262,6 +1363,7 @@ DataProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 5
                 subset: process (computational)
                 name: Software tools and version numbers
@@ -1272,6 +1374,7 @@ DataProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 5
                 subset: process (computational)
                 name: Paired read assembly
@@ -1282,6 +1385,7 @@ DataProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 5
                 subset: process (computational)
                 name: Quality thresholds
@@ -1292,6 +1396,7 @@ DataProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 5
                 subset: process (computational)
                 name: Primer match cutoffs
@@ -1302,6 +1407,7 @@ DataProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 5
                 subset: process (computational)
                 name: Collapsing method
@@ -1312,6 +1418,7 @@ DataProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 5
                 subset: process (computational)
                 name: Data processing protocols
@@ -1326,6 +1433,7 @@ DataProcessing:
                 - 'ERR1278153_ac.txz'
             x-airr:
                 nullable: true
+                adc-query-support: true
                 name: Processed data file names
         germline_database:
             type: string
@@ -1334,12 +1442,16 @@ DataProcessing:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 5
                 subset: data (processed sequence)
                 name: V(D)J germline reference database
         analysis_provenance_id:
             type: string
             description: Identifier for machine-readable PROV model of analysis provenance
+            x-airr:
+                nullable: true
+                adc-query-support: true
 
 SampleProcessing:
     discriminator: AIRR
@@ -1355,6 +1467,9 @@ SampleProcessing:
                 nucleic acid processing and sequencing run information for the repertoire.
             x-airr:
                 nullable: true
+                name: Sample processing ID
+                adc-query-support: true
+                identifier: true
 
 
 # The composite schema for the repertoire object
@@ -1381,22 +1496,34 @@ Repertoire:
                 referencing the specific Repertoire for that Rearrangement.
             x-airr:
                 nullable: true
+                adc-query-support: true
+                identifier: true
         repertoire_name:
             type: string
             description: Short generic display name for the repertoire
             x-airr:
                 nullable: true
+                name: Repertoire name
+                adc-query-support: true
         repertoire_description:
             type: string
             description: Generic repertoire description
             x-airr:
                 nullable: true
+                name: Repertoire description
+                adc-query-support: true
         study:
             $ref: '#/Study'
             description: Study object
+            x-airr:
+                nullable: false
+                adc-query-support: true
         subject:
             $ref: '#/Subject'
             description: Subject object
+            x-airr:
+                nullable: false
+                adc-query-support: true
         sample:
             type: array
             description: List of Sample objects
@@ -1407,11 +1534,17 @@ Repertoire:
                     - $ref: '#/CellProcessing'
                     - $ref: '#/NucleicAcidProcessing'
                     - $ref: '#/SequencingRun'
+            x-airr:
+                nullable: false
+                adc-query-support: true
         data_processing:
             type: array
             description: List of Data Processing objects
             items:
                 $ref: '#/DataProcessing'
+            x-airr:
+                nullable: false
+                adc-query-support: true
 
 
 Alignment:
@@ -1496,7 +1629,8 @@ Alignment:
             x-airr:
                 deprecated: true
                 deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
-                deprecated-replaced-by: [DataProcessing:germline_database]
+                deprecated-replaced-by:
+                    - "DataProcessing:germline_database"
 
 
 # The extended rearrangement object
@@ -1522,9 +1656,14 @@ Rearrangement:
         sequence_id:
             type: string
             description: >
-                Unique query sequence identifier within the file. Most often this will be the input sequence
+                Unique query sequence identifier for the Rearrangment. Most often this will be the input sequence
                 header or a substring thereof, but may also be a custom identifier defined by the tool in
-                cases where query sequences have been combined in some fashion prior to alignment.
+                cases where query sequences have been combined in some fashion prior to alignment. When
+                downloaded from an AIRR Data Commons repository, this will usually be a universally unique
+                record locator for linking with other objects in the AIRR Data Model.
+            x-airr:
+                adc-query-support: true
+                identifier: true
         sequence:
             type: string
             description: >
@@ -1541,10 +1680,14 @@ Rearrangement:
                 True if the alignment is on the opposite strand (reverse complemented) with respect to the
                 query sequence. If True then all output data, such as alignment coordinates and sequences,
                 are based on the reverse complement of 'sequence'.
+            x-airr:
+                adc-query-support: true
         productive:
             type: boolean
             description: >
                 True if the V(D)J sequence is predicted to be productive.
+            x-airr:
+                adc-query-support: true
         vj_in_frame:
             type: boolean
             description: True if the V and J gene alignments are in-frame.
@@ -1590,6 +1733,7 @@ Rearrangement:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 6
                 subset: data (processed sequence)
                 name: V gene with allele
@@ -1602,6 +1746,7 @@ Rearrangement:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 6
                 subset: data (processed sequence)
                 name: D gene with allele
@@ -1620,6 +1765,7 @@ Rearrangement:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 6
                 subset: data (processed sequence)
                 name: J gene with allele
@@ -1632,6 +1778,7 @@ Rearrangement:
             x-airr:
                 miairr: important
                 nullable: true
+                adc-query-support: true
                 set: 6
                 subset: data (processed sequence)
                 name: C region
@@ -2154,6 +2301,7 @@ Rearrangement:
                 miairr: important
                 nullable: true
                 adc-query-support: true
+                identifier: true
                 set: 6
                 subset: data (processed sequence)
                 name: Cell index
@@ -2163,20 +2311,14 @@ Rearrangement:
             x-airr:
                 nullable: true
                 adc-query-support: true
-        rearrangement_id:
-            type: string
-            description: >
-                Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a universally unique record locator for database applications.
-            x-airr:
-                nullable: true
-                adc-query-support: true
+                identifier: true
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
             x-airr:
                 nullable: true
                 adc-query-support: true
+                identifier: true
         sample_processing_id:
             type: string
             description: >
@@ -2188,6 +2330,7 @@ Rearrangement:
             x-airr:
                 nullable: true
                 adc-query-support: true
+                identifier: true
         data_processing_id:
             type: string
             description: >
@@ -2196,6 +2339,28 @@ Rearrangement:
             x-airr:
                 nullable: true
                 adc-query-support: true
+                identifier: true
+        rearrangement_id:
+            type: string
+            description: >
+                Identifier for the Rearrangement object. May be identical to sequence_id,
+                but will usually be a univerally unique record locator for database applications.
+            x-airr:
+                deprecated: true
+                deprecated-description: Field has been merged with sequence_id to avoid confusion.
+                deprecated-replaced-by:
+                    - sequence_id
+        rearrangement_set_id:
+            type: string
+            description: >
+                Identifier for grouping Rearrangement objects.
+            x-airr:
+                deprecated: true
+                deprecated-description: Field has been replaced by other specialized identifiers.
+                deprecated-replaced-by:
+                    - repertoire_id
+                    - sample_processing_id
+                    - data_processing_id
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
@@ -2203,7 +2368,8 @@ Rearrangement:
             x-airr:
                 deprecated: true
                 deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
-                deprecated-replaced-by: [DataProcessing:germline_database]
+                deprecated-replaced-by:
+                    - "DataProcessing:germline_database"
 
 # A unique inferred clone object that has been constructed within a single data processing
 # for a single repertoire and a subset of its sequences and/or rearrangements.
@@ -2233,12 +2399,8 @@ Clone:
             type: array
             items:
                 type: string
-            description: List of sequence_ids that are members of the clone.
-        rearrangements:
-            type: array
-            items:
-                type: string
-            description: List of rearrangement_ids that are members of the clone.
+            description: >
+                List sequence_id strings that act as keys to the Rearrangement records for members of the clone.
         v_call:
             type: string
             description: >
@@ -2315,9 +2477,9 @@ Clone:
         junction_end:
             type: integer
             description: Junction region end position in the alignment (1-based closed interval).
-        rearrangement_count:
+        sequence_count:
             type: integer
-            description: Number of rearrangements included in this clone
+            description: Number of Rearrangement records (sequences) included in this clone
         seed_id:
             type: string
             Description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
@@ -2356,13 +2518,8 @@ Node:
         sequence_id:
             type: string
             description: >
-                Identifier for this node that matches the id in the newick string and, where possible,
+                Identifier for this node that matches the identifier in the newick string and, where possible,
                 the sequence_id in the source repertoire.
-        rearrangement_id:
-            type: string
-            description: >
-                Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a universally unique record locator for database applications.
         sequence_alignment:
             type: string
             description: >
