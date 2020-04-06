@@ -17,7 +17,7 @@ FAIR Principles
 ---------------
 
 We desire AIRR standard objects to be FAIR (findable, accessible,
-interoperable and reusable)
+interoperable and reusable) [Wilkinson_2016]_:
 
 + findable: by giving AIRR standard objects a globally unique identifier
 
@@ -26,6 +26,7 @@ interoperable and reusable)
 + interoperable: by defining a OpenAPI schema for the AIRR standard objects
 
 + reusable: by linking the AIRR standard objects together into a standard formats
+
 
 AIRR Data Model
 ---------------
@@ -148,7 +149,7 @@ unique identifiers, so they are included within ``Sample``.
 
 
 AIRR extension properties
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The OpenAPI V2 specification provides the ability to define extension
 properties on schema objects. These are additional properties on
@@ -169,21 +170,25 @@ supported AIRR extension properties:
     * - Extension
       - Description
     * - ``miairr``
-      - True if the annotated property is a MiAIRR standard data element, otherwise False or null.
-    * - ``required``
-      - Assumes ``miairr=True``. True if the annotated property is required by the MiAIRR standard, otherwise False or null.
+      - Present if the annotated property is a MiAIRR data standard
+        element. Always has a :ref:`requirement level <RequirementLevels>`
+        assigned to it.
     * - ``nullable``
-      - Assumes ``miairr=True``. True if the annotated property can be null by the MiAIRR standard, otherwise False or null.
+      - Assumes ``miairr``. False if the annotated property must not be
+        ``NULL`` by the MiAIRR standard, otherwise True or null.
     * - ``set``
-      - Assumes ``miairr=True``. The MiAIRR set for the annotated property.
+      - Assumes ``miairr``. The MiAIRR set for the annotated property.
     * - ``subset``
-      - Assumes ``miairr=True``. The MiAIRR subset for the annotated property.
+      - Assumes ``miairr``. The MiAIRR subset for the annotated property.
     * - ``name``
-      - Assumes ``miairr=True``. The MiAIRR name.
+      - Assumes ``miairr``. The MiAIRR field name.
     * - ``format``
-      - Describes the format for the annotated property. Value is either ``free text``, ``controlled vocabulary`` or ``ontology``.
+      - Describes the format for the annotated property. Value is either
+        ``free text``, ``controlled vocabulary`` or ``ontology``.
     * - ``ontology``
-      - If ``format=ontology`` then this provides additional information about the ontology including draft status, name, URL and top node term.
+      - If ``format=ontology`` then this provides additional information
+        about the ontology including draft status, name, URL and top
+        node term.
 
 
 Schema Definitions
@@ -195,4 +200,5 @@ Schema Definitions
    Repertoire Schema <metadata>
    Rearrangement Schema <rearrangements>
    Alignment Schema (Experimental) <alignments>
+   Requirement levels of fields <airr_schema_requirement_levels>
    germline

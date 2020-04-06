@@ -3,118 +3,116 @@
 #
 
 Repertoire:
-  - repertoire_id: ""
+  - repertoire_id: null
     study:
-      study_id: ""
-      study_title: ""
+      study_id: null
+      study_title: null
       study_type:
-        id: ""
-        value: ""
-      study_description: ""
-      inclusion_exclusion_criteria: ""
-      lab_name: ""
-      lab_address: ""
-      submitted_by: ""
-      collected_by: ""
-      grants: ""
-      pub_ids: ""
-      keywords_study:
-        - ""
+        id: null
+        value: null
+      study_description: null
+      inclusion_exclusion_criteria: null
+      lab_name: null
+      lab_address: null
+      submitted_by: null
+      collected_by: null
+      grants: null
+      pub_ids: null
+      keywords_study: null
     subject:
-      subject_id: ""
+      subject_id: null
       synthetic: false
-      organism:
-        id: ""
-        value: ""
-      sex: ""
-      age: ""
+      species:
+        id: null
+        value: null
+      sex: null
+      age: null
       age_min: null
       age_max: null
       age_unit:
-        id: ""
-        value: ""
-      age_event: ""
-      ancestry_population: ""
-      ethnicity: ""
-      race: ""
-      strain_name: ""
-      linked_subjects: ""
-      link_type: ""
+        id: null
+        value: null
+      age_event: null
+      ancestry_population: null
+      ethnicity: null
+      race: null
+      strain_name: null
+      linked_subjects: null
+      link_type: null
       diagnosis:
-        - study_group_description: ""
+        - study_group_description: null
           disease_diagnosis:
-            id: ""
-            value: ""
-          disease_length: ""
-          disease_stage: ""
-          prior_therapies: ""
-          immunogen: ""
-          intervention: ""
-          medical_history: ""
+            id: null
+            value: null
+          disease_length: null
+          disease_stage: null
+          prior_therapies: null
+          immunogen: null
+          intervention: null
+          medical_history: null
     sample:
-      - sample_processing_id: ""
-        sample_id: ""
-        sample_type: ""
+      - sample_processing_id: null
+        sample_id: null
+        sample_type: null
         tissue:
-          id: ""
-          value: ""
-        anatomic_site: ""
-        disease_state_sample: ""
-        collection_time_point_relative: ""
-        collection_time_point_reference: ""
-        biomaterial_provider: ""
+          id: null
+          value: null
+        anatomic_site: null
+        disease_state_sample: null
+        collection_time_point_relative: null
+        collection_time_point_reference: null
+        biomaterial_provider: null
         # cell processing
-        tissue_processing: ""
+        tissue_processing: null
         cell_subset:
-          id: ""
-          value: ""
-        cell_phenotype: ""
+          id: null
+          value: null
+        cell_phenotype: null
         single_cell: false
         cell_number: null
         cells_per_reaction: null
         cell_storage: false
-        cell_quality: ""
-        cell_isolation: ""
-        cell_processing_protocol: ""
+        cell_quality: null
+        cell_isolation: null
+        cell_processing_protocol: null
         # nucleic acid processing
         template_class: ""
-        template_quality: ""
-        template_amount: ""
+        template_quality: null
+        template_amount: null
         library_generation_method: ""
-        library_generation_protocol: ""
-        library_generation_kit_version: ""
+        library_generation_protocol: null
+        library_generation_kit_version: null
         pcr_target:
-          - pcr_target_locus: ""
-            forward_pcr_primer_target_location: ""
-            reverse_pcr_primer_target_location: ""
-        complete_sequences: false
+          - pcr_target_locus: null
+            forward_pcr_primer_target_location: null
+            reverse_pcr_primer_target_location: null
+        complete_sequences: "partial"
         physical_linkage: "none"
         # sequencing run
-        sequencing_run_id: ""
+        sequencing_run_id: null
         total_reads_passing_qc_filter: null
-        sequencing_platform: ""
-        sequencing_facility: ""
-        sequencing_run_date: ""
-        sequencing_kit: ""
+        sequencing_platform: null
+        sequencing_facility: null
+        sequencing_run_date: null
+        sequencing_kit: null
         # raw data
         sequencing_files:
           file_type: null
-          filename: ""
-          read_direction: ""
+          filename: null
+          read_direction: null
           read_length: null
-          paired_filename: ""
-          paired_read_direction: ""
+          paired_filename: null
+          paired_read_direction: null
           paired_read_length: null
     data_processing:
-      - data_processing_id: ""
-        primary_annotation: null
-        software_versions: ""
-        paired_reads_assembly: ""
-        quality_thresholds: ""
-        primer_match_cutoffs: ""
-        collapsing_method: ""
-        data_processing_protocols: ""
-        data_processing_files:
-          - ""
-        germline_database: ""
-        analysis_provenance_id: ""
+      - data_processing_id: null
+        primary_annotation: false
+        software_versions: null
+        paired_reads_assembly: null
+        quality_thresholds: null
+        primer_match_cutoffs: null
+        collapsing_method: null
+        data_processing_protocols: null
+        data_processing_files: null
+        germline_database: null
+        analysis_provenance_id: null

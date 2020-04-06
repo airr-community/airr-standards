@@ -270,7 +270,9 @@ study:
 
 -  REQUIRED: key ``D_segment``, both coordinates MUST be within
    ``V_region``. This key is only REQUIRED for sequences of applicable
-   loci (*IGH*, *TRB*, *TRD* [8]_).
+   loci (*IGH*, *TRB*, *TRD* [8]_). In the rare case of rearrangements
+   using two D segments, this key SHOULD occur twice, but the
+   coordinates of both keys MUST NOT overlap.
 
 -  REQUIRED: key ``J_segment``, both coordinates MUST be within
    ``V_region``.
