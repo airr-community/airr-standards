@@ -137,12 +137,7 @@ paths:
           description: |
             Success.
           schema:
-            type: object
-            properties:
-              name:
-                type: string
-              version:
-                type: string
+            $ref: '#/definitions/info_object'
         '500':
           description: Server error
           schema:
