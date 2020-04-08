@@ -452,6 +452,9 @@ endpoints, i.e. the HTTP ``POST`` endpoints.
     * - ``format``
       - JSON
       - Specifies the API response format: JSON, AIRR TSV
+    * - ``include_required``
+      - false
+      - Specifies if AIRR required fields are included in the response
     * - ``fields``
       - null
       - Specifies which fields to include in the response
