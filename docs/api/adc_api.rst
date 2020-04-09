@@ -679,7 +679,10 @@ results, and ``from=20`` for the next page after that, and so on.
 The ``facets`` parameter aggregate count information for the specified
 field. Only a single field can be specified. It provides all values
 that exist for the field, and the number of records (repertoires or
-rearrangement) that have this value. The typical use of this parameter
+rearrangement) that have this value. The query response can choose to
+represent field values that have no counts either as a field value with
+a 0 count or to not return the field value in the aggregation.
+The typical use of this parameter
 is for displaying aggregate information in a graphical user
 interface. The ``facets`` parameter can be used in conjunction with
 the ``filters`` parameter to get aggregate information for a set of
