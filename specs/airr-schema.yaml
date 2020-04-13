@@ -1328,7 +1328,6 @@ DataProcessing:
     type: object
     required:
         - data_processing_id
-        - primary_annotation
         - software_versions
         - paired_reads_assembly
         - quality_thresholds
