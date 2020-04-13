@@ -1327,7 +1327,6 @@ DataProcessing:
     discriminator: AIRR
     type: object
     required:
-        - data_processing_id
         - software_versions
         - paired_reads_assembly
         - quality_thresholds
@@ -1455,8 +1454,6 @@ DataProcessing:
 SampleProcessing:
     discriminator: AIRR
     type: object
-    required:
-        - sample_processing_id
     properties:
         sample_processing_id:
             type: string
@@ -1480,7 +1477,6 @@ Repertoire:
     discriminator: AIRR
     type: object
     required:
-        - repertoire_id
         - study
         - subject
         - sample
