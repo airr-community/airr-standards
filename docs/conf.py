@@ -317,89 +317,98 @@ data_elements = [["Set",
                   "Type",
                   "Format",
                   "Definition",
-                  "Example"]]
+                  "Example",
+                  "Requirement"]]
+
+
+# func to chop down long strings of the table
+def wrap_col(string, str_length=11):
+    if [x for x in string.split(" ") if len(x) > 25]:
+        parts = [string[i:i + str_length].strip() for i in range(0, len(string), str_length)]
+        return ('\n'.join(parts) + '\n')
+    else:
+        return (string)
 
 
 # iterate over first level of yaml items
 for key, v in airr_schema.items():
+    # skip Cell object until #369 is fixed, then remove next two lines
+    if key == "Cell" :
+        continue
     # iterate over second level of yaml items
     for k, v in airr_schema[key].items():
         # get properties
         airr_properties = airr_schema[key][k]
         if "properties" in k:
             for airr_property, property_values in airr_properties.items():
-                # get only miairr properties
-                if "miairr" in str(property_values) and airr_properties[airr_property]["x-airr"]["miairr"] is True:
 
-                    if "deprecated" in str(property_values): # currently none is deprecated
-                        continue
+                # get only not deprecated miairr properties (assuming no `deprecated=False`)
+                if "x-airr" in str(property_values) and not "deprecated" in airr_properties[
+                    airr_property]["x-airr"] and "miairr" in airr_properties[
+                    airr_property]["x-airr"]:
+
+                    airr_name = airr_properties[airr_property]["x-airr"]["name"]
+                    miairr_required = airr_properties[airr_property]["x-airr"]["miairr"]
 
                     if "'type'" in str(property_values):  # get 'type' for all properties except ontology
                         airr_data_type = airr_properties[airr_property]["type"]
-
-                    if "example" in str(property_values):
+                    else:
+                        airr_data_type = ""
+                    if "'example'" in str(property_values):
                         airr_field_value_example = airr_properties[airr_property]["example"]
                     else:
                         airr_field_value_example = ""
-
-                    if "description" in str(property_values):
+                    if "'description'" in str(property_values):
                         airr_description = airr_properties[airr_property]["description"]
                     else:
                         airr_description = ""
-
                     if "'set'" in str(property_values):
                         airr_set = airr_properties[airr_property]["x-airr"]["set"]
                     else:
                         airr_set = ""
-
                     if "subset" in airr_properties[airr_property]["x-airr"]:
                         airr_subset = airr_properties[airr_property]["x-airr"]["subset"]
                     else:
                         airr_subset = ""
-
-                    if "name" in airr_properties[airr_property]["x-airr"]:
-                        airr_name = airr_properties[airr_property]["x-airr"]["name"]
-                    else:
-                        airr_name = ""
-
                     if "format" in airr_properties[airr_property]["x-airr"]:
                         airr_format = airr_properties[airr_property]["x-airr"]["format"].capitalize()
 
                         if "ontology" in airr_properties[airr_property]["x-airr"]:
 
-                            airr_format = "Ontology: { name: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["name"])
-                            airr_format += ", top_node: {"
-                            airr_format += "id: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["top_node"]["id"])
-                            airr_format += ", value: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["top_node"]["value"]) + "}"
-                            airr_format += ", draft: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["draft"])
-                            airr_format += ", url: " + str(airr_properties[airr_property]["x-airr"]["ontology"]["url"])
-                            airr_format += " }"
+                            base_dic = airr_properties[airr_property]["x-airr"]["ontology"]
+                            ontology_format = (str(base_dic["name"]), str(base_dic["url"]),
+                            str(base_dic["top_node"]["id"]),str(base_dic["top_node"]["value"]), str(base_dic["draft"]))
+                            # replace name with url-linked name
+                            airr_format = "Ontology: { name: `%s <%s/>`_ , top_node: { id: %s, value: %s}, draft: %s}"%(
+                                ontology_format)
                             # get 'type' for ontology
                             airr_data_type = airr_schema["Ontology"]["properties"]["value"]["type"]
                             airr_field_value_example = "id: " + str(airr_properties[airr_property]["example"]["id"]) + ", value: " + str(airr_properties[airr_property]["example"]["value"])
 
                         elif "controlled vocabulary" in str(property_values):
                             if airr_properties[airr_property].get("enum") is not None:
-                                airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["enum"])
+                                airr_format = "Controlled vocabulary: " + str(airr_properties[airr_property]["enum"])
                             elif airr_properties[airr_property].get("items") is not None:
-                                airr_format = "Controlled vocabulary: " +  str(airr_properties[airr_property]["items"]["enum"])
+                                airr_format = "Controlled vocabulary: " + str(airr_properties[airr_property]["items"]["enum"])
 
                     elif "format" not in airr_properties[airr_property]["x-airr"]:
 
                         if airr_data_type == "string":
                             airr_format = "Free text"
-                        elif airr_data_type == "integer": #
+                        elif airr_data_type == "integer":  #
                             airr_format = "Any positive integer"
-                        elif airr_data_type == "number": #
+                        elif airr_data_type == "number":  #
                             airr_format = "Any positive number"
                         elif airr_data_type == "boolean":  #
                             airr_format = "T | F"
 
+                    # airr_property = wrap_col(airr_property)
+                    airr_field_value_example = wrap_col(str(airr_field_value_example))
+
                     r = [airr_set, airr_subset, airr_name, airr_property,
                          airr_data_type, airr_format, airr_description,
-                         airr_field_value_example]
+                         airr_field_value_example, miairr_required]
                     data_elements.append(r)
-
 
 with open(os.path.join(dl_path, '%s.tsv' % "AIRR_Minimal_Standard_Data_Elements"), "w") as f:
     writer = csv.writer(f, dialect='excel-tab')

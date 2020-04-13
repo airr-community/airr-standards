@@ -86,7 +86,7 @@ Repertoire:
           - pcr_target_locus: null
             forward_pcr_primer_target_location: null
             reverse_pcr_primer_target_location: null
-        complete_sequences: false
+        complete_sequences: "partial"
         physical_linkage: "none"
         # sequencing run
         sequencing_run_id: null
@@ -106,7 +106,7 @@ Repertoire:
           paired_read_length: null
     data_processing:
       - data_processing_id: null
-        primary_annotation: null
+        primary_annotation: false
         software_versions: null
         paired_reads_assembly: null
         quality_thresholds: null
