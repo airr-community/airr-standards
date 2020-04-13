@@ -676,14 +676,17 @@ results, and ``from=20`` for the next page after that, and so on.
 
 **Facets Query Parameter**
 
-The ``facets`` parameter aggregate count information for the specified
-field. Only a single field can be specified. It provides all values
-that exist for the field, and the number of records (repertoires or
-rearrangement) that have this value. The typical use of this parameter
-is for displaying aggregate information in a graphical user
-interface. The ``facets`` parameter can be used in conjunction with
-the ``filters`` parameter to get aggregate information for a set of
-search results.
+The ``facets`` parameter provides aggregate count information for the
+specified field. Only a single field can be specified. The ``facets``
+parameter can be used in conjunction with the ``filters`` parameter to
+get aggregate counts for a set of search results. It returns the set
+of values for the field, and the number of records (repertoires or
+rearrangement) that have this value. For field values that have no
+counts, the API service can either return the field value with a 0
+count or exclude the field value in the aggregation.  The typical use
+of this parameter is for displaying aggregate information in a
+graphical user interface.
+
 
 Here is a simple query with only the ``facets`` parameter to return
 the set of values for ``sample.pcr_target.pcr_target_locus`` and the
