@@ -16,10 +16,14 @@ Repertoire:
       subject_id: TW01A
       synthetic: false
       species:
-        id: "9606"
-        name: Homo sapiens
+        id: "NCBITaxon_9606"
+        value: "Homo sapiens"
       sex: F
-      age: 27yr
+      age_min: 27
+      age_max: 27
+      age_unit:
+        id: UO_0000036
+        value: year
       linked_subjects: TW01B
       link_type: twin
     sample:
@@ -27,6 +31,9 @@ Repertoire:
         tissue: PBMC
         cell_subset: "Naive B cell"
         cell_phenotype: "expression of CD20 and the absence of CD27"
+        cell_species:
+          id: "NCBITaxon_9606"
+          value: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
         template_class: RNA
@@ -57,10 +64,14 @@ Repertoire:
       subject_id: TW01A
       synthetic: false
       species:
-        id: "9606"
-        name: Homo sapiens
+        id: "NCBITaxon_9606"
+        value: "Homo sapiens"
       sex: F
-      age: 27yr
+      age_min: 27
+      age_max: 27
+      age_unit:
+        id: UO_0000036
+        value: year
       linked_subjects: TW01B
       link_type: twin
     sample:
@@ -68,6 +79,9 @@ Repertoire:
         tissue: PBMC
         cell_subset: "Memory B cell"
         cell_phenotype: "expression of CD20 and CD27"
+        cell_species:
+          id: "NCBITaxon_9606"
+          value: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
         template_class: RNA
@@ -98,10 +112,14 @@ Repertoire:
       subject_id: TW01A
       synthetic: false
       species:
-        id: "9606"
-        name: Homo sapiens
+        id: "NCBITaxon_9606"
+        value: "Homo sapiens"
       sex: F
-      age: 27yr
+      age_min: 27
+      age_max: 27
+      age_unit:
+        id: UO_0000036
+        value: year
       linked_subjects: TW01B
       link_type: twin
     sample:
@@ -109,6 +127,9 @@ Repertoire:
         tissue: PBMC
         cell_subset: "Naive CD4+ T cell"
         cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        cell_species:
+          id: "NCBITaxon_9606"
+          value: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
         template_class: RNA
