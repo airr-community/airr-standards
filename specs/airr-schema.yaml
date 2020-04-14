@@ -822,8 +822,12 @@ CellProcessing:
                 id: 9096
                 value: Homo sapiens
             x-airr:
+                miairr: defined
                 nullable: true
                 adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Cell species
                 format: ontology
                 ontology:
                     draft: false
