@@ -183,7 +183,6 @@ Study:
             example: Longer description
             x-airr:
                 nullable: true
-                name: Study description
                 adc-query-support: true
         inclusion_exclusion_criteria:
             type: string
@@ -334,7 +333,7 @@ Subject:
             $ref: '#/Ontology'
             description: Binomial designation of subject's species
             example:
-                id: 9096
+                id: NCBITaxon_9606
                 value: Homo sapiens
             x-airr:
                 miairr: essential
@@ -349,7 +348,7 @@ Subject:
                     name: NCBITAXON
                     url: https://www.ebi.ac.uk/ols/ontologies/ncbitaxon
                     top_node:
-                        id: 7776
+                        id: NCBITaxon_7776
                         value: Gnathostomata
         organism:
             $ref: '#/Ontology'
@@ -379,7 +378,6 @@ Subject:
                 subset: subject
                 name: Sex
                 format: controlled vocabulary
-
         age_min:
             type: number
             description: Specific age or lower boundary of age range.
@@ -552,7 +550,7 @@ Diagnosis:
             $ref: '#/Ontology'
             description: Diagnosis of subject
             example:
-                id: 9538
+                id: DOID_9538
                 value: multiple myeloma
             x-airr:
                 miairr: important
@@ -567,7 +565,7 @@ Diagnosis:
                     name: Human Disease Ontology
                     url: https://www.ebi.ac.uk/ols/ontologies/DOID
                     top_node:
-                        id: 4
+                        id: DOID_4
                         value: disease
         disease_length:
             type: string
@@ -819,7 +817,7 @@ CellProcessing:
                 valid experimental setups in which the two might differ, e.g. chimeric animal models. If set, this
                 key will overwrite the `organism` information for all lower layers of the schema.
             example:
-                id: 9096
+                id: NCBITaxon_9606
                 value: Homo sapiens
             x-airr:
                 miairr: defined
@@ -834,7 +832,7 @@ CellProcessing:
                     name: NCBITAXON
                     url: https://www.ebi.ac.uk/ols/ontologies/ncbitaxon
                     top_node:
-                        id: 7776
+                        id: NCBITaxon_7776
                         value: Gnathostomata
         single_cell:
             type: boolean
@@ -893,7 +891,8 @@ CellProcessing:
         cell_isolation:
             type: string
             description: Description of the procedure used for marker-based isolation or enrich cells
-            example: Cells were stained with fluorochrome labeled antibodies and then sorted on a FlowMerlin (CE) cytometer
+            example: >
+                Cells were stained with fluorochrome labeled antibodies and then sorted on a FlowMerlin (CE) cytometer.
             x-airr:
                 miairr: important
                 nullable: true
@@ -903,7 +902,9 @@ CellProcessing:
                 name: Cell isolation / enrichment procedure
         cell_processing_protocol:
             type: string
-            description: Description of the methods applied to the sample including cell preparation/ isolation/enrichment and nucleic acid extraction. This should closely mirror the Materials and methods section in the manuscript
+            description: >
+                Description of the methods applied to the sample including cell preparation/ isolation/enrichment and
+                nucleic acid extraction. This should closely mirror the Materials and methods section in the manuscript.
             example: Stimulated wih anti-CD3/anti-CD28
             x-airr:
                 miairr: important
@@ -989,7 +990,8 @@ NucleicAcidProcessing:
             enum:
                 - DNA
                 - RNA
-            description: The class of nucleic acid that was used as primary starting material for the following procedures
+            description: >
+                The class of nucleic acid that was used as primary starting material for the following procedures
             example: RNA
             x-airr:
                 miairr: essential
@@ -1248,7 +1250,7 @@ RawSequenceData:
                 format: controlled vocabulary
         filename:
             type: string
-            description: File name for the raw reads or sequences. The first file in paired-read sequencing
+            description: File name for the raw reads or sequences. The first file in paired-read sequencing.
             example: MS10R-NMonson-C7JR9_S1_R1_001.fastq
             x-airr:
                 miairr: important
@@ -1259,7 +1261,7 @@ RawSequenceData:
                 name: Raw sequencing data file name
         read_direction:
             type: string
-            description: Read direction for the raw reads or sequences. The first file in paired-read sequencing
+            description: Read direction for the raw reads or sequences. The first file in paired-read sequencing.
             example: forward
             enum:
                 - forward
