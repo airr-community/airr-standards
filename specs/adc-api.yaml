@@ -12,6 +12,37 @@ info:
 basePath: /airr/v1
 
 definitions:
+  # Service info object. This is the object returned by the /info request,
+  # and provides information about the ADC repository service and its attributes and capabilities
+  service_info_object:
+    type: object
+    description: Provides information about the ADC repository service and it attributes and capabilities.
+    properties:
+      title:
+        type: string
+      version:
+        type: string
+      description:
+        type: string
+      contact: 
+        type: object
+        properties:
+          name:
+            type: string
+          url:
+            type: string
+          email:
+            type: string
+      attributes:
+        type: object
+        properties:
+          max_size:
+            type: integer
+          max_query_size:
+            type: integer
+          last_update:
+            type: string
+      
   # Info object
   info_object:
     type: object
@@ -137,7 +168,7 @@ paths:
           description: |
             Success.
           schema:
-            $ref: '#/definitions/info_object'
+            $ref: '#/definitions/service_info_object'
         '500':
           description: Server error
           schema:
