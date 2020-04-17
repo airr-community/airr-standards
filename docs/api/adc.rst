@@ -17,12 +17,13 @@ accessible databases ensures that published results may be
 validated. Such deposition also facilitates reuse of data for the
 generation of new hypotheses and new knowledge.
 
-The AIRR Common Repository Working Group (CRWG) developed a set of
-recommendations__ (v0.6.0) that promote the deposit, sharing, and use
+The AIRR Common Repository Working Group (CRWG) has developed a set of
+recommendations__ that promote the deposit, sharing, and use
 of AIRR sequence data. These recommendations were refined following
 community discussions at the AIRR 2016 and 2017 Community Meetings and
 were approved through a vote by the AIRR Community at the AIRR
-Community Meeting in December 2017.
+Community Meeting in December 2017. Updates to these recommendations have continued,
+with the latest set of Recommendations ratified at the AIRR Community meeting in May 2019.
 
 In May 2020, the AIRR Community released the first verion of the AIRR Data Commons
 Application Programming Interface (ADC API), a specification for programmatic access to
@@ -35,4 +36,5 @@ the AIRR Data Commons as consisting of the set of repositories that:
 This page provides a central location for the community to discover resources that belong to the
 AIRR Data Commons.
 
+.. __: https://github.com/airr-community/common-repo-wg/blob/master/recommendations.md
 
