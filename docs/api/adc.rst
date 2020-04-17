@@ -49,7 +49,7 @@ query and download AIRR-seq data.
 
 **Querying the AIRR Data Commons**
 
-Each of the repositories above can be queried directly using the `ADC API <adc-api>`_. In addition, the
+Each of the repositories above can be queried directly using the `ADC API <adc-api.rst>`_. In addition, the
 following tools and platforms implement web based user interfaces that use the ADC API to query repositories
 in the AIRR Data Commons:
 
