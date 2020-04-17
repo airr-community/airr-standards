@@ -21,13 +21,13 @@ Each provides different capabilities but all comply with the MiAIRR standard.
     :maxdepth: 1
     :caption: VDJServer Community Data Portal
 
-    VDJServer Community Data Portal <../miairr/vdjserver>
+    VDJServer Community Data Portal <../miairr/vdjserver> (upload your data and publish for others to access)
     
 .. toctree::
     :maxdepth: 1
     :caption: iReceptor Turnkey Repository
 
-    iReceptor Turnkey Repository <../miairr/ireceptor>
+    iReceptor Turnkey Repository <../miairr/ireceptor> (install, host and manage your own repository)
 
 Data Submission for Inferred Genes and Alleles
 ----------------------------------------------
@@ -52,20 +52,17 @@ researchers can query, download and reuse that data for novel analyses.
 
 **AIRR Data Commons**
 
-These data repositories all implement the AIRR Data Commons (ADC) API programmatic access to
-query and download AIRR-seq data. 
+The AIRR Data Commons is a network of distributed repositories that store AIRR-seq data and
+adhere to the AIRR Community standards. We define the AIRR Data Commons as consisting of
+the set of repositories that:
 
-+ iReceptor Public Archive
++ adhere to the `AIRR Common Repositories Working Group recommendations`_ for promoting, sharing, and use of AIRR-seq data, and
++ that implement the `ADC API <../api/adc_api.rst>`_ as a programmatic mechanism to access that data.
 
-+ VDJServer Community Data Portal
+More information on repositories in the AIRR Data Commons and how to query these repositories
+can be found on the `AIRR Data Commons page <../api/adc.rst>`_.
 
-**Querying the AIRR Data Commons**
-
-Each of the repositories above can be queried directly using the ADC API <../../adc-api>. In addition, the
-following tools and platforms implement web based user interfaces that use the ADC API to query repositories
-in the AIRR Data Commons:
-
-+ iReceptor Gateway <../miairr/ireceptor>
+.. _`AIRR Common Repositories Working Group recommendations`: https://github.com/airr-community/common-repo-wg/blob/master/recommendations.md
 
 **Other Public AIRR-Seq Repositories**
 
