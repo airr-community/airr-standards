@@ -26,11 +26,11 @@ Community Meeting in December 2017.
 
 In May 2020, the AIRR Community released the first verion of the AIRR Data Commons
 Application Programming Interface (ADC API), a specification for programmatic access to
-query and download AIRR-seq data from repositories that adhere to the AIRR Standards.
+query and download AIRR-seq data from repositories that adhere to the AIRR Standards. We define 
+the AIRR Data Commons as consisting of the set of repositories that:
 
-The AIRR Data Commons consists of the set of repositories that adhere to the CRWG recommendations
-for promoting, sharing, and use of AIRR-seq data and that implement the ADC API as a programmatic
-mechanism to access that data.
+- adhere to the CRWG recommendations for promoting, sharing, and use of AIRR-seq data, and
+- that implement the ADC API as a programmatic mechanism to access that data.
 
 This page provides a central location for the community to discover resources that belong to the
 AIRR Data Commons.
