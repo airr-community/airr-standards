@@ -11,6 +11,8 @@ the AIRR Community standards.
 
 + `iReceptor Gateway`_
 
++ `iReceptor Repositories`_
+
 + `iReceptor Turnkey GitHUb`_
 
 + `Email iReceptor`_ for support.
@@ -28,6 +30,8 @@ Immunol Rev. 2018 Jul;284(1):24-41. `DOI: 10.1111/imr.12666`_
 .. _`Email iReceptor`: support@ireceptor.org
 
 .. _`iReceptor Website`: http://www.ireceptor.org
+
+.. _`iReceptor Repositories`: http://www.ireceptor.org/repositories
 
 .. _`iReceptor Gateway`: https://gateway.ireceptor.org
 
