@@ -7,15 +7,15 @@ Introduction to iReceptor
 iReceptor is a platform for storing, sharing, and exploring AIRR-seq data according to
 the AIRR Community standards.
 
-+ `iReceptor Website`_
++ `iReceptor Website`_ (General information)
 
-+ `iReceptor Gateway`_
++ `iReceptor Gateway`_ (AIRR Data Commons data query and federation)
 
-+ `iReceptor Repositories`_
++ `iReceptor Repositories`_ (AIRR Data Commons repositories)
 
-+ `iReceptor Turnkey GitHUb`_
++ `iReceptor Turnkey GitHUb`_ (Software)
 
-+ `Email iReceptor`_ for support.
++ `Email iReceptor`_ (Contact).
 
 References
 ==========
