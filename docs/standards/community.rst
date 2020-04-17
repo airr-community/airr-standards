@@ -4,9 +4,10 @@ Community
 
 .. toctree::
    :maxdepth: 1
-   :caption: Applications Supporting AIRR Standards
+   :caption: Resources/Tools Supporting AIRR Standards
 
     Rearrangement Schema <../resources/support.rst>
+    AIRR Data Commons <../api/adc.rst>
 
 Useful websites for the AIRR Community
 
