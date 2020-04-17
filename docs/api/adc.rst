@@ -55,4 +55,4 @@ in the AIRR Data Commons:
 
 + `iReceptor Gateway <../miairr/ireceptor.rst>`_
 
-There are `query and analysis use cases <../../examples/api_analysis_example.html>`_ and `a set of example queries <../../examples/api_queries.html>`_ available for the AIRR Data Commons and the ADC API.
+There are `query and analysis use cases <../examples/api_analysis_example.html>`_ and `a set of example queries <../examples/api_queries.html>`_ available for the AIRR Data Commons and the ADC API.
