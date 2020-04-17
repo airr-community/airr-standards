@@ -54,3 +54,5 @@ following tools and platforms implement web based user interfaces that use the A
 in the AIRR Data Commons:
 
 + `iReceptor Gateway <../miairr/ireceptor.rst>`_
+
+There are _`query and analysis use cases <../../examples/api_analysis_example.html>`_ and _`a set of example queries <../../examples/api_queries.html>`_ available for the AIRR Data Commons and the ADC API.
