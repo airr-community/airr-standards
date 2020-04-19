@@ -183,6 +183,7 @@ Study:
             example: Longer description
             x-airr:
                 nullable: true
+                name: Study description
                 adc-query-support: true
         inclusion_exclusion_criteria:
             type: string
@@ -758,7 +759,6 @@ CellProcessing:
         - tissue_processing
         - cell_subset
         - cell_phenotype
-        - cell_species
         - single_cell
         - cell_number
         - cells_per_reaction
