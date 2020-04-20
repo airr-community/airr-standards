@@ -1,4 +1,4 @@
-AIRR Formats WG field name	NCBI SRA attribute	Keyword relation	Mandatory SRA attribute	Note
+AIRR DataRep WG field name	NCBI SRA attribute	Keyword relation	Mandatory SRA attribute	Note
 study_id	bioproject_accession	MAPPING	TRUE	
 sample_id	sample_name	MAPPING	TRUE	
 nucleic_acid_processing_id	library_ID	MAPPING	TRUE	
@@ -10,9 +10,9 @@ NULL	library_layout	MAPPED_NODE	TRUE	see description in mapping_MiAIRR_SRA_libra
 NULL	platform	DATABASE_SPECIFIC	TRUE	
 sequencing_platform	instrument_model	MAPPING	TRUE	SRA splits this information into `platform` and `instrument_model`, however the controlled vocabulary of the latter one also often contains the `platform` information. Therefore preference was given to a 1:1 mapping using `instrument_model`
 library_generation_protocol	design_description	MAPPING	TRUE	
-NULL	filetype	DATABASE_SPECIFIC	TRUE	
-NULL	filename	DATABASE_SPECIFIC	TRUE	
-NULL	filename2	DATABASE_SPECIFIC	FALSE	
+file_type	filetype	MAPPING	TRUE	
+filename	filename	MAPPING	TRUE	
+paired_filename	filename2	MAPPING	FALSE	
 NULL	filename3	DATABASE_SPECIFIC	FALSE	
 NULL	filename4	DATABASE_SPECIFIC	FALSE	
 NULL	assembly	DATABASE_SPECIFIC	FALSE	
@@ -28,6 +28,9 @@ complete_sequences	complete_sequences	AIRR_CUSTOM	FALSE
 physical_linkage	physical_linkage	AIRR_CUSTOM	FALSE	
 total_reads_passing_qc_filter	total_reads_passing_qc_filter	AIRR_CUSTOM	FALSE	
 read_length	read_length	AIRR_CUSTOM	FALSE	
+paired_read_length	paired_read_length	AIRR_CUSTOM	FALSE	
+read_direction	read_direction	AIRR_CUSTOM	FALSE	
+paired_read_direction	paired_read_direction	AIRR_CUSTOM	FALSE	
 sequencing_facility	sequencing_facility	AIRR_CUSTOM	FALSE	
 sequencing_run_id	sequencing_run_id	AIRR_CUSTOM	FALSE	
 sequencing_run_date	sequencing_run_date	AIRR_CUSTOM	FALSE	
