@@ -1,3 +1,5 @@
+.. _DataCommonsExample:
+
 ADC API Query and Analysis Example
 ==================================
 
