@@ -21,13 +21,13 @@ Each provides different capabilities but all comply with the MiAIRR standard.
     :maxdepth: 1
     :caption: VDJServer Community Data Portal
 
-    VDJServer Community Data Portal <../miairr/vdjserver> (upload your data and publish for others to access)
+    VDJServer Community Data Portal <../miairr/vdjserver>
     
 .. toctree::
     :maxdepth: 1
     :caption: iReceptor Turnkey Repository
 
-    iReceptor Turnkey Repository <../miairr/ireceptor> (install, host and manage your own repository)
+    iReceptor Turnkey Repository <../miairr/ireceptor>
 
 Data Submission for Inferred Genes and Alleles
 ----------------------------------------------
@@ -44,8 +44,8 @@ process, and provide a real-time record of affirmed sequences.
 
     OGRDB <../ogrdb/ogrdb>
 
-Data Query and Download
------------------------
+Data Query and Download from the AIRR Data Commons
+--------------------------------------------------
 
 Submission of AIRR-seq datasets to public data repositories means that other
 researchers can query, download and reuse that data for novel analyses.
@@ -57,10 +57,10 @@ adhere to the AIRR Community standards. We define the AIRR Data Commons as consi
 the set of repositories that:
 
 + adhere to the `AIRR Common Repositories Working Group recommendations`_ for promoting, sharing, and use of AIRR-seq data, and
-+ that implement the `ADC API <../api/adc_api.rst>`_ as a programmatic mechanism to access that data.
++ that implement the :ref:`ADC API <DataCommonsAPI>` as a programmatic mechanism to access that data.
 
 More information on repositories in the AIRR Data Commons and how to query these repositories
-can be found on the `AIRR Data Commons page <../api/adc.rst>`_.
+can be found on the :ref:`AIRR Data Commons page <DataCommons>`.
 
 .. _`AIRR Common Repositories Working Group recommendations`: https://github.com/airr-community/common-repo-wg/blob/master/recommendations.md
 
