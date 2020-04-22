@@ -68,6 +68,9 @@ Repertoire:
           id: null
           value: null
         cell_phenotype: null
+        cell_species:
+          id: null
+          value: null
         single_cell: false
         cell_number: null
         cells_per_reaction: null
