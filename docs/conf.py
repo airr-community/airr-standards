@@ -269,7 +269,7 @@ for spec in tables:
 
 # Build tables for repertoire metadata schema
 tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
-          'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing']
+          'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing', 'Clone', 'Tree', 'Node', 'Cell']
 for spec in tables:
     properties = airr_schema[spec]['properties']
     rows = []
