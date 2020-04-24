@@ -137,6 +137,7 @@ Study:
         study_id:
             type: string
             description: Unique ID assigned by study registry
+            title: Study ID
             example: PRJNA001
             x-airr:
                 miairr: important
@@ -148,6 +149,7 @@ Study:
         study_title:
             type: string
             description: Descriptive study title
+            title: Study title
             example: Effects of sun light exposure of the Treg repertoire
             x-airr:
                 miairr: important
@@ -159,6 +161,7 @@ Study:
         study_type:
             $ref: '#/Ontology'
             description: Type of study design
+            title: Study type
             example:
                 id: C15197
                 value: Case-Control Study
@@ -180,6 +183,7 @@ Study:
         study_description:
             type: string
             description: Generic study description
+            title: Study description
             example: Longer description
             x-airr:
                 nullable: true
@@ -188,6 +192,7 @@ Study:
         inclusion_exclusion_criteria:
             type: string
             description: List of criteria for inclusion/exclusion for the study
+            title: Study inclusion/exclusion criteria
             example: "Include: Clinical P. falciparum infection; Exclude: Seropositive for HIV"
             x-airr:
                 miairr: important
@@ -199,6 +204,7 @@ Study:
         grants:
             type: string
             description: Funding agencies and grant numbers
+            title: Grant funding agency
             example: NIH, award number R01GM987654
             x-airr:
                 miairr: important
@@ -212,6 +218,7 @@ Study:
             description: >
                 Full contact information of the data collector, i.e. the person who is legally responsible for
                 data collection and release. This should include an e-mail address.
+            title: Contact information (data collection)
             example: Dr. P. Stibbons, p.stibbons@unseenu.edu
             x-airr:
                 miairr: important
@@ -223,6 +230,7 @@ Study:
         lab_name:
             type: string
             description: Department of data collector
+            title: Lab name
             example: Department for Planar Immunology
             x-airr:
                 miairr: important
@@ -234,6 +242,7 @@ Study:
         lab_address:
             type: string
             description: Institution and institutional address of data collector
+            title: Lab address
             example: School of Medicine, Unseen University, Ankh-Morpork, Disk World
             x-airr:
                 miairr: important
@@ -247,6 +256,7 @@ Study:
             description: >
                 Full contact information of the data depositor, i.e. the person submitting the data to a repository.
                 This is supposed to be a short-lived and technical role until the submission is relased.
+            title: Contact information (data deposition)
             example: Adrian Turnipseed, a.turnipseed@unseenu.edu
             x-airr:
                 miairr: important
@@ -258,6 +268,7 @@ Study:
         pub_ids:
             type: string
             description: Publications describing the rationale and/or outcome of the study
+            title: Relevant publications
             example: "PMID:85642"
             x-airr:
                 miairr: important
@@ -276,6 +287,7 @@ Study:
                     - contains_single_cell
                     - contains_paired_chain
             description: Keywords describing properties of one or more data sets in a study
+            title: Keywords for study
             example:
               - contains_ig
               - contains_paired_chain
