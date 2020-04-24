@@ -565,6 +565,7 @@ Diagnosis:
         study_group_description:
             type: string
             description: Designation of study arm to which the subject is assigned to
+            title: Study group description
             example: control
             x-airr:
                 miairr: important
@@ -576,6 +577,7 @@ Diagnosis:
         disease_diagnosis:
             $ref: '#/Ontology'
             description: Diagnosis of subject
+            title: Diagnosis
             example:
                 id: DOID_9538
                 value: multiple myeloma
@@ -597,6 +599,7 @@ Diagnosis:
         disease_length:
             type: string
             description: Time duration between initial diagnosis and current intervention
+            title: Length of disease
             example: 23 months
             x-airr:
                 miairr: important
@@ -609,6 +612,7 @@ Diagnosis:
         disease_stage:
             type: string
             description: Stage of disease at current intervention
+            title: Disease stage
             example: Stage II
             x-airr:
                 miairr: important
@@ -620,6 +624,7 @@ Diagnosis:
         prior_therapies:
             type: string
             description: List of all relevant previous therapies applied to subject for treatment of `Diagnosis`
+            title: Prior therapies for primary disease under study
             example: melphalan/prednisone
             x-airr:
                 miairr: important
@@ -631,6 +636,7 @@ Diagnosis:
         immunogen:
             type: string
             description: Antigen, vaccine or drug applied to subject at this intervention
+            title: Immunogen/agent
             example: bortezomib
             x-airr:
                 miairr: important
@@ -642,6 +648,7 @@ Diagnosis:
         intervention:
             type: string
             description: Description of intervention
+            title: Intervention definition
             example: systemic chemotherapy, 6 cycles, 1.25 mg/m2
             x-airr:
                 miairr: important
@@ -653,6 +660,7 @@ Diagnosis:
         medical_history:
             type: string
             description: Medical history of subject that is relevant to assess the course of disease and/or treatment
+            title: Other relevant medical history
             example: MGUS, first diagnosed 5 years prior
             x-airr:
                 miairr: important
@@ -680,6 +688,7 @@ Sample:
         sample_id:
             type: string
             description: Sample ID assigned by submitter, unique within study
+            title: Biological sample ID
             example: SUP52415
             x-airr:
                 miairr: important
@@ -691,6 +700,7 @@ Sample:
         sample_type:
             type: string
             description: The way the sample was obtained, e.g. fine-needle aspirate, organ harvest, peripheral venous puncture
+            title: Sample type
             example: Biopsy
             x-airr:
                 miairr: important
@@ -702,6 +712,7 @@ Sample:
         tissue:
             $ref: '#/Ontology'
             description: The actual tissue sampled, e.g. lymph node, liver, peripheral blood
+            title: Tissue
             example:
                 id: UBERON_0002371
                 value: bone marrow
@@ -723,6 +734,7 @@ Sample:
         anatomic_site:
             type: string
             description: The anatomic location of the tissue, e.g. Inguinal, femur
+            title: Anatomic site
             example: Iliac crest
             x-airr:
                 miairr: important
@@ -734,6 +746,7 @@ Sample:
         disease_state_sample:
             type: string
             description: Histopathologic evaluation of the sample
+            title: Disease state of sample
             example: Tumor infiltration
             x-airr:
                 miairr: important
@@ -745,6 +758,7 @@ Sample:
         collection_time_point_relative:
             type: string
             description: Time point at which sample was taken, relative to `Collection time event`
+            title: Sample collection time
             example: "14 d"
             x-airr:
                 miairr: important
@@ -757,6 +771,7 @@ Sample:
         collection_time_point_reference:
             type: string
             description: Event in the study schedule to which `Sample collection time` relates to
+            title: Collection time event
             example: Primary vaccination
             x-airr:
                 miairr: important
@@ -768,6 +783,7 @@ Sample:
         biomaterial_provider:
             type: string
             description: Name and address of the entity providing the sample
+            title: Biomaterial provider
             example: Tissues-R-Us, Tampa, FL, USA
             x-airr:
                 miairr: important
