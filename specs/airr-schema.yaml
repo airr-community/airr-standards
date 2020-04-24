@@ -324,6 +324,7 @@ Subject:
         subject_id:
             type: string
             description: Subject ID assigned by submitter, unique within study
+            title: Subject ID
             example: SUB856413
             x-airr:
                 miairr: important
@@ -335,6 +336,7 @@ Subject:
         synthetic:
             type: boolean
             description: TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)
+            title: Synthetic library
             x-airr:
                 miairr: essential
                 nullable: false
@@ -345,6 +347,7 @@ Subject:
         species:
             $ref: '#/Ontology'
             description: Binomial designation of subject's species
+            title: Organism
             example:
                 id: NCBITaxon_9606
                 value: Homo sapiens
@@ -382,6 +385,7 @@ Subject:
                 - "not collected"
                 - "not applicable"
             description: Biological sex of subject
+            title: Sex
             example: female
             x-airr:
                 miairr: important
@@ -394,6 +398,7 @@ Subject:
         age_min:
             type: number
             description: Specific age or lower boundary of age range.
+            title: Age minimum
             example: 60
             x-airr:
                 miairr: important
@@ -407,6 +412,7 @@ Subject:
             description: >
                 Upper boundary of age range or equal to age_min for specific age.
                 This field should only be null if age_min is null.
+            title: Age maximum
             example: 80
             x-airr:
                 miairr: important
@@ -418,6 +424,7 @@ Subject:
         age_unit:
             $ref: '#/Ontology'
             description: Unit of age range
+            title: Age unit
             example:
                 id: UO_0000036
                 value: year
@@ -442,6 +449,7 @@ Subject:
                 Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other
                 implementations submitters need to be aware that there is currently no mechanism to encode to potential
                 delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
+            title: Age event
             example: enrollment
             x-airr:
                 miairr: important
@@ -462,6 +470,7 @@ Subject:
         ancestry_population:
             type: string
             description: Broad geographic origin of ancestry (continent)
+            title: Ancestry population
             example: list of continents, mixed or unknown
             x-airr:
                 miairr: important
@@ -473,6 +482,7 @@ Subject:
         ethnicity:
             type: string
             description: Ethnic group of subject (defined as cultural/language-based membership)
+            title: Ethnicity
             example: English, Kurds, Manchu, Yakuts (and other fields from Wikipedia)
             x-airr:
                 miairr: important
@@ -484,6 +494,7 @@ Subject:
         race:
             type: string
             description: Racial group of subject (as defined by NIH)
+            title: Race
             example: White, American Indian or Alaska Native, Black, Asian, Native Hawaiian or Other Pacific Islander, Other
             x-airr:
                 miairr: important
@@ -495,6 +506,7 @@ Subject:
         strain_name:
             type: string
             description: Non-human designation of the strain or breed of animal used
+            title: Strain name
             example: C57BL/6J
             x-airr:
                 miairr: important
@@ -506,6 +518,7 @@ Subject:
         linked_subjects:
             type: string
             description: Subject ID to which `Relation type` refers
+            title: Relation to other subjects
             example: SUB1355648
             x-airr:
                 miairr: important
@@ -517,6 +530,7 @@ Subject:
         link_type:
             type: string
             description: Relation between subject and `linked_subjects`, can be genetic or environmental (e.g.exposure)
+            title: Relation type
             example: father, daughter, household
             x-airr:
                 miairr: important
