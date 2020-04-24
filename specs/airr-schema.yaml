@@ -812,6 +812,7 @@ CellProcessing:
         tissue_processing:
             type: string
             description: Enzymatic digestion and/or physical methods used to isolate cells from sample
+            title: Tissue processing
             example: Collagenase A/Dnase I digested, followed by Percoll gradient
             x-airr:
                 miairr: important
@@ -823,6 +824,7 @@ CellProcessing:
         cell_subset:
             $ref: '#/Ontology'
             description: Commonly-used designation of isolated cell population
+            title: Cell subset
             example:
                 id: CL_0000972
                 value: class switched memory B cell
@@ -844,6 +846,7 @@ CellProcessing:
         cell_phenotype:
             type: string
             description: List of cellular markers and their expression levels used to isolate the cell population
+            title: Cell subset phenotype
             example: CD19+ CD38+ CD27+ IgM- IgD-
             x-airr:
                 miairr: important
@@ -859,6 +862,7 @@ CellProcessing:
                 should be identical to `organism`, if which case it SHOULD NOT be set explicitly. Howver, there are
                 valid experimental setups in which the two might differ, e.g. chimeric animal models. If set, this
                 key will overwrite the `organism` information for all lower layers of the schema.
+            title: Cell species
             example:
                 id: NCBITaxon_9606
                 value: Homo sapiens
@@ -880,6 +884,7 @@ CellProcessing:
         single_cell:
             type: boolean
             description: TRUE if single cells were isolated into separate compartments
+            title: Single-cell sort
             x-airr:
                 miairr: important
                 nullable: true
@@ -890,6 +895,7 @@ CellProcessing:
         cell_number:
             type: integer
             description: Total number of cells that went into the experiment
+            title: Number of cells in experiment
             example: 1000000
             x-airr:
                 miairr: important
@@ -901,6 +907,7 @@ CellProcessing:
         cells_per_reaction:
             type: integer
             description: Number of cells for each biological replicate
+            title: Number of cells per sequencing reaction
             example: 50000
             x-airr:
                 miairr: important
@@ -912,6 +919,7 @@ CellProcessing:
         cell_storage:
             type: boolean
             description: TRUE if cells were cryo-preserved between isolation and further processing
+            title: Cell storage
             example: TRUE
             x-airr:
                 miairr: important
@@ -923,6 +931,7 @@ CellProcessing:
         cell_quality:
             type: string
             description: Relative amount of viable cells after preparation and (if applicable) thawing
+            title: Cell quality
             example: 90% viability as determined by 7-AAD
             x-airr:
                 miairr: important
@@ -934,6 +943,7 @@ CellProcessing:
         cell_isolation:
             type: string
             description: Description of the procedure used for marker-based isolation or enrich cells
+            title: Cell isolation / enrichment procedure
             example: >
                 Cells were stained with fluorochrome labeled antibodies and then sorted on a FlowMerlin (CE) cytometer.
             x-airr:
@@ -948,6 +958,7 @@ CellProcessing:
             description: >
                 Description of the methods applied to the sample including cell preparation/ isolation/enrichment and
                 nucleic acid extraction. This should closely mirror the Materials and methods section in the manuscript.
+            title: Processing protocol
             example: Stimulated wih anti-CD3/anti-CD28
             x-airr:
                 miairr: important
@@ -981,6 +992,7 @@ PCRTarget:
                 Designation of the target locus. Note that this field uses a controlled vocubulary that is meant to
                 provide a generic classification of the locus, not necessarily the correct designation according to
                 a specific nomenclature.
+            name: Target locus for PCR
             example: IGK
             x-airr:
                 miairr: important
@@ -993,6 +1005,7 @@ PCRTarget:
         forward_pcr_primer_target_location:
             type: string
             description: Position of the most distal nucleotide templated by the forward primer or primer mix
+            name: Forward PCR primer target location
             example: IGHV, +23
             x-airr:
                 miairr: important
@@ -1004,6 +1017,7 @@ PCRTarget:
         reverse_pcr_primer_target_location:
             type: string
             description: Position of the most proximal nucleotide templated by the reverse primer or primer mix
+            name: Reverse PCR primer target location
             example: IGHG, +57
             x-airr:
                 miairr: important
