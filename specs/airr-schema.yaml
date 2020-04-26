@@ -1812,6 +1812,7 @@ Rearrangement:
                 Gene locus (chain type). Note that this field uses a controlled vocabulary that is meant to provide a
                 generic classification of the locus, not necessarily the correct designation according to a specific
                 nomenclature.
+            title: Gene locus
             example: IGH
             x-airr:
                 nullable: true
@@ -1823,6 +1824,7 @@ Rearrangement:
             description: >
                 V gene with allele. If referring to a known reference sequence in a database
                 the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
+            title: V gene with allele
             example: IGHV4-59*01
             x-airr:
                 miairr: important
@@ -1836,6 +1838,7 @@ Rearrangement:
             description: >
                 First or only D gene with allele. If referring to a known reference sequence in a database
                 the relevant gene/allele nomenclature should be followed (e.g., IGHD3-10*01 if using IMGT/GENE-DB).
+            title: D gene with allele
             example: IGHD3-10*01
             x-airr:
                 miairr: important
@@ -1855,6 +1858,7 @@ Rearrangement:
             description: >
                 J gene with allele. If referring to a known reference sequence in a database the relevant
                 gene/allele nomenclature should be followed (e.g., IGHJ4*02 if using IMGT/GENE-DB).
+            title: J gene with allele
             example: IGHJ4*02
             x-airr:
                 miairr: important
@@ -1868,6 +1872,7 @@ Rearrangement:
             description: >
                 Constant region gene with allele. If referring to a known reference sequence in a database the
                 relevant gene/allele nomenclature should be followed (e.g., IGHG1*01 if using IMGT/GENE-DB).
+            title: C region
             example: IGHG1*01
             x-airr:
                 miairr: important
@@ -1901,6 +1906,7 @@ Rearrangement:
             description: >
                 Junction region nucleotide sequence, where the junction is defined as
                 the CDR3 plus the two flanking conserved codons.
+            title: IMGT-JUNCTION nucleotide sequence
             example: TGTGCAAGAGCGGGAGTTTACGACGGATATACTATGGACTACTGG
             x-airr:
                 miairr: important
@@ -1912,6 +1918,7 @@ Rearrangement:
             type: string
             description: >
                 Amino acid translation of the junction.
+            title: IMGT-JUNCTION amino acid sequence
             example: CARAGVYDGYTMDYW
             x-airr:
                 miairr: important
@@ -2379,6 +2386,7 @@ Rearrangement:
                 Copy number or number of duplicate observations for the query sequence.
                 For example, the number of UMIs sharing an identical sequence or the number
                 of identical observations of this sequence absent UMIs.
+            title: Read count
             example: 123
             x-airr:
                 miairr: important
@@ -2390,6 +2398,7 @@ Rearrangement:
             type: string
             description: >
                 Identifier defining the cell of origin for the query sequence.
+            title: Cell index
             example: W06_046_091
             x-airr:
                 miairr: important
@@ -2644,6 +2653,7 @@ Cell:
             type: string
             description: >
                 Identifier defining the cell of origin for the query sequence.
+            title: Cell index
             example: W06_046_091
             x-airr:
                 miairr: defined
@@ -2654,6 +2664,7 @@ Cell:
             type: array
             description: >
                   Array of sequence identifiers defined for the Rearrangement object
+            title: Cell-associated rearrangements
             items:
                 type: string
             example: [id1, id2] #empty vs NULL?
@@ -2666,6 +2677,7 @@ Cell:
             type: array
             description: >
                   Array of receptor identifiers defined for the Receptor object
+            title: Cell-associated receptors
             items:
                 type: string
             example: [id1, id2] #empty vs NULL?
@@ -2677,6 +2689,7 @@ Cell:
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
+            title: Parental repertoire of cell
             x-airr:
                 miairr: defined
                 nullable: true
@@ -2685,6 +2698,7 @@ Cell:
         data_processing_id:
             type: string
             description: Identifier of the data processing object in the repertoire metadata for this clone.
+            title: Data processing for cell
             x-airr:
                 miairr: defined
                 nullable: true
@@ -2728,6 +2742,7 @@ Cell:
             type: boolean
             description: >
                 boolean to indicate if pairing was inferred.
+            title: Virtual pairing
             x-airr:
                 miairr: defined
                 nullable: true # assuming only done for sc experiments, otherwise does not exist
