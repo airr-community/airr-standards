@@ -19,12 +19,39 @@ Ontology:
     discriminator: AIRR
     type: object
     properties:
-        id:
+        curie:
             type: string
-            description: Identifier for the ontology term
-        value:
+            description: CURIE of the concept, encoding the ontology and the local ID
+        label:
             type: string
-            description: Value for the ontology term
+            description: Label of the concept in the respective ontology
+
+
+CURIEResolution:
+  - 
+    curie_prefix: NCBITAXON
+    curie_separator: ":"
+    iri_prefix: "http://purl.obolibrary.org/obo/NCBITaxon_"
+  - 
+    curie_prefix: NCIT
+    curie_separator: ":"
+    iri_prefix: "http://purl.obolibrary.org/obo/NCIT_"
+  - 
+    curie_prefix: UO
+    curie_separator: ":"
+    iri_prefix: "http://purl.obolibrary.org/obo/UO_"
+  - 
+    curie_prefix: DOID
+    curie_separator: ":"
+    iri_prefix: "http://purl.obolibrary.org/obo/DOID_"
+  - 
+    curie_prefix: UBERON
+    curie_separator: ":"
+    iri_prefix: "http://purl.obolibrary.org/obo/UBERON_"
+  - 
+    curie_prefix: CL
+    curie_separator: ":"
+    iri_prefix: "http://purl.obolibrary.org/obo/CL_"
 
 
 # AIRR specification extensions
@@ -97,24 +124,18 @@ Attributes:
                 draft:
                     type: boolean
                     description: Indicates if ontology definition is a draft
-                name:
-                    type: string
-                    description: Ontology name
-                url:
-                    type: string
-                    description: >
-                        Ontology URL. If the ontology is included in the EMBL-EBI Ontology Lookup Service (OLS) set of
-                        ontologies, the OLS URL should be used (e.g., https://www.ebi.ac.uk/ols/ontologies/ncbitaxon).
                 top_node:
                     type: object
-                    description: Term to use as top node for ontology
+                    description: >
+                        Concept to use as top node for ontology. Note that this must have the same CURIE namespace
+                        as the actually annotated concept.
                     properties:
-                        id:
+                        curie:
                             type: string
-                            description: Ontology identifer for the top node term
-                        value:
+                            description: CURIE for the top node term
+                        label:
                             type: string
-                            description: Ontology value for the top node term
+                            description: Ontology name for the top node term
 
 
 # The overall study with a globally unique study_id
@@ -163,8 +184,8 @@ Study:
             description: Type of study design
             title: Study type
             example:
-                id: C15197
-                value: Case-Control Study
+                curie: NCIT:C15197
+                label: Case-Control Study
             x-airr:
                 miairr: important
                 nullable: true
@@ -174,12 +195,10 @@ Study:
                 name: Study type
                 format: ontology
                 ontology:
-                    draft: true
-                    name: NCIT
-                    url: https://www.ebi.ac.uk/ols/ontologies/ncit
+                    draft: false
                     top_node:
-                        id: C63536
-                        value: Study
+                        curie: NCIT:C63536
+                        label: Study
         study_description:
             type: string
             description: Generic study description
@@ -349,8 +368,8 @@ Subject:
             description: Binomial designation of subject's species
             title: Organism
             example:
-                id: NCBITaxon_9606
-                value: Homo sapiens
+                curie: NCBITAXON:9606
+                label: Homo sapiens
             x-airr:
                 miairr: essential
                 nullable: false
@@ -361,11 +380,9 @@ Subject:
                 format: ontology
                 ontology:
                     draft: false
-                    name: NCBITAXON
-                    url: https://www.ebi.ac.uk/ols/ontologies/ncbitaxon
                     top_node:
-                        id: NCBITaxon_7776
-                        value: Gnathostomata
+                        curie: NCBITAXON:7776
+                        label: Gnathostomata
         organism:
             $ref: '#/Ontology'
             description: Binomial designation of subject's species
@@ -426,8 +443,8 @@ Subject:
             description: Unit of age range
             title: Age unit
             example:
-                id: UO_0000036
-                value: year
+                curie: UO:0000036
+                label: year
             x-airr:
                 miairr: important
                 nullable: true
@@ -437,12 +454,10 @@ Subject:
                 name: Age unit
                 format: ontology
                 ontology:
-                    draft: true
-                    name: Units of measurement ontology
-                    url: https://www.ebi.ac.uk/ols/ontologies/UO
+                    draft: false
                     top_node:
-                        id: UO_0000003
-                        value: time unit
+                        curie: UO:0000003
+                        label: time unit
         age_event:
             type: string
             description: >
@@ -579,8 +594,8 @@ Diagnosis:
             description: Diagnosis of subject
             title: Diagnosis
             example:
-                id: DOID_9538
-                value: multiple myeloma
+                curie: DOID:9538
+                label: multiple myeloma
             x-airr:
                 miairr: important
                 nullable: true
@@ -591,11 +606,9 @@ Diagnosis:
                 format: ontology
                 ontology:
                     draft: false
-                    name: Human Disease Ontology
-                    url: https://www.ebi.ac.uk/ols/ontologies/DOID
                     top_node:
-                        id: DOID_4
-                        value: disease
+                        curie: DOID:4
+                        label: disease
         disease_length:
             type: string
             description: Time duration between initial diagnosis and current intervention
@@ -714,8 +727,8 @@ Sample:
             description: The actual tissue sampled, e.g. lymph node, liver, peripheral blood
             title: Tissue
             example:
-                id: UBERON_0002371
-                value: bone marrow
+                curie: UBERON:0002371
+                label: bone marrow
             x-airr:
                 miairr: important
                 nullable: true
@@ -726,11 +739,9 @@ Sample:
                 format: ontology
                 ontology:
                     draft: false
-                    name: UBERON
-                    url: https://www.ebi.ac.uk/ols/ontologies/uberon
                     top_node:
-                        id: UBERON_0010000
-                        value: multicellular anatomical structure
+                        curie: UBERON:0010000
+                        label: multicellular anatomical structure
         anatomic_site:
             type: string
             description: The anatomic location of the tissue, e.g. Inguinal, femur
@@ -826,8 +837,8 @@ CellProcessing:
             description: Commonly-used designation of isolated cell population
             title: Cell subset
             example:
-                id: CL_0000972
-                value: class switched memory B cell
+                curie: CL:0000972
+                label: class switched memory B cell
             x-airr:
                 miairr: important
                 nullable: true
@@ -838,11 +849,9 @@ CellProcessing:
                 format: ontology
                 ontology:
                     draft: false
-                    name: CL
-                    url: https://www.ebi.ac.uk/ols/ontologies/cl
                     top_node:
-                        id: CL_0000542
-                        value: lymphocyte
+                        curie: CL:0000542
+                        label: lymphocyte
         cell_phenotype:
             type: string
             description: List of cellular markers and their expression levels used to isolate the cell population
@@ -859,13 +868,13 @@ CellProcessing:
             $ref: '#/Ontology'
             description: >
                 Binomial designation of the species from which the analyzed cells originate. Typically, this value
-                should be identical to `organism`, if which case it SHOULD NOT be set explicitly. Howver, there are
+                should be identical to `species`, if which case it SHOULD NOT be set explicitly. Howver, there are
                 valid experimental setups in which the two might differ, e.g. chimeric animal models. If set, this
-                key will overwrite the `organism` information for all lower layers of the schema.
+                key will overwrite the `species` information for all lower layers of the schema.
             title: Cell species
             example:
-                id: NCBITaxon_9606
-                value: Homo sapiens
+                curie: NCBITAXON:9606
+                label: Homo sapiens
             x-airr:
                 miairr: defined
                 nullable: true
@@ -876,11 +885,9 @@ CellProcessing:
                 format: ontology
                 ontology:
                     draft: false
-                    name: NCBITAXON
-                    url: https://www.ebi.ac.uk/ols/ontologies/ncbitaxon
                     top_node:
-                        id: NCBITaxon_7776
-                        value: Gnathostomata
+                        curie: NCBITAXON:7776
+                        label: Gnathostomata
         single_cell:
             type: boolean
             description: TRUE if single cells were isolated into separate compartments
