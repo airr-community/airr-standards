@@ -13,13 +13,23 @@ group of the Common Repository (ComRepo) and the Minimal Standards
 the Team is to define standard vocabularies and ontologies to be used
 by AIRR-compliant databases.
 
+
+Sprint Reports
+==============
+
+.. toctree::
+   :maxdepth: 2
+
+   Report Sprint 11/2018 <report_sprint_2018-11>
+   Report Sprint 04/2020 <report_sprint_2020-04>
+
+
 Approved Ontologies
 ===================
 
 -  Study type (``Study type``, :ref:`Study <StudyFields>`)
 
    -  NCIT_
-   -  **draft**
    -  root node
 
       -  name: ``Study``
@@ -31,7 +41,7 @@ Approved Ontologies
    -  maintainer: NCI (ncicbiitappssupport@mail.nih.gov)
 
 
--  Species (``organism``, :ref:`Subject <SubjectFields>`) (``cell_species``, :ref:`Tissue and Cell Processing <CellProcessingFields>`)
+-  Species (``species``, :ref:`Subject <SubjectFields>`) (``cell_species``, :ref:`Tissue and Cell Processing <CellProcessingFields>`)
 
    -  NCBITAXON_
    -  root node
@@ -46,7 +56,6 @@ Approved Ontologies
 -  Age unit (``age_unit``, :ref:`Subject <SubjectFields>`)
 
    -  UO_
-   -  **draft**
    -  root node
 
       -  name: ``time unit``
@@ -101,13 +110,6 @@ Approved Ontologies
    -  maintainer: Chris Mungall, LBL, CA, US
       (cjmungall@lbl.gov)
 
-Topics
-======
-
-.. toctree::
-   :maxdepth: 2
-
-   Report Sprint 11/2018 <report_sprint_2018-11>
 
 .. Links
 
