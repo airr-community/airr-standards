@@ -21,6 +21,7 @@ References
 ==========
 
 .. [Corrie et al.] Corrie *et al*. 
+
 iReceptor: A platform for querying and analyzing antibody/B‐cell
 and T‐cell receptor repertoire data across federated repositories.
 Immunol Rev. 2018 Jul;284(1):24-41. `DOI: 10.1111/imr.12666`_
