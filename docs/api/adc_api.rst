@@ -123,8 +123,9 @@ A typical ``POST`` query request specifies the following parameters:
   returned in the response. By default all fields (AIRR and non-AIRR)
   stored in the data repository are returned. This can vary between
   data repositories based upon how the repository decides to store
-  blank or null fields, so the ``include_fields`` parameter should be
-  used to guarantee the existence of data elements in the response.
+  blank or null fields, so the ``fields`` and/or ``include_fields``
+  parameter should be used to guarantee the existence of data elements
+  in the response.
 
 + The ``include_fields`` parameter specifies the set of AIRR fields to
   be included in the response. This parameter can be used in
@@ -670,9 +671,10 @@ format and is available for all endpoints. The ``rearrangement``
 The ``fields`` parameter specifies which fields are to be included in
 the API response. By default all fields (AIRR and non-AIRR) stored in
 the data repository are returned. However, this can vary between data
-repositories based upon how the repository decides to store empty or
-null fields, so the ``include_fields`` parameter should be used to
-guarantee the existence of data elements in the response.
+repositories based upon how the repository decides to store blank or
+null fields, so the ``fields`` and/or ``include_fields`` parameter
+should be used to guarantee the existence of data elements in the
+response.
 
 **Include Fields Query Parameter**
 
