@@ -19,7 +19,7 @@ Ontology:
     discriminator: AIRR
     type: object
     properties:
-        curie:
+        id:
             type: string
             description: CURIE of the concept, encoding the ontology and the local ID
         label:
@@ -30,28 +30,30 @@ Ontology:
 CURIEResolution:
   - 
     curie_prefix: NCBITAXON
-    curie_separator: ":"
-    iri_prefix: "http://purl.obolibrary.org/obo/NCBITaxon_"
+    iri_prefix:
+      - "http://purl.obolibrary.org/obo/NCBITaxon_"
+      - "http://purl.bioontology.org/ontology/NCBITAXON/"
   - 
     curie_prefix: NCIT
-    curie_separator: ":"
-    iri_prefix: "http://purl.obolibrary.org/obo/NCIT_"
+    iri_prefix:
+      - "http://purl.obolibrary.org/obo/NCIT_"
+      - "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#"
   - 
     curie_prefix: UO
-    curie_separator: ":"
-    iri_prefix: "http://purl.obolibrary.org/obo/UO_"
+    iri_prefix:
+      - "http://purl.obolibrary.org/obo/UO_"
   - 
     curie_prefix: DOID
-    curie_separator: ":"
-    iri_prefix: "http://purl.obolibrary.org/obo/DOID_"
+    iri_prefix:
+      - "http://purl.obolibrary.org/obo/DOID_"
   - 
     curie_prefix: UBERON
-    curie_separator: ":"
-    iri_prefix: "http://purl.obolibrary.org/obo/UBERON_"
+    iri_prefix:
+      - "http://purl.obolibrary.org/obo/UBERON_"
   - 
     curie_prefix: CL
-    curie_separator: ":"
-    iri_prefix: "http://purl.obolibrary.org/obo/CL_"
+    iri_prefix:
+      - "http://purl.obolibrary.org/obo/CL_"
 
 
 # AIRR specification extensions
@@ -130,7 +132,7 @@ Attributes:
                         Concept to use as top node for ontology. Note that this must have the same CURIE namespace
                         as the actually annotated concept.
                     properties:
-                        curie:
+                        id:
                             type: string
                             description: CURIE for the top node term
                         label:
@@ -184,7 +186,7 @@ Study:
             description: Type of study design
             title: Study type
             example:
-                curie: NCIT:C15197
+                id: NCIT:C15197
                 label: Case-Control Study
             x-airr:
                 miairr: important
@@ -197,7 +199,7 @@ Study:
                 ontology:
                     draft: false
                     top_node:
-                        curie: NCIT:C63536
+                        id: NCIT:C63536
                         label: Study
         study_description:
             type: string
@@ -368,7 +370,7 @@ Subject:
             description: Binomial designation of subject's species
             title: Organism
             example:
-                curie: NCBITAXON:9606
+                id: NCBITAXON:9606
                 label: Homo sapiens
             x-airr:
                 miairr: essential
@@ -381,7 +383,7 @@ Subject:
                 ontology:
                     draft: false
                     top_node:
-                        curie: NCBITAXON:7776
+                        id: NCBITAXON:7776
                         label: Gnathostomata
         organism:
             $ref: '#/Ontology'
@@ -443,7 +445,7 @@ Subject:
             description: Unit of age range
             title: Age unit
             example:
-                curie: UO:0000036
+                id: UO:0000036
                 label: year
             x-airr:
                 miairr: important
@@ -456,7 +458,7 @@ Subject:
                 ontology:
                     draft: false
                     top_node:
-                        curie: UO:0000003
+                        id: UO:0000003
                         label: time unit
         age_event:
             type: string
@@ -594,7 +596,7 @@ Diagnosis:
             description: Diagnosis of subject
             title: Diagnosis
             example:
-                curie: DOID:9538
+                id: DOID:9538
                 label: multiple myeloma
             x-airr:
                 miairr: important
@@ -607,7 +609,7 @@ Diagnosis:
                 ontology:
                     draft: false
                     top_node:
-                        curie: DOID:4
+                        id: DOID:4
                         label: disease
         disease_length:
             type: string
@@ -727,7 +729,7 @@ Sample:
             description: The actual tissue sampled, e.g. lymph node, liver, peripheral blood
             title: Tissue
             example:
-                curie: UBERON:0002371
+                id: UBERON:0002371
                 label: bone marrow
             x-airr:
                 miairr: important
@@ -740,7 +742,7 @@ Sample:
                 ontology:
                     draft: false
                     top_node:
-                        curie: UBERON:0010000
+                        id: UBERON:0010000
                         label: multicellular anatomical structure
         anatomic_site:
             type: string
@@ -837,7 +839,7 @@ CellProcessing:
             description: Commonly-used designation of isolated cell population
             title: Cell subset
             example:
-                curie: CL:0000972
+                id: CL:0000972
                 label: class switched memory B cell
             x-airr:
                 miairr: important
@@ -850,7 +852,7 @@ CellProcessing:
                 ontology:
                     draft: false
                     top_node:
-                        curie: CL:0000542
+                        id: CL:0000542
                         label: lymphocyte
         cell_phenotype:
             type: string
@@ -873,7 +875,7 @@ CellProcessing:
                 key will overwrite the `species` information for all lower layers of the schema.
             title: Cell species
             example:
-                curie: NCBITAXON:9606
+                id: NCBITAXON:9606
                 label: Homo sapiens
             x-airr:
                 miairr: defined
@@ -886,7 +888,7 @@ CellProcessing:
                 ontology:
                     draft: false
                     top_node:
-                        curie: NCBITAXON:7776
+                        id: NCBITAXON:7776
                         label: Gnathostomata
         single_cell:
             type: boolean
