@@ -119,19 +119,29 @@ A typical ``POST`` query request specifies the following parameters:
 
 + The ``from`` and ``size`` parameters specify the number of results to skip and the maximum number of results to be returned in the response.
 
-+ The ``fields`` parameter specifies which data elements to be returned in the response. By default all AIRR required fields and all non-null, non-AIRR fields are returned.
++ The ``fields`` parameter specifies which data elements to be
+  returned in the response. By default all fields (AIRR and non-AIRR)
+  stored in the data repository are returned. This can vary between
+  data repositories based upon how the repository decides to store
+  blank or null fields, so the ``include_fields`` parameter should be
+  used to guarantee the existence of data elements in the response.
 
-+ The ``include_required`` parameter specifies whether to include the required AIRR fields in the response. This is a mechanism to ensure that the API response is an AIRR compliant repsonse.
++ The ``include_fields`` parameter specifies the set of AIRR fields to
+  be included in the response. This parameter can be used in
+  conjunction with the ``fields`` parameter, in which case the list of
+  fields is merged. This is a mechanism to ensure that specific,
+  well-defined sets of AIRR data elements are returned without
+  requiring all of those fields to be individually provided in the
+  ``fields`` parameter.
 
-The expected fields returned in a response are summarized in the table below.
+The sets that can be requested are summarized in the table below.
 
 .. csv-table::
-   :header: "Query parameters", "AIRR required", "AIRR Not Required", "Non-AIRR fields", "Requested fields"
+   :header: "include_fields", "MiAIRR", "AIRR required", "AIRR identifiers", "other AIRR fields"
 
-   "None",                              "Y","Y","Y","N"
-   "fields=[,,,]",                      "N","N","N","Y"
-   "include_required:true,fields=[,,,]","Y","N","N","Y"
-   "include_required:true",             "Y","N","N","N"
+   "miairr",      "Y","some","N","N"
+   "airr-core",   "Y","Y","Y","N"
+   "airr-schema", "Y","Y","Y","Y"
 
 **Service Status Example**
 
@@ -452,9 +462,9 @@ endpoints, i.e. the HTTP ``POST`` endpoints.
     * - ``format``
       - JSON
       - Specifies the API response format: JSON, AIRR TSV
-    * - ``include_required``
-      - false
-      - Specifies if AIRR required fields are included in the response
+    * - ``include_fields``
+      - null
+      - Specifies the set of AIRR fields to be included in the response
     * - ``fields``
       - null
       - Specifies which fields to include in the response
@@ -658,17 +668,39 @@ format and is available for all endpoints. The ``rearrangement``
 **Fields Query Parameter**
 
 The ``fields`` parameter specifies which fields are to be included in
-the API response. By default all AIRR Standard required fields (the equivalent of using ``include_required``)
-as well as all additional fields with non-null values are returned in the API response.
+the API response. By default all fields (AIRR and non-AIRR) stored in
+the data repository are returned. However, this can vary between data
+repositories based upon how the repository decides to store empty or
+null fields, so the ``include_fields`` parameter should be used to
+guarantee the existence of data elements in the response.
 
-**Include Required Query Parameter**
+**Include Fields Query Parameter**
 
-The ``include_required`` parameter is a boolean parameter (default false) that specifies whether the
-API response should include all AIRR Standard required fields. This is a mechanism to allow
-the user of the API to ensure that the API response is an AIRR compliant response. Note that if
-both the ``include_required`` and the ``fields`` parameter are provided, the API response will
-include all of the AIRR fields and in addition will include any additional fields that are specified in
-the ``fields`` parameter.
+The ``include_fields`` parameter specifies that the API response
+should include a well-defined set of AIRR Standard fields. These sets
+include:
+
++ ``miairr``, for only the MiAIRR fields.
+
++ ``airr-core``, for the AIRR required and identifier fields. This is
+  expected to be the most common option as it provides all MiAIRR
+  fields, additional required fields useful for analysis, and all
+  identifier fields for linking objects in the AIRR Data Model.
+
++ ``airr-schema``, for all AIRR fields in the AIRR Schema.
+
+The ``include_fields`` parameter is a mechanism to ensure that
+specific AIRR data elements are returned without requiring those
+fields to be individually provided with the ``fields`` parameter. Any
+data elements that lack a value will be assigned ``null`` in the
+response. Any empty array of objects, for example
+``subject.diagnosis``, will be populated with a single object with all
+of the object's properties given a null value. Any empty array of
+primitive data types, like string or number, will be assigned
+``null``. Note that if both the ``include_fields`` and the ``fields``
+parameter are provided, the API response will include the set of AIRR
+fields and in addition will include any additional fields that are
+specified in the ``fields`` parameter.
 
 **Size and From Query Parameters**
 
