@@ -25,8 +25,8 @@ Repertoire:
       subject_id: TW01A
       synthetic: false
       species:
-        id: "9606"
-        value: Homo sapiens
+        id: "NCBITaxon_9606"
+        value: "Homo sapiens"
       sex: F
       age_min: 27
       age_max: 27
@@ -61,12 +61,12 @@ Repertoire:
           value: "blood"
         tissue_processing: "Ficoll gradient"
         cell_subset:
-          id: null
-          value: null
-        cell_subset:
           id: "CL_0000788"
           value: "naive B cell"
         cell_phenotype: "expression of CD20 and the absence of CD27"
+        cell_species:
+          id: "NCBITaxon_9606"
+          value: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
         template_class: RNA
@@ -140,8 +140,8 @@ Repertoire:
       subject_id: TW01A
       synthetic: false
       species:
-        id: "9606"
-        value: Homo sapiens
+        id: "NCBITaxon_9606"
+        value: "Homo sapiens"
       sex: F
       age_min: 27
       age_max: 27
@@ -179,6 +179,9 @@ Repertoire:
           id: "CL_0000787"
           value: "memory B cell"
         cell_phenotype: "expression of CD20 and CD27"
+        cell_species:
+          id: "NCBITaxon_9606"
+          value: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
         template_class: RNA
@@ -252,8 +255,8 @@ Repertoire:
       subject_id: TW01A
       synthetic: false
       species:
-        id: "9606"
-        value: Homo sapiens
+        id: "NCBITaxon_9606"
+        value: "Homo sapiens"
       sex: F
       age_min: 27
       age_max: 27
@@ -291,6 +294,9 @@ Repertoire:
           id: "CL_0000895"
           value: "naive thymus-derived CD4-positive, alpha-beta T cell"
         cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        cell_species:
+          id: "NCBITaxon_9606"
+          value: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
         template_class: RNA

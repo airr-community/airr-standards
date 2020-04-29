@@ -1,4 +1,4 @@
-.. _DataCommons:
+.. _DataCommonsAPI:
 
 AIRR Data Commons API V1
 =============================

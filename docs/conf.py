@@ -269,7 +269,7 @@ for spec in tables:
 
 # Build tables for repertoire metadata schema
 tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
-          'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing']
+          'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing', 'Clone', 'Tree', 'Node', 'Cell']
 for spec in tables:
     properties = airr_schema[spec]['properties']
     rows = []
@@ -332,9 +332,6 @@ def wrap_col(string, str_length=11):
 
 # iterate over first level of yaml items
 for key, v in airr_schema.items():
-    # skip Cell object until #369 is fixed, then remove next two lines
-    if key == "Cell" :
-        continue
     # iterate over second level of yaml items
     for k, v in airr_schema[key].items():
         # get properties

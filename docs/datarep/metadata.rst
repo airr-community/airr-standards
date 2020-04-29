@@ -167,7 +167,7 @@ File Structure
 
 + Some fields require the use of a particular ontology or controlled vocabulary.
 
-+ The structure is the same regardless of whether the data is stored in a file or a data repository. For example, The :ref:`ADC API <DataCommons>` will return a properly structured JSON object that can be saved to a file and used directly without modification.
++ The structure is the same regardless of whether the data is stored in a file or a data repository. For example, The :ref:`ADC API <DataCommonsAPI>` will return a properly structured JSON object that can be saved to a file and used directly without modification.
 
 Repertoire Fields
 ------------------------------
