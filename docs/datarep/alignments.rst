@@ -32,7 +32,7 @@ Fields
 
     * - Name
       - Type
-      - Priority
+      - Level
       - Description
     {%- for field, fieldprops in airr_schema.Alignment.properties.items() %}
     * - ``{{ field }}``

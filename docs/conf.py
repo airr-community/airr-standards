@@ -254,7 +254,7 @@ if not os.path.exists(dl_path):  os.mkdir(dl_path)
 
 # Build table for each spec
 tables = ['Rearrangement', 'Alignment']
-fields = ['Name', 'Type', 'Priority', 'Description']
+fields = ['Name', 'Type', 'Level', 'Description']
 for spec in tables:
     # Get specs
     required = airr_schema[spec]['required']

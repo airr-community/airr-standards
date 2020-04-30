@@ -133,7 +133,7 @@ are welcomed through the issue tracker on the GitHub repository
 
     * - Name
       - Type
-      - Priority
+      - Level
       - Description
     {%- for field, fieldprops in airr_schema.Rearrangement.properties.items() %}
     * - ``{{ field }}``
