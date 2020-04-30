@@ -245,9 +245,12 @@ paths:
                 type: integer
               from:
                 type: integer
-              include_required:
-                type: boolean
-                default: false
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
       operationId: queryRepertoires
       responses:
         '200':
@@ -328,9 +331,12 @@ paths:
                 type: integer
               from:
                 type: integer
-              include_required:
-                type: boolean
-                default: false
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
       operationId: queryRearrangements
       responses:
         '200':
