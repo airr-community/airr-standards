@@ -132,7 +132,7 @@ The valid operator sets and definitions are as follows:
 
 .. csv-table::
     :header: Operator, Description
-    :widths: auto
+    :widths: 20 80
 
     "=", "An identical non-gap character."
     "X", "A differing non-gap character."
@@ -148,12 +148,12 @@ While leading ``S`` and ``N`` operators are required, tailing ``S`` and ``N`` op
 For example, an D gene alignment that starts at position 419 in the query ``sequence``
 (leading ``418S``), that is 16 nucleotides long with no indels (middle ``16M``),
 has an 10 nucleotide 5' deletion (leading ``10N``), a 5 nucleotide 3' deletion (trailing ``5N``),
-and ends 18 nucleotides from the end of the query ``sequence`` (trailing ``71S``) would
+and ends 72 nucleotides from the end of the query ``sequence`` (trailing ``71S``) would
 have the following D gene CIGAR string (``d_cigar``) and positional information:
 
 .. csv-table::
     :header: Field, Value
-    :widths: 75 25
+    :widths: 50 50
 
     d_cigar, 418S10N16M71S5N
     d_sequence_start, 419
