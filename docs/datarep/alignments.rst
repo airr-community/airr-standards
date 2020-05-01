@@ -27,12 +27,12 @@ Fields
 :download:`Download as TSV <../_downloads/Alignment.tsv>`.
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name
       - Type
-      - Priority
+      - Level
       - Description
     {%- for field, fieldprops in airr_schema.Alignment.properties.items() %}
     * - ``{{ field }}``
