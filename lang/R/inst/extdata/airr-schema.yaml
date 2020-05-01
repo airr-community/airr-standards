@@ -2657,7 +2657,7 @@ Cell:
             example: W06_046_091
             x-airr:
                 miairr: defined
-                nullable: true
+                nullable: false
                 adc-query-support: true
                 name: Cell index
         rearrangements:
@@ -2704,27 +2704,33 @@ Cell:
                 nullable: true
                 adc-query-support: true
                 name: Data processing for cell
-        expression_raw:
-            type: array
-            description: Raw expression information
-            items:
-                type: object
-                properties:
-                    study_method:
-                        type: string
-                        enum:
-                           flow cytometry
-                           single-cell transcriptome
-                        description: >
-                           keyword describing the methodology used to assess expression. This values for this field MUST come from a controlled vocabulary
-                    doi:
-                        type: string
-                        description: >
-                          DOI of raw data set containing the current event
-                    index:
-                        type: string
-                        description: >
-                          Index addressing the current event within the raw data set.
+        expression_study_method:
+            type: string
+            enum:
+                flow cytometry
+                single-cell transcriptome
+            description: >
+                  keyword describing the methodology used to assess expression. This values for this field MUST come from a controlled vocabulary
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        expression_raw_doi:
+            type: string
+            description: >
+                  DOI of raw data set containing the current event
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        expression_index:
+            type: string
+            description: >
+                  Index addressing the current event within the raw data set.
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
         expression_tabular:
             type: array
             description: >
@@ -2732,7 +2738,7 @@ Cell:
             items:
                 type: object
                 properties:
-                    expression_maker:
+                    expression_marker:
                         type: string
                         description: >
                            standardized designation of the transcript or epitope
