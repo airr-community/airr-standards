@@ -245,9 +245,12 @@ paths:
                 type: integer
               from:
                 type: integer
-              include_required:
-                type: boolean
-                default: false
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
       operationId: queryRepertoires
       responses:
         '200':
@@ -264,7 +267,7 @@ paths:
           schema:
             $ref: '#/definitions/error_response'
 
-  /rearrangement/{rearrangement_id}:
+  /rearrangement/{sequence_id}:
     x-swagger-router-controller: rearrangement
     get:
       description: >
@@ -278,7 +281,7 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: rearrangement_id
+        - name: sequence_id
           in: path
           description: ID of rearrangement to return
           required: true
@@ -328,9 +331,12 @@ paths:
                 type: integer
               from:
                 type: integer
-              include_required:
-                type: boolean
-                default: false
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
       operationId: queryRearrangements
       responses:
         '200':
