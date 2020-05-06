@@ -60,10 +60,6 @@ specific functionality as summarized in the following table:
       - Service information
       - ``GET``
       - Upon success, returns service information such as name, version, etc.
-    * - ``/v1/swagger``
-      - Swagger specification for API
-      - ``GET``
-      - Upon success, returns the OpenAPI specification for the ADC API implemented by this service. Useful for loading the API into tools like Swagger Editor__.
     * - ``/v1/repertoire/{repertoire_id}``
       - Retrieve a repertoire given its ``repertoire_id``
       - ``GET``
@@ -72,16 +68,14 @@ specific functionality as summarized in the following table:
       - Query repertoires
       - ``POST``
       - Upon success, returns a list of ``Repertoires`` in JSON according to the :ref:`Repertoire schema <RepertoireSchema>`.
-    * - ``/v1/rearrangement/{rearrangement_id}``
-      - Retrieve a rearrangement given its ``rearrangement_id``
+    * - ``/v1/rearrangement/{sequence_id}``
+      - Retrieve a rearrangement given its ``sequence_id``
       - ``GET``
       - Upon success, returns the ``Rearrangement`` information in JSON format according to the :ref:`Rearrangement schema <RearrangementSchema>`.
     * - ``/v1/rearrangement``
       - Query rearrangements
       - ``POST``
       - Upon success, returns a list of ``Rearrangements`` in JSON or AIRR TSV format according to the :ref:`Rearrangement schema <RearrangementSchema>`.
-
-.. __: https://swagger.io/tools/swagger-editor/
 
 **Authentication**
 
@@ -93,13 +87,13 @@ controlled-access data.
 Search and Retrieval
 --------------------
 
-The AIRR Data Commons REST API specifies endpoints for searching and
+The AIRR Data Commons API specifies endpoints for searching and
 retrieving AIRR-seq data sets stored in an AIRR-compliant Data
 Repository according to the AIRR Data Model. This documentation
 describes Version 1 of the API. The general format of requests
 and associated parameters are described below.
 
-The design of the AIRR Data Commons REST API was greatly inspired by
+The design of the AIRR Data Commons API was greatly inspired by
 National Cancer Institute's Genomic Data Commons (GDC) API__.
 
 .. __: https://docs.gdc.cancer.gov/API/Users_Guide/Getting_Started/
@@ -373,7 +367,7 @@ below.
 
 *Retrieve a Single Rearrangement*
 
-Given a ``rearrangement_id``, a single ``Rearrangement`` object will
+Given a ``sequence_id``, a single ``Rearrangement`` object will
 be returned.
 
 .. code-block:: bash
@@ -399,7 +393,7 @@ The response will provide the ``Rearrangement`` data in JSON format.
     "Rearrangement":
     [
       {
-        "rearrangement_id":"5d6fba725dca5569326aa104",
+        "sequence_id":"5d6fba725dca5569326aa104",
         "repertoire_id":"1841923116114776551-242ac11c-0001-012",
 
         "... remaining fields":"snipped for space"
@@ -431,7 +425,7 @@ Here is the response in AIRR TSV format.
 
 .. code-block:: text
 
-  productive	v_call	rearrangement_id	repertoire_id
+  productive	v_call	sequence_id	repertoire_id
   true	IGHV1-69*04	5d6fba725dca5569326aa106	1841923116114776551-242ac11c-0001-012
   true	IGHV1-69*04	5d6fba725dca5569326aa11b	1841923116114776551-242ac11c-0001-012
   true	IGHV1-69*10	5d6fba725dca5569326aa149	1841923116114776551-242ac11c-0001-012
@@ -850,8 +844,8 @@ in the AIRR Schema.
 
     * - Field(s)
       - Description
-    * - rearrangement_id, repertoire_id, sample_processing_id, data_processing_id, clone_id, cell_id, pair_id
-      - Identifiers; rearrangement_id allows for query of that specific rearrangement object in the repository, while repertoire_id, sample_processing_id, and data_processing_id are links to the repertoire metadata for the rearrangement. The clone_id, cell_id, and pair_id are all identifiers that group rearrangements based on clone definition, single cell assignment, and paired chain linking.
+    * - sequence_id, repertoire_id, sample_processing_id, data_processing_id, clone_id, cell_id
+      - Identifiers; sequence_id allows for query of that specific rearrangement object in the repository, while repertoire_id, sample_processing_id, and data_processing_id are links to the repertoire metadata for the rearrangement. The clone_id and cell_id are identifiers that group rearrangements based on clone assignment and single cell assignment.
     * - locus, v_call, d_call, j_call, c_call, productive, junction_aa, junction_aa_length
       - Commonly used rearrangement annotations.
 
