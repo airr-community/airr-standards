@@ -835,7 +835,7 @@ rearrangement records, where performing “simple” queries can quickly become 
 expensive. Data repositories are encouraged to optimize their databases for performance.
 Therefore, based upon a set of query use cases provided by immunology experts, a minimal
 set of required fields was defined that can be queried. These required fields are described
-in the following Table. The fields also have the AIRR extension property ``adc-api-optional: false``
+in the following Table. The fields also have the AIRR extension property ``adc-query-support: true``
 in the AIRR Schema.
 
 .. list-table::
