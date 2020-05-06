@@ -244,8 +244,15 @@ def load_repertoire(filename, validate=False, debug=False):
     # validate if requested
     if validate:
         reps = md['Repertoire']
+        i = 0
         for r in reps:
-            RepertoireSchema.validate_object(r)
+            try:
+                RepertoireSchema.validate_object(r)
+            except ValidationError as e:
+                valid = False
+                if debug:
+                    sys.stderr.write('%s has repertoire at array position %i with validation error: %s\n' % (filename, i, e))
+            i = i + 1
 
     # we do not perform any additional processing
     return md
@@ -277,18 +284,6 @@ def validate_repertoire(filename, debug=False):
         valid = False
         if debug:
             sys.stderr.write('%s has validation error: %s\n' % (filename, e))
-
-    # Validate each repertoire
-    reps = data['Repertoire']
-    i = 0
-    for r in reps:
-        try:
-            RepertoireSchema.validate_object(r)
-            i = i + 1
-        except ValidationError as e:
-            valid = False
-            if debug:
-                sys.stderr.write('%s has repertoire at array position %i with validation error: %s\n' % (filename, i, e))
 
     return valid
 
