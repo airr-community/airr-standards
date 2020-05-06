@@ -1774,8 +1774,6 @@ Rearrangement:
                 True if the alignment is on the opposite strand (reverse complemented) with respect to the
                 query sequence. If True then all output data, such as alignment coordinates and sequences,
                 are based on the reverse complement of 'sequence'.
-            x-airr:
-                adc-query-support: true
         productive:
             type: boolean
             description: >
