@@ -397,9 +397,9 @@ for spec in airr_schema:
             data_elements[spec].append(r)
 
 fields = ['Set', 'Subset', 'Designation', 'Field', 'Type', 'Format', 'Definition', 'Example', 'Requirement']
-# tables = ['Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
-#           'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing']
-tables = data_elements.keys()
+tables = ['Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
+          'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing']
+# tables = data_elements.keys()
 with open(os.path.join(download_path, '%s.tsv' % 'AIRR_Minimal_Standard_Data_Elements'), 'w') as f:
     writer = csv.DictWriter(f, fieldnames=fields, dialect='excel-tab')
     writer.writeheader()
