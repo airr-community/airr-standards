@@ -18,6 +18,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
 # Imports
+import csv
 import os
 import sys
 import yaml
@@ -248,9 +249,8 @@ with open(os.path.abspath('../specs/airr-schema.yaml')) as ip:
 html_context = {'airr_schema': airr_schema}
 
 # Write download spec files
-import csv
-dl_path = '_downloads'
-if not os.path.exists(dl_path):  os.mkdir(dl_path)
+download_path = '_downloads'
+if not os.path.exists(download_path):  os.mkdir(download_path)
 
 # Build table for each spec
 tables = ['Rearrangement', 'Alignment']
@@ -260,7 +260,7 @@ for spec in tables:
     required = airr_schema[spec]['required']
     properties = airr_schema[spec]['properties']
     # Write TSV
-    with open(os.path.join(dl_path, '%s.tsv' % spec), 'w') as f:
+    with open(os.path.join(download_path, '%s.tsv' % spec), 'w') as f:
         writer = csv.writer(f, dialect='excel-tab')
         writer.writerow(fields)
         for k, v in properties.items():
@@ -311,109 +311,97 @@ for spec in tables:
         rows.append(row)
     html_context[spec + '_schema'] = rows
 
-# Build AIRR_Minimal_Standard_Data_Elements.tsv table
-data_elements = [["Set",
-                  "Subset",
-                  "Designation",
-                  "Field",
-                  "Type",
-                  "Format",
-                  "Definition",
-                  "Example",
-                  "Requirement"]]
-
 
 # func to chop down long strings of the table
 def wrap_col(string, str_length=11):
-    if [x for x in string.split(" ") if len(x) > 25]:
+    if [x for x in string.split(' ') if len(x) > 25]:
         parts = [string[i:i + str_length].strip() for i in range(0, len(string), str_length)]
         return ('\n'.join(parts) + '\n')
     else:
         return (string)
 
+# Build AIRR_Minimal_Standard_Data_Elements.tsv table
+data_type_map = {'string': 'Free text',
+                 'integer': 'Positive integer',
+                 'number': 'Positive number',
+                 'boolean': 'T | F'}
 
-# iterate over first level of yaml items
-for key, v in airr_schema.items():
-    # iterate over second level of yaml items
-    for k, v in airr_schema[key].items():
-        # get properties
-        airr_properties = airr_schema[key][k]
-        if "properties" in k:
-            for airr_property, property_values in airr_properties.items():
+# Iterate over schema
+data_elements = {}
+for spec in airr_schema:
+    if 'properties' not in airr_schema[spec]:
+        continue
 
-                # get only not deprecated miairr properties (assuming no `deprecated=False`)
-                if "x-airr" in str(property_values) and \
-                        not "deprecated" in airr_properties[airr_property]["x-airr"] and \
-                        "miairr" in airr_properties[airr_property]["x-airr"]:
+    # Storage object
+    data_elements[spec] = []
 
-                    airr_title = airr_properties[airr_property]["title"]
-                    miairr_required = airr_properties[airr_property]["x-airr"]["miairr"]
+    # Get schema
+    properties = airr_schema[spec]['properties']
+    required = airr_schema[spec].get('required', None)
 
-                    if "'type'" in str(property_values):  # get 'type' for all properties except ontology
-                        airr_data_type = airr_properties[airr_property]["type"]
-                    else:
-                        airr_data_type = ""
+    # Iterate over properties
+    for prop, attr in properties.items():
+        # Get only not deprecated MiAIRR properties
+        if 'x-airr' in attr and 'miairr' in attr['x-airr'] and \
+                not attr['x-airr'].get('deprecated', False):
+            # x-airr attribute set
+            xairr = attr['x-airr']
 
-                    if "'example'" in str(property_values):
-                        airr_field_value_example = airr_properties[airr_property]["example"]
-                    else:
-                        airr_field_value_example = ""
+            # Standard attributes
+            title = attr.get('title', '')
+            data_type = attr.get('type', '')
+            example = attr.get('example', '')
+            description = attr.get('example', '')
+            require_level = 'required' if prop in required else 'optional'
+            nullable = xairr.get('nullable', '')
+            deprecated = attr['x-airr'].get('deprecated', False)
 
-                    if "'description'" in str(property_values):
-                        airr_description = airr_properties[airr_property]["description"]
-                    else:
-                        airr_description = ""
+            # MiAIRR attributes
+            miairr_level = xairr.get('miairr', '')
+            miairr_set = xairr.get('set', '')
+            miairr_subset = xairr.get('subset', '')
 
-                    if "'set'" in str(property_values):
-                        airr_set = airr_properties[airr_property]["x-airr"]["set"]
-                    else:
-                        airr_set = ""
+            # Define format
+            if 'format' in xairr:
+                if 'ontology' in xairr:
+                    base_dic = xairr['ontology']
+                    ontology_format = (str(base_dic['name']), str(base_dic['url']),
+                                       str(base_dic['top_node']['id']), str(base_dic['top_node']['value']),
+                                       str(base_dic['draft']))
+                    # Replace name with url-linked name
+                    data_format = 'Ontology: { name: `%s <%s/>`_ , top_node: { id: %s, value: %s}, draft: %s}' % (ontology_format)
+                    # Get 'type' for ontology
+                    data_type = airr_schema['Ontology']['properties']['value']['type']
+                    example = 'id: %s, value: %s' % (example['id'], example['value'])
+                elif 'controlled vocabulary' in attr:
+                    if attr.get('enum', None) is not None:
+                        data_format = 'Controlled vocabulary: %s' % attr['enum']
+                    elif attr.get('items', None) is not None:
+                        data_format = 'Controlled vocabulary: %s' + attr['items']['enum']
+            else:
+                data_format = data_type_map.get(data_type, '')
 
-                    if "subset" in airr_properties[airr_property]["x-airr"]:
-                        airr_subset = airr_properties[airr_property]["x-airr"]["subset"]
-                    else:
-                        airr_subset = ""
+            # airr_property = wrap_col(airr_property)
+            example = wrap_col(str(example))
 
-                    if "format" in airr_properties[airr_property]["x-airr"]:
-                        airr_format = airr_properties[airr_property]["x-airr"]["format"].capitalize()
+            r = {'Set': miairr_set,
+                 'Subset': miairr_subset,
+                 'Designation': title,
+                 'Field': prop,
+                 'Type': data_type,
+                 'Format': data_format,
+                 'Definition': description,
+                 'Example': example,
+                 'Requirement': miairr_level}
 
-                        if "ontology" in airr_properties[airr_property]["x-airr"]:
+            data_elements[spec].append(r)
 
-                            base_dic = airr_properties[airr_property]["x-airr"]["ontology"]
-                            ontology_format = (str(base_dic["name"]), str(base_dic["url"]),
-                            str(base_dic["top_node"]["id"]),str(base_dic["top_node"]["value"]), str(base_dic["draft"]))
-                            # replace name with url-linked name
-                            airr_format = "Ontology: { name: `%s <%s/>`_ , top_node: { id: %s, value: %s}, draft: %s}"%(
-                                ontology_format)
-                            # get 'type' for ontology
-                            airr_data_type = airr_schema["Ontology"]["properties"]["value"]["type"]
-                            airr_field_value_example = "id: " + str(airr_properties[airr_property]["example"]["id"]) + ", value: " + str(airr_properties[airr_property]["example"]["value"])
-
-                        elif "controlled vocabulary" in str(property_values):
-                            if airr_properties[airr_property].get("enum") is not None:
-                                airr_format = "Controlled vocabulary: " + str(airr_properties[airr_property]["enum"])
-                            elif airr_properties[airr_property].get("items") is not None:
-                                airr_format = "Controlled vocabulary: " + str(airr_properties[airr_property]["items"]["enum"])
-
-                    elif "format" not in airr_properties[airr_property]["x-airr"]:
-
-                        if airr_data_type == "string":
-                            airr_format = "Free text"
-                        elif airr_data_type == "integer":  #
-                            airr_format = "Any positive integer"
-                        elif airr_data_type == "number":  #
-                            airr_format = "Any positive number"
-                        elif airr_data_type == "boolean":  #
-                            airr_format = "T | F"
-
-                    # airr_property = wrap_col(airr_property)
-                    airr_field_value_example = wrap_col(str(airr_field_value_example))
-
-                    r = [airr_set, airr_subset, airr_title, airr_property,
-                         airr_data_type, airr_format, airr_description,
-                         airr_field_value_example, miairr_required]
-                    data_elements.append(r)
-
-with open(os.path.join(dl_path, '%s.tsv' % "AIRR_Minimal_Standard_Data_Elements"), "w") as f:
-    writer = csv.writer(f, dialect='excel-tab')
-    writer.writerows(data_elements)
+fields = ['Set', 'Subset', 'Designation', 'Field', 'Type', 'Format', 'Definition', 'Example', 'Requirement']
+# tables = ['Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
+#           'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing']
+tables = data_elements.keys()
+with open(os.path.join(download_path, '%s.tsv' % 'AIRR_Minimal_Standard_Data_Elements'), 'w') as f:
+    writer = csv.DictWriter(f, fieldnames=fields, dialect='excel-tab')
+    writer.writeheader()
+    for spec in tables:
+        writer.writerows(data_elements[spec])
