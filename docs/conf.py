@@ -351,7 +351,7 @@ for spec in airr_schema:
             title = attr.get('title', '')
             data_type = attr.get('type', '')
             example = attr.get('example', '')
-            description = attr.get('example', '')
+            description = attr.get('description', '')
             require_level = 'required' if prop in required else 'optional'
             nullable = xairr.get('nullable', '')
             deprecated = attr['x-airr'].get('deprecated', False)
