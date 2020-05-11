@@ -1,6 +1,9 @@
 .. _FormatSpecification:
 
 Format Specification
+=============================
+
+Overview
 -----------------------------
 
 Data for ``Rearrangement`` or ``Alignment`` objects are stored as rows in a
@@ -8,12 +11,14 @@ Data for ``Rearrangement`` or ``Alignment`` objects are stored as rows in a
 A dataset is defined in this context as: a TSV file, a TSV with a companion YAML file
 containing metadata, or a directory containing multiple TSV files and YAML files.
 
-**Encoding**
+Encoding
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 + The file should be encoded as ASCII or UTF-8.
 + Everything is case-sensitive.
 
-**Dialect**
+Dialect
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 + The record separator is a newline ``\n`` and the field separator is a tab ``\t``.
 + Fields or data should not be quoted.
@@ -25,12 +30,13 @@ containing metadata, or a directory containing multiple TSV files and YAML files
   However, if multiple values must be reported in a single column for an application
   specific reason, then the use of a comma as the delimiter is recommended.
 
-**File names**
+File names
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 AIRR formatted TSV files should end with ``.tsv``.
 
 Structure
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 The data file has two sections in this order:
 
@@ -42,20 +48,23 @@ specification, but such a section is reserved for potential inclusion in a futur
 release. As such, a comment section should not be included in the file as it *may*
 be incompatible with a future specification.
 
-**Header**
+Header
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A single line containing the column names and specifying the field order.
 Any field that corresponds to one of the defined fields should use the
 specified field name.
 
-**Required columns**
+Required columns
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some of the fields are defined as ``required`` and therefore must always be present
 in the header.  Note, however, that all columns allow for null values.  Therefore,
 required columns exist to define a core set of fields that are always present in
 the table structure, but do not mandate that a value be reported.
 
-**Custom columns**
+Custom columns
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are no restrictions on inclusion of additional custom columns in the
 Rearrangements file, provided such columns do not use the same name as an
@@ -68,28 +77,32 @@ Consider submitting a pull request for a field name reservation to the
 `airr-standards repository <https://github.com/airr-community/airr-standards>`_
 if the field may be broadly useful.
 
-**Ordering**
+Ordering
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are no requirements that fields or records be sorted or
 ordered in any specific way. However, the field ordering provided by the
 schema is a recommended default, with top-to-bottom equating to left-to-right.
 
 Data Values
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 The possible data types are ``string``, ``boolean``, ``number`` (floating point),
 ``integer``, and ``null`` (empty string).
 
-**Boolean values**
+Boolean values
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Boolean values must be encoded as ``T`` for true and ``F`` for false.
 
-**Null values**
+Null values
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All fields may contain null values. This includes columns that are described as
 ``required``. A null value should be encoded as an empty string.
 
-**Coordinate numbering**
+Coordinate numbering
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All alignment sequence coordinates use the same scheme as IMGT and INSDC
 (DDBJ, ENA, GenBank), with the exception that partial coordinate information
@@ -97,16 +110,29 @@ should not be used in favor of simply assigning the start/end of the alignment.
 Meaning, coordinates should be provided as 1-based values with closed intervals,
 without the use of ``>`` or ``<`` annotations that denoted a partial region.
 
-**CIGAR specification**
+CIGAR specification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Alignments details are specified using the CIGAR format as defined in the
 `SAM specifications <https://samtools.github.io/hts-specs/SAMv1.pdf>`__, with
-some vocabulary restrictions on the use of clipping, skipping and padding operators.
-The following table defines the valid operator set.
+some vocabulary restrictions on the use of clipping, skipping, and
+padding operators.
+
+The CIGAR string defines the reference sequence as the germline sequence of the
+given gene or region; e.g., for ``v_cigar`` the reference
+is the V gene germline sequence. The query sequence is what was input into the
+alignment tool, which must correspond to what is contained in the ``sequence``
+field of the Rearrangement data. For the majority of use cases, this will
+necessarily exclude alignment spacers from the CIGAR string, such as IMGT
+numbering gaps. However, any gaps appearing in the query sequence
+should be accounted for in the CIGAR string so that the alignment between
+the query and reference is correctly represented.
+
+The valid operator sets and definitions are as follows:
 
 .. csv-table::
     :header: Operator, Description
-    :widths: auto
+    :widths: 20 80
 
     "=", "An identical non-gap character."
     "X", "A differing non-gap character."
@@ -118,3 +144,19 @@ The following table defines the valid operator set.
 
 Note, the use of either the ``=``/``X`` or ``M`` syntax is valid, but should be used consistently.
 While leading ``S`` and ``N`` operators are required, tailing ``S`` and ``N`` operators are optional.
+
+For example, an D gene alignment that starts at position 419 in the query ``sequence``
+(leading ``418S``), that is 16 nucleotides long with no indels (middle ``16M``),
+has an 10 nucleotide 5' deletion (leading ``10N``), a 5 nucleotide 3' deletion (trailing ``5N``),
+and ends 72 nucleotides from the end of the query ``sequence`` (trailing ``71S``) would
+have the following D gene CIGAR string (``d_cigar``) and positional information:
+
+.. csv-table::
+    :header: Field, Value
+    :widths: 50 50
+
+    d_cigar, 418S10N16M71S5N
+    d_sequence_start, 419
+    d_sequence_end, 434
+    d_germline_start, 11
+    d_germline_end, 26

@@ -137,6 +137,7 @@ Study:
         study_id:
             type: string
             description: Unique ID assigned by study registry
+            title: Study ID
             example: PRJNA001
             x-airr:
                 miairr: important
@@ -148,6 +149,7 @@ Study:
         study_title:
             type: string
             description: Descriptive study title
+            title: Study title
             example: Effects of sun light exposure of the Treg repertoire
             x-airr:
                 miairr: important
@@ -159,6 +161,7 @@ Study:
         study_type:
             $ref: '#/Ontology'
             description: Type of study design
+            title: Study type
             example:
                 id: C15197
                 value: Case-Control Study
@@ -180,6 +183,7 @@ Study:
         study_description:
             type: string
             description: Generic study description
+            title: Study description
             example: Longer description
             x-airr:
                 nullable: true
@@ -188,6 +192,7 @@ Study:
         inclusion_exclusion_criteria:
             type: string
             description: List of criteria for inclusion/exclusion for the study
+            title: Study inclusion/exclusion criteria
             example: "Include: Clinical P. falciparum infection; Exclude: Seropositive for HIV"
             x-airr:
                 miairr: important
@@ -199,6 +204,7 @@ Study:
         grants:
             type: string
             description: Funding agencies and grant numbers
+            title: Grant funding agency
             example: NIH, award number R01GM987654
             x-airr:
                 miairr: important
@@ -212,6 +218,7 @@ Study:
             description: >
                 Full contact information of the data collector, i.e. the person who is legally responsible for
                 data collection and release. This should include an e-mail address.
+            title: Contact information (data collection)
             example: Dr. P. Stibbons, p.stibbons@unseenu.edu
             x-airr:
                 miairr: important
@@ -223,6 +230,7 @@ Study:
         lab_name:
             type: string
             description: Department of data collector
+            title: Lab name
             example: Department for Planar Immunology
             x-airr:
                 miairr: important
@@ -234,6 +242,7 @@ Study:
         lab_address:
             type: string
             description: Institution and institutional address of data collector
+            title: Lab address
             example: School of Medicine, Unseen University, Ankh-Morpork, Disk World
             x-airr:
                 miairr: important
@@ -247,6 +256,7 @@ Study:
             description: >
                 Full contact information of the data depositor, i.e. the person submitting the data to a repository.
                 This is supposed to be a short-lived and technical role until the submission is relased.
+            title: Contact information (data deposition)
             example: Adrian Turnipseed, a.turnipseed@unseenu.edu
             x-airr:
                 miairr: important
@@ -258,6 +268,7 @@ Study:
         pub_ids:
             type: string
             description: Publications describing the rationale and/or outcome of the study
+            title: Relevant publications
             example: "PMID:85642"
             x-airr:
                 miairr: important
@@ -276,6 +287,7 @@ Study:
                     - contains_single_cell
                     - contains_paired_chain
             description: Keywords describing properties of one or more data sets in a study
+            title: Keywords for study
             example:
               - contains_ig
               - contains_paired_chain
@@ -312,6 +324,7 @@ Subject:
         subject_id:
             type: string
             description: Subject ID assigned by submitter, unique within study
+            title: Subject ID
             example: SUB856413
             x-airr:
                 miairr: important
@@ -323,6 +336,7 @@ Subject:
         synthetic:
             type: boolean
             description: TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)
+            title: Synthetic library
             x-airr:
                 miairr: essential
                 nullable: false
@@ -333,6 +347,7 @@ Subject:
         species:
             $ref: '#/Ontology'
             description: Binomial designation of subject's species
+            title: Organism
             example:
                 id: NCBITaxon_9606
                 value: Homo sapiens
@@ -370,6 +385,7 @@ Subject:
                 - "not collected"
                 - "not applicable"
             description: Biological sex of subject
+            title: Sex
             example: female
             x-airr:
                 miairr: important
@@ -382,6 +398,7 @@ Subject:
         age_min:
             type: number
             description: Specific age or lower boundary of age range.
+            title: Age minimum
             example: 60
             x-airr:
                 miairr: important
@@ -395,6 +412,7 @@ Subject:
             description: >
                 Upper boundary of age range or equal to age_min for specific age.
                 This field should only be null if age_min is null.
+            title: Age maximum
             example: 80
             x-airr:
                 miairr: important
@@ -406,6 +424,7 @@ Subject:
         age_unit:
             $ref: '#/Ontology'
             description: Unit of age range
+            title: Age unit
             example:
                 id: UO_0000036
                 value: year
@@ -430,6 +449,7 @@ Subject:
                 Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other
                 implementations submitters need to be aware that there is currently no mechanism to encode to potential
                 delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
+            title: Age event
             example: enrollment
             x-airr:
                 miairr: important
@@ -450,6 +470,7 @@ Subject:
         ancestry_population:
             type: string
             description: Broad geographic origin of ancestry (continent)
+            title: Ancestry population
             example: list of continents, mixed or unknown
             x-airr:
                 miairr: important
@@ -461,6 +482,7 @@ Subject:
         ethnicity:
             type: string
             description: Ethnic group of subject (defined as cultural/language-based membership)
+            title: Ethnicity
             example: English, Kurds, Manchu, Yakuts (and other fields from Wikipedia)
             x-airr:
                 miairr: important
@@ -472,6 +494,7 @@ Subject:
         race:
             type: string
             description: Racial group of subject (as defined by NIH)
+            title: Race
             example: White, American Indian or Alaska Native, Black, Asian, Native Hawaiian or Other Pacific Islander, Other
             x-airr:
                 miairr: important
@@ -483,6 +506,7 @@ Subject:
         strain_name:
             type: string
             description: Non-human designation of the strain or breed of animal used
+            title: Strain name
             example: C57BL/6J
             x-airr:
                 miairr: important
@@ -494,6 +518,7 @@ Subject:
         linked_subjects:
             type: string
             description: Subject ID to which `Relation type` refers
+            title: Relation to other subjects
             example: SUB1355648
             x-airr:
                 miairr: important
@@ -505,6 +530,7 @@ Subject:
         link_type:
             type: string
             description: Relation between subject and `linked_subjects`, can be genetic or environmental (e.g.exposure)
+            title: Relation type
             example: father, daughter, household
             x-airr:
                 miairr: important
@@ -539,6 +565,7 @@ Diagnosis:
         study_group_description:
             type: string
             description: Designation of study arm to which the subject is assigned to
+            title: Study group description
             example: control
             x-airr:
                 miairr: important
@@ -550,6 +577,7 @@ Diagnosis:
         disease_diagnosis:
             $ref: '#/Ontology'
             description: Diagnosis of subject
+            title: Diagnosis
             example:
                 id: DOID_9538
                 value: multiple myeloma
@@ -571,6 +599,7 @@ Diagnosis:
         disease_length:
             type: string
             description: Time duration between initial diagnosis and current intervention
+            title: Length of disease
             example: 23 months
             x-airr:
                 miairr: important
@@ -583,6 +612,7 @@ Diagnosis:
         disease_stage:
             type: string
             description: Stage of disease at current intervention
+            title: Disease stage
             example: Stage II
             x-airr:
                 miairr: important
@@ -594,6 +624,7 @@ Diagnosis:
         prior_therapies:
             type: string
             description: List of all relevant previous therapies applied to subject for treatment of `Diagnosis`
+            title: Prior therapies for primary disease under study
             example: melphalan/prednisone
             x-airr:
                 miairr: important
@@ -605,6 +636,7 @@ Diagnosis:
         immunogen:
             type: string
             description: Antigen, vaccine or drug applied to subject at this intervention
+            title: Immunogen/agent
             example: bortezomib
             x-airr:
                 miairr: important
@@ -616,6 +648,7 @@ Diagnosis:
         intervention:
             type: string
             description: Description of intervention
+            title: Intervention definition
             example: systemic chemotherapy, 6 cycles, 1.25 mg/m2
             x-airr:
                 miairr: important
@@ -627,6 +660,7 @@ Diagnosis:
         medical_history:
             type: string
             description: Medical history of subject that is relevant to assess the course of disease and/or treatment
+            title: Other relevant medical history
             example: MGUS, first diagnosed 5 years prior
             x-airr:
                 miairr: important
@@ -654,6 +688,7 @@ Sample:
         sample_id:
             type: string
             description: Sample ID assigned by submitter, unique within study
+            title: Biological sample ID
             example: SUP52415
             x-airr:
                 miairr: important
@@ -665,6 +700,7 @@ Sample:
         sample_type:
             type: string
             description: The way the sample was obtained, e.g. fine-needle aspirate, organ harvest, peripheral venous puncture
+            title: Sample type
             example: Biopsy
             x-airr:
                 miairr: important
@@ -676,6 +712,7 @@ Sample:
         tissue:
             $ref: '#/Ontology'
             description: The actual tissue sampled, e.g. lymph node, liver, peripheral blood
+            title: Tissue
             example:
                 id: UBERON_0002371
                 value: bone marrow
@@ -697,6 +734,7 @@ Sample:
         anatomic_site:
             type: string
             description: The anatomic location of the tissue, e.g. Inguinal, femur
+            title: Anatomic site
             example: Iliac crest
             x-airr:
                 miairr: important
@@ -708,6 +746,7 @@ Sample:
         disease_state_sample:
             type: string
             description: Histopathologic evaluation of the sample
+            title: Disease state of sample
             example: Tumor infiltration
             x-airr:
                 miairr: important
@@ -719,6 +758,7 @@ Sample:
         collection_time_point_relative:
             type: string
             description: Time point at which sample was taken, relative to `Collection time event`
+            title: Sample collection time
             example: "14 d"
             x-airr:
                 miairr: important
@@ -731,6 +771,7 @@ Sample:
         collection_time_point_reference:
             type: string
             description: Event in the study schedule to which `Sample collection time` relates to
+            title: Collection time event
             example: Primary vaccination
             x-airr:
                 miairr: important
@@ -742,6 +783,7 @@ Sample:
         biomaterial_provider:
             type: string
             description: Name and address of the entity providing the sample
+            title: Biomaterial provider
             example: Tissues-R-Us, Tampa, FL, USA
             x-airr:
                 miairr: important
@@ -770,6 +812,7 @@ CellProcessing:
         tissue_processing:
             type: string
             description: Enzymatic digestion and/or physical methods used to isolate cells from sample
+            title: Tissue processing
             example: Collagenase A/Dnase I digested, followed by Percoll gradient
             x-airr:
                 miairr: important
@@ -781,6 +824,7 @@ CellProcessing:
         cell_subset:
             $ref: '#/Ontology'
             description: Commonly-used designation of isolated cell population
+            title: Cell subset
             example:
                 id: CL_0000972
                 value: class switched memory B cell
@@ -802,6 +846,7 @@ CellProcessing:
         cell_phenotype:
             type: string
             description: List of cellular markers and their expression levels used to isolate the cell population
+            title: Cell subset phenotype
             example: CD19+ CD38+ CD27+ IgM- IgD-
             x-airr:
                 miairr: important
@@ -817,6 +862,7 @@ CellProcessing:
                 should be identical to `organism`, if which case it SHOULD NOT be set explicitly. Howver, there are
                 valid experimental setups in which the two might differ, e.g. chimeric animal models. If set, this
                 key will overwrite the `organism` information for all lower layers of the schema.
+            title: Cell species
             example:
                 id: NCBITaxon_9606
                 value: Homo sapiens
@@ -838,6 +884,7 @@ CellProcessing:
         single_cell:
             type: boolean
             description: TRUE if single cells were isolated into separate compartments
+            title: Single-cell sort
             x-airr:
                 miairr: important
                 nullable: true
@@ -848,6 +895,7 @@ CellProcessing:
         cell_number:
             type: integer
             description: Total number of cells that went into the experiment
+            title: Number of cells in experiment
             example: 1000000
             x-airr:
                 miairr: important
@@ -859,6 +907,7 @@ CellProcessing:
         cells_per_reaction:
             type: integer
             description: Number of cells for each biological replicate
+            title: Number of cells per sequencing reaction
             example: 50000
             x-airr:
                 miairr: important
@@ -870,6 +919,7 @@ CellProcessing:
         cell_storage:
             type: boolean
             description: TRUE if cells were cryo-preserved between isolation and further processing
+            title: Cell storage
             example: TRUE
             x-airr:
                 miairr: important
@@ -881,6 +931,7 @@ CellProcessing:
         cell_quality:
             type: string
             description: Relative amount of viable cells after preparation and (if applicable) thawing
+            title: Cell quality
             example: 90% viability as determined by 7-AAD
             x-airr:
                 miairr: important
@@ -892,6 +943,7 @@ CellProcessing:
         cell_isolation:
             type: string
             description: Description of the procedure used for marker-based isolation or enrich cells
+            title: Cell isolation / enrichment procedure
             example: >
                 Cells were stained with fluorochrome labeled antibodies and then sorted on a FlowMerlin (CE) cytometer.
             x-airr:
@@ -906,6 +958,7 @@ CellProcessing:
             description: >
                 Description of the methods applied to the sample including cell preparation/ isolation/enrichment and
                 nucleic acid extraction. This should closely mirror the Materials and methods section in the manuscript.
+            title: Processing protocol
             example: Stimulated wih anti-CD3/anti-CD28
             x-airr:
                 miairr: important
@@ -939,6 +992,7 @@ PCRTarget:
                 Designation of the target locus. Note that this field uses a controlled vocubulary that is meant to
                 provide a generic classification of the locus, not necessarily the correct designation according to
                 a specific nomenclature.
+            title: Target locus for PCR
             example: IGK
             x-airr:
                 miairr: important
@@ -951,6 +1005,7 @@ PCRTarget:
         forward_pcr_primer_target_location:
             type: string
             description: Position of the most distal nucleotide templated by the forward primer or primer mix
+            title: Forward PCR primer target location
             example: IGHV, +23
             x-airr:
                 miairr: important
@@ -962,6 +1017,7 @@ PCRTarget:
         reverse_pcr_primer_target_location:
             type: string
             description: Position of the most proximal nucleotide templated by the reverse primer or primer mix
+            title: Reverse PCR primer target location
             example: IGHG, +57
             x-airr:
                 miairr: important
@@ -993,6 +1049,7 @@ NucleicAcidProcessing:
                 - RNA
             description: >
                 The class of nucleic acid that was used as primary starting material for the following procedures
+            title: Target substrate
             example: RNA
             x-airr:
                 miairr: essential
@@ -1005,6 +1062,7 @@ NucleicAcidProcessing:
         template_quality:
             type: string
             description: Description and results of the quality control performed on the template material
+            title: Target substrate quality
             example: RIN 9.2
             x-airr:
                 miairr: important
@@ -1016,6 +1074,7 @@ NucleicAcidProcessing:
         template_amount:
             type: string
             description: Amount of template that went into the process
+            title: Template amount
             example: 1000 ng
             x-airr:
                 miairr: important
@@ -1041,6 +1100,7 @@ NucleicAcidProcessing:
                 - "RT(specific)+TS"
                 - "other"
             description: Generic type of library generation
+            title: Library generation method
             example: RT(oligo-dT)+TS(UMI)+PCR
             x-airr:
                 miairr: essential
@@ -1053,6 +1113,7 @@ NucleicAcidProcessing:
         library_generation_protocol:
             type: string
             description: Description of processes applied to substrate to obtain a library that is ready for sequencing
+            title: Library generation protocol
             example: cDNA was generated using
             x-airr:
                 miairr: important
@@ -1064,6 +1125,7 @@ NucleicAcidProcessing:
         library_generation_kit_version:
             type: string
             description: When using a library generation protocol from a commercial provider, provide the protocol version number
+            title: Protocol IDs
             example: v2.1 (2016-09-15)
             x-airr:
                 miairr: important
@@ -1101,6 +1163,7 @@ NucleicAcidProcessing:
                 sentence MUST be untemplated, i.e. MUST NOT overlap with the primers used in library preparation.
                 `mixed` should only be used if the procedure used for library construction will likely produce multiple
                 categories of sequences in the given experiment. It SHOULD NOT be used as a replacement of a NULL value.
+            title: Complete sequences
             example: partial
             x-airr:
                 miairr: essential
@@ -1126,6 +1189,7 @@ NucleicAcidProcessing:
                 the 5' end of another one in a single-cell context. This term does not provide any information whether
                 a continuous reading-frame between the two is generated. `*_prelinked` refers to constructs in which
                 the linkage was already present on the DNA level (e.g. scFv).
+            title: Physical linkage of different rearrangements
             example: hetero_head-head
             x-airr:
                 miairr: essential
@@ -1151,6 +1215,7 @@ SequencingRun:
         sequencing_run_id:
             type: string
             description: ID of sequencing run assigned by the sequencing facility
+            title: Batch number
             example: 160101_M01234_0201_000000000-D2T7V
             x-airr:
                 miairr: important
@@ -1162,6 +1227,7 @@ SequencingRun:
         total_reads_passing_qc_filter:
             type: integer
             description: Number of usable reads for analysis
+            title: Total reads passing QC filter
             example: 10365118
             x-airr:
                 miairr: important
@@ -1173,6 +1239,7 @@ SequencingRun:
         sequencing_platform:
             type: string
             description: Designation of sequencing instrument used
+            title: Sequencing platform
             example: Alumina LoSeq 1000
             x-airr:
                 miairr: important
@@ -1184,6 +1251,7 @@ SequencingRun:
         sequencing_facility:
             type: string
             description: Name and address of sequencing facility
+            title: Sequencing facility
             example: Seqs-R-Us, Vancouver, BC, Canada
             x-airr:
                 miairr: important
@@ -1195,6 +1263,7 @@ SequencingRun:
         sequencing_run_date:
             type: string
             description: Date of sequencing run
+            title: Date of sequencing run
             format: date
             example: 2016-12-16
             x-airr:
@@ -1207,6 +1276,7 @@ SequencingRun:
         sequencing_kit:
             type: string
             description: Name, manufacturer, order and lot numbers of sequencing kit
+            title: Sequencing kit
             example: "FullSeq 600, Alumina, #M123456C0, 789G1HK"
             x-airr:
                 miairr: important
@@ -1238,6 +1308,7 @@ RawSequenceData:
         file_type:
             type: string
             description: File format for the raw reads or sequences
+            title: Raw sequencing data file type
             enum:
                 - fasta
                 - fastq
@@ -1252,6 +1323,7 @@ RawSequenceData:
         filename:
             type: string
             description: File name for the raw reads or sequences. The first file in paired-read sequencing.
+            title: Raw sequencing data file name
             example: MS10R-NMonson-C7JR9_S1_R1_001.fastq
             x-airr:
                 miairr: important
@@ -1263,6 +1335,7 @@ RawSequenceData:
         read_direction:
             type: string
             description: Read direction for the raw reads or sequences. The first file in paired-read sequencing.
+            title: Read direction
             example: forward
             enum:
                 - forward
@@ -1279,6 +1352,7 @@ RawSequenceData:
         read_length:
             type: integer
             description: Read length in bases for the first file in paired-read sequencing
+            title: Forward read length
             example: 300
             x-airr:
                 miairr: important
@@ -1290,6 +1364,7 @@ RawSequenceData:
         paired_filename:
             type: string
             description: File name for the second file in paired-read sequencing
+            title: Paired raw sequencing data file name
             example: MS10R-NMonson-C7JR9_S1_R2_001.fastq
             x-airr:
                 miairr: important
@@ -1297,10 +1372,11 @@ RawSequenceData:
                 adc-query-support: true
                 set: 4
                 subset: data (raw reads)
-                name: Raw sequencing data file name
+                name: Paired raw sequencing data file name
         paired_read_direction:
             type: string
             description: Read direction for the second file in paired-read sequencing
+            title: Paired read direction
             example: reverse
             enum:
                 - forward
@@ -1312,11 +1388,12 @@ RawSequenceData:
                 adc-query-support: true
                 set: 4
                 subset: data (raw reads)
-                name: Read direction
+                name: Paired read direction
                 format: controlled vocabulary
         paired_read_length:
             type: integer
             description: Read length in bases for the second file in paired-read sequencing
+            title: Paired read length
             example: 300
             x-airr:
                 miairr: important
@@ -1345,6 +1422,7 @@ DataProcessing:
         data_processing_id:
             type: string
             description: Identifier for the data processing object.
+            title: Data processing ID
             x-airr:
                 nullable: true
                 name: Data processing ID
@@ -1357,6 +1435,7 @@ DataProcessing:
                 If true, indicates this is the primary or default data processing for
                 the repertoire and its rearrangments. If false, indicates this is a secondary
                 or additional data processing.
+            title: Primary annotation
             x-airr:
                 nullable: false
                 adc-query-support: true
@@ -1364,6 +1443,7 @@ DataProcessing:
         software_versions:
             type: string
             description: Version number and / or date, include company pipelines
+            title: Software tools and version numbers
             example: IgBLAST 1.6
             x-airr:
                 miairr: important
@@ -1375,6 +1455,7 @@ DataProcessing:
         paired_reads_assembly:
             type: string
             description: How paired end reads were assembled into a single receptor sequence
+            title: Paired read assembly
             example: PandaSeq (minimal overlap 50, threshold 0.8)
             x-airr:
                 miairr: important
@@ -1386,6 +1467,7 @@ DataProcessing:
         quality_thresholds:
             type: string
             description: How sequences were removed from (4) based on base quality scores
+            title: Quality thresholds
             example: Average Phred score >=20
             x-airr:
                 miairr: important
@@ -1397,6 +1479,7 @@ DataProcessing:
         primer_match_cutoffs:
             type: string
             description: How primers were identified in the sequences, were they removed/masked/etc?
+            title: Primer match cutoffs
             example: Hamming distance <= 2
             x-airr:
                 miairr: important
@@ -1408,6 +1491,7 @@ DataProcessing:
         collapsing_method:
             type: string
             description: The method used for combining multiple sequences from (4) into a single sequence in (5)
+            title: Collapsing method
             example: MUSCLE 3.8.31
             x-airr:
                 miairr: important
@@ -1419,6 +1503,7 @@ DataProcessing:
         data_processing_protocols:
             type: string
             description: General description of how QC is performed
+            title: Data processing protocols
             example: Data was processed using [...]
             x-airr:
                 miairr: important
@@ -1432,6 +1517,7 @@ DataProcessing:
             items:
                 type: string
             description: Array of file names for data produced by this data processing.
+            title: Processed data file names
             example:
                 - 'ERR1278153_aa.txz'
                 - 'ERR1278153_ab.txz'
@@ -1443,6 +1529,7 @@ DataProcessing:
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
+            title: V(D)J germline reference database
             example: ENSEMBL, Homo sapiens build 90, 2017-10-01
             x-airr:
                 miairr: important
@@ -1454,6 +1541,7 @@ DataProcessing:
         analysis_provenance_id:
             type: string
             description: Identifier for machine-readable PROV model of analysis provenance
+            title: Analysis provenance ID
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -1468,6 +1556,7 @@ SampleProcessing:
                 Identifier for the sample processing object. This field should be unique within the repertoire.
                 This field can be used to uniquely identify the combination of sample, cell processing,
                 nucleic acid processing and sequencing run information for the repertoire.
+            title: Sample processing ID
             x-airr:
                 nullable: true
                 name: Sample processing ID
@@ -1496,6 +1585,7 @@ Repertoire:
                 from multiple studies can be combined together without conflict. The repertoire_id is used to link
                 other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for
                 referencing the specific Repertoire for that Rearrangement.
+            title: Repertoire ID
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -1503,6 +1593,7 @@ Repertoire:
         repertoire_name:
             type: string
             description: Short generic display name for the repertoire
+            title: Repertoire name
             x-airr:
                 nullable: true
                 name: Repertoire name
@@ -1510,6 +1601,7 @@ Repertoire:
         repertoire_description:
             type: string
             description: Generic repertoire description
+            title: Repertoire description
             x-airr:
                 nullable: true
                 name: Repertoire description
@@ -1720,6 +1812,7 @@ Rearrangement:
                 Gene locus (chain type). Note that this field uses a controlled vocabulary that is meant to provide a
                 generic classification of the locus, not necessarily the correct designation according to a specific
                 nomenclature.
+            title: Gene locus
             example: IGH
             x-airr:
                 nullable: true
@@ -1731,6 +1824,7 @@ Rearrangement:
             description: >
                 V gene with allele. If referring to a known reference sequence in a database
                 the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
+            title: V gene with allele
             example: IGHV4-59*01
             x-airr:
                 miairr: important
@@ -1744,6 +1838,7 @@ Rearrangement:
             description: >
                 First or only D gene with allele. If referring to a known reference sequence in a database
                 the relevant gene/allele nomenclature should be followed (e.g., IGHD3-10*01 if using IMGT/GENE-DB).
+            title: D gene with allele
             example: IGHD3-10*01
             x-airr:
                 miairr: important
@@ -1763,6 +1858,7 @@ Rearrangement:
             description: >
                 J gene with allele. If referring to a known reference sequence in a database the relevant
                 gene/allele nomenclature should be followed (e.g., IGHJ4*02 if using IMGT/GENE-DB).
+            title: J gene with allele
             example: IGHJ4*02
             x-airr:
                 miairr: important
@@ -1776,6 +1872,7 @@ Rearrangement:
             description: >
                 Constant region gene with allele. If referring to a known reference sequence in a database the
                 relevant gene/allele nomenclature should be followed (e.g., IGHG1*01 if using IMGT/GENE-DB).
+            title: C region
             example: IGHG1*01
             x-airr:
                 miairr: important
@@ -1809,6 +1906,7 @@ Rearrangement:
             description: >
                 Junction region nucleotide sequence, where the junction is defined as
                 the CDR3 plus the two flanking conserved codons.
+            title: IMGT-JUNCTION nucleotide sequence
             example: TGTGCAAGAGCGGGAGTTTACGACGGATATACTATGGACTACTGG
             x-airr:
                 miairr: important
@@ -1820,6 +1918,7 @@ Rearrangement:
             type: string
             description: >
                 Amino acid translation of the junction.
+            title: IMGT-JUNCTION amino acid sequence
             example: CARAGVYDGYTMDYW
             x-airr:
                 miairr: important
@@ -2287,6 +2386,7 @@ Rearrangement:
                 Copy number or number of duplicate observations for the query sequence.
                 For example, the number of UMIs sharing an identical sequence or the number
                 of identical observations of this sequence absent UMIs.
+            title: Read count
             example: 123
             x-airr:
                 miairr: important
@@ -2298,6 +2398,7 @@ Rearrangement:
             type: string
             description: >
                 Identifier defining the cell of origin for the query sequence.
+            title: Cell index
             example: W06_046_091
             x-airr:
                 miairr: important
@@ -2484,7 +2585,7 @@ Clone:
             description: Number of Rearrangement records (sequences) included in this clone
         seed_id:
             type: string
-            Description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
+            description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
 
 # 1-to-n relationship for a clone to its trees.
 Tree:
@@ -2552,16 +2653,18 @@ Cell:
             type: string
             description: >
                 Identifier defining the cell of origin for the query sequence.
+            title: Cell index
             example: W06_046_091
             x-airr:
                 miairr: defined
-                nullable: true
+                nullable: false
                 adc-query-support: true
                 name: Cell index
         rearrangements:
             type: array
             description: >
                   Array of sequence identifiers defined for the Rearrangement object
+            title: Cell-associated rearrangements
             items:
                 type: string
             example: [id1, id2] #empty vs NULL?
@@ -2574,6 +2677,7 @@ Cell:
             type: array
             description: >
                   Array of receptor identifiers defined for the Receptor object
+            title: Cell-associated receptors
             items:
                 type: string
             example: [id1, id2] #empty vs NULL?
@@ -2585,6 +2689,7 @@ Cell:
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
+            title: Parental repertoire of cell
             x-airr:
                 miairr: defined
                 nullable: true
@@ -2593,49 +2698,61 @@ Cell:
         data_processing_id:
             type: string
             description: Identifier of the data processing object in the repertoire metadata for this clone.
+            title: Data processing for cell
             x-airr:
                 miairr: defined
                 nullable: true
                 adc-query-support: true
                 name: Data processing for cell
-        expression_raw:
-            type: array
-            description:
-            properties:
-                study_method:
-                    type: string
-                    enum:
-                       flow cytometry
-                       single-cell transcriptome
-                    description: >
-                       keyword describing the methodology used to assess expression. This values for this field MUST come from a controlled vocabulary
-                doi:
-                    type: string
-                    description: >
-                      DOI of raw data set containing the current event
-                index:
-                    type: string
-                    description: >
-                      Index addressing the current event within the raw data set.
+        expression_study_method:
+            type: string
+            enum:
+                flow cytometry
+                single-cell transcriptome
+            description: >
+                  keyword describing the methodology used to assess expression. This values for this field MUST come from a controlled vocabulary
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        expression_raw_doi:
+            type: string
+            description: >
+                  DOI of raw data set containing the current event
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        expression_index:
+            type: string
+            description: >
+                  Index addressing the current event within the raw data set.
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
         expression_tabular:
             type: array
             description: >
                 Expression definitions for single-cell
-            properties:
-                expression_maker:
-                    type: string
-                    description: >
-                       standardized designation of the transcript or epitope
-                    example: CD27
-                expression_value:
-                    type: integer
-                    description: >
-                       transformed and normalized expression level.
-                    example: 14567
+            items:
+                type: object
+                properties:
+                    expression_marker:
+                        type: string
+                        description: >
+                           standardized designation of the transcript or epitope
+                        example: CD27
+                    expression_value:
+                        type: integer
+                        description: >
+                           transformed and normalized expression level.
+                        example: 14567
         virtual_pairing:
             type: boolean
             description: >
                 boolean to indicate if pairing was inferred.
+            title: Virtual pairing
             x-airr:
                 miairr: defined
                 nullable: true # assuming only done for sc experiments, otherwise does not exist

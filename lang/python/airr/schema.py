@@ -339,6 +339,11 @@ class Schema:
             if f in self.required and is_missing_key:
                 raise ValidationError('Required field %s is missing' %(full_field))
 
+            # check if identifier field
+            if xairr and xairr.get('identifier'):
+                if is_missing_key:
+                    raise ValidationError('Identifier field %s is missing' %(full_field))
+
             # check nullable requirements
             if is_null:
                 if not xairr:
