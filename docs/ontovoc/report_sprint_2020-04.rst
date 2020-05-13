@@ -70,12 +70,12 @@ An ontology for the ``strain_name`` field was already on the list for
 the last sprint, however it was not possible to identify a single
 ontology that would contain comprehensive information about strains
 from multiple species. This situation created a problem that could not
-be resolved then. In the mean time, the concept of "extensions" has
+be resolved then. In the meantime, the concept of "extensions" has
 been introduced to the AIRR schema, which create an additional layer of
 fields (and associated ontologies) on top of a core schema. As these
 extensions can be made conditional on the value of fields within the
 core schema, it has now become possible to have multiple extensions
-defining the ``strain_name`` field, but for differnt species and
+defining the ``strain_name`` field, but for different species and
 therefore with distinct species-specific ontologies.
    
 Having addressed this issue, the other key problem that remains is the
@@ -87,7 +87,7 @@ vocabularies. The two potential candidates that were identified are:
 *  MGI: The Mouse Genome Informatics database hosted at JAX aims to be
    comprehensive in regard to all mouse strains that have been published
    in the literature.
-*  IEDB: The Immune Epitope Database already ran in to problem of the
+*  IEDB: The Immune Epitope Database already ran into the problem of a
    missing mouse ontology and therefore decided to build up their own
    reference focused on immunologically relevant strains, as part of
    their Ontie database.
@@ -109,7 +109,7 @@ Evaluation
    scale gene KO projects.
 *  IEDB: Database dumps can also be downloaded and are freely available
    under CC-BY 4.0. It covers over a thousand mouse strains and contains
-   addtional information on the genetic background of a strain.
+   additional information on the genetic background of a strain.
 
 
 Next steps
@@ -121,7 +121,7 @@ Next steps
 Geolocation
 -----------
  
-There are several (planed) extension to the AIRR metadata standard that
+There are several (planned) extensions to the AIRR metadata standard that
 will provide geospatial metadata. Country-level information is typically
 assumed to be privacy-preserving and easy to operationalize. Therefore,
 while clearly only capturing some aspects of genetic ancestry, it might
@@ -142,14 +142,14 @@ Potential candidate vocabularies/ontologies:
    *  ISO3166-1 annotation is incomplete and lacks e.g. for Germany and
       Switzerland.
    *  Does not support German Umlauts. Äbsölütely inacceptable, as these
-      are not just diacritial marks (i.e. "Münster" and "Munster" are
+      are not just diacritical marks (i.e. "Münster" and "Munster" are
       two different cities).
 
 *  `HANCESTRO`_:
 
    *  Seems to be complete, but does not provide ISO3166 codes.
    *  Ontology could also be used for other fields relating to genetic
-      ancestery.
+      ancestry.
    *  Links to DBpedia, currently unclear whether it is also populated
       from there
    *  `country` node has pan-240 leaves (surplus seems due to oversea
@@ -208,7 +208,7 @@ Background and Problem
 ----------------------
 
 Some nomenclature first: The nodes in an ontology graph are typically
-either *concepts* (e.g., captial) or *instances* thereof (e.g., Paris).
+either *concepts* (e.g., capital) or *instances* thereof (e.g., Paris).
 These nodes have *local IDs* (often numbers), which are unique within
 an ontology. They also typically have *labels*, which is the human-
 readable name of the node. Nodes can have additional *attributes* (e.g.,
@@ -219,12 +219,12 @@ The complete ontology is usually represented in an XML or OWL file.
 However, we are looking for a *provider*, i.e. a service that
 facilitates queries of an ontology via web and/or an API-based
 interface. Upon querying with a unique ID, is it expected that a
-*provider* will be able to return the record of a node, with should
+*provider* will be able to return the record of a node, which should
 contain all attributes and relations. Furthermore a *provider* might
 allow set- and graph-based queries (e.g., is A a complete subset of B;
 what is the last common ancestor of A and B). Finally a *provider* can
 offer lookup services, i.e., identify the corresponding *concept* or
-*instance* in another onotology. Until now we have mainly looked at
+*instance* in another ontology. Until now we have mainly looked at
 three providers: `Ontobee`_, `OLS`_ and `BioPortal`_. While they all
 provide similar basic services, it should be noted that some biomedical
 databases and repositories are, by convention, restricted to use certain
@@ -257,11 +257,11 @@ platypus (``label:`` *Ornithorhynchus anatinus*, local ID: 9258) has
 the IRI ``http://purl.obolibrary.org/obo/NCBITaxon_9258`` in Ontobee and
 the IRI ``http://purl.bioontology.org/ontology/NCBITAXON/9258`` in
 BioPortal. In addition, other providers might choose to use one of these
-IRIs too, altough it will never resolve to their system via DNS/HTTP
+IRIs too, although it will never resolve to their system via DNS/HTTP
 (e.g., OLS uses the Ontobee IRIs).
 
 For the AIRR Community, this creates the challenge that we want to be
-able to have unambigous indentifiers, without requiring any specific
+able to have unambiguous identifiers, without requiring any specific
 provider.
 
 
@@ -282,12 +282,12 @@ connection between ``NCBITAXON`` in the CURIE and ``NCBITaxon`` in the
 IRI, the former one is just a placeholder.
 
 This resolves the issue of different *providers* usings different IRIs
-with distinct formating rules (as described above). As the choice of the
-*provider* is independent for each ontologt, it allows greater
+with distinct formatting rules (as described above). As the choice of the
+*provider* is independent for each ontology, it allows greater
 flexibility for the repositories, as they do not need a single
 *provider* that needs be able to resolve all terms. Similarly, different
-repositories can use the same ontology, but use a different *providers*.
-Note that his would not require changes to the data, as this now only
+repositories can use the same ontology, but use different *providers*.
+Note that this would not require changes to the data, as the data would only
 contains CURIEs, not the (provider-specific) IRIs.
 
 The AIRR schema will provide a list of AIRR approved CURIE *prefixes*
@@ -298,11 +298,11 @@ string) for each them. This list serves two purposes:
    AIRR schema. For now, custom additions to or replacements of these
    *prefixes* in the schema is prohibited. This does not affect the
    ability of repositories to use such custom prefixes internally.
-2. It simplifies resolution for of CURIEs by non-repositories. The
+2. It simplifies resolution of CURIEs by non-repositories. The
    lists of IRI *prefixes* for each CURIE *prefix* should not be
    considered to be exhaustive. However, when using custom IRI
    *prefixes*, it must be ensured that they refer to the same
-   ontology as the provides *prefixes*.
+   ontology as the provider *prefixes*.
 
 It should be explicitly noted that the IRI *prefix* list should not be
 interpreted as any kind of recommendation for certain *providers*. It is
@@ -315,7 +315,7 @@ Modifications to the AIRR schema
 
 All changes to the AIRR schema that would be based on the sprint can
 currently be reviewed on Github in Pull Request `#385`_. These changes
-are supposed to be included into the next major release.
+are intended to be included into the next major release.
 
 
 Clarifications
@@ -328,8 +328,8 @@ Clarifications
    require a top node at the apex of the hierarchy.
 *  The ``labels`` (previous: ``values``) that are provided in the schema
    for ontology-based fields, should be considered an addition for
-   convenience and not as being authoritative. Repositories can choose
-   to link synonyms to given concepts (e.g., "human" for
+   convenience and not as being authoritative. Repositories or applications
+   can choose to link synonyms to given concepts (e.g., "human" for
    "*Homo sapiens*") to simply search queries. Repositories further can
    provide such a synonym in the ``label`` field upon exporting data.
    However, repositories importing data should verify the correctness of
@@ -347,7 +347,7 @@ Annotation guidance
    ``PBMCs`` as this is a sister node of ``lymphocyte``. For the
    other sampling related fields, in nearly all cases venous blood
    (``UBERON:0013756``) will be the correct ``tissue`` and it should
-   be used in the case of ``sample_type``:``eripheral venous puncture``.
+   be used in the case of ``sample_type``:``peripheral venous puncture``.
    However, if the mode of sampling is not specified, ``blood``
    (``UBERON:0000178``) should be used instead. Also see
    https://github.com/airr-community/airr-standards/issues/242
