@@ -17,17 +17,19 @@ The file format has not been specified yet.
 Cell Fields
 ------------------------------
 
+:download:`Download as TSV <../_downloads/Cell.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in Cell_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}

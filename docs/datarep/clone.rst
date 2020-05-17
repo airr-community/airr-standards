@@ -21,19 +21,21 @@ The file format has not been specified yet.
 Clone Fields
 ------------------------------
 
+:download:`Download as TSV <../_downloads/Clone.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in Clone_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
 .. _TreeFields:
@@ -41,19 +43,21 @@ Clone Fields
 Tree Fields
 ------------------------------
 
+:download:`Download as TSV <../_downloads/Clone.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in Tree_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
 .. _NodeFields:
@@ -61,17 +65,19 @@ Tree Fields
 Node Fields
 ------------------------------
 
+:download:`Download as TSV <../_downloads/Node.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in Node_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}

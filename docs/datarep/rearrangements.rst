@@ -125,19 +125,19 @@ suggestions for extending the format with additional reserved names
 are welcomed through the issue tracker on the GitHub repository
 (https://github.com/airr-community/airr-standards).
 
-:download:`Download as TSV <../_downloads/Rearrangement.tsv>`.
+:download:`Download as TSV <../_downloads/Rearrangement.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - Level
-      - Description
-    {%- for field, fieldprops in airr_schema.Rearrangement.properties.items() %}
-    * - ``{{ field }}``
-      - ``{{ fieldprops.type }}``
-      - {{ '**required**' if field in airr_schema.Rearrangement.required else 'optional' }}
-      - {{ fieldprops.description | trim }}
+      - Attributes
+      - Definition
+    {%- for field in Rearrangement_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}

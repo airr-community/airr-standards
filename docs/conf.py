@@ -243,125 +243,78 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-# Load data for schemas
-with open(os.path.abspath('../specs/airr-schema.yaml')) as ip:
-    airr_schema = yaml.load(ip, Loader=yamlordereddictloader.Loader)
-html_context = {'airr_schema': airr_schema}
+# -- Build schema reference tables ----------------------------------------
 
-# Write download spec files
-download_path = '_downloads'
-if not os.path.exists(download_path):  os.mkdir(download_path)
-
-# Build table for each spec
-tables = ['Rearrangement', 'Alignment']
-fields = ['Name', 'Type', 'Level', 'Description']
-for spec in tables:
-    # Get specs
-    required = airr_schema[spec]['required']
-    properties = airr_schema[spec]['properties']
-    # Write TSV
-    with open(os.path.join(download_path, '%s.tsv' % spec), 'w') as f:
-        writer = csv.writer(f, dialect='excel-tab')
-        writer.writerow(fields)
-        for k, v in properties.items():
-            row = [k, v['type'], 'required' if k in required else 'optional', v['description'].strip()]
-            writer.writerow(row)
-
-# Build tables for repertoire metadata schema
-tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
-          'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing', 'Clone', 'Tree', 'Node', 'Cell']
-for spec in tables:
-    properties = airr_schema[spec]['properties']
-    rows = []
-    for k, v in properties.items():
-        row = {}
-        row['name'] = k
-
-        if v.get('type') == 'array':
-            if v['items'].get('$ref') is not None:
-                sn = v['items'].get('$ref').split('/')[-1]
-                row['type'] = '``array`` of :ref:`' + sn + ' <' + sn + 'Fields>`'
-            elif v['items'].get('type') is not None:
-                row['type'] = '``array`` of ``' + v['items']['type'] + '``'
-            else:
-                row['type'] = '``' + v['type'] + '``'
-        elif v.get('type'):
-            row['type'] = '``' + v['type'] + '``'
-        elif v.get('$ref') == '#/Ontology':
-            row['type'] = ':ref:`Ontology <OntoVoc>`'
-        elif v.get('$ref') is not None:
-            sn = v.get('$ref').split('/')[-1]
-            row['type'] = ':ref:`' + sn + ' <' + sn + 'Fields>`'
-        else:
-            row['type'] = '``unknown``'
-
-        if v.get('x-airr') and v.get('x-airr').get('miairr'):
-            row['miairr'] = 'required'
-        else:
-            row['miairr'] = 'non-MiAIRR'
-        if v.get('x-airr') and v.get('x-airr').get('format'):
-            row['format'] = v['x-airr']['format']
-        else:
-            row['format'] = ''
-        if v.get('x-airr') and v.get('x-airr').get('deprecated'):
-            row['miairr'] = 'DEPRECATED'
-            row['description'] = 'DEPRECATED'
-        else:
-            row['description'] = v['description'].strip()
-        rows.append(row)
-    html_context[spec + '_schema'] = rows
-
-
-# func to chop down long strings of the table
+# Function to chop down long strings of the table
 def wrap_col(string, str_length=11):
+    """
+    String wrap
+    """
     if [x for x in string.split(' ') if len(x) > 25]:
         parts = [string[i:i + str_length].strip() for i in range(0, len(string), str_length)]
         return ('\n'.join(parts) + '\n')
     else:
         return (string)
 
-# Build AIRR_Minimal_Standard_Data_Elements.tsv table
-data_type_map = {'string': 'Free text',
-                 'integer': 'Positive integer',
-                 'number': 'Positive number',
-                 'boolean': 'T | F'}
+def parse_schema(spec, schema):
+    """
+    Parse an AIRR schema object for doc tables
 
-# Iterate over schema
-data_elements = {}
-for spec in airr_schema:
-    if 'properties' not in airr_schema[spec]:
-        continue
+    Arguments:
+      spec (str): name of the schema object
+      schema (dict): master schema dictionary parsed from the yaml file.
 
-    # Storage object
-    data_elements[spec] = []
+    Returns:
+      list: list of dictionaries with parsed rows of the spec table.
+    """
+    data_type_map = {'string': 'Free text',
+                     'integer': 'Positive integer',
+                     'number': 'Positive number',
+                     'boolean': 'T | F'}
 
     # Get schema
-    properties = airr_schema[spec]['properties']
-    required = airr_schema[spec].get('required', None)
+    properties = schema[spec]['properties']
+    required = schema[spec].get('required', None)
 
     # Iterate over properties
+    table_rows = []
     for prop, attr in properties.items():
-        # Get only not deprecated MiAIRR properties
-        if 'x-airr' in attr and 'miairr' in attr['x-airr'] and \
-                not attr['x-airr'].get('deprecated', False):
-            # x-airr attribute set
-            xairr = attr['x-airr']
+        # Standard attributes
+        required_field = False if required is None or prop not in required else True
+        title = attr.get('title', '')
+        example = attr.get('example', '')
+        description = attr.get('description', '')
 
-            # Standard attributes
-            title = attr.get('title', '')
-            data_type = attr.get('type', '')
-            example = attr.get('example', '')
-            description = attr.get('description', '')
-            require_level = 'required' if prop in required else 'optional'
-            nullable = xairr.get('nullable', '')
-            deprecated = attr['x-airr'].get('deprecated', False)
+        # Data type
+        data_type = attr.get('type', '')
+        data_format = data_type_map.get(data_type, '')
+
+        # Arrays
+        if data_type == 'array':
+            if attr['items'].get('$ref') is not None:
+                sn = attr['items'].get('$ref').split('/')[-1]
+                data_type = 'array of :ref:`%s <%sFields>`' % (sn, sn)
+            elif attr['items'].get('type') is not None:
+                data_type = 'array of %s' % attr['items']['type']
+        elif attr.get('$ref') == '#/Ontology':
+            data_type = ':ref:`Ontology <OntoVoc>`'
+        elif attr.get('$ref') is not None:
+            sn = attr.get('$ref').split('/')[-1]
+            data_type = ':ref:`%s <%sFields>`' % (sn, sn)
+
+        # x-airr attributes
+        if 'x-airr' in attr:
+            xairr = attr['x-airr']
+            nullable = xairr.get('nullable', True)
+            deprecated = xairr.get('deprecated', False)
+            identifier = xairr.get('identifier', False)
 
             # MiAIRR attributes
             miairr_level = xairr.get('miairr', '')
             miairr_set = xairr.get('set', '')
             miairr_subset = xairr.get('subset', '')
 
-            # Define format
+            # Ontologies and controlled vocabulary
             if 'format' in xairr:
                 if 'ontology' in xairr:
                     base_dic = xairr['ontology']
@@ -371,37 +324,91 @@ for spec in airr_schema:
                     # Replace name with url-linked name
                     data_format = 'Ontology: { name: `%s <%s/>`_ , top_node: { id: %s, value: %s}, draft: %s}' % (ontology_format)
                     # Get 'type' for ontology
-                    data_type = airr_schema['Ontology']['properties']['value']['type']
+                    data_type = schema['Ontology']['properties']['value']['type']
                     example = 'id: %s, value: %s' % (example['id'], example['value'])
-                elif 'controlled vocabulary' in attr:
+                elif xairr['format'] == 'controlled vocabulary':
                     if attr.get('enum', None) is not None:
-                        data_format = 'Controlled vocabulary: %s' % attr['enum']
+                        data_format = 'Controlled vocabulary: %s' % ', '.join(attr['enum'])
                     elif attr.get('items', None) is not None:
-                        data_format = 'Controlled vocabulary: %s' + attr['items']['enum']
-            else:
-                data_format = data_type_map.get(data_type, '')
+                        data_format = 'Controlled vocabulary: %s' % ', '.join(attr['items']['enum'])
+        else:
+            nullable = True
+            deprecated = False
+            identifier = False
+            miairr_level = ''
+            miairr_set = ''
+            miairr_subset = ''
 
-            # airr_property = wrap_col(airr_property)
-            example = wrap_col(str(example))
+        if deprecated:
+            field_attributes = 'DEPRECATED'
+        else:
+            f = ['required' if required_field else 'optional',
+                 'identifier' if identifier else '',
+                 'nullable' if nullable else '']
+            field_attributes = ', '.join(filter(lambda x: x != '', f))
 
-            r = {'Set': miairr_set,
-                 'Subset': miairr_subset,
-                 'Designation': title,
-                 'Field': prop,
-                 'Type': data_type,
-                 'Format': data_format,
-                 'Definition': description,
-                 'Example': example,
-                 'Requirement': miairr_level}
+        # Return dictionary
+        r = {'Name': prop,
+             'Set': miairr_set,
+             'Subset': miairr_subset,
+             'Designation': title,
+             'Field': prop,
+             'Type': data_type,
+             'Format': data_format,
+             'Definition': description,
+             'Example': wrap_col(str(example)),
+             'Level': miairr_level,
+             'Required': required_field,
+             'Deprecated': deprecated,
+             'Nullable': nullable,
+             'Identifier': identifier,
+             'Attributes': field_attributes}
 
-            data_elements[spec].append(r)
+        table_rows.append(r)
 
-fields = ['Set', 'Subset', 'Designation', 'Field', 'Type', 'Format', 'Definition', 'Example', 'Requirement']
+    return(table_rows)
+
+# Load data for schemas
+with open(os.path.abspath('../specs/airr-schema.yaml')) as ip:
+    airr_schema = yaml.load(ip, Loader=yamlordereddictloader.Loader)
+html_context = {'airr_schema': airr_schema}
+
+# Iterate over schema and build reference tables
+data_elements = {}
+for spec in airr_schema:
+    if 'properties' not in airr_schema[spec]:
+        continue
+
+    # Storage object
+    data_elements[spec] = parse_schema(spec, airr_schema)
+
+    # Update doc html_context
+    html_context[spec + '_schema'] = data_elements[spec]
+
+# Write download spec files
+download_path = '_downloads'
+if not os.path.exists(download_path):  os.mkdir(download_path)
+
+# Write MiAIRR TSV
+fields = ['Set', 'Subset', 'Designation', 'Field', 'Type', 'Format', 'Definition', 'Example', 'Level']
 tables = ['Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
           'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing']
 # tables = data_elements.keys()
 with open(os.path.join(download_path, '%s.tsv' % 'AIRR_Minimal_Standard_Data_Elements'), 'w') as f:
-    writer = csv.DictWriter(f, fieldnames=fields, dialect='excel-tab')
+    writer = csv.DictWriter(f, fieldnames=fields, dialect='excel-tab', extrasaction='ignore')
     writer.writeheader()
     for spec in tables:
+        for r in data_elements[spec]:
+            if r['Level'] and not r['Deprecated']:
+                writer.writerow(r)
+
+# Write individual spec TSVs
+fields = ['Name', 'Type', 'Attributes', 'Definition']
+tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
+          'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing',
+          'Rearrangement', 'Alignment', 'Clone', 'Tree', 'Node', 'Cell']
+for spec in tables:
+    with open(os.path.join(download_path, '%s.tsv' % spec), 'w') as f:
+        writer = csv.DictWriter(f, fieldnames=fields, dialect='excel-tab', extrasaction='ignore')
+        writer.writeheader()
         writer.writerows(data_elements[spec])

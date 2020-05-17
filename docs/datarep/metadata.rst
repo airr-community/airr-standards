@@ -172,19 +172,21 @@ File Structure
 Repertoire Fields
 ------------------------------
 
+:download:`Download as TSV <../_downloads/Repertoire.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in Repertoire_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
 .. _StudyFields:
@@ -192,19 +194,21 @@ Repertoire Fields
 Study Fields
 ------------------------------
 
+:download:`Download as TSV <../_downloads/Study.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in Study_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
 .. _SubjectFields:
@@ -212,19 +216,21 @@ Study Fields
 Subject Fields
 ------------------------------
 
+:download:`Download as TSV <../_downloads/Subject.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in Subject_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
 .. _DiagnosisFields:
@@ -232,19 +238,21 @@ Subject Fields
 Diagnosis Fields
 ------------------------------
 
+:download:`Download as TSV <../_downloads/Diagnosis.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in Diagnosis_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
 .. _SampleFields:
@@ -252,19 +260,21 @@ Diagnosis Fields
 Sample Fields
 ------------------------------
 
+:download:`Download as TSV <../_downloads/Sample.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in Sample_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
 .. _CellProcessingFields:
@@ -272,19 +282,21 @@ Sample Fields
 Tissue and Cell Processing Fields
 ---------------------------------
 
+:download:`Download as TSV <../_downloads/CellProcessing.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in CellProcessing_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
 .. _NucleicAcidProcessingFields:
@@ -292,19 +304,21 @@ Tissue and Cell Processing Fields
 Nucleic Acid Processing Fields
 ---------------------------------
 
+:download:`Download as TSV <../_downloads/NucleicAcidProcessing.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in NucleicAcidProcessing_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
 .. _PCRTargetFields:
@@ -312,19 +326,21 @@ Nucleic Acid Processing Fields
 PCR Target Locus Fields
 ---------------------------------
 
+:download:`Download as TSV <../_downloads/PCRTarget.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in PCRTarget_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
 .. _RawSequenceDataFields:
@@ -332,19 +348,21 @@ PCR Target Locus Fields
 Raw Sequence Data Fields
 ---------------------------------
 
+:download:`Download as TSV <../_downloads/RawSequenceData.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in RawSequenceData_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
 .. _SequencingRunFields:
@@ -352,19 +370,21 @@ Raw Sequence Data Fields
 Sequencing Run Fields
 ---------------------------------
 
+:download:`Download as TSV <../_downloads/SequencingRun.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in SequencingRun_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
 .. _DataProcessingFields:
@@ -372,18 +392,20 @@ Sequencing Run Fields
 Data Processing Fields
 ---------------------------------
 
+:download:`Download as TSV <../_downloads/DataProcessing.tsv>`
+
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 10, 20, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - MiAIRR
-      - Description
+      - Attributes
+      - Definition
     {%- for field in DataProcessing_schema %}
-    * - ``{{ field.name }}``
-      - {{ field.type }}
-      - ``{{ field.miairr }}``
-      - {{ field.description | trim }}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
 
