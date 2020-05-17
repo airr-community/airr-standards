@@ -60,10 +60,6 @@ specific functionality as summarized in the following table:
       - Service information
       - ``GET``
       - Upon success, returns service information such as name, version, etc.
-    * - ``/v1/swagger``
-      - Swagger specification for API
-      - ``GET``
-      - Upon success, returns the OpenAPI specification for the ADC API implemented by this service. Useful for loading the API into tools like Swagger Editor__.
     * - ``/v1/repertoire/{repertoire_id}``
       - Retrieve a repertoire given its ``repertoire_id``
       - ``GET``
@@ -72,16 +68,14 @@ specific functionality as summarized in the following table:
       - Query repertoires
       - ``POST``
       - Upon success, returns a list of ``Repertoires`` in JSON according to the :ref:`Repertoire schema <RepertoireSchema>`.
-    * - ``/v1/rearrangement/{rearrangement_id}``
-      - Retrieve a rearrangement given its ``rearrangement_id``
+    * - ``/v1/rearrangement/{sequence_id}``
+      - Retrieve a rearrangement given its ``sequence_id``
       - ``GET``
       - Upon success, returns the ``Rearrangement`` information in JSON format according to the :ref:`Rearrangement schema <RearrangementSchema>`.
     * - ``/v1/rearrangement``
       - Query rearrangements
       - ``POST``
       - Upon success, returns a list of ``Rearrangements`` in JSON or AIRR TSV format according to the :ref:`Rearrangement schema <RearrangementSchema>`.
-
-.. __: https://swagger.io/tools/swagger-editor/
 
 **Authentication**
 
@@ -93,13 +87,13 @@ controlled-access data.
 Search and Retrieval
 --------------------
 
-The AIRR Data Commons REST API specifies endpoints for searching and
+The AIRR Data Commons API specifies endpoints for searching and
 retrieving AIRR-seq data sets stored in an AIRR-compliant Data
 Repository according to the AIRR Data Model. This documentation
 describes Version 1 of the API. The general format of requests
 and associated parameters are described below.
 
-The design of the AIRR Data Commons REST API was greatly inspired by
+The design of the AIRR Data Commons API was greatly inspired by
 National Cancer Institute's Genomic Data Commons (GDC) API__.
 
 .. __: https://docs.gdc.cancer.gov/API/Users_Guide/Getting_Started/
@@ -117,9 +111,32 @@ A typical ``POST`` query request specifies the following parameters:
 
 + The ``filters`` parameter specifies the query.
 
-+ The ``fields`` parameter specifies which data elements to be returned in the response.
-
 + The ``from`` and ``size`` parameters specify the number of results to skip and the maximum number of results to be returned in the response.
+
++ The ``fields`` parameter specifies which data elements to be
+  returned in the response. By default all fields (AIRR and non-AIRR)
+  stored in the data repository are returned. This can vary between
+  data repositories based upon how the repository decides to store
+  blank or null fields, so the ``fields`` and/or ``include_fields``
+  parameter should be used to guarantee the existence of data elements
+  in the response.
+
++ The ``include_fields`` parameter specifies the set of AIRR fields to
+  be included in the response. This parameter can be used in
+  conjunction with the ``fields`` parameter, in which case the list of
+  fields is merged. This is a mechanism to ensure that specific,
+  well-defined sets of AIRR data elements are returned without
+  requiring all of those fields to be individually provided in the
+  ``fields`` parameter.
+
+The sets that can be requested are summarized in the table below.
+
+.. csv-table::
+   :header: "include_fields", "MiAIRR", "AIRR required", "AIRR identifiers", "other AIRR fields"
+
+   "miairr",      "Y","some","N","N"
+   "airr-core",   "Y","Y","Y","N"
+   "airr-schema", "Y","Y","Y","Y"
 
 **Service Status Example**
 
@@ -350,7 +367,7 @@ below.
 
 *Retrieve a Single Rearrangement*
 
-Given a ``rearrangement_id``, a single ``Rearrangement`` object will
+Given a ``sequence_id``, a single ``Rearrangement`` object will
 be returned.
 
 .. code-block:: bash
@@ -376,7 +393,7 @@ The response will provide the ``Rearrangement`` data in JSON format.
     "Rearrangement":
     [
       {
-        "rearrangement_id":"5d6fba725dca5569326aa104",
+        "sequence_id":"5d6fba725dca5569326aa104",
         "repertoire_id":"1841923116114776551-242ac11c-0001-012",
 
         "... remaining fields":"snipped for space"
@@ -408,7 +425,7 @@ Here is the response in AIRR TSV format.
 
 .. code-block:: text
 
-  productive	v_call	rearrangement_id	repertoire_id
+  productive	v_call	sequence_id	repertoire_id
   true	IGHV1-69*04	5d6fba725dca5569326aa106	1841923116114776551-242ac11c-0001-012
   true	IGHV1-69*04	5d6fba725dca5569326aa11b	1841923116114776551-242ac11c-0001-012
   true	IGHV1-69*10	5d6fba725dca5569326aa149	1841923116114776551-242ac11c-0001-012
@@ -440,6 +457,9 @@ endpoints, i.e. the HTTP ``POST`` endpoints.
     * - ``format``
       - JSON
       - Specifies the API response format: JSON, AIRR TSV
+    * - ``include_fields``
+      - null
+      - Specifies the set of AIRR fields to be included in the response
     * - ``fields``
       - null
       - Specifies which fields to include in the response
@@ -643,8 +663,40 @@ format and is available for all endpoints. The ``rearrangement``
 **Fields Query Parameter**
 
 The ``fields`` parameter specifies which fields are to be included in
-the API response. By default all fields with non-null values are
-returned in the API response.
+the API response. By default all fields (AIRR and non-AIRR) stored in
+the data repository are returned. However, this can vary between data
+repositories based upon how the repository decides to store blank or
+null fields, so the ``fields`` and/or ``include_fields`` parameter
+should be used to guarantee the existence of data elements in the
+response.
+
+**Include Fields Query Parameter**
+
+The ``include_fields`` parameter specifies that the API response
+should include a well-defined set of AIRR Standard fields. These sets
+include:
+
++ ``miairr``, for only the MiAIRR fields.
+
++ ``airr-core``, for the AIRR required and identifier fields. This is
+  expected to be the most common option as it provides all MiAIRR
+  fields, additional required fields useful for analysis, and all
+  identifier fields for linking objects in the AIRR Data Model.
+
++ ``airr-schema``, for all AIRR fields in the AIRR Schema.
+
+The ``include_fields`` parameter is a mechanism to ensure that
+specific AIRR data elements are returned without requiring those
+fields to be individually provided with the ``fields`` parameter. Any
+data elements that lack a value will be assigned ``null`` in the
+response. Any empty array of objects, for example
+``subject.diagnosis``, will be populated with a single object with all
+of the object's properties given a null value. Any empty array of
+primitive data types, like string or number, will be assigned
+``null``. Note that if both the ``include_fields`` and the ``fields``
+parameter are provided, the API response will include the set of AIRR
+fields and in addition will include any additional fields that are
+specified in the ``fields`` parameter.
 
 **Size and From Query Parameters**
 
@@ -783,7 +835,7 @@ rearrangement records, where performing “simple” queries can quickly become 
 expensive. Data repositories are encouraged to optimize their databases for performance.
 Therefore, based upon a set of query use cases provided by immunology experts, a minimal
 set of required fields was defined that can be queried. These required fields are described
-in the following Table. The fields also have the AIRR extension property ``adc-api-optional: false``
+in the following Table. The fields also have the AIRR extension property ``adc-query-support: true``
 in the AIRR Schema.
 
 .. list-table::
@@ -792,8 +844,8 @@ in the AIRR Schema.
 
     * - Field(s)
       - Description
-    * - rearrangement_id, repertoire_id, sample_processing_id, data_processing_id, clone_id, cell_id, pair_id
-      - Identifiers; rearrangement_id allows for query of that specific rearrangement object in the repository, while repertoire_id, sample_processing_id, and data_processing_id are links to the repertoire metadata for the rearrangement. The clone_id, cell_id, and pair_id are all identifiers that group rearrangements based on clone definition, single cell assignment, and paired chain linking.
+    * - sequence_id, repertoire_id, sample_processing_id, data_processing_id, clone_id, cell_id
+      - Identifiers; sequence_id allows for query of that specific rearrangement object in the repository, while repertoire_id, sample_processing_id, and data_processing_id are links to the repertoire metadata for the rearrangement. The clone_id and cell_id are identifiers that group rearrangements based on clone assignment and single cell assignment.
     * - locus, v_call, d_call, j_call, c_call, productive, junction_aa, junction_aa_length
       - Commonly used rearrangement annotations.
 
