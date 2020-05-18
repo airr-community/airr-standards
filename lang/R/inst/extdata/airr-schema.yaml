@@ -28,29 +28,29 @@ Ontology:
 
 
 CURIEResolution:
-  - 
+  -
     curie_prefix: NCBITAXON
     iri_prefix:
       - "http://purl.obolibrary.org/obo/NCBITaxon_"
       - "http://purl.bioontology.org/ontology/NCBITAXON/"
-  - 
+  -
     curie_prefix: NCIT
     iri_prefix:
       - "http://purl.obolibrary.org/obo/NCIT_"
       - "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#"
-  - 
+  -
     curie_prefix: UO
     iri_prefix:
       - "http://purl.obolibrary.org/obo/UO_"
-  - 
+  -
     curie_prefix: DOID
     iri_prefix:
       - "http://purl.obolibrary.org/obo/DOID_"
-  - 
+  -
     curie_prefix: UBERON
     iri_prefix:
       - "http://purl.obolibrary.org/obo/UBERON_"
-  - 
+  -
     curie_prefix: CL
     iri_prefix:
       - "http://purl.obolibrary.org/obo/CL_"
