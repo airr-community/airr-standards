@@ -27,7 +27,7 @@ Fields
 :download:`Download as TSV <../_downloads/Alignment.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 20, 50
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name

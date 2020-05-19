@@ -175,7 +175,7 @@ Repertoire Fields
 :download:`Download as TSV <../_downloads/Repertoire.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 20, 50
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name
@@ -197,7 +197,7 @@ Study Fields
 :download:`Download as TSV <../_downloads/Study.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 20, 50
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name
@@ -219,7 +219,7 @@ Subject Fields
 :download:`Download as TSV <../_downloads/Subject.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 20, 50
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name
@@ -241,7 +241,7 @@ Diagnosis Fields
 :download:`Download as TSV <../_downloads/Diagnosis.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 20, 50
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name
@@ -263,7 +263,7 @@ Sample Fields
 :download:`Download as TSV <../_downloads/Sample.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 20, 50
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name
@@ -285,7 +285,7 @@ Tissue and Cell Processing Fields
 :download:`Download as TSV <../_downloads/CellProcessing.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 20, 50
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name
@@ -307,7 +307,7 @@ Nucleic Acid Processing Fields
 :download:`Download as TSV <../_downloads/NucleicAcidProcessing.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 20, 50
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name
@@ -329,7 +329,7 @@ PCR Target Locus Fields
 :download:`Download as TSV <../_downloads/PCRTarget.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 20, 50
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name
@@ -351,7 +351,7 @@ Raw Sequence Data Fields
 :download:`Download as TSV <../_downloads/RawSequenceData.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 20, 50
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name
@@ -373,7 +373,7 @@ Sequencing Run Fields
 :download:`Download as TSV <../_downloads/SequencingRun.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 20, 50
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name
@@ -395,7 +395,7 @@ Data Processing Fields
 :download:`Download as TSV <../_downloads/DataProcessing.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 20, 50
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name

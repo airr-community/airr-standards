@@ -314,9 +314,9 @@ def parse_schema(spec, schema):
             miairr_set = xairr.get('set', '')
             miairr_subset = xairr.get('subset', '')
 
-            # Ontologies and controlled vocabulary
+            # Set data format for ontologies and controlled vocabularies
             if 'format' in xairr:
-                if 'ontology' in xairr:
+                if xairr['format'] == 'ontology' and 'ontology' in xairr:
                     base_dic = xairr['ontology']
                     ontology_format = (str(base_dic['name']), str(base_dic['url']),
                                        str(base_dic['top_node']['id']), str(base_dic['top_node']['value']),
@@ -324,7 +324,7 @@ def parse_schema(spec, schema):
                     # Replace name with url-linked name
                     data_format = 'Ontology: { name: `%s <%s/>`_ , top_node: { id: %s, value: %s}, draft: %s}' % (ontology_format)
                     # Get 'type' for ontology
-                    data_type = schema['Ontology']['properties']['value']['type']
+                    # data_type = schema['Ontology']['properties']['value']['type']
                     example = 'id: %s, value: %s' % (example['id'], example['value'])
                 elif xairr['format'] == 'controlled vocabulary':
                     if attr.get('enum', None) is not None:
