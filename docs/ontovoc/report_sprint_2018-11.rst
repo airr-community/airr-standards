@@ -189,8 +189,8 @@ Technical aspects
    -  There are two main ontology providers offering a REST API and all
       the ontologies listed above:
 
-      -  NCBO Bioportal [https://bioportal.bioontology.org]
-      -  OLS ontology [https://www.ebi.ac.uk/ols/ontologies]
+      -  `NCBO Bioportal <https://bioportal.bioontology.org>`__
+      -  `OLS ontology <https://www.ebi.ac.uk/ols/ontologies>`__
 
    -  NCBO can apparently be slow and sometimes not that stable, while
       OLS seems to be more stable and potentially has a better long-term
