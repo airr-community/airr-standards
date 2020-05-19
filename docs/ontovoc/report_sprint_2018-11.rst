@@ -50,24 +50,30 @@ Criteria
 Ontologies used within AIRR standards
 
 .. _ONTO_CRIT_1:
+
 1. MUST [1]_ cover the majority of the required terms, but complete
    coverage is OPTIONAL
 
 .. _ONTO_CRIT_2:
+
 2. MUST have a structure that is scientifically correct and logically
    coherent
 
 .. _ONTO_CRIT_3:
+
 3. MUST NOT feature complexity that makes it hard to use for queries
    and data representation
 
 .. _ONTO_CRIT_4:
+
 4. SHOULD already be widely adopted
 
 .. _ONTO_CRIT_5:
+
 5. MUST be actively maintained
 
 .. _ONTO_CRIT_6:
+
 6. MUST be available under a free license
 
 Comments on criteria:
@@ -86,6 +92,7 @@ Comments on criteria:
    but includes: CC0_ and `CC BY`_.
 
 .. _`(1)`: ONTO_CRIT_1_
+.. _`(2)`: ONTO_CRIT_2_
 .. _`(5)`: ONTO_CRIT_5_
 .. _`(6)`: ONTO_CRIT_6_
 

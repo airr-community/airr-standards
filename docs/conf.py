@@ -17,13 +17,19 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-# Imports
+# -- Imports ----------------------------------------------------------------
+
 import csv
 import os
+import sphinx_bootstrap_theme
 import sys
 import yaml
 import yamlordereddictloader
 from unittest.mock import MagicMock
+
+# -- Python environment ----------------------------------------------------
+
+# Python system path
 sys.path.append(os.path.abspath('.'))
 
 # Mock modules for ReadTheDocs
@@ -35,16 +41,12 @@ if os.environ.get('READTHEDOCS', None) == 'True':
     mock_modules = ['numpy', 'pandas']
     sys.modules.update((mod_name, Mock()) for mod_name in mock_modules)
 
-
 # -- General configuration ------------------------------------------------
 
-# If your documentation needs a minimal Sphinx version, state it here.
-#
-needs_sphinx = '1.4'
+# Minimal Sphinx version
+needs_sphinx = '1.6'
 
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
+# Sphinx extension modules
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.napoleon',
               'sphinxcontrib.autoprogram',
@@ -53,12 +55,12 @@ extensions = ['sphinx.ext.autodoc',
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-# Enable Markdown content
-from recommonmark.parser import CommonMarkParser
-source_parsers = {'.md': CommonMarkParser}
+# Define source file extensions
+source_suffix = ['.rst']
 
-# The suffix(es) of source filenames.
-source_suffix = ['.rst', '.md']
+# List of patterns, relative to source directory, that match files and
+# directories to ignore when looking for source files.
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # The master toctree document.
 master_doc = 'index'
@@ -84,11 +86,6 @@ release = '1.3.0'
 # Usually you set "language" from the command line for these cases.
 language = None
 
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
-
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
@@ -101,6 +98,11 @@ todo_include_todos = False
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# Setup
+# def setup(app):
+#     app.add_stylesheet('submenus.css') # also can be a full URL
+#     # app.add_stylesheet("ANOTHER.css")
 
 # HTML help
 htmlhelp_basename = 'airr-standardsdoc'
@@ -118,7 +120,6 @@ htmlhelp_basename = 'airr-standardsdoc'
 #                         'searchbox.html']}
 
 # Bootstrap options
-import sphinx_bootstrap_theme
 html_theme = 'bootstrap'
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 # html_sidebars = {'**': ['localtoc.html']}
