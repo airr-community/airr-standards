@@ -197,8 +197,9 @@ Schema Definitions
 .. toctree::
    :maxdepth: 2
 
+   Requirement levels of fields <airr_schema_requirement_levels>
    Repertoire Schema <metadata>
    Rearrangement Schema <rearrangements>
    Alignment Schema (Experimental) <alignments>
-   Requirement levels of fields <airr_schema_requirement_levels>
-   germline
+   Clone and Lineage Tree Schema (Experimental) <clone>
+   Cell Schema (Experimental) <cell>

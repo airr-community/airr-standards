@@ -254,7 +254,7 @@ if not os.path.exists(dl_path):  os.mkdir(dl_path)
 
 # Build table for each spec
 tables = ['Rearrangement', 'Alignment']
-fields = ['Name', 'Type', 'Priority', 'Description']
+fields = ['Name', 'Type', 'Level', 'Description']
 for spec in tables:
     # Get specs
     required = airr_schema[spec]['required']
@@ -269,13 +269,14 @@ for spec in tables:
 
 # Build tables for repertoire metadata schema
 tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
-          'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing']
+          'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing', 'Clone', 'Tree', 'Node', 'Cell']
 for spec in tables:
     properties = airr_schema[spec]['properties']
     rows = []
     for k, v in properties.items():
         row = {}
         row['name'] = k
+
         if v.get('type') == 'array':
             if v['items'].get('$ref') is not None:
                 sn = v['items'].get('$ref').split('/')[-1]
@@ -293,6 +294,7 @@ for spec in tables:
             row['type'] = ':ref:`' + sn + ' <' + sn + 'Fields>`'
         else:
             row['type'] = '``unknown``'
+
         if v.get('x-airr') and v.get('x-airr').get('miairr'):
             row['miairr'] = 'required'
         else:
@@ -340,33 +342,38 @@ for key, v in airr_schema.items():
             for airr_property, property_values in airr_properties.items():
 
                 # get only not deprecated miairr properties (assuming no `deprecated=False`)
-                if "x-airr" in str(property_values) and not "deprecated" in airr_properties[
-                    airr_property]["x-airr"] and "miairr" in airr_properties[
-                    airr_property]["x-airr"]:
+                if "x-airr" in str(property_values) and \
+                        not "deprecated" in airr_properties[airr_property]["x-airr"] and \
+                        "miairr" in airr_properties[airr_property]["x-airr"]:
 
-                    airr_name = airr_properties[airr_property]["x-airr"]["name"]
+                    airr_title = airr_properties[airr_property]["title"]
                     miairr_required = airr_properties[airr_property]["x-airr"]["miairr"]
 
                     if "'type'" in str(property_values):  # get 'type' for all properties except ontology
                         airr_data_type = airr_properties[airr_property]["type"]
                     else:
                         airr_data_type = ""
+
                     if "'example'" in str(property_values):
                         airr_field_value_example = airr_properties[airr_property]["example"]
                     else:
                         airr_field_value_example = ""
+
                     if "'description'" in str(property_values):
                         airr_description = airr_properties[airr_property]["description"]
                     else:
                         airr_description = ""
+
                     if "'set'" in str(property_values):
                         airr_set = airr_properties[airr_property]["x-airr"]["set"]
                     else:
                         airr_set = ""
+
                     if "subset" in airr_properties[airr_property]["x-airr"]:
                         airr_subset = airr_properties[airr_property]["x-airr"]["subset"]
                     else:
                         airr_subset = ""
+
                     if "format" in airr_properties[airr_property]["x-airr"]:
                         airr_format = airr_properties[airr_property]["x-airr"]["format"].capitalize()
 
@@ -402,7 +409,7 @@ for key, v in airr_schema.items():
                     # airr_property = wrap_col(airr_property)
                     airr_field_value_example = wrap_col(str(airr_field_value_example))
 
-                    r = [airr_set, airr_subset, airr_name, airr_property,
+                    r = [airr_set, airr_subset, airr_title, airr_property,
                          airr_data_type, airr_format, airr_description,
                          airr_field_value_example, miairr_required]
                     data_elements.append(r)

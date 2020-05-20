@@ -38,8 +38,10 @@ reasons:
 -  Well-designed ontologies will not contain duplicated entities,
    although they might appear to do so in a simple browsers (i.e. this
    is an artifact of representation). Ontologies that actually do
-   contain duplicates are excluded by criterium `(2)`_.
+   contain duplicates are excluded by :ref:`criterium 2 <ONTO_CRIT_2>`.
 
+
+.. _ONTO_CRIT_11-2018:
 
 Criteria for Ontologies
 =======================
@@ -50,24 +52,30 @@ Criteria
 Ontologies used within AIRR standards
 
 .. _ONTO_CRIT_1:
+
 1. MUST [1]_ cover the majority of the required terms, but complete
    coverage is OPTIONAL
 
 .. _ONTO_CRIT_2:
+
 2. MUST have a structure that is scientifically correct and logically
    coherent
 
 .. _ONTO_CRIT_3:
+
 3. MUST NOT feature complexity that makes it hard to use for queries
    and data representation
 
 .. _ONTO_CRIT_4:
+
 4. SHOULD already be widely adopted
 
 .. _ONTO_CRIT_5:
+
 5. MUST be actively maintained
 
 .. _ONTO_CRIT_6:
+
 6. MUST be available under a free license
 
 Comments on criteria:
@@ -155,7 +163,7 @@ Under evaluation
       -  IEDB
 
    -  Issues:
-   
+
       -  Nomenclature
       -  one ontology is not enough	
 
@@ -236,10 +244,10 @@ Footnotes
    will be revisited during the next sprint. Note that the uncertainty
    revolves around the question what exactly constitues a UID, rather
    than the question whether a UID is permanent and unique.
-   
+
 Appendix
 ========
-   
+
 Glossary
 --------
 
