@@ -47,7 +47,7 @@ if os.environ.get('READTHEDOCS', None) == 'True':
 def setup(app):
     # Can also be a full URL
     app.add_stylesheet('submenus.css')
-    # app.add_stylesheet("ANOTHER.css")
+    app.add_stylesheet("overrides.css")
 
 rst_prolog ='''
 .. |br| raw:: html
