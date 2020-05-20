@@ -167,13 +167,13 @@ File Structure
 
 + Some fields require the use of a particular ontology or controlled vocabulary.
 
-+ The structure is the same regardless of whether the data is stored in a file or a data repository. For example, The :ref:`ADC API <DataCommons>` will return a properly structured JSON object that can be saved to a file and used directly without modification.
++ The structure is the same regardless of whether the data is stored in a file or a data repository. For example, The :ref:`ADC API <DataCommonsAPI>` will return a properly structured JSON object that can be saved to a file and used directly without modification.
 
 Repertoire Fields
 ------------------------------
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name
@@ -193,7 +193,7 @@ Study Fields
 ------------------------------
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name
@@ -213,7 +213,7 @@ Subject Fields
 ------------------------------
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name
@@ -233,7 +233,7 @@ Diagnosis Fields
 ------------------------------
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name
@@ -253,7 +253,7 @@ Sample Fields
 ------------------------------
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name
@@ -273,7 +273,7 @@ Tissue and Cell Processing Fields
 ---------------------------------
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name
@@ -293,7 +293,7 @@ Nucleic Acid Processing Fields
 ---------------------------------
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name
@@ -313,7 +313,7 @@ PCR Target Locus Fields
 ---------------------------------
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name
@@ -333,7 +333,7 @@ Raw Sequence Data Fields
 ---------------------------------
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name
@@ -353,7 +353,7 @@ Sequencing Run Fields
 ---------------------------------
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name
@@ -373,7 +373,7 @@ Data Processing Fields
 ---------------------------------
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name

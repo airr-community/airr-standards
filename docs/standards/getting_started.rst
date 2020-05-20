@@ -6,14 +6,17 @@ This website provides information and resources regarding
 the AIRR Community Standards for the diverse community of immunology
 researchers, bioinformaticians, and software developers.
 
-MiAIRR standard for study data submission and query
----------------------------------------------------
+MiAIRR standard for study data submission
+-----------------------------------------
 
 + Gather experimental and analysis information about your study to conform to the :ref:`MiAIRR <MiAIRR>` standard (minimal information about adaptive immune receptor repertoires).
 
 + :ref:`Submission <Data_Submission>` of your study data to a public repository.
 
-+ :ref:`Query <Data_Submission>` publicly available AIRR-seq studies.
+AIRR Data Commons for query and download of AIRR-seq data
+---------------------------------------------------------
+
++ :ref:`Query <Data_Submission>` publicly available AIRR-seq studies in the :ref:`AIRR Data Commons <DataCommons>`.
 
 Resources related to data representations and software development
 ------------------------------------------------------------------
@@ -22,7 +25,7 @@ Resources related to data representations and software development
 
 + :ref:`Software guidelines <ToolsStandard>` for tools developers to enable rigorous and reproducible immune repertoire research.
 
-+ :ref:`AIRR Data Commons API <DataCommons>` provides programmatic access to query and download AIRR-seq data.
++ :ref:`AIRR Data Commons API <DataCommonsAPI>` provides programmatic access to query and download AIRR-seq data.
 
 Software tools and libraries
 ----------------------------

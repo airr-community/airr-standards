@@ -1,3 +1,5 @@
+.. _DataCommonsQueries:
+
 ================================================================
 Scientific Query Scenarios for AIRR Data Commons API
 ================================================================
@@ -5,7 +7,7 @@ Scientific Query Scenarios for AIRR Data Commons API
 The AIRR Common Repository Working Group (`CRWG`_) has defined a
 number of sample scientific query scenarios to guide the design of the
 ADC API. The `Design Decisions`_ document lists the
-major design choices for the API, and the :ref:`API <DataCommons>` is currently defined
+major design choices for the API, and the :ref:`API <DataCommonsAPI>` is currently defined
 using the `OpenAPI V2.0 Specification`_. This document describes the
 query examples with associated JSON definitions that can be submitted
 to an AIRR repository.

@@ -11,7 +11,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
     libyaml-dev \
     r-base \
     r-base-dev \
-    wget
+    wget \
+    curl
 
 RUN pip3 install \
     pandas \

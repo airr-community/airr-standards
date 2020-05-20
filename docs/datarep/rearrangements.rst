@@ -128,12 +128,12 @@ are welcomed through the issue tracker on the GitHub repository
 :download:`Download as TSV <../_downloads/Rearrangement.tsv>`.
 
 .. list-table::
-    :widths: auto
+    :widths: 20, 10, 10, 60
     :header-rows: 1
 
     * - Name
       - Type
-      - Priority
+      - Level
       - Description
     {%- for field, fieldprops in airr_schema.Rearrangement.properties.items() %}
     * - ``{{ field }}``
