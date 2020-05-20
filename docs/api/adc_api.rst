@@ -487,10 +487,6 @@ recursive algorithms are typically used for tree traversal.
 
 The following operators are support by the ADC API.
 
-.. |br| raw:: html
-
-    <br>
-
 .. list-table::
     :widths: auto
     :header-rows: 1

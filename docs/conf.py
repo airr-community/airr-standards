@@ -44,9 +44,16 @@ if os.environ.get('READTHEDOCS', None) == 'True':
 # -- General configuration ------------------------------------------------
 
 # Setup
-# def setup(app):
-#     app.add_stylesheet('submenus.css') # also can be a full URL
-#     # app.add_stylesheet("ANOTHER.css")
+def setup(app):
+    # Can also be a full URL
+    app.add_stylesheet('submenus.css')
+    # app.add_stylesheet("ANOTHER.css")
+
+rst_prolog ='''
+.. |br| raw:: html
+
+   <br />
+'''
 
 # Minimal Sphinx version
 needs_sphinx = '1.6'
@@ -176,7 +183,7 @@ html_theme_options = {
 
     # Choose Bootstrap version.
     # Values: "3" (default) or "2" (in quotes)
-    'bootstrap_version': '2',
+    'bootstrap_version': '3',
 }
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -339,7 +346,7 @@ def parse_schema(spec, schema):
              'Type': data_type,
              'Format': data_format,
              'Definition': description,
-             'Example': wrap_col(str(example)),
+             'Example': example,
              'Level': miairr_level,
              'Required': required_field,
              'Deprecated': deprecated,
@@ -375,17 +382,20 @@ download_path = '_downloads'
 if not os.path.exists(download_path):  os.mkdir(download_path)
 
 # Write MiAIRR TSV
-fields = ['Set', 'Subset', 'Designation', 'Field', 'Type', 'Format', 'Definition', 'Example', 'Level']
+fields = ['Set', 'Subset', 'Designation', 'Field', 'Type', 'Format', 'Level', 'Definition', 'Example']
 tables = ['Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
           'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing']
 # tables = data_elements.keys()
+miairr_schema = []
 with open(os.path.join(download_path, '%s.tsv' % 'AIRR_Minimal_Standard_Data_Elements'), 'w') as f:
     writer = csv.DictWriter(f, fieldnames=fields, dialect='excel-tab', extrasaction='ignore')
     writer.writeheader()
     for spec in tables:
         for r in data_elements[spec]:
             if r['Level'] and not r['Deprecated']:
+                miairr_schema.append(r)
                 writer.writerow(r)
+html_context['MiAIRR_schema'] = miairr_schema
 
 # Write individual spec TSVs
 fields = ['Name', 'Type', 'Attributes', 'Definition']
