@@ -77,7 +77,7 @@ extensions can be made conditional on the value of fields within the
 core schema, it has now become possible to have multiple extensions
 defining the ``strain_name`` field, but for different species and
 therefore with distinct species-specific ontologies.
-   
+
 Having addressed this issue, the other key problem that remains is the
 absence of an actual ontology for mouse strains, while a
 `rat strain ontology`_ exists. Therefore in a first step it is necessary
@@ -120,7 +120,7 @@ Next steps
 
 Geolocation
 -----------
- 
+
 There are several (planned) extensions to the AIRR metadata standard that
 will provide geospatial metadata. Country-level information is typically
 assumed to be privacy-preserving and easy to operationalize. Therefore,
@@ -357,7 +357,7 @@ Annotation guidance
 
 .. [RFC3987] Internationalized Resource Identifiers (IRIs).
    `DOI:10.17487/RFC3987`_
-   
+
 .. == Link references ==
 
 .. _`OBO Foundry Principles`: https://en.wikipedia.org/wiki/OBO_Foundry#Principles
