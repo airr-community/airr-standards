@@ -163,7 +163,7 @@ Under evaluation
       -  IEDB
 
    -  Issues:
-   
+
       -  Nomenclature
       -  one ontology is not enough	
 
@@ -244,10 +244,10 @@ Footnotes
    will be revisited during the next sprint. Note that the uncertainty
    revolves around the question what exactly constitues a UID, rather
    than the question whether a UID is permanent and unique.
-   
+
 Appendix
 ========
-   
+
 Glossary
 --------
 
