@@ -38,8 +38,10 @@ reasons:
 -  Well-designed ontologies will not contain duplicated entities,
    although they might appear to do so in a simple browsers (i.e. this
    is an artifact of representation). Ontologies that actually do
-   contain duplicates are excluded by criterium `(2)`_.
+   contain duplicates are excluded by :ref:`criterium 2 <ONTO_CRIT_2>`.
 
+
+.. _ONTO_CRIT_11-2018:
 
 Criteria for Ontologies
 =======================
@@ -162,7 +164,7 @@ Under evaluation
       -  IEDB
 
    -  Issues:
-   
+
       -  Nomenclature
       -  one ontology is not enough	
 
@@ -243,10 +245,10 @@ Footnotes
    will be revisited during the next sprint. Note that the uncertainty
    revolves around the question what exactly constitues a UID, rather
    than the question whether a UID is permanent and unique.
-   
+
 Appendix
 ========
-   
+
 Glossary
 --------
 
