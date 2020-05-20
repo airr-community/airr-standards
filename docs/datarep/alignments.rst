@@ -24,19 +24,19 @@ and details on how to structure this data.
 Fields
 -------------------------------
 
-:download:`Download as TSV <../_downloads/Alignment.tsv>`.
+:download:`Download as TSV <../_downloads/Alignment.tsv>`
 
 .. list-table::
-    :widths: 20, 10, 10, 60
+    :widths: 20, 15, 15, 50
     :header-rows: 1
 
     * - Name
       - Type
-      - Level
-      - Description
-    {%- for field, fieldprops in airr_schema.Alignment.properties.items() %}
-    * - ``{{ field }}``
-      - ``{{ fieldprops.type }}``
-      - {{ '**required**' if field in airr_schema.Alignment.required else 'optional' }}
-      - {{ fieldprops.description | trim }}
+      - Attributes
+      - Definition
+    {%- for field in Alignment_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
     {%- endfor %}
