@@ -114,7 +114,7 @@ htmlhelp_basename = 'airr-standardsdoc'
 # Bootstrap options
 html_theme = 'bootstrap'
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
-# html_sidebars = {'**': ['localtoc.html']}
+# html_sidebars = {'**': ['localtoc.html', 'searchbox.html']}
 # html_sidebars = {'**': ['globaltoc.html']}
 # html_sidebars = {'**': ['globaltoc.html', 'sourcelink.html', 'searchbox.html']}
 html_theme_options = {
@@ -183,7 +183,7 @@ html_theme_options = {
 
     # Choose Bootstrap version.
     # Values: "3" (default) or "2" (in quotes)
-    'bootstrap_version': '3',
+    'bootstrap_version': '2',
 }
 
 # -- Options for LaTeX output ---------------------------------------------
