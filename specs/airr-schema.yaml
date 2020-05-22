@@ -2751,10 +2751,10 @@ Cell:
                            standardized designation of the transcript or epitope
                         example: CD27
                     expression_value:
-                        type: integer
+                        type: float
                         description: >
                            transformed and normalized expression level.
-                        example: 14567
+                        example: 14567.30
         virtual_pairing:
             type: boolean
             description: >
@@ -2765,3 +2765,70 @@ Cell:
                 nullable: true # assuming only done for sc experiments, otherwise does not exist
                 adc-query-support: true
                 name: Virtual pairing
+Receptor:
+    discriminator: AIRR
+    type: object
+    required:
+        - receptor_id
+    properties:
+        receptor_id:
+            type: string
+            description: >
+                Identifier defining the cell of origin for the query sequence.
+            title: Receptor index
+            example: W02_1
+            x-airr:
+                miairr: defined
+                nullable: false
+                adc-query-support: true
+                name: Receptor index
+        reactivity_study_method:
+            type: string
+            enum:
+                -SPR
+                -ITC
+            description: >
+                  keyword describing the methodology used to assess expression. This values for this field MUST come from a controlled vocabulary
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        reactivity_UDI:
+            type: string
+            description: >
+                  UID of the receptor at IEDB, which can hold additional and richer data records.
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        reactivity_raw_DOI:
+            type: string
+            description: >
+                  DOI of raw data measurements
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+		reactivity_measurements:
+            type: array
+            description: >
+                records of reactivity measurement
+            items:
+                type: object
+                properties:
+                    antigen:
+                        type: string
+                        description: >
+                           The antigen against which the receptor was tested. For TCRs this is the combination of MHC and peptide.
+                    reactivity_value:
+                        type: float
+                        description: >
+                           The absolute (processed) value of the measurement.
+                        example: 357.89
+		    reactivity_unit:
+		        type: string
+			description: >
+			   The physical unit of the measurement
+			example: M or kJ mol-1
+
+
