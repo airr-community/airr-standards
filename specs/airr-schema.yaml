@@ -4,7 +4,7 @@
 Info:
     title: AIRR Schema
     description: Schema definitions for AIRR standards objects
-    version: 1.3
+    version: "1.3"
     contact:
         name: AIRR Community
         url: https://github.com/airr-community
