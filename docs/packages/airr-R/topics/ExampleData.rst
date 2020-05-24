@@ -19,8 +19,8 @@ Examples
 
 .. code:: r
 
-    # Get path to the rearrangement-example file
-    file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+   # Get path to the rearrangement-example file
+   file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
 
-    # Load data file
-    df <- read_rearrangement(file)
+   # Load data file
+   df <- read_rearrangement(file)
