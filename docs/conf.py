@@ -111,12 +111,16 @@ htmlhelp_basename = 'airr-standardsdoc'
 #                         'navigation.html',
 #                         'searchbox.html']}
 
+# PyData options
+# html_theme = "pydata_sphinx_theme"
+
 # Bootstrap options
 html_theme = 'bootstrap'
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
-# html_sidebars = {'**': ['localtoc.html', 'searchbox.html']}
+# html_sidebars = {'**': ['searchbox.html', 'globaltoc.html']}
 # html_sidebars = {'**': ['globaltoc.html']}
 # html_sidebars = {'**': ['globaltoc.html', 'sourcelink.html', 'searchbox.html']}
+# html_sidebars = {'**': ['searchbox.html', 'globaltoc.html']}
 html_theme_options = {
     # Navigation bar title. (Default: ``project`` value)
     'navbar_title': 'AIRR Community Standards',
@@ -131,8 +135,8 @@ html_theme_options = {
     #    (name, "http://example.com", True) # arbitrary absolute url
     # Note the "1" or "True" value above as the third argument to indicate
     # an arbitrary url.
-    'navbar_links': [('GitHub', 'https://github.com/airr-community/airr-standards', True),
-                     ('AIRR-C', 'http://airr-community.org', True)],
+    # 'navbar_links': [('GitHub', 'https://github.com/airr-community/airr-standards', True),
+    #                  ('AIRR-C', 'http://airr-community.org', True)],
 
     # Render the next and previous page links in navbar. (Default: true)
     'navbar_sidebarrel': True,
@@ -145,7 +149,7 @@ html_theme_options = {
 
     # Global TOC depth for "site" navbar tab. (Default: 1)
     # Switching to -1 shows all levels.
-    'globaltoc_depth': 2,
+    'globaltoc_depth': 1,
 
     # Include hidden TOCs in Site navbar?
     #
