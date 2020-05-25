@@ -113,82 +113,83 @@ htmlhelp_basename = 'airr-standardsdoc'
 
 # PyData options
 # html_theme = "pydata_sphinx_theme"
+html_theme = "sphinx_book_theme"
 
 # Bootstrap options
-html_theme = 'bootstrap'
-html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+# html_theme = 'bootstrap'
+# html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 # html_sidebars = {'**': ['searchbox.html', 'globaltoc.html']}
 # html_sidebars = {'**': ['globaltoc.html']}
 # html_sidebars = {'**': ['globaltoc.html', 'sourcelink.html', 'searchbox.html']}
 # html_sidebars = {'**': ['searchbox.html', 'globaltoc.html']}
-html_theme_options = {
-    # Navigation bar title. (Default: ``project`` value)
-    'navbar_title': 'AIRR Community Standards',
-
-    # Tab name for entire site. (Default: "Site")
-    'navbar_site_name': 'Contents',
-
-    # A list of tuples containing pages or urls to link to.
-    # Valid tuples should be in the following forms:
-    #    (name, page)                 # a link to a page
-    #    (name, "/aa/bb", 1)          # a link to an arbitrary relative url
-    #    (name, "http://example.com", True) # arbitrary absolute url
-    # Note the "1" or "True" value above as the third argument to indicate
-    # an arbitrary url.
-    # 'navbar_links': [('GitHub', 'https://github.com/airr-community/airr-standards', True),
-    #                  ('AIRR-C', 'http://airr-community.org', True)],
-
-    # Render the next and previous page links in navbar. (Default: true)
-    'navbar_sidebarrel': True,
-
-    # Render the current pages TOC in the navbar. (Default: true)
-    'navbar_pagenav': True,
-
-    # Tab name for the current pages TOC. (Default: "Page")
-    'navbar_pagenav_name': 'Page',
-
-    # Global TOC depth for "site" navbar tab. (Default: 1)
-    # Switching to -1 shows all levels.
-    'globaltoc_depth': 1,
-
-    # Include hidden TOCs in Site navbar?
-    #
-    # Note: If this is "false", you cannot have mixed ``:hidden:`` and
-    # non-hidden ``toctree`` directives in the same page, or else the build
-    # will break.
-    #
-    # Values: "true" (default) or "false"
-    'globaltoc_includehidden': 'false',
-
-    # HTML navbar class (Default: "navbar") to attach to <div> element.
-    # For black navbar, do "navbar navbar-inverse"
-    'navbar_class': 'navbar',
-
-    # Fix navigation bar to top of page?
-    # Values: "true" (default) or "false"
-    'navbar_fixed_top': 'true',
-
-    # Location of link to source.
-    # Options are "nav" (default), "footer" or anything else to exclude.
-    'source_link_position': 'none',
-
-    # Bootswatch (http://bootswatch.com/) theme.
-    #
-    # Options are nothing (default) or the name of a valid theme
-    # such as "cosmo" or "sandstone".
-    #
-    # The set of valid themes depend on the version of Bootstrap
-    # that's used (the next config option).
-    #
-    # Currently, the supported themes are:
-    # - Bootstrap 2: https://bootswatch.com/2
-    # - Bootstrap 3: https://bootswatch.com/3
-    'bootswatch_theme': 'spacelab',
-
-    # Choose Bootstrap version.
-    # Values: "3" (default) or "2" (in quotes)
-    'bootstrap_version': '2',
-}
+# html_theme_options = {
+#     # Navigation bar title. (Default: ``project`` value)
+#     'navbar_title': 'AIRR Community Standards',
+#
+#     # Tab name for entire site. (Default: "Site")
+#     'navbar_site_name': 'Contents',
+#
+#     # A list of tuples containing pages or urls to link to.
+#     # Valid tuples should be in the following forms:
+#     #    (name, page)                 # a link to a page
+#     #    (name, "/aa/bb", 1)          # a link to an arbitrary relative url
+#     #    (name, "http://example.com", True) # arbitrary absolute url
+#     # Note the "1" or "True" value above as the third argument to indicate
+#     # an arbitrary url.
+#     # 'navbar_links': [('GitHub', 'https://github.com/airr-community/airr-standards', True),
+#     #                  ('AIRR-C', 'http://airr-community.org', True)],
+#
+#     # Render the next and previous page links in navbar. (Default: true)
+#     'navbar_sidebarrel': True,
+#
+#     # Render the current pages TOC in the navbar. (Default: true)
+#     'navbar_pagenav': True,
+#
+#     # Tab name for the current pages TOC. (Default: "Page")
+#     'navbar_pagenav_name': 'Page',
+#
+#     # Global TOC depth for "site" navbar tab. (Default: 1)
+#     # Switching to -1 shows all levels.
+#     'globaltoc_depth': 1,
+#
+#     # Include hidden TOCs in Site navbar?
+#     #
+#     # Note: If this is "false", you cannot have mixed ``:hidden:`` and
+#     # non-hidden ``toctree`` directives in the same page, or else the build
+#     # will break.
+#     #
+#     # Values: "true" (default) or "false"
+#     'globaltoc_includehidden': 'false',
+#
+#     # HTML navbar class (Default: "navbar") to attach to <div> element.
+#     # For black navbar, do "navbar navbar-inverse"
+#     'navbar_class': 'navbar',
+#
+#     # Fix navigation bar to top of page?
+#     # Values: "true" (default) or "false"
+#     'navbar_fixed_top': 'true',
+#
+#     # Location of link to source.
+#     # Options are "nav" (default), "footer" or anything else to exclude.
+#     'source_link_position': 'none',
+#
+#     # Bootswatch (http://bootswatch.com/) theme.
+#     #
+#     # Options are nothing (default) or the name of a valid theme
+#     # such as "cosmo" or "sandstone".
+#     #
+#     # The set of valid themes depend on the version of Bootstrap
+#     # that's used (the next config option).
+#     #
+#     # Currently, the supported themes are:
+#     # - Bootstrap 2: https://bootswatch.com/2
+#     # - Bootstrap 3: https://bootswatch.com/3
+#     'bootswatch_theme': 'spacelab',
+#
+#     # Choose Bootstrap version.
+#     # Values: "3" (default) or "2" (in quotes)
+#     'bootstrap_version': '2',
+# }
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -264,10 +265,10 @@ def parse_schema(spec, schema):
     Returns:
       list: list of dictionaries with parsed rows of the spec table.
     """
-    data_type_map = {'string': 'Free text',
-                     'integer': 'Positive integer',
-                     'number': 'Positive number',
-                     'boolean': 'T | F'}
+    data_type_map = {'string': 'free text',
+                     'integer': 'positive integer',
+                     'number': 'positive number',
+                     'boolean': 'true | false'}
 
     # Get schema
     properties = schema[spec]['properties']
