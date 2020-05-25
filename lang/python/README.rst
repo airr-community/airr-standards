@@ -19,8 +19,8 @@ Reading AIRR Repertoire metadata files
 
 The ``airr`` package contains functions to read and write AIRR repertoire metadata
 files. The file format is either YAML or JSON, and the package provides a
-light wrapper over the standard parsers. The file needs a `json`, `yaml`, or `yml`
-files extension so that the proper parser is utilized. All of the repertoires are loaded
+light wrapper over the standard parsers. The file needs a ``json``, ``yaml``, or ``yml``
+file extension so that the proper parser is utilized. All of the repertoires are loaded
 into memory at once and no streaming interface is provided::
 
     import airr
@@ -30,13 +30,13 @@ into memory at once and no streaming interface is provided::
     for rep in data['Repertoire']:
         print(rep)
 
-Why are the repertoires in a list versus in a dictionary keyed by the `repertoire_id`?
-There are two primary reasons for this. First, the `repertoire_id` might not have been
+Why are the repertoires in a list versus in a dictionary keyed by the ``repertoire_id``?
+There are two primary reasons for this. First, the ``repertoire_id`` might not have been
 assigned yet. Some systems might allow MiAIRR metadata to be entered but the
-`repertoire_id` is assigned to that data later by another process. Without the
-`repertoire_id`, the data could not be stored in a dictionary. Secondly, the list allows
+``repertoire_id`` is assigned to that data later by another process. Without the
+``repertoire_id``, the data could not be stored in a dictionary. Secondly, the list allows
 the repertoire data to have a default ordering. If you know that the repertoires all have
-a unique `repertoire_id` then you can quickly create a dictionary object using a
+a unique ``repertoire_id`` then you can quickly create a dictionary object using a
 comprehension::
 
     rep_dict = { obj['repertoire_id'] : obj for obj in data['Repertoire'] }
@@ -82,7 +82,7 @@ Writing AIRR formatted files
 
 Similar to the read operations, write functions are provided for either creating
 a writer class to perform row-wise output or writing the entire contents of
-a pandas data frame to a file. Again, usage is straightforward with the `airr`
+a pandas data frame to a file. Again, usage is straightforward with the ``airr``
 output functions simply performing some type conversion and field ordering
 operations::
 
@@ -109,12 +109,12 @@ line program or the validate functions in the library can be called::
     # Validate a repertoire metadata file
     airr-tools validate repertoire -a input.airr.json
 
-Combining repertoire metadata and rearrangement files
+Combining Repertoire metadata and Rearrangement files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``airr`` package does not keep track of which repertoire metadata files
 are associated with rearrangement files, so users will need to handle those
-associations themselves. However, in the data, the `repertoire_id` field forms
+associations themselves. However, in the data, the ``repertoire_id`` field forms
 the link. The typical usage is that a program is going to perform some
 computation on the rearrangements, and it needs access to the repertoire metadata
 as part of the computation logic. This example code shows the basic framework
