@@ -35,13 +35,12 @@ To install the latest development code via devtools::
     install_github("airr-community/airr-standards/lang/R@master")
 
 Note, using ``install_github`` will not build the documentation. To generate the
-documentation, clone the repository and build as normal. Then run the following
+documentation, clone the repository, and then build as normal using the following
 R commands from the package root ``lang/R``::
 
     library(devtools)
     install_deps(dependencies=T)
     document()
     install()
-    test()
 
 .. include:: about.rst
