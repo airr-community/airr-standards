@@ -1,12 +1,24 @@
 .. _ROverview:
 
-AIRR R Reference Library
-================================================================================
+AIRR Data Representation Reference Library
+=================================================================================
 
-An R library providing AIRR schema definitions and read, write, and validation
-functions for AIRR standard formatted data files.
+``airr`` is an R package for working with data formatted according to
+the AIRR Data Representation schemas. It includes the full set of schema
+definitions along with simple functions for read, write and validation.
 
-**Download & Installation**
+Contents
+--------------------------------------------------------------------------------
+
+.. toctree::
+    :maxdepth: 1
+
+    Usage Vignette <vignettes/Usage-Vignette>
+    Reference Manual <topics>
+    Release Notes <news>
+
+Download & Installation
+--------------------------------------------------------------------------------
 
 To install the latest release from CRAN::
 
@@ -32,11 +44,4 @@ R commands from the package root ``lang/R``::
     install()
     test()
 
-.. toctree::
-    :maxdepth: 3
-    :hidden:
-
-    About <about>
-    Usage Vignette <vignettes/Usage-Vignette>
-    Reference Manual <topics>
-    Release Notes <news>
+.. include:: about.rst

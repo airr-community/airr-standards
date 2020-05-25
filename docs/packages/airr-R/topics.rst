@@ -3,13 +3,9 @@
 Reference Topics
 ===========================
 
-.. toctree::
-    :caption: Reference Topics
-    :maxdepth: 1
-
-    topics/read_airr
-    topics/write_airr
-    topics/validate_airr
-    topics/load_schema
-    topics/Schema-class
-    topics/ExampleData
+.. include:: topics/read_airr.rst
+.. include:: topics/write_airr.rst
+.. include:: topics/validate_airr.rst
+.. include:: topics/load_schema.rst
+.. include:: topics/Schema-class.rst
+.. include:: topics/ExampleData.rst
