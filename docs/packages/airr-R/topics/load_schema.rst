@@ -14,13 +14,13 @@ Usage
 
 ::
 
-    load_schema(definition)
+   load_schema(definition)
 
 Arguments
 ~~~~~~~~~
 
 definition
-    name of the schema definition.
+   name of the schema definition.
 
 Value
 ~~~~~
@@ -48,11 +48,11 @@ Examples
 
 .. code:: r
 
-    # Load the Rearrangement definition
-    schema <- load_schema("Rearrangement")
+   # Load the Rearrangement definition
+   schema <- load_schema("Rearrangement")
 
-    # Load the Alignment definition
-    schema <- load_schema("Alignment")
+   # Load the Alignment definition
+   schema <- load_schema("Alignment")
 
 See also
 ~~~~~~~~

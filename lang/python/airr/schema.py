@@ -431,11 +431,9 @@ class Schema:
 
 
 # Preloaded schema
-AlignmentSchema = Schema('Alignment')
-RearrangementSchema = Schema('Rearrangement')
-RepertoireSchema = Schema('Repertoire')
-
 CachedSchema = {
+    'Alignment': Schema('Alignment'),
+    'Rearrangement': Schema('Rearrangement'),
     'Repertoire': Schema('Repertoire'),
     'Ontology': Schema('Ontology'),
     'Study': Schema('Study'),
@@ -449,3 +447,8 @@ CachedSchema = {
     'DataProcessing': Schema('DataProcessing'),
     'SampleProcessing': Schema('SampleProcessing')
 }
+
+AlignmentSchema = CachedSchema['Alignment']
+RearrangementSchema = CachedSchema['Rearrangement']
+RepertoireSchema = CachedSchema['Repertoire']
+

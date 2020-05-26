@@ -3,7 +3,7 @@
 API Reference
 ================================================================================
 
-Inferface
+Rearrangement Interface
 --------------------------------------------------------------------------------
 
 .. autofunction:: airr.read_rearrangement
@@ -19,6 +19,19 @@ Inferface
 .. autofunction:: airr.merge_rearrangement
 
 .. autofunction:: airr.validate_rearrangement
+
+
+Repertoire Interface
+--------------------------------------------------------------------------------
+
+.. autofunction:: airr.load_repertoire
+
+.. autofunction:: airr.write_repertoire
+
+.. autofunction:: airr.validate_repertoire
+
+.. autofunction:: airr.repertoire_template
+
 
 Classes
 --------------------------------------------------------------------------------
@@ -39,8 +52,12 @@ Classes
 Schema
 --------------------------------------------------------------------------------
 
+.. autodata:: airr.schema.AlignmentSchema
+    :annotation: Schema object for the Alignment definition
+
 .. autodata:: airr.schema.RearrangementSchema
     :annotation: Schema object for the Rearrangement definition
 
-.. autodata:: airr.schema.AlignmentSchema
-    :annotation: Schema object for the Alignment definition
+.. autodata:: airr.schema.RepertoireSchema
+    :annotation: Schema object for the Repertoire definition
+

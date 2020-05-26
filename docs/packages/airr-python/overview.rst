@@ -1,12 +1,21 @@
 .. _PythonOverview:
 
-.. include:: ../../../lang/python/README.rst
+AIRR Python Reference Library
+===============================================================================
+
+The ``airr`` reference library provides basic functions and classes for
+interacting with AIRR Community Data Representation Standards, including tools
+for read, write and validation.
+
+Contents
+--------------------------------------------------------------------------------
 
 .. toctree::
-    :maxdepth: 3
-    :hidden:
-    :caption: Python Library
+    :maxdepth: 1
 
     api
     tools
     news
+
+.. include:: ../../../lang/python/README.rst
+

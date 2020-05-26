@@ -50,7 +50,7 @@ usage is straightforward, as the file format is a typical tabulated
 file. The argument that needs attention is ``base``, with possible
 values ``"0"`` and ``"1"``. ``base`` denotes the starting index for
 positional fields in the input file. Positional fields are those that
-contain alignment coordinates and names ending in “_start" and “_end“.
+contain alignment coordinates and names ending in "_start" and "_end".
 If the input file is using 1-based closed intervals (R style), as
 defined by the standard, then positional fields will not be modified
 under the default setting of ``base="1"``. If the input file is using
@@ -60,48 +60,42 @@ argument ``base="0"``.
 
 .. code:: r
 
-    library(airr)
+   library(airr)
 
-    example_data <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
-    basename(example_data)
+   example_data <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+   basename(example_data)
 
 ::
 
-    ## [1] "rearrangement-example.tsv.gz"
+   ## [1] "rearrangement-example.tsv.gz"
 
 .. code:: r
 
-    airr_rearrangement <- read_rearrangement(example_data)
-    class(airr_rearrangement)
+   airr_rearrangement <- read_rearrangement(example_data)
+   class(airr_rearrangement)
 
 ::
 
-    ## [1] "tbl_df"     "tbl"        "data.frame"
+   ## [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"
 
 .. code:: r
 
-    head(airr_rearrangement)
+   head(airr_rearrangement)
 
 ::
 
-    ## # A tibble: 6 x 33
-    ##   sequence_id sequence rev_comp productive vj_in_frame stop_codon v_call
-    ##   <chr>       <chr>    <lgl>    <lgl>      <lgl>       <lgl>      <chr> 
-    ## 1 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV2…
-    ## 2 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV5…
-    ## 3 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV7…
-    ## 4 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV7…
-    ## 5 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV7…
-    ## 6 SRR765688.… NNNNNNN… FALSE    FALSE      TRUE        TRUE       IGHV2…
-    ## # ... with 26 more variables: d_call <chr>, j_call <chr>, c_call <chr>,
-    ## #   sequence_alignment <chr>, germline_alignment <chr>, junction <chr>,
-    ## #   junction_aa <chr>, v_cigar <chr>, d_cigar <chr>, j_cigar <chr>,
-    ## #   v_sequence_start <int>, v_sequence_end <int>, v_germline_start <int>,
-    ## #   v_germline_end <int>, d_sequence_start <int>, d_sequence_end <int>,
-    ## #   d_germline_start <int>, d_germline_end <int>, j_sequence_start <int>,
-    ## #   j_sequence_end <int>, j_germline_start <int>, j_germline_end <int>,
-    ## #   junction_length <int>, np1_length <int>, np2_length <int>,
-    ## #   duplicate_count <int>
+   ## # A tibble: 6 x 33
+   ##   sequence_id sequence rev_comp productive vj_in_frame stop_codon v_call d_call j_call c_call sequence_alignm… germline_alignm… junction junction_aa v_cigar d_cigar
+   ##   <chr>       <chr>    <lgl>    <lgl>      <lgl>       <lgl>      <chr>  <chr>  <chr>  <chr>  <chr>            <chr>            <chr>    <chr>       <chr>   <chr>  
+   ## 1 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV2… IGHD5… IGHJ4… IGHG   ...............… CAGATCACCTTGAAG… TGTGCAC… CAHSAGWLPD… 20S56N… 274S5N…
+   ## 2 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV5… IGHD3… IGHJ6… IGHG   ...............… GAGGTGCAGCTGGTG… TGTGCGA… CARHGLYGCD… 20S40N… 305S29…
+   ## 3 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV7… IGHD3… IGHJ4… IGHG   ...............… CAGGTGCAGCTGGTG… TGTGCGA… CAREERRSSG… 20S33N… 293S13…
+   ## 4 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV7… IGHD3… IGHJ6… IGHG   ...............… CAGGTGCAGCTGGTG… TGTGCGA… CAREGYYFDT… 20S33N… 290S9N…
+   ## 5 SRR765688.… NNNNNNN… FALSE    TRUE       TRUE        FALSE      IGHV7… IGHD1… IGHJ6… IGHG   ...............… CAGGTGCAGCTGGTG… TGTGCGA… CARDSGGMDVW 20S33N… 283S4N…
+   ## 6 SRR765688.… NNNNNNN… FALSE    FALSE      TRUE        TRUE       IGHV2… IGHD2… IGHJ4… IGHA   ...............… CAGATCACCTTGAAG… TGTGTCC… CVLSRRLGDS… 20S56N… 273S12…
+   ## # … with 17 more variables: j_cigar <chr>, v_sequence_start <int>, v_sequence_end <int>, v_germline_start <int>, v_germline_end <int>, d_sequence_start <int>,
+   ## #   d_sequence_end <int>, d_germline_start <int>, d_germline_end <int>, j_sequence_start <int>, j_sequence_end <int>, j_germline_start <int>, j_germline_end <int>,
+   ## #   junction_length <int>, np1_length <int>, np2_length <int>, duplicate_count <int>
 
 Writing AIRR formatted files
 ----------------------------
@@ -111,8 +105,8 @@ write Rearrangement records to the AIRR TSV format.
 
 .. code:: r
 
-    out_file <- file.path(tempdir(), "airr_out.tsv")
-    write_rearrangement(airr_rearrangement, out_file)
+   out_file <- file.path(tempdir(), "airr_out.tsv")
+   write_rearrangement(airr_rearrangement, out_file)
 
 References
 ----------
