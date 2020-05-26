@@ -4,9 +4,7 @@ Reference library for AIRR schema for Ig/TCR rearrangements
 from __future__ import print_function
 import sys
 import csv
-import yaml
-import json
-from airr.schema import RearrangementSchema,ValidationError
+from airr.schema import RearrangementSchema, ValidationError
 
 
 class RearrangementReader:

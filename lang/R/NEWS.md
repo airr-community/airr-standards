@@ -1,3 +1,9 @@
+Version 1.3.0:  May 26, 2020
+-------------------------------------------------------------------------------
+    
++ Updated schema set to v1.3.
++ Added `info` slot to `Schema` object containing general schema information.
+  
 Version 1.2.0:  August 17, 2018
 -------------------------------------------------------------------------------
     

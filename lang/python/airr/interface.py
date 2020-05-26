@@ -216,9 +216,8 @@ def load_repertoire(filename, validate=False, debug=False):
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
-      dictionary of repertoire objects.
+      list: list of Repertoire dictionaries.
     """
-
     # Because the repertoires are read in completely, we do not bother
     # with a reader class.
     md = None
@@ -335,7 +334,7 @@ def repertoire_template():
     structure with all of the fields and all values set to None or empty string.
 
     Returns:
-      object: Empty repertoire object
+      object: empty repertoire object.
     """
     
     # TODO: I suppose we should dynamically create this from the schema

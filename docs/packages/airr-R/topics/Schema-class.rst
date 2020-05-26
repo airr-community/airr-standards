@@ -14,38 +14,42 @@ Usage
 
 ::
 
-    "names"(x)
+   "names"(x)
 
 ::
 
-    "["(x, i)
+   "["(x, i)
 
 ::
 
-    "$"(x, name)
+   "$"(x, name)
 
 ::
 
-    AlignmentSchema
+   AlignmentSchema
 
 ::
 
-    RearrangementSchema
+   RearrangementSchema
 
 Arguments
 ~~~~~~~~~
 
 x
-    ``Schema`` object.
+   ``Schema`` object.
 i
-    field name.
+   field name.
 name
-    field name.
+   field name.
 
 Format
 ~~~~~~
 
 A ``Schema`` object.
+
+An object of class ``Schema`` of length 1.
+
+An object of class ``Schema`` of length 1.
 
 Details
 ~~~~~~~
@@ -60,11 +64,13 @@ Slots
 ~~~~~
 
 ``required``
-    ``character`` vector of required fields.
+   ``character`` vector of required fields.
 ``optional``
-    ``character`` vector of non-required fields.
+   ``character`` vector of non-required fields.
 ``properties``
-    ``list`` of field definitions.
+   ``list`` of field definitions.
+``info``
+   ``list`` schema information.
 
 See also
 ~~~~~~~~
