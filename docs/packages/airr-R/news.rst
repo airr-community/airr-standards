@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.3.0: May 25, 2020
+Version 1.3.0: May 26, 2020
 ---------------------------
 
 -  Updated schema set to v1.3.
