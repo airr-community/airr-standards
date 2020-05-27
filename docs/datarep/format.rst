@@ -35,7 +35,7 @@ File names
 
 AIRR formatted TSV files should end with ``.tsv``.
 
-Structure
+File Structure
 -----------------------------
 
 The data file has two sections in this order:

@@ -410,7 +410,7 @@ searched, though it isn't necessary.
 This example queries for rearrangements with a specific junction amino
 acid sequence among a set of repertoires. A limited set of fields is
 requested to be returned. The resultant data can be
-requested in JSON or :ref:`AIRR TSV <FormatSpecification>` format.
+requested in JSON or :ref:`AIRR TSV <TSVSpecification>` format.
 
 .. code-block:: bash
 
@@ -654,7 +654,7 @@ A more complex query with multiple operators looks like this:
 Specifies the format of the API response. ``json`` is the default
 format and is available for all endpoints. The ``rearrangement``
 ``POST`` endpoint also accepts ``tsv`` which will provide the data in the
-:ref:`AIRR TSV <FormatSpecification>` format.
+:ref:`AIRR TSV <TSVSpecification>` format.
 
 **Fields Query Parameter**
 

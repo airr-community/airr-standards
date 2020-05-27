@@ -18,7 +18,7 @@ considered final.
 File Format Specification
 ------------------------------
 
-The :ref:`format specification <FormatSpecification>` describes the file format
+The :ref:`format specification <TSVSpecification>` describes the file format
 and details on how to structure this data.
 
 Fields
