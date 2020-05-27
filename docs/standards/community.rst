@@ -1,14 +1,19 @@
-=======================
+.. _Community:
+
 Community
-=======================
+=========================================
+
+Resources/Tools Supporting AIRR Standards
+-----------------------------------------
 
 .. toctree::
    :maxdepth: 1
-   :caption: Resources/Tools Supporting AIRR Standards
 
-    Rearrangement Schema <../resources/support.rst>
+    Applications Supporting the Rearrangement Schema <../resources/rearrangement_support.rst>
+    AIRR Data Commons Repositories <../resources/adc_support.rst>
 
 Useful websites for the AIRR Community
+----------------------------------------
 
 + `The Antibody Society`_
 
@@ -18,7 +23,7 @@ Useful websites for the AIRR Community
 
 + `The AIRR Community GitHub`_
 
-+ `The AIRR Standards GitHub repository`_
++ `The AIRR Standards GitHub Repository`_
 
 + `The AIRR Community Docker Hub`_
 

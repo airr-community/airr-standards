@@ -1,12 +1,7 @@
-.. _ApplicationSupport:
-
-Applications Supporting AIRR Standards
-================================================================================
-
 .. _RearrangementSupport:
 
-Rearrangement Schema
---------------------------------------------------------------------------------
+Applications Supporting the Rearrangement Schema
+================================================
 
 The following list of software tools and databases support the TSV format of
 v1.2 of the :ref:`AIRR Rearrangement schema <RearrangementSchema>`.

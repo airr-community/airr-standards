@@ -38,7 +38,8 @@ AIRR Data Commons.
 
 .. __: https://github.com/airr-community/common-repo-wg/blob/master/recommendations.md
 
-**AIRR Data Commons Repositories**
+AIRR Data Commons Repositories
+---------------------------------------
 
 These data repositories all implement the AIRR Data Commons (ADC) API programmatic access to
 query and download AIRR-seq data. 
@@ -47,7 +48,8 @@ query and download AIRR-seq data.
 
 + :ref:`VDJServer Community Data Portal <VDJServer>`
 
-**Querying the AIRR Data Commons**
+Querying the AIRR Data Commons
+---------------------------------------
 
 Each of the repositories above can be queried directly using the :ref:`ADC API <DataCommonsAPI>`. In addition, the
 following tools and platforms implement web based user interfaces that use the ADC API to query repositories
