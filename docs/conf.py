@@ -21,7 +21,6 @@
 
 import csv
 import os
-import sphinx_bootstrap_theme
 import sys
 import yaml
 import yamlordereddictloader
