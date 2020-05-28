@@ -1,5 +1,5 @@
 sphinx>=1.6
-sphinx_bootstrap_theme>=0.7.1
+sphinx-book-theme>=0.0.17
 sphinxcontrib-autoprogram>=0.1.4
 prov>=1.5.1
 pyyaml>=3.12

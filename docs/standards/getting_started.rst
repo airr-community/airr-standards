@@ -36,7 +36,7 @@ Software tools and libraries
 
 + :ref:`ADC API reference implementation <ADCAPIReference>` for a local data repository.
 
-+ :ref:`Applications <ApplicationSupport>` that support the AIRR Standards.
++ :ref:`Resources and tools <Community>` that support the AIRR Standards.
 
 Tutorials, examples and workflows
 ---------------------------------

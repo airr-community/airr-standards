@@ -195,7 +195,10 @@ The content of the :download:`JSON payload <../examples/queries/query1-2_reperto
 .. literalinclude:: ../examples/queries/query1-2_repertoire.json
   :language: JSON
 
-The response contains two JSON objects, an Info object that provides information about the API response and a Repertoire object that contains the list of Repertoires that met the query search criteria. In this case, the query returns a list of five repertoire identifiers. Note the Info object is based on the info block as specified in the OpenAPI v2.0 specification.
+The response contains two JSON objects, an Info object that provides information about the API response and a
+Repertoire object that contains the list of Repertoires that met the query search criteria. In this case, the query
+returns a list of five repertoire identifiers. Note the Info object is based on the info block as specified in
+the OpenAPI v2.0 specification.
 
 .. code-block:: json
 
@@ -410,7 +413,7 @@ searched, though it isn't necessary.
 This example queries for rearrangements with a specific junction amino
 acid sequence among a set of repertoires. A limited set of fields is
 requested to be returned. The resultant data can be
-requested in JSON or :ref:`AIRR TSV <FormatSpecification>` format.
+requested in JSON or :ref:`AIRR TSV <TSVSpecification>` format.
 
 .. code-block:: bash
 
@@ -486,10 +489,6 @@ child nodes are operands. The expression tree can be of any depth, and
 recursive algorithms are typically used for tree traversal.
 
 The following operators are support by the ADC API.
-
-.. |br| raw:: html
-
-    <br>
 
 .. list-table::
     :widths: auto
@@ -658,7 +657,7 @@ A more complex query with multiple operators looks like this:
 Specifies the format of the API response. ``json`` is the default
 format and is available for all endpoints. The ``rearrangement``
 ``POST`` endpoint also accepts ``tsv`` which will provide the data in the
-:ref:`AIRR TSV <FormatSpecification>` format.
+:ref:`AIRR TSV <TSVSpecification>` format.
 
 **Fields Query Parameter**
 

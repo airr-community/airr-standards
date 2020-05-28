@@ -12,10 +12,22 @@ of sequence data, and processed AIRR sequences.
 
 :download:`Download as TSV <../_downloads/AIRR_Minimal_Standard_Data_Elements.tsv>`.
 
-.. csv-table::
-   :file: ../_downloads/AIRR_Minimal_Standard_Data_Elements.tsv
-   :delim: tab
-   :header-rows: 1
-   :stub-columns: 0
-   :align: left
-   :widths: 5,10,10,10,10,10,25,10,10
+.. list-table::
+    :header-rows: 1
+    :widths: 1 3 3 3 6 4
+
+    * - Set / Subset
+      - Designation / Field
+      - Type / Format
+      - Level
+      - Definition
+      - Example
+    {%- for field in MiAIRR_schema %}
+    * - **{{ field.Set }}** / {{ field.Subset }}
+      - {{ field.Designation }} |br| ``{{ field.Name }}``
+      - {{ field.Type }} |br| *{{ field.Format }}*
+      - {{ field.Level }}
+      - {{ field.Definition | trim }}
+      - {{ field.Example | trim }}
+    {%- endfor %}
+

@@ -7,11 +7,10 @@
 Release Notes
 ==============
 
-
-Under development (Version 1.3.0)
+Version 1.3.0: May 28, 2020
 --------------------------------------------------------------------------------
 
-**Current changes in the development branch.**
+**Version 1.3 schema release.**
 
 + Added EBI OLS as default source for ``ontologies``
 

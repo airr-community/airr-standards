@@ -44,7 +44,8 @@ sequencing, which also would be a new ``Repertoire``. That new
 subject.
 
 
-**Multiple Data Processing on a Repertoire**
+Multiple Data Processing on a Repertoire
+--------------------------------------------------------------------------------
 
 Data processing can be a complicated multi-stage
 process. Documenting the process in a formal way is challenging
@@ -75,7 +76,8 @@ because it can generate incorrect results. The identifier
 ``data_processing_id`` was added so ``Rearrangements`` can
 identify their specific ``DataProcessing``.
 
-**Linking Data**
+Linking Data
+--------------------------------------------------------------------------------
 
 Each ``Repertoire`` has a unique ``repertoire_id`` identifier. This
 identifier should be globally unique so that repertoires from multiple
@@ -125,7 +127,8 @@ object and then the ``data_processing_id`` should be used to identify the correc
 ``DataProcessing`` metadata and the ``sample_processing_id`` should be used to
 identify the correct sample processing metadata within that ``Repertoire``.
 
-**Duality between Repertoires and Rearrangements**
+Duality between Repertoires and Rearrangements
+--------------------------------------------------------------------------------
 
 There is an important duality relationship between ``Repertoires`` and
 ``Rearrangements``, specifically with the experimental protocols

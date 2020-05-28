@@ -1225,7 +1225,7 @@ SequencingRun:
             type: string
             description: ID of sequencing run assigned by the sequencing facility
             title: Batch number
-            example: 160101_M01234_0201_000000000-D2T7V
+            example: 160101_M01234
             x-airr:
                 miairr: important
                 nullable: true
