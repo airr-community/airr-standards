@@ -12,45 +12,153 @@ Version 1.3.0: May 28, 2020
 
 **Version 1.3 schema release.**
 
+New Schema:
+
++ Introduced the ``Repertoire`` Schema for describing study meta data.
+
++ Introduced the PCRTarget Schema for describing primer target locations.
+
++ Introduced the SampleProcessing Schema for describing experimental processing
+  steps for a sample.
+
++ Replaced the SoftwareProcessing schema with the DataProcessing schema.
+
++ Introduced experimental schema clonal clusters, lineage trees, tree nodes,
+  and cells as Clone, Tree, Node, and Cell objects, respectively.
+
+General Updates:
+
++ Added multiple additional attributes to a large number of schema propertes as AIRR
+  extension attributes in the ``x-airr`` field. The new ``Attributes`` object
+  contains definitions for these ``x-airr`` field attributes.
+
++ Added the top level ``required`` property to all relevant schema objects.
+
++ Added the ``title`` attribute containing the short, descriptive name to all
+  relevant schema object fields.
+
++ Added an ``example`` attribute containing an example data value to multiple
+  schema object fields.
+
+Ontology Support:
+
++ Added ``Ontology`` and ``CURIEResolution`` objects to support ontologies.
+
 + Added EBI OLS as default source for ``ontologies``
 
 .. #296 by bussec was merged on Jan 4, 2020
 
-+ Expanded description for ``pcr_target``
-
-.. #288 by bussec was merged on Dec 10, 2019
-
-+ Fix capitalization of ``age_unit`` description
-
-.. #290 by bcorrie was merged on Dec 10, 2019
-
-+ Fix name of ``age`` fields
-
-.. #285 by bcorrie was merged on Nov 27, 2019
-
-+ Introduced ``cell_species``
-
-.. #260 by bussec was merged on Nov 8, 2019; #281 Reverted ``locus_species``  by bcorrie was merged on Nov 27, 2019
-
-+ Added ``sample_processing_id``
-
-.. #263 by schristley was merged on Oct 21
-
-+ Added vocabularies/ontologies as JSON string for: Cell subset, Target substrate, Library generation method, Complete sequences, Physical linkage of different loci
++ Added vocabularies/ontologies as JSON string for: Cell subset, Target substrate, Library generation method,
+  Complete sequences, Physical linkage of different loci
 
 .. #155 by bussec was merged on Oct 16, 2018 • Approved
 
-+ Include format JSON string
+Rearrangement Schema:
 
-.. #155 by bussec was merged on Oct 16, 2018 • Approved
++ Added the ``complete_vdj`` field to annotate whether a V(D)J alignment was
+  full length.
 
-+ Introduced age ranges, ``age_min``, ``age_max``, and ``age_unit``
++ Added the ``junction_length_aa`` field defining the length of the junction
+  amino acid sequence.
+
++ Added the ``repertoire_id``, ``sample_processing_id``, and
+  ``data_processing_id`` fields to serve as linkers to the appropriate metadata
+  objects.
+
++ Added a controlled vocabulary to the ``locus`` field:
+  ``IGH``, ``IGI``, ``IGK``, ``IGL``, ``TRA``, ``TRB``, ``TRD``, ``TRG``.
+
++ Deprecated the ``rearrangement_set_id`` and ``germline_database`` fields.
+
++ Added support secondary D gene rearrangement through the additional fields:
+  ``d2_call``, ``d2_score``, ``d2_identity``, ``d2_support``, ``d2_cigar``
+  ``np3``, ``np3_aa``, ``np3_length``, ``n3_length``, ``p5d2_length``,
+  ``p3d2_length``, ``d2_sequence_start``, ``d2_sequence_end``,
+  ``d2_germline_start``, ``d2_germline_start``, ``d2_alignment_start``,
+  ``d2_alignment_end``, ``d2_sequence_alignment``, ``d2_sequence_alignment_aa``,
+  ``d2_germline_alignment``, ``d2_germline_alignment_aa``.
+
++ Updated field definitions with more concise V(D)J call descriptions.
+
+.. #257 by bcorrie was merged on Oct 7 • Approved
+
+Alignment Schema:
+
++ Deprecated the ``rearrangement_set_id`` and ``germline_database`` fields.
+
++ Added the ``data_processing_id`` field.
+
+Study Schema:
+
++ Added the ``study_type`` field containing an ontology defined term
+  for the study design.
+
+Subject Schema:
+
++ Deprecated the ``organism`` field in favor of the new ``species`` field.
+
++ Introduced age ranges: ``age_min``, ``age_max``, and ``age_unit``.
 
 .. #254 by franasa was merged on Oct 11 • Approved
 
-+ Updated schema with more concise VDJ call descriptions
++ Deprecated the ``age`` field.
 
-.. #257 by bcorrie was merged on Oct 7 • Approved
+Diagnosis Schema:
+
++ Changed the type of the ``disease_diagnosis`` field from ``string`` to ``Ontology``.
+
+Sample Schema:
+
++ Changed the type of the ``tissue`` field from ``string`` to ``Ontology``.
+
+CellProcessing Schema:
+
++ Changed the type of the ``cell_subset`` field from ``string`` to ``Ontology``.
+
++ Introduced the ``cell_species`` field which denotes the species from which the
+  analyzed cells originate.
+
+.. #260 by bussec was merged on Nov 8, 2019; #281 Reverted ``locus_species``  by bcorrie was merged on Nov 27, 2019
+
+
+NucleicAcidProcessing Schema:
+
++ Defined the ``template_class`` field as type ``string``.
+
++ Added a controlled vocabulary the ``library_generation_method`` field.
+
++ Added the ``pcr_target`` field referencing the new ``PCRTarget`` schema object.
+
+.. #288 by bussec was merged on Dec 10, 2019
+
++ Changed the controlled vocabulary terms of ``complete_sequences``.
+  Replacing ``complete & untemplated`` with ``complete+untemplated`` and adding
+  ``mixed``
+
+SequencingRun Schema:
+
++ Added the ``sequencing_run_id`` field which serves as the object identifer
+  field.
+
++ Added the ``sequencing_files`` field which links to the RawSequenceData
+  schema objects defining the raw read data.
+
+RawSequenceData Schema:
+
++ Added the ``file_type`` field defining the sequence file type. This field is a
+  controlled vocabulary restricted to: ``fasta``, ``fastq``.
+
++ Added the ``paired_read_length`` field defining mate-pair read lengths.
+
++ Defined the ``read_direction`` and ``paired_read_direction`` fields as type ``string``.
+
+DataProcessing Schema:
+
++ Replaces the SoftwareProcessing object.
+
++ Added ``data_processing_id``, ``primary_annotation``, ``data_processing_files``,
+  ``germline_database`` and ``analysis_provenance_id`` fields.
+
 
 Version 1.2.1: Oct 5, 2018
 --------------------------------------------------------------------------------
