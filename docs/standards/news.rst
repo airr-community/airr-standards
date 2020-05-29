@@ -23,7 +23,7 @@ New Schema:
 
 + Replaced the SoftwareProcessing schema with the DataProcessing schema.
 
-+ Introduced experimental schema clonal clusters, lineage trees, tree nodes,
++ Introduced experimental schema for clonal clusters, lineage trees, tree nodes,
   and cells as Clone, Tree, Node, and Cell objects, respectively.
 
 General Updates:
@@ -69,6 +69,10 @@ Rearrangement Schema:
   ``IGH``, ``IGI``, ``IGK``, ``IGL``, ``TRA``, ``TRB``, ``TRD``, ``TRG``.
 
 + Deprecated the ``rearrangement_set_id`` and ``germline_database`` fields.
+
++ Deprecated ``rearrangement_id`` field and made the ``sequence_id``
+  field be the primary unique identifer for a rearrangement record,
+  both in files and data repositories.
 
 + Added support secondary D gene rearrangement through the additional fields:
   ``d2_call``, ``d2_score``, ``d2_identity``, ``d2_support``, ``d2_cigar``
@@ -159,6 +163,21 @@ DataProcessing Schema:
 + Added ``data_processing_id``, ``primary_annotation``, ``data_processing_files``,
   ``germline_database`` and ``analysis_provenance_id`` fields.
 
+AIRR Data Commons API:
+
++ Added OpenAPI V2 specification (``specs/adc-api.yaml``) for AIRR Data Commons API major version 1.
+
+Python library:
+
++ Interface functions to load (``load_repertoire``), write
+  (``write_repertoire``) and validate (``validate_repertoire``)
+  AIRR repertoire files.
+
++ Interface function (``repertoire_template``) will return a complete
+  repertoire object where all fields have ``null`` values.
+
++ Command-line tool (``airr-tools``) interface for validation has
+  changed to support both AIRR rearrangement and repertoire files.
 
 Version 1.2.1: Oct 5, 2018
 --------------------------------------------------------------------------------
