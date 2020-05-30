@@ -9,7 +9,8 @@ researchers, bioinformaticians, and software developers.
 MiAIRR standard for study data submission
 -----------------------------------------
 
-+ Gather experimental and analysis information about your study to conform to the :ref:`MiAIRR <MiAIRR>` standard (minimal information about adaptive immune receptor repertoires).
++ Gather experimental and analysis information about your study to conform to the :ref:`MiAIRR <MiAIRR>` standard
+  (minimal information about adaptive immune receptor repertoires).
 
 + :ref:`Submission <Data_Submission>` of your study data to a public repository.
 
@@ -21,9 +22,11 @@ AIRR Data Commons for query and download of AIRR-seq data
 Resources related to data representations and software development
 ------------------------------------------------------------------
 
-+ Schema, definitions and file formats for the :ref:`AIRR Data Model <DataRepresentations>`. The AIRR Data Model defines the structure and relationship for the MiAIRR data elements.
++ Schema, definitions and file formats for the :ref:`AIRR Data Model <DataRepresentations>`. The AIRR Data Model
+  defines the structure and relationship for the MiAIRR data elements.
 
-+ :ref:`Software guidelines <ToolsStandard>` for tools developers to enable rigorous and reproducible immune repertoire research.
++ :ref:`Software guidelines <ToolsStandard>` for tools developers to enable rigorous and reproducible immune
+  repertoire research.
 
 + :ref:`AIRR Data Commons API <DataCommonsAPI>` provides programmatic access to query and download AIRR-seq data.
 
@@ -44,6 +47,6 @@ Tutorials, examples and workflows
 .. toctree::
    :maxdepth: 1
 
-   ../examples/datarep_cmd_example
-   ../examples/api_analysis_example
-   ../examples/api_queries
+   examples/datarep_cmd_example
+   examples/api_analysis_example
+   examples/api_queries

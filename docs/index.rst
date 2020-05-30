@@ -35,10 +35,11 @@ Table of Contents
 .. toctree::
     :maxdepth: 2
 
-    Getting Started <standards/getting_started>
+    Getting Started <getting_started>
+    Release Notes <news>
     AIRR Standards <standards/overview>
     Data Submission and Query <standards/data_submission>
-    Software <standards/software>
-    Community <standards/community>
+    Software <software>
+    Community <community>
     Glossary <appendix/terms>
     References <appendix/references>

@@ -1,19 +1,19 @@
 .. _Community:
 
-Community
-=========================================
+Community Resources
+===============================================================================
 
-Resources/Tools Supporting AIRR Standards
------------------------------------------
+Resources and Tools Supporting AIRR Standards
+-------------------------------------------------------------------------------
 
 .. toctree::
    :maxdepth: 1
 
-    Applications Supporting the Rearrangement Schema <../resources/rearrangement_support.rst>
-    AIRR Data Commons Repositories <../resources/adc_support.rst>
+    Applications Supporting the Rearrangement Schema <resources/rearrangement_support.rst>
+    AIRR Data Commons Repositories <resources/adc_support.rst>
 
-Useful websites for the AIRR Community
-----------------------------------------
+Useful Websites for the AIRR Community
+-------------------------------------------------------------------------------
 
 + `The Antibody Society`_
 
