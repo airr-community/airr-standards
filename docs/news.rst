@@ -1,10 +1,12 @@
-
+=======================
 Release Notes
 =======================
 
-.. toctree::
-    :maxdepth: 1
+.. include:: standards/news.rst
 
-    standards/news
-    packages/airr-python/news
-    packages/airr-R/news
+Python Library Release Notes
+=================================
+
+.. include:: ../lang/python/NEWS.rst
+
+.. include:: packages/airr-R/news.rst
