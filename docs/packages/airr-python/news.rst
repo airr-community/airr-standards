@@ -1,6 +1,6 @@
 .. _PythonNews:
 
-Release Notes
-=============
+Python Library Release Notes
+=================================
 
 .. include:: ../../../lang/python/NEWS.rst

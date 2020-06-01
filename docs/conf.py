@@ -113,7 +113,7 @@ htmlhelp_basename = 'airr-standardsdoc'
 # PyData options
 # html_theme = "pydata_sphinx_theme"
 html_theme = "sphinx_book_theme"
-html_logo = "AIRR_logo-only.png"
+html_logo = "_static/AIRR_logo-only.png"
 
 # Bootstrap options
 # html_theme = 'bootstrap'

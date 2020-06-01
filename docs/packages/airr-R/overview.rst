@@ -7,11 +7,9 @@ AIRR Data Representation Reference Library
 the AIRR Data Representation schemas. It includes the full set of schema
 definitions along with simple functions for read, write and validation.
 
-Contents
---------------------------------------------------------------------------------
-
 .. toctree::
     :maxdepth: 1
+    :caption: Table of Contents
 
     Usage Vignette <vignettes/Usage-Vignette>
     Reference Manual <topics>
