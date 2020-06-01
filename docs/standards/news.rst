@@ -37,9 +37,8 @@ AIRR Data Commons API:
 Ontology Support:
 
 1. Added ``Ontology`` and ``CURIEResolution`` objects to support ontologies.
-2. Added EBI OLS as default source for ``ontologies``
-3. Added vocabularies/ontologies as JSON string for: Cell subset, Target substrate, Library generation method,
-   Complete sequences, Physical linkage of different loci
+2. Added vocabularies/ontologies as JSON string for: Cell subset, Target substrate, Library generation method,
+   Complete sequences, Physical linkage of different loci.
 
 ..
     2. #296 by bussec was merged on Jan 4, 2020
@@ -114,7 +113,7 @@ NucleicAcidProcessing Schema:
 2. Added a controlled vocabulary the ``library_generation_method`` field.
 3. Changed the controlled vocabulary terms of ``complete_sequences``.
    Replacing ``complete & untemplated`` with ``complete+untemplated`` and adding
-   ``mixed``
+   ``mixed``.
 4. Added the ``pcr_target`` field referencing the new ``PCRTarget`` schema object.
 
 ..
@@ -177,29 +176,30 @@ Version 1.1.0: May 3, 2018
 
 1. Added ``required`` and ``nullable`` constrains to AIRR schema.
 2. Schema definitions for MiAIRR attributes and ontology.
-3. Introduction of an ``x-airr`` object indicating if field is required by MiAIRR
-4. Rename ``rearrangement_set_id`` to ``data_processing_id``
-5. Rename ``study_description`` to ``study_type``
-6. Added ``physical_quantity`` format
-7. Raw sequencing files into separate schema object
-8. Rename Attributes object
-9. Added ``primary_annotation`` and ``repertoire_id``
-10. Added ``diagnosis`` to repertoire object
-11. Added ontology for ``organism``
-12. Added more detailed specification of ``sequencing_run``, ``repertoire`` and ``rearrangement``
-13. Added repertoire schema
-14. Rename ``definitions.yaml`` to ``airr-schema.yaml``
+3. Introduction of an ``x-airr`` object indicating if field is required by MiAIRR.
+4. Rename ``rearrangement_set_id`` to ``data_processing_id``.
+5. Rename ``study_description`` to ``study_type``.
+6. Added ``physical_quantity`` format.
+7. Raw sequencing files into separate schema object.
+8. Rename Attributes object.
+9. Added ``primary_annotation`` and ``repertoire_id``.
+10. Added ``diagnosis`` to repertoire object.
+11. Added ontology for ``organism``.
+12. Added more detailed specification of ``sequencing_run``, ``repertoire`` and
+    ``rearrangement``.
+13. Added repertoire schema.
+14. Rename ``definitions.yaml`` to ``airr-schema.yaml``.
 15. Removed ``c_call``, ``c_score`` and ``c_cigar`` from required as this is not
-    typical reference aligner output
-16. Renamed ``vdj_score``, ``vdj_identity``, ``vdj_evalue``, and ``vdj_cigar`` to ``score``,
-    ``identity``, ``evalue``, and ``cigar``
-17. Added missing ``c_identity`` and ``c_evalue`` fields to ``Rearrangement`` spec
-18. Swapped order of `N` and `S` operators in CIGAR string
-19. Some description clean up for consistency in ``Rearrangement`` spec
-20. Remove repeated objects in ``definitions.yaml``
-21. Added ``Alignment`` object to ``definitions.yaml``
-22. Updated MiARR format consistency check TSV with junction change
-23. Changed definition from functional to productive
+    typical reference aligner output.
+16. Renamed ``vdj_score``, ``vdj_identity``, ``vdj_evalue``, and ``vdj_cigar``
+    to ``score``, ``identity``, ``evalue``, and ``cigar``.
+17. Added missing ``c_identity`` and ``c_evalue`` fields to ``Rearrangement`` spec.
+18. Swapped order of `N` and `S` operators in CIGAR string.
+19. Some description clean up for consistency in ``Rearrangement`` spec.
+20. Remove repeated objects in ``definitions.yaml``.
+21. Added ``Alignment`` object to ``definitions.yaml``.
+22. Updated MiARR format consistency check TSV with junction change.
+23. Changed definition from functional to productive.
 
 ..
     1. #182 by bussec was merged on Apr 1 • Approved
