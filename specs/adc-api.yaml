@@ -73,7 +73,7 @@ definitions:
   repertoire_list:
     type: array
     items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/1.3.0/specs/airr-schema.yaml#/Repertoire'
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.3.0/specs/airr-schema.yaml#/Repertoire'
 
   # list of facets
   facet_list:
@@ -99,7 +99,7 @@ definitions:
   rearrangement_list:
     type: array
     items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/1.3.0/specs/airr-schema.yaml#/Rearrangement'
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.3.0/specs/airr-schema.yaml#/Rearrangement'
 
   # The response object /rearrangement endpoint
   rearrangement_response:
