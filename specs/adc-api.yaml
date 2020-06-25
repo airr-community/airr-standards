@@ -111,7 +111,24 @@ definitions:
         $ref: '#/definitions/rearrangement_list'
       Facet:
         $ref: '#/definitions/facet_list'
-  
+
+  # list of clone annotations
+  clone_list:
+    type: array
+    items:
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.3.0/specs/airr-schema.yaml#/Clone'
+
+  # The response object /clone endpoint
+  clone_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Rearrangement:
+        $ref: '#/definitions/clone_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
+
   # error response
   error_response:
     type: object
@@ -344,6 +361,57 @@ paths:
             A successful call returns an array of rearrangement annotation data.
           schema:
             $ref: '#/definitions/rearrangement_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /clone:
+    x-swagger-router-controller: clone
+    post:
+      description: >
+        This query service returns clone annotation data.
+      tags:
+        - clones
+      parameters:
+        - in: body
+          name: data
+          schema:
+            type: object
+            properties:
+              filters:
+                type: object
+              format:
+                type: string
+                default: json
+                enum:
+                  - json
+                  - tsv
+              fields:
+                type: array
+                items:
+                  type: string
+              size:
+                type: integer
+              from:
+                type: integer
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
+      operationId: queryClones
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of clone annotation data.
+          schema:
+            $ref: '#/definitions/clone_response'
         '400':
           description: Invalid request
           schema:
