@@ -124,7 +124,7 @@ definitions:
     properties:
       Info:
         $ref: '#/definitions/info_object'
-      Rearrangement:
+      Clone:
         $ref: '#/definitions/clone_list'
       Facet:
         $ref: '#/definitions/facet_list'
