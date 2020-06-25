@@ -118,6 +118,15 @@ definitions:
     items:
       $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.3.0/specs/airr-schema.yaml#/Clone'
 
+  # The response object /clone/{clone_id} endpoint
+  clone_id_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Clone:
+        $ref: '#/definitions/clone_list'
+
   # The response object /clone endpoint
   clone_response:
     type: object
@@ -395,7 +404,7 @@ paths:
           description: >
             A successful call returns the clone annotation data.
           schema:
-            $ref: '#/definitions/clone_response'
+            $ref: '#/definitions/clone_id_response'
         '400':
           description: Invalid request
           schema:
