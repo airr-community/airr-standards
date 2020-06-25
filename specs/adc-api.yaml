@@ -370,6 +370,41 @@ paths:
           schema:
             $ref: '#/definitions/error_response'
 
+  /clone/{clone_id}:
+    x-swagger-router-controller: clone
+    get:
+      description: >
+        Returns a clone based upon its identifier.
+      tags:
+        - clones
+      consumes:
+        - application/x-www-form-urlencoded
+        - application/json
+        - application/octet-stream
+      produces:
+        - application/json
+      parameters:
+        - name: clone_id
+          in: path
+          description: ID of clone to return
+          required: true
+          type: string
+      operationId: getClone
+      responses:
+        '200':
+          description: >
+            A successful call returns the clone annotation data.
+          schema:
+            $ref: '#/definitions/clone_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
   /clone:
     x-swagger-router-controller: clone
     post:
