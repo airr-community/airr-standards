@@ -2,7 +2,7 @@ Software	Version	Support	Reference
 `AIRR Python Library <https://pypi.org/project/airr>`_	1.2	"Input, output and validation"	"`Vander Heiden et al. Front Immunol, 2018. <https://doi.org/10.3389/fimmu.2018.02206>`_"
 `AIRR R Library <https://cran.r-project.org/web/packages/airr>`_	1.2	"Input, output and validation"	"`Vander Heiden et al. Front Immunol, 2018. <https://doi.org/10.3389/fimmu.2018.02206>`_"
 `Alakazam <https://alakazam.readthedocs.io>`_	1.0.1	Input and output	"`Gupta & Vander Heiden et al. Bioinformatics, 2015. <https://doi.org/10.1093/bioinformatics/btv359>`_"
-`cellranger <https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger>`_	4.0	Output	`10x Genomics, Inc. Pleasanton, CA USA. <https://www.10xgenomics.com>`_
+`Cell Ranger <https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger>`_	4.0	Output	`10x Genomics, Inc. Pleasanton, CA USA. <https://www.10xgenomics.com>`_
 `Change-O <https://changeo.readthedocs.io>`_	0.4.2	"Input, output and conversion"	"`Gupta & Vander Heiden et al. Bioinformatics, 2015. <https://doi.org/10.1093/bioinformatics/btv359>`_"
 `Decombinator <https://github.com/innate2adaptive/Decombinator>`_	4.0.1	Output	"`Oakes et al. Front Immunol, 2017. <https://doi.org/10.3389/fimmu.2017.01267>`_"
 `IMGT/HighV-QUEST <http://www.imgt.org/IMGT_vquest/input>`_	1.7.0	Output	"`Alamyar et al. Methods Mol Biol, 2012. <https://doi.org/10.1007/978-1-61779-842-9_32>`_"
