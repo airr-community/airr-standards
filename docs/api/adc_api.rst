@@ -865,7 +865,7 @@ Size limits can be retrieved from the ``info`` endpoint. If the data repository 
     * - Field
       - Description
     * - ``max_size``
-      - The maximum value for the ``size`` query parameter. Attempting to retrieve beyond this maximum may trigger an error or may only return ``max_size`` records based upon the data repository behavior.
+      - The maximum value for the ``size`` query parameter. Attempting to retrieve data beyond this maximum should trigger an error response. The error response should include information about why the query failed and what the maximum size limit is. 
     * - ``max_query_size``
       - The maximum size of the JSON query object.
 
