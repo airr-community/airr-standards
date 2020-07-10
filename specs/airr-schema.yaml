@@ -564,6 +564,26 @@ Subject:
             x-airr:
                 nullable: false
                 adc-query-support: true
+        germline:
+            type: string
+            description: Germline for this subject, if known. The source of acquiring the germline information should be recorded in germline_process.
+            title: Subject germline
+            example: TBD
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        germline_process:
+            type: string
+            enum:
+                - sequenced
+                - inferred
+            description: Information on how the germline was acquired. Controlled vocabulary.
+            title: Germline acquisition process
+            example: inferred
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
@@ -1535,6 +1555,14 @@ DataProcessing:
                 nullable: true
                 adc-query-support: true
                 name: Processed data file names
+        inferred_germline:
+            type: string
+            description: Germline that has been inferred as a result of applying the data processing. The tool/process used to infer the germline should be cited in the data_processing_protocols and software_versions fields
+            title: Inferred germline
+            example: TBD
+            x-airr:
+                nullable: true
+                adc-query-support: true
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
