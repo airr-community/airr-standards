@@ -15,7 +15,6 @@ Software	Version	Support	Reference
 `MiXCR <https://milaboratory.com/software/mixcr>`_	3.0.14	Output	"`Bolotin et al. Nat Methods, 2015. <https://doi.org/10.1038/nmeth.3364>`_"
 `RAbHIT <https://yaarilab.bitbucket.io/RAbHIT>`_	0.1.5	Input and output	"`Gidoni et al. Nat Commun, 2019. <https://doi.org/10.1038/s41467-019-08489-3>`_"
 `scirpy <https://icbi-lab.github.io/scirpy>`_	0.3	Input	"`Sturm et al. Bioinformatics, 2020. <https://doi.org/10.1093/bioinformatics/btaa611>`_"
-
 `SCOPer <https://scoper.readthedocs.io>`_	1.0.1	Input and output	"`Nouri & Kleinstein. Bioinformatics, 2018. <https://doi.org/10.1093/bioinformatics/bty235>`_"
 `SHazaM <https://shazam.readthedocs.io>`_	1.0.0	Input and output	"`Gupta & Vander Heiden et al. Bioinformatics, 2015. <https://doi.org/10.1093/bioinformatics/btv359>`_"
 `SONAR <https://github.com/scharch/SONAR>`_	3	Output	"`Schramm et al. Front Immunol, 2016. <https://doi.org/doi:10.3389/fimmu.2016.00372>`_"
