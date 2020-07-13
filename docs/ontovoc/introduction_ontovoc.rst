@@ -66,6 +66,11 @@ Approved Ontologies
       *  Cell subset (``cell_subset``,
          :ref:`Tissue and Cell Processing <CellProcessingFields>`)
 
+   *  example AIRR use
+   
+      * "cell_subset.id" : "CL:0000542"
+      * "cell_subset.label" : "lymphocyte"
+
    *  default root node
 
       *  label: ``lymphocyte``
@@ -87,6 +92,11 @@ Approved Ontologies
       *  Diagnosis (``disease_diagnosis``,
          :ref:`Diagnosis <DiagnosisFields>`)
 
+   *  example AIRR use
+   
+      * "disease_diagnosis.id" : "DOID:9538"
+      * "disease_diagnosis.label" : "multiple myeloma"
+    
    *  default root node
 
       *  label: ``disease``
@@ -109,6 +119,11 @@ Approved Ontologies
       *  Species (``species``, :ref:`Subject <SubjectFields>`)
       *  Cell species (``cell_species``,
          :ref:`Tissue and Cell Processing <CellProcessingFields>`)
+
+   *  example AIRR use
+   
+      * "species.id" : "NCBITAXON:9606"
+      * "species.label" : "Homo sapiens"
 
    *  default root node
 
@@ -150,6 +165,11 @@ Approved Ontologies
 
       *  Age unit (``age_unit``, :ref:`Subject <SubjectFields>`)
 
+   *  example AIRR use
+   
+      * "age_unit.id" : "UO:0000036"
+      * "age_unit.label" : "year"
+
    *  default root node
 
       *  label: ``time unit``
@@ -168,6 +188,11 @@ Approved Ontologies
    *  used in:
 
       *  Tissue (``tissue``, :ref:`Sample <SampleFields>`)
+
+   *  example AIRR use
+   
+      * "tissue.id" : "UBERON:0002371"
+      * "tissue.label" : "bone marrow"
 
    *  default root node
 
