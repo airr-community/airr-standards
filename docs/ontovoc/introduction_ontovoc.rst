@@ -133,10 +133,7 @@ Approved Ontologies
    *  CURIE summary
 
       * CURIE Prefix: NCBITAXON
-      * CURIE IRI Prefixes:
-
-         * http://purl.obolibrary.org/obo/NCBITaxon\_
-         * http://purl.bioontology.org/ontology/NCBITAXON/
+      * CURIE IRI Prefixes: http://purl.obolibrary.org/obo/NCBITaxon\_, http://purl.bioontology.org/ontology/NCBITAXON/
 
    *  example AIRR use
 
@@ -166,7 +163,7 @@ Approved Ontologies
    *  CURIE summary
 
       * CURIE Prefix: NCIT
-      * CURIE IRI Prefix: http://purl.obolibrary.org/obo/NCIT\_, http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#
+      * CURIE IRI Prefixes: http://purl.obolibrary.org/obo/NCIT\_, http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#
 
    *  example AIRR use
 
