@@ -66,6 +66,11 @@ Approved Ontologies
       *  Cell subset (``cell_subset``,
          :ref:`Tissue and Cell Processing <CellProcessingFields>`)
 
+   *  CURIE summary
+   
+      * CURIE Prefix: CL
+      * CURIE IRI Prefix: http://purl.obolibrary.org/obo/CL\_
+
    *  example AIRR use
    
       * "cell_subset.id" : "CL:0000542"
@@ -91,6 +96,11 @@ Approved Ontologies
 
       *  Diagnosis (``disease_diagnosis``,
          :ref:`Diagnosis <DiagnosisFields>`)
+
+*  CURIE summary
+   
+      * CURIE Prefix: DOID
+      * CURIE IRI Prefix: http://purl.obolibrary.org/obo/DOID\_
 
    *  example AIRR use
    
@@ -120,6 +130,13 @@ Approved Ontologies
       *  Cell species (``cell_species``,
          :ref:`Tissue and Cell Processing <CellProcessingFields>`)
 
+*  CURIE summary
+   
+      * CURIE Prefix: NCBITAXON
+      * CURIE IRI Prefixes:
+         * http://purl.obolibrary.org/obo/NCBITaxon\_
+         * http://purl.bioontology.org/ontology/NCBITAXON/
+      
    *  example AIRR use
    
       * "species.id" : "NCBITAXON:9606"
@@ -145,6 +162,18 @@ Approved Ontologies
 
       *  Study type (``study_type``, :ref:`Study <StudyFields>`)
 
+   *  CURIE summary
+   
+      * CURIE Prefix: NCIT
+      * CURIE IRI Prefix: 
+         * http://purl.obolibrary.org/obo/NCIT\_
+         * http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#
+      
+   *  example AIRR use
+   
+      * "study_type.id" : "NCIT:C15197"
+      * "study_type.label" : "Case-Control Study"
+      
    *  default root node
 
       *  label: ``Study``
@@ -165,6 +194,11 @@ Approved Ontologies
 
       *  Age unit (``age_unit``, :ref:`Subject <SubjectFields>`)
 
+   *  CURIE summary
+   
+      * CURIE Prefix: UO
+      * CURIE IRI Prefix: http://purl.obolibrary.org/obo/UO\_
+      
    *  example AIRR use
    
       * "age_unit.id" : "UO:0000036"
