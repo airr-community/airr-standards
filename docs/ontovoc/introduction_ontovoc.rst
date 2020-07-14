@@ -97,7 +97,7 @@ Approved Ontologies
       *  Diagnosis (``disease_diagnosis``,
          :ref:`Diagnosis <DiagnosisFields>`)
 
-*  CURIE summary
+   *  CURIE summary
    
       * CURIE Prefix: DOID
       * CURIE IRI Prefix: http://purl.obolibrary.org/obo/DOID\_
@@ -130,10 +130,11 @@ Approved Ontologies
       *  Cell species (``cell_species``,
          :ref:`Tissue and Cell Processing <CellProcessingFields>`)
 
-*  CURIE summary
+   *  CURIE summary
    
       * CURIE Prefix: NCBITAXON
       * CURIE IRI Prefixes:
+      
          * http://purl.obolibrary.org/obo/NCBITaxon\_
          * http://purl.bioontology.org/ontology/NCBITAXON/
       
@@ -166,6 +167,7 @@ Approved Ontologies
    
       * CURIE Prefix: NCIT
       * CURIE IRI Prefix: 
+      
          * http://purl.obolibrary.org/obo/NCIT\_
          * http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#
       
