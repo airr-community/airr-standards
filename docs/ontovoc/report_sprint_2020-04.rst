@@ -296,7 +296,7 @@ string) for each them. This list serves two purposes:
 
 1. It provides a controlled namespace for CURIE *prefixes* used in the
    AIRR schema. For now, custom additions to or replacements of these
-   *prefixes* in the schema is prohibited. This does not affect the
+   *prefixes* in the schema are prohibited. This does not affect the
    ability of repositories to use such custom prefixes internally.
 2. It simplifies resolution of CURIEs by non-repositories. The
    lists of IRI *prefixes* for each CURIE *prefix* should not be
