@@ -59,6 +59,7 @@ Repertoire:
         anatomic_site: null
         disease_state_sample: null
         collection_time_point_relative: null
+        collection_time_point_relative_unit: null
         collection_time_point_reference: null
         biomaterial_provider: null
         # cell processing
@@ -81,6 +82,7 @@ Repertoire:
         template_class: ""
         template_quality: null
         template_amount: null
+        template_amount_unit: null
         library_generation_method: ""
         library_generation_protocol: null
         library_generation_kit_version: null
