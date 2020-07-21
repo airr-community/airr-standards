@@ -13,24 +13,29 @@ group of the Common Repository (ComRepo) and the Minimal Standards
 the Team is to define standard vocabularies and ontologies to be used
 by AIRR-compliant databases.
 
+
 Ontology Data Representation
 ============================
 
-The nodes in an ontology are typically either concepts (e.g., capital) or instances thereof (e.g., Paris).
-These nodes have local IDs (often numbers), which are unique within an ontology. They also typically have labels,
-which is the human-readable name of the node. Ontology entities in the AIRR Data Standard reflect this model,
-with each AIRR field that is represented as an ontology recorded with an ontology `id` and an ontology `label`.
+The nodes in an ontology are typically either concepts (e.g., capital)
+or instances thereof (e.g., Paris). These nodes have *local IDs* (often
+numbers), which are unique within an ontology. They also typically have
+*labels*, which is the human-readable name of the node. Ontology
+entities in the AIRR Data Standard reflect this model, with each AIRR
+field that is represented as an ontology recorded with a global
+*ontology ID* (``id``) and the corresponding *label* (``label``).
 
-Within the AIRR Standards, Compact URIs (`CURIEs`_) are used to represent an ontology `id`.
-CURIEs are a standardized way to abbreviate International
-Resource Identifiers (IRI, [RFC3987]_), which includes URIs as a subset. They were originally conceived to
-simplify the handling of attributes, e.g. in XML or SPARQL, by making
-them more compact and readable. For example CURIEs are used by IEDB databases
-to reduce redundancies (mainly in the leading part of IRIs).
+Within the AIRR Standards, Compact URIs (`CURIEs`_) are used to
+represent *ontology IDs*. CURIEs are a standardized way to abbreviate
+International Resource Identifiers (IRI, [RFC3987]_), which includes
+URIs as a subset. They were originally conceived to simplify the
+handling of attributes, e.g. in XML or SPARQL, by making them more
+compact and readable. CURIEs are also used by IEDB databases to reduce
+redundancies (mainly in the leading part of IRIs).
 
-For example, a typical CURIE would look like ``NCBITAXON:9258``. In this case,
-``NCBITAXON`` is the *prefix*, a custom string that will be replaced by
-a repository-defined IRI component (e.g.,
+For example, a typical CURIE would look like ``NCBITAXON:9258``. In this
+case, ``NCBITAXON`` is the *prefix*, a custom string that will be
+replaced by a repository-defined IRI component (e.g.,
 ``http://purl.obolibrary.org/obo/NCBITaxon_``). Note that there is no
 connection between ``NCBITAXON`` in the CURIE and ``NCBITaxon`` in the
 IRI, the former one is just a placeholder.
@@ -41,7 +46,7 @@ string) for each them. This list serves two purposes:
 
 1. It provides a controlled namespace for CURIE *prefixes* used in the
    AIRR schema. For now, custom additions to or replacements of these
-   *prefixes* in the schema is prohibited. This does not affect the
+   *prefixes* in the schema are prohibited. This does not affect the
    ability of repositories to use such custom prefixes internally.
 2. It simplifies resolution of CURIEs by non-repositories. The
    lists of IRI *prefixes* for each CURIE *prefix* should not be
@@ -53,6 +58,7 @@ It should be explicitly noted that the IRI *prefix* list should not be
 interpreted as any kind of recommendation for certain *providers*. It is
 left up to users to decide how to resolve the resulting IRIs, e.g., via
 DNS/HTTP (if possible) or by using a *provider* of their choice.
+
 
 Approved Ontologies
 ===================
@@ -68,8 +74,8 @@ Approved Ontologies
 
    *  CURIE summary
    
-      * CURIE Prefix: CL
-      * CURIE IRI Prefix: http://purl.obolibrary.org/obo/CL\_
+      * CURIE Prefix: ``CL``
+      * CURIE IRI Prefix: ``http://purl.obolibrary.org/obo/CL_``
 
    *  example AIRR use
    
@@ -99,8 +105,8 @@ Approved Ontologies
 
    *  CURIE summary
    
-      * CURIE Prefix: DOID
-      * CURIE IRI Prefix: http://purl.obolibrary.org/obo/DOID\_
+      * CURIE Prefix: ``DOID``
+      * CURIE IRI Prefix: ``http://purl.obolibrary.org/obo/DOID_``
 
    *  example AIRR use
    
@@ -132,8 +138,10 @@ Approved Ontologies
 
    *  CURIE summary
 
-      * CURIE Prefix: NCBITAXON
-      * CURIE IRI Prefixes: http://purl.obolibrary.org/obo/NCBITaxon\_, http://purl.bioontology.org/ontology/NCBITAXON/
+      * CURIE Prefix: ``NCBITAXON``
+      * CURIE IRI Prefixes:
+        ``http://purl.obolibrary.org/obo/NCBITaxon_``,
+        ``http://purl.bioontology.org/ontology/NCBITAXON/``
 
    *  example AIRR use
 
@@ -162,8 +170,10 @@ Approved Ontologies
 
    *  CURIE summary
 
-      * CURIE Prefix: NCIT
-      * CURIE IRI Prefixes: http://purl.obolibrary.org/obo/NCIT\_, http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#
+      * CURIE Prefix: ``NCIT``
+      * CURIE IRI Prefixes:
+        ``http://purl.obolibrary.org/obo/NCIT_``,
+        ``http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#``
 
    *  example AIRR use
 
@@ -192,8 +202,8 @@ Approved Ontologies
 
    *  CURIE summary
    
-      * CURIE Prefix: UO
-      * CURIE IRI Prefix: http://purl.obolibrary.org/obo/UO\_
+      * CURIE Prefix: ``UO``
+      * CURIE IRI Prefix: ``http://purl.obolibrary.org/obo/UO_``
       
    *  example AIRR use
    
@@ -218,6 +228,11 @@ Approved Ontologies
    *  used in:
 
       *  Tissue (``tissue``, :ref:`Sample <SampleFields>`)
+
+   *  CURIE summary
+
+      * CURIE Prefix: ``UBERON``
+      * CURIE IRI Prefix: ``http://purl.obolibrary.org/obo/UBERON_``
 
    *  example AIRR use
    
