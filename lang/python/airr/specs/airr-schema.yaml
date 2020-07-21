@@ -1129,7 +1129,7 @@ NucleicAcidProcessing:
                 ontology:
                     draft: false
                     top_node:
-                        id: UO:0000003
+                        id: UO:0000002
                         label:  physical quantity
         library_generation_method:
             type: string
