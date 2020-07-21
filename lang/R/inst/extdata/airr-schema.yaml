@@ -697,6 +697,7 @@ Sample:
         - anatomic_site
         - disease_state_sample
         - collection_time_point_relative
+        - collection_time_point_relative_unit
         - collection_time_point_reference
         - biomaterial_provider
     properties:
@@ -1064,6 +1065,7 @@ NucleicAcidProcessing:
         - template_class
         - template_quality
         - template_amount
+        - template_amount_unit
         - library_generation_method
         - library_generation_protocol
         - library_generation_kit_version
