@@ -769,10 +769,10 @@ Sample:
                 subset: sample
                 name: Disease state of sample
         collection_time_point_relative:
-            type: string
+            type: number
             description: Time point at which sample was taken, relative to `Collection time event`
             title: Sample collection time
-            example: "14 d"
+            example: "14"
             x-airr:
                 miairr: important
                 nullable: true
@@ -780,7 +780,26 @@ Sample:
                 set: 2
                 subset: sample
                 name: Sample collection time
-                format: physical quantity
+        collection_time_point_relative_unit:
+            $ref: '#/Ontology'
+            description: Unit of Sample collection time
+            title: Sample collection time unit
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Sample collection time unit
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
         collection_time_point_reference:
             type: string
             description: Event in the study schedule to which `Sample collection time` relates to
@@ -1081,10 +1100,10 @@ NucleicAcidProcessing:
                 subset: process (nucleic acid)
                 name: Target substrate quality
         template_amount:
-            type: string
+            type: number
             description: Amount of template that went into the process
             title: Template amount
-            example: 1000 ng
+            example: 1000
             x-airr:
                 miairr: important
                 nullable: true
@@ -1092,7 +1111,26 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Template amount
-                format: physical quantity
+        template_amount_unit:
+            $ref: '#/Ontology'
+            description: Unit of template amount
+            title:  Template amount time unit
+            example:
+                id: UO:0000024
+                label: nanogram
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid)
+                name: Template amount time unit
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label:  physical quantity
         library_generation_method:
             type: string
             enum:
