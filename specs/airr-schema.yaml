@@ -565,10 +565,16 @@ Subject:
                 nullable: false
                 adc-query-support: true
         germline:
-            type: string
+            type: array
+            items:
+                type: string
+                title: Gene descriptor
+                description: Germline gene descriptor. Where possible, standard or common gene names should be used.
             description: Germline for this subject, if known. The source of acquiring the germline information should be recorded in germline_process.
             title: Subject germline
-            example: TBD
+            example:
+                - IGHV1-1*01
+                - HLA-A*30:02
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -1556,10 +1562,16 @@ DataProcessing:
                 adc-query-support: true
                 name: Processed data file names
         inferred_germline:
-            type: string
+            type: array
+            items:
+                type: string
+                title: Gene descriptor
+                description: Germline gene descriptor. Where possible, standard or common gene names should be used.
             description: Germline that has been inferred as a result of applying the data processing. The tool/process used to infer the germline should be cited in the data_processing_protocols and software_versions fields
             title: Inferred germline
-            example: TBD
+            example:
+                - IGHV1-1*01
+                - IGHV3-3*03
             x-airr:
                 nullable: true
                 adc-query-support: true
