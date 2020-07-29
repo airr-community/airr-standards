@@ -581,11 +581,11 @@ Subject:
         germline_process:
             type: string
             enum:
-                - sequenced
-                - inferred
+                - genomic_sequencing
+                - repertoire_sequencing
             description: Information on how the germline was acquired. Controlled vocabulary.
             title: Germline acquisition process
-            example: inferred
+            example: repertoire_sequencing
             x-airr:
                 nullable: true
                 adc-query-support: true
