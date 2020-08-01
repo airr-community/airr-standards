@@ -5,17 +5,18 @@ AIRR Community Data Standards
 Introduction
 ============
 
-One of the core initiatives of the Adaptive Immune Receptor Repertoire
-(AIRR) Community [Breden_2017]_ has been to develop standards regarding
+One of the core initiatives of the `Adaptive Immune Receptor Repertoire
+(AIRR) Community`__ [Breden_2017]_ has been to develop standards regarding
 the content and format of metadata associated with AIRR sequencing
 datasets. The primary aim of this effort is to make published AIRR
 datasets `FAIR`_ (findable, accessible, interoperable, reusable). This
 work has been a joint effort between the AIRR Community's `Minimal
 Standards`_ and `Data Representation`_ Working Groups. 
 
-.. _`FAIR`: https://www.force11.org/group/fairgroup/fairprinciples
+.. __: https://www.antibodysociety.org/the-airr-community/
+.. _`FAIR`: https://www.go-fair.org/fair-principles/
 .. _`Minimal Standards`: https://www.antibodysociety.org/the-airr-community/airr-working-groups/minimal_standards/
-.. _`Data Representation`: https://www.antibodysociety.org/the-airr-community/airr-working-groups/data_representation
+.. _`Data Representation`: https://www.antibodysociety.org/the-airr-community/airr-working-groups/data_representation/
 
 
 The MiAIRR Data Standard
@@ -71,7 +72,7 @@ Implementations
 *  `NCBI-based`_
 *  `AIRR Common Repository`_ - *in development*
 
-.. _`NCBI-based`: https://docs.airr-community.org/en/latest/miairr/miairr_ncbi_overview.html
+.. _`NCBI-based`: https://docs.airr-community.org/en/stable/miairr/miairr_ncbi_overview.html
 .. _`AIRR Common Repository`: https://www.antibodysociety.org/the-airr-community/airr-working-groups/repository/
 
 
@@ -85,17 +86,17 @@ contributing changes.
 .. _`development process`: https://github.com/airr-community/airr-standards/tree/master/CONTRIBUTING.rst
 
 
-Contact and Build Status
-========================
-
-Please report problems, bugs, comments or enhancement requests using
-the `issue tracker`_.
-
-.. _`issue tracker`: https://github.com/airr-community/airr-standards/issues
-.. https://waffle.io/airr-community/airr-standards
+Build Status, Issues and Archive
+================================
 
 .. image:: https://travis-ci.org/airr-community/airr-standards.svg?branch=master
    :target: https://travis-ci.org/airr-community/airr-standards
+
+Please report problems, bugs, comments or enhancement requests using
+the `issue tracker`_. Official releases are archived and DOI referenced
+via Zenodo [Zenodo_1185414]_.
+
+.. _`issue tracker`: https://github.com/airr-community/airr-standards/issues
 
 
 References
