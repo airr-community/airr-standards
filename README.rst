@@ -43,9 +43,11 @@ These data sets and their associated individual items are referred to as
 Repertoire sequencing experiment. The MiAIRR data standard has recently
 been published together with a first implementation using the NCBI
 repository structure [Rubelt_2017]_. For further information, including
-a submission guide and a detailed specification, see `here`__.
+a submission guide and a detailed specification, see the
+`respective section`_ of the `AIRR Standards documentation`_.
 
-.. __: https://docs.airr-community.org/en/latest/miairr/overview.html
+.. _`respective section`: https://docs.airr-community.org/en/stable/miairr/introduction_miairr.html
+.. _`AIRR Standards documentation`: https://docs.airr-community.org/en/stable/
 
 
 AIRR Standardized Data Representation
