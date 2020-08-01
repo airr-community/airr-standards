@@ -60,6 +60,16 @@ The standardarized data representation was first published in 2018
 .. __: https://github.com/airr-community/airr-standards/blob/master/specs/airr-schema.yaml
 
 
+AIRR Data Commons API
+=====================
+
+The `AIRR Data Commons`_ (ADC) `API`_ was published in 2020
+[Christley_2020]_.
+
+.. _`AIRR Data Commons`: https://docs.airr-community.org/en/stable/api/adc.html
+.. _`API`: https://docs.airr-community.org/en/stable/api/adc_api.html
+
+
 Implementations
 ===============
 
@@ -95,6 +105,11 @@ the `issue tracker`_.
 
 References
 ==========
+
+.. [Christley_2020] Christley S *et al*. The ADC API: A Web API for the
+   Programmatic Query of the AIRR Data Commons. Front Big Data (2020)
+   `[DOI: 10.3389/fdata.2020.00022]`_
+.. _`[DOI: 10.3389/fdata.2020.00022]`: https://doi.org/10.3389/fdata.2020.00022
 
 .. [Vander_Heiden_2018] Vander Heiden JA *et al*. AIRR Community
    Standardized Representations for Annotated Immune Repertoires. Front
