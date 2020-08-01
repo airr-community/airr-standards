@@ -26,17 +26,12 @@ data deposition in a common repository, the AIRR Community has agreed to
 six high-level data sets that will guide the publication, curation and
 sharing of AIRR-seq data and metadata:
 
--  study and subject
-
--  sample collection
-
--  sample processing and sequencing
-
--  raw sequence reads
-
--  processing of sequence data
-
--  processed AIRR sequences
+*  study and subject
+*  sample collection
+*  sample processing and sequencing
+*  raw sequence reads
+*  processing of sequence data
+*  processed AIRR sequences
 
 These data sets and their associated individual items are referred to as
 **MiAIRR**, the Minimum information about an Adaptive Immune Receptor
@@ -73,8 +68,8 @@ The `AIRR Data Commons`_ (ADC) `API`_ was published in 2020
 Implementations
 ===============
 
--  `NCBI-based`_
--  `AIRR Common Repository`_ - *in development*
+*  `NCBI-based`_
+*  `AIRR Common Repository`_ - *in development*
 
 .. _`NCBI-based`: https://docs.airr-community.org/en/latest/miairr/miairr_ncbi_overview.html
 .. _`AIRR Common Repository`: https://www.antibodysociety.org/the-airr-community/airr-working-groups/repository/
@@ -113,7 +108,8 @@ References
 
 .. [Vander_Heiden_2018] Vander Heiden JA *et al*. AIRR Community
    Standardized Representations for Annotated Immune Repertoires. Front
-   Immunol 9:2206 (2018) `[PMID: 30323809]`_ `[DOI: 10.3389/fimmu.2018.02206]`_ `[PubMed Central: PMC6173121]`_
+   Immunol 9:2206 (2018) `[PMID: 30323809]`_
+   `[DOI: 10.3389/fimmu.2018.02206]`_ `[PubMed Central: PMC6173121]`_
 .. _`[PMID: 30323809]`: https://www.ncbi.nlm.nih.gov/pubmed/30323809
 .. _`[DOI: 10.3389/fimmu.2018.02206]`: https://doi.org/10.3389/fimmu.2018.02206
 .. _`[PubMed Central: PMC6173121]`: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6173121
