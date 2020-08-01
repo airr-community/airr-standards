@@ -133,16 +133,17 @@ References
 .. _`[PubMed Central: PMC5671925]`: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5671925
 
 .. [Zenodo_1185414] Release archive of the AIRR Standards repository.
-   (2015-2019) `[DOI: 10.5281/zenodo.1185414]`_
+   (2015-2020) `[DOI: 10.5281/zenodo.1185414]`_
 .. _`[DOI: 10.5281/zenodo.1185414]`: https://doi.org/10.5281/zenodo.1185414
 
 
 License
 =======
 
-(c) 2015 - 2019 by Syed Ahmad Chan Bukhari, Jean-Philippe Bürckert,
-Christian E. Busse, Scott Christley, Brian Corrie, Lindsay G. Cowell,
-Uri Hershberg, Steven H. Kleinstein, Susanna Marquez, Frederick A. Matsen IV,
+(c) 2015 - 2020 by Francisco Arcila, Syed Ahmad Chan Bukhari,
+Jean-Philippe Bürckert, Christian E. Busse, Scott Christley, Brian
+Corrie, Lindsay G. Cowell, Srilakshmy L. Harikrishnan, Uri Hershberg,
+Steven H. Kleinstein, Susanna Marquez, Frederick A. Matsen IV,
 Uri Laserson, Marie-Paule Lefranc, Eline T. Luning Prak, Florian Rubelt,
 Jason Vander Heiden, Corey T. Watson
 
