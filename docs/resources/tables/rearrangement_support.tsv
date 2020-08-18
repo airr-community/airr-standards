@@ -11,7 +11,7 @@ Software	Version	Support	Reference
 `immunarch <https://github.com/immunomind/immunarch>`_	0.6.5	Input	`ImmunoMind Team. 2019 <http://doi.org/10.5281/zenodo.3367200>`_
 `ImmuneDB <http://immunedb.com>`_	0.24.0	Output	"`Rosenfeld et al. Front Immunol, 2018. <https://doi.org/10.3389/fimmu.2018.02107>`_"
 `immuneSIM <https://immuneSIM.readthedocs.io>`_	0.8.7	Output	"`Weber et al. Bioinformatics, 2020. <https://doi.org/10.1093/bioinformatics/btaa158>`_"
-`iReceptor <http://www.ireceptor.org>`_	3.0	`Input <https://github.com/sfu-ireceptor/dataloading-mongo/tree/turnkey-v3/dataload>`_ and `output <http://www.ireceptor.org/node/97>`_	"`Corrie et al. Immunol Rev, 2018. <https://doi.org/10.1111/imr.12666>`_"
+`iReceptor <http://www.ireceptor.org>`_	3.0	"Input and output"	"`Corrie et al. Immunol Rev, 2018. <https://doi.org/10.1111/imr.12666>`_"
 `MiXCR <https://milaboratory.com/software/mixcr>`_	3.0.14	Output	"`Bolotin et al. Nat Methods, 2015. <https://doi.org/10.1038/nmeth.3364>`_"
 `RAbHIT <https://yaarilab.bitbucket.io/RAbHIT>`_	0.1.5	Input and output	"`Gidoni et al. Nat Commun, 2019. <https://doi.org/10.1038/s41467-019-08489-3>`_"
 `scirpy <https://icbi-lab.github.io/scirpy>`_	0.3	Input	"`Sturm et al. Bioinformatics, 2020. <https://doi.org/10.1093/bioinformatics/btaa611>`_"
