@@ -1442,7 +1442,7 @@ DataProcessing:
             default: false
             description: >
                 If true, indicates this is the primary or default data processing for
-                the repertoire and its rearrangments. If false, indicates this is a secondary
+                the repertoire and its rearrangements. If false, indicates this is a secondary
                 or additional data processing.
             title: Primary annotation
             x-airr:
