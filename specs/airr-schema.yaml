@@ -566,30 +566,46 @@ Subject:
                 adc-query-support: true
         germline:
             type: array
-            items:
-                type: string
-                title: Gene descriptor
-                description: Germline gene descriptor. Where possible, standard or common gene names should be used.
-            description: Germline for this subject, if known. The source of acquiring the germline information should be recorded in germline_process.
             title: Subject germline
-            example:
-                - IGHV1-1*01
-                - HLA-A*30:02
-            x-airr:
-                nullable: true
-                adc-query-support: true
-        germline_process:
-            type: string
-            enum:
-                - genomic_sequencing
-                - repertoire_sequencing
-            description: Information on how the germline was acquired. Controlled vocabulary.
-            title: Germline acquisition process
-            example: repertoire_sequencing
-            x-airr:
-                nullable: true
-                adc-query-support: true
-                format: controlled vocabulary
+            items:
+                type: object
+                description: Germline for this subject, if known, by germline class. Current germline classes supported are IG, TCR, and MHC. The source of acquiring the germline information should be recorded in germline_process.
+                properties:
+                    germline_class:
+                        type: string
+                        enum:
+                          - ig
+                          - tcr
+                          - mhc
+                        example: ig
+                        x-airr:
+                            nullable: true
+                            adc-query-support: true
+                            format: controlled vocabulary
+                    germline_genes:
+                        type: array
+                        items:
+                            type: string
+                            title: Gene descriptor
+                            description: Germline gene descriptor. Where possible, standard or common gene names should be used.
+                        example:
+                            - IGHV1-1*01
+                            - IGHV2-2*02
+                        x-airr:
+                            nullable: true
+                            adc-query-support: true
+                    germline_process:
+                        type: string
+                        enum:
+                            - genomic_sequencing
+                            - repertoire_sequencing
+                        description: Information on how the germline was acquired. Controlled vocabulary.
+                        title: Germline acquisition process
+                        example: repertoire_sequencing
+                        x-airr:
+                            nullable: true
+                            adc-query-support: true
+                            format: controlled vocabulary
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
