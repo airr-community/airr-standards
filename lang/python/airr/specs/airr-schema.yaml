@@ -1641,10 +1641,8 @@ Repertoire:
                 nullable: false
                 adc-query-support: true
         data_processing:
-            type: array
-            description: List of Data Processing objects
-            items:
-                $ref: '#/DataProcessing'
+            $ref: '#/DataProcessing'
+            description: Data Processing object
             x-airr:
                 nullable: false
                 adc-query-support: true
