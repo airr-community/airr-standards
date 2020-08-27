@@ -2381,6 +2381,21 @@ Rearrangement:
         p5j_length:
             type: integer
             description: Number of palindromic nucleotides 5' of the J gene alignment.
+        v_frameshift:
+            type: boolean
+            description: >
+                True if the V gene in the query nucleotide sequence contains a translational
+                frameshift relative to the frame of the V gene reference sequence.
+        j_frameshift:
+            type: boolean
+            description: >
+                True if the J gene in the query nucleotide sequence contains a translational
+                frameshift relative to the frame of the J gene reference sequence.
+        d_frame:
+            type: integer
+            description: >
+                Numerical reading frame (1, 2, 3) of the D gene in the query nucleotide sequence,
+                where frame 1 is relative to the first codon of D gene reference sequence.
         consensus_count:
             type: integer
             description: >
