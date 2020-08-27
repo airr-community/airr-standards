@@ -2610,7 +2610,12 @@ Rearrangement:
         d_frame:
             type: integer
             description: >
-                Numerical reading frame (1, 2, 3) of the D gene in the query nucleotide sequence,
+                Numerical reading frame (1, 2, 3) of the first or only D gene in the query nucleotide sequence,
+                where frame 1 is relative to the first codon of D gene reference sequence.
+        d2_frame:
+            type: integer
+            description: >
+                Numerical reading frame (1, 2, 3) of the second D gene in the query nucleotide sequence,
                 where frame 1 is relative to the first codon of D gene reference sequence.
         consensus_count:
             type: integer
