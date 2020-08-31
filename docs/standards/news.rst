@@ -3,6 +3,17 @@
 Schema Release Notes
 ================================================================================
 
+Version 1.3.1: August 30, 2020
+--------------------------------------------------------------------------------
+
+**Version 1.3 documentation patch release.**
+
+Alignment Schema:
+
+1. Added the deprecation tags for ``rearrangement_id``, which were
+   accidentally left out of the v1.3.0 release.
+
+
 Version 1.3.0: May 28, 2020
 --------------------------------------------------------------------------------
 
