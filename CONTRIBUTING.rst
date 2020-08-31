@@ -146,7 +146,7 @@ Public Releases
 ---------------
 
 Public releases of the airr-standards API packages, schema, and documentation
-require the following step to be performed:
+require the following steps to be performed:
 
 - Update the release notes contained in the news.rst files with the standards
   documentation (``docs/standards/news.rst``), python package (``lang/python/NEWS.rst``),
