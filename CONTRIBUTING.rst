@@ -160,21 +160,22 @@ require the following steps to be performed:
 - Submit the R package to CRAN and wait for approval.
   Repeat the R package steps as needed until approved by CRAN.
 - Tag the repository with the version number.
-- Verify that ReadTheDocs automatically builds the documentation site correctly.
 - Generate the release on GitHub.
-- Upload the python package to PyPI proper.
+- Verify that ReadTheDocs automatically builds the documentation site correctly.
+- Upload the python package to PyPI.
 
 Note, the order of these steps must be more or less as described above.  Some deviation is okay,
-but it is most important that:
+but the following are essential:
 
 - The release should only be tagged after all release notes and other documentation
-  have been finalized, because the default documentation that users see on ReadTheDocs will
-  be build from the newest numerical version tag and will not included changes made after the
+  have been finalized. The default documentation that users see on ReadTheDocs will
+  be built from the newest numerical version tag and will not included changes made after the
   version tag.
-- The release should not be tagged until after CRAN has accepted the R package, because
+- The release should not be tagged until after CRAN has accepted the R package.
   CRAN has a tendency not to accept an initial submission and require changes.
-- The repository must be tagged prior to upload of the python package to PyPI so that
-  versioneer properly annotates the version number of the package.
+- The repository must be tagged prior to uploading the python package to PyPI.
+  Versioneer is used for annotating the version number of the python package and it
+  uses the tag list of the git repository to do so.
 
 Field Deprecation
 -----------------
