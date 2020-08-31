@@ -2459,7 +2459,7 @@ Rearrangement:
             type: string
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a univerally unique record locator for database applications.
+                but will usually be a universally unique record locator for database applications.
             x-airr:
                 deprecated: true
                 deprecated-description: Field has been merged with sequence_id to avoid confusion.
