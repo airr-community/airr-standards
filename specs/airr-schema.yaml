@@ -234,6 +234,19 @@ Study:
                 set: 1
                 subset: study
                 name: Grant funding agency
+        study_contact:
+            type: string
+            description: >
+                Full contact information of the contact persons for this study This should include an e-mail address.
+            title: Contact information (study)
+            example: Dr. P. Stibbons, p.stibbons@unseenu.edu
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Contact information (study)
         collected_by:
             type: string
             description: >
