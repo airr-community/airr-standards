@@ -656,8 +656,11 @@ A more complex query with multiple operators looks like this:
 
 Specifies the format of the API response. ``json`` is the default
 format and is available for all endpoints. The ``rearrangement``
-``POST`` endpoint also accepts ``tsv`` which will provide the data in the
-:ref:`AIRR TSV <TSVSpecification>` format.
+``POST`` endpoint also accepts ``tsv`` which will provide the data in
+the :ref:`AIRR TSV <TSVSpecification>` format. A specific ordering of
+fields in the TSV format should not be assumed from one API request to
+another. Take care to properly merge AIRR TSV data from multiple API
+requests, e.g. such as with the ``airr-tools merge`` program.
 
 **Fields Query Parameter**
 
