@@ -14,14 +14,50 @@ the Team is to define standard vocabularies and ontologies to be used
 by AIRR-compliant databases.
 
 
-Sprint Reports
-==============
+Ontology Data Representation
+============================
 
-.. toctree::
-   :maxdepth: 2
+The nodes in an ontology are typically either concepts (e.g., capital)
+or instances thereof (e.g., Paris). These nodes have *local IDs* (often
+numbers), which are unique within an ontology. They also typically have
+*labels*, which is the human-readable name of the node. Ontology
+entities in the AIRR Data Standard reflect this model, with each AIRR
+field that is represented as an ontology recorded with a global
+*ontology ID* (``id``) and the corresponding *label* (``label``).
 
-   Report Sprint 11/2018 <report_sprint_2018-11>
-   Report Sprint 04/2020 <report_sprint_2020-04>
+Within the AIRR Standards, Compact URIs (`CURIEs`_) are used to
+represent *ontology IDs*. CURIEs are a standardized way to abbreviate
+International Resource Identifiers (IRI, [RFC3987]_), which includes
+URIs as a subset. They were originally conceived to simplify the
+handling of attributes, e.g. in XML or SPARQL, by making them more
+compact and readable. CURIEs are also used by IEDB databases to reduce
+redundancies (mainly in the leading part of IRIs).
+
+For example, a typical CURIE would look like ``NCBITAXON:9258``. In this
+case, ``NCBITAXON`` is the *prefix*, a custom string that will be
+replaced by a repository-defined IRI component (e.g.,
+``http://purl.obolibrary.org/obo/NCBITaxon_``). Note that there is no
+connection between ``NCBITAXON`` in the CURIE and ``NCBITaxon`` in the
+IRI, the former one is just a placeholder.
+
+The AIRR schema will provide a list of AIRR approved CURIE *prefixes*
+along with a list of at least one IRI *prefix* (i.e., replacement
+string) for each them. This list serves two purposes:
+
+1. It provides a controlled namespace for CURIE *prefixes* used in the
+   AIRR schema. For now, custom additions to or replacements of these
+   *prefixes* in the schema are prohibited. This does not affect the
+   ability of repositories to use such custom prefixes internally.
+2. It simplifies resolution of CURIEs by non-repositories. The
+   lists of IRI *prefixes* for each CURIE *prefix* should not be
+   considered to be exhaustive. However, when using custom IRI
+   *prefixes*, it must be ensured that they refer to the same
+   ontology as the provider *prefixes*.
+
+It should be explicitly noted that the IRI *prefix* list should not be
+interpreted as any kind of recommendation for certain *providers*. It is
+left up to users to decide how to resolve the resulting IRIs, e.g., via
+DNS/HTTP (if possible) or by using a *provider* of their choice.
 
 
 Approved Ontologies
@@ -35,6 +71,16 @@ Approved Ontologies
 
       *  Cell subset (``cell_subset``,
          :ref:`Tissue and Cell Processing <CellProcessingFields>`)
+
+   *  CURIE summary
+   
+      * CURIE Prefix: ``CL``
+      * CURIE IRI Prefix: ``http://purl.obolibrary.org/obo/CL_``
+
+   *  example AIRR use
+   
+      * "cell_subset.id" : "CL:0000542"
+      * "cell_subset.label" : "lymphocyte"
 
    *  default root node
 
@@ -57,6 +103,16 @@ Approved Ontologies
       *  Diagnosis (``disease_diagnosis``,
          :ref:`Diagnosis <DiagnosisFields>`)
 
+   *  CURIE summary
+   
+      * CURIE Prefix: ``DOID``
+      * CURIE IRI Prefix: ``http://purl.obolibrary.org/obo/DOID_``
+
+   *  example AIRR use
+   
+      * "disease_diagnosis.id" : "DOID:9538"
+      * "disease_diagnosis.label" : "multiple myeloma"
+    
    *  default root node
 
       *  label: ``disease``
@@ -80,6 +136,18 @@ Approved Ontologies
       *  Cell species (``cell_species``,
          :ref:`Tissue and Cell Processing <CellProcessingFields>`)
 
+   *  CURIE summary
+
+      * CURIE Prefix: ``NCBITAXON``
+      * CURIE IRI Prefixes:
+        ``http://purl.obolibrary.org/obo/NCBITaxon_``,
+        ``http://purl.bioontology.org/ontology/NCBITAXON/``
+
+   *  example AIRR use
+
+      * "species.id" : "NCBITAXON:9606"
+      * "species.label" : "Homo sapiens"
+
    *  default root node
 
       *  label: ``Gnathostomata``
@@ -99,6 +167,18 @@ Approved Ontologies
    *  used in:
 
       *  Study type (``study_type``, :ref:`Study <StudyFields>`)
+
+   *  CURIE summary
+
+      * CURIE Prefix: ``NCIT``
+      * CURIE IRI Prefixes:
+        ``http://purl.obolibrary.org/obo/NCIT_``,
+        ``http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#``
+
+   *  example AIRR use
+
+      * "study_type.id" : "NCIT:C15197"
+      * "study_type.label" : "Case-Control Study"
 
    *  default root node
 
@@ -120,6 +200,16 @@ Approved Ontologies
 
       *  Age unit (``age_unit``, :ref:`Subject <SubjectFields>`)
 
+   *  CURIE summary
+   
+      * CURIE Prefix: ``UO``
+      * CURIE IRI Prefix: ``http://purl.obolibrary.org/obo/UO_``
+      
+   *  example AIRR use
+   
+      * "age_unit.id" : "UO:0000036"
+      * "age_unit.label" : "year"
+
    *  default root node
 
       *  label: ``time unit``
@@ -139,6 +229,16 @@ Approved Ontologies
 
       *  Tissue (``tissue``, :ref:`Sample <SampleFields>`)
 
+   *  CURIE summary
+
+      * CURIE Prefix: ``UBERON``
+      * CURIE IRI Prefix: ``http://purl.obolibrary.org/obo/UBERON_``
+
+   *  example AIRR use
+   
+      * "tissue.id" : "UBERON:0002371"
+      * "tissue.label" : "bone marrow"
+
    *  default root node
 
       *  label: ``multicellular anatomical structure``
@@ -152,10 +252,25 @@ Approved Ontologies
    *  maintainer: Chris Mungall, LBL, CA, US
       (cjmungall@lbl.gov)
 
+
+Sprint Reports
+==============
+
+.. toctree::
+   :maxdepth: 2
+
+   Report Sprint 11/2018 <report_sprint_2018-11>
+   Report Sprint 04/2020 <report_sprint_2020-04>
+
+.. Citations
+
+.. [RFC3987] Internationalized Resource Identifiers (IRIs). `DOI:10.17487/RFC3987`_
+
 .. Links
 
 .. _CC0: https://creativecommons.org/publicdomain/zero/1.0/
 .. _`CC BY`: https://creativecommons.org/licenses/by/4.0/
+.. _`CURIEs`: https://www.w3.org/TR/curie
 .. _CL: http://obofoundry.org/ontology/cl.html
 .. _DOID: https://disease-ontology.org
 .. _NCBITAXON: https://www.ebi.ac.uk/ols/ontologies/NCBITAXON

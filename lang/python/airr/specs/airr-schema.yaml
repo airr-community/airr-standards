@@ -1442,7 +1442,7 @@ DataProcessing:
             default: false
             description: >
                 If true, indicates this is the primary or default data processing for
-                the repertoire and its rearrangments. If false, indicates this is a secondary
+                the repertoire and its rearrangements. If false, indicates this is a secondary
                 or additional data processing.
             title: Primary annotation
             x-airr:
@@ -1720,6 +1720,11 @@ Alignment:
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
                 but will usually be a universally unique record locator for database applications.
+            x-airr:
+                deprecated: true
+                deprecated-description: Field has been merged with sequence_id to avoid confusion.
+                deprecated-replaced-by:
+                    - sequence_id
         data_processing_id:
             type: string
             description: >
@@ -2454,7 +2459,7 @@ Rearrangement:
             type: string
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a univerally unique record locator for database applications.
+                but will usually be a universally unique record locator for database applications.
             x-airr:
                 deprecated: true
                 deprecated-description: Field has been merged with sequence_id to avoid confusion.

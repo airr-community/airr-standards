@@ -137,7 +137,7 @@ def merge_rearrangement(out_filename, in_filenames, drop=False, debug=False):
     """
     try:
         # gather fields from input files
-        readers = [RearrangementReader(open(f, 'r'), debug=debug) for f in in_filenames]
+        readers = (RearrangementReader(open(f, 'r'), debug=False) for f in in_filenames)
         field_list = [x.fields for x in readers]
         if drop:
             field_set = set.intersection(*map(set, field_list))
@@ -147,13 +147,14 @@ def merge_rearrangement(out_filename, in_filenames, drop=False, debug=False):
         out_fields = [f for f in field_order if f in field_set]
 
         # write input files to output file sequentially
+        readers = (RearrangementReader(open(f, 'r'), debug=debug) for f in in_filenames)
         with open(out_filename, 'w+') as handle:
             writer = RearrangementWriter(handle, fields=out_fields, debug=debug)
             for reader in readers:
                 for r in reader:  writer.write(r)
                 reader.close()
-    except:
-        sys.stderr.write('Error occurred while merging AIRR rearrangement files.\n')
+    except Exception as e:
+        sys.stderr.write('Error occurred while merging AIRR rearrangement files: %s\n' % e)
         return False
 
     return True
