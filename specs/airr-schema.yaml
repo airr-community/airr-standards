@@ -1626,12 +1626,12 @@ DataProcessing:
                 adc-query-support: true
                 name: Processed data file names
         data_processing_germline:
-                    description: Germline used for this data processing process, if known, by germline class.
+                    description: Germline used for this data processing process
                     type: array
                     title: Data processing germline
                     items:
                         type: object
-                        description: Germline for this subject, if known, by germline class. The source of acquiring the germline information should be recorded in germline_process.
+                        description: Germline for this subject, if known, by germline class.
                         properties:
                             germline_class:
                                 type: string
