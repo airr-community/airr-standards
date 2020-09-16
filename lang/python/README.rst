@@ -100,8 +100,8 @@ in the output file. Additional fields can be included in the output file by
 providing the ``fields`` parameter with an array of additional field names::
 
     # Specify additional fields in the output
-    field = ['new_calc', 'another_field']
-    writer = airr.create_rearrangement('output.tsv', fields)
+    fields = ['new_calc', 'another_field']
+    writer = airr.create_rearrangement('output.tsv', fields=fields)
 
 A common operation is to read an AIRR rearrangement file, and then
 write an AIRR rearrangement file with additional fields in it while
