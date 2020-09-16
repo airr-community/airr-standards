@@ -97,7 +97,7 @@ operations::
 
 By default, ``create_rearrangement`` will only write the ``required`` fields
 in the output file. Additional fields can be included in the output file by
-providing the ``fields`` parameter with an array of additional field names.
+providing the ``fields`` parameter with an array of additional field names::
 
     # Specify additional fields in the output
     field = ['new_calc', 'another_field']
@@ -106,7 +106,7 @@ providing the ``fields`` parameter with an array of additional field names.
 A common operation is to read an AIRR rearrangement file, and then
 write an AIRR rearrangement file with additional fields in it while
 keeping all of the existing fields from the original file. The
-``derive_rearrangement`` function provides this capability.
+``derive_rearrangement`` function provides this capability::
 
     import airr
 
