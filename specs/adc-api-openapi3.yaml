@@ -1,0 +1,477 @@
+openapi: '3.0.0'
+
+info:
+  title: AIRR Data Commons API
+  version: 1.0.0
+  contact:
+    name: AIRR Community
+    url: 'http://www.airr-community.org/'
+    email: join@airr-community.org
+  description: >
+    Major Version 1 of the Adaptive Immune Receptor Repertoire (AIRR)
+    data repository web service application programming interface (API).
+  license:
+    name: Creative Commons Attribution 4.0 International
+    url: https://creativecommons.org/licenses/by/4.0/
+
+servers:
+  - url: https://vdjserver.org/airr/v1
+    description: VDJServer ADC API
+    variables:
+      basePath:
+        default: /airr/v1
+  - url: https://ipa1.ireceptor.org/airr/v1
+    description: iReceptor IPA1 ADC API
+    variables:
+      basePath:
+        default: /airr/v1
+
+components:
+  schemas:
+  # Info object
+  info_object:
+    type: object
+    description: Provides information about the API response
+    properties:
+      title:
+        type: string
+      version:
+        type: string
+      description:
+        type: string
+      contact: 
+        type: object
+        properties:
+          name:
+            type: string
+          url:
+            type: string
+          email:
+            type: string
+      license:
+        type: object
+        properties:
+          name:
+            type: string
+          url:
+            type: string
+
+  # Service info object. This is the object returned by the /info request,
+  # and provides information about the ADC repository service and its attributes and capabilities
+  service_info_object:
+    description: Provides information about the ADC repository service and it attributes and capabilities.
+    allOf:
+      - $ref: '#/definitions/info_object'
+      - type: object
+        properties:
+          attributes:
+            type: object
+            properties:
+              max_size:
+                type: integer
+              max_query_size:
+                type: integer
+              last_update:
+                type: string
+          api:
+            description: Provides information about the ADC API implemented by this repository service.
+            $ref: '#/definitions/info_object'
+          schema:
+            description: Provides information about the AIRR Schema utilized by this repository service.
+            $ref: '#/definitions/info_object'
+
+  # list of repertoires
+  repertoire_list:
+    type: array
+    items:
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.3.0/specs/airr-schema.yaml#/Repertoire'
+
+  # list of facets
+  facet_list:
+    type: array
+    items:
+      type: object
+      properties:
+        count:
+          type: integer
+          
+  # The response object /repertoire endpoint
+  repertoire_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Repertoire:
+        $ref: '#/definitions/repertoire_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
+          
+  # list of rearrangement annotations
+  rearrangement_list:
+    type: array
+    items:
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.3.0/specs/airr-schema.yaml#/Rearrangement'
+
+  # The response object /rearrangement endpoint
+  rearrangement_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Rearrangement:
+        $ref: '#/definitions/rearrangement_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
+
+  # list of clone annotations
+  clone_list:
+    type: array
+    items:
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.3.0/specs/airr-schema.yaml#/Clone'
+
+  # The response object /clone/{clone_id} endpoint
+  clone_id_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Clone:
+        $ref: '#/definitions/clone_list'
+
+  # The response object /clone endpoint
+  clone_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Clone:
+        $ref: '#/definitions/clone_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
+
+  # error response
+  error_response:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Detail about the error
+
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/x-www-form-urlencoded
+  - application/json
+tags:
+  - name: info
+    description: Service information
+  - name: repertoires
+    description: Queries for repertoires
+  - name: rearrangements
+    description: Queries for rearrangements
+
+paths:
+  /:
+    x-swagger-router-controller: status
+    get:
+      description: |
+        Service heartbeat.
+      consumes:
+        - application/octet-stream
+      operationId: getStatus
+      responses:
+        '200':
+          description: |
+            Success.
+          schema:
+            type: object
+            properties:
+              result:
+                type: string
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /info:
+    x-swagger-router-controller: status
+    get:
+      description: |
+        Service information.
+      tags:
+        - info
+      consumes:
+        - application/octet-stream
+      operationId: getInfo
+      responses:
+        '200':
+          description: |
+            Success.
+          schema:
+            $ref: '#/definitions/service_info_object'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /swagger:
+    x-swagger-pipe: swagger_raw
+
+  /repertoire/{repertoire_id}:
+    x-swagger-router-controller: repertoire
+    get:
+      description: >
+        Returns a repertoire based upon its identifier.
+      tags:
+        - repertoires
+      consumes:
+        - application/x-www-form-urlencoded
+        - application/json
+        - application/octet-stream
+      produces:
+        - application/json
+      parameters:
+        - name: repertoire_id
+          in: path
+          description: ID of repertoire to return
+          required: true
+          type: string
+      operationId: getRepertoire
+      responses:
+        '200':
+          description: |
+            A successful call returns the repertoire data.
+          schema:
+            $ref: '#/definitions/repertoire_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /repertoire:
+    x-swagger-router-controller: repertoire
+    post:
+      description: >
+        This query service returns metadata about repertoires.
+      tags:
+        - repertoires
+      parameters:
+        - in: body
+          name: data
+          schema:
+            type: object
+            properties:
+              filters:
+                type: object
+              format:
+                type: string
+                default: json
+                enum:
+                  - json
+              fields:
+                type: array
+                items:
+                  type: string
+              size:
+                type: integer
+              from:
+                type: integer
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
+      operationId: queryRepertoires
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of repertoire metadata.
+          schema:
+            $ref: '#/definitions/repertoire_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /rearrangement/{sequence_id}:
+    x-swagger-router-controller: rearrangement
+    get:
+      description: >
+        Returns a rearrangement based upon its identifier.
+      tags:
+        - rearrangements
+      consumes:
+        - application/x-www-form-urlencoded
+        - application/json
+        - application/octet-stream
+      produces:
+        - application/json
+      parameters:
+        - name: sequence_id
+          in: path
+          description: ID of rearrangement to return
+          required: true
+          type: string
+      operationId: getRearrangement
+      responses:
+        '200':
+          description: >
+            A successful call returns the rearrangement annotation data.
+          schema:
+            $ref: '#/definitions/rearrangement_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /rearrangement:
+    x-swagger-router-controller: rearrangement
+    post:
+      description: >
+        This query service returns rearrangement annotation data.
+      tags:
+        - rearrangements
+      parameters:
+        - in: body
+          name: data
+          schema:
+            type: object
+            properties:
+              filters:
+                type: object
+              format:
+                type: string
+                default: json
+                enum:
+                  - json
+                  - tsv
+              fields:
+                type: array
+                items:
+                  type: string
+              size:
+                type: integer
+              from:
+                type: integer
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
+      operationId: queryRearrangements
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of rearrangement annotation data.
+          schema:
+            $ref: '#/definitions/rearrangement_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /clone/{clone_id}:
+    x-swagger-router-controller: clone
+    get:
+      description: >
+        Returns a clone based upon its identifier.
+      tags:
+        - clones
+      consumes:
+        - application/x-www-form-urlencoded
+        - application/json
+        - application/octet-stream
+      produces:
+        - application/json
+      parameters:
+        - name: clone_id
+          in: path
+          description: ID of clone to return
+          required: true
+          type: string
+      operationId: getClone
+      responses:
+        '200':
+          description: >
+            A successful call returns the clone annotation data.
+          schema:
+            $ref: '#/definitions/clone_id_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /clone:
+    x-swagger-router-controller: clone
+    post:
+      description: >
+        This query service returns clone annotation data.
+      tags:
+        - clones
+      parameters:
+        - in: body
+          name: data
+          schema:
+            type: object
+            properties:
+              filters:
+                type: object
+              format:
+                type: string
+                default: json
+                enum:
+                  - json
+                  - tsv
+              fields:
+                type: array
+                items:
+                  type: string
+              size:
+                type: integer
+              from:
+                type: integer
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
+      operationId: queryClones
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of clone annotation data.
+          schema:
+            $ref: '#/definitions/clone_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
