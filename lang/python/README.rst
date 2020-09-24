@@ -95,6 +95,30 @@ operations::
     # Write an entire pandas data frame to a file
     airr.dump_rearrangement(df, 'file.tsv')
 
+By default, ``create_rearrangement`` will only write the ``required`` fields
+in the output file. Additional fields can be included in the output file by
+providing the ``fields`` parameter with an array of additional field names::
+
+    # Specify additional fields in the output
+    fields = ['new_calc', 'another_field']
+    writer = airr.create_rearrangement('output.tsv', fields=fields)
+
+A common operation is to read an AIRR rearrangement file, and then
+write an AIRR rearrangement file with additional fields in it while
+keeping all of the existing fields from the original file. The
+``derive_rearrangement`` function provides this capability::
+
+    import airr
+
+    # Read rearrangement data and write new file with additional fields
+    reader = airr.read_rearrangement('input.tsv')
+    fields = ['new_calc']
+    writer = airr.derive_rearrangement('output.tsv', 'input.tsv', fields=fields)
+    for row in reader:
+        row['new_calc'] = 'a value'
+        writer.write(row)
+
+
 Validating AIRR data files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

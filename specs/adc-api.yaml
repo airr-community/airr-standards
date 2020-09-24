@@ -205,9 +205,6 @@ paths:
           schema:
             $ref: '#/definitions/error_response'
 
-  /swagger:
-    x-swagger-pipe: swagger_raw
-
   /repertoire/{repertoire_id}:
     x-swagger-router-controller: repertoire
     get:
