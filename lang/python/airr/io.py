@@ -91,6 +91,11 @@ class RearrangementReader:
             raise StopIteration
 
         for f in row:
+            # row entry with no header
+            if f is None:
+                if self.validate:
+                    raise ValidationError('row has extra data')
+
             # Convert types
             spec = self.schema.type(f)
             try:
@@ -104,7 +109,7 @@ class RearrangementReader:
                 raise ValidationError('field %s has %s' %(f, e))
 
             # Adjust coordinates
-            if f.endswith('_start') and self.base == 1:
+            if f and f.endswith('_start') and self.base == 1:
                 try:
                     row[f] = row[f] - 1
                 except TypeError:
