@@ -95,6 +95,8 @@ class RearrangementReader:
             if f is None:
                 if self.validate:
                     raise ValidationError('row has extra data')
+                else:
+                    raise ValueError('row has extra data')
 
             # Convert types
             spec = self.schema.type(f)
