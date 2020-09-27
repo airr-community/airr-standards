@@ -55,7 +55,7 @@ Repertoire:
         sample_type: null
         tissue:
           id: null
-          value: null
+          label: null
         anatomic_site: null
         disease_state_sample: null
         collection_time_point_relative: null
