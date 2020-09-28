@@ -321,6 +321,54 @@ Study:
                 name: Keywords for study
                 format: controlled vocabulary
 
+GermlineSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        germline_set_id:
+            type: string
+            description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
+        germline_class:
+            type: string
+            enum:
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
+            example: IGH
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary
+        germline_alleles:
+            type: array
+            items:
+                type: string
+                title: Gene descriptor
+                description: Germline gene descriptor. Where possible, standard or common gene names should be used.
+            example:
+                - IGHV1-1*01
+                - IGHV2-2*02
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        germline_process:
+            type: string
+            enum:
+                - genomic_sequencing
+                - repertoire_sequencing
+            description: Information on how the germline was acquired. Controlled vocabulary.
+            title: Germline acquisition process
+            example: repertoire_sequencing
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary            
+
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
 Subject:
