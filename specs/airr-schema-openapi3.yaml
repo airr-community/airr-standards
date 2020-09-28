@@ -1365,7 +1365,7 @@ Study:
         study_id:
             type: string
             nullable: true
-            description: Unique ID assigned by study registry
+            description: Unique ID assigned by study registry such as one of the International Nucleotide Sequence Database Collaboration (INSDC) repositories.
             title: Study ID
             example: PRJNA001
             x-airr:
@@ -1454,9 +1454,9 @@ Study:
             nullable: true
             description: >
                 Full contact information of the data collector, i.e. the person who is legally responsible for
-                data collection and release. This should include an e-mail address.
+                data collection and release. This should include an e-mail address and a persistent identifier such as an ORCID ID.
             title: Contact information (data collection)
-            example: Dr. P. Stibbons, p.stibbons@unseenu.edu
+            example: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
             x-airr:
                 miairr: important
                 adc-query-support: true
@@ -1491,10 +1491,10 @@ Study:
             type: string
             nullable: true
             description: >
-                Full contact information of the data depositor, i.e. the person submitting the data to a repository.
+                Full contact information of the data depositor, i.e. the person submitting the data to a repository. This should include an e-mail address and a persistent identifier such as an ORCID ID.
                 This is supposed to be a short-lived and technical role until the submission is relased.
             title: Contact information (data deposition)
-            example: Adrian Turnipseed, a.turnipseed@unseenu.edu
+            example: Adrian Turnipseed, a.turnipseed@unseenu.edu, https://orcid.org/0000-0002-1825-0097
             x-airr:
                 miairr: important
                 adc-query-support: true
@@ -1504,7 +1504,7 @@ Study:
         pub_ids:
             type: string
             nullable: true
-            description: Publications describing the rationale and/or outcome of the study
+            description: Publications describing the rationale and/or outcome of the study. Where ever possible, a persistent identifier should be used such as a DOI or a Pubmed ID
             title: Relevant publications
             example: "PMID:85642"
             x-airr:
@@ -1588,7 +1588,7 @@ Subject:
         subject_id:
             type: string
             nullable: true
-            description: Subject ID assigned by submitter, unique within study
+            description: Subject ID assigned by submitter, unique within study. If possible, a persistent subject ID linked to an INSDC or similar repository study should be used.
             title: Subject ID
             example: SUB856413
             x-airr:
@@ -1964,7 +1964,7 @@ Sample:
         sample_id:
             type: string
             nullable: true
-            description: Sample ID assigned by submitter, unique within study
+            description: Sample ID assigned by submitter, unique within study. If possible, a persistent sample ID linked to an INSDC or similar repository study should be used.
             title: Biological sample ID
             example: SUP52415
             x-airr:
