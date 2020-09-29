@@ -2,7 +2,7 @@ swagger: '2.0'
 
 info:
   title: AIRR Data Commons API
-  version: 1.0.0
+  version: 1.1.0
   contact:
     name: AIRR Community
     url: 'http://www.airr-community.org/'
