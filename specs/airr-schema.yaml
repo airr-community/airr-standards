@@ -623,6 +623,9 @@ Subject:
                         type: object
                         description: Germline for this subject, if known, by germline class. The source of acquiring the germline information should be recorded in germline_process.
                         properties:
+                            germline_set_id:
+                                type: string
+                                description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
                             germline_class:
                                 type: string
                                 enum:
@@ -670,6 +673,9 @@ Subject:
                         type: object
                         description: MHC germline for this subject, if known, by germline class.
                         properties:
+                            germline_set_id:
+                                type: string
+                                description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
                             germline_class:
                                 type: string
                                 enum:
@@ -1681,6 +1687,9 @@ DataProcessing:
                         type: object
                         description: Germline for this subject, if known, by germline class.
                         properties:
+                            germline_set_id:
+                                type: string
+                                description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
                             germline_class:
                                 type: string
                                 enum:
