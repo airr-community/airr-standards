@@ -8,6 +8,7 @@ import unittest
 
 # Load imports
 import airr
+from airr.schema import ValidationError
 
 # Paths
 test_path = os.path.dirname(os.path.realpath(__file__))
@@ -65,11 +66,11 @@ class TestInferface(unittest.TestCase):
 
         # Bad data
         try:
-
             result = airr.validate_rearrangement(self.data_bad)
             self.assertFalse(result, 'validate(): bad data failed')
-        except:
-            pass
+        except Exception as inst:
+            print(type(inst))
+            raise inst
 
     # @unittest.skip('-> load_repertoire(): skipped\n')
     def test_load_repertoire(self):
@@ -81,10 +82,13 @@ class TestInferface(unittest.TestCase):
 
         # Bad data
         try:
-            data = airr.load_repertoire(self.rep_good, validate=True)
+            data = airr.load_repertoire(self.rep_bad, validate=True, debug=True)
             self.assertFalse(True, 'load_repertoire(): bad data failed')
-        except:
+        except ValidationError:
             pass
+        except Exception as inst:
+            print(type(inst))
+            raise inst
 
 if __name__ == '__main__':
     unittest.main()
