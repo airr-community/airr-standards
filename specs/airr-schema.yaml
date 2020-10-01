@@ -302,12 +302,13 @@ GermlineSet:
         germline_class_list:
             description: List of classes included in this germline set.
             type: array
-                items:
-                    $ref: '#/GermlineClassSet'
+            items:
+                $ref: '#/GermlineClassSet'
 
 MHCGermlineClassSet:
     discriminator: AIRR
     type: object
+    properties:
         germline_class_id:
             type: string
             description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
@@ -353,8 +354,8 @@ MHCGermlineSet:
         germline_class_list:
             description: List of classes included in this germline set.
             type: array
-                items:
-                    $ref: '#/MHCGermlineClassSet'
+            items:
+                $ref: '#/MHCGermlineClassSet'
 
 #
 # Repertoire metadata schema
