@@ -1,7 +1,8 @@
-Version 1.3.1:  September 14, 2020
+Version 1.3.1:  October 13, 2020
 --------------------------------------------------------------------------------
 
 1. Refactored ``merge_rearrangement`` to allow for larger number of files.
+2. Improved error handling in format validation operation.
 
 
 Version 1.3.0:  May 30, 2020
