@@ -11,6 +11,7 @@ Repertoire:
         id: null
         label: null
       study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
+      study_contact: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
       inclusion_exclusion_criteria: null
       lab_name: "Mark M. Davis"
       lab_address: "Stanford University"
@@ -126,6 +127,7 @@ Repertoire:
         id: null
         label: null
       study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
+      study_contact: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
       inclusion_exclusion_criteria: null
       lab_name: "Mark M. Davis"
       lab_address: "Stanford University"
@@ -241,6 +243,7 @@ Repertoire:
         id: null
         label: null
       study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
+      study_contact: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
       inclusion_exclusion_criteria: null
       lab_name: "Mark M. Davis"
       lab_address: "Stanford University"
