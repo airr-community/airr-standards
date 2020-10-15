@@ -234,6 +234,19 @@ Study:
                 set: 1
                 subset: study
                 name: Grant funding agency
+        study_contact:
+            type: string
+            description: >
+                Full contact information of the contact persons for this study This should include an e-mail address and a persistent identifier such as an ORCID ID.
+            title: Contact information (study)
+            example: Dr. P. Stibbons, p.stibbons@unseenu.edu, , https://orcid.org/0000-0002-1825-0097
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Contact information (study)
         collected_by:
             type: string
             description: >
