@@ -117,3 +117,28 @@ following annotation SHOULD/MUST be used:
    term MUST be used. VHH (i.e. camelid) libraries SHOULD annotate
    ``none`` as there is only a single rearrangement envolved.
 
+
+10X Chromium
+------------
+
+The current 10X V(D)J Kits (07/2020, Rev. G) perform a fully nested PCR,
+in which only the reverse primers (i.e., complementary to the constant
+region) are Ig/TCR specific, while the forward primers anneal to the
+sequence of the template switch primer. For the purpose of annotation,
+this is considered a gene-specific amplification, therefore such
+experiments SHOULD be annotated as follows:
+
+-  ``single_cell``: MUST be ``true``
+-  ``library_generation_method``: SHOULD be ``RT(specific)+TS(UMI)+PCR``
+-  ``pcr_target`` MAY contain multiple entries, one for each locus that
+   is potentially amplified. Within each entry (i.e., each ``PCRTarget``
+   object) the following annotations SHOULD be provided:
+
+   -  ``pcr_target_locus``: The locus described by this object, using
+      the controlled vocabulary defined in the AIRR schema. Note that
+      each object can only describe one locus, multiple loci require
+      multiple ``PCRTarget`` objects.
+   -  ``forward_pcr_primer_target_location``: ``NULL`` (as it cannot be
+      reliably determined.
+   -  ``reverse_pcr_primer_target_location``: Locus and position
+      according to the respective set of reverse primers.
