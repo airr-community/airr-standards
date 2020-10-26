@@ -329,7 +329,11 @@ MHCGermlineClassSet:
             type: array
             description: Array of gene descriptions
             items:
-                $ref: '#/GeneDescription'
+                type: string
+                description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., HLA‐C*07:29).
+                x-airr:
+                    nullable: true
+                    adc-query-support: true
             x-airr:
                 nullable: true
                 adc-query-support: true
