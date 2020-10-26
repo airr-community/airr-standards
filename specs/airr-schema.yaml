@@ -791,10 +791,10 @@ Subject:
             description: Germline for this subject, if known, by germline class.
             properties:
                 receptor_germline:
-                    $ref: '#/GermlineSet
+                    $ref: '#/GermlineSet'
                     description: Immune receptor germline set for this subject.
                 mhc_germline:
-                    $ref: '#/MHCGermlineSet
+                    $ref: '#/MHCGermlineSet'
                     description: MHC germline set for this subject.
 
 # 1-to-n relationship between a subject and its diagnoses
