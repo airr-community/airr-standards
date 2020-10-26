@@ -271,7 +271,7 @@ GermlineClassSet:
                 format: controlled vocabulary
         germline_alleles:
             type: array
-            description: Dictionary of gene descriptions, keyed by description_id string
+            description: Array of gene descriptions
             items:
                 $ref: '#/GeneDescription'
             x-airr:
@@ -322,9 +322,9 @@ MHCGermlineClassSet:
                 adc-query-support: true
                 format: controlled vocabulary
         germline_alleles:
-            type: object
-            description: Dictionary of gene descriptions, keyed by description_id string
-            additionalProperties:
+            type: array
+            description: Array of gene descriptions
+            items:
                 $ref: '#/GeneDescription'
             x-airr:
                 nullable: true
@@ -1772,10 +1772,10 @@ DataProcessing:
             description: Germline used for this data processing process
             properties:
                 receptor_germline:
-                    $ref: '#/GermlineSet
+                    $ref: '#/GermlineSet'
                     description: Immune receptor germline set for this data processing process.
                 mhc_germline:
-                    $ref: '#/MHCGermlineSet
+                    $ref: '#/MHCGermlineSet'
                     description: MHC germline set for this data processing process.
         germline_database:
             type: string
