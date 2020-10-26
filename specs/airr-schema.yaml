@@ -790,12 +790,12 @@ Subject:
             type: object
             description: Germline for this subject, if known, by germline class.
             properties:
-                germline_set_id:
-                    type: string
-                    description: Identifier for the Germline Set for this subject.
-                mhc_germline_set_id:
-                    type: string
-                    description: Identifier for the MHC Germline Set for this subject.
+                receptor_germline:
+                    $ref: '#/GermlineSet
+                    description: Immune receptor germline set for this subject.
+                mhc_germline:
+                    $ref: '#/MHCGermlineSet
+                    description: MHC germline set for this subject.
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
@@ -1771,12 +1771,12 @@ DataProcessing:
             type: object
             description: Germline used for this data processing process
             properties:
-                germline_set_id:
-                    type: string
-                    description: Identifier for the Germline Set for this subject.
-                mhc_germline_set_id:
-                    type: string
-                    description: Identifier for the MHC Germline Set for this subject.
+                receptor_germline:
+                    $ref: '#/GermlineSet
+                    description: Immune receptor germline set for this data processing process.
+                mhc_germline:
+                    $ref: '#/MHCGermlineSet
+                    description: MHC germline set for this data processing process.
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
