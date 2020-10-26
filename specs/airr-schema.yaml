@@ -273,7 +273,11 @@ GermlineClassSet:
             type: array
             description: Array of gene descriptions
             items:
-                $ref: '#/GeneDescription'
+                type: string
+                description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
+                x-airr:
+                    nullable: true
+                    adc-query-support: true
             x-airr:
                 nullable: true
                 adc-query-support: true
