@@ -241,11 +241,8 @@ Study:
             title: Contact information (study)
             example: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
             x-airr:
-                miairr: important
                 nullable: true
                 adc-query-support: true
-                set: 1
-                subset: study
                 name: Contact information (study)
         collected_by:
             type: string
