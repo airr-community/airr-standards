@@ -139,6 +139,235 @@ Attributes:
                             type: string
                             description: Ontology name for the top node term
 
+#
+# Germline gene schema
+#
+GeneDescription:
+    discriminator: AIRR
+    type: object
+    properties:
+        description_id:
+            type: string
+            description: Unique ID for this gene description
+            title: Gene Description ID
+            x-airr:
+                nullable: false
+                adc-query-support: true
+                identifier: true
+        species:
+            $ref: '#/Ontology'
+            description: Binomial designation of subject's species
+            title: Organism
+            example:
+                id: NCBITAXON:9606
+                label: Homo sapiens
+            x-airr:
+                nullable: false
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
+        sequence_name:
+            type: string
+            description: Source sequence in GenBank
+            title: Source sequence
+            x-airr:
+                nullable: false
+                adc-query-support: true
+        alt_names:
+            type: array
+            items:
+                type: string
+                title: Gene name
+                description: Additional names for the gene
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        locus:
+            type: string
+            enum:
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
+            description: Gene locus (chain type).
+            title: Gene locus
+            example: IGH
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary
+        domain:
+            type: string
+            enum:
+                - V
+                - D
+                - J
+            description: Gene domain
+            title: Gene domain
+            example: V
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary
+        functional:
+            type: boolean
+            title: Functional gene
+            x-airr:
+                nullable: false
+                adc-query-support: true
+        gene_subgroup:
+            type: string
+            description: Gene subgroup
+            title: Gene subgroup
+            x-airr:
+                nullable: false
+                adc-query-support: true
+        subgroup_designation:
+            type: string
+            description: Gene designation in the subgroup
+            title: Gene designation in the subgroup
+            x-airr:
+                nullable: false
+                adc-query-support: true
+        allele_designation:
+            type: string
+            description: Allele designation for the gene
+            title: Allele
+            x-airr:
+                nullable: false
+                adc-query-support: true
+
+# Gene descriptions from the same class organized together as a set
+GermlineClassSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        germline_class_id:
+            type: string
+            description: A unique identifier for this Germline Class Set.
+        germline_class:
+            type: string
+            enum:
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
+            example: IGH
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary
+        germline_alleles:
+            type: array
+            description: Array of gene descriptions
+            items:
+                type: string
+                description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
+                x-airr:
+                    nullable: true
+                    adc-query-support: true
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        germline_process:
+            type: string
+            enum:
+                - genomic_sequencing
+                - repertoire_sequencing
+            description: Information on how the germline was acquired. Controlled vocabulary.
+            title: Germline acquisition process
+            example: repertoire_sequencing
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary
+
+# List of germline class sets used for analysis or to describe
+# a subject's genotype
+GermlineSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        germline_set_id:
+            type: string
+            description: A unique identifier for this Germline Set.
+        germline_class_list:
+            description: List of classes included in this germline set.
+            type: array
+            items:
+                $ref: '#/GermlineClassSet'
+
+MHCGermlineClassSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        germline_class_id:
+            type: string
+            description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
+        germline_class:
+            type: string
+            enum:
+              - MHC
+            example: MHC
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary
+        germline_alleles:
+            type: array
+            description: Array of gene descriptions
+            items:
+                type: string
+                description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., HLA‐C*07:29).
+                x-airr:
+                    nullable: true
+                    adc-query-support: true
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        germline_process:
+            type: string
+            enum:
+                - genomic_sequencing
+                - repertoire_sequencing
+            description: Information on how the germline was acquired. Controlled vocabulary.
+            title: Germline acquisition process
+            example: repertoire_sequencing
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary
+
+# List of germline class sets used for analysis or to describe
+# a subject's genotype
+MHCGermlineSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        germline_set_id:
+            type: string
+            description: A unique identifier for this Germline Set.
+        germline_class_list:
+            description: List of classes included in this germline set.
+            type: array
+            items:
+                $ref: '#/MHCGermlineClassSet'
+
+#
+# Repertoire metadata schema
+#
 
 # The overall study with a globally unique study_id
 Study:
@@ -320,6 +549,7 @@ Study:
                 subset: study
                 name: Keywords for study
                 format: controlled vocabulary
+
 
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
@@ -569,92 +799,12 @@ Subject:
             description: Germline for this subject, if known, by germline class.
             properties:
                 receptor_germline:
-                    type: array
-                    title: Subject receotor germline
-                    items:
-                        type: object
-                        description: Germline for this subject, if known, by germline class. The source of acquiring the germline information should be recorded in germline_process.
-                        properties:
-                            germline_class:
-                                type: string
-                                enum:
-                                  - IGH
-                                  - IGI
-                                  - IGK
-                                  - IGL
-                                  - TRA
-                                  - TRB
-                                  - TRD
-                                  - TRG
-                                example: IGH
-                                x-airr:
-                                    nullable: true
-                                    adc-query-support: true
-                                    format: controlled vocabulary
-                            germline_alleles:
-                                type: array
-                                items:
-                                    type: string
-                                    title: Gene descriptor
-                                    description: Germline gene descriptor. Where possible, standard or common gene names should be used.
-                                example:
-                                    - IGHV1-1*01
-                                    - IGHV2-2*02
-                                x-airr:
-                                    nullable: true
-                                    adc-query-support: true
-                            germline_process:
-                                type: string
-                                enum:
-                                    - genomic_sequencing
-                                    - repertoire_sequencing
-                                description: Information on how the germline was acquired. Controlled vocabulary.
-                                title: Germline acquisition process
-                                example: repertoire_sequencing
-                                x-airr:
-                                    nullable: true
-                                    adc-query-support: true
-                                    format: controlled vocabulary
+                    $ref: '#/GermlineSet'
+                    description: Immune receptor germline set for this subject.
                 mhc_germline:
-                    type: array
-                    title: Subject MHC germline
-                    items:
-                        type: object
-                        description: MHC germline for this subject, if known, by germline class.
-                        properties:
-                            germline_class:
-                                type: string
-                                enum:
-                                  - MHC
-                                example: MHC
-                                x-airr:
-                                    nullable: true
-                                    adc-query-support: true
-                                    format: controlled vocabulary
-                            germline_alleles:
-                                type: array
-                                items:
-                                    type: string
-                                    title: Gene descriptor
-                                    description: Germline gene descriptor. Where possible, standard or common gene names should be used.
-                                example:
-                                    - HLA‐C*07:29
-                                    - HLA-B*15:27
-                                x-airr:
-                                    nullable: true
-                                    adc-query-support: true
-                            germline_process:
-                                type: string
-                                enum:
-                                    - genomic_sequencing
-                                    - repertoire_sequencing
-                                description: Information on how the germline was acquired. Controlled vocabulary.
-                                title: Germline acquisition process
-                                example: repertoire_sequencing
-                                x-airr:
-                                    nullable: true
-                                    adc-query-support: true
-                                    format: controlled vocabulary
+                    $ref: '#/MHCGermlineSet'
+                    description: MHC germline set for this subject.
+
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
     discriminator: AIRR
@@ -1626,41 +1776,15 @@ DataProcessing:
                 adc-query-support: true
                 name: Processed data file names
         data_processing_germline:
-                    description: Germline used for this data processing process
-                    type: array
-                    title: Data processing germline
-                    items:
-                        type: object
-                        description: Germline for this subject, if known, by germline class.
-                        properties:
-                            germline_class:
-                                type: string
-                                enum:
-                                  - IGH
-                                  - IGI
-                                  - IGK
-                                  - IGL
-                                  - TRA
-                                  - TRB
-                                  - TRD
-                                  - TRG
-                                example: IGH
-                                x-airr:
-                                    nullable: true
-                                    adc-query-support: true
-                                    format: controlled vocabulary
-                            germline_alleles:
-                                type: array
-                                items:
-                                    type: string
-                                    title: Gene descriptor
-                                    description: Germline gene descriptor. Where possible, standard or common gene names should be used.
-                                example:
-                                    - IGHV1-1*01
-                                    - IGHV2-2*02
-                                x-airr:
-                                    nullable: true
-                                    adc-query-support: true
+            type: object
+            description: Germline used for this data processing process
+            properties:
+                receptor_germline:
+                    $ref: '#/GermlineSet'
+                    description: Immune receptor germline set for this data processing process.
+                mhc_germline:
+                    $ref: '#/MHCGermlineSet'
+                    description: MHC germline set for this data processing process.
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
