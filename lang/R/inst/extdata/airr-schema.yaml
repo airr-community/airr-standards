@@ -234,6 +234,16 @@ Study:
                 set: 1
                 subset: study
                 name: Grant funding agency
+        study_contact:
+            type: string
+            description: >
+                Full contact information of the contact persons for this study This should include an e-mail address and a persistent identifier such as an ORCID ID.
+            title: Contact information (study)
+            example: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                name: Contact information (study)
         collected_by:
             type: string
             description: >
@@ -1442,7 +1452,7 @@ DataProcessing:
             default: false
             description: >
                 If true, indicates this is the primary or default data processing for
-                the repertoire and its rearrangments. If false, indicates this is a secondary
+                the repertoire and its rearrangements. If false, indicates this is a secondary
                 or additional data processing.
             title: Primary annotation
             x-airr:
@@ -1720,6 +1730,11 @@ Alignment:
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
                 but will usually be a universally unique record locator for database applications.
+            x-airr:
+                deprecated: true
+                deprecated-description: Field has been merged with sequence_id to avoid confusion.
+                deprecated-replaced-by:
+                    - sequence_id
         data_processing_id:
             type: string
             description: >
@@ -2454,7 +2469,7 @@ Rearrangement:
             type: string
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a univerally unique record locator for database applications.
+                but will usually be a universally unique record locator for database applications.
             x-airr:
                 deprecated: true
                 deprecated-description: Field has been merged with sequence_id to avoid confusion.

@@ -21,6 +21,7 @@ class TestRearrangementReader(unittest.TestCase):
         # Test data
         self.data_good = os.path.join(data_path, 'good_data.tsv')
         self.data_bad = os.path.join(data_path, 'bad_data.tsv')
+        self.data_extra = os.path.join(data_path, 'extra_data.tsv')
 
         # Start timer
         self.start = time.time()
@@ -47,8 +48,24 @@ class TestRearrangementReader(unittest.TestCase):
                 for r in reader:
                     pass
             self.assertFalse(True, 'validate(): bad data failed')
-        except:
+        except ValidationError:
             pass
+        except Exception as inst:
+            print(type(inst))
+            raise inst
+
+        # Extra data
+        try:
+            with open(self.data_extra, 'r') as handle:
+                reader = RearrangementReader(handle, validate=False)
+                for r in reader:
+                    pass
+            self.assertFalse(True, 'validate(): extra data failed')
+        except ValueError:
+            pass
+        except Exception as inst:
+            print(type(inst))
+            raise inst
 
 if __name__ == '__main__':
     unittest.main()
