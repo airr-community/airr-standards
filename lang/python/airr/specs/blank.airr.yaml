@@ -11,6 +11,7 @@ Repertoire:
         id: null
         label: null
       study_description: null
+      study_contact: null
       inclusion_exclusion_criteria: null
       lab_name: null
       lab_address: null
@@ -55,7 +56,7 @@ Repertoire:
         sample_type: null
         tissue:
           id: null
-          value: null
+          label: null
         anatomic_site: null
         disease_state_sample: null
         collection_time_point_relative: null

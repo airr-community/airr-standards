@@ -9,8 +9,9 @@ Repertoire:
       study_title: "Homo sapiens B and T cell repertoire - MZ twins"
       study_type:
         id: null
-        value: null
+        label: null
       study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
+      study_contact: "Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X"
       inclusion_exclusion_criteria: null
       lab_name: "Mark M. Davis"
       lab_address: "Stanford University"
@@ -26,13 +27,13 @@ Repertoire:
       synthetic: false
       species:
         id: "NCBITaxon_9606"
-        value: "Homo sapiens"
+        label: "Homo sapiens"
       sex: F
       age_min: 27
       age_max: 27
       age_unit:
         id: UO_0000036
-        value: year
+        label: year
       age_event: null
       ancestry_population: null
       ethnicity: null
@@ -44,7 +45,7 @@ Repertoire:
         - study_group_description: null
           disease_diagnosis:
             id: null
-            value: null
+            label: null
           disease_length: null
           disease_stage: null
           prior_therapies: null
@@ -58,15 +59,15 @@ Repertoire:
         sample_type: "peripheral venous puncture"
         tissue:
           id: "UBERON_0000178"
-          value: "blood"
+          label: "blood"
         tissue_processing: "Ficoll gradient"
         cell_subset:
           id: "CL_0000788"
-          value: "naive B cell"
+          label: "naive B cell"
         cell_phenotype: "expression of CD20 and the absence of CD27"
         cell_species:
           id: "NCBITaxon_9606"
-          value: "Homo sapiens"
+          label: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
         template_class: RNA
@@ -125,8 +126,9 @@ Repertoire:
       study_title: "Homo sapiens B and T cell repertoire - MZ twins"
       study_type:
         id: null
-        value: null
+        label: null
       study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
+      study_contact: "Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X"
       inclusion_exclusion_criteria: null
       lab_name: "Mark M. Davis"
       lab_address: "Stanford University"
@@ -142,13 +144,13 @@ Repertoire:
       synthetic: false
       species:
         id: "NCBITaxon_9606"
-        value: "Homo sapiens"
+        label: "Homo sapiens"
       sex: F
       age_min: 27
       age_max: 27
       age_unit:
         id: UO_0000036
-        value: year
+        label: year
       age_event: null
       ancestry_population: null
       ethnicity: null
@@ -160,7 +162,7 @@ Repertoire:
         - study_group_description: null
           disease_diagnosis:
             id: null
-            value: null
+            label: null
           disease_length: null
           disease_stage: null
           prior_therapies: null
@@ -174,15 +176,15 @@ Repertoire:
         sample_type: "peripheral venous puncture"
         tissue:
           id: "UBERON_0000178"
-          value: "blood"
+          label: "blood"
         tissue_processing: "Ficoll gradient"
         cell_subset:
           id: "CL_0000787"
-          value: "memory B cell"
+          label: "memory B cell"
         cell_phenotype: "expression of CD20 and CD27"
         cell_species:
           id: "NCBITaxon_9606"
-          value: "Homo sapiens"
+          label: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
         template_class: RNA
@@ -241,8 +243,9 @@ Repertoire:
       study_title: "Homo sapiens B and T cell repertoire - MZ twins"
       study_type:
         id: null
-        value: null
+        label: null
       study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
+      study_contact: "Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X"
       inclusion_exclusion_criteria: null
       lab_name: "Mark M. Davis"
       lab_address: "Stanford University"
@@ -258,13 +261,13 @@ Repertoire:
       synthetic: false
       species:
         id: "NCBITaxon_9606"
-        value: "Homo sapiens"
+        label: "Homo sapiens"
       sex: F
       age_min: 27
       age_max: 27
       age_unit:
         id: UO_0000036
-        value: year
+        label: year
       age_event: null
       ancestry_population: null
       ethnicity: null
@@ -276,7 +279,7 @@ Repertoire:
         - study_group_description: null
           disease_diagnosis:
             id: null
-            value: null
+            label: null
           disease_length: null
           disease_stage: null
           prior_therapies: null
@@ -290,15 +293,15 @@ Repertoire:
         sample_type: "peripheral venous puncture"
         tissue:
           id: "UBERON_0000178"
-          value: "blood"
+          label: "blood"
         tissue_processing: "Ficoll gradient"
         cell_subset:
           id: "CL_0000895"
-          value: "naive thymus-derived CD4-positive, alpha-beta T cell"
+          label: "naive thymus-derived CD4-positive, alpha-beta T cell"
         cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
         cell_species:
           id: "NCBITaxon_9606"
-          value: "Homo sapiens"
+          label: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
         template_class: RNA

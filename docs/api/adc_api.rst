@@ -656,8 +656,11 @@ A more complex query with multiple operators looks like this:
 
 Specifies the format of the API response. ``json`` is the default
 format and is available for all endpoints. The ``rearrangement``
-``POST`` endpoint also accepts ``tsv`` which will provide the data in the
-:ref:`AIRR TSV <TSVSpecification>` format.
+``POST`` endpoint also accepts ``tsv`` which will provide the data in
+the :ref:`AIRR TSV <TSVSpecification>` format. A specific ordering of
+fields in the TSV format should not be assumed from one API request to
+another. Take care to properly merge AIRR TSV data from multiple API
+requests, e.g. such as with the ``airr-tools merge`` program.
 
 **Fields Query Parameter**
 
@@ -848,22 +851,15 @@ in the AIRR Schema.
     * - locus, v_call, d_call, j_call, c_call, productive, junction_aa, junction_aa_length
       - Commonly used rearrangement annotations.
 
-**Repertoire/rearrangement object size**
-
-Any single repertoire or rearrangement object has a maximum that is typically dependent
-upon the back-end database which stores the data. For MongoDB-based data repositories, the
-largest object size is 16 megabytes.
-
-**Repertoire/rearrangement query size**
-
-For MongoDB-based data repositories, a query is a document thus the query size is limited
-to the maximum document size of 16 megabytes.
-
 **Data repository specific limits**
 
-A data repository may provide additional limits. These can be retrieved from the ``info``
-endpoint. If the data repository does not provide a limit, then the ADC API default limit or
-no limit is assumed.
+A data repository may impose limits on the size of the data returned. This might be because of limitations imposed by
+the back-end database being used or because of the need to manage the load placed on the server. For example, 
+MongoDB databases have document size limits (16 megabytes) which limit the size of a query that can be sent to a 
+repository and the size of a single repertoire or rearrangement object that is returned. As a result a repository might
+choose to set a maximum query size.
+
+Size limits can be retrieved from the ``info`` endpoint. If the data repository does not provide a limit, then no limit is assumed.
 
 .. list-table::
     :widths: auto
@@ -872,7 +868,7 @@ no limit is assumed.
     * - Field
       - Description
     * - ``max_size``
-      - The maximum value for the ``size`` query parameter. Attempting to retrieve beyond this maximum may trigger an error or may only return ``max_size`` records based upon the data repository behavior.
+      - The maximum value for the ``size`` query parameter. Attempting to retrieve data beyond this maximum should trigger an error response. The error response should include information about why the query failed and what the maximum size limit is. 
     * - ``max_query_size``
       - The maximum size of the JSON query object.
 

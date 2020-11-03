@@ -1,3 +1,5 @@
+.. _ADCRepos:
+
 AIRR Data Commons Repositories
 ---------------------------------------
 
