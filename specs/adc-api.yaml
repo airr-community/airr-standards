@@ -300,6 +300,8 @@ paths:
                   - miairr
                   - airr-core
                   - airr-schema
+              facets:
+                type: string
       operationId: queryRepertoires
       responses:
         '200':
@@ -386,6 +388,8 @@ paths:
                   - miairr
                   - airr-core
                   - airr-schema
+              facets:
+                type: string
       operationId: queryRearrangements
       responses:
         '200':
@@ -472,6 +476,8 @@ paths:
                   - miairr
                   - airr-core
                   - airr-schema
+              facets:
+                type: string
       operationId: queryClones
       responses:
         '200':
@@ -559,6 +565,8 @@ paths:
                   - miairr
                   - airr-core
                   - airr-schema
+              facets:
+                type: string
       operationId: queryCells
       responses:
         '200':
