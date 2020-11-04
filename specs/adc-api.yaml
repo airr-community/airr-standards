@@ -138,6 +138,32 @@ definitions:
       Facet:
         $ref: '#/definitions/facet_list'
 
+  # list of cell annotations
+  cell_list:
+    type: array
+    items:
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.3.0/specs/airr-schema.yaml#/Cell'
+
+  # The response object /cell/{cell_id} endpoint
+  cell_id_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Cell:
+        $ref: '#/definitions/cell_list'
+
+  # The response object /cell endpoint
+  cell_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Cell:
+        $ref: '#/definitions/cell_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
+
   # error response
   error_response:
     type: object
@@ -274,6 +300,8 @@ paths:
                   - miairr
                   - airr-core
                   - airr-schema
+              facets:
+                type: string
       operationId: queryRepertoires
       responses:
         '200':
@@ -360,6 +388,8 @@ paths:
                   - miairr
                   - airr-core
                   - airr-schema
+              facets:
+                type: string
       operationId: queryRearrangements
       responses:
         '200':
@@ -446,6 +476,8 @@ paths:
                   - miairr
                   - airr-core
                   - airr-schema
+              facets:
+                type: string
       operationId: queryClones
       responses:
         '200':
@@ -453,6 +485,95 @@ paths:
             A successful call returns an array of clone annotation data.
           schema:
             $ref: '#/definitions/clone_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+
+  /cell/{cell_id}:
+    x-swagger-router-controller: cell
+    get:
+      description: >
+        Returns a cell based upon its identifier.
+      tags:
+        - cells
+      consumes:
+        - application/x-www-form-urlencoded
+        - application/json
+        - application/octet-stream
+      produces:
+        - application/json
+      parameters:
+        - name: cell_id
+          in: path
+          description: ID of cell to return
+          required: true
+          type: string
+      operationId: getCell
+      responses:
+        '200':
+          description: >
+            A successful call returns the cell annotation data.
+          schema:
+            $ref: '#/definitions/cell_id_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /cell:
+    x-swagger-router-controller: cell
+    post:
+      description: >
+        This query service returns cell annotation data.
+      tags:
+        - cells
+      parameters:
+        - in: body
+          name: data
+          schema:
+            type: object
+            properties:
+              filters:
+                type: object
+              format:
+                type: string
+                default: json
+                enum:
+                  - json
+                  - tsv
+              fields:
+                type: array
+                items:
+                  type: string
+              size:
+                type: integer
+              from:
+                type: integer
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
+              facets:
+                type: string
+      operationId: queryCells
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of cell annotation data.
+          schema:
+            $ref: '#/definitions/cell_response'
         '400':
           description: Invalid request
           schema:
