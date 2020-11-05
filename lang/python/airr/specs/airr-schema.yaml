@@ -4,7 +4,7 @@
 Info:
     title: AIRR Schema
     description: Schema definitions for AIRR standards objects
-    version: "1.3"
+    version: "1.4"
     contact:
         name: AIRR Community
         url: https://github.com/airr-community
@@ -848,6 +848,7 @@ Sample:
         - anatomic_site
         - disease_state_sample
         - collection_time_point_relative
+        - collection_time_point_relative_unit
         - collection_time_point_reference
         - biomaterial_provider
     properties:
@@ -920,10 +921,10 @@ Sample:
                 subset: sample
                 name: Disease state of sample
         collection_time_point_relative:
-            type: string
+            type: number
             description: Time point at which sample was taken, relative to `Collection time event`
             title: Sample collection time
-            example: "14 d"
+            example: "14"
             x-airr:
                 miairr: important
                 nullable: true
@@ -931,7 +932,26 @@ Sample:
                 set: 2
                 subset: sample
                 name: Sample collection time
-                format: physical quantity
+        collection_time_point_relative_unit:
+            $ref: '#/Ontology'
+            description: Unit of Sample collection time
+            title: Sample collection time unit
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Sample collection time unit
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
         collection_time_point_reference:
             type: string
             description: Event in the study schedule to which `Sample collection time` relates to
@@ -1196,6 +1216,7 @@ NucleicAcidProcessing:
         - template_class
         - template_quality
         - template_amount
+        - template_amount_unit
         - library_generation_method
         - library_generation_protocol
         - library_generation_kit_version
@@ -1232,10 +1253,10 @@ NucleicAcidProcessing:
                 subset: process (nucleic acid)
                 name: Target substrate quality
         template_amount:
-            type: string
+            type: number
             description: Amount of template that went into the process
             title: Template amount
-            example: 1000 ng
+            example: 1000
             x-airr:
                 miairr: important
                 nullable: true
@@ -1243,7 +1264,26 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Template amount
-                format: physical quantity
+        template_amount_unit:
+            $ref: '#/Ontology'
+            description: Unit of template amount
+            title:  Template amount time unit
+            example:
+                id: UO:0000024
+                label: nanogram
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid)
+                name: Template amount time unit
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000002
+                        label:  physical quantity
         library_generation_method:
             type: string
             enum:
