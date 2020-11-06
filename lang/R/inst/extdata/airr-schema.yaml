@@ -4,7 +4,7 @@
 Info:
     title: AIRR Schema
     description: Schema definitions for AIRR standards objects
-    version: "1.3"
+    version: "1.4"
     contact:
         name: AIRR Community
         url: https://github.com/airr-community
@@ -139,6 +139,136 @@ Attributes:
                             type: string
                             description: Ontology name for the top node term
 
+#
+# Germline gene schema
+#
+# The GeneDescription object will be introduced at a later point here. Until
+# then the term "gene description" below can be considered to be equivalent
+# to "gene symbol".
+#
+# Gene descriptions from the same class organized together as a set
+GermlineClassSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        germline_class_id:
+            type: string
+            description: A unique identifier for this Germline Class Set.
+        germline_class:
+            type: string
+            enum:
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
+            example: IGH
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary
+        germline_alleles:
+            type: array
+            description: Array of gene descriptions
+            items:
+                type: string
+                description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
+                x-airr:
+                    nullable: true
+                    adc-query-support: true
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        germline_process:
+            type: string
+            enum:
+                - genomic_sequencing
+                - repertoire_sequencing
+            description: Information on how the germline was acquired. Controlled vocabulary.
+            title: Germline acquisition process
+            example: repertoire_sequencing
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary
+
+# List of germline class sets used for analysis or to describe
+# a subject's genotype
+GermlineSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        germline_set_id:
+            type: string
+            description: A unique identifier for this Germline Set.
+        germline_class_list:
+            description: List of classes included in this germline set.
+            type: array
+            items:
+                $ref: '#/GermlineClassSet'
+
+MHCGermlineClassSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        germline_class_id:
+            type: string
+            description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
+        germline_class:
+            type: string
+            enum:
+              - MHC
+            example: MHC
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary
+        germline_alleles:
+            type: array
+            description: Array of gene descriptions
+            items:
+                type: string
+                description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., HLA‐C*07:29).
+                x-airr:
+                    nullable: true
+                    adc-query-support: true
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        germline_process:
+            type: string
+            enum:
+                - genomic_sequencing
+                - repertoire_sequencing
+            description: Information on how the germline was acquired. Controlled vocabulary.
+            title: Germline acquisition process
+            example: repertoire_sequencing
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: controlled vocabulary
+
+# List of germline class sets used for analysis or to describe
+# a subject's genotype
+MHCGermlineSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        germline_set_id:
+            type: string
+            description: A unique identifier for this Germline Set.
+        germline_class_list:
+            description: List of classes included in this germline set.
+            type: array
+            items:
+                $ref: '#/MHCGermlineClassSet'
+
+#
+# Repertoire metadata schema
+#
 
 # The overall study with a globally unique study_id
 Study:
@@ -234,6 +364,16 @@ Study:
                 set: 1
                 subset: study
                 name: Grant funding agency
+        study_contact:
+            type: string
+            description: >
+                Full contact information of the contact persons for this study This should include an e-mail address and a persistent identifier such as an ORCID ID.
+            title: Contact information (study)
+            example: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                name: Contact information (study)
         collected_by:
             type: string
             description: >
@@ -320,6 +460,7 @@ Study:
                 subset: study
                 name: Keywords for study
                 format: controlled vocabulary
+
 
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
@@ -564,6 +705,16 @@ Subject:
             x-airr:
                 nullable: false
                 adc-query-support: true
+        germline:
+            type: object
+            description: Germline for this subject, if known, by germline class.
+            properties:
+                receptor_germline:
+                    $ref: '#/GermlineSet'
+                    description: Immune receptor germline set for this subject.
+                mhc_germline:
+                    $ref: '#/MHCGermlineSet'
+                    description: MHC germline set for this subject.
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
@@ -697,6 +848,7 @@ Sample:
         - anatomic_site
         - disease_state_sample
         - collection_time_point_relative
+        - collection_time_point_relative_unit
         - collection_time_point_reference
         - biomaterial_provider
     properties:
@@ -769,10 +921,10 @@ Sample:
                 subset: sample
                 name: Disease state of sample
         collection_time_point_relative:
-            type: string
+            type: number
             description: Time point at which sample was taken, relative to `Collection time event`
             title: Sample collection time
-            example: "14 d"
+            example: "14"
             x-airr:
                 miairr: important
                 nullable: true
@@ -780,7 +932,26 @@ Sample:
                 set: 2
                 subset: sample
                 name: Sample collection time
-                format: physical quantity
+        collection_time_point_relative_unit:
+            $ref: '#/Ontology'
+            description: Unit of Sample collection time
+            title: Sample collection time unit
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Sample collection time unit
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
         collection_time_point_reference:
             type: string
             description: Event in the study schedule to which `Sample collection time` relates to
@@ -1045,6 +1216,7 @@ NucleicAcidProcessing:
         - template_class
         - template_quality
         - template_amount
+        - template_amount_unit
         - library_generation_method
         - library_generation_protocol
         - library_generation_kit_version
@@ -1081,10 +1253,10 @@ NucleicAcidProcessing:
                 subset: process (nucleic acid)
                 name: Target substrate quality
         template_amount:
-            type: string
+            type: number
             description: Amount of template that went into the process
             title: Template amount
-            example: 1000 ng
+            example: 1000
             x-airr:
                 miairr: important
                 nullable: true
@@ -1092,7 +1264,26 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Template amount
-                format: physical quantity
+        template_amount_unit:
+            $ref: '#/Ontology'
+            description: Unit of template amount
+            title:  Template amount time unit
+            example:
+                id: UO:0000024
+                label: nanogram
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid)
+                name: Template amount time unit
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000002
+                        label:  physical quantity
         library_generation_method:
             type: string
             enum:
@@ -1535,6 +1726,16 @@ DataProcessing:
                 nullable: true
                 adc-query-support: true
                 name: Processed data file names
+        data_processing_germline:
+            type: object
+            description: Germline used for this data processing process
+            properties:
+                receptor_germline:
+                    $ref: '#/GermlineSet'
+                    description: Immune receptor germline set for this data processing process.
+                mhc_germline:
+                    $ref: '#/MHCGermlineSet'
+                    description: MHC germline set for this data processing process.
         germline_database:
             type: string
             description: Source of germline V(D)J genes with version number or date accessed.
@@ -2756,10 +2957,10 @@ Cell:
                            standardized designation of the transcript or epitope
                         example: CD27
                     expression_value:
-                        type: integer
+                        type: number
                         description: >
                            transformed and normalized expression level.
-                        example: 14567
+                        example: 14567.30
         virtual_pairing:
             type: boolean
             description: >
