@@ -2108,7 +2108,7 @@ Rearrangement:
         quality_alignment:
             type: string
             description: >
-                The Sanger/Phred quality scores for assessment of sequence_alignment quality.
+                Sanger/Phred quality scores for assessment of sequence_alignment quality.
                 Phred quality scores from 0 to 93 are encoded using ASCII 33 to 126 (Used by Illumina from v1.8.)
         sequence_alignment_aa:
             type: string
