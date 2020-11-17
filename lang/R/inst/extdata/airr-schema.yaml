@@ -1979,6 +1979,11 @@ Rearrangement:
                 The query nucleotide sequence. Usually, this is the unmodified input sequence, which may be
                 reverse complemented if necessary. In some cases, this field may contain consensus sequences or
                 other types of collapsed input sequences if these steps are performed prior to alignment.
+        quality:
+            type: string
+            description: >
+                The Sanger/Phred quality scores for assessment of sequence quality.
+                Phred quality scores from 0 to 93 are encoded using ASCII 33 to 126 (Used by Illumina from v1.8.)
         sequence_aa:
             type: string
             description: >
@@ -2100,6 +2105,11 @@ Rearrangement:
                 Aligned portion of query sequence, including any indel corrections or numbering spacers,
                 such as IMGT-gaps. Typically, this will include only the V(D)J region, but that is not
                 a requirement.
+        quality_alignment:
+            type: string
+            description: >
+                Sanger/Phred quality scores for assessment of sequence_alignment quality.
+                Phred quality scores from 0 to 93 are encoded using ASCII 33 to 126 (Used by Illumina from v1.8.)
         sequence_alignment_aa:
             type: string
             description: >
