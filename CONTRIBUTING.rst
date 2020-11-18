@@ -145,13 +145,37 @@ when it is needed.
 Public Releases
 ---------------
 
-To provide a public release of the airr-standards library, perform the
-following checklist:
+Public releases of the airr-standards API packages, schema, and documentation
+require the following steps to be performed:
 
--  Tag the repository
--  Generate the release on github
--  Upload python library to PyPI
--  Upload R library to CRAN
+- Update the release notes contained in the NEWS files within the standards
+  documentation (``docs/standards/news.rst``), python package (``lang/python/NEWS.rst``),
+  and R package (``lang/R/NEWS.md``).
+- Update the date and version in ``lang/R/DESCRIPTION``.
+- Run R CMD check on the R package using the options: ``--as-cran --run-donttest``.
+- Rebuild the R package documentation for the ReadTheDocs site using the
+  ``lang/R/docs/build.R`` script.
+- Build the R source package and test it on http://win-builder.r-project.org before submitting to CRAN.
+- Test the upload/download of the python package on https://test.pypi.org.
+- Submit the R package to CRAN and wait for approval.
+  Repeat the R package steps as needed until approved by CRAN.
+- Tag the repository with the version number.
+- Generate the release on GitHub.
+- Verify that ReadTheDocs automatically builds the documentation site correctly.
+- Upload the python package to PyPI.
+
+Note, the order of these steps must be more or less as described above.  Some deviation is okay,
+but the following are essential:
+
+- The release should only be tagged after all release notes and other documentation
+  have been finalized. The default documentation that users see on ReadTheDocs will
+  be built from the newest numerical version tag and will not included changes made after the
+  version tag.
+- The release should not be tagged until after CRAN has accepted the R package.
+  CRAN has a tendency not to accept an initial submission and require changes.
+- The repository must be tagged prior to uploading the python package to PyPI.
+  Versioneer is used for annotating the version number of the python package and it
+  uses the tag list of the git repository to do so.
 
 Field Deprecation
 -----------------

@@ -11,6 +11,7 @@ Repertoire:
         id: null
         label: null
       study_description: null
+      study_contact: null
       inclusion_exclusion_criteria: null
       lab_name: null
       lab_address: null
@@ -55,10 +56,13 @@ Repertoire:
         sample_type: null
         tissue:
           id: null
-          value: null
+          label: null
         anatomic_site: null
         disease_state_sample: null
         collection_time_point_relative: null
+        collection_time_point_relative_unit:
+          id: null
+          label: null
         collection_time_point_reference: null
         biomaterial_provider: null
         # cell processing
@@ -81,6 +85,9 @@ Repertoire:
         template_class: ""
         template_quality: null
         template_amount: null
+        template_amount_unit:
+          id: null
+          label: null
         library_generation_method: ""
         library_generation_protocol: null
         library_generation_kit_version: null
