@@ -2870,3 +2870,16 @@ Cell:
                 nullable: false
                 adc-query-support: true
                 name: Cell index
+        rearrangements:
+            type: array
+            description: >
+                  Array of sequence identifiers defined for the Rearrangement object
+            title: Cell-associated rearrangements
+            items:
+                type: string
+            example: [id1, id2] #empty vs NULL?
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                name: Cell-associated rearrangements
