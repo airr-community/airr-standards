@@ -2857,7 +2857,7 @@ Cell:
     discriminator: AIRR
     type: object
     required:
-        - cell_id #redefined cell_id > how to centralize it in the yaml
+        - cell_id
         - rearrangements
         - repertoire_id
         - virtual_pairing
@@ -2880,7 +2880,7 @@ Cell:
             title: Cell-associated rearrangements
             items:
                 type: string
-            example: [id1, id2] #empty vs NULL?
+            example: [id1, id2]
             x-airr:
                 miairr: defined
                 nullable: true
@@ -2893,7 +2893,7 @@ Cell:
             title: Cell-associated receptors
             items:
                 type: string
-            example: [id1, id2] #empty vs NULL?
+            example: [id1, id2]
             x-airr:
                 miairr: defined
                 nullable: true
@@ -2968,6 +2968,6 @@ Cell:
             title: Virtual pairing
             x-airr:
                 miairr: defined
-                nullable: true # assuming only done for sc experiments, otherwise does not exist
+                nullable: true
                 adc-query-support: true
                 name: Virtual pairing
