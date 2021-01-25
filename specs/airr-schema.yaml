@@ -2857,10 +2857,8 @@ Cell:
     discriminator: AIRR
     type: object
     required:
-        - cell_id
-        - rearrangements
-        - repertoire_id
-        - virtual_pairing
+        - clone_id
     properties:
-        cell_id:
+        clone_id:
             type: string
+            description: Identifier for the clone.
