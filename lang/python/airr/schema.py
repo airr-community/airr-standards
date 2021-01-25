@@ -106,20 +106,24 @@ class Schema:
         field_type = field_spec.get('type', None) if field_spec else None
         return field_type
 
-    # import numpy as np
-    # def numpy_types(self):
-    #     type_mapping = {}
-    #     for property in self.properties:
-    #         if self.type(property) == 'boolean':
-    #             type_mapping[property] = np.bool
-    #         elif self.type(property) == 'integer':
-    #             type_mapping[property] = np.int64
-    #         elif self.type(property) == 'number':
-    #             type_mapping[property] = np.float64
-    #         elif self.type(property) == 'string':
-    #             type_mapping[property] = np.unicode_
-    #
-    #     return type_mapping
+    def pandas_types(self):
+        """
+
+        Returns:
+          dict: mapping dictionary for pandas types
+        """
+        type_mapping = {}
+        for property in self.properties:
+            if self.type(property) == 'boolean':
+                type_mapping[property] = bool
+            elif self.type(property) == 'integer':
+                type_mapping[property] = 'Int64'
+            elif self.type(property) == 'number':
+                type_mapping[property] = 'float64'
+            elif self.type(property) == 'string':
+                type_mapping[property] = str
+
+        return type_mapping
 
     def to_bool(self, value, validate=False):
         """
