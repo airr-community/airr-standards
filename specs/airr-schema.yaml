@@ -2883,3 +2883,34 @@ Cell:
                 nullable: true
                 adc-query-support: true
                 name: Cell-associated rearrangements
+        receptors:
+            type: array
+            description: >
+                  Array of receptor identifiers defined for the Receptor object
+            title: Cell-associated receptors
+            items:
+                type: string
+            example: [id1, id2] #empty vs NULL?
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                name: Cell-associated receptors
+        repertoire_id:
+            type: string
+            description: Identifier to the associated repertoire in study metadata.
+            title: Parental repertoire of cell
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                name: Parental repertoire of cell
+        data_processing_id:
+            type: string
+            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            title: Data processing for cell
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                name: Data processing for cell
