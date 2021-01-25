@@ -83,7 +83,7 @@ def load_rearrangement(filename, validate=False, debug=False):
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
-      pandas.DataFrame: ReaRearrangementReaderrrangement records as rows of a data frame.
+      pandas.DataFrame: ReaRearrangementReader records as rows of a data frame.
     """
     # TODO: test pandas.DataFrame.read_csv with converters argument as an alterative
     schema = RearrangementSchema
