@@ -2858,6 +2858,8 @@ Cell:
     type: object
     required:
         - cell_id
+        - rearrangements
+        - repertoire_id
     properties:
         cell_id:
             type: string
@@ -2914,3 +2916,30 @@ Cell:
                 nullable: true
                 adc-query-support: true
                 name: Data processing for cell
+        expression_study_method:
+            type: string
+            enum:
+                flow cytometry
+                single-cell transcriptome
+            description: >
+                  keyword describing the methodology used to assess expression. This values for this field MUST come from a controlled vocabulary
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        expression_raw_doi:
+            type: string
+            description: >
+                  DOI of raw data set containing the current event
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        expression_index:
+            type: string
+            description: >
+                  Index addressing the current event within the raw data set.
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
