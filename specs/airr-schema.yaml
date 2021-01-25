@@ -2857,8 +2857,16 @@ Cell:
     discriminator: AIRR
     type: object
     required:
-        - clone_id
+        - cell_id
     properties:
-        clone_id:
+        cell_id:
             type: string
-            description: Identifier for the clone.
+            description: >
+                Identifier defining the cell of origin for the query sequence.
+            title: Cell index
+            example: W06_046_091
+            x-airr:
+                miairr: defined
+                nullable: false
+                adc-query-support: true
+                name: Cell index
