@@ -12,7 +12,7 @@ from pkg_resources import resource_filename
 import json
 import yaml
 import yamlordereddictloader
-from io import open
+from io import open, StringIO
 
 # Load imports
 from airr.io import RearrangementReader, RearrangementWriter
@@ -83,17 +83,26 @@ def load_rearrangement(filename, validate=False, debug=False):
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
-      pandas.DataFrame: Rearrangement records as rows of a data frame.
+      pandas.DataFrame: ReaRearrangementReaderrrangement records as rows of a data frame.
     """
     # TODO: test pandas.DataFrame.read_csv with converters argument as an alterative
-    # schema = RearrangementSchema
-    # df = pd.read_csv(handle, sep='\t', header=0, index_col=None,
-    #                  dtype=schema.numpy_types(), true_values=schema.true_values,
-    #                  false_values=schema.true_values)
-    # return df
-    with open(filename, 'r') as handle:
-        reader = RearrangementReader(handle, validate=validate, debug=debug)
-        df = pd.DataFrame(list(reader))
+    schema = RearrangementSchema
+
+    # fails if [True, False] in schema.true|false_values
+    false_values_t = [x for x in schema.false_values if x != False]
+    true_values_t = [x for x in schema.true_values if x != True]
+
+    df = pd.read_csv(filename, sep='\t', header=0, index_col=None,
+                     dtype=schema.pandas_types(), true_values=true_values_t,
+                     false_values=false_values_t)
+    # added to use RearrangementReader without modifying it:
+    buffer = StringIO()  # create an empty buffer
+    df.to_csv(buffer, sep='\t', index=False)  # fill buffer
+    buffer.seek(0)  # set to the start of the stream
+
+    reader = RearrangementReader(buffer, validate=validate, debug=debug)
+
+    df = pd.DataFrame(list(reader))
     return df
 
 
