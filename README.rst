@@ -89,8 +89,8 @@ contributing changes.
 Build Status, Issues and Archive
 ================================
 
-.. image:: https://travis-ci.org/airr-community/airr-standards.svg?branch=master
-   :target: https://travis-ci.org/airr-community/airr-standards
+.. image:: https://travis-ci.com/airr-community/airr-standards.svg?branch=master
+   :target: https://travis-ci.com/airr-community/airr-standards
 
 Please report problems, bugs, comments or enhancement requests using
 the `issue tracker`_. Official releases are archived and DOI referenced
