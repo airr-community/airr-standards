@@ -1965,7 +1965,7 @@ Rearrangement:
         sequence_id:
             type: string
             description: >
-                Unique query sequence identifier for the Rearrangment. Most often this will be the input sequence
+                Unique query sequence identifier for the Rearrangement. Most often this will be the input sequence
                 header or a substring thereof, but may also be a custom identifier defined by the tool in
                 cases where query sequences have been combined in some fashion prior to alignment. When
                 downloaded from an AIRR Data Commons repository, this will usually be a universally unique
@@ -1979,6 +1979,11 @@ Rearrangement:
                 The query nucleotide sequence. Usually, this is the unmodified input sequence, which may be
                 reverse complemented if necessary. In some cases, this field may contain consensus sequences or
                 other types of collapsed input sequences if these steps are performed prior to alignment.
+        quality:
+            type: string
+            description: >
+                The Sanger/Phred quality scores for assessment of sequence quality.
+                Phred quality scores from 0 to 93 are encoded using ASCII 33 to 126 (Used by Illumina from v1.8.)
         sequence_aa:
             type: string
             description: >
@@ -2100,6 +2105,11 @@ Rearrangement:
                 Aligned portion of query sequence, including any indel corrections or numbering spacers,
                 such as IMGT-gaps. Typically, this will include only the V(D)J region, but that is not
                 a requirement.
+        quality_alignment:
+            type: string
+            description: >
+                Sanger/Phred quality scores for assessment of sequence_alignment quality.
+                Phred quality scores from 0 to 93 are encoded using ASCII 33 to 126 (Used by Illumina from v1.8.)
         sequence_alignment_aa:
             type: string
             description: >
@@ -2920,8 +2930,8 @@ Cell:
         expression_study_method:
             type: string
             enum:
-                flow cytometry
-                single-cell transcriptome
+                - "flow cytometry"
+                - "single-cell transcriptome"
             description: >
                   keyword describing the methodology used to assess expression. This values for this field MUST come from a controlled vocabulary
             x-airr:
