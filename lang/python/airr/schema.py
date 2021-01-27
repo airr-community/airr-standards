@@ -29,12 +29,12 @@ class Schema:
       true_values (list): accepted values for True.
     """
     # Boolean list for pandas
-    true_values = ['True', 'true', 'TRUE', 'T', 't', '1', 1, True]
-    false_values = ['False', 'false', 'FALSE', 'F', 'f', '0', 0, False]
+    true_values = ['True', 'true', 'TRUE', 'T', 't', '1']
+    false_values = ['False', 'false', 'FALSE', 'F', 'f', '0']
 
     # Generate dicts for booleans
-    _to_bool_map = {x: True for x in true_values}
-    _to_bool_map.update({x: False for x in false_values})
+    _to_bool_map = {x: True for x in true_values + [1, True]}
+    _to_bool_map.update({x: False for x in false_values + [0, False]})
     _from_bool_map = {k: 'T' if v else 'F' for k, v in _to_bool_map.items()}
       
     def __init__(self, definition):

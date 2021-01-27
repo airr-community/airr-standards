@@ -12,7 +12,12 @@ from pkg_resources import resource_filename
 import json
 import yaml
 import yamlordereddictloader
-from io import open, StringIO
+from io import open
+try:
+    from io import StringIO
+except ImportError: # for Python 2.7
+    from io import BytesIO as StringIO
+
 
 # Load imports
 from airr.io import RearrangementReader, RearrangementWriter
@@ -88,13 +93,9 @@ def load_rearrangement(filename, validate=False, debug=False):
     # TODO: test pandas.DataFrame.read_csv with converters argument as an alterative
     schema = RearrangementSchema
 
-    # fails if [True, False] in schema.true|false_values
-    false_values_t = [x for x in schema.false_values if x != False]
-    true_values_t = [x for x in schema.true_values if x != True]
-
     df = pd.read_csv(filename, sep='\t', header=0, index_col=None,
-                     dtype=schema.pandas_types(), true_values=true_values_t,
-                     false_values=false_values_t)
+                     dtype=schema.pandas_types(), true_values=schema.true_values,
+                     false_values=schema.false_values)
     # added to use RearrangementReader without modifying it:
     buffer = StringIO()  # create an empty buffer
     df.to_csv(buffer, sep='\t', index=False)  # fill buffer
