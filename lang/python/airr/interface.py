@@ -13,9 +13,10 @@ import json
 import yaml
 import yamlordereddictloader
 from io import open
-try:
+
+if (sys.version_info > (3, 0)):
     from io import StringIO
-except ImportError: # for Python 2.7
+else: # Python 2 code in this block
     from io import BytesIO as StringIO
 
 
