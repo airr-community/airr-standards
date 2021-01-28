@@ -1,0 +1,237 @@
+openapi: '3.0.0'
+
+info:
+  title: AIRR Data Commons API Extension for Asynchronous Queries
+  version: 1.0.0
+  contact:
+    name: AIRR Community
+    url: 'http://www.airr-community.org/'
+    email: join@airr-community.org
+  description: >
+    Extension API for Major Version 1 of the AIRR Data Commons API that
+    provides asynchronous query capability.
+  license:
+    name: Creative Commons Attribution 4.0 International
+    url: https://creativecommons.org/licenses/by/4.0/
+
+servers:
+  - url: https://vdjserver.org/airr/async/v1
+    description: VDJServer ADC API Extension for Asynchronous Queries
+    variables:
+      basePath:
+        default: /airr/async/v1
+
+components:
+  schemas:
+    # Info object
+    info_object:
+      type: object
+      description: Provides information about the API response
+      properties:
+        title:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        contact: 
+          type: object
+          properties:
+            name:
+              type: string
+            url:
+              type: string
+            email:
+              type: string
+        license:
+          type: object
+          properties:
+            name:
+              type: string
+            url:
+              type: string
+
+    # Service info object. This is the object returned by the /info request,
+    # and provides information about the ADC repository service and its attributes and capabilities
+    service_info_object:
+      description: Provides information about the ADC repository service and it attributes and capabilities.
+      allOf:
+        - $ref: '#/components/schemas/info_object'
+        - type: object
+          properties:
+            attributes:
+              type: object
+              properties:
+                max_size:
+                  type: integer
+                max_query_size:
+                  type: integer
+                last_update:
+                  type: string
+            api:
+              $ref: '#/components/schemas/info_object'
+            schema:
+              $ref: '#/components/schemas/info_object'
+
+    # POST query request
+    query_object:
+      description: Query filter and associated parameters for POST end points
+      type: object
+      properties:
+        filters:
+          type: object
+        format:
+          type: string
+          default: json
+          enum:
+            - json
+        fields:
+          type: array
+          items:
+            type: string
+        size:
+          type: integer
+        from:
+          type: integer
+        include_fields:
+          type: string
+          enum:
+            - miairr
+            - airr-core
+            - airr-schema
+
+    # The response object for /status
+    query_status_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+
+    # error response
+    error_response:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Detail about the error
+
+paths:
+  /:
+    get:
+      description: Service heartbeat.
+      operationId: get_service_status
+      responses:
+        '200':
+          description: Service is up.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /info:
+    get:
+      description: Service information.
+      operationId: get_info
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service_info_object'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /status/{query_id}:
+    get:
+      description: >
+        Returns the status of the asynchronous query request based upon its identifier.
+      operationId: get_query_status
+      tags:
+        - async
+      parameters:
+        - name: query_id
+          in: path
+          description: ID of asynchronous query request
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |
+            A successful call returns the status of the asynchronous query request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/query_status_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /{endpoint_name}:
+    post:
+      description: >
+        Asynchronous query service on specified object.
+      operationId: async_query
+      tags:
+        - async
+      parameters:
+        - name: endpoint_name
+          in: path
+          description: Endpoint name for object in AIRR Data Model
+          required: true
+          schema:
+            type: string
+            enum:
+              - repertoire
+              - rearrangement
+              - clone
+              - cell
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/query_object'
+      responses:
+        '200':
+          description: |
+            A successful call initiates the asynchronous query request and returns its identifier and status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/query_status_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
