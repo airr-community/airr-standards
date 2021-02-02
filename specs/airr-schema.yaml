@@ -1758,20 +1758,25 @@ DataProcessing:
 
 SampleProcessing:
     discriminator: AIRR
-    type: object
-    properties:
-        sample_processing_id:
-            type: string
-            description: >
-                Identifier for the sample processing object. This field should be unique within the repertoire.
-                This field can be used to uniquely identify the combination of sample, cell processing,
-                nucleic acid processing and sequencing run information for the repertoire.
-            title: Sample processing ID
-            x-airr:
-                nullable: true
-                name: Sample processing ID
-                adc-query-support: true
-                identifier: true
+    allOf:
+        - type: object
+            properties:
+                sample_processing_id:
+                    type: string
+                    description: >
+                        Identifier for the sample processing object. This field should be unique within the repertoire.
+                        This field can be used to uniquely identify the combination of sample, cell processing,
+                        nucleic acid processing and sequencing run information for the repertoire.
+                    title: Sample processing ID
+                    x-airr:
+                        nullable: true
+                        name: Sample processing ID
+                        adc-query-support: true
+                        identifier: true
+        - $ref: '#/Sample'
+        - $ref: '#/CellProcessing'
+        - $ref: '#/NucleicAcidProcessing'
+        - $ref: '#/SequencingRun'
 
 
 # The composite schema for the repertoire object
@@ -1832,12 +1837,7 @@ Repertoire:
             type: array
             description: List of Sample objects
             items:
-                allOf:
-                    - $ref: '#/SampleProcessing'
-                    - $ref: '#/Sample'
-                    - $ref: '#/CellProcessing'
-                    - $ref: '#/NucleicAcidProcessing'
-                    - $ref: '#/SequencingRun'
+                $ref: '#/SampleProcessing'
             x-airr:
                 nullable: false
                 adc-query-support: true
