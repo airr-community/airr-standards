@@ -1835,7 +1835,7 @@ Repertoire:
                 adc-query-support: true
         sample:
             type: array
-            description: List of Sample objects
+            description: List of Sample Processing objects
             items:
                 $ref: '#/SampleProcessing'
             x-airr:
