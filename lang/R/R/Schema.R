@@ -63,6 +63,37 @@ setMethod("$",
 
 #### Schema I/O ####
 
+
+
+# Function to extract entries from individual fields
+
+extract_field_content <- function(properties, field) {
+    
+    types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="double", "array"="array")
+    
+    # if there is a reference to another AIRR schema elements, call the reference entries
+    if(!is.null(properties[[field]]$`$ref`)) {
+        # name of the AIRR scheme element to refer to
+        ref_element <- properties[[field]]$`$ref`
+        # remove #/
+        ref_element <- substr(ref_element, 3, nchar(ref_element))
+        ref_schema <- load_schema(ref_element)
+        # overwrite the property of the field with the Schema it is referencing to
+        properties[[field]][["ref"]] <- ref_schema
+    }
+    
+    x <- properties[[field]][["type"]]
+    y <- properties[[field]][["description"]]
+    properties[[field]][["type"]] <- unname(types[x])
+    properties[[field]][["description"]] <- stri_trim(y) 
+    
+    return(properties)
+}
+
+
+
+
+
 #' Load a schema definition
 #' 
 #' \code{load_schema} loads an AIRR object definition from the internal
@@ -117,12 +148,11 @@ load_schema <- function(definition) {
     optional <- setdiff(fields, required)
     
     # Rename type and clean description
-    types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="double")
+    types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="double", "array"="array")
+    
     for (f in fields) {
-        x <- properties[[f]][["type"]]
-        y <- properties[[f]][["description"]]
-        properties[[f]][["type"]] <- unname(types[x])
-        properties[[f]][["description"]] <- stri_trim(y)
+        # if there is a reference to another AIRR schema elements, call the reference entries
+        properties <- extract_field_content(properties, field)
     }
     
     return(new("Schema", required=required, optional=optional, properties=properties, info=info))
@@ -157,3 +187,8 @@ AlignmentSchema <- load_schema("Alignment")
 #' @rdname    Schema-class
 #' @export
 RearrangementSchema <- load_schema("Rearrangement")
+
+#' @details   \code{RepertoireSchema}: AIRR Repertoire \code{Schema}.
+#' @rdname    Schema-class
+#' @export
+RepertoireSchema <- load_schema("Repertoire")

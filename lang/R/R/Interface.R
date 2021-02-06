@@ -33,7 +33,12 @@ read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, ...) {
     base <- match.arg(base)
     
     # Define types
-    parsers <- c("character"="c", "logical"="l", "integer"="i", "double"="d")
+    parsers <- c("character"="c", "logical"="l", "integer"="i", "double"="d", "array"="a")
+
+    # later, since first the recursive schema calling has to be fixed
+    cast <- setNames(lapply(schema_fields, function(f) parsers[schema[f]$type]), schema_fields)
+    
+    # if file is of type TSV, load as TSV
     header <- names(suppressMessages(readr::read_tsv(file, n_max=1)))
     schema_fields <- intersect(names(schema), header)
     cast <- setNames(lapply(schema_fields, function(f) parsers[schema[f]$type]), schema_fields)
@@ -41,6 +46,8 @@ read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, ...) {
     
     # Read file
     data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None"), ...))
+    
+    
     
     # Validate file
     valid_data <- validate_airr(data, schema=schema)
@@ -54,6 +61,86 @@ read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, ...) {
     }
 
     return(data)
+}
+
+
+#### Rearrangement I/O ####
+
+validate_airr_yaml_1 <- function(definition_list, schema) {
+
+  fields <- names(definition_list)
+  schema_fields <- intersect(names(schema), fields)
+  
+  # Validate file
+  validate_airr_yaml_2(definition_list, schema=schema)
+}
+
+#' Read an AIRR TSV
+#' 
+#' \code{read_airr} reads a TSV containing AIRR records.
+#'
+#' @param    file    input file path.
+#' @param    base    starting index for positional fields in the input file. 
+#'                   If \code{"1"}, then these fields will not be modified.
+#'                   If \code{"0"}, then fields ending in \code{"_start"} and \code{"_end"}
+#'                   are 0-based half-open intervals (python style) in the input file 
+#'                   and will be converted to 1-based closed-intervals (R style).
+#' @param    schema  \code{Schema} object defining the output format.
+#' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
+#' 
+#' @return   A data.frame of the TSV file with appropriate type and position conversion
+#'           for fields defined in the specification.
+#'                   
+#' @seealso  
+#' See \link{Schema} for the AIRR schema object definition.
+#' See \link{write_airr} for writing AIRR data.
+#' 
+#' @examples
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' 
+#' # Load data file
+#' df <- read_rearrangement(file)
+#' 
+#' @export
+
+read_airr_yaml <- function(file, schema=RepertoireSchema, ...) {
+  
+  # if file is of type YAML, load as YAML
+  data <- yaml.load_file(file)
+  # could be replaced by the name of the schema
+  definition_list_all <- data[[1]]
+  
+  sapply(definition_list_all, validate_airr_yaml_1, schema = schema)
+  
+  return(data)
+}
+
+
+# make it recursive, since one repertoire file may contain several repertoire_ids
+validate_airr_yaml_2 <- function(definition_list, schema=RearrangementSchema){
+  
+  valid <- TRUE
+  
+  # Check all required fields exist
+  missing_fields <- setdiff(schema@required, names(definition_list))
+  
+  if (length(missing_fields) > 0 ) {
+    valid <- FALSE
+    warning(paste("Warning: File is missing AIRR mandatory field(s):",
+                  paste(missing_fields, collapse = ", ")))
+  }
+  
+  
+  # check the fields with reference
+  for(f in names(definition_list)) {
+    # get the reference scheme
+    reference_scheme <- schema[f]$ref
+    if(!is.null(reference_scheme)) {
+        #recursively validate the entries
+        validate_airr_yaml_2(definition_list[f], reference_scheme)
+    }
+  }
 }
 
 
@@ -84,7 +171,7 @@ validate_airr <- function(data, schema=RearrangementSchema){
     valid <- TRUE
     
     # Check all required fields exist
-    missing_fields <- setdiff(schema@required, colnames(data))
+    missing_fields <- setdiff(schema@required, names(data))
     
     if (length(missing_fields) > 0 ) {
         valid <- FALSE
@@ -147,6 +234,15 @@ read_rearrangement <- function(file, base=c("1", "0"), ...) {
 #' @export
 read_alignment <- function(file, base=c("1", "0"), ...) {
     read_airr(file, base=base, schema=AlignmentSchema, ...)
+}
+
+#' @details
+#' \code{read_repertoire} reads a YAML file containing AIRR Repertoire data.
+#' 
+#' @rdname read_airr
+#' @export
+read_repertoire <- function(file, base=c("1", "0"), ...) {
+    read_airr(file, base=base, schema=RepertoireSchema, ...)
 }
 
 
