@@ -91,9 +91,6 @@ extract_field_content <- function(properties, field) {
 }
 
 
-
-
-
 #' Load a schema definition
 #' 
 #' \code{load_schema} loads an AIRR object definition from the internal
@@ -152,9 +149,14 @@ load_schema <- function(definition) {
     
     for (f in fields) {
         # if there is a reference to another AIRR schema elements, call the reference entries
-        properties <- extract_field_content(properties, field)
+        #print(f)
+        properties <- extract_field_content(properties, f)
     }
     
+    # for ontology, required in NULL and this is not type character
+    # this leads to a problem returning "none" in the validation function.
+    # to be taken care of when array type recursion implemented
+    if(is.null(required)) {required <- "none"}
     return(new("Schema", required=required, optional=optional, properties=properties, info=info))
 }
 

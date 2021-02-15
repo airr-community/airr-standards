@@ -78,7 +78,6 @@ not be modified under the default setting of `base="1"`. If the input file is us
 positional fields may be converted to 1-based closed 
 intervals using the argument `base="0"`.
 
-
 ```{r read_rearrangement, message=FALSE}
 library(airr)
 
@@ -88,6 +87,23 @@ airr_rearrangement <- read_rearrangement(example_data)
 class(airr_rearrangement)
 head(airr_rearrangement)
 ```
+
+Reading repertoires 
+
+```{r read_repertoire }
+rep_file_bad <- "/home/katharina/Documents/synced/science_projects/method_development/AIRR/airr-standards/lang/R/tests/data-tests/bad_repertoire.airr.yaml"
+rep_file_good <- "/home/katharina/Documents/synced/science_projects/method_development/AIRR/airr-standards/lang/R/tests/data-tests/good_repertoire.airr.yaml"
+```
+
+```{r}
+airr_rearrangement <- read_repertoire(rep_file_good)
+```
+
+```{r}
+
+airr_rearrangement <- read_repertoire(rep_file_bad)
+```
+
 
 ## Writing AIRR formatted files
 

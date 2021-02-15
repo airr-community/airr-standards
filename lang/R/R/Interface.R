@@ -66,13 +66,13 @@ read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, ...) {
 
 #### Rearrangement I/O ####
 
-validate_airr_yaml_1 <- function(definition_list, schema) {
+validate_airr_yaml_1 <- function(n_entry, schema, definition_list) {
 
-  fields <- names(definition_list)
+  fields <- names(definition_list[[n_entry]])
   schema_fields <- intersect(names(schema), fields)
   
   # Validate file
-  validate_airr_yaml_2(definition_list, schema=schema)
+  validate_airr_yaml_2(definition_list[[n_entry]], schema=schema)
 }
 
 #' Read an AIRR TSV
@@ -111,7 +111,8 @@ read_airr_yaml <- function(file, schema=RepertoireSchema, ...) {
   # could be replaced by the name of the schema
   definition_list_all <- data[[1]]
   
-  sapply(definition_list_all, validate_airr_yaml_1, schema = schema)
+  entries <- seq_len(length(definition_list_all))
+  sapply(entries, validate_airr_yaml_1, schema = schema, definition_list = definition_list_all)
   
   return(data)
 }
@@ -138,7 +139,7 @@ validate_airr_yaml_2 <- function(definition_list, schema=RearrangementSchema){
     reference_scheme <- schema[f]$ref
     if(!is.null(reference_scheme)) {
         #recursively validate the entries
-        validate_airr_yaml_2(definition_list[f], reference_scheme)
+        validate_airr_yaml_2(definition_list[[f]], schema = reference_scheme)
     }
   }
 }
@@ -242,7 +243,7 @@ read_alignment <- function(file, base=c("1", "0"), ...) {
 #' @rdname read_airr
 #' @export
 read_repertoire <- function(file, base=c("1", "0"), ...) {
-    read_airr(file, base=base, schema=RepertoireSchema, ...)
+  read_airr_yaml(file, base=base, schema=RepertoireSchema, ...)
 }
 
 
