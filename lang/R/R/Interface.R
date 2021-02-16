@@ -1,8 +1,8 @@
-#### Rearrangement I/O ####
+#### AIRR Input, tsv format ####
 
 #' Read an AIRR TSV
 #' 
-#' \code{read_airr} reads a TSV containing AIRR records.
+#' \code{read_airr_tsv} reads a TSV containing AIRR records.
 #'
 #' @param    file    input file path.
 #' @param    base    starting index for positional fields in the input file. 
@@ -28,7 +28,7 @@
 #' df <- read_rearrangement(file)
 #' 
 #' @export
-read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, ...) {
+read_airr_tsv <- function(file, base=c("1", "0"), schema=RearrangementSchema, ...) {
     # Check arguments
     base <- match.arg(base)
 
@@ -42,10 +42,8 @@ read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, ...) {
     # Read file
     data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None"), ...))
     
-    
-    
     # Validate file
-    valid_data <- validate_airr(data, schema=schema)
+    valid_data <- validate_airr_tsv(data, schema=schema)
     
     # Adjust indexes
     if (base == "0") {
@@ -58,108 +56,9 @@ read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, ...) {
     return(data)
 }
 
-
-#### Rearrangement I/O ####
-
-validate_airr_yaml_1 <- function(n_entry, schema, definition_list) {
-
-  fields <- names(definition_list[[n_entry]])
-  schema_fields <- intersect(names(schema), fields)
-  
-  # Validate file
-  validate_airr_yaml_2(definition_list[[n_entry]], schema=schema)
-}
-
-#' Read an AIRR TSV
-#' 
-#' \code{read_airr} reads a TSV containing AIRR records.
-#'
-#' @param    file    input file path.
-#' @param    base    starting index for positional fields in the input file. 
-#'                   If \code{"1"}, then these fields will not be modified.
-#'                   If \code{"0"}, then fields ending in \code{"_start"} and \code{"_end"}
-#'                   are 0-based half-open intervals (python style) in the input file 
-#'                   and will be converted to 1-based closed-intervals (R style).
-#' @param    schema  \code{Schema} object defining the output format.
-#' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
-#' 
-#' @return   A data.frame of the TSV file with appropriate type and position conversion
-#'           for fields defined in the specification.
-#'                   
-#' @seealso  
-#' See \link{Schema} for the AIRR schema object definition.
-#' See \link{write_airr} for writing AIRR data.
-#' 
-#' @examples
-#' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
-#' 
-#' # Load data file
-#' df <- read_rearrangement(file)
-#' 
-#' @export
-
-read_airr_yaml <- function(file, schema=RepertoireSchema, ...) {
-  
-  # if file is of type YAML, load as YAML
-  data <- yaml.load_file(file)
-  # could be replaced by the name of the schema
-  definition_list_all <- data[[1]]
-  
-  entries <- seq_len(length(definition_list_all))
-  sapply(entries, validate_airr_yaml_1, schema = schema, definition_list = definition_list_all)
-  
-  return(data)
-}
-
-
-# make it recursive, since one repertoire file may contain several repertoire_ids
-validate_airr_yaml_2 <- function(definition_list, schema=RearrangementSchema){
-  
-  valid <- TRUE
-  
-  # Check all required fields exist
-  missing_fields <- setdiff(schema@required, names(definition_list))
-  
-  if (length(missing_fields) > 0 ) {
-    valid <- FALSE
-    warning(paste("Warning: File is missing AIRR mandatory field(s):",
-                  paste(missing_fields, collapse = ", ")))
-  }
-  
-  
-  # check the fields with reference
-  for(f in names(definition_list)) {
-    # get the reference scheme
-    reference_schemes <- schema[f]$ref
-    
-    # simple recursive (ref in 1st level)
-    # in this case the type on the 1st level is NULL
-    if (is.null(schema[f][["type"]])) {
-      if (!is.null(reference_schemes)) {
-        validate_airr_yaml_2(definition_list[[f]], schema = reference_schemes)
-      }
-      # array recursive array type with several references
-    } else if (schema[f][["type"]] == "array" & !is.null(reference_schemes)) {
-      n_schemes <- length(reference_schemes)
-      n_array_entries <- length(definition_list[[f]])
-      # loop over all reference schemes in list
-      for (n_ref in seq_len(n_schemes)) {
-          # recursively validate the entries in the array
-        for (n_array in seq_len(n_array_entries)) {
-          validate_airr_yaml_2(definition_list[[f]][[n_array]], schema = reference_schemes[[n_ref]])
-        }
-      }
-    }
-  }
-    
-    # if type == object
-}
-
-
 #' Validate AIRR data
 #' 
-#' \code{validate_airr} validates compliance of the contents of a data.frame 
+#' \code{validate_airr_tsv} validates compliance of the contents of a data.frame 
 #' to the AIRR data standards.
 #'
 #' @param    data    data.frame to validate.
@@ -176,58 +75,58 @@ validate_airr_yaml_2 <- function(definition_list, schema=RearrangementSchema){
 #' df <- read_rearrangement(file)
 #' 
 #' # Validate a data.frame against the Rearrangement schema
-#' validate_airr(df, schema=RearrangementSchema)
+#' validate_airr_tsv(df, schema=RearrangementSchema)
 #' 
 #' @export
-validate_airr <- function(data, schema=RearrangementSchema){
-    
-    valid <- TRUE
-    
-    # Check all required fields exist
-    missing_fields <- setdiff(schema@required, names(data))
-    
-    if (length(missing_fields) > 0 ) {
-        valid <- FALSE
-        warning(paste("Warning: File is missing AIRR mandatory field(s):",
-                      paste(missing_fields, collapse = ", ")))
+validate_airr_tsv <- function(data, schema=RearrangementSchema){
+  
+  valid <- TRUE
+  
+  # Check all required fields exist
+  missing_fields <- setdiff(schema@required, names(data))
+  
+  if (length(missing_fields) > 0 ) {
+    valid <- FALSE
+    warning(paste("Warning: File is missing AIRR mandatory field(s):",
+                  paste(missing_fields, collapse = ", ")))
+  }
+  
+  # Validate sequence_id: 
+  # - uniqueness
+  # - not empty
+  if ("sequence_id" %in% colnames(data)) {
+    dup_ids <- duplicated(data[['sequence_id']])
+    if (any(dup_ids)) {
+      valid <- FALSE
+      warning(paste("Warning: sequence_id(s) are not unique:",
+                    paste(data[['sequence_id']][dup_ids], collapse = ", ")))
     }
-    
-   # Validate sequence_id: 
-   # - uniqueness
-   # - not empty
-   if ("sequence_id" %in% colnames(data)) {
-       dup_ids <- duplicated(data[['sequence_id']])
-       if (any(dup_ids)) {
-           valid <- FALSE
-           warning(paste("Warning: sequence_id(s) are not unique:",
-                         paste(data[['sequence_id']][dup_ids], collapse = ", ")))
-       }
-       empty_rows <- which(data[['sequence_id']] %in% c("None", "", NA))
-       if (length(empty_rows) > 0 ) {
-           # TODO
-           # valid <- FALSE
-           warning(paste("Warning: sequence_id is empty for row(s):",
-                         paste(empty_rows, collapse = ", ")))           
-       }
-   }
-    
-    # check logical fields
-    logical_fields <- names(which(sapply(schema@properties, 
-                                         '[[', "type") == "logical"))
-    logical_fields <- intersect(colnames(data), logical_fields)
-    if (length(logical_fields) > 0 ) {
-        for (log_field in logical_fields) {
-            not_logical <- data[[log_field]] %in% c(TRUE, FALSE) == FALSE
-            if (any(not_logical)) {
-                warning(paste("Warning:",log_field,"is not logical for row(s):",
-                              paste(which(not_logical), collapse = ", ")))            
-            } else {
-                NULL
-            }
-        }
+    empty_rows <- which(data[['sequence_id']] %in% c("None", "", NA))
+    if (length(empty_rows) > 0 ) {
+      # TODO
+      # valid <- FALSE
+      warning(paste("Warning: sequence_id is empty for row(s):",
+                    paste(empty_rows, collapse = ", ")))           
     }
-    
-    valid
+  }
+  
+  # check logical fields
+  logical_fields <- names(which(sapply(schema@properties, 
+                                       '[[', "type") == "logical"))
+  logical_fields <- intersect(colnames(data), logical_fields)
+  if (length(logical_fields) > 0 ) {
+    for (log_field in logical_fields) {
+      not_logical <- data[[log_field]] %in% c(TRUE, FALSE) == FALSE
+      if (any(not_logical)) {
+        warning(paste("Warning:",log_field,"is not logical for row(s):",
+                      paste(which(not_logical), collapse = ", ")))            
+      } else {
+        NULL
+      }
+    }
+  }
+  
+  valid
 }
 
 #' @details
@@ -236,7 +135,7 @@ validate_airr <- function(data, schema=RearrangementSchema){
 #' @rdname read_airr
 #' @export
 read_rearrangement <- function(file, base=c("1", "0"), ...) {
-    read_airr(file, base=base, schema=RearrangementSchema, ...)
+  read_airr_tsv(file, base=base, schema=RearrangementSchema, ...)
 }
 
 
@@ -246,7 +145,134 @@ read_rearrangement <- function(file, base=c("1", "0"), ...) {
 #' @rdname read_airr
 #' @export
 read_alignment <- function(file, base=c("1", "0"), ...) {
-    read_airr(file, base=base, schema=AlignmentSchema, ...)
+  read_airr_tsv(file, base=base, schema=AlignmentSchema, ...)
+}
+
+
+#### AIRR Input, yaml format ####
+
+#' Read an AIRR yaml
+#' 
+#' \code{read_airr_yaml} reads a yaml containing AIRR records.
+#'
+#' @param    file    input file path.
+#' @param    schema  \code{Schema} object defining the output format.
+#' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
+#' 
+#' @return   A yaml formated object of the data contained in the input file
+#'                   
+#' @seealso  
+#' See \link{Schema} for the AIRR schema object definition.
+#' See \link{write_airr} for writing AIRR data.
+#' 
+#' @examples
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' 
+#' # Load data file
+#' df <- read_repertoire(file)
+#' 
+#' @export
+
+read_airr_yaml <- function(file, schema=RepertoireSchema, ...) {
+  
+  # if file is of type YAML, load as YAML
+  data <- yaml.load_file(file)
+  # could be replaced by the name of the schema
+  definition_list_all <- data[[1]]
+  
+  validate_airr_yaml(yaml_list = definition_list_all, schema = schema)
+  
+  return(data)
+}
+
+#' Validate an AIRR yaml
+#' 
+#' \code{validate_airr_yaml} reads a yaml containing AIRR records.
+#'
+#' @param    yaml_list  Data from yaml import. This data contains the AIRR records.
+#' @param    schema  \code{Schema} object defining the output format.
+#' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
+#' 
+#' @return   Returns \code{TRUE} if the input \code{yaml_list} is compliant with AIRR standards and
+#'           \code{FALSE} if not. 
+#'                   
+#' @seealso  
+#' See \link{Schema} for the AIRR schema object definition.
+#' See \link{write_airr} for writing AIRR data.
+#' 
+#' @examples
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' 
+#' # Load data file
+#' df <- validate_airr_yaml(file)
+#' 
+#' @export
+
+# This is a helper function to allow recursive validation of the different entries in yaml file
+# Directly calling validate_airr_yaml_entry does not work, because the function
+# validate_airr_yaml_entry also needs to work for recursive calling of reference schemes
+validate_airr_yaml <- function(yaml_list, schema) {
+  # yaml file can contain multiple entries
+  entries_n <- seq_len(length(yaml_list))
+  
+  for (entry in entries_n) {
+    validate_airr_yaml_entry(yaml_list[[entry]], schema = schema)
+  }
+  
+  # make a list of entries for the sapply function
+  entries <- lapply(entries_n, function(X) yaml_list[[X]])
+
+  # recursively validate all entries
+  sapply(entries_n,  function(X) validate_airr_yaml_entry(yaml_list[[X]], schema = schema))
+
+}
+
+
+# Validation function for a single entry in the yaml file
+validate_airr_yaml_entry <- function(definition_list, schema=RearrangementSchema){
+  
+  valid <- TRUE
+  
+  # Check all required fields exist
+  missing_fields <- setdiff(schema@required, names(definition_list))
+  
+  if (length(missing_fields) > 0 ) {
+    valid <- FALSE
+    warning(paste("Warning: File is missing AIRR mandatory field(s):",
+                  paste(missing_fields, collapse = ", ")))
+  }
+  
+  
+  # loop through all fields in the list and check if they refer to other schemes
+  for(f in names(definition_list)) {
+    
+    # get the reference scheme
+    reference_schemes <- schema[f]$ref
+    
+    # simple recursive (reference scheme in 1st level)
+    # in this case the type on the 1st level is NULL
+    if (is.null(schema[f][["type"]])) {
+      if (!is.null(reference_schemes)) {
+        validate_airr_yaml_entry(definition_list[[f]], schema = reference_schemes)
+      }
+      # entry of array type with a list of on or several reference schemes
+    } else if (schema[f][["type"]] == "array" & !is.null(reference_schemes)) {
+      # this is the number of different reference schemes
+      n_schemes <- length(reference_schemes)
+      # this is the number of elements in the array
+      n_array_entries <- length(definition_list[[f]])
+      # loop over all reference schemes in list
+      for (n_ref in seq_len(n_schemes)) {
+          # recursively validate the entries in the array
+        for (n_array in seq_len(n_array_entries)) {
+          validate_airr_yaml_entry(definition_list[[f]][[n_array]], schema = reference_schemes[[n_ref]])
+        }
+      }
+    }
+  }
+  # we do not cover the case when type == "object", in the case of germline for example
 }
 
 #' @details
@@ -259,9 +285,11 @@ read_repertoire <- function(file, base=c("1", "0"), ...) {
 }
 
 
+#### AIRR output, tsv format ####
+
 #' Write an AIRR TSV
 #' 
-#' \code{write_airr} writes a TSV containing AIRR formatted records.
+#' \code{write_airr_tsv} writes a TSV containing AIRR formatted records.
 #'
 #' @param    data    data.frame of Rearrangement data.
 #' @param    file    output file name.
@@ -293,7 +321,7 @@ read_repertoire <- function(file, base=c("1", "0"), ...) {
 #' write_rearrangement(df, outfile)
 #' 
 #' @export
-write_airr <- function(data, file, base=c("1", "0"), schema=RearrangementSchema, ...) {
+write_airr_tsv <- function(data, file, base=c("1", "0"), schema=RearrangementSchema, ...) {
     ## DEBUG
     # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
     
@@ -358,7 +386,7 @@ write_airr <- function(data, file, base=c("1", "0"), schema=RearrangementSchema,
 #' @rdname write_airr
 #' @export
 write_rearrangement <- function(data, file, base=c("1", "0"), ...) {
-    write_airr(data, file, base=base, schema=RearrangementSchema, ...)
+    write_airr_tsv(data, file, base=base, schema=RearrangementSchema, ...)
 }
 
 
@@ -368,5 +396,7 @@ write_rearrangement <- function(data, file, base=c("1", "0"), ...) {
 #' @rdname write_airr
 #' @export
 write_alignment <- function(data, file, base=c("1", "0"), ...) {
-    write_airr(data, file, base=base, schema=AlignmentSchema, ...)
+    write_airr_tsv(data, file, base=base, schema=AlignmentSchema, ...)
 }
+
+#### AIRR output, yaml format ####
