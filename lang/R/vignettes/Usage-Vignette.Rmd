@@ -96,12 +96,11 @@ rep_file_good <- "/home/katharina/Documents/synced/science_projects/method_devel
 ```
 
 ```{r}
-airr_rearrangement <- read_repertoire(rep_file_good)
+read_repertoire(rep_file_good)
 ```
 
 ```{r}
-
-airr_rearrangement <- read_repertoire(rep_file_bad)
+read_repertoire(rep_file_bad)
 ```
 
 
