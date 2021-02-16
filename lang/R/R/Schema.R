@@ -69,9 +69,9 @@ setMethod("$",
 
 extract_field_content <- function(properties, field) {
     
-    types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="double", "array"="array")
+    types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="double", "array"="array", "object"="object")
     
-    # if there is a reference to another AIRR schema elements, call the reference entries
+    # if there is a simple reference to another AIRR schema elements, call the reference entries
     if(!is.null(properties[[field]]$`$ref`)) {
         # name of the AIRR scheme element to refer to
         ref_element <- properties[[field]]$`$ref`
@@ -82,9 +82,24 @@ extract_field_content <- function(properties, field) {
         properties[[field]][["ref"]] <- ref_schema
     }
     
+    # if there is an array type format that has ref as entries
+    items <- unlist(properties[[field]][["items"]])
+    if(!is.null(items)) {
+        # check if these are references to other schemes
+        if(all(grepl("ref", names(items)))) {
+            ref_schemes <- items
+            ref_element <- substr(ref_schemes, 3, nchar(ref_schemes))
+            # store as a list of schemes
+            ref_scheme_list <- sapply(ref_element, load_schema)
+            properties[[field]][["ref"]] <- ref_scheme_list
+        }
+    }
+    
     x <- properties[[field]][["type"]]
     y <- properties[[field]][["description"]]
-    properties[[field]][["type"]] <- unname(types[x])
+    
+    # make sure that NULL types also remain NULL
+    if (!is.null(x)) {properties[[field]][["type"]] <- unname(types[x])}
     properties[[field]][["description"]] <- stri_trim(y) 
     
     return(properties)
@@ -144,12 +159,8 @@ load_schema <- function(definition) {
     required <- definition_list[["required"]]
     optional <- setdiff(fields, required)
     
-    # Rename type and clean description
-    types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="double", "array"="array")
-    
     for (f in fields) {
         # if there is a reference to another AIRR schema elements, call the reference entries
-        #print(f)
         properties <- extract_field_content(properties, f)
     }
     

@@ -136,12 +136,29 @@ validate_airr_yaml_2 <- function(definition_list, schema=RearrangementSchema){
   # check the fields with reference
   for(f in names(definition_list)) {
     # get the reference scheme
-    reference_scheme <- schema[f]$ref
-    if(!is.null(reference_scheme)) {
-        #recursively validate the entries
-        validate_airr_yaml_2(definition_list[[f]], schema = reference_scheme)
+    reference_schemes <- schema[f]$ref
+    
+    # simple recursive (ref in 1st level)
+    # in this case the type on the 1st level is NULL
+    if (is.null(schema[f][["type"]])) {
+      if (!is.null(reference_schemes)) {
+        validate_airr_yaml_2(definition_list[[f]], schema = reference_schemes)
+      }
+      # array recursive array type with several references
+    } else if (schema[f][["type"]] == "array" & !is.null(reference_schemes)) {
+      n_schemes <- length(reference_schemes)
+      n_array_entries <- length(definition_list[[f]])
+      # loop over all reference schemes in list
+      for (n_ref in seq_len(n_schemes)) {
+          # recursively validate the entries in the array
+        for (n_array in seq_len(n_array_entries)) {
+          validate_airr_yaml_2(definition_list[[f]][[n_array]], schema = reference_schemes[[n_ref]])
+        }
+      }
     }
   }
+    
+    # if type == object
 }
 
 
