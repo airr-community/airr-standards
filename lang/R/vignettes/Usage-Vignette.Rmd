@@ -96,11 +96,11 @@ rep_file_good <- "../tests/data-tests/good_repertoire.airr.yaml"
 ```
 
 ```{r}
-read_repertoire(rep_file_good)
+repertoire1 <- read_repertoire(rep_file_good)
 ```
 
 ```{r}
-read_repertoire(rep_file_bad)
+repertoire2 <- read_repertoire(rep_file_bad)
 ```
 
 

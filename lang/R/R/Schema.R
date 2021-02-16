@@ -167,7 +167,7 @@ load_schema <- function(definition) {
     # for ontology, required in NULL and this is not type character
     # this leads to a problem returning "none" in the validation function.
     # to be taken care of when array type recursion implemented
-    if(is.null(required)) {required <- "none"}
+    if(is.null(required)) {required <- character(0)}
     return(new("Schema", required=required, optional=optional, properties=properties, info=info))
 }
 

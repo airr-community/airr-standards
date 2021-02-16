@@ -241,9 +241,8 @@ validate_airr_yaml_entry <- function(definition_list, schema=RearrangementSchema
   if (length(missing_fields) > 0 ) {
     valid <- FALSE
     warning(paste("Warning: File is missing AIRR mandatory field(s):",
-                  paste(missing_fields, collapse = ", ")))
+                  paste(missing_fields, collapse = ", "), "\n"))
   }
-  
   
   # loop through all fields in the list and check if they refer to other schemes
   for(f in names(definition_list)) {
