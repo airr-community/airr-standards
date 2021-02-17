@@ -132,7 +132,7 @@ validate_airr_tsv <- function(data, schema=RearrangementSchema){
 #' @details
 #' \code{read_rearrangement} reads an AIRR TSV containing Rearrangement data.
 #' 
-#' @rdname read_airr
+#' @rdname read_airr_tsv
 #' @export
 read_rearrangement <- function(file, base=c("1", "0"), ...) {
   read_airr_tsv(file, base=base, schema=RearrangementSchema, ...)
@@ -142,7 +142,7 @@ read_rearrangement <- function(file, base=c("1", "0"), ...) {
 #' @details
 #' \code{read_alignment} reads an AIRR TSV containing Alignment data.
 #' 
-#' @rdname read_airr
+#' @rdname read_airr_tsv
 #' @export
 read_alignment <- function(file, base=c("1", "0"), ...) {
   read_airr_tsv(file, base=base, schema=AlignmentSchema, ...)
@@ -155,33 +155,32 @@ read_alignment <- function(file, base=c("1", "0"), ...) {
 #' 
 #' \code{read_airr_yaml} reads a yaml containing AIRR records.
 #'
-#' @param    file    input file path.
+#' @param    file    input file path in yaml format.
 #' @param    schema  \code{Schema} object defining the output format.
-#' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
 #' 
-#' @return   A yaml formated object of the data contained in the input file
+#' @return   An object of the data contained in the input file.
 #'                   
 #' @seealso  
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{write_airr} for writing AIRR data.
+#' See \link{write_airr_yaml} for writing AIRR data in yaml format.
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' file <- system.file("tests/data-tests/", "good_repertoire.airr.yaml", package="airr")
 #' 
 #' # Load data file
 #' df <- read_repertoire(file)
 #' 
 #' @export
 
-read_airr_yaml <- function(file, schema=RepertoireSchema, ...) {
+read_airr_yaml <- function(file, schema=RepertoireSchema) {
   
   # if file is of type YAML, load as YAML
   data <- yaml.load_file(file)
   # could be replaced by the name of the schema
   definition_list_all <- data[[1]]
   
-  validate_airr_yaml(yaml_list = definition_list_all, schema = schema)
+  valid <- validate_airr_yaml(yaml_list = definition_list_all, schema = schema)
   
   return(data)
 }
@@ -190,7 +189,7 @@ read_airr_yaml <- function(file, schema=RepertoireSchema, ...) {
 #' 
 #' \code{validate_airr_yaml} reads a yaml containing AIRR records.
 #'
-#' @param    yaml_list  Data from yaml import. This data contains the AIRR records.
+#' @param    yaml_list  Data object from yaml import. This data contains the AIRR records.
 #' @param    schema  \code{Schema} object defining the output format.
 #' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
 #' 
@@ -203,30 +202,27 @@ read_airr_yaml <- function(file, schema=RepertoireSchema, ...) {
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' file <- system.file("tests/data-tests/", "good_repertoire.airr.yaml", package="airr")
 #' 
 #' # Load data file
-#' df <- validate_airr_yaml(file)
+#' df <- read_repertoire(file)
+#' # validate
+#' df <- validate_airr_yaml(df[["Repertoire"]])
 #' 
 #' @export
 
-# This is a helper function to allow recursive validation of the different entries in yaml file
+# This is a wrapper function to allow recursive validation of the different entries in yaml file
 # Directly calling validate_airr_yaml_entry does not work, because the function
 # validate_airr_yaml_entry also needs to work for recursive calling of reference schemes
-validate_airr_yaml <- function(yaml_list, schema) {
+validate_airr_yaml <- function(yaml_list, schema = RepertoireSchema) {
   # yaml file can contain multiple entries
   entries_n <- seq_len(length(yaml_list))
-  
-  for (entry in entries_n) {
-    validate_airr_yaml_entry(yaml_list[[entry]], schema = schema)
-  }
-  
-  # make a list of entries for the sapply function
-  entries <- lapply(entries_n, function(X) yaml_list[[X]])
 
   # recursively validate all entries
-  sapply(entries_n,  function(X) validate_airr_yaml_entry(yaml_list[[X]], schema = schema))
+  valid_list <- sapply(entries_n,  function(X) validate_airr_yaml_entry(yaml_list[[X]], schema = schema))
 
+  # data only valid if all entries valid
+  return(all(valid_list))
 }
 
 
@@ -254,7 +250,7 @@ validate_airr_yaml_entry <- function(definition_list, schema=RearrangementSchema
     # in this case the type on the 1st level is NULL
     if (is.null(schema[f][["type"]])) {
       if (!is.null(reference_schemes)) {
-        validate_airr_yaml_entry(definition_list[[f]], schema = reference_schemes)
+        valid <- validate_airr_yaml_entry(definition_list[[f]], schema = reference_schemes)
       }
       # entry of array type with a list of on or several reference schemes
     } else if (schema[f][["type"]] == "array" & !is.null(reference_schemes)) {
@@ -266,21 +262,24 @@ validate_airr_yaml_entry <- function(definition_list, schema=RearrangementSchema
       for (n_ref in seq_len(n_schemes)) {
           # recursively validate the entries in the array
         for (n_array in seq_len(n_array_entries)) {
-          validate_airr_yaml_entry(definition_list[[f]][[n_array]], schema = reference_schemes[[n_ref]])
+          valid <- validate_airr_yaml_entry(definition_list[[f]][[n_array]], schema = reference_schemes[[n_ref]])
         }
       }
     }
   }
   # we do not cover the case when type == "object", in the case of germline for example
+  
+  # return to indicate whether entries are valid
+  return(valid)
 }
 
 #' @details
 #' \code{read_repertoire} reads a YAML file containing AIRR Repertoire data.
 #' 
-#' @rdname read_airr
+#' @rdname read_airr_yaml
 #' @export
-read_repertoire <- function(file, base=c("1", "0"), ...) {
-  read_airr_yaml(file, base=base, schema=RepertoireSchema, ...)
+read_repertoire <- function(file, ...) {
+  read_airr_yaml(file, schema=RepertoireSchema)
 }
 
 
@@ -306,7 +305,7 @@ read_repertoire <- function(file, base=c("1", "0"), ...) {
 #' 
 #' @seealso
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{read_airr} for reading to AIRR files.
+#' See \link{read_airr_tsv} for reading to AIRR files.
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
@@ -349,7 +348,7 @@ write_airr_tsv <- function(data, file, base=c("1", "0"), schema=RearrangementSch
         }
     }
     
-    valid <- suppressWarnings(validate_airr(data, schema))
+    valid <- suppressWarnings(validate_airr_tsv(data, schema))
     if (!valid) {
         w <- names(warnings())
         w <- gsub("Warning: *", "" ,w)
@@ -382,7 +381,7 @@ write_airr_tsv <- function(data, file, base=c("1", "0"), schema=RearrangementSch
 #' @details
 #' \code{write_rearrangement} writes a data.frame containing AIRR Rearrangement data to TSV.
 #' 
-#' @rdname write_airr
+#' @rdname write_airr_tsv
 #' @export
 write_rearrangement <- function(data, file, base=c("1", "0"), ...) {
     write_airr_tsv(data, file, base=base, schema=RearrangementSchema, ...)
@@ -392,7 +391,7 @@ write_rearrangement <- function(data, file, base=c("1", "0"), ...) {
 #' @details
 #' \code{write_alignment} writes a data.frame containing AIRR Alignment data to TSV.
 #' 
-#' @rdname write_airr
+#' @rdname write_airr_tsv
 #' @export
 write_alignment <- function(data, file, base=c("1", "0"), ...) {
     write_airr_tsv(data, file, base=base, schema=AlignmentSchema, ...)
@@ -417,10 +416,10 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' system.file("tests/data-tests/", "good_repertoire.airr.yaml", package="airr")
 #' 
 #' # Load data file
-#' df <- read_rearrangement(file)
+#' df <- read_repertoire(file)
 #' 
 #' # Write a Rearrangement data file
 #' outfile <- file.path(tempdir(), "output.yaml")
@@ -432,7 +431,7 @@ write_airr_yaml <- function(data, file, schema=RepertoireSchema, ...) {
   # run a validation
   definition_list_all <- data[[1]]
   
-  validate_airr_yaml(yaml_list = definition_list_all, schema = schema)
+  valid <- validate_airr_yaml(yaml_list = definition_list_all, schema = schema)
   
   # what kind of other tests do we need to implement here?
   # where does the data come from?

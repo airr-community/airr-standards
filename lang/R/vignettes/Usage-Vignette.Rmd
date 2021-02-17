@@ -92,8 +92,8 @@ head(airr_rearrangement)
 ### Reading repertoires 
 
 ```{r read_repertoire }
-rep_file_bad <-  "../tests/data-tests/bad_repertoire.airr.yaml"
-rep_file_good <- "../tests/data-tests/good_repertoire.airr.yaml"
+rep_file_bad <-  system.file("tests/data-tests/", "bad_repertoire.airr.yaml", package="airr")
+rep_file_good <- system.file("tests/data-tests/", "good_repertoire.airr.yaml", package="airr")
 ```
 
 Read a valid repertoire
