@@ -269,9 +269,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/query_object'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/query_object'
       responses:
         '200':
           description: |
@@ -340,9 +337,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/query_object'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/query_object'
       responses:
         '200':
           description: >
@@ -409,9 +403,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/query_object'
-          application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/query_object'
       responses:
