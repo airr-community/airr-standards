@@ -78,6 +78,7 @@ not be modified under the default setting of `base="1"`. If the input file is us
 positional fields may be converted to 1-based closed 
 intervals using the argument `base="0"`.
 
+### Reading rearrangements
 ```{r read_rearrangement, message=FALSE}
 library(airr)
 
@@ -88,17 +89,19 @@ class(airr_rearrangement)
 head(airr_rearrangement)
 ```
 
-Reading repertoires 
+### Reading repertoires 
 
 ```{r read_repertoire }
 rep_file_bad <-  "../tests/data-tests/bad_repertoire.airr.yaml"
 rep_file_good <- "../tests/data-tests/good_repertoire.airr.yaml"
 ```
 
+Read a valid repertoire
 ```{r}
 repertoire1 <- read_repertoire(rep_file_good)
 ```
 
+Read an incomplete repertoire
 ```{r}
 repertoire2 <- read_repertoire(rep_file_bad)
 ```
@@ -109,10 +112,26 @@ repertoire2 <- read_repertoire(rep_file_bad)
 The `airr` package contains the function `write_rearrangement` to write
 Rearrangement records to the AIRR TSV format.
 
+### Writing rearrangements
 ```{r write_rearrangement}
 out_file <- file.path(tempdir(), "airr_out.tsv")
 write_rearrangement(airr_rearrangement, out_file)
 ```
+
+### Writing repertoires
+
+Write a valid repertoire
+```{r}
+out_file1 <- file.path(tempdir(), "airr_repertoire1_out.yaml")
+write_repertoire(repertoire1, out_file1)
+```
+
+Write an incomplete repertoire
+```{r}
+out_file2 <- file.path(tempdir(), "airr_repertoire2_out.yaml")
+write_repertoire(repertoire2, out_file2)
+```
+
 
 ## References
 

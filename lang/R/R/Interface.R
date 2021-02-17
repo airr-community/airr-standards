@@ -399,3 +399,54 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 }
 
 #### AIRR output, yaml format ####
+
+#' Write an AIRR yaml
+#' 
+#' \code{write_airr_yaml} writes a yaml containing AIRR formatted records.
+#'
+#' @param    data    object containing Repertoire data.
+#' @param    file    output file name.
+#' @param    schema  \code{Schema} object defining the output format.
+#' @param    ...     additional arguments to pass to \link[readr]{write_delim}.
+#'
+#' @return   NULL
+#' 
+#' @seealso
+#' See \link{Schema} for the AIRR schema object definition.
+#' See \link{read_airr} for reading to AIRR files.
+#' 
+#' @examples
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' 
+#' # Load data file
+#' df <- read_rearrangement(file)
+#' 
+#' # Write a Rearrangement data file
+#' outfile <- file.path(tempdir(), "output.yaml")
+#' write_repertoire(df, outfile)
+#' 
+#' @export
+write_airr_yaml <- function(data, file, schema=RepertoireSchema, ...) {
+
+  # run a validation
+  definition_list_all <- data[[1]]
+  
+  validate_airr_yaml(yaml_list = definition_list_all, schema = schema)
+  
+  # what kind of other tests do we need to implement here?
+  # where does the data come from?
+
+  # Write
+  yaml::write_yaml(data, file)
+}
+
+
+#' @details
+#' \code{write_repertoire} writes a object containing AIRR Repertoire data to yaml.
+#' 
+#' @rdname write_airr_yaml
+#' @export
+write_repertoire <- function(data, file, ...) {
+  write_airr_yaml(data, file, schema=RepertoireSchema, ...)
+}
