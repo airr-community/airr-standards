@@ -14,7 +14,7 @@ import yaml
 import yamlordereddictloader
 from io import open
 
-if (sys.version_info > (3, 0)):
+if sys.version_info > (3, 0):
     from io import StringIO
 else: # Python 2 code in this block
     from io import BytesIO as StringIO
@@ -30,7 +30,7 @@ def read_rearrangement(filename, validate=False, debug=False):
     Open an iterator to read an AIRR rearrangements file
 
     Arguments:
-      file (str): path to the input file.
+      filename (str): path to the input file.
       validate (bool): whether to validate data as it is read, raising a ValidationError
                        exception in the event of an error.
       debug (bool): debug flag. If True print debugging information to standard error.
