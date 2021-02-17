@@ -191,7 +191,6 @@ read_airr_yaml <- function(file, schema=RepertoireSchema) {
 #'
 #' @param    data  Data object from yaml import. This data contains the AIRR records.
 #' @param    schema  \code{Schema} object defining the output format.
-#' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
 #' 
 #' @return   Returns \code{TRUE} if the input \code{yaml_list} is compliant with AIRR standards and
 #'           \code{FALSE} if not. 
@@ -280,7 +279,7 @@ validate_airr_yaml_entry <- function(definition_list, schema=RearrangementSchema
 #' 
 #' @rdname read_airr_yaml
 #' @export
-read_repertoire <- function(file, ...) {
+read_repertoire <- function(file) {
   read_airr_yaml(file, schema=RepertoireSchema)
 }
 
@@ -408,7 +407,6 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' @param    data    object containing Repertoire data.
 #' @param    file    output file name.
 #' @param    schema  \code{Schema} object defining the output format.
-#' @param    ...     additional arguments to pass to \link[readr]{write_delim}.
 #'
 #' @return   NULL
 #' 
@@ -418,7 +416,7 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
-#' system.file("tests/data-tests/", "good_repertoire.airr.yaml", package="airr")
+#' file <- system.file("tests/data-tests/", "good_repertoire.airr.yaml", package="airr")
 #' 
 #' # Load data file
 #' df <- read_repertoire(file)
@@ -428,7 +426,7 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' write_repertoire(df, outfile)
 #' 
 #' @export
-write_airr_yaml <- function(data, file, schema=RepertoireSchema, ...) {
+write_airr_yaml <- function(data, file, schema=RepertoireSchema) {
   
   valid <- validate_airr_yaml(data = data, schema = schema)
   
@@ -445,6 +443,6 @@ write_airr_yaml <- function(data, file, schema=RepertoireSchema, ...) {
 #' 
 #' @rdname write_airr_yaml
 #' @export
-write_repertoire <- function(data, file, ...) {
-  write_airr_yaml(data, file, schema=RepertoireSchema, ...)
+write_repertoire <- function(data, file) {
+  write_airr_yaml(data, file, schema=RepertoireSchema)
 }

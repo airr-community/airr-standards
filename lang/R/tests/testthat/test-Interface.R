@@ -19,25 +19,25 @@ expected_w <- c(
 
 context("Rearrangement I/O - good data")
 
-test_that("read_airr loads a data.frame", {
-    tbl_1 <- read_airr(rearrangement_file, "1")
+test_that("read_airr_tsv loads a data.frame", {
+    tbl_1 <- read_airr_tsv(rearrangement_file, "1")
     expect_true(is.data.frame(tbl_1))
 })
 
-test_that("read_arirr applies base", {
-    tbl_0 <- read_airr(rearrangement_file, "0")
-    tbl_1 <- read_airr(rearrangement_file, "1")
+test_that("read_arirr_tsv applies base", {
+    tbl_0 <- read_airr_tsv(rearrangement_file, "0")
+    tbl_1 <- read_airr_tsv(rearrangement_file, "1")
     expect_true(is.data.frame(tbl_0))
-    expect_true(validate_airr(tbl_0))
+    expect_true(validate_airr_tsv(tbl_0))
     start_positions <- grep("_start$", names(tbl_0), perl=TRUE)
     expect_equivalent(tbl_0[, start_positions] - 1, tbl_1[, start_positions])
 })
 
 
-test_that("write_airr writes a file with logicals encoded T/F", {
-    tbl <- read_airr(rearrangement_file)
+test_that("write_airr_tsv writes a file with logicals encoded T/F", {
+    tbl <- read_airr_tsv(rearrangement_file)
     out_file <- file.path(tempdir(), "test_out.tsv")
-    write_airr(tbl, out_file)
+    write_airr_tsv(tbl, out_file)
     expect_true(file.exists(out_file))
     reload_tbl <- read.delim(out_file, colClasses="character")
     expect_true(all(reload_tbl[['rev_comp']] == "T"))
@@ -47,19 +47,19 @@ test_that("write_airr writes a file with logicals encoded T/F", {
 
 context("Rearrangement I/O - bad data")
 
-test_that("read_airr with bad data", {
+test_that("read_airr_tsv with bad data", {
     # Expect valid==FALSE
-    bad_data <- suppressWarnings(read_airr(bad_rearrangement_file, "1"))
-    expect_false(suppressWarnings(validate_airr(bad_data)))
+    bad_data <- suppressWarnings(read_airr_tsv(bad_rearrangement_file, "1"))
+    expect_false(suppressWarnings(validate_airr_tsv(bad_data)))
     # Check error messages
-    w <- capture_warnings(validate_airr(bad_data))
+    w <- capture_warnings(validate_airr_tsv(bad_data))
     expect_equal(w, expected_w)
 })
 
-test_that("write_airr writes a bad file, with warnings, with logicals T/T", {
-    bad_data <- suppressWarnings(read_airr(bad_rearrangement_file, "1"))
+test_that("write_airr_tsv writes a bad file, with warnings, with logicals T/T", {
+    bad_data <- suppressWarnings(read_airr_tsv(bad_rearrangement_file, "1"))
     out_file <- file.path(tempdir(), "test_out.tsv")
-    expect_warning(write_airr(bad_data, out_file))
+    expect_warning(write_airr_tsv(bad_data, out_file))
     expect_true(file.exists(out_file))
     reload_tbl <- read.delim(out_file, colClasses="character")
     expect_equal(reload_tbl[['rev_comp']],
