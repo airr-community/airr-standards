@@ -18,7 +18,7 @@
 #'                   
 #' @seealso  
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{write_airr} for writing AIRR data.
+#' See \link{write_airr_tsv} for writing AIRR data.
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
@@ -177,10 +177,10 @@ read_airr_yaml <- function(file, schema=RepertoireSchema) {
   
   # if file is of type YAML, load as YAML
   data <- yaml.load_file(file)
-  # could be replaced by the name of the schema
-  definition_list_all <- data[[1]]
   
-  valid <- validate_airr_yaml(yaml_list = definition_list_all, schema = schema)
+  # validate
+  # warnings will appear when not airr conform
+  valid <- validate_airr_yaml(data = data, schema = schema)
   
   return(data)
 }
@@ -189,7 +189,7 @@ read_airr_yaml <- function(file, schema=RepertoireSchema) {
 #' 
 #' \code{validate_airr_yaml} reads a yaml containing AIRR records.
 #'
-#' @param    yaml_list  Data object from yaml import. This data contains the AIRR records.
+#' @param    data  Data object from yaml import. This data contains the AIRR records.
 #' @param    schema  \code{Schema} object defining the output format.
 #' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
 #' 
@@ -198,7 +198,7 @@ read_airr_yaml <- function(file, schema=RepertoireSchema) {
 #'                   
 #' @seealso  
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{write_airr} for writing AIRR data.
+#' See \link{write_airr_yaml} for writing AIRR data.
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
@@ -207,14 +207,16 @@ read_airr_yaml <- function(file, schema=RepertoireSchema) {
 #' # Load data file
 #' df <- read_repertoire(file)
 #' # validate
-#' df <- validate_airr_yaml(df[["Repertoire"]])
+#' validate_airr_yaml(df)
 #' 
 #' @export
 
 # This is a wrapper function to allow recursive validation of the different entries in yaml file
 # Directly calling validate_airr_yaml_entry does not work, because the function
 # validate_airr_yaml_entry also needs to work for recursive calling of reference schemes
-validate_airr_yaml <- function(yaml_list, schema = RepertoireSchema) {
+validate_airr_yaml <- function(data, schema = RepertoireSchema) {
+  # extract the list of entries in the scheme
+  yaml_list <- data[[1]]
   # yaml file can contain multiple entries
   entries_n <- seq_len(length(yaml_list))
 
@@ -412,7 +414,7 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' 
 #' @seealso
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{read_airr} for reading to AIRR files.
+#' See \link{read_airr_yaml} for reading to AIRR files.
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
@@ -427,11 +429,8 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' 
 #' @export
 write_airr_yaml <- function(data, file, schema=RepertoireSchema, ...) {
-
-  # run a validation
-  definition_list_all <- data[[1]]
   
-  valid <- validate_airr_yaml(yaml_list = definition_list_all, schema = schema)
+  valid <- validate_airr_yaml(data = data, schema = schema)
   
   # what kind of other tests do we need to implement here?
   # where does the data come from?

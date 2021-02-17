@@ -18,7 +18,6 @@
 #' 
 #' @seealso
 #' See \link{load_schema} for loading a \code{Schema} from the definition set.
-#' See \link{read_airr}, \link{write_airr} and \link{validate_airr} schema operators.
 #'
 #' @name         Schema-class
 #' @rdname       Schema-class
@@ -138,6 +137,9 @@ extract_field_content <- function(properties, field) {
 #' 
 #' # Load the Alignment definition
 #' schema <- load_schema("Alignment")
+#' 
+#' # Load the Repertoire definition
+#' schema <- load_schema("Repertoire")
 #' 
 #' @export
 load_schema <- function(definition) {
