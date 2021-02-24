@@ -33,7 +33,7 @@ read_airr_tsv <- function(file, base=c("1", "0"), schema=RearrangementSchema, ..
     base <- match.arg(base)
 
     # Define types
-    parsers <- c("character"="c", "logical"="l", "integer"="i", "double"="d")
+    parsers <- c("character"="c", "logical"="l", "integer"="i", "numeric"="d")
     header <- names(suppressMessages(readr::read_tsv(file, n_max=1)))
     schema_fields <- intersect(names(schema), header)
     cast <- setNames(lapply(schema_fields, function(f) parsers[schema[f]$type]), schema_fields)
