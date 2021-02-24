@@ -101,7 +101,6 @@ repertoire1 <- read_repertoire(rep_file_good)
 ```
 
 
-
 ## Writing AIRR formatted files
 
 The `airr` package contains the function `write_rearrangement` to write

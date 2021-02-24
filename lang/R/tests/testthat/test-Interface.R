@@ -77,7 +77,6 @@ repertoire_file <- system.file("extdata", "good_repertoire.airr.yaml", package="
 
 # Bad repertoire pointer
 bad_rearrangement_file <- file.path("..", "data-tests", "bad_repertoire.airr.yaml")
-#bad_rearrangement_file <- file.path("tests", "data-tests", "bad_data.tsv")
 
 
 #### Repertoire I/O  ####
@@ -92,7 +91,6 @@ test_that("read_airr_yaml loads a list", {
 context("Repertoire I/O - bad data")
 
 test_that("read_airr_yaml with bad data returns a warning", {
-    # Expect valid==FALSE
     bad_data <- suppressWarnings(read_airr_yaml(bad_rearrangement_file))
     expect_false(suppressWarnings(validate_airr_tsv(bad_data)))
 })

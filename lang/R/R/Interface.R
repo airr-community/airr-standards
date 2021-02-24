@@ -298,7 +298,7 @@ validate_airr_yaml_entry <- function(definition_list, schema=RearrangementSchema
 }
 
 #' @details
-#' \code{read_repertoire} reads a YAML file containing AIRR Repertoire data.
+#' \code{read_repertoire} reads a yaml file containing AIRR Repertoire data.
 #' 
 #' @rdname read_airr_yaml
 #' @export
