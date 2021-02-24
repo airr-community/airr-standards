@@ -1,3 +1,5 @@
+# REARRANGEMENT
+
 # Toy file pointer
 rearrangement_file <- file.path("..", "data-tests", "toy_data.tsv")
 #rearrangement_file <- file.path("tests", "data-tests", "toy_data.tsv")
@@ -66,4 +68,31 @@ test_that("write_airr_tsv writes a bad file, with warnings, with logicals T/T", 
                 c("T","T","T","","T","T","T","T","T","T","T"))
     expect_equal(reload_tbl[['productive']],
                  c("","T","F","T","T","F","F","F","T","T","T"))
+})
+
+# REPERTOIRE
+
+# Good repertoire pointer
+repertoire_file <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
+
+# Bad repertoire pointer
+bad_rearrangement_file <- file.path("..", "data-tests", "bad_repertoire.airr.yaml")
+#bad_rearrangement_file <- file.path("tests", "data-tests", "bad_data.tsv")
+
+
+#### Repertoire I/O  ####
+
+context("Repertoire I/O - good data")
+
+test_that("read_airr_yaml loads a list", {
+    rep_1 <- read_airr_yaml(repertoire_file)
+    expect_true(is.list(rep_1))
+})
+
+context("Repertoire I/O - bad data")
+
+test_that("read_airr_yaml with bad data returns a warning", {
+    # Expect valid==FALSE
+    bad_data <- suppressWarnings(read_airr_yaml(bad_rearrangement_file))
+    expect_false(suppressWarnings(validate_airr_tsv(bad_data)))
 })

@@ -92,7 +92,6 @@ head(airr_rearrangement)
 ### Reading repertoires 
 
 ```{r read_repertoire }
-rep_file_bad <-  system.file("extdata", "bad_repertoire.airr.yaml", package="airr")
 rep_file_good <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
 ```
 
@@ -101,10 +100,6 @@ Read a valid repertoire
 repertoire1 <- read_repertoire(rep_file_good)
 ```
 
-Read an incomplete repertoire
-```{r}
-repertoire2 <- read_repertoire(rep_file_bad)
-```
 
 
 ## Writing AIRR formatted files
@@ -124,12 +119,6 @@ Write a valid repertoire
 ```{r}
 out_file1 <- file.path(tempdir(), "airr_repertoire1_out.yaml")
 write_repertoire(repertoire1, out_file1)
-```
-
-Write an incomplete repertoire
-```{r}
-out_file2 <- file.path(tempdir(), "airr_repertoire2_out.yaml")
-write_repertoire(repertoire2, out_file2)
 ```
 
 
