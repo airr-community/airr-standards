@@ -68,7 +68,7 @@ setMethod("$",
 
 extract_field_content <- function(properties, field) {
     
-    types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="double", "array"="array", "object"="object")
+    types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="numeric", "array"="array", "object"="object")
     
     # if there is a simple reference to another AIRR schema elements, call the reference entries
     # example: disease_diagnosis entry in Diagnosis schema 

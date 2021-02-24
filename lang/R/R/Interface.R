@@ -266,9 +266,32 @@ validate_airr_yaml_entry <- function(definition_list, schema=RearrangementSchema
           valid <- validate_airr_yaml_entry(definition_list[[f]][[n_array]], schema = reference_schemes[[n_ref]])
         }
       }
+      # check if the entry type is correct
+    } else if(class(definition_list[[f]]) != schema[f]["type"]) {
+      
+      # one reason for non-identical types can be that the entry is nullable
+      nullable <- schema[f][["x-airr"]][["nullable"]]
+      # if not specified, it should be nullable
+      if (is.null(nullable)) {nullable <- TRUE}
+      if (!(nullable & is.null(definition_list[[f]]))) {
+        
+        # another reason for types not matching is the array format
+        # we test whether the entries are lists
+        if (!(schema[f]["type"] == "array" & is.vector(definition_list[[f]]))) {
+          
+          # another reason for types not matching is the numeric arguments being read as integers
+          # we test whether the entries are numeric
+          if (!(schema[f]["type"] == "numeric" & is.numeric(definition_list[[f]]))) {
+            valid <- FALSE
+            warning(paste("Warning: Following entry does not have the required type",
+                          schema[f]["type"], ":", f, "\n"))
+          }  
+       }
+        
+      }
+
     }
   }
-  # we do not cover the case when type == "object", in the case of germline for example
   
   # return to indicate whether entries are valid
   return(valid)
