@@ -71,6 +71,7 @@ extract_field_content <- function(properties, field) {
     types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="double", "array"="array", "object"="object")
     
     # if there is a simple reference to another AIRR schema elements, call the reference entries
+    # example: disease_diagnosis entry in Diagnosis schema 
     if(!is.null(properties[[field]]$`$ref`)) {
         # name of the AIRR scheme element to refer to
         ref_element <- properties[[field]]$`$ref`
@@ -82,6 +83,7 @@ extract_field_content <- function(properties, field) {
     }
     
     # if there is an array type format that has ref as entries
+    # example: diagnosis entry in Subject schema
     items <- unlist(properties[[field]][["items"]])
     if(!is.null(items)) {
         # check if these are references to other schemes
@@ -92,6 +94,31 @@ extract_field_content <- function(properties, field) {
             ref_scheme_list <- sapply(ref_element, load_schema)
             properties[[field]][["ref"]] <- ref_scheme_list
         }
+    }
+    
+    # if there is an object type, the properties may cover several reference schemes 
+    # example: germline entry in Subject schema
+    if(!is.null(properties[[field]][["type"]]) && 
+       properties[[field]][["type"]] == "object") {
+        # this should be normally defined in airr-schema.yaml as a reference scheme with optional properties
+        # as a workaround we create a helper Schema without required entries
+        required_helper <- character(0)
+        info_helper <- list(0)
+        optional_helper <- names(properties[[field]][["properties"]])
+        properties_helper <- properties[[field]][["properties"]]
+        
+        for (f in optional_helper) {
+            # if there is a reference to another AIRR schema elements, call the reference entries
+            properties_helper <- extract_field_content(properties_helper, f)
+        }
+        
+        helper_schema <- new("Schema", 
+                   required=required_helper, 
+                   optional=optional_helper, 
+                   properties=properties_helper, 
+                   info=info_helper)
+
+        properties[[field]][["ref"]] <- helper_schema
     }
     
     x <- properties[[field]][["type"]]
