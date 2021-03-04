@@ -104,9 +104,24 @@ components:
     # The response object for /status
     query_status_response:
       type: object
+      description: Provides status about an asynchronous query request
       properties:
-        Info:
-          $ref: '#/components/schemas/info_object'
+        query_id:
+          type: string
+        status:
+          type: string
+          enum:
+            - PENDING
+            - SUBMITTED
+            - PROCESSING
+            - FINISHED
+            - ERROR
+            - EXPIRED
+        created:
+          type: string
+          format: date
+        download_url:
+          type: string
 
     # error response
     error_response:
