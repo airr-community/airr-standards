@@ -30,12 +30,12 @@
 #' df <- read_rearrangement(file)
 #'
 #' @export
-read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, aux_col_types = NULL, ...) {
+read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, aux_col_types=NULL, ...) {
     # Check arguments
     base <- match.arg(base)
 
     # Define types
-    parsers <- c("character"="c", "logical"="l", "integer"="i", "double"="d")
+    parsers <- c("character"="c", "logical"="l", "integer"="i", "double"="d", "numeric"="n")
     header <- names(suppressMessages(readr::read_tsv(file, n_max=1)))
     schema_fields <- intersect(names(schema), header)
     cast <- setNames(lapply(schema_fields, function(f) parsers[schema[f]$type]), schema_fields)

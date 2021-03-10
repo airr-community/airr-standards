@@ -43,11 +43,13 @@ test_that("Columns are of expected type", {
     extra_cols <- data.frame(
         extra.int = c(1:nrow(tbl_0)),
         extra.numeric = rnorm(nrow(tbl_0)),
+        extra.double = rnorm(nrow(tbl_0)),
         extra.character = stringi::stri_rand_strings(nrow(tbl_0), 6)
     )
     extra_cols_na <- data.frame(
         extra.int = NA,
         extra.numeric = NA,
+        extra.double = NA,
         extra.character = NA
     )
 
@@ -76,11 +78,14 @@ test_that("Columns are of expected type", {
         tmp_file, "1",
         aux_col_types =
             c(extra.int = "integer",
-              extra.numeric = "double",
+              extra.double = "double",
+              extra.numeric = "numeric",
               extra.character = "character")), "data.frame")
     expect_is(tbl_0$extra.int, "integer")
+    expect_is(tbl_0$extra.double, "numeric")
     expect_is(tbl_0$extra.numeric, "numeric")
     expect_is(tbl_0$extra.character, "character")
+
 })
 
 
