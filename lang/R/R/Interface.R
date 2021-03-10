@@ -42,6 +42,7 @@ read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, aux_co
     cast <- c(cast, list(.default = col_character()))
 
     if(!is.null(aux_col_types)){
+        aux_col_types <- aux_col_types[names(aux_col_types) %in% header]
         aux_cols <- setNames(lapply(aux_col_types, function(f) parsers[f]), names(aux_col_types))
         cast <- c(cast, aux_cols)
     }
