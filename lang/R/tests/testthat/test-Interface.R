@@ -71,6 +71,16 @@ test_that("Columns are of expected type", {
     expect_is(tbl_0$extra.int, "character")
     expect_is(tbl_0$extra.numeric, "character")
     expect_is(tbl_0$extra.character, "character")
+
+    expect_is(tbl_0 <- read_airr(
+        tmp_file, "1",
+        aux_col_types =
+            c(extra.int = "integer",
+              extra.numeric = "double",
+              extra.character = "character")), "data.frame")
+    expect_is(tbl_0$extra.int, "integer")
+    expect_is(tbl_0$extra.numeric, "numeric")
+    expect_is(tbl_0$extra.character, "character")
 })
 
 

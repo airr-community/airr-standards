@@ -11,6 +11,8 @@
 #'                   are 0-based half-open intervals (python style) in the input file
 #'                   and will be converted to 1-based closed-intervals (R style).
 #' @param    schema  \code{Schema} object defining the output format.
+#' @param    aux_col_types A named vector or list giving the class of non-schema
+#'                   columns. The column name is the name, the value the class.
 #' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
 #'
 #' @return   A data.frame of the TSV file with appropriate type and position conversion
@@ -28,7 +30,7 @@
 #' df <- read_rearrangement(file)
 #'
 #' @export
-read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, ...) {
+read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, aux_col_types = NULL, ...) {
     # Check arguments
     base <- match.arg(base)
 
@@ -38,6 +40,12 @@ read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, ...) {
     schema_fields <- intersect(names(schema), header)
     cast <- setNames(lapply(schema_fields, function(f) parsers[schema[f]$type]), schema_fields)
     cast <- c(cast, list(.default = col_character()))
+
+    if(!is.null(aux_col_types)){
+        aux_cols <- setNames(lapply(aux_col_types, function(f) parsers[f]), names(aux_col_types))
+        cast <- c(cast, aux_cols)
+    }
+
     types <- do.call(readr::cols, cast)
 
     # Read file
