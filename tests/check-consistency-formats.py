@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Imports
-import jsondiff
+import filecmp
 import os
 import sys
 import yaml
@@ -11,47 +11,45 @@ from glob import glob
 basename = lambda f: os.path.splitext(os.path.basename(f))[0]
 
 # load all paths keyed by their name
-#spec_files = {basename(f): f for f in glob('specs/*.yaml')}
-#py_files = {basename(f): f for f in glob('lang/python/airr/specs/*.yaml')}
-#r_files = {basename(f): f for f in glob('lang/R/inst/extdata/*.yaml')}
-spec_files = {basename(f): f for f in glob('specs/airr-schema.yaml')}
-py_files = {basename(f): f for f in glob('lang/python/airr/specs/airr-schema.yaml')}
-r_files = {basename(f): f for f in glob('lang/R/inst/extdata/airr-schema.yaml')}
+test_files = {**{"python": {basename(f): f for f in glob('lang/python/tests/data/*')}},
+              **{"R": {basename(f): f for f in glob('lang/R/tests/data-tests/*')}}}
+spec_files = {**{"spec": {basename(f): f for f in glob('specs/airr-schema.yaml')}},
+              **{"python": {basename(f): f for f in glob('lang/python/airr/specs/airr-schema.yaml')}},
+              **{"R": {basename(f): f for f in glob('lang/R/inst/extdata/airr-schema.yaml')}}
+              }
 
-# Check python package specs
-if set(spec_files.keys()) != set(py_files.keys()):
-    for spec in set(spec_files.keys()) - set(py_files.keys()):
-        print('{} missing from python package'.format(spec), file=sys.stderr)
-    for spec in set(py_files.keys()) - set(spec_files.keys()):
-        print('{} found in python package but missing from specs/'.format(spec), file=sys.stderr)
-    sys.exit(1)
 
-# Check R package specs
-if set(spec_files.keys()) != set(r_files.keys()):
-    for spec in set(spec_files.keys()) - set(r_files.keys()):
-        print('{} missing from R package'.format(spec), file=sys.stderr)
-    for spec in set(r_files.keys()) - set(spec_files.keys()):
-        print('{} found in R package but missing from specs/'.format(spec), file=sys.stderr)
-    sys.exit(1)
-
-for spec_name in spec_files:
-    # check equality of specs
-    with open(spec_files[spec_name], 'r') as ip:
-        gold_spec = yaml.safe_load(ip)
-    with open(py_files[spec_name], 'r') as ip:
-        py_spec = yaml.safe_load(ip)
-    with open(r_files[spec_name], 'r') as ip:
-        r_spec = yaml.safe_load(ip)
-
-    # Check python package
-    if jsondiff.diff(gold_spec, py_spec) != {}:
-        print('{} spec is different from python version'.format(spec_name), file=sys.stderr)
-        print(jsondiff.diff(gold_spec, py_spec), file=sys.stderr)
+def check_file_sync(dic_files: dict, files_key_a: str, files_key_b: str):
+    # Check python package specs
+    if set(dic_files[files_key_a].keys()) != set(dic_files[files_key_b].keys()):
+        for spec in set(dic_files[files_key_a].keys()) - set(dic_files[files_key_b].keys()):
+            print('{} missing from {} package'.format(spec, files_key_b, file=sys.stderr))
+        for spec in set(dic_files[files_key_b].keys()) - set(dic_files[files_key_a].keys()):
+            print('{} found in {} package but missing from {}/'.format(spec, files_key_b, files_key_a), file=sys.stderr)
         sys.exit(1)
 
-    # Check R package
-    if jsondiff.diff(gold_spec, r_spec) != {}:
+
+# Check python package specs
+check_file_sync(spec_files, "spec", "python")
+# Check R package specs
+check_file_sync(spec_files, "spec", "R")
+# Check R vs python package test files
+check_file_sync(test_files, "R", "python")
+
+# check equality of specs
+for spec_name in spec_files["spec"]:
+
+    if not filecmp.cmp(spec_files["spec"][spec_name], spec_files["python"][spec_name]):
+        print('{} spec is different from python version'.format(spec_name), file=sys.stderr)
+        sys.exit(1)
+    if not filecmp.cmp(spec_files["spec"][spec_name], spec_files["R"][spec_name]):
         print('{} spec is different from R version'.format(spec_name), file=sys.stderr)
-        print(jsondiff.diff(gold_spec, r_spec), file=sys.stderr)
+        sys.exit(1)
+
+# check equality of test files
+for file_name in test_files["R"]:
+
+    if not filecmp.cmp(test_files["R"][file_name], test_files["python"][file_name]):
+        print('R {} test file is different from python version'.format(file_name), file=sys.stderr)
         sys.exit(1)
 
