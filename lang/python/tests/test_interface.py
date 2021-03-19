@@ -43,8 +43,9 @@ class TestInferface(unittest.TestCase):
         self.assertTupleEqual(result.shape, self.shape_good, 'load(): good data failed')
 
         # Bad data
-        result = airr.load_rearrangement(self.data_bad)
-        self.assertTupleEqual(result.shape, self.shape_bad, 'load(): bad data failed')
+        # result = airr.load_rearrangement(self.data_bad)
+        self.assertRaises(ValueError, airr.load_rearrangement, self.data_bad, validate=True, debug=True)
+        # self.assertTupleEqual(result.shape, self.shape_bad, 'load(): bad data failed')
 
     # @unittest.skip('-> repertoire_template(): skipped\n')
     def test_repertoire_template(self):
