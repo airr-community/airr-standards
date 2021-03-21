@@ -3,6 +3,18 @@
 Schema Release Notes
 ================================================================================
 
+Version 1.4.0: (In development)
+--------------------------------------------------------------------------------
+
+**Version 1.4, In development.**
+
+Rearrangement Schema:
+
+1. Added the optional fields ``v_frameshift``, ``j_frameshift``,
+   ``d_frame`` and ``d2_frame`` defining annotations related to alignment
+   reading frames.
+
+
 Version 1.3.1: October 13, 2020
 --------------------------------------------------------------------------------
 
