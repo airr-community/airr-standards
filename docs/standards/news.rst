@@ -3,10 +3,10 @@
 Schema Release Notes
 ================================================================================
 
-Version 1.4.0: (In development)
+Version 1.4.0-dev: (In development)
 --------------------------------------------------------------------------------
 
-**Version 1.4, In development.**
+**Version 1.4-dev, In development.**
 
 Rearrangement Schema:
 
