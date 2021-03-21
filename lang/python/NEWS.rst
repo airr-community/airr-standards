@@ -1,3 +1,10 @@
+Version 1.4.0:  In development
+--------------------------------------------------------------------------------
+
+1. Added support for missing integer values (``NaN``) in ``load_rearrangement``
+   by casting to the pandas ``Int64`` data type.
+
+
 Version 1.3.1:  October 13, 2020
 --------------------------------------------------------------------------------
 
