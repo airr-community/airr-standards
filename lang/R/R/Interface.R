@@ -303,7 +303,7 @@ validate_airr_yaml_entry <- function(definition_list, schema=RearrangementSchema
 #' @rdname read_airr_yaml
 #' @export
 read_repertoire <- function(file) {
-  read_airr_yaml(file, schema=RepertoireSchema)
+    read_airr_yaml(file, schema=RepertoireSchema)
 }
 
 
