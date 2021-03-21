@@ -4,16 +4,18 @@
 #'
 #' \code{read_airr} reads a TSV containing AIRR records.
 #'
-#' @param    file    input file path.
-#' @param    base    starting index for positional fields in the input file.
-#'                   If \code{"1"}, then these fields will not be modified.
-#'                   If \code{"0"}, then fields ending in \code{"_start"} and \code{"_end"}
-#'                   are 0-based half-open intervals (python style) in the input file
-#'                   and will be converted to 1-based closed-intervals (R style).
-#' @param    schema  \code{Schema} object defining the output format.
-#' @param    aux_col_types A named vector or list giving the class of non-schema
-#'                   columns. The column name is the name, the value the class.
-#' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
+#' @param    file        input file path.
+#' @param    base        starting index for positional fields in the input file.
+#'                       If \code{"1"}, then these fields will not be modified.
+#'                       If \code{"0"}, then fields ending in \code{"_start"} and \code{"_end"}
+#'                       are 0-based half-open intervals (python style) in the input file
+#'                       and will be converted to 1-based closed-intervals (R style).
+#' @param    schema      \code{Schema} object defining the output format.
+#' @param    aux_types   named vector or list giving the type for fields that are not
+#'                       defined in \code{schema}. The field name is the name, the value
+#'                       the type, denoted by one of \code{"c"} (character), \code{"l"} (logical),
+#'                       \code{"i"} (integer), \code{"d"} (double), or \code{"n"} (numeric).
+#' @param    ...         additional arguments to pass to \link[readr]{read_delim}.
 #'
 #' @return   A data.frame of the TSV file with appropriate type and position conversion
 #'           for fields defined in the specification.
@@ -30,7 +32,7 @@
 #' df <- read_rearrangement(file)
 #'
 #' @export
-read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, aux_col_types=NULL, ...) {
+read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, aux_types=NULL, ...) {
     # Check arguments
     base <- match.arg(base)
 
@@ -41,9 +43,9 @@ read_airr <- function(file, base=c("1", "0"), schema=RearrangementSchema, aux_co
     cast <- setNames(lapply(schema_fields, function(f) parsers[schema[f]$type]), schema_fields)
     cast <- c(cast, list(.default = col_character()))
 
-    if(!is.null(aux_col_types)){
-        aux_col_types <- aux_col_types[names(aux_col_types) %in% header]
-        aux_cols <- setNames(lapply(aux_col_types, function(f) parsers[f]), names(aux_col_types))
+    if(!is.null(aux_types)){
+        aux_types <- aux_types[names(aux_types) %in% header]
+        aux_cols <- setNames(lapply(aux_types, function(f) parsers[f]), names(aux_types))
         cast <- c(cast, aux_cols)
     }
 
