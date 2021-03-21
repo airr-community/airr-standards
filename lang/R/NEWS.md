@@ -1,4 +1,4 @@
-Version 1.4.0:  In development
+Version 1.4.0-dev:  In development
 -------------------------------------------------------------------------------
     
 + Added the `aux_types` argument to `read_airr` (and dependent functions) to

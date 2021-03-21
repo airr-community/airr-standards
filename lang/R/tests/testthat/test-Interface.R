@@ -76,7 +76,7 @@ test_that("Columns are of expected type", {
 
     expect_is(read_airr(
         rearrangement_file, "1",
-        aux_col_types =
+        aux_types =
             c(extra.int = "integer",
               extra.double = "double",
               extra.numeric = "numeric",
@@ -84,7 +84,7 @@ test_that("Columns are of expected type", {
 
     expect_is(tbl_0 <- read_airr(
         tmp_file, "1",
-        aux_col_types =
+        aux_types =
             c(extra.int = "integer",
               extra.double = "double",
               extra.numeric = "numeric",

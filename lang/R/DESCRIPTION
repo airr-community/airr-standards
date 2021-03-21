@@ -1,6 +1,6 @@
 Package: airr
 Type: Package
-Version: 1.3.0
+Version: 1.4.0-dev
 Date: 2021-03-21
 Authors@R: c(person("Jason", "Vander Heiden", role=c("aut", "cre"), 
                     email="jason.vanderheiden@gmail.com"),
@@ -34,4 +34,4 @@ Suggests:
     knitr,
     rmarkdown,
     testthat
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
