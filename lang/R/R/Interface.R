@@ -166,13 +166,12 @@ read_alignment <- function(file, base=c("1", "0"), ...) {
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
-#' file <- system.file("tests/data-tests/", "good_repertoire.airr.yaml", package="airr")
+#' file <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
 #' 
 #' # Load data file
-#' df <- read_repertoire(file)
+#' repr <- read_repertoire(file)
 #' 
 #' @export
-
 read_airr_yaml <- function(file, schema=RepertoireSchema) {
   
   # if file is of type YAML, load as YAML
@@ -201,19 +200,20 @@ read_airr_yaml <- function(file, schema=RepertoireSchema) {
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
-#' file <- system.file("tests/data-tests/", "good_repertoire.airr.yaml", package="airr")
+#' file <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
 #' 
 #' # Load data file
-#' df <- read_repertoire(file)
-#' # validate
-#' validate_airr_yaml(df)
+#' repr <- read_repertoire(file)
+#' 
+#' # Validate
+#' validate_airr_yaml(repr)
 #' 
 #' @export
-
-# This is a wrapper function to allow recursive validation of the different entries in yaml file
-# Directly calling validate_airr_yaml_entry does not work, because the function
-# validate_airr_yaml_entry also needs to work for recursive calling of reference schemes
 validate_airr_yaml <- function(data, schema = RepertoireSchema) {
+  # This is a wrapper function to allow recursive validation of the different entries in yaml file
+  # Directly calling validate_airr_yaml_entry does not work, because the function
+  # validate_airr_yaml_entry also needs to work for recursive calling of reference schemes
+  
   # extract the list of entries in the scheme
   yaml_list <- data[[1]]
   # yaml file can contain multiple entries
@@ -228,7 +228,7 @@ validate_airr_yaml <- function(data, schema = RepertoireSchema) {
 
 
 # Validation function for a single entry in the yaml file
-validate_airr_yaml_entry <- function(definition_list, schema=RearrangementSchema){
+validate_airr_yaml_entry <- function(definition_list, schema=RearrangementSchema) {
   
   valid <- TRUE
   
@@ -439,10 +439,10 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
-#' file <- system.file("tests/data-tests/", "good_repertoire.airr.yaml", package="airr")
+#' file <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
 #' 
 #' # Load data file
-#' df <- read_repertoire(file)
+#' repr <- read_repertoire(file)
 #' 
 #' # Write a Rearrangement data file
 #' outfile <- file.path(tempdir(), "output.yaml")
@@ -451,13 +451,13 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' @export
 write_airr_yaml <- function(data, file, schema=RepertoireSchema) {
   
-  valid <- validate_airr_yaml(data = data, schema = schema)
+    valid <- validate_airr_yaml(data = data, schema = schema)
+    
+    # what kind of other tests do we need to implement here?
+    # where does the data come from?
   
-  # what kind of other tests do we need to implement here?
-  # where does the data come from?
-
-  # Write
-  yaml::write_yaml(data, file)
+    # Write
+    yaml::write_yaml(data, file)
 }
 
 
@@ -467,5 +467,5 @@ write_airr_yaml <- function(data, file, schema=RepertoireSchema) {
 #' @rdname write_airr_yaml
 #' @export
 write_repertoire <- function(data, file) {
-  write_airr_yaml(data, file, schema=RepertoireSchema)
+    write_airr_yaml(data, file, schema=RepertoireSchema)
 }
