@@ -29,12 +29,12 @@ class Schema:
       true_values (list): accepted values for True.
     """
     # Boolean list for pandas
-    true_values = ['True', 'true', 'TRUE', 'T', 't', '1', 1, True]
-    false_values = ['False', 'false', 'FALSE', 'F', 'f', '0', 0, False]
+    true_values = ['True', 'true', 'TRUE', 'T', 't', '1']
+    false_values = ['False', 'false', 'FALSE', 'F', 'f', '0']
 
     # Generate dicts for booleans
-    _to_bool_map = {x: True for x in true_values}
-    _to_bool_map.update({x: False for x in false_values})
+    _to_bool_map = {x: True for x in true_values + [1, True]}
+    _to_bool_map.update({x: False for x in false_values + [0, False]})
     _from_bool_map = {k: 'T' if v else 'F' for k, v in _to_bool_map.items()}
 
     def __init__(self, definition):
@@ -106,20 +106,24 @@ class Schema:
         field_type = field_spec.get('type', None) if field_spec else None
         return field_type
 
-    # import numpy as np
-    # def numpy_types(self):
-    #     type_mapping = {}
-    #     for property in self.properties:
-    #         if self.type(property) == 'boolean':
-    #             type_mapping[property] = np.bool
-    #         elif self.type(property) == 'integer':
-    #             type_mapping[property] = np.int64
-    #         elif self.type(property) == 'number':
-    #             type_mapping[property] = np.float64
-    #         elif self.type(property) == 'string':
-    #             type_mapping[property] = np.unicode_
-    #
-    #     return type_mapping
+    def pandas_types(self):
+        """
+
+        Returns:
+          dict: mapping dictionary for pandas types
+        """
+        type_mapping = {}
+        for property in self.properties:
+            if self.type(property) == 'boolean':
+                type_mapping[property] = bool
+            elif self.type(property) == 'integer':
+                type_mapping[property] = 'Int64'
+            elif self.type(property) == 'number':
+                type_mapping[property] = 'float64'
+            elif self.type(property) == 'string':
+                type_mapping[property] = str
+
+        return type_mapping
 
     def to_bool(self, value, validate=False):
         """

@@ -14,6 +14,12 @@ import yaml
 import yamlordereddictloader
 from io import open
 
+if (sys.version_info > (3, 0)):
+    from io import StringIO
+else: # Python 2 code in this block
+    from io import BytesIO as StringIO
+
+
 # Load imports
 from airr.io import RearrangementReader, RearrangementWriter
 from airr.schema import ValidationError, RearrangementSchema, RepertoireSchema
@@ -86,14 +92,19 @@ def load_rearrangement(filename, validate=False, debug=False):
       pandas.DataFrame: Rearrangement records as rows of a data frame.
     """
     # TODO: test pandas.DataFrame.read_csv with converters argument as an alterative
-    # schema = RearrangementSchema
-    # df = pd.read_csv(handle, sep='\t', header=0, index_col=None,
-    #                  dtype=schema.numpy_types(), true_values=schema.true_values,
-    #                  false_values=schema.true_values)
-    # return df
-    with open(filename, 'r') as handle:
-        reader = RearrangementReader(handle, validate=validate, debug=debug)
-        df = pd.DataFrame(list(reader))
+    schema = RearrangementSchema
+
+    df = pd.read_csv(filename, sep='\t', header=0, index_col=None,
+                     dtype=schema.pandas_types(), true_values=schema.true_values,
+                     false_values=schema.false_values)
+    # added to use RearrangementReader without modifying it:
+    buffer = StringIO()  # create an empty buffer
+    df.to_csv(buffer, sep='\t', index=False)  # fill buffer
+    buffer.seek(0)  # set to the start of the stream
+
+    reader = RearrangementReader(buffer, validate=validate, debug=debug)
+
+    df = pd.DataFrame(list(reader))
     return df
 
 
