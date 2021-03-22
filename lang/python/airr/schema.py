@@ -342,7 +342,12 @@ class Schema:
             # check if identifier field
             if xairr and xairr.get('identifier'):
                 if is_missing_key:
-                    raise ValidationError('Identifier field %s is missing' %(full_field))
+
+                    if xairr.get('nullable'):
+                        sys.stderr.write(
+                            'Warning: Nullable identifier field %s is missing.\n' % full_field)
+                    else:
+                        raise ValidationError('Not-nullable identifier field %s is missing' % full_field)
 
             # check nullable requirements
             if is_null:
