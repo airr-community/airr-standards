@@ -446,7 +446,7 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' 
 #' # Write a Rearrangement data file
 #' outfile <- file.path(tempdir(), "output.yaml")
-#' write_repertoire(df, outfile)
+#' write_repertoire(repr, outfile)
 #' 
 #' @export
 write_airr_yaml <- function(data, file, schema=RepertoireSchema) {
