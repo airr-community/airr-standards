@@ -1,17 +1,19 @@
 .. _OntoVoc:
 
-=====================================
-AIRR Ontologies and Vocabularies Team
-=====================================
+=======================================
+AIRR Ontologies and Vocabularies Sub-WG
+=======================================
 
 Summary
 =======
 
-The "Ontologies and Vocabularies Team" was formed as a joint interest
-group of the Common Repository (ComRepo) and the Minimal Standards
-(MiniStd) working groups of the AIRR Community. The long-term aim of
-the Team is to define standard vocabularies and ontologies to be used
-by AIRR-compliant databases.
+The "Ontologies and Vocabularies Team" was initial formed as a joint
+interest group of the Common Repository (ComRepo) and the Minimal
+Standards (MiniStd) working groups (WG) of the AIRR Community. When the
+two WG merged into the current Standards WG in Decemmber 2020, OntoVoc
+became a Sub-WG of it. The long-term aim of the Sub-WG is to define
+standard vocabularies and ontologies to be used by AIRR-compliant
+repositories.
 
 
 Ontology Data Representation
@@ -58,6 +60,75 @@ It should be explicitly noted that the IRI *prefix* list should not be
 interpreted as any kind of recommendation for certain *providers*. It is
 left up to users to decide how to resolve the resulting IRIs, e.g., via
 DNS/HTTP (if possible) or by using a *provider* of their choice.
+
+
+.. _ONTO_CRIT_CURRENT:
+
+General Policies
+================
+
+Criteria
+--------
+
+Ontologies used within AIRR standards
+
+.. _ONTO_CRIT_CURRENT_1:
+
+1. MUST [1]_ cover the majority of the required terms, but complete
+   coverage is OPTIONAL
+
+.. _ONTO_CRIT_CURRENT_2:
+
+2. MUST have a structure that is scientifically correct and logically
+   coherent
+
+.. _ONTO_CRIT_CURRENT_3:
+
+3. MUST NOT feature complexity that makes it hard to use for queries
+   and data representation
+
+.. _ONTO_CRIT_CURRENT_4:
+
+4. SHOULD already be widely adopted
+
+.. _ONTO_CRIT_CURRENT_5:
+
+5. MUST be actively maintained
+
+.. _ONTO_CRIT_CURRENT_6:
+
+6. MUST be available under a free license
+
+.. _ONTO_CRIT_CURRENT_7:
+
+7. SHOULD comply to the  `OBO Foundry Principles`_. This does not imply
+   a preference 
+
+
+Comments on criteria:
+
+-  ad `(1)`_: For most fields it will be difficult to find complete and
+   accurate ontologies. Therefore picking the best available ontology
+   and working with its maintainers to include missing terms is expected
+   to be the most sustainable approach.
+-  ad `(5)`_: This requirement follows from `(1)`_, as there needs to be
+   a way for term requests.
+-  ad `(6)`_: A number of ontologies need to be licensed from their
+   respective copyright holders. This results in potential barriers for
+   implementation and distribution of such ontologies. Therefore only
+   ontologies available under a free license are considered suitable for
+   AIRR-compliant databases. The list of suitable licenses is not final,
+   but includes: CC0_ and `CC BY`_.
+-  ad `(7)`_: This is an endorsement of the OBO Foundry *Principles*,
+   not of the OBO Foundry *Ontologies* in general. Hence, also non-OBO
+   have an equal standing if they comply to the Principles.
+
+.. _`(1)`: ONTO_CRIT_CURRENT_1_
+.. _`(2)`: ONTO_CRIT_CURRENT_2_
+.. _`(5)`: ONTO_CRIT_CURRENT_5_
+.. _`(6)`: ONTO_CRIT_CURRENT_6_
+.. _`(7)`: ONTO_CRIT_CURRENT_7_
+
 
 
 Approved Ontologies
@@ -262,12 +333,12 @@ Sprint Reports
    Report Sprint 11/2018 <report_sprint_2018-11>
    Report Sprint 04/2020 <report_sprint_2020-04>
 
-.. Citations
+.. == Citations ==
 
 .. [RFC3987] Internationalized Resource Identifiers (IRIs). `DOI:10.17487/RFC3987`_
 
-.. Links
-
+.. == Link references ==
+.. _`OBO Foundry Principles`: https://en.wikipedia.org/wiki/OBO_Foundry#Principles
 .. _CC0: https://creativecommons.org/publicdomain/zero/1.0/
 .. _`CC BY`: https://creativecommons.org/licenses/by/4.0/
 .. _`CURIEs`: https://www.w3.org/TR/curie
