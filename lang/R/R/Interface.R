@@ -28,7 +28,7 @@
 #' df <- read_rearrangement(file)
 #' 
 #' @export
-read_airr_tsv <- function(file, base=c("1", "0"), schema=RearrangementSchema, ...) {
+read_airr_tsv <- function(file, base=c("1", "0"), schema, ...) {
     # Check arguments
     base <- match.arg(base)
 
@@ -56,7 +56,7 @@ read_airr_tsv <- function(file, base=c("1", "0"), schema=RearrangementSchema, ..
     return(data)
 }
 
-#' Validate AIRR data
+#' Validate AIRR data in tsv format, especially rearrangement data
 #' 
 #' \code{validate_airr_tsv} validates compliance of the contents of a data.frame 
 #' to the AIRR data standards.
@@ -67,18 +67,7 @@ read_airr_tsv <- function(file, base=c("1", "0"), schema=RearrangementSchema, ..
 #' @return   Returns \code{TRUE} if the input \code{data} is compliant and
 #'           \code{FALSE} if not.
 #'           
-#' @examples
-#' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
-#' 
-#' # Load data file
-#' df <- read_rearrangement(file)
-#' 
-#' # Validate a data.frame against the Rearrangement schema
-#' validate_airr_tsv(df, schema=RearrangementSchema)
-#' 
-#' @export
-validate_airr_tsv <- function(data, schema=RearrangementSchema){
+validate_airr_tsv <- function(data, schema){
   
   valid <- TRUE
   
@@ -129,6 +118,33 @@ validate_airr_tsv <- function(data, schema=RearrangementSchema){
   valid
 }
 
+#' Validate AIRR rearrangement data
+#' 
+#' \code{validate_rearrangement} validates compliance of the contents of a data.frame 
+#' to the AIRR data standards Rearrangement format.
+#'
+#' @param    data    data.frame to validate.
+#'
+#' @return   Returns \code{TRUE} if the input \code{data} is compliant and
+#'           \code{FALSE} if not.
+#'           
+#' @examples
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' 
+#' # Load data file
+#' df <- read_rearrangement(file)
+#' 
+#' # Validate a data.frame against the Rearrangement schema
+#' validate_rearrangement(df)
+#' 
+#' @export
+validate_rearrangement <- function(data) {
+  validate_airr_tsv(data, schema=RearrangementSchema)
+}
+
+
+
 #' @details
 #' \code{read_rearrangement} reads an AIRR TSV containing Rearrangement data.
 #' 
@@ -172,7 +188,7 @@ read_alignment <- function(file, base=c("1", "0"), ...) {
 #' repr <- read_repertoire(file)
 #' 
 #' @export
-read_airr_yaml <- function(file, schema=RepertoireSchema) {
+read_airr_yaml <- function(file, schema) {
   
   # if file is of type YAML, load as YAML
   data <- yaml.load_file(file)
@@ -198,18 +214,7 @@ read_airr_yaml <- function(file, schema=RepertoireSchema) {
 #' See \link{Schema} for the AIRR schema object definition.
 #' See \link{write_airr_yaml} for writing AIRR data.
 #' 
-#' @examples
-#' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
-#' 
-#' # Load data file
-#' repr <- read_repertoire(file)
-#' 
-#' # Validate
-#' validate_airr_yaml(repr)
-#' 
-#' @export
-validate_airr_yaml <- function(data, schema = RepertoireSchema) {
+validate_airr_yaml <- function(data, schema) {
   # This is a wrapper function to allow recursive validation of the different entries in yaml file
   # Directly calling validate_airr_yaml_entry does not work, because the function
   # validate_airr_yaml_entry also needs to work for recursive calling of reference schemes
@@ -228,7 +233,7 @@ validate_airr_yaml <- function(data, schema = RepertoireSchema) {
 
 
 # Validation function for a single entry in the yaml file
-validate_airr_yaml_entry <- function(definition_list, schema=RearrangementSchema) {
+validate_airr_yaml_entry <- function(definition_list, schema) {
   
   valid <- TRUE
   
@@ -297,6 +302,36 @@ validate_airr_yaml_entry <- function(definition_list, schema=RearrangementSchema
   return(valid)
 }
 
+
+#' Validate Repertoire
+#' 
+#' \code{validate_repertoire} validates a Repertoire containing AIRR object.
+#'
+#' @param    data  Data object from yaml import. This data contains the AIRR records.
+#' 
+#' @return   Returns \code{TRUE} if the input \code{data} is compliant with AIRR standards and
+#'           \code{FALSE} if not. 
+#'                   
+#' @seealso  
+#' See \link{Schema} for the AIRR schema object definition.
+#' See \link{validate_airr_yaml} for validating yaml formatted AIRR data.
+#' 
+#' @examples
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
+#' 
+#' # Load data file
+#' repr <- read_repertoire(file)
+#' 
+#' # Validate
+#' validate_repertoire(repr)
+#' 
+#' @export
+validate_repertoire <- function(data) {
+  validate_airr_yaml(data, schema = RepertoireSchema)
+}
+
+
 #' @details
 #' \code{read_repertoire} reads a yaml file containing AIRR Repertoire data.
 #' 
@@ -343,7 +378,7 @@ read_repertoire <- function(file) {
 #' write_rearrangement(df, outfile)
 #' 
 #' @export
-write_airr_tsv <- function(data, file, base=c("1", "0"), schema=RearrangementSchema, ...) {
+write_airr_tsv <- function(data, file, base=c("1", "0"), schema, ...) {
     ## DEBUG
     # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
     
@@ -449,7 +484,7 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' write_repertoire(repr, outfile)
 #' 
 #' @export
-write_airr_yaml <- function(data, file, schema=RepertoireSchema) {
+write_airr_yaml <- function(data, file, schema) {
   
     valid <- validate_airr_yaml(data = data, schema = schema)
     
