@@ -1919,8 +1919,8 @@ CellProcessing:
             $ref: '#/Ontology'
             description: >
                 Binomial designation of the species from which the analyzed cells originate. Typically, this value
-                should be identical to `species`, if which case it SHOULD NOT be set explicitly. Howver, there are
-                valid experimental setups in which the two might differ, e.g. chimeric animal models. If set, this
+                should be identical to `species`, in which case it SHOULD NOT be set explicitly. However, there are
+                valid experimental setups in which the two might differ, e.g., chimeric animal models. If set, this
                 key will overwrite the `species` information for all lower layers of the schema.
             title: Cell species
             example:
