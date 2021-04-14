@@ -39,7 +39,7 @@ uses a controlled vocabulary, the individual values are described below:
 | ``DNA``            |  ``PCR``                      | Conventional PCR on genomic DNA  |
 |                    |                               | of a vertebrate host (requires:  |
 |                    |                               | ``synthetic`` == ``false`` )     |
-+                    |                               +----------------------------------+
+|                    |                               +----------------------------------+
 |                    |                               | Conventional PCR on DNA of a     |
 |                    |                               | synthetic library (requires:     |
 |                    |                               | ``synthetic`` == ``true`` )      |
@@ -113,6 +113,28 @@ In this case:
 *  +39 (marker ``[c]``) is the most distal templated nucleotide
 
 
+cell_subset
+-----------
+
+The ``cell_subset`` field is ontology-controlled, i.e., if present, it
+MUST be refer to a Cell Ontology (CL) term via is `id` field.
+
+*  In general, the provided annotation MUST NOT contradict the
+   experimentally determined phenotype. E.g., if the experiment shows
+   that the population is CD27+ a term that is explicitly defined in CL
+   as CD27- MUST NOT be used.
+*  However, this does not mean that all markers listed in the
+   description of an ontology term would need to be confirmed, as long
+   as the existing information is considered sufficient for
+   classification and not contradictory (see above).
+*  In case the experimentally isolated cells to not match any "leaf"
+   term, e.g., due to the isolation of multiple populations that
+   contradict the definitions, the general advice is to move up the
+   CL hierarchy to the most distal term that is no-contradictory.
+   In this case, ``cell_phenotype`` should be used to define the
+   markers that were used experimentally.
+
+
 Specific Use Cases and Experimental Setups
 ==========================================
 
@@ -141,7 +163,11 @@ following annotation SHOULD/MUST be used:
 *  ``cell_storage``: SHOULD be used for non-cellular particles
    analogously.
 *  ``physical_linkage``: For scFv constructs the ``hetero_prelinkeded``
+<<<<<<< HEAD
    term MUST be used. VHH (i.e., camelid) libraries SHOULD annotate
+=======
+   term MUST be used. VHH (i.e. camelid) libraries SHOULD annotate
+>>>>>>> 52a255a (Add draft guidance on cell_subset annotation)
    ``none`` as there is only a single rearrangement envolved.
 
 
