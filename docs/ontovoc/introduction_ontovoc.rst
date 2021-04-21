@@ -331,7 +331,7 @@ One of the key goals of using ontologies is to enable analysis tools to perform 
 the information in those ontologies. In most cases CURIE URI prefixes point to providers that resolve to
 human readable resources for those ontologies, but the AIRR specification also lists providers that can be
 used programmatically by analysis tools. This section discusses the use of the `EBI OLS`_ search capabilities, and in
-particular their web API interface, for querying and computing with ontologies.
+particular the `OLS Web API`_ interface, for querying and computing with ontologies.
 
 
 
@@ -360,3 +360,4 @@ Sprint Reports
 .. _Uberon: https://www.ebi.ac.uk/ols/ontologies/UBERON
 .. _UO: https://www.ebi.ac.uk/ols/ontologies/UO
 .. _`EBI OLS`: https://www.ebi.ac.uk/ols
+.. _`OLS Web API`: https://www.ebi.ac.uk/ols/docs/api
