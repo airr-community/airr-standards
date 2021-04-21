@@ -330,7 +330,7 @@ Computing with Ontologies
 One of the key goals of using ontologies is to enable analysis tools to perform computation using
 the information in those ontologies. In most cases CURIE URI prefixes point to providers that resolve to
 human readable resources for those ontologies, but the AIRR specification also lists providers that can be
-used programmatically by analysis tools. This section discusses the use of the `EBI OLS` search capabilities, and in
+used programmatically by analysis tools. This section discusses the use of the `EBI OLS`_ search capabilities, and in
 particular their web API interface, for querying and computing with ontologies.
 
 
