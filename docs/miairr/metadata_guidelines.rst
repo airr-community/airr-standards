@@ -117,7 +117,7 @@ cell_subset
 -----------
 
 The ``cell_subset`` field is ontology-controlled, i.e., if present, it
-MUST be refer to a Cell Ontology (CL) term via is `id` field.
+MUST be refer to a Cell Ontology (CL) term via its `id` field.
 
 *  In general, the provided annotation MUST NOT contradict the
    experimentally determined phenotype. E.g., if the experiment shows
@@ -133,6 +133,12 @@ MUST be refer to a Cell Ontology (CL) term via is `id` field.
    CL hierarchy to the most distal term that is no-contradictory.
    In this case, ``cell_phenotype`` should be used to define the
    markers that were used experimentally.
+*  Note that ontology-controlled fields allow exactly one term.
+   Therefore, mixtures of defined cell populations either need to be
+   demultiplexed, or -- if this is not possible -- use the last (i.e,,
+   most distal) common term of all cell populations involved. Again,
+   ``cell_phenotype`` can be used to provide the markers used in the
+   experiment.
 
 
 Specific Use Cases and Experimental Setups
