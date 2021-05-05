@@ -30,33 +30,95 @@ Ontology:
             description: Label of the concept in the respective ontology
 
 
-CURIEResolution:
-  -
-    curie_prefix: NCBITAXON
-    iri_prefix:
-      - "http://purl.obolibrary.org/obo/NCBITaxon_"
-      - "http://purl.bioontology.org/ontology/NCBITAXON/"
-  -
-    curie_prefix: NCIT
-    iri_prefix:
-      - "http://purl.obolibrary.org/obo/NCIT_"
-      - "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#"
-  -
-    curie_prefix: UO
-    iri_prefix:
-      - "http://purl.obolibrary.org/obo/UO_"
-  -
-    curie_prefix: DOID
-    iri_prefix:
-      - "http://purl.obolibrary.org/obo/DOID_"
-  -
-    curie_prefix: UBERON
-    iri_prefix:
-      - "http://purl.obolibrary.org/obo/UBERON_"
-  -
-    curie_prefix: CL
-    iri_prefix:
-      - "http://purl.obolibrary.org/obo/CL_"
+CURIEMap:
+    CL:
+        OBO:
+            iri_prefix: "http://purl.obolibrary.org/obo/CL_"
+            auto_resolve: true
+            provider:
+                Ontobee:
+                    default: true
+                    ontology_id: CL
+                OLS:
+                    default: false
+                    ontology_id: cl
+        type: ontology
+    DOID:
+        OBO:
+            iri_prefix: "http://purl.obolibrary.org/obo/DOID_"
+            auto_resolve: true
+            provider:
+                Ontobee:
+                    default: true
+                    ontology_id: DOID
+                OLS:
+                    default: false
+                    ontology_id: doid
+        type: ontology
+    NCBITAXON:
+        OBO:
+            iri_prefix: "http://purl.obolibrary.org/obo/NCBITAXON_"
+            auto_resolve: true
+            provider:
+                Ontobee:
+                    default: true
+                    ontology_id: NCBITaxon
+                OLS:
+                    default: false
+                    ontology_id: ncbitaxon
+        BioPortal:
+            iri_prefix: "http://purl.bioontology.org/ontology/NCBITAXON/"
+            auto_resolve: true
+            provider:
+                BioPortal:
+                    default: true
+                    ontology_id: NCBITAXON
+        type: taxonomy
+    NCIT:
+        OBO:
+            iri_prefix: "http://purl.obolibrary.org/obo/NCIT_"
+            auto_resolve: true
+            provider:
+                Ontobee:
+                    default: true
+                    ontology_id: NCIT
+                OLS:
+                    default: false
+                    ontology_id: ncit
+        type: thesaurus
+    UBERON:
+        OBO:
+            iri_prefix: "http://purl.obolibrary.org/obo/UBERON_"
+            auto_resolve: true
+            provider:
+                Ontobee:
+                    default: true
+                    ontology_id: UBERON
+                OLS:
+                    default: false
+                    ontology_id: uberon
+        type: ontology
+    UO:
+        OBO:
+            iri_prefix: "http://purl.obolibrary.org/obo/UO_"
+            auto_resolve: true
+            provider:
+                Ontobee:
+                    default: true
+                    ontology_id: UO
+                OLS:
+                    default: false
+                    ontology_id: uo
+        type: ontology
+
+InformationProvider:
+    BioPortal:
+        view: "https://bioportal.bioontology.org/ontologies/{ontology_id}/?p=classes&conceptid="
+    OLS:
+        JSON: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri="
+    Ontobee:
+        RDF: "http://www.ontobee.org/ontology/rdf/{ontology_id}?iri="
+        view: "http://www.ontobee.org/ontology/{ontology_id}?iri="
 
 
 # AIRR specification extensions
