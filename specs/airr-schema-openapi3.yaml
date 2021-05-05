@@ -110,6 +110,28 @@ CURIEMap:
                     default: false
                     ontology_id: uo
         type: ontology
+    ORCID:
+        ORCID:
+            iri_prefix: ""
+            auto_resolve: false
+            provider:
+                ORCID:
+                    default: true
+    DOI:
+        DOI:
+            iri_prefix: ""
+            auto_resolve: false
+            provider:
+                DOI:
+                    default: true
+    ROR:
+        ROR:
+            iri_prefix: https://ror.org/
+            auto_resolve: true
+            provider:
+                ROR:
+                    default: true
+
 
 InformationProvider:
     BioPortal:
@@ -119,6 +141,13 @@ InformationProvider:
     Ontobee:
         RDF: "http://www.ontobee.org/ontology/rdf/{ontology_id}?iri="
         view: "http://www.ontobee.org/ontology/{ontology_id}?iri="
+    ORCID:
+        view: "https://orcid.org/"
+    DOI:
+        view: "https://doi.org/"
+    ROR:
+        view: ""
+        JSON: "https://api.ror.org/organizations/"
 
 
 # AIRR specification extensions
