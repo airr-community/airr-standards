@@ -530,13 +530,50 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' @export
 write_airr_yaml <- function(data, file, schema) {
   
-    valid <- validate_airr_yaml(data = data, schema = schema)
+    valid <- validate_airr_yaml_json(data = data, schema = schema)
     
     # what kind of other tests do we need to implement here?
     # where does the data come from?
   
     # Write
     yaml::write_yaml(data, file)
+}
+
+#' Write an AIRR json
+#' 
+#' \code{write_airr_json} writes a yaml containing AIRR formatted records.
+#'
+#' @param    data    object containing Repertoire data.
+#' @param    file    output file name.
+#' @param    schema  \code{Schema} object defining the output format.
+#'
+#' @return   NULL
+#' 
+#' @seealso
+#' See \link{Schema} for the AIRR schema object definition.
+#' See \link{read_airr_json} for reading to AIRR files.
+#' 
+#' @examples
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "warning_repertoire.airr.json", package="airr")
+#' 
+#' # Load data file
+#' repr <- read_repertoire(file)
+#' 
+#' # Write a Rearrangement data file
+#' outfile <- file.path(tempdir(), "output.json")
+#' write_repertoire(repr, outfile)
+#' 
+#' @export
+write_airr_json <- function(data, file, schema) {
+  
+  valid <- validate_airr_yaml_json(data = data["Repertoire"], schema = schema)
+  
+  # what kind of other tests do we need to implement here?
+  # where does the data come from?
+  
+  # Write
+  write(jsonlite::toJSON(data), file)
 }
 
 
@@ -546,5 +583,12 @@ write_airr_yaml <- function(data, file, schema) {
 #' @rdname write_airr_yaml
 #' @export
 write_repertoire <- function(data, file) {
+  # guess from file name whether json or yaml format for writing
+  if (grepl(".json$",file)) {
+    write_airr_json(data, file, schema=RepertoireSchema)
+  } else if (grepl(".yaml$",file)) {
     write_airr_yaml(data, file, schema=RepertoireSchema)
+  } else {
+    stop("File extenstion must be either .yaml or .json")
+  }
 }

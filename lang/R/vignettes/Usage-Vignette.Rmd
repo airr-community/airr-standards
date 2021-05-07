@@ -123,10 +123,16 @@ write_rearrangement(airr_rearrangement, out_file)
 
 ### Writing repertoires
 
-Write a valid repertoire
+Write a valid repertoire in yaml format
 ```{r}
 out_file1 <- file.path(tempdir(), "airr_repertoire1_out.yaml")
 write_repertoire(repertoire1, out_file1)
+```
+
+Write a valid repertoire in json format
+```{r}
+out_file2 <- file.path(tempdir(), "airr_repertoire2_out.json")
+write_repertoire(repertoire2, out_file2)
 ```
 
 
