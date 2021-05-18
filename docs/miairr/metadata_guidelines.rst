@@ -119,8 +119,8 @@ Specific Use Cases and Experimental Setups
 Synthetic libraries
 -------------------
 
-In synthetic libraries (e.g. phage or yeast display), particles present
-genetically engineered constructs (e.g. scFv fusion receptors) on their
+In synthetic libraries (e.g., phage or yeast display), particles present
+genetically engineered constructs (e.g., scFv fusion receptors) on their
 surface. As this deviates substantially from other workflows, the
 following annotation SHOULD/MUST be used:
 
@@ -141,7 +141,7 @@ following annotation SHOULD/MUST be used:
 *  ``cell_storage``: SHOULD be used for non-cellular particles
    analogously.
 *  ``physical_linkage``: For scFv constructs the ``hetero_prelinkeded``
-   term MUST be used. VHH (i.e. camelid) libraries SHOULD annotate
+   term MUST be used. VHH (i.e., camelid) libraries SHOULD annotate
    ``none`` as there is only a single rearrangement envolved.
 
 
