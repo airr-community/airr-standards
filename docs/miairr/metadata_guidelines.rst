@@ -169,11 +169,7 @@ following annotation SHOULD/MUST be used:
 *  ``cell_storage``: SHOULD be used for non-cellular particles
    analogously.
 *  ``physical_linkage``: For scFv constructs the ``hetero_prelinkeded``
-<<<<<<< HEAD
    term MUST be used. VHH (i.e., camelid) libraries SHOULD annotate
-=======
-   term MUST be used. VHH (i.e. camelid) libraries SHOULD annotate
->>>>>>> 52a255a (Add draft guidance on cell_subset annotation)
    ``none`` as there is only a single rearrangement envolved.
 
 
