@@ -343,12 +343,104 @@ Computing with Ontologies
 =========================
 
 One of the key goals of using ontologies is to enable analysis tools to perform computation using
-the information in those ontologies. In most cases CURIE URI prefixes point to providers that resolve to
-human readable resources for those ontologies, but the AIRR specification also lists providers that can be
-used programmatically by analysis tools. This section discusses the use of the `EBI OLS`_ search capabilities, and in
-particular the `OLS Web API`_ interface, for querying and computing with ontologies.
+the information in those ontologies. The AIRR specification's ``CURIEMap`` lists one or more *providers* for each CURIE
+*prefix* that can be
+used programmatically by analysis tools. Although the AIRR specification lists multiple providers for each ontology, 
+this section focuses on the use of the `EBI OLS`_ *provider's* `OLS Web API`_ interface for querying ontologies.
 
+If we consider the DOID CURIE *prefix* from the ``CURIEMap``, the definition below defines the use of the Human Disease Ontology within
+the AIRR Standard.
 
+.. code-block::
+
+  DOID:
+    type: ontology
+    default:
+      map: OBO
+      provider: OLS
+    map:
+      OBO:
+        iri_prefix: "http://purl.obolibrary.org/obo/DOID_"
+
+We see that the default ``map`` for the DOID ontology is the OBO map, and the OBO map's ``iri_prefix`` is "http://purl.obolibrary.org/obo/DOID_".
+So to map a CURIE of ``DOID:9538`` (the CURIE for disease "multiple myeloma") to a resolved IRI we would get the following: ``http://purl.obolibrary.org/obo/DOID_9538_``.
+By the strictest of defintions, this is a resolved IRI and should only be considered an identifier, but in this case this IRI is also a URL
+and can be used to look up the CURIE.
+
+If we consider the ``provider`` in the ``CURIEMap`` for DOID, we see that it is OLS. In the ``InformationProvider`` object in the AIRR
+specification, under ``provider`` we see.
+
+.. code-block::
+
+  InformationProvider:
+    provider:
+      OLS:
+        request:
+          url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
+          response: application/json
+
+And later we see that the ``parameters`` for OLS are.
+
+.. code-block::
+
+  parameter:
+    CL:
+      Ontobee:
+        ontology_id: CL
+      OLS:
+        ontology_id: cl
+    DOID:
+      Ontobee:
+        ontology_id: DOID
+      OLS:
+        ontology_id: doid
+
+The above tells us that we can use the OLS ``provider`` to look up ontology terms. The ``{iri}`` component of the URL
+tells us that we need to use the resolved IRI for the CURIE and the ``{ontology_id}`` component tells us that we need
+to replace the ``ontology_id`` parameter in the URL with the DOID OLS parameter in the specification, which is the string ``doid``. 
+Thus the fully resolved URL to query for the CURIE ``DOID:9538`` would be.
+
+.. code-block::
+
+  https://www.ebi.ac.uk/ols/api/ontologies/doid/terms?iri=http://purl.obolibrary.org/obo/DOID_9538
+
+Again, referring to the OLS ``provider`` we see that we can expect a ``application/json`` response to the above query, and indeed 
+the response we receive from the above starts with a JSON object as follows.
+
+.. code-block::
+
+ {
+  "_embedded" : {
+    "terms" : [ {
+      "iri" : "http://purl.obolibrary.org/obo/DOID_9538",
+      "label" : "multiple myeloma",
+      "description" : [ "A myeloid neoplasm that is located_in the plasma cells in bone marrow." ],
+      "annotation" : {
+        "comment" : [ "OMIM mapping confirmed by DO. [SN]." ],
+        "database_cross_reference" : [ "ICD10CM:C90.0", "MESH:D009101", "ICD9CM:203.0", "GARD:7108", "NCI:C3242", "OMIM:254500", "ORDO:29073", "EFO:0001378", "SNOMEDCT_US_2020_09_01:94705007", "UMLS_CUI:C0026764" ],
+        "has_obo_namespace" : [ "disease_ontology" ],
+        "id" : [ "DOID:9538" ]
+      },
+      "synonyms" : [ "plasma cell myeloma" ],
+      "ontology_name" : "doid",
+      "ontology_prefix" : "DOID",
+      "ontology_iri" : "http://purl.obolibrary.org/obo/doid.owl",
+      "is_obsolete" : false,
+      "term_replaced_by" : null,
+      "is_defining_ontology" : true,
+      "has_children" : true,
+      "is_root" : false,
+      "short_form" : "DOID_9538",
+      "obo_id" : "DOID:9538",
+      [Content edited because of length]
+      
+In this repsonse, you can see that the Ontology object that we requested has a ``label`` field that contains the value ``multiple myeloma`` and
+that the ``id`` field has a value of ``DOID:9538``.
+
+It is beyond the scope of this document to describe in detail the JSON structure of each of the providers, but this information can be discovered
+through the ``provider`` web sites. It should be noted that all Ontology objects in the AIRR specification have the OLS as a ``provider`` and therefore
+the method above can be used for any of the ontologies in the AIRR specification. Please see the `OLS Web API`_ documentation for details of the JSON
+response for the OLS ``provider``.
 
 Sprint Reports
 ==============
