@@ -346,14 +346,17 @@ Approved Ontologies
 Computing with Ontologies
 =========================
 
-One of the key goals of using ontologies is to enable analysis tools to perform computation using
-the information in those ontologies. The AIRR specification's ``CURIEMap`` lists one or more *providers* for each CURIE
-*prefix* that can be
-used programmatically by analysis tools. Although the AIRR specification lists multiple providers for each ontology, 
-this section focuses on the use of the `EBI OLS`_ *provider's* `OLS Web API`_ interface for querying ontologies.
+One of the key goals of using ontologies is to enable analysis tools
+to perform computation using the information in those ontologies. The
+AIRR Schema's ``CURIEMap`` lists one or more *providers* for each CURIE
+*prefix* that can be used programmatically by analysis tools. Although
+the AIRR Schema lists multiple providers for each ontology, this section
+focuses on the use of the `EBI OLS`_ *provider's* `OLS Web API`_
+interface for querying ontologies.
 
-If we consider the DOID CURIE *prefix* from the ``CURIEMap``, the definition below defines the use of the Human Disease Ontology within
-the AIRR Standard.
+If we consider the ``DOID`` *prefix* from the ``CURIEMap``, the section
+below defines the use of the Human Disease Ontology (DOID_) within the
+AIRR Standard:
 
 .. code-block::
 
@@ -366,13 +369,18 @@ the AIRR Standard.
       OBO:
         iri_prefix: "http://purl.obolibrary.org/obo/DOID_"
 
-We see that the default ``map`` for the DOID ontology is the OBO map, and the OBO map's ``iri_prefix`` is "http://purl.obolibrary.org/obo/DOID_".
-So to map a CURIE of ``DOID:9538`` (the CURIE for disease "multiple myeloma") to a resolved IRI we would get the following: ``http://purl.obolibrary.org/obo/DOID_9538_``.
-By the strictest of defintions, this is a resolved IRI and should only be considered an identifier, but in this case this IRI is also a URL
-and can be used to look up the CURIE.
+We see that the default ``map`` for DOID is ``OBO`` map, and the OBO
+map's ``iri_prefix`` is ``http://purl.obolibrary.org/obo/DOID_``. Thus
+the mapping of the CURIE ``DOID:9538`` (the CURIE for disease "multiple
+myeloma") will yield the resolved string
+``http://purl.obolibrary.org/obo/DOID_9538``. By the strictest of
+defintions, this is a valid IRI and should only be considered an
+identifier, but in this case this IRI is also a URL and can be used to
+look up the CURIE.
 
-If we consider the ``provider`` in the ``CURIEMap`` for DOID, we see that it is OLS. In the ``InformationProvider`` object in the AIRR
-specification, under ``provider`` we see.
+If we consider the default DOID ``provider`` in the ``CURIEMap``, we see
+that it is ``OLS``. Then, in the ``InformationProvider`` object of the
+AIRR Schema, under ``provider`` we see:
 
 .. code-block::
 
@@ -383,7 +391,7 @@ specification, under ``provider`` we see.
           url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
           response: application/json
 
-And later we see that the ``parameters`` for OLS are.
+And later we see that the ``parameters`` for ``OLS`` are:
 
 .. code-block::
 
@@ -399,17 +407,21 @@ And later we see that the ``parameters`` for OLS are.
       OLS:
         ontology_id: doid
 
-The above tells us that we can use the OLS ``provider`` to look up ontology terms. The ``{iri}`` component of the URL
-tells us that we need to use the resolved IRI for the CURIE and the ``{ontology_id}`` component tells us that we need
-to replace the ``ontology_id`` parameter in the URL with the DOID OLS parameter in the specification, which is the string ``doid``. 
-Thus the fully resolved URL to query for the CURIE ``DOID:9538`` would be.
+The above tells us that we can use the OLS ``provider`` to look up
+ontology terms. The ``{iri}`` component of the ``url`` string tells us
+that we need to use the resolved IRI and the ``{ontology_id}`` component
+tells us that we need to replace the ``ontology_id`` parameter in the
+URL with the DOID OLS parameter in the specification, which is the
+string ``doid``. Thus the fully resolved URL to query for the CURIE
+``DOID:9538`` would be:
 
 .. code-block::
 
   https://www.ebi.ac.uk/ols/api/ontologies/doid/terms?iri=http://purl.obolibrary.org/obo/DOID_9538
 
-Again, referring to the OLS ``provider`` we see that we can expect a ``application/json`` response to the above query, and indeed 
-the response we receive from the above starts with a JSON object as follows.
+Again, referring to the OLS ``provider`` we see that we can expect an
+``application/json`` response to the above query, and indeed  the
+response we receive from the above starts with a JSON object as follows.
 
 .. code-block::
 
@@ -438,13 +450,18 @@ the response we receive from the above starts with a JSON object as follows.
       "obo_id" : "DOID:9538",
       [Content edited because of length]
       
-In this repsonse, you can see that the Ontology object that we requested has a ``label`` field that contains the value ``multiple myeloma`` and
+In this repsonse, you can see that the Ontology object that we requested
+has a ``label`` field that contains the value ``multiple myeloma`` and
 that the ``id`` field has a value of ``DOID:9538``.
 
-It is beyond the scope of this document to describe in detail the JSON structure of each of the providers, but this information can be discovered
-through the ``provider`` web sites. It should be noted that all Ontology objects in the AIRR specification have the OLS as a ``provider`` and therefore
-the method above can be used for any of the ontologies in the AIRR specification. Please see the `OLS Web API`_ documentation for details of the JSON
-response for the OLS ``provider``.
+It is beyond the scope of this document to describe in detail the JSON
+structure of each of the providers, but this information can be
+discovered through the ``provider`` web sites. It should be noted that
+all Ontology objects in the AIRR specification have the OLS as a
+``provider`` and therefore the method above can be used for any of the
+ontologies in the AIRR specification. Please see the `OLS Web API`_
+documentation for details of the JSON response for the OLS ``provider``.
+
 
 Sprint Reports
 ==============
@@ -454,6 +471,7 @@ Sprint Reports
 
    Report Sprint 11/2018 <report_sprint_2018-11>
    Report Sprint 04/2020 <report_sprint_2020-04>
+   Report Sprint 04/2021 <report_sprint_2021-04>
 
 .. == Citations ==
 
