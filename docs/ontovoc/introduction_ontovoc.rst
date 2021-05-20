@@ -28,13 +28,12 @@ field that is represented as an ontology recorded with a global
 *ontology ID* (``id``) and the corresponding *label* (``label``).
 
 Within the AIRR Standards, Compact URIs (`CURIEs`_) are used to
-represent *ontology IDs* or *persistent IDs*.
-CURIEs are a standardized way to abbreviate
-International Resource Identifiers (IRI, [RFC3987]_), which include
-URIs and URLs as subsets. They were originally conceived to simplify the
-handling of attributes, e.g. in XML or SPARQL, by making them more
-compact and readable. CURIEs are also used by IEDB databases to reduce
-redundancies (mainly in the leading part of IRIs).
+represent *ontology IDs* or *persistent IDs*. CURIEs are a standardized
+way to abbreviate International Resource Identifiers (IRI, [RFC3987]_),
+which include URIs and URLs as subsets. They were originally conceived
+to simplify the handling of attributes, e.g., in XML or SPARQL, by
+making them more compact and readable. CURIEs are also used by IEDB
+databases to reduce redundancies (mainly in the leading part of IRIs).
 
 For example, a typical CURIE would look like ``NCBITAXON:9258``. In this
 case, ``NCBITAXON`` is the *prefix*, a custom string that will be
@@ -42,34 +41,39 @@ replaced by a repository-defined IRI component (e.g.,
 ``http://purl.obolibrary.org/obo/NCBITaxon_``). Note that there is no
 connection between ``NCBITAXON`` in the CURIE and ``NCBITaxon`` in the
 IRI, the former one is just a placeholder. Although common, it is not
-always the case that a resolved CURIE (the IRI *prefix* plus the *local ID*) 
-can be used as a URL directly to look up the CURIE using a web browser.
+always the case that a resolved CURIE (the IRI *prefix* plus the
+*local ID*) can be used as a URL directly to look up the CURIE using a
+web browser.
 
-The AIRR schema provides a ``CURIEMap``, a list of AIRR approved CURIE *prefixes*
-along with a ``map`` of at least one IRI *prefix* (i.e., replacement
-string) for each CURIE *prefix*. In addition, the CURIEMap for a CURIE *prefix* will sometimes
-provide a definition for one or more ``InformationProvider`` entities for that CURIE *prefix*.
-An InformationProvider provides a mechanism to computationally look up a resolved CURIE
-(e.g. the IRI *prefix* and the *local ID*) by describing how to make a request to the
-InformationProvider as well as describing the format in which the request response will be provided.
-Finally, the CURIEMap may also provide a default ``map`` and ``provider`` for each CURIE *prefix*.
+The AIRR Schema provides a ``CURIEMap``, a list of AIRR approved CURIE
+*prefixes* along with a ``map`` of at least one ``iri_prefix`` (i.e.,
+a replacement string to construct the complete IRI) for each *prefix*.
+As the ``iri_prefix`` might differ between *provider*-specific
+implementations of an ontology (e.g., NCBI Taxonomy), the ``CURIEMap``
+supports multiple ``iri_prefix`` entries for a given *prefix*. Finally,
+the ``CURIEMap`` should also provide a default ``map`` and ``provider``
+for each *prefix*. Complementary to this, the ``InformationProvider``
+list describes the mechanism to computationally look up a resolved IRI
+(e.g., the ``iri_prefix`` and the *local ID*) by specifying how to make
+a request to the *provider* as well as describing the format in which
+the request response will be provided.
 
-This CURIEMap serves several purposes:
+The ``CURIEMap`` serves several purposes:
 
 1. It provides a controlled namespace for CURIE *prefixes* used in the
-   AIRR schema. For now, custom additions to or replacements of these
+   AIRR Schema. For now, custom additions to or replacements of these
    *prefixes* in the schema are prohibited. This does not affect the
    ability of repositories to use such custom prefixes internally.
-2. It simplifies resolution of CURIEs. The
-   lists of IRI *prefixes* for each CURIE *prefix* should not be
-   considered to be exhaustive. However, when using custom IRI
-   *prefixes*, it must be ensured that they refer to the same
-   ontology as the provider *prefixes*.
-3. It simplifies computation using CURIES. It is possible to use the *provider* for
-   a CURIE *prefix* as a mechanism to look up a CURIE from an InformationProvider with
-   a known response (See 
+2. It simplifies resolution of CURIEs. The ``iri_prefix`` lists for each
+   *prefix* should not be considered to be exhaustive. However, when
+   using a custom ``iri_prefix``, it must be ensured that the expanded
+   IRI still refers to the same concept/instance as when using the
+   default ``iri_prefix``.
+3. It simplifies computation using CURIES. It is possible to use the
+   ``provider`` for a *prefix* as a mechanism to look up a CURIE from a
+   *provider* with a defined response (See below)
 
-It should be explicitly noted that the *CURIEMap* should not be
+It should be explicitly noted that the ``CURIEMap`` should not be
 interpreted as any kind of recommendation for certain *providers*. It is
 left up to users to decide how to resolve the resulting IRIs, e.g., via
 DNS/HTTP (if possible) or by using a *provider* of their choice.
