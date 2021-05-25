@@ -5,6 +5,9 @@ matrix:
         - 3.6
       install:
         - pip install pyyaml pandas xlrd deepdiff jinja2 jsondiff
+      before_script:
+        - rsync -a lang/R/tests/data-tests/ lang/python/tests/data
+        - rsync -a lang/python/tests/data/ lang/R/tests/data-tests
       script:
         - tests/check-consistency-miairr.py
         - tests/check-consistency-formats.py
@@ -15,6 +18,9 @@ matrix:
         - cd lang/python
       install:
         - pip install -r requirements.txt
+      before_script:
+        - rsync -a lang/R/tests/data-tests/ lang/python/tests/data
+        - rsync -a lang/python/tests/data/ lang/R/tests/data-tests
       script:
         - python setup.py install
         - python -m unittest discover
@@ -50,6 +56,8 @@ matrix:
       install:
         - R -e 'devtools::install_deps(dep=T)'
       before_script:
+        - rsync -a lang/R/tests/data-tests/ lang/python/tests/data
+        - rsync -a lang/python/tests/data/ lang/R/tests/data-tests
         - R -e 'devtools::document()'
       script:
         - R CMD build .
