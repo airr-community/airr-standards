@@ -29,7 +29,8 @@ Imports:
     readr,
     stats,
     stringi,
-    yaml
+    yaml,
+    jsonlite
 Suggests:
     knitr,
     rmarkdown,
