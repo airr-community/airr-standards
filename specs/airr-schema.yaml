@@ -140,25 +140,533 @@ Attributes:
                             description: Ontology name for the top node term
 
 #
+# General objects
+# TODO: link to global schema with JSON-LD?
+#
+
+# An individual
+Acknowledgement:
+    discriminator: AIRR
+    description: Individual whose contribution to this work should be acknowledged
+    type: object
+    required:
+        - acknowledgement_id
+        - name
+        - institution_name
+    properties:
+        acknowledgement_id:
+            type: string
+            description: unique identifier of this Acknowledgement within the file
+        name:
+            type: string
+            description: Full name of individual
+        institution_name:
+            type: string
+            description: Individual's department and institution name
+        ORCID_id:
+            type: string
+            description: Individual's ORCID Id, if available
+
+#
 # Germline gene schema
 #
-# The GeneDescription object will be introduced at a later point here. Until
-# then the term "gene description" below can be considered to be equivalent
-# to "gene symbol".
-#
-# Gene descriptions from the same class organized together as a set
-GermlineClassSet:
+
+# Rearranged and genomic germline sequences
+RearrangedSequence:
     discriminator: AIRR
+    description: Details of a directly observed rearranged sequence or an inference from rearranged sequences contributing support for a gene or allele
     type: object
+    required:
+        - sequence_id
+        - sequence
+        - derivation
+        - observation_type
+        - repository_name
+        - repository_id
+        - deposited_version
+        - seq_start
+        - seq_end
     properties:
-        germline_class_id:
+        sequence_id:
             type: string
-            description: A unique identifier for this Germline Class Set.
-        germline_class:
+            description: Unique identifier of this RearrangedSequence within the file
+        sequence:
+            type: string
+            description: nucleotide sequence
+        derivation:
+            type: string
+            enum:
+                - DNA
+                - RNA
+            description: The class of nucleic acid that was used as primary starting material
+        observation_type:
+            type: string
+            description: The type of observation from which this sequence was drawn, e.g. direct sequencing, inference from repertoire
+            enum:
+                - direct sequencing
+                - inference from repertoire
+        notes:
+            type: string
+            description: Notes
+        repository_name:
+            type: string
+            description: Name of the repository in which the sequence has been deposited
+        repository_id:
+            type: string
+            description: Id or serial number of the sequence within the repository
+        deposited_version:
+            type: string
+            description: Version number of the sequence within the repository
+        seq_start:
+            type: integer
+            description: Start co-ordinate of the sequence detailed in this record, within the sequence deposited
+        seq_end:
+            type: integer
+            description: End co-ordinate of the sequence detailed in this record, within the sequence deposited
+
+GermlineSequence:
+    discriminator: AIRR
+    description: Details of a genomic germline sequence contributing support for a gene or allele
+    type: object
+    required:
+        - sequence_id
+        - sequence
+        - repository_name
+        - assembly_id
+        - gff_seqid
+        - gff_start
+        - gff_end
+        - strand
+    properties:
+        sequence_id:
+            type: string
+            description: unique identifier of this GermlineSequence within the file
+        sequence:
+            type: string
+            description: Sequence of interest described in this record (typically this will include gene and promoter region)
+        notes:
+            type: string
+            description: Notes
+        repository_name:
+            type: string
+            description: Name of the repository in which the assembly or contig is deposited
+        assembly_id:
+            type: string
+            description: Identifier of the assembly or contig within the repository
+        patch_no:
+            type: string
+            description: Genome assembly patch number in which this gene was determined
+        gff_seqid:
+            type: string
+            description: Germline sequence (from the assembly) of a window including the gene and preferably also the promoter region
+        gff_start:
+            type: integer
+            description: Genomic co-ordinates of the start of the sequence of interest described in this record, in Ensemble GFF version 3
+        gff_end:
+            type: integer
+            description: Genomic co-ordinates of the end of the sequence of interest described in this record, in Ensemble GFF version 3
+        strand:
+            type: string
+            enum:
+                - +
+                - "-"
+            description: sense (+ or -)
+
+# V gene delineation
+GeneDelineationV:
+    discriminator: AIRR
+    description: Delineation of a V-gene in a particular system
+    type: object
+    required:
+        - germline_delineation_id
+        - delineation_scheme
+        - fwr1_start
+        - fwr1_end
+        - cdr1_start
+        - cdr1_end
+        - fwr2_start
+        - fwr2_end
+        - cdr2_start
+        - cdr2_end
+        - fwr3_start
+        - fwr3_end
+        - cdr3_start
+    properties:
+        germline_delineation_id:
+            type: string
+            description: Unique identifier of this GeneDelineationV within the file
+        delineation_scheme:
+            type: string
+            description: Name of the delineation scheme
+            example: Chothia
+        fwr1_start:
+            type: integer
+            description: FWR1 start co-ordinate in Gene Description 'sequence' field
+        fwr1_end:
+            type: integer
+            description: FWR1 end co-ordinate in Gene Description 'sequence' field
+        cdr1_start:
+            type: integer
+            description: CDR1 start co-ordinate in Gene Description 'sequence' field
+        cdr1_end:
+            type: integer
+            description: CDR1 end co-ordinate in Gene Description 'sequence' field
+        fwr2_start:
+            type: integer
+            description: FWR2 start co-ordinate in Gene Description 'sequence' field
+        fwr2_end:
+            type: integer
+            description: FWR2 end co-ordinate in Gene Description 'sequence' field
+        cdr2_start:
+            type: integer
+            description: CDR2 start co-ordinate in Gene Description 'sequence' field
+        cdr2_end:
+            type: integer
+            description: CDR2 end co-ordinate in Gene Description 'sequence' field
+        fwr3_start:
+            type: integer
+            description: FWR3 start co-ordinate in Gene Description 'sequence' field
+        fwr3_end:
+            type: integer
+            description: FWR3 end co-ordinate in Gene Description 'sequence' field
+        cdr3_start:
+            type: integer
+            description: CDR3 start co-ordinate in Gene Description 'sequence' field
+        alignment:
+            type: array
+            items:
+              type: string
+            description: one string for each codon in the fields v_start to cdr3_start indicating the label of that codon according to the numbering of the delineation scheme
+
+# The Gene Description
+GeneDescription:
+    discriminator: AIRR
+    description: Details of a gene sequence which is inferred from one or more observations
+    type: object
+    required:
+        - description_id
+        - author
+        - lab_address
+        - release_version
+        - release_date
+        - release_description
+        - sequence
+        - coding_sequence
+        - coding_sequence_identifier
+        - locus
+        - sequence_type
+        - functional
+        - inference_type
+        - species
+    properties:
+        gene_description_id:
+            type: string
+            description: Unique identifier of this GeneDescription within the file
+        maintainer:
+            type: string
+            description: Maintainer of this sequence record
+        acknowledgements:
+            type: array
+            description: List of individuals whose contribution to the gene description should be acknowledged
+            items:
+                $ref: '#/Acknowledgement'
+        lab_address:
+            type: string
+            description: Institution and full address of corresponding author
+        release_version:
+            type: integer
+            description: Version number of this record, updated whenever a revised version is published or released
+        release_date:
+            type: string
+            description: Date of this release
+        release_description:
+            type: string
+            description: Brief descriptive notes of the reason for this release and the changes embodied
+        gene_symbol:
+            type: string
+            description: The accepted name for this gene or allele, if any
+            example: IGHV1-69*01
+        sequence:
+            type: string
+            description: nt sequence of the gene. This should cover the full length that is available, including where possible RSS, and 5' UTR and lead-in for V-gene sequences
+        coding_sequence:
+            type: string
+            description: nucleotide sequence of the core region of the gene (V-, D-, J- or C-REGION), aligned, in the case of the V-REGION, with the IMGT numbering scheme
+        coding_sequence_identifier:
+            type: string
+            description: Unique identifier of the coding_sequence, as allocated by an identified repository
+            example: OGRDB:54AE2
+        alt_names:
+            type: array
+            items:
+                type: string
+            description: Alternative names for this sequence
+        locus:
             type: string
             enum:
                 - IGH
-                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRG
+                - TRD
+            description: Gene locus
+        chromosome:
+            type: integer
+            description: chromosome on which the gene is located 
+        sequence_type:
+            type: string
+            enum:
+                - V
+                - D
+                - J
+                - C
+            description: Sequence type (V, D, J, C)
+        functional:
+            type: boolean
+            description: True if the gene is functional, false if it is a pseudogene
+        inference_type:
+            type: string
+            enum:
+                - Genomic and rearranged
+                - Genomic only
+                - Rearranged only
+            description: Type of inference(s) from which this gene sequence was inferred
+        species:
+            type: string
+            description: Binomial designation of subject's species
+            example: Mus musculus
+        species_subgroup:
+            type: string
+            description: Race, strain or other species subgroup to which this subject belongs
+            example: BALB/C
+        species_subgroup_type:
+            type: string
+            enum:
+                - breed
+                - strain
+                - inbred
+                - outbred
+                - locational
+        status:
+            type: string
+            enum:
+                - active
+                - draft
+                - retired
+                - withdrawn
+            description: Status of record, assumed active if the field is not proesent
+        gene_subgroup:
+            type: string
+            description: Gene subgroup or clade, as (and if) identified for this species and gene
+        subgroup_designation:
+            type: string
+            description: Gene designation within this subgroup, if identified
+        allele_designation:
+            type: string
+            description: Allele designation, if identified
+        j_codon_frame:
+            type: integer
+            enum:
+                - 1
+                - 2
+                - 3
+            description: Codon position of the first nucleotide in the 'coding_sequence' field. Mandatory for J genes. Not used for V or D genes. ('1' means the sequence is in-frame, '2' means that the first bp is missing from the first codon, '3' means that the first 2 bp are missing)
+        gene_start:
+            type: integer
+            description: Co-ordinate (in the sequence field) of the first nucleotide in the coding_sequence field
+        gene_end:
+            type: integer
+            description: Co-ordinate (in the sequence field) of the last gene-coding nucleotide in the coding_sequence field
+        utr_5_prime_start:
+            type: integer
+            description: Start co-ordinate (in the sequence field) of 5 prime UTR (V-genes only)
+        utr_5_prime_end:
+            type: integer
+            description: End co-ordinate (in the sequence field) of 5 prime UTR (V-genes only)
+        leader_1_start:
+            type: integer
+            description: Start co-ordinate (in the sequence field) of L-PART1 (V-genes only)
+        leader_1_end:
+            type: integer
+            description: End co-ordinate (in the sequence field) of L-PART1 (V-genes only)
+        leader_2_start:
+            type: integer
+            description: Start co-ordinate (in the sequence field) of L-PART2 (V-genes only)
+        leader_2_end:
+            type: integer
+            description: End co-ordinate (in the sequence field) of L-PART2 (V-genes only)
+        v_rs_start:
+            type: integer
+            description: Start co-ordinate (in the sequence field) of V recombination site (V-genes only)
+        v_rs_end:
+            type: integer
+            description: End co-ordinate (in the sequence field) of V recombination site (V-genes only)
+        d_rs_3_prime_start:
+            type: integer
+            description: Start co-ordinate (in the sequence field) of 3 prime D recombination site (D-genes only)
+        d_rs_3_prime_end:
+            type: integer
+            description: End co-ordinate (in the sequence field) of 3 prime D recombination site (D-genes only)
+        d_rs_5_prime_start:
+            type: integer
+            description: Start co-ordinate (in the sequence field) of 5 prime D recombination site (D-genes only)
+        d_rs_5_prime_end:
+            type: integer
+            description: End co-ordinate (in the sequence field) of 5 prime D recombination site (D-genes only)
+        j_cdr3_end:
+            type: integer
+            description: In the case of a J-gene, the co-ordinate (in the sequence field) of the first nucelotide of the conserved PHE or TRP (IMGT codon position 118)
+        j_rs_start:
+            type: integer
+            description: Start co-ordinate (in the sequence field) of J recombination site (J-genes only)
+        j_rs_end:
+            type: integer
+            description: End co-ordinate (in the sequence field) of J recombination site (J-genes only)
+        j_donor_splice:
+            type: integer
+            description: Co-ordinate (in the sequence field) of the 3' splice donor site (J-genes only)
+        v_gene_delineations:
+            type: array
+            items:
+                $ref: '#/GeneDelineationV'
+        genomic_support:
+            type: array
+            items:
+                $ref: '#/GermlineSequence'
+        rearranged_support:
+            type: array
+            items:
+                $ref: '#/RearrangedSequence'
+        paralogs:
+            type: array
+            items:
+                type: string
+            description: Gene symbols of any paralogs
+        notes:
+            type: string
+            description: Notes
+        curational_tags:
+            type: array
+            items:
+                type: string
+                enum:
+                    - likely_truncated
+                    - likely_full_length
+            description: Controlled-vocabulary tags applied to this description
+
+# Collection of gene descriptions into a germline set
+GermlineSet:
+    discriminator: AIRR
+    description: Details of a 'germline set' bringing together multiple GeneDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
+    type: object
+    required:
+        - author
+        - lab_name
+        - lab_address
+        - release_version
+        - release_description
+        - release_date
+        - germline_set_name
+        - germline_set_ref
+        - species
+        - locus
+        - gene_descriptions
+    properties:
+        germline_set_id:
+            type: string
+            description: Unique identifier of the GermlineSet within this file
+        author:
+            type: string
+            description: Corresponding author
+        lab_name:
+            type: string
+            description: Department of corresponding author
+        lab_address:
+            type: string
+            description: Institutional address of corresponding author
+        acknowledgements:
+            type: array
+            description: List of individuals whose contribution to the germline set should be acknowledged
+            items:
+                $ref: '#/Acknowledgement'
+        release_version:
+            type: number
+            description: Version number of this record, allocated automatically
+        release_description:
+            type: string
+            description: Brief descriptive notes of the reason for this release and the changes embodied
+        release_date:
+            type: string
+            description: Date of this release
+        germline_set_name:
+            type: string
+            description: descriptive name of this germline set
+        germline_set_ref:
+            type: string
+            description: Unique identifier of the germline set and version, in standardized form (Repo:Label:Version)
+            example: OGRDB:Human_IGH:2021.11
+        pub_ids:
+            type: string
+            description: Publications describing the germline set
+            example: "PMID:85642,PMID:12345"
+        species:
+            type: string
+            description: Binomial designation of subject's species
+            example: Mus musculus
+        species_subgroup:
+            type: string
+            description: Race, strain or other species subgroup to which this subject belongs
+            example: BALB/C
+        species_subgroup_type:
+            type: string
+            enum:
+                - breed
+                - strain
+                - inbred
+                - outbred
+                - locational
+        locus:
+            type: string
+            enum:
+                - IGH
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRG
+                - TRD
+            description: Gene locus
+        gene_descriptions:
+            type: array
+            items:
+              $ref: '#/GeneDescription'
+            description: list of gene_descriptions in the germline set
+        notes:
+            type: string
+            description: Notes
+
+#
+# Genotype schema
+#
+# This enumerates the alleles and gene deletions inferred in a single subject. Included alleles may either be listed by reference to a GermlineSet, or 
+# listed as 'undocumented', in which case the inferred sequence is provided
+#
+
+# Genotype of adaptive immune receptors
+ReceptorGenotype:
+    discriminator: AIRR
+    type: object
+    properties:
+        id:
+            type: string
+            description: A unique identifier for this Receptor Genotype
+        locus:
+            type: string
+            nullable: false
+            enum:
+                - IGH
                 - IGK
                 - IGL
                 - TRA
@@ -167,79 +675,121 @@ GermlineClassSet:
                 - TRG
             example: IGH
             x-airr:
-                nullable: true
                 adc-query-support: true
                 format: controlled vocabulary
-        germline_alleles:
+        documented_alleles:
             type: array
-            description: Array of gene descriptions
+            nullable: true
+            description: Array of alleles inferred to be present which are documented in GermlineSets
             items:
-                type: string
-                description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
+                type: object
+                properties:
+                    gene_symbol:
+                        type: string
+                        description: The accepted name for this allele, if any, taken from the GermlineSet
+                    coding_sequence_identifier:
+                        type: string
+                        description: Unique identifier of the coding sequence, as allocated by an identified repository
+                    germline_set_ref:
+                        type: string
+                        description: GermlineSet from which it was taken, referenced in standardized form (Repo:Label:Version)
+                        example: OGRDB:Human_IGH:2021.11
+                    phasing:
+                        type: integer
+                        description: Chromosomal phasing indicator. Alleles with the same value are inferred to be located on the same chromosome
+                        nullable: true
                 x-airr:
-                    nullable: true
+                    adc-query-support: true
+        undocumented_alleles:
+            type: array
+            nullable: true
+            description: Array of alleles infeered to be present and not documented in an identified GermlineSet
+            items:
+                type: object
+                properties:
+                    allele_name:
+                        type: string
+                        description: Allele name as allocated by the inference pipeline
+                    sequence:
+                        type: string
+                        description: nt sequence of the allele, as provided by the inference pipeline
+                    phasing:
+                        type: integer
+                        description: Chromosomal phasing indicator. Alleles with the same value are inferred to be located on the same chromosome
+                        nullable: true
+                x-airr:
+                    adc-query-support: true
+        deleted_genes:
+            type: array
+            nullable: true
+            description: Array of genes identified as being deleted in this genotype
+            items:
+                type: object
+                properties:
+                    gene_symbol:
+                        type: string
+                        description: The accepted name for this gene, taken from the GermlineSet
+                    germline_set_ref:
+                        type: string
+                        description: GermlineSet from which it was taken (issuer/name/version)
+                    phasing:
+                        type: integer
+                        description: Chromosomal phasing indicator. Alleles with the same value are inferred to be located on the same chromosome
+                        nullable: true
+                x-airr:
                     adc-query-support: true
             x-airr:
                 nullable: true
                 adc-query-support: true
-        germline_process:
+        inference_process:
             type: string
+            nullable: true
             enum:
                 - genomic_sequencing
                 - repertoire_sequencing
-            description: Information on how the germline was acquired. Controlled vocabulary.
+            description: Information on how the genotype was acquired. Controlled vocabulary.
             title: Germline acquisition process
             example: repertoire_sequencing
             x-airr:
-                nullable: true
                 adc-query-support: true
                 format: controlled vocabulary
 
-# List of germline class sets used for analysis or to describe
-# a subject's genotype
-GermlineSet:
+# Genotype of major histocompatibility complex (MHC) class I and II receptors
+MHCGenotype:
     discriminator: AIRR
     type: object
     properties:
-        germline_set_id:
-            type: string
-            description: A unique identifier for this Germline Set.
-        germline_class_list:
-            description: List of classes included in this germline set.
-            type: array
-            items:
-                $ref: '#/GermlineClassSet'
-
-MHCGermlineClassSet:
-    discriminator: AIRR
-    type: object
-    properties:
-        germline_class_id:
+        id:
             type: string
             description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
         germline_class:
             type: string
+            nullable: true
             enum:
-              - MHC
+              - MHC    # do we need this enum??
             example: MHC
             x-airr:
-                nullable: true
                 adc-query-support: true
                 format: controlled vocabulary
         germline_alleles:
             type: array
+            nullable: true
             description: Array of gene descriptions
             items:
-                type: string
-                description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., HLA‐C*07:29).
-                x-airr:
-                    nullable: true
-                    adc-query-support: true
+                type: object
+                properties:
+                    gene_symbol:
+                        type: string
+                        description: The accepted name for this gene
+                    germline_set_ref:
+                        type: string
+                        description: Repository and list from which it was taken (issuer/name/version)
             x-airr:
                 nullable: true
                 adc-query-support: true
         germline_process:
             type: string
+            nullable: true
             enum:
                 - genomic_sequencing
                 - repertoire_sequencing
@@ -247,24 +797,8 @@ MHCGermlineClassSet:
             title: Germline acquisition process
             example: repertoire_sequencing
             x-airr:
-                nullable: true
                 adc-query-support: true
                 format: controlled vocabulary
-
-# List of germline class sets used for analysis or to describe
-# a subject's genotype
-MHCGermlineSet:
-    discriminator: AIRR
-    type: object
-    properties:
-        germline_set_id:
-            type: string
-            description: A unique identifier for this Germline Set.
-        germline_class_list:
-            description: List of classes included in this germline set.
-            type: array
-            items:
-                $ref: '#/MHCGermlineClassSet'
 
 #
 # Repertoire metadata schema
