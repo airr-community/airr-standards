@@ -1246,16 +1246,16 @@ Subject:
                 $ref: '#/Diagnosis'
             x-airr:
                 adc-query-support: true
-        germline:
+        genotype:
             type: object
-            description: Germline for this subject, if known, by germline class.
+            description: Genotype for this subject.
             properties:
-                receptor_germline:
-                    $ref: '#/GermlineSet'
-                    description: Immune receptor germline set for this subject.
-                mhc_germline:
-                    $ref: '#/MHCGermlineSet'
-                    description: MHC germline set for this subject.
+                receptor_genotype:
+                    $ref: '#/ReceptorGenotype'
+                    description: Immune receptor genotype for this subject.
+                mhc_genotype:
+                    $ref: '#/MHCGenotype'
+                    description: MHC genotype for this subject.
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
@@ -2283,9 +2283,6 @@ DataProcessing:
                 receptor_germline:
                     $ref: '#/GermlineSet'
                     description: Immune receptor germline set for this data processing process.
-                mhc_germline:
-                    $ref: '#/MHCGermlineSet'
-                    description: MHC germline set for this data processing process.
         germline_database:
             type: string
             nullable: true
