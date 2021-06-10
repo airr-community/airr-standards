@@ -55,7 +55,7 @@ A ``ReceptorGenotype`` describes the specific alleles found in an individual, an
 Depending on the data available and the inference method used, genotypes may contain haplotyping information, which may be full, or partial. 
 As an example of partial haplotyping, the genotype may have been determined from genomic sequencing in which the sequence of the locus was 
 assembled into contigs, but could not be fully assembled. In this case the co-location of alleles in each contig has been established, but 
-the co-location across the entire locus can not be. Co-location is therefore indicated by means of the ``phasing parameter``, which in this 
+the co-location across the entire locus can not be. Co-location is therefore indicated by means of the ``phasing`` parameter, which in this 
 case would be assigned a different value for alleles on each contig. 
 
 
