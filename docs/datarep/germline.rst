@@ -29,10 +29,12 @@ DNA. It is most likely that supporting sequences will be GermlineSequences, i.e.
 germline inference from a repertoire, the inferred germline sequence should be provided as a ``GermlineSequence``, if the evidence 
 has been deposited in a repository.
 
-For V-genes, an IMGT-gapped sequence (i.e.,. a sequence delineated in accordance with the IMGT numbering scheme)  is provided in 
-``GeneDescription``. Other delineations, such as ``Chothia`` and ``Kabat``, can be provided via linked ``GeneDelineationV`` objects.
-A ``GermlineSet`` brings together multiple ``GeneDescription``s from the same locus to form a curated set. The schema assumes that germline 
-sets will be published by multiple repositories. A germline set may be uniquely referenced by means of the ``germline_set_ref``: 
+For V-genes, an IMGT-gapped sequence (i.e.,. a sequence delineated in accordance with the 
+`IMGT numbering scheme <http://www.imgt.org/IMGTindex/numbering.php>`_)  is provided in 
+``GeneDescription``. Other delineations, such as  `Chothia <http://www.bioinf.org.uk/abs/info.html#chothianum>`_ and 
+`Kabat <http://www.bioinf.org.uk/abs/info.html#kabatnum>`_, can be provided via linked ``GeneDelineationV`` objects.
+A ``GermlineSet`` brings together multiple ``GeneDescriptions`` from the same locus to form a curated set. The schema assumes that germline 
+sets will be published by multiple repositories. A germline set may be uniquely referenced by means of the ``germline_set_ref:`` 
 this is a composite field containing the repository id, germline set label, and version.
 
 Gene and Allele Naming
