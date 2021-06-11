@@ -86,34 +86,86 @@ uses a controlled vocabulary, the individual values are described below:
 +--------------------+-------------------------------+----------------------------------+
 
 
+*_pcr_primer_target_location
+----------------------------
+
+The fields ``forward_pcr_primer_target_location`` and
+``reverse_pcr_primer_target_location`` describe the location of the
+innermost primer used for a given locus. This information is critical
+to determine which positions of a sequence reflect a biological process
+and which are an artifact of the experiment.
+
+The terms "proximal" and "distal" in the field description refer to the
+start of the respective V or C gene. Using human *TRAC* and a
+hypothetical primer as an example::
+
+   1   5    10   15   20   25   30   35   40   45   50   55  60   position (+1 = start of exon 1)
+   |...|....|....|....|....|....|....|....|....|....|....|....|
+                      TGCCGTGTACCAGCTGAGAG                        TRAC primer (reverse complement)
+   ATATCCAGAACCCTGACCCTGCCGTGTACCAGCTGAGAGACTCTAAATCCAGTGACAAGT   Chr. 14:22,547,506-22,547,565 (GRCh38)
+                     ^^                  ^
+                   [a][b]               [c]                       markers
+
+In this case:
+
+*  +19 (marker ``[a]``) is the most distal untemplated nucleotide
+*  +20 (marker ``[b]``) is the most proximal templated nucleotide
+*  +39 (marker ``[c]``) is the most distal templated nucleotide
+
+
 Specific Use Cases and Experimental Setups
 ==========================================
 
 Synthetic libraries
 -------------------
 
-In synthetic libraries (e.g. phage or yeast display), particles present
-genetically engineered constructs (e.g. scFv fusion receptors) on their
+In synthetic libraries (e.g., phage or yeast display), particles present
+genetically engineered constructs (e.g., scFv fusion receptors) on their
 surface. As this deviates substantially from other workflows, the
 following annotation SHOULD/MUST be used:
 
--  In general, ``Subject`` should be interpreted as the initial library
+*  In general, ``Subject`` should be interpreted as the initial library
    that undergoes a mutation/selection procedure.
--  ``synthetic``: MUST be set to ``true``
--  ``species``:  It is assumed that every synthetic library is derived
+*  ``synthetic``: MUST be set to ``true``
+*  ``species``:  It is assumed that every synthetic library is derived
    from V and J genes that exist in some vertebrate species. This field
    SHOULD encode this species. Importantly, it MUST NOT encode the
    phage vector, the bacterial host or the comparable biological
    component of the library system that constitutes the presenting
    particle.
--  ``sample_type``: SHOULD be ``NULL``.
--  ``single_cell``: Only ``true`` if individual particles are isolated and
+*  ``sample_type``: SHOULD be ``NULL``.
+*  ``single_cell``: Only ``true`` if individual particles are isolated and
    sequenced. Note that colonies or plaques, even if containing
    genetically identical particles, *per se* do not match this
    definition and therefore MUST be annotated as ``false``.
--  ``cell_storage``: SHOULD be used for non-cellular particles
+*  ``cell_storage``: SHOULD be used for non-cellular particles
    analogously.
--  ``physical_linkage``: For scFv constructs the ``hetero_prelinkeded``
-   term MUST be used. VHH (i.e. camelid) libraries SHOULD annotate
+*  ``physical_linkage``: For scFv constructs the ``hetero_prelinkeded``
+   term MUST be used. VHH (i.e., camelid) libraries SHOULD annotate
    ``none`` as there is only a single rearrangement envolved.
 
+
+10X Chromium
+------------
+
+The current 10X V(D)J Kits (07/2020, Rev. G) perform a fully nested PCR,
+in which only the reverse primers (i.e., complementary to the constant
+region) are Ig/TCR specific, while the forward primers anneal to the
+sequence of the template switch primer. For the purpose of annotation,
+this is considered a gene-specific amplification, therefore such
+experiments SHOULD be annotated as follows:
+
+*  ``single_cell``: MUST be ``true``
+*  ``library_generation_method``: SHOULD be ``RT(specific)+TS(UMI)+PCR``
+*  ``pcr_target`` MAY contain multiple entries, one for each locus that
+   is potentially amplified. Within each entry (i.e., each ``PCRTarget``
+   object) the following annotations SHOULD be provided:
+
+   *  ``pcr_target_locus``: The locus described by this object, using
+      the controlled vocabulary defined in the AIRR schema. Note that
+      each object can only describe one locus, multiple loci require
+      multiple ``PCRTarget`` objects.
+   *  ``forward_pcr_primer_target_location``: ``NULL`` (as it cannot be
+      reliably determined.
+   *  ``reverse_pcr_primer_target_location``: Locus and position
+      according to the respective set of reverse primers.
