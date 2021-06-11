@@ -244,8 +244,20 @@ Alignments
 There is no required alignment scheme for the nucleotide and amino acid alignment
 fields. These fields may, or may not, include numbering spacers (e.g., IMGT-numbering gaps),
 variations in case to denote mismatches, deletions, or other features appropriate to the tool that
-performed the alignment. The only strict requirement is that the query ("sequence") and
-reference ("germline") **must** be properly aligned.
+performed the alignment. The only strict requirement is that the query (``sequence``) and
+reference (``germline``) **must** be properly aligned.
+
+Frameshifts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For purposes of annotating alignments, a frameshift is defined as a frameshift that is
+maintained until the end of the aligned gene, where frames are designated numerically as
+1 (in-frame), 2, or 3. For example, an V gene alignment that starts in
+frame 1 and ends in frame 2, disrupting the conserved cystine, would be defined as a frameshift.
+Whereas, a V gene alignment with an internal frameshift that corrects with a second frameshift,
+back to the original frame 1 prior to the conserved cystine, would not need to be annotated
+as a frameshift.
+
 
 Fields
 ------------------------------

@@ -29,14 +29,14 @@ class Schema:
       true_values (list): accepted values for True.
     """
     # Boolean list for pandas
-    true_values = ['True', 'true', 'TRUE', 'T', 't', '1', 1, True]
-    false_values = ['False', 'false', 'FALSE', 'F', 'f', '0', 0, False]
+    true_values = ['True', 'true', 'TRUE', 'T', 't', '1']
+    false_values = ['False', 'false', 'FALSE', 'F', 'f', '0']
 
     # Generate dicts for booleans
-    _to_bool_map = {x: True for x in true_values}
-    _to_bool_map.update({x: False for x in false_values})
+    _to_bool_map = {x: True for x in true_values + [1, True]}
+    _to_bool_map.update({x: False for x in false_values + [0, False]})
     _from_bool_map = {k: 'T' if v else 'F' for k, v in _to_bool_map.items()}
-      
+
     def __init__(self, definition):
         """
         Initialization
@@ -106,20 +106,24 @@ class Schema:
         field_type = field_spec.get('type', None) if field_spec else None
         return field_type
 
-    # import numpy as np
-    # def numpy_types(self):
-    #     type_mapping = {}
-    #     for property in self.properties:
-    #         if self.type(property) == 'boolean':
-    #             type_mapping[property] = np.bool
-    #         elif self.type(property) == 'integer':
-    #             type_mapping[property] = np.int64
-    #         elif self.type(property) == 'number':
-    #             type_mapping[property] = np.float64
-    #         elif self.type(property) == 'string':
-    #             type_mapping[property] = np.unicode_
-    #
-    #     return type_mapping
+    def pandas_types(self):
+        """
+
+        Returns:
+          dict: mapping dictionary for pandas types
+        """
+        type_mapping = {}
+        for property in self.properties:
+            if self.type(property) == 'boolean':
+                type_mapping[property] = bool
+            elif self.type(property) == 'integer':
+                type_mapping[property] = 'Int64'
+            elif self.type(property) == 'number':
+                type_mapping[property] = 'float64'
+            elif self.type(property) == 'string':
+                type_mapping[property] = str
+
+        return type_mapping
 
     def to_bool(self, value, validate=False):
         """
@@ -193,7 +197,7 @@ class Schema:
             return int(value)
         except ValueError:
             if validate:
-                raise ValidationError('invalid int %s'% value)
+                raise ValidationError('invalid int %s' % value)
             else:
                 return None
 
@@ -271,15 +275,15 @@ class Schema:
             # Check types
             spec = self.type(f)
             try:
-                if spec == 'boolean':  self.to_bool(row[f], validate=True)
-                if spec == 'integer':  self.to_int(row[f], validate=True)
-                if spec == 'number':  self.to_float(row[f], validate=True)
+                if spec == 'boolean': self.to_bool(row[f], validate=True)
+                if spec == 'integer': self.to_int(row[f], validate=True)
+                if spec == 'number': self.to_float(row[f], validate=True)
             except ValidationError as e:
-                raise ValidationError('field %s has %s' %(f, e))
+                raise ValidationError('field %s has %s' % (f, e))
 
         return True
 
-    def validate_object(self, obj, missing=True, nonairr = True, context=None):
+    def validate_object(self, obj, missing=True, nonairr=True, context=None):
         """
         Validate Repertoire object data against schema
 
@@ -301,7 +305,7 @@ class Schema:
             if context is None:
                 raise ValidationError('object is not a dictionary')
             else:
-                raise ValidationError('field %s is not a dictionary object' %(context))
+                raise ValidationError('field %s is not a dictionary object' % context)
 
         # first warn about non-AIRR fields
         if nonairr:
@@ -333,16 +337,20 @@ class Schema:
             # check MiAIRR keys exist
             if xairr and xairr.get('miairr'):
                 if is_missing_key:
-                    raise ValidationError('MiAIRR field %s is missing' %(full_field))
+                    raise ValidationError('MiAIRR field %s is missing' % full_field)
 
             # check if required field
             if f in self.required and is_missing_key:
-                raise ValidationError('Required field %s is missing' %(full_field))
+                raise ValidationError('Required field %s is missing' % full_field)
 
             # check if identifier field
             if xairr and xairr.get('identifier'):
                 if is_missing_key:
-                    raise ValidationError('Identifier field %s is missing' %(full_field))
+                    if xairr.get('nullable'):
+                        sys.stderr.write(
+                            'Warning: Nullable identifier field %s is missing.\n' % full_field)
+                    else:
+                        raise ValidationError('Not-nullable identifier field %s is missing' % full_field)
 
             # check nullable requirements
             if is_null:
@@ -354,7 +362,7 @@ class Schema:
                     continue
                 else:
                     # nullable not allowed
-                    raise ValidationError('Non-nullable field %s is null or missing' %(full_field))
+                    raise ValidationError('Non-nullable field %s is null or missing' % full_field)
 
             # if get to here, field should exist with non null value
 
@@ -370,10 +378,10 @@ class Schema:
                         schema = Schema(schema_name)
                     schema.validate_object(obj[f], missing, nonairr, full_field)
                 else:
-                    raise ValidationError('Internal error: field %s in schema not handled by validation. File a bug report.' %(full_field))
+                    raise ValidationError('Internal error: field %s in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'array':
                 if not isinstance(obj[f], list):
-                    raise ValidationError('field %s is not an array' %(full_field))
+                    raise ValidationError('field %s is not an array' % full_field)
 
                 # for array, check each object in it
                 for row in obj[f]:
@@ -392,40 +400,40 @@ class Schema:
                                 schema.validate_object(row, missing, False, full_field)
                     elif spec['items'].get('enum') is not None:
                         if row not in spec['items']['enum']:
-                            raise ValidationError('field %s has value "%s" not among possible enumeration values' %(full_field, row))
+                            raise ValidationError('field %s has value "%s" not among possible enumeration values' % (full_field, row))
                     elif spec['items'].get('type') == 'string':
                         if not isinstance(row, str):
-                            raise ValidationError('array field %s does not have string type: %s' %(full_field, row))
+                            raise ValidationError('array field %s does not have string type: %s' % (full_field, row))
                     elif spec['items'].get('type') == 'boolean':
                         if not isinstance(row, bool):
-                            raise ValidationError('array field %s does not have boolean type: %s' %(full_field, row))
+                            raise ValidationError('array field %s does not have boolean type: %s' % (full_field, row))
                     elif spec['items'].get('type') == 'integer':
                         if not isinstance(row, int):
-                            raise ValidationError('array field %s does not have integer type: %s' %(full_field, row))
+                            raise ValidationError('array field %s does not have integer type: %s' % (full_field, row))
                     elif spec['items'].get('type') == 'number':
                         if not isinstance(row, float) and not isinstance(row, int):
-                            raise ValidationError('array field %s does not have number type: %s' %(full_field, row))
+                            raise ValidationError('array field %s does not have number type: %s' % (full_field, row))
                     else:
-                        raise ValidationError('Internal error: array field %s in schema not handled by validation. File a bug report.' %(full_field))
+                        raise ValidationError('Internal error: array field %s in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'object':
                 # right now all arrays of objects use $ref
-                raise ValidationError('Internal error: field %s in schema not handled by validation. File a bug report.' %(full_field))
+                raise ValidationError('Internal error: field %s in schema not handled by validation. File a bug report.' % full_field)
             else:
                 # check basic types
                 if field_type == 'string':
                     if not isinstance(obj[f], str):
-                        raise ValidationError('Field %s does not have string type: %s' %(full_field, obj[f]))
+                        raise ValidationError('Field %s does not have string type: %s' % (full_field, obj[f]))
                 elif field_type == 'boolean':
                     if not isinstance(obj[f], bool):
-                        raise ValidationError('Field %s does not have boolean type: %s' %(full_field, obj[f]))
+                        raise ValidationError('Field %s does not have boolean type: %s' % (full_field, obj[f]))
                 elif field_type == 'integer':
                     if not isinstance(obj[f], int):
-                        raise ValidationError('Field %s does not have integer type: %s' %(full_field, obj[f]))
+                        raise ValidationError('Field %s does not have integer type: %s' % (full_field, obj[f]))
                 elif field_type == 'number':
                     if not isinstance(obj[f], float) and not isinstance(obj[f], int):
-                        raise ValidationError('Field %s does not have number type: %s' %(full_field, obj[f]))
+                        raise ValidationError('Field %s does not have number type: %s' % (full_field, obj[f]))
                 else:
-                    raise ValidationError('Internal error: Field %s with type %s in schema not handled by validation. File a bug report.' %(full_field, field_type))
+                    raise ValidationError('Internal error: Field %s with type %s in schema not handled by validation. File a bug report.' % (full_field, field_type))
 
         return True
 
@@ -451,4 +459,3 @@ CachedSchema = {
 AlignmentSchema = CachedSchema['Alignment']
 RearrangementSchema = CachedSchema['Rearrangement']
 RepertoireSchema = CachedSchema['Repertoire']
-
