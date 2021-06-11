@@ -161,11 +161,6 @@ DataFile:
             description: List of Repertoire metadata
             items:
               $ref: '#/Repertoire'
-        Germline:
-            type: array
-            description: Germline sets
-            items:
-              $ref: '#/GermlineSet'
         DataProcessing:
             type: array
             description: List of data processing workflows
@@ -195,6 +190,7 @@ DataFile:
 # AIRR Info object, should be similar to openapi
 # should we point to an openapi schema?
 InfoObject:
+    discriminator: AIRR
     type: object
     description: Provides information about data and API responses.
     properties:
