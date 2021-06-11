@@ -58,7 +58,161 @@ assembled into contigs, but could not be fully assembled. In this case the co-lo
 the co-location across the entire locus can not be. Co-location is therefore indicated by means of the ``phasing`` parameter, which in this 
 case would be assigned a different value for alleles on each contig. 
 
+File Format Specification
+-------------------------
 
+The file format has not been specified yet.
 
-Fields
+.. _GermlineSetFields:
+
+GermlineSet Fields
 -----------------------------
+
+:download:`Download as TSV <../_downloads/GermlineSet.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in GermlineSet_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _GeneDescriptionFields:
+
+GeneDescription Fields
+-----------------------------
+
+:download:`Download as TSV <../_downloads/GeneDescription.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in GeneDescription_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _RearrangedSequenceFields:
+
+RearrangedSequence Fields
+-----------------------------
+
+:download:`Download as TSV <../_downloads/RearrangedSequence.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in RearrangedSequence_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _GermlineSequenceFields:
+
+GermlineSequence Fields
+-----------------------------
+
+:download:`Download as TSV <../_downloads/GermlineSequence.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in GermlineSequence_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _GeneDelineationVFields:
+
+GeneDelineationV Fields
+-----------------------------
+
+:download:`Download as TSV <../_downloads/GeneDelineationV.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in GeneDelineationV_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _ReceptorGenotypeFields:
+
+ReceptorGenotype Fields
+-----------------------------
+
+:download:`Download as TSV <../_downloads/ReceptorGenotype.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in ReceptorGenotype_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _MHCGenotypeFields:
+
+MHCGenotype Fields
+-----------------------------
+
+:download:`Download as TSV <../_downloads/MHCGenotype.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in MHCGenotype_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}

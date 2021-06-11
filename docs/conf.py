@@ -406,7 +406,8 @@ html_context['MiAIRR_schema'] = miairr_schema
 fields = ['Name', 'Type', 'Attributes', 'Definition']
 tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
           'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing',
-          'Rearrangement', 'Alignment', 'Clone', 'Tree', 'Node', 'Cell']
+          'Rearrangement', 'Alignment', 'Clone', 'Tree', 'Node', 'Cell',
+          'RearrangedSequence', 'GermlineSequence', 'GeneDelineationV', 'GeneDescription', 'GermlineSet']
 for spec in tables:
     with open(os.path.join(download_path, '%s.tsv' % spec), 'w') as f:
         writer = csv.DictWriter(f, fieldnames=fields, dialect='excel-tab', extrasaction='ignore')
