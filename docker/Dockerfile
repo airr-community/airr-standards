@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 LABEL maintainer="AIRR Community"
 
@@ -20,6 +20,7 @@ RUN pip3 install \
     recommonmark \
     sphinxcontrib-autoprogram \
     sphinx_bootstrap_theme \
+    sphinx_book_theme \
     matplotlib
 
 # Copy source
@@ -30,3 +31,6 @@ COPY . /airr-standards
 RUN cd /airr-standards/lang/python && python3 setup.py install
 
 # Install R package
+
+# Generate the documentation
+RUN cd /airr-standards && sphinx-build -a -E -b html docs docs/_build/html
