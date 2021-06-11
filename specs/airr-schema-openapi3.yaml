@@ -139,6 +139,86 @@ Attributes:
                             type: string
                             description: Ontology name for the top node term
 
+# AIRR Data File
+#
+# A JSON data file that holds Repertoire metadata, data processing
+# analysis objects, or any object in the AIRR Data Model.
+#
+# It is presumed that the objects gathered together in an AIRR Data File are related
+# or relevant to each other, e.g. part of the same study; thus, the ID fields can be
+# internally resolved unless the ID contains an external PID. This implies that AIRR
+# Data Files cannot be merged simply by concatenating arrays; any merge program
+# would need to manage duplicate or conflicting ID values.
+
+DataFile:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    properties:
+        Info:
+            $ref: '#/InfoObject'
+        Repertoire:
+            type: array
+            description: List of Repertoire metadata
+            items:
+              $ref: '#/Repertoire'
+        DataProcessing:
+            type: array
+            description: List of data processing workflows
+            items:
+              $ref: '#/DataProcessing'
+        Cell:
+            type: array
+            description: List of cells
+            items:
+              $ref: '#/Cell'
+        Rearrangement:
+            type: array
+            description: List of rearrangement records
+            items:
+              $ref: '#/Rearrangement'
+        Clone:
+            type: array
+            description: List of clones
+            items:
+              $ref: '#/Clone'
+        Tree:
+            type: array
+            description: List of trees
+            items:
+              $ref: '#/Tree'
+
+# AIRR Info object, should be similar to openapi
+# should we point to an openapi schema?
+InfoObject:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    description: Provides information about data and API responses.
+    properties:
+      title:
+        type: string
+      version:
+        type: string
+      description:
+        type: string
+      contact:
+        type: object
+        properties:
+          name:
+            type: string
+          url:
+            type: string
+          email:
+            type: string
+      license:
+        type: object
+        properties:
+          name:
+            type: string
+          url:
+            type: string
+
 #
 # Germline gene schema
 #
