@@ -162,6 +162,11 @@ DataFile:
             description: List of Repertoire metadata
             items:
               $ref: '#/Repertoire'
+        RepertoireGroup:
+            type: array
+            description: List of Repertoire groups
+            items:
+              $ref: '#/RepertoireGroup'
         DataProcessing:
             type: array
             description: List of data processing workflows
@@ -1968,6 +1973,47 @@ Repertoire:
                 $ref: '#/DataProcessing'
             x-airr:
                 adc-query-support: true
+
+# A collection of repertoires for analysis purposes, includes optional time course
+RepertoireGroup:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    required:
+        - repertoire_group_id
+        - repertoire_ids
+    properties:
+        repertoire_group_id:
+            type: string
+            description: Identifier for this repertoire group
+        repertoire_group_name:
+            type: string
+            description: Short display name for this repertoire group
+        repertoire_group_description:
+            type: string
+            description: Repertoire group description
+        repertoire_ids:
+            type: array
+            description: >
+                List of identifiers for the repertoires in this group. As this is an array,
+                there is an explicit ordering of the repertoires which can matched with
+                the elements in time_course. Tools that re-order this array should ensure
+                the time_course array is re-ordered, if necessary.
+            items:
+                type: string
+        time_course:
+            type: array
+            description: >
+                List of user-defined labels for time points. It is assumed that the elements
+                are in chronological order with duplicates allowed to support replicates.
+                As this is an array, there is an explicit ordering of the time points which can matched
+                with the elements in repertoire_ids. Tools that re-order this array should ensure
+                the repertoire_ids array is re-ordered, if necessary.
+            example:
+                - "pre"
+                - "post"
+            items:
+                type: string
 
 
 Alignment:
