@@ -1348,16 +1348,6 @@ Subject:
                 $ref: '#/Diagnosis'
             x-airr:
                 adc-query-support: true
-        genotype:
-            type: object
-            description: Genotype for this subject.
-            properties:
-                receptor_genotype:
-                    $ref: '#/ReceptorGenotype'
-                    description: Immune receptor genotype for this subject.
-                mhc_genotype:
-                    $ref: '#/MHCGenotype'
-                    description: MHC genotype for this subject.
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
@@ -2377,14 +2367,12 @@ DataProcessing:
             x-airr:
                 adc-query-support: true
                 name: Processed data file names
-        data_processing_germline:
-            type: object
+        data_processing_germline_sets:
+            type: list
             nullable: true
-            description: Germline used for this data processing process
-            properties:
-                receptor_germline:
-                    $ref: '#/GermlineSet'
-                    description: Immune receptor germline set for this data processing process.
+            description: Germline sets used for this data processing process
+            items:
+                $ref: '#/GermlineSet'
         germline_database:
             type: string
             nullable: true
@@ -2500,6 +2488,19 @@ Repertoire:
                 $ref: '#/DataProcessing'
             x-airr:
                 adc-query-support: true
+        genotypes:
+            type: object
+            description: Genotypes inferred from this repertoire.
+            properties:
+                type: array
+                nullable: true
+                items:
+                    receptor_genotype:
+                        $ref: '#/ReceptorGenotype'
+                        description: Immune receptor genotype for this subject.
+                    mhc_genotype:
+                        $ref: '#/MHCGenotype'
+                        description: MHC genotype for this subject.
 
 
 Alignment:
