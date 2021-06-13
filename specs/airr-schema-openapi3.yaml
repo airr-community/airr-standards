@@ -2622,6 +2622,38 @@ Rearrangement:
             description: >
                 End position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
+        c_sequence_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the C gene in the query sequence (1-based closed interval).
+        c_sequence_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the C gene in the query sequence (1-based closed interval).
+        c_germline_start:
+            type: integer
+            nullable: true
+            description: >
+                Alignment start position in the C gene reference sequence (1-based closed interval).
+        c_germline_end:
+            type: integer
+            nullable: true
+            description: >
+                Alignment end position in the C gene reference sequence (1-based closed interval).
+        c_alignment_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the C gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        c_alignment_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the C gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
         cdr1_start:
             type: integer
             nullable: true
