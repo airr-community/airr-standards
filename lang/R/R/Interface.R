@@ -4,44 +4,56 @@
 #' 
 #' \code{read_airr_tsv} reads a TSV containing AIRR records.
 #'
-#' @param    file    input file path.
-#' @param    base    starting index for positional fields in the input file. 
-#'                   If \code{"1"}, then these fields will not be modified.
-#'                   If \code{"0"}, then fields ending in \code{"_start"} and \code{"_end"}
-#'                   are 0-based half-open intervals (python style) in the input file 
-#'                   and will be converted to 1-based closed-intervals (R style).
-#' @param    schema  \code{Schema} object defining the output format.
-#' @param    ...     additional arguments to pass to \link[readr]{read_delim}.
-#' 
+#' @param    file        input file path.
+#' @param    base        starting index for positional fields in the input file.
+#'                       If \code{"1"}, then these fields will not be modified.
+#'                       If \code{"0"}, then fields ending in \code{"_start"} and \code{"_end"}
+#'                       are 0-based half-open intervals (python style) in the input file
+#'                       and will be converted to 1-based closed-intervals (R style).
+#' @param    schema      \code{Schema} object defining the output format.
+#' @param    aux_types   named vector or list giving the type for fields that are not
+#'                       defined in \code{schema}. The field name is the name, the value
+#'                       the type, denoted by one of \code{"c"} (character), \code{"l"} (logical),
+#'                       \code{"i"} (integer), \code{"d"} (double), or \code{"n"} (numeric).
+#' @param    ...         additional arguments to pass to \link[readr]{read_delim}.
+#'
 #' @return   A data.frame of the TSV file with appropriate type and position conversion
 #'           for fields defined in the specification.
-#'                   
-#' @seealso  
+#'
+#' @seealso
 #' See \link{Schema} for the AIRR schema object definition.
 #' See \link{write_airr_tsv} for writing AIRR data.
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
 #' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
-#' 
+#'
 #' # Load data file
 #' df <- read_rearrangement(file)
-#' 
+#'
 #' @export
-read_airr_tsv <- function(file, base=c("1", "0"), schema, ...) {
+read_airr_tsv <- function(file, base=c("1", "0"), schema, aux_types=NULL,...) {
     # Check arguments
     base <- match.arg(base)
 
     # Define types
-    parsers <- c("character"="c", "logical"="l", "integer"="i", "numeric"="d")
+    parsers <- c("character"="c", "logical"="l", "integer"="i", "double"="d", "numeric"="n")
     header <- names(suppressMessages(readr::read_tsv(file, n_max=1)))
     schema_fields <- intersect(names(schema), header)
     cast <- setNames(lapply(schema_fields, function(f) parsers[schema[f]$type]), schema_fields)
+    cast <- c(cast, list(.default = col_character()))
+
+    if(!is.null(aux_types)){
+        aux_types <- aux_types[names(aux_types) %in% header]
+        aux_cols <- setNames(lapply(aux_types, function(f) parsers[f]), names(aux_types))
+        cast <- c(cast, aux_cols)
+    }
+
     types <- do.call(readr::cols, cast)
-    
+
     # Read file
     data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None"), ...))
-    
+
     # Validate file
     valid_data <- validate_airr_tsv(data, schema=schema)
     
@@ -131,10 +143,10 @@ validate_airr_tsv <- function(data, schema){
 #' @examples
 #' # Get path to the rearrangement-example file
 #' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
-#' 
+#'
 #' # Load data file
 #' df <- read_rearrangement(file)
-#' 
+#'
 #' # Validate a data.frame against the Rearrangement schema
 #' validate_rearrangement(df)
 #' 
@@ -142,8 +154,6 @@ validate_airr_tsv <- function(data, schema){
 validate_rearrangement <- function(data) {
   validate_airr_tsv(data, schema=RearrangementSchema)
 }
-
-
 
 #' @details
 #' \code{read_rearrangement} reads an AIRR TSV containing Rearrangement data.
@@ -153,7 +163,6 @@ validate_rearrangement <- function(data) {
 read_rearrangement <- function(file, base=c("1", "0"), ...) {
   read_airr_tsv(file, base=base, schema=RearrangementSchema, ...)
 }
-
 
 #' @details
 #' \code{read_alignment} reads an AIRR TSV containing Alignment data.
@@ -217,7 +226,7 @@ read_airr_yaml <- function(file, schema) {
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "good_repertoire.airr.json", package="airr")
+#' file <- system.file("extdata", "warning_repertoire.airr.json", package="airr")
 #' 
 #' # Load data file
 #' repr <- read_repertoire(file)
@@ -350,7 +359,7 @@ validate_airr_entry <- function(definition_list, schema) {
 #'                   
 #' @seealso  
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{validate_airr_yaml} for validating yaml formatted AIRR data.
+#' See \link{validate_airr_yaml_json} for validating yaml formatted AIRR data.
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
@@ -394,18 +403,18 @@ read_repertoire <- function(file) {
 #'
 #' @param    data    data.frame of Rearrangement data.
 #' @param    file    output file name.
-#' @param    base    starting index for positional fields in the output file. 
-#'                   Fields in the input \code{data} are assumed to be 1-based 
-#'                   closed-intervals (R style). 
-#'                   If \code{"1"}, then these fields will not be modified. 
+#' @param    base    starting index for positional fields in the output file.
+#'                   Fields in the input \code{data} are assumed to be 1-based
+#'                   closed-intervals (R style).
+#'                   If \code{"1"}, then these fields will not be modified.
 #'                   If \code{"0"}, then fields ending in \code{_start} and \code{_end}
-#'                   will be converted to 0-based half-open intervals (python style) 
-#'                   in the output file. 
+#'                   will be converted to 0-based half-open intervals (python style)
+#'                   in the output file.
 #' @param    schema  \code{Schema} object defining the output format.
 #' @param    ...     additional arguments to pass to \link[readr]{write_delim}.
 #'
 #' @return   NULL
-#' 
+#'
 #' @seealso
 #' See \link{Schema} for the AIRR schema object definition.
 #' See \link{read_airr_tsv} for reading to AIRR files.
@@ -413,36 +422,36 @@ read_repertoire <- function(file) {
 #' @examples
 #' # Get path to the rearrangement-example file
 #' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
-#' 
+#'
 #' # Load data file
 #' df <- read_rearrangement(file)
-#' 
+#'
 #' # Write a Rearrangement data file
 #' outfile <- file.path(tempdir(), "output.tsv")
 #' write_rearrangement(df, outfile)
-#' 
+#'
 #' @export
 write_airr_tsv <- function(data, file, base=c("1", "0"), schema, ...) {
     ## DEBUG
     # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
-    
+
     data_name <- deparse(substitute(data))
     schema_name <- deparse(substitute(schema))
-    
+
     # Check arguments
     base <- match.arg(base)
-    
+
     # Fill in missing required columns
     missing <- setdiff(schema@required, names(data))
     if (length(missing) > 0 ) {
         data[, missing] <- NA
     }
-    
+
     # order columns
     ordering <- c(intersect(names(schema), names(data)),
                   setdiff(names(data), names(schema)))
     data <- data[, ordering]
-    
+
     # Adjust indexes
     if (base == "0") {
         start_positions <- grep("_start$", names(data), perl=TRUE)
@@ -450,7 +459,6 @@ write_airr_tsv <- function(data, file, base=c("1", "0"), schema, ...) {
             data[, start_positions] <- data[, start_positions] - 1
         }
     }
-    
     valid <- suppressWarnings(validate_airr_tsv(data, schema))
     if (!valid) {
         w <- names(warnings())
@@ -459,10 +467,10 @@ write_airr_tsv <- function(data, file, base=c("1", "0"), schema, ...) {
         err_msg <- paste(err_msg, paste(w, collapse = "\n"))
         warning(err_msg)
     }
-    
+
 
     # write logical fields as T/F
-    logical_fields <- names(which(sapply(schema@properties, 
+    logical_fields <- names(which(sapply(schema@properties,
                                          '[[', "type") == "logical"))
     logical_fields <- intersect(colnames(data), logical_fields)
     if (length(logical_fields) > 0 ) {
@@ -475,7 +483,7 @@ write_airr_tsv <- function(data, file, base=c("1", "0"), schema, ...) {
             }
         }
     }
-    
+
     # Write
     write_tsv(data, file, na="", ...)
 }

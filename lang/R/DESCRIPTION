@@ -10,6 +10,8 @@ Authors@R: c(person("Jason", "Vander Heiden", role=c("aut", "cre"),
                     email="Scott.Christley@UTSouthwestern.edu"),
              person("Katharina", "Imkeller", role=c("aut"), 
                     email="imkeller@embl.de"),
+             person("Ulrik", " Stervbo", role=c("aut"),
+                    email="ulrik.stervbo@elisabethgruppe.de"),
              person("AIRR Community", role=c("cph")))
 Title: AIRR Data Representation Reference Library
 Description: Schema definitions and read, write and validation tools for data 
