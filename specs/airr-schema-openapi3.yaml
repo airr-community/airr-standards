@@ -224,6 +224,42 @@ InfoObject:
           url:
             type: string
 
+# A time point
+TimePoint:
+    discriminator:
+        propertyName: AIRR
+    description: Time point at which an observation or other action was performed.
+    type: object
+    properties:
+        label:
+            type: string
+            nullable: true
+            description: Informative label for the time point
+            example: Pre-operative sampling of cancer tissue
+        value:
+            type: float
+            nullable: true
+            description: Value of the time point
+            example: -5.0
+            x-airr:
+                adc-query-support: true
+        unit:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Unit of the time point
+            title: Unit of immunization schedule
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
+
 #
 # Germline gene schema
 #
@@ -1981,7 +2017,7 @@ RepertoireGroup:
     type: object
     required:
         - repertoire_group_id
-        - repertoire_ids
+        - repertoires
     properties:
         repertoire_group_id:
             type: string
@@ -1992,29 +2028,32 @@ RepertoireGroup:
         repertoire_group_description:
             type: string
             description: Repertoire group description
-        repertoire_ids:
+        repertoires:
             type: array
+            nullable: true
             description: >
-                List of identifiers for the repertoires in this group. As this is an array,
-                there is an explicit ordering of the repertoires which can matched with
-                the elements in time_course. Tools that re-order this array should ensure
-                the time_course array is re-ordered, if necessary.
+                List of repertoires in this group with an associated description and time point designation
             items:
-                type: string
-        time_course:
-            type: array
-            description: >
-                List of user-defined labels for time points. It is assumed that the elements
-                are in chronological order with duplicates allowed to support replicates.
-                As this is an array, there is an explicit ordering of the time points which can matched
-                with the elements in repertoire_ids. Tools that re-order this array should ensure
-                the repertoire_ids array is re-ordered, if necessary.
-            example:
-                - "pre"
-                - "post"
-            items:
-                type: string
-
+                type: object
+                description: stuff
+                properties:
+                    repertoire_id:
+                        type: string
+                        description: Identifier to the repertoire
+                        x-airr:
+                            adc-query-support: true
+                    repertoire_description:
+                        type: string
+                        nullable: true
+                        description: Description of this repertoire within the group
+                        x-airr:
+                            adc-query-support: true
+                    time_point:
+                        $ref: '#/TimePoint'
+                        nullable: true
+                        description: Time point designation for this repertoire within the group
+                        x-airr:
+                            adc-query-support: true
 
 Alignment:
     discriminator:
