@@ -18,7 +18,6 @@
 #' 
 #' @seealso
 #' See \link{load_schema} for loading a \code{Schema} from the definition set.
-#' See \link{read_airr}, \link{write_airr} and \link{validate_airr} schema operators.
 #'
 #' @name         Schema-class
 #' @rdname       Schema-class
@@ -63,6 +62,76 @@ setMethod("$",
 
 #### Schema I/O ####
 
+
+
+# Function to extract entries from individual fields
+
+extract_field_content <- function(properties, field) {
+    
+    types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="numeric", "array"="array", "object"="object")
+    
+    # if there is a simple reference to another AIRR schema elements, call the reference entries
+    # example: disease_diagnosis entry in Diagnosis schema 
+    if(!is.null(properties[[field]]$`$ref`)) {
+        # name of the AIRR scheme element to refer to
+        ref_element <- properties[[field]]$`$ref`
+        # remove #/
+        ref_element <- substr(ref_element, 3, nchar(ref_element))
+        ref_schema <- load_schema(ref_element)
+        # overwrite the property of the field with the Schema it is referencing to
+        properties[[field]][["ref"]] <- ref_schema
+    }
+    
+    # if there is an array type format that has ref as entries
+    # example: diagnosis entry in Subject schema
+    items <- unlist(properties[[field]][["items"]])
+    if(!is.null(items)) {
+        # check if these are references to other schemes
+        if(all(grepl("ref", names(items)))) {
+            ref_schemes <- items
+            ref_element <- substr(ref_schemes, 3, nchar(ref_schemes))
+            # store as a list of schemes
+            ref_scheme_list <- sapply(ref_element, load_schema)
+            properties[[field]][["ref"]] <- ref_scheme_list
+        }
+    }
+    
+    # if there is an object type, the properties may cover several reference schemes 
+    # example: germline entry in Subject schema
+    if(!is.null(properties[[field]][["type"]]) && 
+       properties[[field]][["type"]] == "object") {
+        # this should be normally defined in airr-schema.yaml as a reference scheme with optional properties
+        # as a workaround we create a helper Schema without required entries
+        required_helper <- character(0)
+        info_helper <- list(0)
+        optional_helper <- names(properties[[field]][["properties"]])
+        properties_helper <- properties[[field]][["properties"]]
+        
+        for (f in optional_helper) {
+            # if there is a reference to another AIRR schema elements, call the reference entries
+            properties_helper <- extract_field_content(properties_helper, f)
+        }
+        
+        helper_schema <- new("Schema", 
+                   required=required_helper, 
+                   optional=optional_helper, 
+                   properties=properties_helper, 
+                   info=info_helper)
+
+        properties[[field]][["ref"]] <- helper_schema
+    }
+    
+    x <- properties[[field]][["type"]]
+    y <- properties[[field]][["description"]]
+    
+    # make sure that NULL types also remain NULL
+    if (!is.null(x)) {properties[[field]][["type"]] <- unname(types[x])}
+    properties[[field]][["description"]] <- stri_trim(y) 
+    
+    return(properties)
+}
+
+
 #' Load a schema definition
 #' 
 #' \code{load_schema} loads an AIRR object definition from the internal
@@ -96,6 +165,9 @@ setMethod("$",
 #' # Load the Alignment definition
 #' schema <- load_schema("Alignment")
 #' 
+#' # Load the Repertoire definition
+#' schema <- load_schema("Repertoire")
+#' 
 #' @export
 load_schema <- function(definition) {
     # Load schema from yaml file
@@ -116,15 +188,15 @@ load_schema <- function(definition) {
     required <- definition_list[["required"]]
     optional <- setdiff(fields, required)
     
-    # Rename type and clean description
-    types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="double")
     for (f in fields) {
-        x <- properties[[f]][["type"]]
-        y <- properties[[f]][["description"]]
-        properties[[f]][["type"]] <- unname(types[x])
-        properties[[f]][["description"]] <- stri_trim(y)
+        # if there is a reference to another AIRR schema elements, call the reference entries
+        properties <- extract_field_content(properties, f)
     }
     
+    # for ontology, required in NULL and this is not type character
+    # this leads to a problem returning "none" in the validation function.
+    # to be taken care of when array type recursion implemented
+    if(is.null(required)) {required <- character(0)}
     return(new("Schema", required=required, optional=optional, properties=properties, info=info))
 }
 
@@ -157,3 +229,8 @@ AlignmentSchema <- load_schema("Alignment")
 #' @rdname    Schema-class
 #' @export
 RearrangementSchema <- load_schema("Rearrangement")
+
+#' @details   \code{RepertoireSchema}: AIRR Repertoire \code{Schema}.
+#' @rdname    Schema-class
+#' @export
+RepertoireSchema <- load_schema("Repertoire")

@@ -78,7 +78,7 @@ not be modified under the default setting of `base="1"`. If the input file is us
 positional fields may be converted to 1-based closed 
 intervals using the argument `base="0"`.
 
-
+### Reading rearrangements
 ```{r read_rearrangement, message=FALSE}
 library(airr)
 
@@ -89,15 +89,52 @@ class(airr_rearrangement)
 head(airr_rearrangement)
 ```
 
+### Reading repertoires 
+
+```{r read_repertoire }
+rep_file_good <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
+```
+
+Read a valid repertoire
+```{r}
+repertoire1 <- read_repertoire(rep_file_good)
+```
+
+Repertoires can also be read as JSON format
+
+```{r}
+rep_file_good_json <- system.file("extdata", "warning_repertoire.airr.json", package="airr")
+```
+
+```{r}
+repertoire2 <- read_repertoire(rep_file_good_json)
+```
+
 ## Writing AIRR formatted files
 
 The `airr` package contains the function `write_rearrangement` to write
 Rearrangement records to the AIRR TSV format.
 
+### Writing rearrangements
 ```{r write_rearrangement}
 out_file <- file.path(tempdir(), "airr_out.tsv")
 write_rearrangement(airr_rearrangement, out_file)
 ```
+
+### Writing repertoires
+
+Write a valid repertoire in yaml format
+```{r}
+out_file1 <- file.path(tempdir(), "airr_repertoire1_out.yaml")
+write_repertoire(repertoire1, out_file1)
+```
+
+Write a valid repertoire in json format
+```{r}
+out_file2 <- file.path(tempdir(), "airr_repertoire2_out.json")
+write_repertoire(repertoire2, out_file2)
+```
+
 
 ## References
 
