@@ -733,11 +733,29 @@ GermlineSet:
 #
 # Genotype schema
 #
-# This enumerates the alleles and gene deletions inferred in a single subject. Included alleles may either be listed by reference to a GermlineSet, or 
-# listed as 'undocumented', in which case the inferred sequence is provided
-#
+
+# ReceptorGenotypeSet lists the  ReceptorGenotypes (describing different loci) inferred for this subject
+
+ReceptorGenotypeSet:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    properties:
+        receptor_genotype_set_id:
+            type: string
+            description: A unique identifier for this Receptor Genotype Set.
+        genotype_class_list:
+            description: List of ReceptorGenotypes included in this Receptor Genotype Set.
+            type: array
+            items:
+                $ref: '#/ReceptorGenotype'
+
 
 # Genotype of adaptive immune receptors
+# This enumerates the alleles and gene deletions inferred in a single subject. 
+# Included alleles may either be listed by reference to a GermlineSet, or 
+# listed as 'undocumented', in which case the inferred sequence is provided
+
 ReceptorGenotype:
     discriminator:
         propertyName: AIRR
@@ -832,11 +850,30 @@ ReceptorGenotype:
                 - genomic_sequencing
                 - repertoire_sequencing
             description: Information on how the genotype was acquired. Controlled vocabulary.
-            title: Germline acquisition process
+            title: Genotype acquisition process
             example: repertoire_sequencing
             x-airr:
                 adc-query-support: true
                 format: controlled vocabulary
+
+
+
+# List of MHCGenotypes used for analysis to describe
+# a subject's genotype
+MHCGenotypeSet:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    properties:
+        MHC_genotype_set_id:
+            type: string
+            description: A unique identifier for this MHC Genotype Set.
+        MHC_genotype_class_list:
+            description: List of classes included in this MHC Genotype set.
+            type: array
+            items:
+                $ref: '#/MHCGenotype'
+
 
 # Genotype of major histocompatibility complex (MHC) class I and II receptors
 MHCGenotype:
@@ -846,8 +883,8 @@ MHCGenotype:
     properties:
         id:
             type: string
-            description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
-        germline_class:
+            description: A unique identifier for this MHC Genotype, assumed to be unique in the context of the study.
+        genotype_class:
             type: string
             nullable: true
             enum:
@@ -872,14 +909,14 @@ MHCGenotype:
             x-airr:
                 nullable: true
                 adc-query-support: true
-        germline_process:
+        genotype_process:
             type: string
             nullable: true
             enum:
                 - genomic_sequencing
                 - repertoire_sequencing
-            description: Information on how the germline was acquired. Controlled vocabulary.
-            title: Germline acquisition process
+            description: Information on how the genotype was acquired. Controlled vocabulary.
+            title: Genotype acquisition process
             example: repertoire_sequencing
             x-airr:
                 adc-query-support: true
@@ -1348,6 +1385,16 @@ Subject:
                 $ref: '#/Diagnosis'
             x-airr:
                 adc-query-support: true
+        genotype:
+            type: object
+            description: Genotype for this subject, if known
+            properties:
+                receptor_genotype_set:
+                    $ref: '#/ReceptorGenotypeSet'
+                    description: Immune receptor genotype set for this subject.
+                mhc_genotype_set:
+                    $ref: '#/MHCGenotypeSet'
+                    description: MHC genotype set for this subject.        
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
