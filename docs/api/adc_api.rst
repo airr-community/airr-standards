@@ -573,7 +573,7 @@ The following operators are support by the ADC API.
       - multiple operators
       - n/a
       - logical OR
-      - {"op":"and","content":[ |br| {"op":"<","content":{"field":"sample.cell_number","value":1000}}, |br| {"op":"is missing","content":{"field":"sample.tissue"}}, |br| {"op":"exclude","content":{"field":"subject.organism.id","value":["9606","10090"]}} |br| ]}
+      - {"op":"or","content":[ |br| {"op":"<","content":{"field":"sample.cell_number","value":1000}}, |br| {"op":"is missing","content":{"field":"sample.tissue"}}, |br| {"op":"exclude","content":{"field":"subject.organism.id","value":["9606","10090"]}} |br| ]}
 
 Note that the ``not`` operator is different from a logical NOT
 operator, and the logical NOT is not needed as the other operators
