@@ -150,40 +150,50 @@ Attributes:
 # Data Files cannot be merged simply by concatenating arrays; any merge program
 # would need to manage duplicate or conflicting ID values.
 
+# While the properties in an AIRR Data File are not required, if one is provided then
+# the value should not be null.
+
 DataFile:
     discriminator:
         propertyName: AIRR
     type: object
     properties:
         Info:
+            nullable: false
             $ref: '#/InfoObject'
         Repertoire:
             type: array
+            nullable: false
             description: List of Repertoire metadata
             items:
               $ref: '#/Repertoire'
         DataProcessing:
             type: array
+            nullable: false
             description: List of data processing workflows
             items:
               $ref: '#/DataProcessing'
         Cell:
             type: array
+            nullable: false
             description: List of cells
             items:
               $ref: '#/Cell'
         Rearrangement:
             type: array
+            nullable: false
             description: List of rearrangement records
             items:
               $ref: '#/Rearrangement'
         Clone:
             type: array
+            nullable: false
             description: List of clones
             items:
               $ref: '#/Clone'
         Tree:
             type: array
+            nullable: false
             description: List of trees
             items:
               $ref: '#/Tree'
@@ -195,29 +205,44 @@ InfoObject:
         propertyName: AIRR
     type: object
     description: Provides information about data and API responses.
+    required:
+        - title
+        - version
     properties:
       title:
         type: string
+        nullable: false
       version:
         type: string
+        nullable: false
       description:
         type: string
+        nullable: true
       contact:
         type: object
+        nullable: true
         properties:
           name:
             type: string
+            nullable: true
           url:
             type: string
+            nullable: true
           email:
             type: string
+            nullable: true
       license:
         type: object
+        nullable: true
+        required:
+            - name
         properties:
           name:
             type: string
+            nullable: false
           url:
             type: string
+            nullable: true
 
 #
 # Germline gene schema
