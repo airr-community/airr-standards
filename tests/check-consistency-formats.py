@@ -79,7 +79,7 @@ def translate_nullable(obj):
 
 # Make V2 look like V3 then compare
 for obj in v2_spec:
-    print(obj)
+    #print(obj)
 
     # not a schema object
     if obj == 'CURIEResolution':
@@ -106,6 +106,6 @@ for obj in v2_spec:
                 translate_nullable(v2_spec[obj]['properties'][prop])
 
     if jsondiff.diff(v2_spec[obj], v3_spec[obj]) != {}:
-        print('{} object in V2 spec is different from V3 spec'.format(obj), file=sys.stderr)
+        print('{} object is different between V2 and V3 spec'.format(obj), file=sys.stderr)
         print(jsondiff.diff(v2_spec[obj], v3_spec[obj]), file=sys.stderr)
         sys.exit(1)

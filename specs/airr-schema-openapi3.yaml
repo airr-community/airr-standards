@@ -259,6 +259,7 @@ GermlineClassSet:
     properties:
         germline_class_id:
             type: string
+            nullable: true
             description: A unique identifier for this Germline Class Set.
         germline_class:
             type: string
@@ -283,10 +284,7 @@ GermlineClassSet:
             items:
                 type: string
                 description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
-                x-airr:
-                    adc-query-support: true
             x-airr:
-                nullable: true
                 adc-query-support: true
         germline_process:
             type: string
@@ -310,10 +308,12 @@ GermlineSet:
     properties:
         germline_set_id:
             type: string
+            nullable: true
             description: A unique identifier for this Germline Set.
         germline_class_list:
             description: List of classes included in this germline set.
             type: array
+            nullable: true
             items:
                 $ref: '#/GermlineClassSet'
 
@@ -324,6 +324,7 @@ MHCGermlineClassSet:
     properties:
         germline_class_id:
             type: string
+            nullable: true
             description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
         germline_class:
             type: string
@@ -341,10 +342,7 @@ MHCGermlineClassSet:
             items:
                 type: string
                 description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., HLA‐C*07:29).
-                x-airr:
-                    adc-query-support: true
             x-airr:
-                nullable: true
                 adc-query-support: true
         germline_process:
             type: string
@@ -368,10 +366,12 @@ MHCGermlineSet:
     properties:
         germline_set_id:
             type: string
+            nullable: true
             description: A unique identifier for this Germline Set.
         germline_class_list:
             description: List of classes included in this germline set.
             type: array
+            nullable: true
             items:
                 $ref: '#/MHCGermlineClassSet'
 
@@ -751,6 +751,7 @@ Subject:
                 name: Age event
         age:
             type: string
+            nullable: true
             x-airr:
                 deprecated: true
                 deprecated-description: Split into two fields to specify as an age range.
@@ -840,12 +841,15 @@ Subject:
                 adc-query-support: true
         germline:
             type: object
+            nullable: true
             description: Germline for this subject, if known, by germline class.
             properties:
                 receptor_germline:
+                    nullable: true
                     $ref: '#/GermlineSet'
                     description: Immune receptor germline set for this subject.
                 mhc_germline:
+                    nullable: true
                     $ref: '#/MHCGermlineSet'
                     description: MHC germline set for this subject.
 
@@ -1873,9 +1877,11 @@ DataProcessing:
             description: Germline used for this data processing process
             properties:
                 receptor_germline:
+                    nullable: true
                     $ref: '#/GermlineSet'
                     description: Immune receptor germline set for this data processing process.
                 mhc_germline:
+                    nullable: true
                     $ref: '#/MHCGermlineSet'
                     description: MHC germline set for this data processing process.
         germline_database:
@@ -2080,6 +2086,11 @@ Alignment:
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
                 but will usually be a universally unique record locator for database applications.
+            x-airr:
+                deprecated: true
+                deprecated-description: Field has been merged with sequence_id to avoid confusion.
+                deprecated-replaced-by:
+                    - sequence_id
         data_processing_id:
             type: string
             nullable: true
@@ -3241,6 +3252,25 @@ Node:
             description: >
                 Amino acid translation of the junction.
 
+# The expression object for use in Cell
+Expression:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    properties:
+        expression_marker:
+            type: string
+            nullable: true
+            description: >
+               standardized designation of the transcript or epitope
+            example: CD27
+        expression_value:
+            type: number
+            nullable: true
+            description: >
+               transformed and normalized expression level.
+            example: 14567.30
+
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
 Cell:
@@ -3341,20 +3371,7 @@ Cell:
             description: >
                 Expression definitions for single-cell
             items:
-                type: object
-                properties:
-                    expression_marker:
-                        type: string
-                        nullable: true
-                        description: >
-                           standardized designation of the transcript or epitope
-                        example: CD27
-                    expression_value:
-                        type: number
-                        nullable: true
-                        description: >
-                           transformed and normalized expression level.
-                        example: 14567.30
+                $ref: '#/Expression'
         virtual_pairing:
             type: boolean
             nullable: true # assuming only done for sc experiments, otherwise does not exist
