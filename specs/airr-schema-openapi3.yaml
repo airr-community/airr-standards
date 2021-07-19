@@ -743,11 +743,29 @@ GermlineSet:
 #
 # Genotype schema
 #
-# This enumerates the alleles and gene deletions inferred in a single subject. Included alleles may either be listed by reference to a GermlineSet, or 
-# listed as 'undocumented', in which case the inferred sequence is provided
-#
+
+# ReceptorGenotypeSet lists the  ReceptorGenotypes (describing different loci) inferred for this subject
+
+ReceptorGenotypeSet:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    properties:
+        receptor_genotype_set_id:
+            type: string
+            description: A unique identifier for this Receptor Genotype Set.
+        genotype_class_list:
+            description: List of ReceptorGenotypes included in this Receptor Genotype Set.
+            type: array
+            items:
+                $ref: '#/ReceptorGenotype'
+
 
 # Genotype of adaptive immune receptors
+# This enumerates the alleles and gene deletions inferred in a single subject. 
+# Included alleles may either be listed by reference to a GermlineSet, or 
+# listed as 'undocumented', in which case the inferred sequence is provided
+
 ReceptorGenotype:
     discriminator:
         propertyName: AIRR
@@ -842,11 +860,30 @@ ReceptorGenotype:
                 - genomic_sequencing
                 - repertoire_sequencing
             description: Information on how the genotype was acquired. Controlled vocabulary.
-            title: Germline acquisition process
+            title: Genotype acquisition process
             example: repertoire_sequencing
             x-airr:
                 adc-query-support: true
                 format: controlled vocabulary
+
+
+
+# List of MHCGenotypes used for analysis to describe
+# a subject's genotype
+MHCGenotypeSet:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    properties:
+        MHC_genotype_set_id:
+            type: string
+            description: A unique identifier for this MHC Genotype Set.
+        MHC_genotype_class_list:
+            description: List of classes included in this MHC Genotype set.
+            type: array
+            items:
+                $ref: '#/MHCGenotype'
+
 
 # Genotype of major histocompatibility complex (MHC) class I and II receptors
 MHCGenotype:
@@ -856,8 +893,8 @@ MHCGenotype:
     properties:
         id:
             type: string
-            description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
-        germline_class:
+            description: A unique identifier for this MHC Genotype, assumed to be unique in the context of the study.
+        genotype_class:
             type: string
             nullable: true
             enum:
@@ -882,14 +919,14 @@ MHCGenotype:
             x-airr:
                 nullable: true
                 adc-query-support: true
-        germline_process:
+        genotype_process:
             type: string
             nullable: true
             enum:
                 - genomic_sequencing
                 - repertoire_sequencing
-            description: Information on how the germline was acquired. Controlled vocabulary.
-            title: Germline acquisition process
+            description: Information on how the genotype was acquired. Controlled vocabulary.
+            title: Genotype acquisition process
             example: repertoire_sequencing
             x-airr:
                 adc-query-support: true
@@ -1360,14 +1397,14 @@ Subject:
                 adc-query-support: true
         genotype:
             type: object
-            description: Genotype for this subject.
+            description: Genotype for this subject, if known
             properties:
-                receptor_genotype:
-                    $ref: '#/ReceptorGenotype'
-                    description: Immune receptor genotype for this subject.
-                mhc_genotype:
-                    $ref: '#/MHCGenotype'
-                    description: MHC genotype for this subject.
+                receptor_genotype_set:
+                    $ref: '#/ReceptorGenotypeSet'
+                    description: Immune receptor genotype set for this subject.
+                mhc_genotype_set:
+                    $ref: '#/MHCGenotypeSet'
+                    description: MHC genotype set for this subject.        
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
@@ -2387,14 +2424,12 @@ DataProcessing:
             x-airr:
                 adc-query-support: true
                 name: Processed data file names
-        data_processing_germline:
-            type: object
+        data_processing_germline_sets:
+            type: list
             nullable: true
-            description: Germline used for this data processing process
-            properties:
-                receptor_germline:
-                    $ref: '#/GermlineSet'
-                    description: Immune receptor germline set for this data processing process.
+            description: Germline sets used for this data processing process
+            items:
+                $ref: '#/GermlineSet'
         germline_database:
             type: string
             nullable: true
@@ -2510,6 +2545,19 @@ Repertoire:
                 $ref: '#/DataProcessing'
             x-airr:
                 adc-query-support: true
+        genotypes:
+            type: object
+            description: Genotypes inferred from this repertoire.
+            properties:
+                type: array
+                nullable: true
+                items:
+                    receptor_genotype:
+                        $ref: '#/ReceptorGenotype'
+                        description: Immune receptor genotype for this subject.
+                    mhc_genotype:
+                        $ref: '#/MHCGenotype'
+                        description: MHC genotype for this subject.
 
 
 Alignment:
@@ -3163,6 +3211,38 @@ Rearrangement:
             nullable: true
             description: >
                 End position of the J gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        c_sequence_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the C gene in the query sequence (1-based closed interval).
+        c_sequence_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the C gene in the query sequence (1-based closed interval).
+        c_germline_start:
+            type: integer
+            nullable: true
+            description: >
+                Alignment start position in the C gene reference sequence (1-based closed interval).
+        c_germline_end:
+            type: integer
+            nullable: true
+            description: >
+                Alignment end position in the C gene reference sequence (1-based closed interval).
+        c_alignment_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the C gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        c_alignment_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the C gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
         cdr1_start:
             type: integer

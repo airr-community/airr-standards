@@ -8,6 +8,8 @@ Authors@R: c(person("Jason", "Vander Heiden", role=c("aut", "cre"),
                     email="susanna.marquez@yale.edu"),
              person("Scott", "Christley", role=c("aut"), 
                     email="Scott.Christley@UTSouthwestern.edu"),
+             person("Katharina", "Imkeller", role=c("aut"), 
+                    email="imkeller@embl.de"),
              person("Ulrik", " Stervbo", role=c("aut"),
                     email="ulrik.stervbo@elisabethgruppe.de"),
              person("AIRR Community", role=c("cph")))
@@ -29,7 +31,8 @@ Imports:
     readr,
     stats,
     stringi,
-    yaml
+    yaml,
+    jsonlite
 Suggests:
     knitr,
     rmarkdown,
