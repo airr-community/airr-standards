@@ -282,9 +282,6 @@ GermlineClassSet:
             items:
                 type: string
                 description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
-                x-airr:
-                    nullable: true
-                    adc-query-support: true
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -338,9 +335,6 @@ MHCGermlineClassSet:
             items:
                 type: string
                 description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., HLA‐C*07:29).
-                x-airr:
-                    nullable: true
-                    adc-query-support: true
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -3038,6 +3032,22 @@ Node:
             description: >
                 Amino acid translation of the junction.
 
+# The expression object for use in Cell
+Expression:
+    discriminator: AIRR
+    type: object
+    properties:
+        expression_marker:
+            type: string
+            description: >
+               standardized designation of the transcript or epitope
+            example: CD27
+        expression_value:
+            type: number
+            description: >
+               transformed and normalized expression level.
+            example: 14567.30
+
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
 Cell:
@@ -3136,18 +3146,7 @@ Cell:
             description: >
                 Expression definitions for single-cell
             items:
-                type: object
-                properties:
-                    expression_marker:
-                        type: string
-                        description: >
-                           standardized designation of the transcript or epitope
-                        example: CD27
-                    expression_value:
-                        type: number
-                        description: >
-                           transformed and normalized expression level.
-                        example: 14567.30
+                $ref: '#/Expression'
         virtual_pairing:
             type: boolean
             description: >
