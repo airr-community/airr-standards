@@ -21,7 +21,8 @@ RUN pip3 install \
     sphinxcontrib-autoprogram \
     sphinx_bootstrap_theme \
     sphinx_book_theme \
-    matplotlib
+    matplotlib \
+    jsondiff
 
 # Copy source
 RUN mkdir /airr-standards

@@ -150,40 +150,50 @@ Attributes:
 # Data Files cannot be merged simply by concatenating arrays; any merge program
 # would need to manage duplicate or conflicting ID values.
 
+# While the properties in an AIRR Data File are not required, if one is provided then
+# the value should not be null.
+
 DataFile:
     discriminator:
         propertyName: AIRR
     type: object
     properties:
         Info:
+            nullable: false
             $ref: '#/InfoObject'
         Repertoire:
             type: array
+            nullable: false
             description: List of Repertoire metadata
             items:
               $ref: '#/Repertoire'
         DataProcessing:
             type: array
+            nullable: false
             description: List of data processing workflows
             items:
               $ref: '#/DataProcessing'
         Cell:
             type: array
+            nullable: false
             description: List of cells
             items:
               $ref: '#/Cell'
         Rearrangement:
             type: array
+            nullable: false
             description: List of rearrangement records
             items:
               $ref: '#/Rearrangement'
         Clone:
             type: array
+            nullable: false
             description: List of clones
             items:
               $ref: '#/Clone'
         Tree:
             type: array
+            nullable: false
             description: List of trees
             items:
               $ref: '#/Tree'
@@ -195,29 +205,44 @@ InfoObject:
         propertyName: AIRR
     type: object
     description: Provides information about data and API responses.
+    required:
+        - title
+        - version
     properties:
       title:
         type: string
+        nullable: false
       version:
         type: string
+        nullable: false
       description:
         type: string
+        nullable: true
       contact:
         type: object
+        nullable: true
         properties:
           name:
             type: string
+            nullable: true
           url:
             type: string
+            nullable: true
           email:
             type: string
+            nullable: true
       license:
         type: object
+        nullable: true
+        required:
+            - name
         properties:
           name:
             type: string
+            nullable: false
           url:
             type: string
+            nullable: true
 
 #
 # General objects
@@ -841,7 +866,6 @@ ReceptorGenotype:
                 x-airr:
                     adc-query-support: true
             x-airr:
-                nullable: true
                 adc-query-support: true
         inference_process:
             type: string
@@ -871,6 +895,7 @@ MHCGenotypeSet:
         MHC_genotype_class_list:
             description: List of classes included in this MHC Genotype set.
             type: array
+            nullable: true
             items:
                 $ref: '#/MHCGenotype'
 
@@ -907,7 +932,6 @@ MHCGenotype:
                         type: string
                         description: Repository and list from which it was taken (issuer/name/version)
             x-airr:
-                nullable: true
                 adc-query-support: true
         genotype_process:
             type: string
@@ -1298,6 +1322,7 @@ Subject:
                 name: Age event
         age:
             type: string
+            nullable: true
             x-airr:
                 deprecated: true
                 deprecated-description: Split into two fields to specify as an age range.
@@ -2635,6 +2660,11 @@ Alignment:
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
                 but will usually be a universally unique record locator for database applications.
+            x-airr:
+                deprecated: true
+                deprecated-description: Field has been merged with sequence_id to avoid confusion.
+                deprecated-replaced-by:
+                    - sequence_id
         data_processing_id:
             type: string
             nullable: true
@@ -3796,6 +3826,25 @@ Node:
             description: >
                 Amino acid translation of the junction.
 
+# The expression object for use in Cell
+Expression:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    properties:
+        expression_marker:
+            type: string
+            nullable: true
+            description: >
+               standardized designation of the transcript or epitope
+            example: CD27
+        expression_value:
+            type: number
+            nullable: true
+            description: >
+               transformed and normalized expression level.
+            example: 14567.30
+
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
 Cell:
@@ -3896,20 +3945,7 @@ Cell:
             description: >
                 Expression definitions for single-cell
             items:
-                type: object
-                properties:
-                    expression_marker:
-                        type: string
-                        nullable: true
-                        description: >
-                           standardized designation of the transcript or epitope
-                        example: CD27
-                    expression_value:
-                        type: number
-                        nullable: true
-                        description: >
-                           transformed and normalized expression level.
-                        example: 14567.30
+                $ref: '#/Expression'
         virtual_pairing:
             type: boolean
             nullable: true # assuming only done for sc experiments, otherwise does not exist

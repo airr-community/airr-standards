@@ -150,42 +150,59 @@ Attributes:
 # Data Files cannot be merged simply by concatenating arrays; any merge program
 # would need to manage duplicate or conflicting ID values.
 
+# While the properties in an AIRR Data File are not required, if one is provided then
+# the value should not be null.
+
 DataFile:
     discriminator: AIRR
     type: object
     properties:
         Info:
             $ref: '#/InfoObject'
+            x-airr:
+                nullable: false
         Repertoire:
             type: array
             description: List of Repertoire metadata
             items:
               $ref: '#/Repertoire'
+            x-airr:
+                nullable: false
         DataProcessing:
             type: array
             description: List of data processing workflows
             items:
               $ref: '#/DataProcessing'
+            x-airr:
+                nullable: false
         Cell:
             type: array
             description: List of cells
             items:
               $ref: '#/Cell'
+            x-airr:
+                nullable: false
         Rearrangement:
             type: array
             description: List of rearrangement records
             items:
               $ref: '#/Rearrangement'
+            x-airr:
+                nullable: false
         Clone:
             type: array
             description: List of clones
             items:
               $ref: '#/Clone'
+            x-airr:
+                nullable: false
         Tree:
             type: array
             description: List of trees
             items:
               $ref: '#/Tree'
+            x-airr:
+                nullable: false
 
 # AIRR Info object, should be similar to openapi
 # should we point to an openapi schema?
@@ -193,11 +210,18 @@ InfoObject:
     discriminator: AIRR
     type: object
     description: Provides information about data and API responses.
+    required:
+        - title
+        - version
     properties:
       title:
         type: string
+        x-airr:
+            nullable: false
       version:
         type: string
+        x-airr:
+            nullable: false
       description:
         type: string
       contact:
@@ -211,9 +235,13 @@ InfoObject:
             type: string
       license:
         type: object
+        required:
+            - name
         properties:
           name:
             type: string
+            x-airr:
+                nullable: false
           url:
             type: string
 
@@ -3541,6 +3569,22 @@ Node:
             description: >
                 Amino acid translation of the junction.
 
+# The expression object for use in Cell
+Expression:
+    discriminator: AIRR
+    type: object
+    properties:
+        expression_marker:
+            type: string
+            description: >
+               standardized designation of the transcript or epitope
+            example: CD27
+        expression_value:
+            type: number
+            description: >
+               transformed and normalized expression level.
+            example: 14567.30
+
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
 Cell:
@@ -3639,18 +3683,7 @@ Cell:
             description: >
                 Expression definitions for single-cell
             items:
-                type: object
-                properties:
-                    expression_marker:
-                        type: string
-                        description: >
-                           standardized designation of the transcript or epitope
-                        example: CD27
-                    expression_value:
-                        type: number
-                        description: >
-                           transformed and normalized expression level.
-                        example: 14567.30
+                $ref: '#/Expression'
         virtual_pairing:
             type: boolean
             description: >
