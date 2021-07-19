@@ -162,6 +162,16 @@ DataFile:
             description: List of Repertoire metadata
             items:
               $ref: '#/Repertoire'
+        GeneDescription:
+            type: array
+            description: List of gene descriptions
+            items:
+              $ref: '#/GeneDescription'
+        GermlineSet:
+            type: array
+            description: List of germline sets
+            items:
+              $ref: '#/GermlineSet'
         DataProcessing:
             type: array
             description: List of data processing workflows
