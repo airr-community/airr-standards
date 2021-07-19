@@ -161,6 +161,16 @@ DataFile:
             description: List of Repertoire metadata
             items:
               $ref: '#/Repertoire'
+        GeneDescription:
+            type: array
+            description: List of gene descriptions
+            items:
+              $ref: '#/GeneDescription'
+        GermlineSet:
+            type: array
+            description: List of germline sets
+            items:
+              $ref: '#/GermlineSet'
         DataProcessing:
             type: array
             description: List of data processing workflows
@@ -422,8 +432,8 @@ GeneDescription:
     description: Details of a gene sequence which is inferred from one or more observations
     type: object
     required:
-        - description_id
-        - author
+        - gene_description_id
+        - maintainer
         - lab_address
         - release_version
         - release_date
@@ -640,6 +650,7 @@ GermlineSet:
     description: Details of a 'germline set' bringing together multiple GeneDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
     type: object
     required:
+        - germline_set_id
         - author
         - lab_name
         - lab_address
@@ -728,21 +739,35 @@ GermlineSet:
 #
 # Genotype schema
 #
+
+# ReceptorGenotypeSet lists the  ReceptorGenotypes (describing different loci) inferred for this subject
+
+ReceptorGenotypeSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        receptor_genotype_set_id:
+            type: string
+            description: A unique identifier for this Receptor Genotype Set.
+        genotype_class_list:
+            description: List of ReceptorGenotypes included in this Receptor Genotype Set.
+            type: array
+            items:
+                $ref: '#/ReceptorGenotype'
+
 # This enumerates the alleles and gene deletions inferred in a single subject. Included alleles may either be listed by reference to a GermlineSet, or 
 # listed as 'undocumented', in which case the inferred sequence is provided
-#
 
 # Genotype of adaptive immune receptors
 ReceptorGenotype:
     discriminator: AIRR
     type: object
     properties:
-        id:
+        receptor_genotype_id:
             type: string
             description: A unique identifier for this Receptor Genotype
         locus:
             type: string
-            nullable: false
             enum:
                 - IGH
                 - IGK
@@ -753,11 +778,11 @@ ReceptorGenotype:
                 - TRG
             example: IGH
             x-airr:
+                nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
         documented_alleles:
             type: array
-            nullable: true
             description: Array of alleles inferred to be present which are documented in GermlineSets
             items:
                 type: object
@@ -777,10 +802,10 @@ ReceptorGenotype:
                         description: Chromosomal phasing indicator. Alleles with the same value are inferred to be located on the same chromosome
                         nullable: true
                 x-airr:
+                    nullable: true
                     adc-query-support: true
         undocumented_alleles:
             type: array
-            nullable: true
             description: Array of alleles infeered to be present and not documented in an identified GermlineSet
             items:
                 type: object
@@ -796,6 +821,7 @@ ReceptorGenotype:
                         description: Chromosomal phasing indicator. Alleles with the same value are inferred to be located on the same chromosome
                         nullable: true
                 x-airr:
+                    nullable: true
                     adc-query-support: true
         deleted_genes:
             type: array
@@ -821,7 +847,6 @@ ReceptorGenotype:
                 adc-query-support: true
         inference_process:
             type: string
-            nullable: true
             enum:
                 - genomic_sequencing
                 - repertoire_sequencing
@@ -829,29 +854,44 @@ ReceptorGenotype:
             title: Germline acquisition process
             example: repertoire_sequencing
             x-airr:
+                nullable: true
                 adc-query-support: true
                 format: controlled vocabulary
+
+# List of MHCGenotypes used for analysis to describe
+# a subject's genotype
+MHCGenotypeSet:
+    discriminator: AIRR
+    type: object
+    properties:
+        mhc_genotype_set_id:
+            type: string
+            description: A unique identifier for this MHC Genotype Set.
+        mhc_genotype_class_list:
+            description: List of classes included in this MHC Genotype set.
+            type: array
+            items:
+                $ref: '#/MHCGenotype'
 
 # Genotype of major histocompatibility complex (MHC) class I and II receptors
 MHCGenotype:
     discriminator: AIRR
     type: object
     properties:
-        id:
+        mhc_genotype_id:
             type: string
             description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
-        germline_class:
+        genotype_class:
             type: string
-            nullable: true
             enum:
               - MHC    # do we need this enum??
             example: MHC
             x-airr:
+                nullable: true
                 adc-query-support: true
                 format: controlled vocabulary
         germline_alleles:
             type: array
-            nullable: true
             description: Array of gene descriptions
             items:
                 type: object
@@ -865,9 +905,8 @@ MHCGenotype:
             x-airr:
                 nullable: true
                 adc-query-support: true
-        germline_process:
+        genotype_process:
             type: string
-            nullable: true
             enum:
                 - genomic_sequencing
                 - repertoire_sequencing
@@ -875,6 +914,7 @@ MHCGenotype:
             title: Germline acquisition process
             example: repertoire_sequencing
             x-airr:
+                nullable: true
                 adc-query-support: true
                 format: controlled vocabulary
 
@@ -1343,12 +1383,12 @@ Subject:
             type: object
             description: Genotype for this subject.
             properties:
-                receptor_genotype:
-                    $ref: '#/ReceptorGenotype'
-                    description: Immune receptor genotype for this subject.
-                mhc_genotype:
-                    $ref: '#/MHCGenotype'
-                    description: MHC genotype for this subject.
+                receptor_genotype_set:
+                    $ref: '#/ReceptorGenotypeSet'
+                    description: Immune receptor genotype set for this subject.
+                mhc_genotype_set:
+                    $ref: '#/MHCGenotypeSet'
+                    description: MHC genotype set for this subject.
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:

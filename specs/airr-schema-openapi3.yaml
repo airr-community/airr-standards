@@ -437,8 +437,8 @@ GeneDescription:
     description: Details of a gene sequence which is inferred from one or more observations
     type: object
     required:
-        - description_id
-        - author
+        - gene_description_id
+        - maintainer
         - lab_address
         - release_version
         - release_date
@@ -655,6 +655,7 @@ GermlineSet:
     description: Details of a 'germline set' bringing together multiple GeneDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
     type: object
     required:
+        - germline_set_id
         - author
         - lab_name
         - lab_address
@@ -771,7 +772,7 @@ ReceptorGenotype:
         propertyName: AIRR
     type: object
     properties:
-        id:
+        receptor_genotype_id:
             type: string
             description: A unique identifier for this Receptor Genotype
         locus:
@@ -875,10 +876,10 @@ MHCGenotypeSet:
         propertyName: AIRR
     type: object
     properties:
-        MHC_genotype_set_id:
+        mhc_genotype_set_id:
             type: string
             description: A unique identifier for this MHC Genotype Set.
-        MHC_genotype_class_list:
+        mhc_genotype_class_list:
             description: List of classes included in this MHC Genotype set.
             type: array
             items:
@@ -891,7 +892,7 @@ MHCGenotype:
         propertyName: AIRR
     type: object
     properties:
-        id:
+        mhc_genotype_id:
             type: string
             description: A unique identifier for this MHC Genotype, assumed to be unique in the context of the study.
         genotype_class:
@@ -1404,7 +1405,7 @@ Subject:
                     description: Immune receptor genotype set for this subject.
                 mhc_genotype_set:
                     $ref: '#/MHCGenotypeSet'
-                    description: MHC genotype set for this subject.        
+                    description: MHC genotype set for this subject.
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
