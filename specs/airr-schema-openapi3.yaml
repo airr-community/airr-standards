@@ -891,10 +891,6 @@ ReceptorGenotypeSet:
             type: string
             nullable: false
             description: A unique identifier for this Receptor Genotype Set.
-        repertoire_id:
-            type: string
-            nullable: true
-            description: Genotype was inferred from this Repertoire.
         genotype_class_list:
             description: List of ReceptorGenotypes included in this Receptor Genotype Set.
             type: array
@@ -935,6 +931,10 @@ ReceptorGenotype:
             x-airr:
                 adc-query-support: true
                 format: controlled vocabulary
+        repertoire_id:
+            type: string
+            nullable: true
+            description: Genotype was inferred from this Repertoire.
         documented_alleles:
             type: array
             nullable: true

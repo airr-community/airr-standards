@@ -891,9 +891,6 @@ ReceptorGenotypeSet:
             description: A unique identifier for this Receptor Genotype Set.
             x-airr:
                 nullable: false
-        repertoire_id:
-            type: string
-            description: Genotype was inferred from this Repertoire.
         genotype_class_list:
             description: List of ReceptorGenotypes included in this Receptor Genotype Set.
             type: array
@@ -931,6 +928,9 @@ ReceptorGenotype:
                 nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
+        repertoire_id:
+            type: string
+            description: Genotype was inferred from this Repertoire.
         documented_alleles:
             type: array
             description: Array of alleles inferred to be present which are documented in GermlineSets
