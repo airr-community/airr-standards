@@ -397,19 +397,19 @@ GermlineSequence:
             description: Genome assembly patch number in which this gene was determined
         gff_seqid:
             type: string
-            nullable: false
+            nullable: true
             description: Germline sequence (from the assembly) of a window including the gene and preferably also the promoter region
         gff_start:
             type: integer
-            nullable: false
+            nullable: true
             description: Genomic co-ordinates of the start of the sequence of interest described in this record, in Ensemble GFF version 3
         gff_end:
             type: integer
-            nullable: false
+            nullable: true
             description: Genomic co-ordinates of the end of the sequence of interest described in this record, in Ensemble GFF version 3
         strand:
             type: string
-            nullable: false
+            nullable: true
             enum:
                 - +
                 - "-"
@@ -448,47 +448,47 @@ GeneDelineationV:
         fwr1_start:
             type: integer
             nullable: false
-            description: FWR1 start co-ordinate in Gene Description 'sequence' field
+            description: FWR1 start co-ordinate in Gene Description 'alignment' field
         fwr1_end:
             type: integer
             nullable: false
-            description: FWR1 end co-ordinate in Gene Description 'sequence' field
+            description: FWR1 end co-ordinate in Gene Description 'alignment' field
         cdr1_start:
             type: integer
             nullable: false
-            description: CDR1 start co-ordinate in Gene Description 'sequence' field
+            description: CDR1 start co-ordinate in Gene Description 'alignment' field
         cdr1_end:
             type: integer
             nullable: false
-            description: CDR1 end co-ordinate in Gene Description 'sequence' field
+            description: CDR1 end co-ordinate in Gene Description 'alignment' field
         fwr2_start:
             type: integer
             nullable: false
-            description: FWR2 start co-ordinate in Gene Description 'sequence' field
+            description: FWR2 start co-ordinate in Gene Description 'alignment' field
         fwr2_end:
             type: integer
             nullable: false
-            description: FWR2 end co-ordinate in Gene Description 'sequence' field
+            description: FWR2 end co-ordinate in Gene Description 'alignment' field
         cdr2_start:
             type: integer
             nullable: false
-            description: CDR2 start co-ordinate in Gene Description 'sequence' field
+            description: CDR2 start co-ordinate in Gene Description 'alignment' field
         cdr2_end:
             type: integer
             nullable: false
-            description: CDR2 end co-ordinate in Gene Description 'sequence' field
+            description: CDR2 end co-ordinate in Gene Description 'alignment' field
         fwr3_start:
             type: integer
             nullable: false
-            description: FWR3 start co-ordinate in Gene Description 'sequence' field
+            description: FWR3 start co-ordinate in Gene Description 'alignment' field
         fwr3_end:
             type: integer
             nullable: false
-            description: FWR3 end co-ordinate in Gene Description 'sequence' field
+            description: FWR3 end co-ordinate in Gene Description 'alignment' field
         cdr3_start:
             type: integer
             nullable: false
-            description: CDR3 start co-ordinate in Gene Description 'sequence' field
+            description: CDR3 start co-ordinate in Gene Description 'alignment' field
         alignment:
             type: array
             nullable: true
