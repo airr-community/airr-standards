@@ -1,13 +1,17 @@
 Package: airr
 Type: Package
-Version: 1.3.0
-Date: 2020-05-26
+Version: 1.4.0
+Date: 2021-03-21
 Authors@R: c(person("Jason", "Vander Heiden", role=c("aut", "cre"), 
                     email="jason.vanderheiden@gmail.com"),
              person("Susanna", "Marquez", role=c("aut"), 
                     email="susanna.marquez@yale.edu"),
              person("Scott", "Christley", role=c("aut"), 
                     email="Scott.Christley@UTSouthwestern.edu"),
+             person("Katharina", "Imkeller", role=c("aut"), 
+                    email="imkeller@embl.de"),
+             person("Ulrik", " Stervbo", role=c("aut"),
+                    email="ulrik.stervbo@elisabethgruppe.de"),
              person("AIRR Community", role=c("cph")))
 Title: AIRR Data Representation Reference Library
 Description: Schema definitions and read, write and validation tools for data 
@@ -27,9 +31,10 @@ Imports:
     readr,
     stats,
     stringi,
-    yaml
+    yaml,
+    jsonlite
 Suggests:
     knitr,
     rmarkdown,
     testthat
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

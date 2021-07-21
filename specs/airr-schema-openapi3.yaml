@@ -139,6 +139,155 @@ Attributes:
                             type: string
                             description: Ontology name for the top node term
 
+# AIRR Data File
+#
+# A JSON data file that holds Repertoire metadata, data processing
+# analysis objects, or any object in the AIRR Data Model.
+#
+# It is presumed that the objects gathered together in an AIRR Data File are related
+# or relevant to each other, e.g. part of the same study; thus, the ID fields can be
+# internally resolved unless the ID contains an external PID. This implies that AIRR
+# Data Files cannot be merged simply by concatenating arrays; any merge program
+# would need to manage duplicate or conflicting ID values.
+
+# While the properties in an AIRR Data File are not required, if one is provided then
+# the value should not be null.
+
+DataFile:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    properties:
+        Info:
+            nullable: false
+            $ref: '#/InfoObject'
+        Repertoire:
+            type: array
+            nullable: false
+            description: List of Repertoire metadata
+            items:
+              $ref: '#/Repertoire'
+        RepertoireGroup:
+            type: array
+            nullable: false
+            description: List of Repertoire groups
+            items:
+              $ref: '#/RepertoireGroup'
+        DataProcessing:
+            type: array
+            nullable: false
+            description: List of data processing workflows
+            items:
+              $ref: '#/DataProcessing'
+        Cell:
+            type: array
+            nullable: false
+            description: List of cells
+            items:
+              $ref: '#/Cell'
+        Rearrangement:
+            type: array
+            nullable: false
+            description: List of rearrangement records
+            items:
+              $ref: '#/Rearrangement'
+        Clone:
+            type: array
+            nullable: false
+            description: List of clones
+            items:
+              $ref: '#/Clone'
+        Tree:
+            type: array
+            nullable: false
+            description: List of trees
+            items:
+              $ref: '#/Tree'
+
+# AIRR Info object, should be similar to openapi
+# should we point to an openapi schema?
+InfoObject:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    description: Provides information about data and API responses.
+    required:
+        - title
+        - version
+    properties:
+      title:
+        type: string
+        nullable: false
+      version:
+        type: string
+        nullable: false
+      description:
+        type: string
+        nullable: true
+      contact:
+        type: object
+        nullable: true
+        properties:
+          name:
+            type: string
+            nullable: true
+          url:
+            type: string
+            nullable: true
+          email:
+            type: string
+            nullable: true
+      license:
+        type: object
+        nullable: true
+        required:
+            - name
+        properties:
+          name:
+            type: string
+            nullable: false
+          url:
+            type: string
+            nullable: true
+
+# A time point
+TimePoint:
+    discriminator:
+        propertyName: AIRR
+    description: Time point at which an observation or other action was performed.
+    type: object
+    properties:
+        label:
+            type: string
+            nullable: true
+            description: Informative label for the time point
+            example: Pre-operative sampling of cancer tissue
+            x-airr:
+                adc-query-support: true
+        value:
+            type: number
+            nullable: true
+            description: Value of the time point
+            example: -5.0
+            x-airr:
+                adc-query-support: true
+        unit:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Unit of the time point
+            title: Unit of immunization schedule
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
+
 #
 # Germline gene schema
 #
@@ -154,6 +303,7 @@ GermlineClassSet:
     properties:
         germline_class_id:
             type: string
+            nullable: true
             description: A unique identifier for this Germline Class Set.
         germline_class:
             type: string
@@ -178,10 +328,7 @@ GermlineClassSet:
             items:
                 type: string
                 description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
-                x-airr:
-                    adc-query-support: true
             x-airr:
-                nullable: true
                 adc-query-support: true
         germline_process:
             type: string
@@ -205,10 +352,12 @@ GermlineSet:
     properties:
         germline_set_id:
             type: string
+            nullable: true
             description: A unique identifier for this Germline Set.
         germline_class_list:
             description: List of classes included in this germline set.
             type: array
+            nullable: true
             items:
                 $ref: '#/GermlineClassSet'
 
@@ -219,6 +368,7 @@ MHCGermlineClassSet:
     properties:
         germline_class_id:
             type: string
+            nullable: true
             description: A unique identifier for this Germline Set, assumed to be unique in the context of the study.
         germline_class:
             type: string
@@ -236,10 +386,7 @@ MHCGermlineClassSet:
             items:
                 type: string
                 description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., HLA‐C*07:29).
-                x-airr:
-                    adc-query-support: true
             x-airr:
-                nullable: true
                 adc-query-support: true
         germline_process:
             type: string
@@ -263,10 +410,12 @@ MHCGermlineSet:
     properties:
         germline_set_id:
             type: string
+            nullable: true
             description: A unique identifier for this Germline Set.
         germline_class_list:
             description: List of classes included in this germline set.
             type: array
+            nullable: true
             items:
                 $ref: '#/MHCGermlineClassSet'
 
@@ -465,6 +614,28 @@ Study:
                 subset: study
                 name: Keywords for study
                 format: controlled vocabulary
+        adc_publish_date:
+            type: string
+            format: date-time
+            nullable: true
+            description: >
+                Date the study was first published in the AIRR Data Commons.
+            title: ADC Publish Date
+            example: "2021-02-02"
+            x-airr:
+                adc-query-support: true
+                name: ADC Publish Date
+        adc_update_date:
+            type: string
+            format: date-time
+            nullable: true
+            description: >
+                Date the study data was updated in the AIRR Data Commons.
+            title: ADC Update Date
+            example: "2021-02-02"
+            x-airr:
+                adc-query-support: true
+                name: ADC Update Date
 
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
@@ -624,6 +795,7 @@ Subject:
                 name: Age event
         age:
             type: string
+            nullable: true
             x-airr:
                 deprecated: true
                 deprecated-description: Split into two fields to specify as an age range.
@@ -713,12 +885,15 @@ Subject:
                 adc-query-support: true
         germline:
             type: object
+            nullable: true
             description: Germline for this subject, if known, by germline class.
             properties:
                 receptor_germline:
+                    nullable: true
                     $ref: '#/GermlineSet'
                     description: Immune receptor germline set for this subject.
                 mhc_germline:
+                    nullable: true
                     $ref: '#/MHCGermlineSet'
                     description: MHC germline set for this subject.
 
@@ -1746,9 +1921,11 @@ DataProcessing:
             description: Germline used for this data processing process
             properties:
                 receptor_germline:
+                    nullable: true
                     $ref: '#/GermlineSet'
                     description: Immune receptor germline set for this data processing process.
                 mhc_germline:
+                    nullable: true
                     $ref: '#/MHCGermlineSet'
                     description: MHC germline set for this data processing process.
         germline_database:
@@ -1866,6 +2043,53 @@ Repertoire:
             x-airr:
                 adc-query-support: true
 
+# A collection of repertoires for analysis purposes, includes optional time course
+RepertoireGroup:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    required:
+        - repertoire_group_id
+        - repertoires
+    properties:
+        repertoire_group_id:
+            type: string
+            nullable: true
+            description: Identifier for this repertoire group
+        repertoire_group_name:
+            type: string
+            nullable: true
+            description: Short display name for this repertoire group
+        repertoire_group_description:
+            type: string
+            nullable: true
+            description: Repertoire group description
+        repertoires:
+            type: array
+            nullable: true
+            description: >
+                List of repertoires in this group with an associated description and time point designation
+            items:
+                type: object
+                properties:
+                    repertoire_id:
+                        type: string
+                        nullable: false
+                        description: Identifier to the repertoire
+                        x-airr:
+                            adc-query-support: true
+                    repertoire_description:
+                        type: string
+                        nullable: true
+                        description: Description of this repertoire within the group
+                        x-airr:
+                            adc-query-support: true
+                    time_point:
+                        $ref: '#/TimePoint'
+                        nullable: true
+                        description: Time point designation for this repertoire within the group
+                        x-airr:
+                            adc-query-support: true
 
 Alignment:
     discriminator:
@@ -1952,6 +2176,11 @@ Alignment:
             description: >
                 Identifier for the Rearrangement object. May be identical to sequence_id,
                 but will usually be a universally unique record locator for database applications.
+            x-airr:
+                deprecated: true
+                deprecated-description: Field has been merged with sequence_id to avoid confusion.
+                deprecated-replaced-by:
+                    - sequence_id
         data_processing_id:
             type: string
             nullable: true
@@ -2519,6 +2748,38 @@ Rearrangement:
             description: >
                 End position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
+        c_sequence_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the C gene in the query sequence (1-based closed interval).
+        c_sequence_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the C gene in the query sequence (1-based closed interval).
+        c_germline_start:
+            type: integer
+            nullable: true
+            description: >
+                Alignment start position in the C gene reference sequence (1-based closed interval).
+        c_germline_end:
+            type: integer
+            nullable: true
+            description: >
+                Alignment end position in the C gene reference sequence (1-based closed interval).
+        c_alignment_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the C gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        c_alignment_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the C gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
         cdr1_start:
             type: integer
             nullable: true
@@ -2753,6 +3014,30 @@ Rearrangement:
             type: integer
             nullable: true
             description: Number of palindromic nucleotides 5' of the J gene alignment.
+        v_frameshift:
+            type: boolean
+            nullable: true
+            description: >
+                True if the V gene in the query nucleotide sequence contains a translational
+                frameshift relative to the frame of the V gene reference sequence.
+        j_frameshift:
+            type: boolean
+            nullable: true
+            description: >
+                True if the J gene in the query nucleotide sequence contains a translational
+                frameshift relative to the frame of the J gene reference sequence.
+        d_frame:
+            type: integer
+            nullable: true
+            description: >
+                Numerical reading frame (1, 2, 3) of the first or only D gene in the query nucleotide sequence,
+                where frame 1 is relative to the first codon of D gene reference sequence.
+        d2_frame:
+            type: integer
+            nullable: true
+            description: >
+                Numerical reading frame (1, 2, 3) of the second D gene in the query nucleotide sequence,
+                where frame 1 is relative to the first codon of D gene reference sequence.
         consensus_count:
             type: integer
             nullable: true
@@ -2986,7 +3271,11 @@ Clone:
         sequence_count:
             type: integer
             nullable: true
-            description: Number of Rearrangement records (sequences) included in this clone
+            description: Number of Rearrangement records (sequences) included in this clone.
+        clone_abundance:
+            type: integer
+            nullable: true
+            description: Non-normalized absolute count of the number of members (immune cells) in this clone.
         seed_id:
             type: string
             nullable: true
