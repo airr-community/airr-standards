@@ -3344,25 +3344,6 @@ Node:
             description: >
                 Amino acid translation of the junction.
 
-# The expression object for use in Cell
-Expression:
-    discriminator:
-        propertyName: AIRR
-    type: object
-    properties:
-        expression_marker:
-            type: string
-            nullable: true
-            description: >
-               standardized designation of the transcript or epitope
-            example: CD27
-        expression_value:
-            type: number
-            nullable: true
-            description: >
-               transformed and normalized expression level.
-            example: 14567.30
-
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
 Cell:
@@ -3463,7 +3444,20 @@ Cell:
             description: >
                 Expression definitions for single-cell
             items:
-                $ref: '#/Expression'
+                type: object
+                properties:
+                    expression_marker:
+                        type: string
+                        nullable: true
+                        description: >
+                           standardized designation of the transcript or epitope
+                        example: CD27
+                    expression_value:
+                        type: number
+                        nullable: true
+                        description: >
+                           transformed and normalized expression level.
+                        example: 14567.30
         virtual_pairing:
             type: boolean
             nullable: true # assuming only done for sc experiments, otherwise does not exist

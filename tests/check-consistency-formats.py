@@ -104,6 +104,10 @@ for obj in v2_spec:
         for prop in v2_spec[obj]['properties']:
             if v2_spec[obj]['properties'][prop].get('properties') is not None:
                 translate_nullable(v2_spec[obj]['properties'][prop])
+            # look for array of objects
+            if v2_spec[obj]['properties'][prop].get('items') is not None:
+                if v2_spec[obj]['properties'][prop]['items'].get('properties') is not None:
+                    translate_nullable(v2_spec[obj]['properties'][prop]['items'])
 
     if jsondiff.diff(v2_spec[obj], v3_spec[obj]) != {}:
         print('{} object is different between V2 and V3 spec'.format(obj), file=sys.stderr)
