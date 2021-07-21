@@ -2039,7 +2039,6 @@ RepertoireGroup:
                 List of repertoires in this group with an associated description and time point designation
             items:
                 type: object
-                description: stuff
                 properties:
                     repertoire_id:
                         type: string
