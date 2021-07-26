@@ -73,6 +73,40 @@ components:
             schema:
               $ref: '#/components/schemas/info_object'
 
+    # Notification object. Pass this object in with a query request to receive URL notifications
+    # for status changes of the asynchronous query. The data sent with a notification is the
+    # query_status_object for the query, essentially the same data returned from /status endpoint.
+    notification_object:
+      description: Subscribe to notification of query status changes
+      type: object
+      required:
+        - url
+        - method
+      properties:
+        url:
+          type: string
+          description: The URL (http/https) to receive the notification.
+        method:
+          type: string
+          description: HTTP/S method for notification URL. If GET then data is sent as request parameters
+            in the URL, and if POST then data is sent in the request body.
+          enum:
+            - GET
+            - POST
+        events:
+          type: array
+          description: If not provided, all status event changes will be sent to notification URL, otherwise
+            provide the list of specific status changes to receive.
+          items:
+            type: string
+            enum:
+              - PENDING
+              - SUBMITTED
+              - PROCESSING
+              - FINISHED
+              - ERROR
+              - EXPIRED
+
     # POST query request
     query_object:
       description: Query filter and associated parameters for POST end points
@@ -100,6 +134,8 @@ components:
             - miairr
             - airr-core
             - airr-schema
+        notification:
+          $ref: '#/components/schemas/notification_object'
 
     # The response object for /status
     query_status_response:
@@ -107,6 +143,8 @@ components:
       description: Provides status about an asynchronous query request
       properties:
         query_id:
+          type: string
+        endpoint:
           type: string
         status:
           type: string
@@ -117,9 +155,13 @@ components:
             - FINISHED
             - ERROR
             - EXPIRED
+        message:
+          type: string
         created:
           type: string
-          format: date
+          format: date-time
+        final_file:
+          type: string
         download_url:
           type: string
 
