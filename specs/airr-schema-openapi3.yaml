@@ -2586,12 +2586,6 @@ DataProcessing:
             x-airr:
                 adc-query-support: true
                 name: Processed data file names
-        data_processing_germline_sets:
-            type: array
-            nullable: true
-            description: Germline sets used for this data processing process
-            items:
-                $ref: '#/GermlineSet'
         germline_database:
             type: string
             nullable: true
