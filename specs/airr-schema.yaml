@@ -139,6 +139,156 @@ Attributes:
                             type: string
                             description: Ontology name for the top node term
 
+# AIRR Data File
+#
+# A JSON data file that holds Repertoire metadata, data processing
+# analysis objects, or any object in the AIRR Data Model.
+#
+# It is presumed that the objects gathered together in an AIRR Data File are related
+# or relevant to each other, e.g. part of the same study; thus, the ID fields can be
+# internally resolved unless the ID contains an external PID. This implies that AIRR
+# Data Files cannot be merged simply by concatenating arrays; any merge program
+# would need to manage duplicate or conflicting ID values.
+
+# While the properties in an AIRR Data File are not required, if one is provided then
+# the value should not be null.
+
+DataFile:
+    discriminator: AIRR
+    type: object
+    properties:
+        Info:
+            $ref: '#/InfoObject'
+            x-airr:
+                nullable: false
+        Repertoire:
+            type: array
+            description: List of Repertoire metadata
+            items:
+              $ref: '#/Repertoire'
+            x-airr:
+                nullable: false
+        RepertoireGroup:
+            type: array
+            description: List of Repertoire groups
+            items:
+              $ref: '#/RepertoireGroup'
+            x-airr:
+                nullable: false
+        DataProcessing:
+            type: array
+            description: List of data processing workflows
+            items:
+              $ref: '#/DataProcessing'
+            x-airr:
+                nullable: false
+        Cell:
+            type: array
+            description: List of cells
+            items:
+              $ref: '#/Cell'
+            x-airr:
+                nullable: false
+        Rearrangement:
+            type: array
+            description: List of rearrangement records
+            items:
+              $ref: '#/Rearrangement'
+            x-airr:
+                nullable: false
+        Clone:
+            type: array
+            description: List of clones
+            items:
+              $ref: '#/Clone'
+            x-airr:
+                nullable: false
+        Tree:
+            type: array
+            description: List of trees
+            items:
+              $ref: '#/Tree'
+            x-airr:
+                nullable: false
+
+# AIRR Info object, should be similar to openapi
+# should we point to an openapi schema?
+InfoObject:
+    discriminator: AIRR
+    type: object
+    description: Provides information about data and API responses.
+    required:
+        - title
+        - version
+    properties:
+      title:
+        type: string
+        x-airr:
+            nullable: false
+      version:
+        type: string
+        x-airr:
+            nullable: false
+      description:
+        type: string
+      contact:
+        type: object
+        properties:
+          name:
+            type: string
+          url:
+            type: string
+          email:
+            type: string
+      license:
+        type: object
+        required:
+            - name
+        properties:
+          name:
+            type: string
+            x-airr:
+                nullable: false
+          url:
+            type: string
+
+# A time point
+TimePoint:
+    discriminator: AIRR
+    description: Time point at which an observation or other action was performed.
+    type: object
+    properties:
+        label:
+            type: string
+            description: Informative label for the time point
+            example: Pre-operative sampling of cancer tissue
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        value:
+            type: number
+            description: Value of the time point
+            example: -5.0
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        unit:
+            $ref: '#/Ontology'
+            description: Unit of the time point
+            title: Unit of immunization schedule
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
+
 #
 # Germline gene schema
 #
@@ -176,9 +326,6 @@ GermlineClassSet:
             items:
                 type: string
                 description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
-                x-airr:
-                    nullable: true
-                    adc-query-support: true
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -232,9 +379,6 @@ MHCGermlineClassSet:
             items:
                 type: string
                 description: Gene description for a germline allele. If referring to a known reference sequence in a database the relevant gene/allele nomenclature should be followed (e.g., HLA‐C*07:29).
-                x-airr:
-                    nullable: true
-                    adc-query-support: true
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -460,6 +604,28 @@ Study:
                 subset: study
                 name: Keywords for study
                 format: controlled vocabulary
+        adc_publish_date:
+            type: string
+            format: date-time
+            description: >
+                Date the study was first published in the AIRR Data Commons.
+            title: ADC Publish Date
+            example: "2021-02-02"
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                name: ADC Publish Date
+        adc_update_date:
+            type: string
+            format: date-time
+            description: >
+                Date the study data was updated in the AIRR Data Commons.
+            title: ADC Update Date
+            example: "2021-02-02"
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                name: ADC Update Date
 
 
 # 1-to-n relationship between a study and its subjects
@@ -1850,6 +2016,49 @@ Repertoire:
                 nullable: false
                 adc-query-support: true
 
+# A collection of repertoires for analysis purposes, includes optional time course
+RepertoireGroup:
+    discriminator: AIRR
+    type: object
+    required:
+        - repertoire_group_id
+        - repertoires
+    properties:
+        repertoire_group_id:
+            type: string
+            description: Identifier for this repertoire group
+        repertoire_group_name:
+            type: string
+            description: Short display name for this repertoire group
+        repertoire_group_description:
+            type: string
+            description: Repertoire group description
+        repertoires:
+            type: array
+            description: >
+                List of repertoires in this group with an associated description and time point designation
+            items:
+                type: object
+                properties:
+                    repertoire_id:
+                        type: string
+                        description: Identifier to the repertoire
+                        x-airr:
+                            nullable: false
+                            adc-query-support: true
+                    repertoire_description:
+                        type: string
+                        description: Description of this repertoire within the group
+                        x-airr:
+                            nullable: true
+                            adc-query-support: true
+                    time_point:
+                        $ref: '#/TimePoint'
+                        description: Time point designation for this repertoire within the group
+                        x-airr:
+                            nullable: true
+                            adc-query-support: true
+
 
 Alignment:
     discriminator: AIRR
@@ -2411,6 +2620,32 @@ Rearrangement:
             description: >
                 End position of the J gene alignment in both the sequence_alignment and germline_alignment
                 fields (1-based closed interval).
+        c_sequence_start:
+            type: integer
+            description: >
+                Start position of the C gene in the query sequence (1-based closed interval).
+        c_sequence_end:
+            type: integer
+            description: >
+                End position of the C gene in the query sequence (1-based closed interval).
+        c_germline_start:
+            type: integer
+            description: >
+                Alignment start position in the C gene reference sequence (1-based closed interval).
+        c_germline_end:
+            type: integer
+            description: >
+                Alignment end position in the C gene reference sequence (1-based closed interval).
+        c_alignment_start:
+            type: integer
+            description: >
+                Start position of the C gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        c_alignment_end:
+            type: integer
+            description: >
+                End position of the C gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
         cdr1_start:
             type: integer
             description: CDR1 start position in the query sequence (1-based closed interval).
@@ -2597,6 +2832,26 @@ Rearrangement:
         p5j_length:
             type: integer
             description: Number of palindromic nucleotides 5' of the J gene alignment.
+        v_frameshift:
+            type: boolean
+            description: >
+                True if the V gene in the query nucleotide sequence contains a translational
+                frameshift relative to the frame of the V gene reference sequence.
+        j_frameshift:
+            type: boolean
+            description: >
+                True if the J gene in the query nucleotide sequence contains a translational
+                frameshift relative to the frame of the J gene reference sequence.
+        d_frame:
+            type: integer
+            description: >
+                Numerical reading frame (1, 2, 3) of the first or only D gene in the query nucleotide sequence,
+                where frame 1 is relative to the first codon of D gene reference sequence.
+        d2_frame:
+            type: integer
+            description: >
+                Numerical reading frame (1, 2, 3) of the second D gene in the query nucleotide sequence,
+                where frame 1 is relative to the first codon of D gene reference sequence.
         consensus_count:
             type: integer
             description: >
@@ -2805,7 +3060,10 @@ Clone:
             description: Junction region end position in the alignment (1-based closed interval).
         sequence_count:
             type: integer
-            description: Number of Rearrangement records (sequences) included in this clone
+            description: Number of Rearrangement records (sequences) included in this clone.
+        clone_abundance:
+            type: integer
+            description: Non-normalized absolute count of the number of members (immune cells) in this clone.
         seed_id:
             type: string
             description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
