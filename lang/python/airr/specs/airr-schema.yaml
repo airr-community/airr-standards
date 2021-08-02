@@ -878,9 +878,9 @@ GermlineSet:
 # Genotype schema
 #
 
-# ReceptorGenotypeSet lists the  ReceptorGenotypes (describing different loci) inferred for this subject
+# GenotypeSet lists the  Genotypes (describing different loci) inferred for this subject
 
-ReceptorGenotypeSet:
+GenotypeSet:
     discriminator: AIRR
     type: object
     required:
@@ -892,16 +892,16 @@ ReceptorGenotypeSet:
             x-airr:
                 nullable: false
         genotype_class_list:
-            description: List of ReceptorGenotypes included in this Receptor Genotype Set.
+            description: List of Genotypes included in this Receptor Genotype Set.
             type: array
             items:
-                $ref: '#/ReceptorGenotype'
+                $ref: '#/Genotype'
 
 # This enumerates the alleles and gene deletions inferred in a single subject. Included alleles may either be listed by reference to a GermlineSet, or 
 # listed as 'undocumented', in which case the inferred sequence is provided
 
 # Genotype of adaptive immune receptors
-ReceptorGenotype:
+Genotype:
     discriminator: AIRR
     type: object
     required:
@@ -1554,7 +1554,7 @@ Subject:
             description: Genotype for this subject, if known
             properties:
                 receptor_genotype_set:
-                    $ref: '#/ReceptorGenotypeSet'
+                    $ref: '#/GenotypeSet'
                     description: Immune receptor genotype set for this subject.
                 mhc_genotype_set:
                     $ref: '#/MHCGenotypeSet'
