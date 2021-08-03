@@ -964,7 +964,7 @@ Genotype:
         undocumented_alleles:
             type: array
             nullable: true
-            description: Array of alleles infeered to be present and not documented in an identified GermlineSet
+            description: Array of alleles inferred to be present and not documented in an identified GermlineSet
             items:
                 type: object
                 properties:
