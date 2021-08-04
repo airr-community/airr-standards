@@ -931,10 +931,6 @@ Genotype:
             x-airr:
                 adc-query-support: true
                 format: controlled vocabulary
-        repertoire_id:
-            type: string
-            nullable: true
-            description: Genotype was inferred from this Repertoire.
         documented_alleles:
             type: array
             nullable: true
