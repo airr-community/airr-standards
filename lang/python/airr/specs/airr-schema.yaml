@@ -928,9 +928,6 @@ Genotype:
                 nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
-        repertoire_id:
-            type: string
-            description: Genotype was inferred from this Repertoire.
         documented_alleles:
             type: array
             description: Array of alleles inferred to be present which are documented in GermlineSets
