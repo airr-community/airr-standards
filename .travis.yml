@@ -40,7 +40,7 @@ matrix:
             - libssl-dev
             - libxml2-dev
       r_check_args: --as-cran --run-donttest
-      r_packages:
+      r_binary_packages:
         - devtools
         - roxygen2
         - testthat
