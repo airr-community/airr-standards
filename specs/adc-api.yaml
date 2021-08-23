@@ -94,12 +94,39 @@ definitions:
         $ref: '#/definitions/repertoire_list'
       Facet:
         $ref: '#/definitions/facet_list'
-          
+        
+  # list of rearrangement extension fields
+  rearrangement_extension_fields:  
+          adc_v_subgroup:
+            type: string
+            description: >
+                V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHV4).
+            example: IGHV4
+            x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: V gene subgroup
+        adc_v_gene:
+            type: string
+            description: >
+                V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHV4-59).
+            example: IGHV4-59
+            x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: V gene  
+  
   # list of rearrangement annotations
   rearrangement_list:
     type: array
     items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Rearrangement'
+      allOf:
+        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Rearrangement'
+        $ref: '#/definitions/rearrangement_extension_fields'
 
   # The response object /rearrangement endpoint
   rearrangement_response:
