@@ -96,8 +96,9 @@ definitions:
         $ref: '#/definitions/facet_list'
         
   # list of rearrangement extension fields
-  rearrangement_extension_fields:  
-          adc_v_subgroup:
+  rearrangement_extension_fields:
+    allOf:
+      adc_v_subgroup:
             type: string
             description: >
                 V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -125,8 +126,8 @@ definitions:
     type: array
     items:
       allOf:
-        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Rearrangement'
-        $ref: '#/definitions/rearrangement_extension_fields'
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Rearrangement'
+        - $ref: '#/definitions/rearrangement_extension_fields'
 
   # The response object /rearrangement endpoint
   rearrangement_response:
