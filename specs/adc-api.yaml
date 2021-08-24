@@ -124,7 +124,52 @@ definitions:
               adc-api-optional: false
               adc-query_support: true
               name: V gene
-  
+          adc_d_subgroup:
+            type: string
+            description: >
+              D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHD3).
+            example: IGHD3
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: D gene subgroup
+          adc_d_gene:
+            type: string
+            description: >
+              D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHD3-10).
+            example: IGHD3-10
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: D gene
+          adc_j_subgroup:
+            type: string
+            description: >
+              J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHJ4).
+            example: IGHJ4
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: J gene subgroup
+          adc_j_gene:
+            type: string
+            description: >
+              J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHJ4).
+            example: IGHJ4
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: J gene
+
+
   # list of rearrangement annotations
   rearrangement_list:
     type: array
@@ -142,11 +187,85 @@ definitions:
       Facet:
         $ref: '#/definitions/facet_list'
 
+  # list of clone extension fields
+  clone_extension:
+    description: The extended Clone object with additional query fields for the ADC.
+    allOf:
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Clone'
+      - type: object
+        properties:
+          adc_v_subgroup:
+            type: string
+            description: >
+              V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHV4).
+            example: IGHV4
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: V gene subgroup
+          adc_v_gene:
+            type: string
+            description: >
+              V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHV4-59).
+            example: IGHV4-59
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: V gene
+          adc_d_subgroup:
+            type: string
+            description: >
+              D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHD3).
+            example: IGHD3
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: D gene subgroup
+          adc_d_gene:
+            type: string
+            description: >
+              D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHD3-10).
+            example: IGHD3-10
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: D gene
+          adc_j_subgroup:
+            type: string
+            description: >
+              J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHJ4).
+            example: IGHJ4
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: J gene subgroup
+          adc_j_gene:
+            type: string
+            description: >
+              J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHJ4).
+            example: IGHJ4
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: J gene
+
   # list of clone annotations
   clone_list:
     type: array
     items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Clone'
+      $ref: '#/definitions/rearrangement_extension'
 
   # The response object /clone/{clone_id} endpoint
   clone_id_response:
