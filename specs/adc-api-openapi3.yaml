@@ -121,39 +121,40 @@ components:
             type: integer
   
     # list of rearrangement extension fields
-    rearrangement_extension_fields:
-      type: object
-      properties:
-        adc_v_subgroup:
-          type: string
-          description: >
-            V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-            the relevant gene nomenclature should be followed (e.g., IGHV4).
-          example: IGHV4
-          x-airr:
-            nullable: true
-            adc-api-optional: false
-            adc-query_support: true
-            name: V gene subgroup
-        adc_v_gene:
-          type: string
-          description: >
-            V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-            the relevant gene nomenclature should be followed (e.g., IGHV4-59).
-          example: IGHV4-59
-          x-airr:
-            nullable: true
-            adc-api-optional: false
-            adc-query_support: true
-            name: V gene  
+    rearrangement_extension:
+      description: The extended Rearrangement object with additional query fields for the ADC.
+      allOf:
+        - $ref: https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Rearrangement
+        - type: object
+          properties:
+            adc_v_subgroup:
+              type: string
+              description: >
+                V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHV4).
+              example: IGHV4
+              x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: V gene subgroup
+            adc_v_gene:
+              type: string
+              description: >
+                V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHV4-59).
+              example: IGHV4-59
+              x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: V gene
   
   # list of rearrangement annotations
     rearrangement_list:
       type: array
       items:
-        allOf:
-          - $ref: https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Rearrangement
-          - $ref: '#/components/schemas/rearrangement_extension_fields'
+        $ref: '#/components/schemas/rearrangement_extension'
 
     # list of clone annotations
     clone_list:
