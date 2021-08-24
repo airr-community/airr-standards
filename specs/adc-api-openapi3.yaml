@@ -194,7 +194,29 @@ components:
               adc-api-optional: false
               adc-query_support: true
               name: J gene
-  
+            adc_c_subgroup:
+            type: string
+            description: >
+              C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHG1).
+            example: IGHG1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: C gene subgroup
+          adc_c_gene:
+            type: string
+            description: >
+              C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHG1).
+            example: IGHG1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: C gene
+              
   # list of rearrangement annotations
     rearrangement_list:
       type: array
@@ -274,7 +296,29 @@ components:
               adc-api-optional: false
               adc-query_support: true
               name: J gene
-
+          adc_c_subgroup:
+            type: string
+            description: >
+              C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHG1).
+            example: IGHG1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: C gene subgroup
+          adc_c_gene:
+            type: string
+            description: >
+              C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHG1).
+            example: IGHG1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: C gene
+              
     # list of clone annotations
     clone_list:
       type: array
