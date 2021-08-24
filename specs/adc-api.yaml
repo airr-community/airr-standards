@@ -265,7 +265,7 @@ definitions:
   clone_list:
     type: array
     items:
-      $ref: '#/definitions/rearrangement_extension'
+      $ref: '#/definitions/clone_extension'
 
   # The response object /clone/{clone_id} endpoint
   clone_id_response:
