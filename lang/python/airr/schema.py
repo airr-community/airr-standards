@@ -69,14 +69,31 @@ class Schema:
         except:
             raise
 
-        self.properties = self.definition['properties']
-
-        try:
-            self.required = self.definition['required']
-        except KeyError:
+        if self.definition.get('properties') is not None:
+            self.properties = self.definition['properties']
+            try:
+                self.required = self.definition['required']
+            except KeyError:
+                self.required = []
+            except:
+                raise
+        elif self.definition.get('allOf') is not None:
+            self.properties = {}
             self.required = []
-        except:
-            raise
+            for s in self.definition['allOf']:
+                if s.get('$ref') is not None:
+                    schema_name = s['$ref'].split('/')[-1]
+                    # cannot use cache here
+                    schema = Schema(schema_name)
+                    # no nested allOf ...
+                    self.properties.update(schema.properties)
+                    self.required.extend(schema.required)
+                elif s.get('properties') is not None:
+                    self.properties.update(s.get('properties'))
+                    if s.get('required') is not None:
+                        self.required.extend(s.get('required'))
+                else:
+                    raise KeyError('Cannot find properties for schema definition %s' % definition)
 
         self.optional = [f for f in self.properties if f not in self.required]
 
