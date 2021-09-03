@@ -12,7 +12,13 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
     r-base \
     r-base-dev \
     wget \
-    curl
+    curl \
+    libxml2-dev \
+    libcurl4-openssl-dev \
+    libfontconfig1-dev \
+    libssl-dev \
+    libharfbuzz-dev libfribidi-dev \
+    libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
 
 RUN pip3 install \
     pandas \
@@ -24,14 +30,15 @@ RUN pip3 install \
     matplotlib \
     jsondiff
 
+# Install R devtools
+RUN R -e 'install.packages(c("devtools","knitr","rmarkdown","testthat","readr"),dependencies=T)'
+
 # Copy source
 RUN mkdir /airr-standards
 COPY . /airr-standards
 
 # Install python package
 RUN cd /airr-standards/lang/python && python3 setup.py install
-
-# Install R package
 
 # Generate the documentation
 RUN cd /airr-standards && sphinx-build -a -E -b html docs docs/_build/html
