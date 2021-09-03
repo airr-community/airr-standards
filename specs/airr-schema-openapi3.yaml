@@ -167,6 +167,12 @@ DataFile:
             description: List of Repertoire metadata
             items:
               $ref: '#/Repertoire'
+        RepertoireGroup:
+            type: array
+            nullable: false
+            description: List of Repertoire groups
+            items:
+              $ref: '#/RepertoireGroup'
         GeneDescription:
             type: array
             nullable: false
@@ -255,6 +261,44 @@ InfoObject:
           url:
             type: string
             nullable: true
+
+# A time point
+TimePoint:
+    discriminator:
+        propertyName: AIRR
+    description: Time point at which an observation or other action was performed.
+    type: object
+    properties:
+        label:
+            type: string
+            nullable: true
+            description: Informative label for the time point
+            example: Pre-operative sampling of cancer tissue
+            x-airr:
+                adc-query-support: true
+        value:
+            type: number
+            nullable: true
+            description: Value of the time point
+            example: -5.0
+            x-airr:
+                adc-query-support: true
+        unit:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Unit of the time point
+            title: Unit of immunization schedule
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
 
 #
 # General objects
@@ -2698,6 +2742,53 @@ Repertoire:
             x-airr:
                 adc-query-support: true
 
+# A collection of repertoires for analysis purposes, includes optional time course
+RepertoireGroup:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    required:
+        - repertoire_group_id
+        - repertoires
+    properties:
+        repertoire_group_id:
+            type: string
+            nullable: true
+            description: Identifier for this repertoire group
+        repertoire_group_name:
+            type: string
+            nullable: true
+            description: Short display name for this repertoire group
+        repertoire_group_description:
+            type: string
+            nullable: true
+            description: Repertoire group description
+        repertoires:
+            type: array
+            nullable: true
+            description: >
+                List of repertoires in this group with an associated description and time point designation
+            items:
+                type: object
+                properties:
+                    repertoire_id:
+                        type: string
+                        nullable: false
+                        description: Identifier to the repertoire
+                        x-airr:
+                            adc-query-support: true
+                    repertoire_description:
+                        type: string
+                        nullable: true
+                        description: Description of this repertoire within the group
+                        x-airr:
+                            adc-query-support: true
+                    time_point:
+                        $ref: '#/TimePoint'
+                        nullable: true
+                        description: Time point designation for this repertoire within the group
+                        x-airr:
+                            adc-query-support: true
 
 Alignment:
     discriminator:
@@ -3950,25 +4041,6 @@ Node:
             description: >
                 Amino acid translation of the junction.
 
-# The expression object for use in Cell
-Expression:
-    discriminator:
-        propertyName: AIRR
-    type: object
-    properties:
-        expression_marker:
-            type: string
-            nullable: true
-            description: >
-               standardized designation of the transcript or epitope
-            example: CD27
-        expression_value:
-            type: number
-            nullable: true
-            description: >
-               transformed and normalized expression level.
-            example: 14567.30
-
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
 Cell:
@@ -4069,7 +4141,20 @@ Cell:
             description: >
                 Expression definitions for single-cell
             items:
-                $ref: '#/Expression'
+                type: object
+                properties:
+                    expression_marker:
+                        type: string
+                        nullable: true
+                        description: >
+                           standardized designation of the transcript or epitope
+                        example: CD27
+                    expression_value:
+                        type: number
+                        nullable: true
+                        description: >
+                           transformed and normalized expression level.
+                        example: 14567.30
         virtual_pairing:
             type: boolean
             nullable: true # assuming only done for sc experiments, otherwise does not exist
