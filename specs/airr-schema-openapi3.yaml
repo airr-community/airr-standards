@@ -167,12 +167,12 @@ DataFile:
             description: List of Repertoire metadata
             items:
               $ref: '#/Repertoire'
-        GeneDescription:
+        SequenceDescription:
             type: array
             nullable: false
-            description: List of gene descriptions
+            description: List of sequence descriptions
             items:
-              $ref: '#/GeneDescription'
+              $ref: '#/SequenceDescription'
         GermlineSet:
             type: array
             nullable: false
@@ -356,10 +356,10 @@ RearrangedSequence:
             nullable: false
             description: End co-ordinate of the sequence detailed in this record, within the sequence deposited
 
-GermlineSequence:
+UnrearrangedSequence:
     discriminator:
         propertyName: AIRR
-    description: Details of a genomic germline sequence contributing support for a gene or allele
+    description: Details of an unrearranged sequence contributing support for a gene or allele
     type: object
     required:
         - sequence_id
@@ -374,7 +374,7 @@ GermlineSequence:
         sequence_id:
             type: string
             nullable: false
-            description: unique identifier of this GermlineSequence within the file
+            description: unique identifier of this UnrearrangedSequence within the file
         sequence:
             type: string
             nullable: false
@@ -398,7 +398,7 @@ GermlineSequence:
         gff_seqid:
             type: string
             nullable: true
-            description: Germline sequence (from the assembly) of a window including the gene and preferably also the promoter region
+            description: Sequence (from the assembly) of a window including the gene and preferably also the promoter region
         gff_start:
             type: integer
             nullable: true
@@ -416,13 +416,13 @@ GermlineSequence:
             description: sense (+ or -)
 
 # V gene delineation
-GeneDelineationV:
+SequenceDelineationV:
     discriminator:
         propertyName: AIRR
     description: Delineation of a V-gene in a particular system
     type: object
     required:
-        - germline_delineation_id
+        - sequence_delineation_id
         - delineation_scheme
         - fwr1_start
         - fwr1_end
@@ -436,10 +436,10 @@ GeneDelineationV:
         - fwr3_end
         - cdr3_start
     properties:
-        germline_delineation_id:
+        sequence_delineation_id:
             type: string
             nullable: false
-            description: Unique identifier of this GeneDelineationV within the file
+            description: Unique identifier of this SequenceDelineationV within the file
         delineation_scheme:
             type: string
             nullable: false
@@ -496,14 +496,14 @@ GeneDelineationV:
               type: string
             description: one string for each codon in the fields v_start to cdr3_start indicating the label of that codon according to the numbering of the delineation scheme
 
-# The Gene Description
-GeneDescription:
+# Description of a putative or confirmed Ig receptor gene/allele
+Sequence:
     discriminator:
         propertyName: AIRR
-    description: Details of a gene sequence which is inferred from one or more observations
+    description: Details of a putative or confirmed Ig receptor gene/allele inferred from one or more observations
     type: object
     required:
-        - gene_description_id
+        - sequence_id
         - maintainer
         - lab_address
         - release_version
@@ -518,10 +518,10 @@ GeneDescription:
         - inference_type
         - species
     properties:
-        gene_description_id:
+        sequence_id:
             type: string
             nullable: false
-            description: Unique identifier of this GeneDescription within the file
+            description: Unique identifier of this SequenceDescription within the file
         maintainer:
             type: string
             nullable: false
@@ -548,7 +548,7 @@ GeneDescription:
             type: string
             nullable: false
             description: Brief descriptive notes of the reason for this release and the changes embodied
-        gene_symbol:
+        label:
             type: string
             nullable: true
             description: The accepted name for this gene or allele, if any
@@ -561,12 +561,7 @@ GeneDescription:
             type: string
             nullable: false
             description: nucleotide sequence of the core region of the gene (V-, D-, J- or C-REGION), aligned, in the case of the V-REGION, with the IMGT numbering scheme
-        coding_sequence_identifier:
-            type: string
-            nullable: false
-            description: Unique identifier of the coding_sequence, as allocated by an identified repository
-            example: OGRDB:54AE2
-        alt_names:
+        aliases:
             type: array
             nullable: true
             items:
@@ -738,7 +733,7 @@ GeneDescription:
             type: array
             nullable: true
             items:
-                $ref: '#/GermlineSequence'
+                $ref: '#/UnrearrangedSequence'
         rearranged_support:
             type: array
             nullable: true
@@ -768,7 +763,7 @@ GeneDescription:
 GermlineSet:
     discriminator:
         propertyName: AIRR
-    description: Details of a 'germline set' bringing together multiple GeneDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
+    description: Details of a 'germline set' bringing together multiple SequenceDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
     type: object
     required:
         - germline_set_id
@@ -867,7 +862,7 @@ GermlineSet:
             type: array
             nullable: false
             items:
-              $ref: '#/GeneDescription'
+              $ref: '#/SequenceDescription'
             description: list of gene_descriptions in the germline set
         notes:
             type: string
@@ -964,7 +959,7 @@ Genotype:
         undocumented_alleles:
             type: array
             nullable: true
-            description: Array of alleles infeered to be present and not documented in an identified GermlineSet
+            description: Array of alleles inferred to be present and not documented in an identified GermlineSet
             items:
                 type: object
                 properties:
