@@ -8,6 +8,11 @@ Version 1.4.0-dev: (In development)
 
 **Version 1.4-dev, In development.**
 
+New Schema:
+
+1. Introduced the ``RepertoireGroup`` Schema for describing sets of repertoires
+   to be analyzed together. Has support for defining a time series using ``TimePoint``.
+
 Rearrangement Schema:
 
 1. Added the optional fields ``v_frameshift``, ``j_frameshift``,

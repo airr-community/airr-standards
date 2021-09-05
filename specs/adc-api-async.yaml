@@ -1,30 +1,25 @@
 openapi: '3.0.0'
 
 info:
-  title: AIRR Data Commons API
-  version: 1.1.0
+  title: AIRR Data Commons API Extension for Asynchronous Queries
+  version: 1.0.0
   contact:
     name: AIRR Community
     url: 'http://www.airr-community.org/'
     email: join@airr-community.org
   description: >
-    Major Version 1 of the Adaptive Immune Receptor Repertoire (AIRR)
-    data repository web service application programming interface (API).
+    Extension API for Major Version 1 of the AIRR Data Commons API that
+    provides asynchronous query capability.
   license:
     name: Creative Commons Attribution 4.0 International
     url: https://creativecommons.org/licenses/by/4.0/
 
 servers:
-  - url: https://vdjserver.org/airr/v1
-    description: VDJServer ADC API
+  - url: https://vdjserver.org/airr/async/v1
+    description: VDJServer ADC API Extension for Asynchronous Queries
     variables:
       basePath:
-        default: /airr/v1
-  - url: https://ipa1.ireceptor.org/airr/v1
-    description: iReceptor IPA1 ADC API
-    variables:
-      basePath:
-        default: /airr/v1
+        default: /airr/async/v1
 
 components:
   schemas:
@@ -78,6 +73,40 @@ components:
             schema:
               $ref: '#/components/schemas/info_object'
 
+    # Notification object. Pass this object in with a query request to receive URL notifications
+    # for status changes of the asynchronous query. The data sent with a notification is the
+    # query_status_object for the query, essentially the same data returned from /status endpoint.
+    notification_object:
+      description: Subscribe to notification of query status changes
+      type: object
+      required:
+        - url
+        - method
+      properties:
+        url:
+          type: string
+          description: The URL (http/https) to receive the notification.
+        method:
+          type: string
+          description: HTTP/S method for notification URL. If GET then data is sent as request parameters
+            in the URL, and if POST then data is sent in the request body.
+          enum:
+            - GET
+            - POST
+        events:
+          type: array
+          description: If not provided, all status event changes will be sent to notification URL, otherwise
+            provide the list of specific status changes to receive.
+          items:
+            type: string
+            enum:
+              - PENDING
+              - SUBMITTED
+              - PROCESSING
+              - FINISHED
+              - ERROR
+              - EXPIRED
+
     # POST query request
     query_object:
       description: Query filter and associated parameters for POST end points
@@ -105,91 +134,36 @@ components:
             - miairr
             - airr-core
             - airr-schema
+        notification:
+          $ref: '#/components/schemas/notification_object'
 
-    # list of repertoires
-    repertoire_list:
-      type: array
-      items:
-        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Repertoire'
-
-    # list of facets
-    facet_list:
-      type: array
-      items:
-        type: object
-        properties:
-          count:
-            type: integer
-          
-    # list of rearrangement annotations
-    rearrangement_list:
-      type: array
-      items:
-        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Rearrangement'
-
-    # list of clone annotations
-    clone_list:
-      type: array
-      items:
-        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Clone'
-
-    # list of germline sets
-    germline_set_list:
-      type: array
-      items:
-        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/GermlineSet'
-
-    # list of gene descriptions
-    gene_description_list:
-      type: array
-      items:
-        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/GeneDescription'
-
-    # The response object /repertoire endpoint
-    repertoire_response:
+    # The response object for /status
+    query_status_response:
       type: object
+      description: Provides status about an asynchronous query request
       properties:
-        Info:
-          $ref: '#/components/schemas/info_object'
-        Repertoire:
-          $ref: '#/components/schemas/repertoire_list'
-        GermlineSet:
-          $ref: '#/components/schemas/germline_set_list'
-        GeneDescription:
-          $ref: '#/components/schemas/gene_description_list'
-        Facet:
-          $ref: '#/components/schemas/facet_list'
-
-    # The response object /rearrangement endpoint
-    rearrangement_response:
-      type: object
-      properties:
-        Info:
-          $ref: '#/components/schemas/info_object'
-        Rearrangement:
-          $ref: '#/components/schemas/rearrangement_list'
-        Facet:
-          $ref: '#/components/schemas/facet_list'
-
-    # The response object /clone/{clone_id} endpoint
-    clone_id_response:
-      type: object
-      properties:
-        Info:
-          $ref: '#/components/schemas/info_object'
-        Clone:
-          $ref: '#/components/schemas/clone_list'
-
-    # The response object /clone endpoint
-    clone_response:
-      type: object
-      properties:
-        Info:
-          $ref: '#/components/schemas/info_object'
-        Clone:
-          $ref: '#/components/schemas/clone_list'
-        Facet:
-          $ref: '#/components/schemas/facet_list'
+        query_id:
+          type: string
+        endpoint:
+          type: string
+        status:
+          type: string
+          enum:
+            - PENDING
+            - SUBMITTED
+            - PROCESSING
+            - FINISHED
+            - ERROR
+            - EXPIRED
+        message:
+          type: string
+        created:
+          type: string
+          format: date-time
+        final_file:
+          type: string
+        download_url:
+          type: string
 
     # error response
     error_response:
@@ -239,28 +213,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/error_response'
 
-  /repertoire/{repertoire_id}:
+  /status/{query_id}:
     get:
       description: >
-        Returns a repertoire based upon its identifier.
-      operationId: get_repertoire
+        Returns the status of the asynchronous query request based upon its identifier.
+      operationId: get_query_status
       tags:
-        - repertoires
+        - async
       parameters:
-        - name: repertoire_id
+        - name: query_id
           in: path
-          description: ID of repertoire to return
+          description: ID of asynchronous query request
           required: true
           schema:
             type: string
       responses:
         '200':
           description: |
-            A successful call returns the repertoire data.
+            A successful call returns the status of the asynchronous query request.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/repertoire_response'
+                $ref: '#/components/schemas/query_status_response'
         '400':
           description: Invalid request
           content:
@@ -277,10 +251,10 @@ paths:
   /repertoire:
     post:
       description: >
-        This query service returns metadata about repertoires.
-      operationId: query_repertoires
+        Asynchronous query service on repertoires.
+      operationId: async_repertoire
       tags:
-        - repertoires
+        - async
       requestBody:
         content:
           application/json:
@@ -289,46 +263,11 @@ paths:
       responses:
         '200':
           description: |
-            A successful call returns the repertoire data.
+            A successful call initiates the asynchronous query request and returns its identifier and status.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/repertoire_response'
-        '400':
-          description: Invalid request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error_response'
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error_response'
-
-  /rearrangement/{sequence_id}:
-    get:
-      description: >
-        Returns a rearrangement based upon its identifier.
-      operationId: get_rearrangement
-      tags:
-        - rearrangements
-      parameters:
-        - name: sequence_id
-          in: path
-          description: ID of rearrangement to return
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: >
-            A successful call returns the rearrangement annotation data.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rearrangement_response'
+                $ref: '#/components/schemas/query_status_response'
         '400':
           description: Invalid request
           content:
@@ -345,10 +284,10 @@ paths:
   /rearrangement:
     post:
       description: >
-        This query service returns rearrangement annotation data.
-      operationId: query_rearrangements
+        Asynchronous query service on rearrangements.
+      operationId: async_rearrangement
       tags:
-        - rearrangements
+        - async
       requestBody:
         content:
           application/json:
@@ -356,47 +295,12 @@ paths:
               $ref: '#/components/schemas/query_object'
       responses:
         '200':
-          description: >
-            A successful call returns an array of rearrangement annotation data.
+          description: |
+            A successful call initiates the asynchronous query request and returns its identifier and status.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rearrangement_response'
-        '400':
-          description: Invalid request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error_response'
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error_response'
-
-  /clone/{clone_id}:
-    get:
-      description: >
-        Returns a clone based upon its identifier.
-      operationId: get_clone
-      tags:
-        - clones
-      parameters:
-        - name: clone_id
-          in: path
-          description: ID of clone to return
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: >
-            A successful call returns the clone annotation data.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/clone_id_response'
+                $ref: '#/components/schemas/query_status_response'
         '400':
           description: Invalid request
           content:
@@ -413,10 +317,10 @@ paths:
   /clone:
     post:
       description: >
-        This query service returns clone annotation data.
-      operationId: query_clones
+        Asynchronous query service on clones.
+      operationId: async_clone
       tags:
-        - clones
+        - async
       requestBody:
         content:
           application/json:
@@ -424,12 +328,12 @@ paths:
               $ref: '#/components/schemas/query_object'
       responses:
         '200':
-          description: >
-            A successful call returns an array of clone annotation data.
+          description: |
+            A successful call initiates the asynchronous query request and returns its identifier and status.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/clone_response'
+                $ref: '#/components/schemas/query_status_response'
         '400':
           description: Invalid request
           content:

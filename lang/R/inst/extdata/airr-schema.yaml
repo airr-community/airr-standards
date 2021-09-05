@@ -168,6 +168,13 @@ DataFile:
               $ref: '#/Repertoire'
             x-airr:
                 nullable: false
+        RepertoireGroup:
+            type: array
+            description: List of Repertoire groups
+            items:
+              $ref: '#/RepertoireGroup'
+            x-airr:
+                nullable: false
         GeneDescription:
             type: array
             description: List of gene descriptions
@@ -258,6 +265,43 @@ InfoObject:
                 nullable: false
           url:
             type: string
+
+# A time point
+TimePoint:
+    discriminator: AIRR
+    description: Time point at which an observation or other action was performed.
+    type: object
+    properties:
+        label:
+            type: string
+            description: Informative label for the time point
+            example: Pre-operative sampling of cancer tissue
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        value:
+            type: number
+            description: Value of the time point
+            example: -5.0
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        unit:
+            $ref: '#/Ontology'
+            description: Unit of the time point
+            title: Unit of immunization schedule
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                nullable: true
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
 
 #
 # General objects
@@ -928,9 +972,6 @@ Genotype:
                 nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
-        repertoire_id:
-            type: string
-            description: Genotype was inferred from this Repertoire.
         documented_alleles:
             type: array
             description: Array of alleles inferred to be present which are documented in GermlineSets
@@ -961,7 +1002,7 @@ Genotype:
                 adc-query-support: true
         undocumented_alleles:
             type: array
-            description: Array of alleles infeered to be present and not documented in an identified GermlineSet
+            description: Array of alleles inferred to be present and not documented in an identified GermlineSet
             items:
                 type: object
                 properties:
@@ -2684,6 +2725,49 @@ Repertoire:
                 nullable: false
                 adc-query-support: true
 
+# A collection of repertoires for analysis purposes, includes optional time course
+RepertoireGroup:
+    discriminator: AIRR
+    type: object
+    required:
+        - repertoire_group_id
+        - repertoires
+    properties:
+        repertoire_group_id:
+            type: string
+            description: Identifier for this repertoire group
+        repertoire_group_name:
+            type: string
+            description: Short display name for this repertoire group
+        repertoire_group_description:
+            type: string
+            description: Repertoire group description
+        repertoires:
+            type: array
+            description: >
+                List of repertoires in this group with an associated description and time point designation
+            items:
+                type: object
+                properties:
+                    repertoire_id:
+                        type: string
+                        description: Identifier to the repertoire
+                        x-airr:
+                            nullable: false
+                            adc-query-support: true
+                    repertoire_description:
+                        type: string
+                        description: Description of this repertoire within the group
+                        x-airr:
+                            nullable: true
+                            adc-query-support: true
+                    time_point:
+                        $ref: '#/TimePoint'
+                        description: Time point designation for this repertoire within the group
+                        x-airr:
+                            nullable: true
+                            adc-query-support: true
+
 
 Alignment:
     discriminator: AIRR
@@ -3744,22 +3828,6 @@ Node:
             description: >
                 Amino acid translation of the junction.
 
-# The expression object for use in Cell
-Expression:
-    discriminator: AIRR
-    type: object
-    properties:
-        expression_marker:
-            type: string
-            description: >
-               standardized designation of the transcript or epitope
-            example: CD27
-        expression_value:
-            type: number
-            description: >
-               transformed and normalized expression level.
-            example: 14567.30
-
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
 Cell:
@@ -3858,7 +3926,18 @@ Cell:
             description: >
                 Expression definitions for single-cell
             items:
-                $ref: '#/Expression'
+                type: object
+                properties:
+                    expression_marker:
+                        type: string
+                        description: >
+                           standardized designation of the transcript or epitope
+                        example: CD27
+                    expression_value:
+                        type: number
+                        description: >
+                           transformed and normalized expression level.
+                        example: 14567.30
         virtual_pairing:
             type: boolean
             description: >
