@@ -168,13 +168,6 @@ DataFile:
               $ref: '#/Repertoire'
             x-airr:
                 nullable: false
-        RepertoireGroup:
-            type: array
-            description: List of Repertoire groups
-            items:
-              $ref: '#/RepertoireGroup'
-            x-airr:
-                nullable: false
         GeneDescription:
             type: array
             description: List of gene descriptions
@@ -265,43 +258,6 @@ InfoObject:
                 nullable: false
           url:
             type: string
-
-# A time point
-TimePoint:
-    discriminator: AIRR
-    description: Time point at which an observation or other action was performed.
-    type: object
-    properties:
-        label:
-            type: string
-            description: Informative label for the time point
-            example: Pre-operative sampling of cancer tissue
-            x-airr:
-                nullable: true
-                adc-query-support: true
-        value:
-            type: number
-            description: Value of the time point
-            example: -5.0
-            x-airr:
-                nullable: true
-                adc-query-support: true
-        unit:
-            $ref: '#/Ontology'
-            description: Unit of the time point
-            title: Unit of immunization schedule
-            example:
-                id: UO:0000033
-                label: day
-            x-airr:
-                nullable: true
-                adc-query-support: true
-                format: ontology
-                ontology:
-                    draft: false
-                    top_node:
-                        id: UO:0000003
-                        label: time unit
 
 #
 # General objects
@@ -408,9 +364,9 @@ RearrangedSequence:
             x-airr:
                 nullable: false
 
-GermlineSequence:
+UnrearrangedSequence:
     discriminator: AIRR
-    description: Details of a genomic germline sequence contributing support for a gene or allele
+    description: Details of an unrearranged sequence contributing support for a gene or allele
     type: object
     required:
         - sequence_id
@@ -465,12 +421,12 @@ GermlineSequence:
             description: sense (+ or -)
 
 # V gene delineation
-GeneDelineationV:
+SequenceDelineationV:
     discriminator: AIRR
     description: Delineation of a V-gene in a particular system
     type: object
     required:
-        - germline_delineation_id
+        - sequence_delineation_id
         - delineation_scheme
         - fwr1_start
         - fwr1_end
@@ -484,9 +440,9 @@ GeneDelineationV:
         - fwr3_end
         - cdr3_start
     properties:
-        germline_delineation_id:
+        sequence_delineation_id:
             type: string
-            description: Unique identifier of this GeneDelineationV within the file
+            description: Unique identifier of this SequenceDelineationV within the file
             x-airr:
                 nullable: false
         delineation_scheme:
@@ -557,7 +513,7 @@ GeneDelineationV:
             description: one string for each codon in the fields v_start to cdr3_start indicating the label of that codon according to the numbering of the delineation scheme
 
 # The Gene Description
-GeneDescription:
+AlleleDescription:
     discriminator: AIRR
     description: Details of a gene sequence which is inferred from one or more observations
     type: object
@@ -577,9 +533,9 @@ GeneDescription:
         - inference_type
         - species
     properties:
-        gene_description_id:
+        allele_description_id:
             type: string
-            description: Unique identifier of this GeneDescription within the file
+            description: Unique identifier of this AlleleDescription within the file
             x-airr:
                 nullable: false
         maintainer:
@@ -612,7 +568,7 @@ GeneDescription:
             description: Brief descriptive notes of the reason for this release and the changes embodied
             x-airr:
                 nullable: false
-        gene_symbol:
+        label:
             type: string
             description: The accepted name for this gene or allele, if any
             example: IGHV1-69*01
@@ -626,13 +582,7 @@ GeneDescription:
             description: nucleotide sequence of the core region of the gene (V-, D-, J- or C-REGION), aligned, in the case of the V-REGION, with the IMGT numbering scheme
             x-airr:
                 nullable: false
-        coding_sequence_identifier:
-            type: string
-            description: Unique identifier of the coding_sequence, as allocated by an identified repository
-            example: OGRDB:54AE2
-            x-airr:
-                nullable: false
-        alt_names:
+        aliases:
             type: array
             items:
                 type: string
@@ -776,11 +726,11 @@ GeneDescription:
         v_gene_delineations:
             type: array
             items:
-                $ref: '#/GeneDelineationV'
-        genomic_support:
+                $ref: '#/SequenceDelineationV'
+        unrearranged_support:
             type: array
             items:
-                $ref: '#/GermlineSequence'
+                $ref: '#/UnrearrangedSequence'
         rearranged_support:
             type: array
             items:
@@ -907,11 +857,11 @@ GermlineSet:
             description: Gene locus
             x-airr:
                 nullable: false
-        gene_descriptions:
+        allele_descriptions:
             type: array
             items:
-              $ref: '#/GeneDescription'
-            description: list of gene_descriptions in the germline set
+              $ref: '#/AlleleDescription'
+            description: list of allele_descriptions in the germline set
             x-airr:
                 nullable: false
         notes:
@@ -972,13 +922,16 @@ Genotype:
                 nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
+        repertoire_id:
+            type: string
+            description: Genotype was inferred from this Repertoire.
         documented_alleles:
             type: array
             description: Array of alleles inferred to be present which are documented in GermlineSets
             items:
                 type: object
                 properties:
-                    gene_symbol:
+                    label:
                         type: string
                         description: The accepted name for this allele, if any, taken from the GermlineSet
                         x-airr:
@@ -1002,7 +955,7 @@ Genotype:
                 adc-query-support: true
         undocumented_alleles:
             type: array
-            description: Array of alleles inferred to be present and not documented in an identified GermlineSet
+            description: Array of alleles infeered to be present and not documented in an identified GermlineSet
             items:
                 type: object
                 properties:
@@ -2725,49 +2678,6 @@ Repertoire:
                 nullable: false
                 adc-query-support: true
 
-# A collection of repertoires for analysis purposes, includes optional time course
-RepertoireGroup:
-    discriminator: AIRR
-    type: object
-    required:
-        - repertoire_group_id
-        - repertoires
-    properties:
-        repertoire_group_id:
-            type: string
-            description: Identifier for this repertoire group
-        repertoire_group_name:
-            type: string
-            description: Short display name for this repertoire group
-        repertoire_group_description:
-            type: string
-            description: Repertoire group description
-        repertoires:
-            type: array
-            description: >
-                List of repertoires in this group with an associated description and time point designation
-            items:
-                type: object
-                properties:
-                    repertoire_id:
-                        type: string
-                        description: Identifier to the repertoire
-                        x-airr:
-                            nullable: false
-                            adc-query-support: true
-                    repertoire_description:
-                        type: string
-                        description: Description of this repertoire within the group
-                        x-airr:
-                            nullable: true
-                            adc-query-support: true
-                    time_point:
-                        $ref: '#/TimePoint'
-                        description: Time point designation for this repertoire within the group
-                        x-airr:
-                            nullable: true
-                            adc-query-support: true
-
 
 Alignment:
     discriminator: AIRR
@@ -3828,6 +3738,22 @@ Node:
             description: >
                 Amino acid translation of the junction.
 
+# The expression object for use in Cell
+Expression:
+    discriminator: AIRR
+    type: object
+    properties:
+        expression_marker:
+            type: string
+            description: >
+               standardized designation of the transcript or epitope
+            example: CD27
+        expression_value:
+            type: number
+            description: >
+               transformed and normalized expression level.
+            example: 14567.30
+
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
 Cell:
@@ -3926,18 +3852,7 @@ Cell:
             description: >
                 Expression definitions for single-cell
             items:
-                type: object
-                properties:
-                    expression_marker:
-                        type: string
-                        description: >
-                           standardized designation of the transcript or epitope
-                        example: CD27
-                    expression_value:
-                        type: number
-                        description: >
-                           transformed and normalized expression level.
-                        example: 14567.30
+                $ref: '#/Expression'
         virtual_pairing:
             type: boolean
             description: >

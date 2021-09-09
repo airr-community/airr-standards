@@ -408,9 +408,9 @@ RearrangedSequence:
             x-airr:
                 nullable: false
 
-GermlineSequence:
+UnrearrangedSequence:
     discriminator: AIRR
-    description: Details of a genomic germline sequence contributing support for a gene or allele
+    description: Details of an unrearranged sequence contributing support for a gene or allele
     type: object
     required:
         - sequence_id
@@ -465,7 +465,7 @@ GermlineSequence:
             description: sense (+ or -)
 
 # V gene delineation
-GeneDelineationV:
+SequenceDelineationV:
     discriminator: AIRR
     description: Delineation of a V-gene in a particular system
     type: object
@@ -484,7 +484,7 @@ GeneDelineationV:
         - fwr3_end
         - cdr3_start
     properties:
-        germline_delineation_id:
+        sequence_delineation_id:
             type: string
             description: Unique identifier of this GeneDelineationV within the file
             x-airr:
@@ -557,12 +557,12 @@ GeneDelineationV:
             description: one string for each codon in the fields v_start to cdr3_start indicating the label of that codon according to the numbering of the delineation scheme
 
 # The Gene Description
-GeneDescription:
+AlleleDescription:
     discriminator: AIRR
     description: Details of a gene sequence which is inferred from one or more observations
     type: object
     required:
-        - gene_description_id
+        - allele_description_id
         - maintainer
         - lab_address
         - release_version
@@ -577,9 +577,9 @@ GeneDescription:
         - inference_type
         - species
     properties:
-        gene_description_id:
+        allele_description_id:
             type: string
-            description: Unique identifier of this GeneDescription within the file
+            description: Unique identifier of this AlleleDescription within the file
             x-airr:
                 nullable: false
         maintainer:
@@ -612,7 +612,7 @@ GeneDescription:
             description: Brief descriptive notes of the reason for this release and the changes embodied
             x-airr:
                 nullable: false
-        gene_symbol:
+        label:
             type: string
             description: The accepted name for this gene or allele, if any
             example: IGHV1-69*01
@@ -626,13 +626,7 @@ GeneDescription:
             description: nucleotide sequence of the core region of the gene (V-, D-, J- or C-REGION), aligned, in the case of the V-REGION, with the IMGT numbering scheme
             x-airr:
                 nullable: false
-        coding_sequence_identifier:
-            type: string
-            description: Unique identifier of the coding_sequence, as allocated by an identified repository
-            example: OGRDB:54AE2
-            x-airr:
-                nullable: false
-        alt_names:
+        aliases:
             type: array
             items:
                 type: string
@@ -776,11 +770,11 @@ GeneDescription:
         v_gene_delineations:
             type: array
             items:
-                $ref: '#/GeneDelineationV'
-        genomic_support:
+                $ref: '#/SequenceDelineationV'
+        unrearranged_support:
             type: array
             items:
-                $ref: '#/GermlineSequence'
+                $ref: '#/UnrearrangedSequence'
         rearranged_support:
             type: array
             items:
@@ -907,11 +901,11 @@ GermlineSet:
             description: Gene locus
             x-airr:
                 nullable: false
-        gene_descriptions:
+        allele_descriptions:
             type: array
             items:
-              $ref: '#/GeneDescription'
-            description: list of gene_descriptions in the germline set
+              $ref: '#/AlleleDescription'
+            description: list of allele_descriptions in the germline set
             x-airr:
                 nullable: false
         notes:
@@ -978,7 +972,7 @@ Genotype:
             items:
                 type: object
                 properties:
-                    gene_symbol:
+                    label:
                         type: string
                         description: The accepted name for this allele, if any, taken from the GermlineSet
                         x-airr:

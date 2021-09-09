@@ -547,7 +547,7 @@ AlleleDescription:
     description: Details of a putative or confirmed Ig receptor gene/allele inferred from one or more observations
     type: object
     required:
-        - sequence_id
+        - allele_description_id
         - maintainer
         - lab_address
         - release_version
@@ -562,10 +562,10 @@ AlleleDescription:
         - inference_type
         - species
     properties:
-        sequence_id:
+        allele_description_id:
             type: string
             nullable: false
-            description: Unique identifier of this SequenceDescription within the file
+            description: Unique identifier of this AlleleDescription within the file
         maintainer:
             type: string
             nullable: false
@@ -772,8 +772,8 @@ AlleleDescription:
             type: array
             nullable: true
             items:
-                $ref: '#/GeneDelineationV'
-        germline_support:
+                $ref: '#/SequenceDelineationV'
+        unrearranged_support:
             type: array
             nullable: true
             items:
@@ -902,12 +902,12 @@ GermlineSet:
                 - TRG
                 - TRD
             description: Gene locus
-        gene_descriptions:
+        allele_descriptions:
             type: array
             nullable: false
             items:
-              $ref: '#/SequenceDescription'
-            description: list of gene_descriptions in the germline set
+              $ref: '#/AlleleDescription'
+            description: list of allele_descriptions in the germline set
         notes:
             type: string
             nullable: true
@@ -977,7 +977,7 @@ Genotype:
             items:
                 type: object
                 properties:
-                    gene_symbol:
+                    label:
                         type: string
                         nullable: false
                         description: The accepted name for this allele, if any, taken from the GermlineSet
