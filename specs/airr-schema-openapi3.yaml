@@ -541,7 +541,7 @@ SequenceDelineationV:
             description: one string for each codon in the fields v_start to cdr3_start indicating the label of that codon according to the numbering of the delineation scheme
 
 # Description of a putative or confirmed Ig receptor gene/allele
-Sequence:
+AlleleDescription:
     discriminator:
         propertyName: AIRR
     description: Details of a putative or confirmed Ig receptor gene/allele inferred from one or more observations
@@ -773,7 +773,7 @@ Sequence:
             nullable: true
             items:
                 $ref: '#/GeneDelineationV'
-        genomic_support:
+        germline_support:
             type: array
             nullable: true
             items:
