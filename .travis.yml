@@ -32,7 +32,11 @@ matrix:
       r:
         - release
       sudo: false
-      cache: packages
+      cache:
+        - packages
+        - directories:
+          - /tmp/texlive
+          - $HOME/.texlive
       addons:
         apt:
           packages:
