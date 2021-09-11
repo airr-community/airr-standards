@@ -32,11 +32,8 @@ matrix:
       r:
         - release
       sudo: false
-      cache:
-        - packages
-        - directories:
-          - /tmp/texlive
-          - $HOME/.texlive
+      latex: false
+      cache: packages
       addons:
         apt:
           packages:
@@ -55,6 +52,7 @@ matrix:
         - yaml
         - jsonlite
       before_install:
+        - wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
         - cd lang/R
       before_script:
         - R -e 'devtools::document()'
