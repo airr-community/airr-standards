@@ -16,7 +16,7 @@ jobs:
   R-CMD-check:
     runs-on: ubuntu-latest
     container:
-      image: rocker/tidyverse:latest
+      image: rocker/verse:latest
     steps:
       - uses: actions/checkout@v2
 
