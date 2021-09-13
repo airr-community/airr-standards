@@ -139,6 +139,45 @@ Attributes:
                             type: string
                             description: Ontology name for the top node term
 
+
+# A data set manifest groups a set of 
+
+DataSetManifest:
+    discriminator: AIRR
+    type: object
+        properties:
+            repertoire_file:
+                type: string
+            rearrangement_file:
+                type: string
+            clone_file:
+                type: string
+            cell_file:
+                type: string
+            tree_file:
+                type: string
+                
+# AIRR Manifest specification.
+#     An AIRR Manifest contains metadata for a group of accompanying files that are part of a set or coherent unit. 
+#     A manifest consists of an AIRR Info Object as well as an array of single data set manifests
+
+Manifest:
+    discriminator: AIRR
+    type: object
+    properties:
+        Info:
+            $ref: '#/InfoObject'
+            x-airr:
+                nullable: false
+        DataSets:
+            type: array
+            description: List of data sets that are described within this manifest
+            items:
+              $ref: '#/DataSetManifest'
+            x-airr:
+                nullable: false
+
+
 # AIRR Data File
 #
 # A JSON data file that holds Repertoire metadata, data processing
@@ -152,7 +191,7 @@ Attributes:
 
 # While the properties in an AIRR Data File are not required, if one is provided then
 # the value should not be null.
-
+        
 DataFile:
     discriminator: AIRR
     type: object
