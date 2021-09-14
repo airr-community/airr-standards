@@ -137,12 +137,12 @@ References
 License
 =======
 
-(c) 2015 - 2020 by Francisco Arcila, Syed Ahmad Chan Bukhari,
+(c) 2015 - 2021 by Francisco Arcila, Syed Ahmad Chan Bukhari,
 Jean-Philippe Bürckert, Christian E. Busse, Scott Christley, Brian
 Corrie, Lindsay G. Cowell, Srilakshmy L. Harikrishnan, Uri Hershberg,
-Steven H. Kleinstein, Susanna Marquez, Frederick A. Matsen IV,
-Uri Laserson, Marie-Paule Lefranc, Eline T. Luning Prak, Florian Rubelt,
-Jason Vander Heiden, Corey T. Watson
+Katharina Imkeller Steven H. Kleinstein, Susanna Marquez, Frederick A.
+Matsen IV, Uri Laserson, Marie-Paule Lefranc, Eline T. Luning Prak,
+Florian Rubelt, Jason Vander Heiden, Corey T. Watson
 
 .. image:: https://i.creativecommons.org/l/by/4.0/80x15.png
    :target: https://creativecommons.org/licenses/by/4.0/
