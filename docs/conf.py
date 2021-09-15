@@ -78,7 +78,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'AIRR Standards'
-copyright = '2017-2020, AIRR Community'
+copyright = '2017-2021, AIRR Community'
 author = 'AIRR Community'
 
 # The name of the Pygments (syntax highlighting) style to use.
