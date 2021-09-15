@@ -470,7 +470,7 @@ SequenceDelineationV:
     description: Delineation of a V-gene in a particular system
     type: object
     required:
-        - germline_delineation_id
+        - sequence_delineation_id
         - delineation_scheme
         - fwr1_start
         - fwr1_end
@@ -486,7 +486,7 @@ SequenceDelineationV:
     properties:
         sequence_delineation_id:
             type: string
-            description: Unique identifier of this GeneDelineationV within the file
+            description: Unique identifier of this SequenceDelineationV within the file
             x-airr:
                 nullable: false
         delineation_scheme:
@@ -966,6 +966,9 @@ Genotype:
                 nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
+        repertoire_id:
+            type: string
+            description: Genotype was inferred from this Repertoire.
         documented_alleles:
             type: array
             description: Array of alleles inferred to be present which are documented in GermlineSets
@@ -996,7 +999,7 @@ Genotype:
                 adc-query-support: true
         undocumented_alleles:
             type: array
-            description: Array of alleles inferred to be present and not documented in an identified GermlineSet
+            description: Array of alleles infeered to be present and not documented in an identified GermlineSet
             items:
                 type: object
                 properties:

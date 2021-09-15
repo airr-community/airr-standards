@@ -424,7 +424,7 @@ UnrearrangedSequence:
     properties:
         sequence_id:
             type: string
-            description: unique identifier of this UnrearrangedSequence within the file
+            description: unique identifier of this GermlineSequence within the file
             x-airr:
                 nullable: false
         sequence:
@@ -470,7 +470,7 @@ SequenceDelineationV:
     description: Delineation of a V-gene in a particular system
     type: object
     required:
-        - germline_delineation_id
+        - sequence_delineation_id
         - delineation_scheme
         - fwr1_start
         - fwr1_end
@@ -562,7 +562,7 @@ AlleleDescription:
     description: Details of a gene sequence which is inferred from one or more observations
     type: object
     required:
-        - gene_description_id
+        - allele_description_id
         - maintainer
         - lab_address
         - release_version
@@ -579,7 +579,7 @@ AlleleDescription:
     properties:
         allele_description_id:
             type: string
-            description: Unique identifier of this GeneDescription within the file
+            description: Unique identifier of this AlleleDescription within the file
             x-airr:
                 nullable: false
         maintainer:
@@ -626,7 +626,7 @@ AlleleDescription:
             description: nucleotide sequence of the core region of the gene (V-, D-, J- or C-REGION), aligned, in the case of the V-REGION, with the IMGT numbering scheme
             x-airr:
                 nullable: false
-        alt_names:
+        aliases:
             type: array
             items:
                 type: string
@@ -966,6 +966,9 @@ Genotype:
                 nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
+        repertoire_id:
+            type: string
+            description: Genotype was inferred from this Repertoire.
         documented_alleles:
             type: array
             description: Array of alleles inferred to be present which are documented in GermlineSets
@@ -996,7 +999,7 @@ Genotype:
                 adc-query-support: true
         undocumented_alleles:
             type: array
-            description: Array of alleles inferred to be present and not documented in an identified GermlineSet
+            description: Array of alleles infeered to be present and not documented in an identified GermlineSet
             items:
                 type: object
                 properties:
