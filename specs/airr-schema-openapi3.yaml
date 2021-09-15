@@ -173,12 +173,12 @@ DataFile:
             description: List of Repertoire groups
             items:
               $ref: '#/RepertoireGroup'
-        SequenceDescription:
+        AlleleDescription:
             type: array
             nullable: false
-            description: List of sequence descriptions
+            description: List of allele descriptions
             items:
-              $ref: '#/SequenceDescription'
+              $ref: '#/AlleleDescription'
         GermlineSet:
             type: array
             nullable: false
@@ -807,7 +807,7 @@ AlleleDescription:
 GermlineSet:
     discriminator:
         propertyName: AIRR
-    description: Details of a 'germline set' bringing together multiple SequenceDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
+    description: Details of a 'germline set' bringing together multiple AlleleDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
     type: object
     required:
         - germline_set_id
@@ -821,7 +821,7 @@ GermlineSet:
         - germline_set_ref
         - species
         - locus
-        - gene_descriptions
+        - allele_descriptions
     properties:
         germline_set_id:
             type: string

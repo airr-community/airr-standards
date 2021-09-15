@@ -175,11 +175,11 @@ DataFile:
               $ref: '#/RepertoireGroup'
             x-airr:
                 nullable: false
-        GeneDescription:
+        AlleleDescription:
             type: array
-            description: List of gene descriptions
+            description: List of allele descriptions
             items:
-              $ref: '#/GeneDescription'
+              $ref: '#/AlleleDescription'
             x-airr:
                 nullable: false
         GermlineSet:
@@ -424,7 +424,7 @@ UnrearrangedSequence:
     properties:
         sequence_id:
             type: string
-            description: unique identifier of this GermlineSequence within the file
+            description: unique identifier of this UnrearrangedSequence within the file
             x-airr:
                 nullable: false
         sequence:
@@ -450,7 +450,7 @@ UnrearrangedSequence:
             description: Genome assembly patch number in which this gene was determined
         gff_seqid:
             type: string
-            description: Germline sequence (from the assembly) of a window including the gene and preferably also the promoter region
+            description: Sequence (from the assembly) of a window including the gene and preferably also the promoter region
         gff_start:
             type: integer
             description: Genomic co-ordinates of the start of the sequence of interest described in this record, in Ensemble GFF version 3
@@ -559,7 +559,7 @@ SequenceDelineationV:
 # The Gene Description
 AlleleDescription:
     discriminator: AIRR
-    description: Details of a gene sequence which is inferred from one or more observations
+    description: Details of a putative or confirmed Ig receptor gene/allele inferred from one or more observations
     type: object
     required:
         - allele_description_id
@@ -799,7 +799,7 @@ AlleleDescription:
 # Collection of gene descriptions into a germline set
 GermlineSet:
     discriminator: AIRR
-    description: Details of a 'germline set' bringing together multiple GeneDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
+    description: Details of a 'germline set' bringing together multiple AlleleDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
     type: object
     required:
         - germline_set_id
@@ -813,7 +813,7 @@ GermlineSet:
         - germline_set_ref
         - species
         - locus
-        - gene_descriptions
+        - allele_descriptions
     properties:
         germline_set_id:
             type: string
@@ -966,9 +966,6 @@ Genotype:
                 nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
-        repertoire_id:
-            type: string
-            description: Genotype was inferred from this Repertoire.
         documented_alleles:
             type: array
             description: Array of alleles inferred to be present which are documented in GermlineSets
@@ -999,7 +996,7 @@ Genotype:
                 adc-query-support: true
         undocumented_alleles:
             type: array
-            description: Array of alleles infeered to be present and not documented in an identified GermlineSet
+            description: Array of alleles inferred to be present and not documented in an identified GermlineSet
             items:
                 type: object
                 properties:
