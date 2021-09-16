@@ -8,10 +8,6 @@ on:
 
 name: schema-consistency-test
 
-defaults:
-  run:
-    working-directory: lang/python
-
 jobs:
   schema-consistency-test:
     runs-on: ubuntu-latest
