@@ -22,5 +22,5 @@ jobs:
           pip install pyyaml pandas xlrd deepdiff jinja2 jsondiff
       - name: Schema consistency tests
         run: |
-          tests/check-consistency-miairr.py
-          tests/check-consistency-formats.py
+          python tests/check-consistency-miairr.py
+          python tests/check-consistency-formats.py
