@@ -320,6 +320,8 @@ Attributes:
                 - ontology
                 - controlled_vocabulary
                 - physical_quantity
+                - time_point
+                - time_interval
                 - CURIE
         ontology:
             type: object
@@ -487,11 +489,73 @@ TimePoint:
                     top_node:
                         id: UO:0000003
                         label: time unit
-
 #
 # General objects
-# TODO: link to global schema with JSON-LD?
 #
+
+# A time range or interval
+TimeInterval:
+    description: Time range or interval for a measurement, observation or action.
+    type: object
+    properties:
+        min:
+            type: number
+            description: Lower/minimum value of the time interval
+            example: 5.0
+            x-airr:
+                adc-query-support: true
+                nullable: true
+        max:
+            type: number
+            description: Upper/maximum value of the time interval
+            example: 10.0
+            x-airr:
+                adc-query-support: true
+                nullable: true
+        unit:
+            $ref: '#/Ontology'
+            description: Unit of the time interval
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                adc-query-support: true
+                nullable: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
+
+# A physical quantity
+PhysicalQuantity:
+    description: A physical quantity from a measurement or observation.
+    type: object
+    properties:
+        quantity:
+            type: number
+            description: Physical quantity
+            example: -5.0
+            x-airr:
+                adc-query-support: true
+                nullable: true
+        unit:
+            $ref: '#/Ontology'
+            description: Unit of physical quantity
+            example:
+                id: UO:0000024
+                label: nanogram
+            x-airr:
+                nullable: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000002
+                        label: physical quantity
+
+
 
 # Contributor record to describe invididuals and their contribution to a data set
 #
@@ -1822,9 +1886,7 @@ Subject:
         - synthetic
         - species
         - sex
-        - age_min
-        - age_max
-        - age_unit
+        - age
         - age_event
         - ancestry_population
         - ethnicity
@@ -1907,52 +1969,30 @@ Subject:
                 subset: subject
                 name: Sex
                 format: controlled_vocabulary
-        age_min:
-            type: number
-            description: Specific age or lower boundary of age range.
-            title: Age minimum
-            example: 60
-            x-airr:
-                miairr: important
-                nullable: true
-                adc-query-support: true
-                set: 1
-                subset: subject
-                name: Age minimum
-        age_max:
-            type: number
+        age:
+            $ref: '#/TimeInterval'
             description: >
-                Upper boundary of age range or equal to age_min for specific age.
-                This field should only be null if age_min is null.
-            title: Age maximum
-            example: 80
+                Age of subject expressed as a time interval. If singular time point then
+                min == max in the time interval.
+            examples:
+                - min: 50
+                  max: 50
+                  unit:
+                      id: UO:0000036
+                      label: year
+                - min: 5
+                  max: 10
+                  unit:
+                      id: UO:0000034
+                      label: week
             x-airr:
-                miairr: important
                 nullable: true
+                miairr: important
                 adc-query-support: true
                 set: 1
                 subset: subject
-                name: Age maximum
-        age_unit:
-            $ref: '#/Ontology'
-            description: Unit of age range
-            title: Age unit
-            example:
-                id: UO:0000036
-                label: year
-            x-airr:
-                miairr: important
-                nullable: true
-                adc-query-support: true
-                set: 1
-                subset: subject
-                name: Age unit
-                format: ontology
-                ontology:
-                    draft: false
-                    top_node:
-                        id: UO:0000003
-                        label: time unit
+                name: Age
+                format: time_interval
         age_event:
             type: string
             description: >
@@ -1968,15 +2008,33 @@ Subject:
                 set: 1
                 subset: subject
                 name: Age event
-        age:
-            type: string
+
+        
+        
+        age_min:
+            type: number
             x-airr:
+                nullable: true
                 deprecated: true
-                deprecated-description: Split into two fields to specify as an age range.
+                deprecated-description: Combined into single age field.
                 deprecated-replaced-by:
-                    - age_min
-                    - age_max
-                    - age_unit
+                    - age
+        age_max:
+            type: number
+            x-airr:
+                nullable: true
+                deprecated: true
+                deprecated-description: Combined into single age field.
+                deprecated-replaced-by:
+                    - age
+        age_unit:
+            $ref: '#/Ontology'
+            x-airr:
+                nullable: true
+                deprecated: true
+                deprecated-description: Combined into single age field.
+                deprecated-replaced-by:
+                    - age
         ancestry_population:
             $ref: '#/Ontology'
             description: Broad geographic origin of ancestry (continent)
@@ -2134,10 +2192,14 @@ Diagnosis:
                         id: DOID:4
                         label: disease
         disease_length:
-            type: string
+            $ref: '#/PhysicalQuantity'
             description: Time duration between initial diagnosis and current intervention
             title: Length of disease
-            example: 23 months
+            example:
+                quantity: 23
+                unit:
+                    id: UO:0000035
+                    label: month
             x-airr:
                 miairr: important
                 nullable: true
@@ -2218,7 +2280,6 @@ Sample:
         - anatomic_site
         - disease_state_sample
         - collection_time_point_relative
-        - collection_time_point_relative_unit
         - collection_time_point_reference
         - biomaterial_provider
     properties:
@@ -2294,10 +2355,14 @@ Sample:
                 subset: sample
                 name: Disease state of sample
         collection_time_point_relative:
-            type: number
+            $ref: '#/TimePoint'
             description: Time point at which sample was taken, relative to `Collection time event`
             title: Sample collection time
-            example: 14
+            example:
+                value: 14
+                unit:
+                    id: UO:0000033
+                    label: day
             x-airr:
                 miairr: important
                 nullable: true
@@ -2305,26 +2370,15 @@ Sample:
                 set: 2
                 subset: sample
                 name: Sample collection time
+                format: time_point
         collection_time_point_relative_unit:
             $ref: '#/Ontology'
-            description: Unit of Sample collection time
-            title: Sample collection time unit
-            example:
-                id: UO:0000033
-                label: day
             x-airr:
-                miairr: important
                 nullable: true
-                adc-query-support: true
-                set: 2
-                subset: sample
-                name: Sample collection time unit
-                format: ontology
-                ontology:
-                    draft: false
-                    top_node:
-                        id: UO:0000003
-                        label: time unit
+                deprecated: true
+                deprecated-description: Field has been merged with collection_time_point_relative.
+                deprecated-replaced-by:
+                    - collection_time_point_relative
         collection_time_point_reference:
             type: string
             description: Event in the study schedule to which `Sample collection time` relates to
@@ -2606,7 +2660,6 @@ NucleicAcidProcessing:
         - template_class
         - template_quality
         - template_amount
-        - template_amount_unit
         - library_generation_method
         - library_generation_protocol
         - library_generation_kit_version
@@ -2643,10 +2696,14 @@ NucleicAcidProcessing:
                 subset: process (nucleic acid)
                 name: Target substrate quality
         template_amount:
-            type: number
+            $ref: '#/PhysicalQuantity'
             description: Amount of template that went into the process
             title: Template amount
-            example: 1000
+            example:
+                quantity: 1000
+                unit:
+                    id: UO:0000024
+                    label: nanogram
             x-airr:
                 miairr: important
                 nullable: true
@@ -2654,26 +2711,15 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Template amount
+                format: physical_quantity
         template_amount_unit:
             $ref: '#/Ontology'
-            description: Unit of template amount
-            title: Template amount time unit
-            example:
-                id: UO:0000024
-                label: nanogram
             x-airr:
-                miairr: important
                 nullable: true
-                adc-query-support: true
-                set: 3
-                subset: process (nucleic acid)
-                name: Template amount time unit
-                format: ontology
-                ontology:
-                    draft: false
-                    top_node:
-                        id: UO:0000002
-                        label: physical quantity
+                deprecated: true
+                deprecated-description: Field has been merged with template_amount.
+                deprecated-replaced-by:
+                    - template_amount
         library_generation_method:
             type: string
             enum:
