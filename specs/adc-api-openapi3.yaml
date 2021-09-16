@@ -2,7 +2,7 @@ openapi: '3.0.0'
 
 info:
   title: AIRR Data Commons API
-  version: 1.1.0
+  version: 1.0.0
   contact:
     name: AIRR Community
     url: 'http://www.airr-community.org/'
@@ -133,18 +133,6 @@ components:
       items:
         $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Clone'
 
-    # list of germline sets
-    germline_set_list:
-      type: array
-      items:
-        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/GermlineSet'
-
-    # list of gene descriptions
-    gene_description_list:
-      type: array
-      items:
-        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/GeneDescription'
-
     # The response object /repertoire endpoint
     repertoire_response:
       type: object
@@ -153,10 +141,6 @@ components:
           $ref: '#/components/schemas/info_object'
         Repertoire:
           $ref: '#/components/schemas/repertoire_list'
-        GermlineSet:
-          $ref: '#/components/schemas/germline_set_list'
-        GeneDescription:
-          $ref: '#/components/schemas/gene_description_list'
         Facet:
           $ref: '#/components/schemas/facet_list'
 
