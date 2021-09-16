@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main, master]
 
-name: schema-consistency-test
+name: Schema
 
 jobs:
   schema-consistency-test:
