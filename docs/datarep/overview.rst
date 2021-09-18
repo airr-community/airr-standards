@@ -203,3 +203,4 @@ Schema Definitions
    Alignment Schema (Experimental) <alignments>
    Clone and Lineage Tree Schema (Experimental) <clone>
    Cell Schema (Experimental) <cell>
+   Germline Schema (Experimental) <germline>
