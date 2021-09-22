@@ -304,6 +304,43 @@ TimePoint:
                         id: UO:0000003
                         label: time unit
 
+# A time range or interval
+TimeInterval:
+    discriminator:
+        propertyName: AIRR
+    description: Time range or interval for a measurement, observation or action.
+    type: object
+    properties:
+        min:
+            type: number
+            nullable: true
+            description: Lower/minimum value of the time interval
+            example: 5.0
+            x-airr:
+                adc-query-support: true
+        max:
+            type: number
+            nullable: true
+            description: Upper/maximum value of the time interval
+            example: 10.0
+            x-airr:
+                adc-query-support: true
+        unit:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Unit of the time interval
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
+
 # A physical quantity
 PhysicalQuantity:
     discriminator:
@@ -1466,36 +1503,22 @@ Subject:
                 name: Sex
                 format: controlled vocabulary
         age:
-            type: object
+            $ref: '#/TimeInterval'
             nullable: true
-            description: Age of subject expressed as a point or a range
+            description: >
+                Age of subject expressed as a time interval. If singular time point then
+                min == max in the time interval.
             examples:
-                - point:
-                    value: 50
-                    unit:
+                - min: 50
+                  max: 50
+                  unit:
                       id: UO:0000036
                       label: year
-                - range:
-                    min:
-                        value: 5
-                        unit:
-                            id: UO:0000034
-                            label: week
-                    max:
-                        value: 10
-                        unit:
-                            id: UO:0000034
-                            label: week
-            properties:
-                point:
-                    $ref: '#/TimePoint'
-                range:
-                    type: object
-                    properties:
-                        min:
-                            $ref: '#/TimePoint'
-                        max:
-                            $ref: '#/TimePoint'
+                - min: 5
+                  max: 10
+                  unit:
+                      id: UO:0000034
+                      label: week
             x-airr:
                 miairr: important
                 adc-query-support: true
