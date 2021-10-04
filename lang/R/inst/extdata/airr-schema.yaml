@@ -697,15 +697,15 @@ AlleleDescription:
                 - retired
                 - withdrawn
             description: Status of record, assumed active if the field is not proesent
-        gene_subgroup:
-            type: string
-            description: Gene subgroup or clade, as (and if) identified for this species and gene
         subgroup_designation:
             type: string
-            description: Gene designation within this subgroup, if identified
+            description: Identifier of the gene subgroup or clade, as (and if) defined
+        gene_designation:
+            type: string
+            description: Gene number or other identifier, as (and if) defined
         allele_designation:
             type: string
-            description: Allele designation, if identified
+            description: Allele number or other identifier, as (and if) defined
         j_codon_frame:
             type: integer
             enum:
@@ -1022,7 +1022,7 @@ Genotype:
             items:
                 type: object
                 properties:
-                    gene_symbol:
+                    label:
                         type: string
                         description: The accepted name for this gene, taken from the GermlineSet
                         x-airr:
