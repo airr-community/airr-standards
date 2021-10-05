@@ -2723,24 +2723,16 @@ RawSequenceData:
             title: Sequencing index file name
             example: MS10R-NMonson-C7JR9_S1_R3_001.fastq
             x-airr:
-                miairr: defined
                 nullable: true
                 adc-query-support: true
-                set: 4
-                subset: data (raw reads)
-                name: Sequencing index file name
         index_length:
             type: integer
             description: Read length in bases for the index file
             title: Index read length
             example: 8
             x-airr:
-                miairr: defined
                 nullable: true
                 adc-query-support: true
-                set: 4
-                subset: data (raw reads)
-                name: Index read length
 
 # 1-to-n relationship between a repertoire and data processing
 #
