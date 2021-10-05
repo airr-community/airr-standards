@@ -106,6 +106,7 @@ Repertoire:
         sequencing_kit: null
         # raw data
         sequencing_files:
+          sequencing_data_pid: null
           file_type: null
           filename: null
           read_direction: null
