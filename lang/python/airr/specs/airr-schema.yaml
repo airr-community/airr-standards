@@ -66,6 +66,13 @@ CURIEMap:
         map:
             OBO:
                 iri_prefix: "http://purl.obolibrary.org/obo/DOID_"
+    ENA:
+        type: identifier
+        default:
+            map: ENA
+        map:
+            ENA:
+                iri_prefix: "https://www.ebi.ac.uk/ena/browser/view/"
     ENSG:
         type: identifier
         default:
@@ -123,6 +130,13 @@ CURIEMap:
         map:
             ROR:
                 iri_prefix: "https://ror.org/"
+    SRA:
+        type: identifier
+        default:
+            map: SRA
+        map:
+            SRA:
+                iri_prefix: "https://trace.ncbi.nlm.nih.gov/Traces/sra/?run="
     UBERON:
         type: ontology
         default:
@@ -150,6 +164,10 @@ CURIEMap:
 
 InformationProvider:
     provider:
+        ENA:
+            request:
+                url: "{iri}"
+                response: text/html
         IEDB:
             request:
                 url: "https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}"
@@ -172,6 +190,10 @@ InformationProvider:
             request:
                 url: "https://api.ror.org/organizations/{iri}"
                 response: application/json
+        SRA:
+            request:
+                url: "{iri}"
+                response: text/html
     parameter:
         CHEBI:
             Ontobee:
@@ -215,7 +237,6 @@ InformationProvider:
                 ontology_id: UO
             OLS:
                 ontology_id: uo
-
 
 # AIRR specification extensions
 #
@@ -280,6 +301,7 @@ Attributes:
                 - ontology
                 - controlled vocabulary
                 - physical quantity
+                - CURIE
         ontology:
             type: object
             description: Ontology definition for field
@@ -2577,6 +2599,7 @@ RawSequenceData:
     discriminator: AIRR
     type: object
     required:
+        - sequencing_data_pid
         - file_type
         - filename
         - read_direction
@@ -2585,6 +2608,18 @@ RawSequenceData:
         - paired_read_direction
         - paired_read_length
     properties:
+        sequencing_data_pid:
+            type: string
+            description: Persistent identifier of raw data stored in an archive (e.g. INSDC run ID). Data archive should be identified in the CURIE prefix.
+            title: Raw sequencing data persistent identifier
+            example: "SRA:SRR11610494"
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 4
+                subset: data (raw reads)
+                format: CURIE
         file_type:
             type: string
             description: File format for the raw reads or sequences
@@ -2639,7 +2674,7 @@ RawSequenceData:
                 nullable: true
                 adc-query-support: true
                 set: 4
-                subset: process (sequencing)
+                subset: data (raw reads)
                 name: Forward read length
         paired_filename:
             type: string
@@ -2680,8 +2715,32 @@ RawSequenceData:
                 nullable: true
                 adc-query-support: true
                 set: 4
-                subset: process (sequencing)
+                subset: data (raw reads)
                 name: Paired read length
+        index_filename:
+            type: string
+            description: File name for the index file
+            title: Sequencing index file name
+            example: MS10R-NMonson-C7JR9_S1_R3_001.fastq
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                set: 4
+                subset: data (raw reads)
+                name: Sequencing index file name
+        index_length:
+            type: integer
+            description: Read length in bases for the index file
+            title: Index read length
+            example: 8
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                set: 4
+                subset: data (raw reads)
+                name: Index read length
 
 # 1-to-n relationship between a repertoire and data processing
 #
