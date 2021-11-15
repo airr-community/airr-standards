@@ -407,7 +407,8 @@ fields = ['Name', 'Type', 'Attributes', 'Definition']
 tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
           'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing',
           'Rearrangement', 'Alignment', 'Clone', 'Tree', 'Node', 'Cell',
-          'RearrangedSequence', 'GermlineSequence', 'GeneDelineationV', 'GeneDescription', 'GermlineSet']
+          'RearrangedSequence', 'UnrearrangedSequence', 'SequenceDelineationV', 'AlleleDescription', 'GermlineSet',
+          'GenotypeSet','Genotype']
 for spec in tables:
     with open(os.path.join(download_path, '%s.tsv' % spec), 'w') as f:
         writer = csv.DictWriter(f, fieldnames=fields, dialect='excel-tab', extrasaction='ignore')
