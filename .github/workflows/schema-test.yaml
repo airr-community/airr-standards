@@ -1,0 +1,26 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+name: Schema
+
+jobs:
+  schema-consistency-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+      - name: Install dependencies
+        run: |
+          pip install pyyaml pandas xlrd deepdiff jinja2 jsondiff
+      - name: Schema consistency tests
+        run: |
+          python tests/check-consistency-miairr.py
+          python tests/check-consistency-formats.py
