@@ -555,7 +555,6 @@ AlleleDescription:
         - release_description
         - sequence
         - coding_sequence
-        - coding_sequence_identifier
         - locus
         - sequence_type
         - functional
@@ -980,11 +979,7 @@ Genotype:
                     label:
                         type: string
                         nullable: false
-                        description: The accepted name for this allele, if any, taken from the GermlineSet
-                    coding_sequence_identifier:
-                        type: string
-                        nullable: false
-                        description: Unique identifier of the coding sequence, as allocated by an identified repository
+                        description: The accepted name for this allele, taken from the GermlineSet
                     germline_set_ref:
                         type: string
                         nullable: false
