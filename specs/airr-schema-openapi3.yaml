@@ -595,7 +595,7 @@ AlleleDescription:
         label:
             type: string
             nullable: true
-            description: The accepted name for this gene or allele, if any
+            description: The accepted name for this gene or allele
             example: IGHV1-69*01
         sequence:
             type: string

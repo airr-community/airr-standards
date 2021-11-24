@@ -34,24 +34,26 @@ For V-genes, an IMGT-gapped sequence (i.e.,. a sequence delineated in accordance
 ``AlleleDescription``. Other delineations, such as  `Chothia <http://www.bioinf.org.uk/abs/info.html#chothianum>`_ and 
 `Kabat <http://www.bioinf.org.uk/abs/info.html#kabatnum>`_, can be provided via linked ``SequenceDelineationV`` objects.
 A ``GermlineSet`` brings together multiple ``AlleleDescriptions`` from the same locus to form a curated set. The schema assumes that germline 
-sets will be published by multiple repositories. A germline set may be uniquely referenced by means of the ``germline_set_ref`` 
+sets will be published by multiple repositories. A germline set may be uniquely referenced by means of the ``germline_set_ref``: 
 this is a composite field containing the repository id, germline set label, and version.
 
 Gene and Allele Naming
 ----------------------
 
-The International Union of Immunological Societies allocates gene symbols for receptor genes. ``AlleleDescription`` contains a ``label`` 
-field, but it is optional, recognising that a symbol may not have been assigned. Gene symbols are long-lasting, but the underlying 
-sequence may be revised over time. ``AlleleDescription`` contains a mandatory ``coding_sequence_identifier``, which will be updated should the 
-sequence change. It is anticipated that publishers of gene sets will provide mechanisms to issue these identifiers, and to allow 
-researchers to review change history of ``AlleleDescriptions`` and ``GermlineSets``. In the interests of consistency and transparency, when 
-referring to a gene or allele, the ``label`` should be used wherever possible, however ``coding_sequence_identifier`` provides a fallback 
-where a gene symbol has not been assigned.
+``AlleleDescription`` contains a ``label`` field, which should contain the accepted name for the field, as determined by the authors/curators 
+of the record. The International Union of Immunological Societies allocates gene symbols for receptor genes, and, if a gene symbol has been 
+allocated, this should be used as the label.  Where a gene symbol has not been allocated (for example, because the gene or allele has only 
+recently been discovered, or because the available evidence does not meet IUIS standards, a 'tempporary label' should be used.  It is anticipated 
+that publishers of gene sets will provide mechanisms to issue these temporary labels, and to allow researchers to review change history of 
+``AlleleDescriptions`` and ``GermlineSets``. To provide consistency across research groups, the  
+`Germline Database Working Group of the AIRR Community <https://www.antibodysociety.org/the-airr-community/airr-working-groups/germline_database/>`_ is 
+developing a `community-wide approach <https://github.com/williamdlees/IgLabel>`_ to the allocation of temporary labels.
 
 Genotypes
 ---------
 
-A ``GenotypeSet`` describes the specific alleles found in an individual, and also identifies genes that are not found (deleted). 
+A ``GenotypeSet`` describes the specific alleles found in an individual, and also identifies genes that are not found (this could be either 
+because they are not present in the chromosomal locus, or brcause they are not expressed or expressed only at low levels). 
 Depending on the data available and the inference method used, genotypes may contain haplotyping information, which may be full, or partial. 
 As an example of partial haplotyping, the genotype may have been determined from genomic sequencing in which the sequence of the locus was 
 assembled into contigs, but could not be fully assembled. In this case the co-location of alleles in each contig has been established, but 
