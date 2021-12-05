@@ -60,7 +60,7 @@ assembled into contigs, but could not be fully assembled. In this case the co-lo
 the co-location across the entire locus can not be. Co-location is therefore indicated by means of the ``phasing`` parameter, which in this 
 case would be assigned a different value for alleles on each contig. 
 
-Correspondingly, ``MHCGenotype`` amd ``MHCGenotypeSet`` describe the MHC alleles found in an subject.
+Correspondingly, ``MHCGenotype`` amd ``MHCGenotypeSet`` describe the MHC alleles found in a subject.
 
 File Format Specification
 -------------------------
