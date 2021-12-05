@@ -43,7 +43,7 @@ Gene and Allele Naming
 ``AlleleDescription`` contains a ``label`` field, which should contain the accepted name for the field, as determined by the authors/curators 
 of the record. The International Union of Immunological Societies allocates gene symbols for receptor genes, and, if a gene symbol has been 
 allocated, this should be used as the label.  Where a gene symbol has not been allocated (for example, because the gene or allele has only 
-recently been discovered, or because the available evidence does not meet IUIS standards, a 'tempporary label' should be used.  It is anticipated 
+recently been discovered, or because the available evidence does not meet IUIS standards, a 'temporary label' should be used.  It is anticipated 
 that publishers of gene sets will provide mechanisms to issue these temporary labels, and to allow researchers to review change history of 
 ``AlleleDescriptions`` and ``GermlineSets``. To provide consistency across research groups, the  
 `Germline Database Working Group of the AIRR Community <https://www.antibodysociety.org/the-airr-community/airr-working-groups/germline_database/>`_ is 
@@ -52,13 +52,15 @@ developing a `community-wide approach <https://github.com/williamdlees/IgLabel>`
 Genotypes
 ---------
 
-A ``GenotypeSet`` describes the specific alleles found in an individual, and also identifies genes that are not found (this could be either 
+A ``GenotypeSet`` describes the specific receptor alleles found in a subject, and also identifies genes that are not found (this could be either 
 because they are not present in the chromosomal locus, or brcause they are not expressed or expressed only at low levels). 
 Depending on the data available and the inference method used, genotypes may contain haplotyping information, which may be full, or partial. 
 As an example of partial haplotyping, the genotype may have been determined from genomic sequencing in which the sequence of the locus was 
 assembled into contigs, but could not be fully assembled. In this case the co-location of alleles in each contig has been established, but 
 the co-location across the entire locus can not be. Co-location is therefore indicated by means of the ``phasing`` parameter, which in this 
 case would be assigned a different value for alleles on each contig. 
+
+Correspondingly, ``MHCGenotype`` amd ``MHCGenotypeSet`` describe the MHC alleles found in an subject.
 
 File Format Specification
 -------------------------
@@ -67,10 +69,15 @@ Files are YAML/JSON with a structure defined below. Files should be
 encoded as UTF-8. Identifiers are case-sensitive. Files should have the
 extension ``.yaml``, ``.yml``, or ``.json``.
 
-File Structure
-~~~~~~~~~~~~~~
+Germline Set File Structure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The file structure has not been specified yet.
+The Germline Set file has a standardised structure. It is intended to contan all information necessary to annotate receptor sequences derived from a single germline
+locus, and to be directly usable by annotation tools and other processing software.
+
+The file must contain YAML or JSON representation of a single ``GermlineSet`` object, including the associated ``AlleleDescription`` objects. It may optionally
+include other associated objects: ``SequenceDelineationV``, ``RearrangedSequence``, ``UnrearrangedSequence``, ``Acknowledgement``. These should all be embedded into the
+overall ``GermlineSet`` as specified in the schema.
 
 .. _GermlineSetFields:
 
