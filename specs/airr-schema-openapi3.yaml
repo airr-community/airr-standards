@@ -1299,15 +1299,20 @@ Study:
                 type: string
                 enum:
                     - contains_ig
-                    - contains_tcr
-                    - contains_single_cell
+                    - contains_tr
                     - contains_paired_chain
+                    - contains_schema_rearrangement
+                    - contains_schema_clone
+                    - contains_schema_cell
+                    - contains_schema_receptor
             nullable: true
             description: Keywords describing properties of one or more data sets in a study
             title: Keywords for study
             example:
               - contains_ig
-              - contains_paired_chain
+              - contains_schema_rearrangement
+              - contains_schema_clone
+              - contains_schema_cell
             x-airr:
                 miairr: important
                 adc-query-support: true
