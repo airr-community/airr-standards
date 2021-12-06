@@ -21,7 +21,7 @@ Repertoire:
       grants: null
       keywords_study: 
         - "contains_ig"
-        - "contains_tcr"
+        - "contains_tr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -143,7 +143,7 @@ Repertoire:
       grants: null
       keywords_study:
         - "contains_ig"
-        - "contains_tcr"
+        - "contains_tr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -265,7 +265,7 @@ Repertoire:
       grants: null
       keywords_study:
         - "contains_ig"
-        - "contains_tcr"
+        - "contains_tr"
     subject:
       subject_id: TW01A
       synthetic: false
