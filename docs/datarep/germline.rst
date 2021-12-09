@@ -77,7 +77,7 @@ locus, and to be directly usable by annotation tools and other processing softwa
 
 The file must contain YAML or JSON representation of a single ``GermlineSet`` object, including the associated ``AlleleDescription`` objects. It may optionally
 include other associated objects: ``SequenceDelineationV``, ``RearrangedSequence``, ``UnrearrangedSequence``, ``Acknowledgement``. These should all be embedded into the
-overall ``GermlineSet`` as specified in the schema.
+overall ``GermlineSet`` as specified in the schema. The overall structure must match that defined for AIRR Data Files in the ``DataFile`` schema. 
 
 .. _GermlineSetFields:
 
