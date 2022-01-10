@@ -656,7 +656,7 @@ AlleleDescription:
             type: string
             nullable: true
             description: Race, strain or other species subgroup to which this subject belongs
-            example: BALB/C
+            example: BALB/c
         species_subgroup_type:
             type: string
             nullable: true
@@ -674,7 +674,7 @@ AlleleDescription:
                 - draft
                 - retired
                 - withdrawn
-            description: Status of record, assumed active if the field is not proesent
+            description: Status of record, assumed active if the field is not present
         subgroup_designation:
             type: string
             nullable: true
@@ -879,7 +879,7 @@ GermlineSet:
             type: string
             nullable: true
             description: Race, strain or other species subgroup to which this subject belongs
-            example: BALB/C
+            example: BALB/c
         species_subgroup_type:
             type: string
             nullable: true
@@ -916,7 +916,7 @@ GermlineSet:
 # Genotype schema
 #
 
-# GenotypeSet lists the  Genotypes (describing different loci) inferred for this subject
+# GenotypeSet lists the Genotypes (describing different loci) inferred for this subject
 
 GenotypeSet:
     discriminator:

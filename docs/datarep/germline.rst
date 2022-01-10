@@ -53,7 +53,7 @@ Genotypes
 ---------
 
 A ``GenotypeSet`` describes the specific receptor alleles found in a subject, and also identifies genes that are not found (this could be either 
-because they are not present in the chromosomal locus, or brcause they are not expressed or expressed only at low levels). 
+because they are not present in the chromosomal locus, or because they are not expressed or expressed only at low levels).
 Depending on the data available and the inference method used, genotypes may contain haplotyping information, which may be full, or partial. 
 As an example of partial haplotyping, the genotype may have been determined from genomic sequencing in which the sequence of the locus was 
 assembled into contigs, but could not be fully assembled. In this case the co-location of alleles in each contig has been established, but 
