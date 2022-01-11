@@ -766,7 +766,7 @@ AlleleDescription:
         j_donor_splice:
             type: integer
             nullable: true
-            description: Co-ordinate (in the sequence field) of the 3' splice donor site (J-genes only)
+            description: Co-ordinate (in the sequence field) of the final 3' nucleotide of the J-REGION (J-genes only)
         v_gene_delineations:
             type: array
             nullable: true
