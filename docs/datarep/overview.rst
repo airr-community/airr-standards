@@ -33,7 +33,7 @@ AIRR Data Model
 
 The MiAIRR standard defines the minimal information for submission and
 publication of AIRR-seq datasets. The standard defines a set of data
-elements for this information and organizes them into seven high-level
+elements for this information and organizes them into six high-level
 sets.
 
 + Study, Subject and Diagnosis
@@ -47,8 +47,6 @@ sets.
 + Data Processing
 
 + Processed Sequences with Annotations
-
-+ Receptor Germline Genes and Germline Sets
 
 However beyond these sets, MiAIRR does not define any structure, data
 model or relationship between the data elements. This provides
