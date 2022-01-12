@@ -34,14 +34,14 @@ For V-genes, an IMGT-gapped sequence (i.e.,. a sequence delineated in accordance
 ``AlleleDescription``. Other delineations, such as  `Chothia <http://www.bioinf.org.uk/abs/info.html#chothianum>`_ and 
 `Kabat <http://www.bioinf.org.uk/abs/info.html#kabatnum>`_, can be provided via linked ``SequenceDelineationV`` objects.
 A ``GermlineSet`` brings together multiple ``AlleleDescriptions`` from the same locus to form a curated set. The schema assumes that germline 
-sets will be published by multiple repositories. A germline set may be uniquely referenced by means of the ``germline_set_ref``: 
-this is a composite field containing the repository id, germline set label, and version.
+sets will be published by multiple repositories. A germline set may be uniquely referenced by means of the ``germline_set_ref``, which
+is a composite field containing the repository id, germline set label, and version.
 
 Gene and Allele Naming
 ----------------------
 
 ``AlleleDescription`` contains a ``label`` field, which should contain the accepted name for the field, as determined by the authors/curators 
-of the record. The International Union of Immunological Societies allocates gene symbols for receptor genes, and, if a gene symbol has been 
+of the record. The `Nomenclature Committee <https://iuis.org/committees/nom/>`_ of the International Union of Immunological Societies (IUIS) allocates gene symbols for receptor genes, and, if a gene symbol has been 
 allocated, this should be used as the label.  Where a gene symbol has not been allocated (for example, because the gene or allele has only 
 recently been discovered, or because the available evidence does not meet IUIS standards, a 'temporary label' should be used.  It is anticipated 
 that publishers of gene sets will provide mechanisms to issue these temporary labels, and to allow researchers to review change history of 
@@ -72,12 +72,29 @@ extension ``.yaml``, ``.yml``, or ``.json``.
 Germline Set File Structure
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Germline Set file has a standardised structure. It is intended to contan all information necessary to annotate receptor sequences derived from a single germline
+The Germline Set file has a standardised structure that is utilized by all top-level AIRR Schema Objects and defined by
+the ``DataFile`` schema. It is intended to contan all information necessary to annotate receptor sequences derived from a single germline
 locus, and to be directly usable by annotation tools and other processing software.
 
-The file must contain YAML or JSON representation of a single ``GermlineSet`` object, including the associated ``AlleleDescription`` objects. It may optionally
+The file must contain YAML or JSON representation of one or more ``GermlineSet`` objects, including the associated ``AlleleDescription`` objects. It may optionally
 include other associated objects: ``SequenceDelineationV``, ``RearrangedSequence``, ``UnrearrangedSequence``, ``Acknowledgement``. These should all be embedded into the
-overall ``GermlineSet`` as specified in the schema. The overall structure must match that defined for AIRR Data Files in the ``DataFile`` schema. 
+overall ``GermlineSet`` as specified in the schema.
+
++ The file as a whole is considered a dictionary (key/value pair) structure with the keys ``Info``, ``GermlineSet``, and ``AlleleDescription``.
+
++ The file can (optionally) contain an ``Info`` object, at the beginning of the file, based upon the ``Info`` schema in the OpenAPI specification. If provided, ``version`` in ``Info`` should reference the version of the AIRR schema for the file.
+
++ The file should correspond to a list of ``GermlineSet`` objects, using ``GermlineSet`` as the key to the list.
+
++ The file should correspond to a list of ``AlleleDescription`` objects, using ``AlleleDescription`` as the key to the list.
+
++ Each ``AlleleDescription`` object should contain a top-level key/value pair for ``allele_description_id`` that uniquely identifies the allele description object in the file.
+
++ Each ``GermlineSet`` object should contain a top-level key/value pair for ``germline_set_id`` that uniquely identifies the germline set object in the file.
+
++ Some fields require the use of a particular ontology or controlled vocabulary.
+
++ The structure is the same regardless of whether the data is stored in a file or retrieved from a data repository. For example, The :ref:`ADC API <DataCommonsAPI>` will return a properly structured JSON object that can be saved to a file and used directly without modification.
 
 .. _GermlineSetFields:
 
