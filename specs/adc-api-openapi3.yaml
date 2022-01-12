@@ -90,6 +90,7 @@ components:
           default: json
           enum:
             - json
+            - tsv
         fields:
           type: array
           items:
