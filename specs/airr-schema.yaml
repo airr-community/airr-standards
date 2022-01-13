@@ -3909,23 +3909,6 @@ Cell:
                 miairr: defined
                 nullable: true
                 adc-api-optional: true
-        expression_tabular:
-            type: array
-            description: >
-                Expression definitions for single-cell
-            items:
-                type: object
-                properties:
-                    expression_marker:
-                        type: string
-                        description: >
-                           standardized designation of the transcript or epitope
-                        example: CD27
-                    expression_value:
-                        type: number
-                        description: >
-                           transformed and normalized expression level.
-                        example: 14567.30
         virtual_pairing:
             type: boolean
             description: >
