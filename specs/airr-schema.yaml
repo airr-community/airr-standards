@@ -2961,7 +2961,7 @@ Rearrangement:
                 adc-query-support: true
                 set: 6
                 subset: data (processed sequence)
-                name: V gene with allele
+                name: V gene with allele      
         d_call:
             type: string
             description: >
