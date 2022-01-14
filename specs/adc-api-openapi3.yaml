@@ -367,6 +367,49 @@ components:
         Facet:
           $ref: '#/components/schemas/facet_list'
 
+# list of cell annotations
+  cell_list:
+    type: array
+    items:
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Cell'
+
+  # The response object /cell/{cell_id} endpoint
+  cell_id_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Cell:
+        $ref: '#/definitions/cell_list'
+
+  # The response object /cell endpoint
+  cell_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Cell:
+        $ref: '#/definitions/cell_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
+
+  # list of gene expression features
+  expression_list:
+    type: array
+    items:
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Cell'
+
+  # The response object for the /expression endpoint
+  expression_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      GeneExpression:
+        $ref: '#/definitions/expression_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
+
     # error response
     error_response:
       type: object
@@ -606,6 +649,111 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/clone_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+                
+                
+  /cell/{cell_id}:
+    x-swagger-router-controller: cell
+    get:
+      description: >
+        Returns a cell based upon its identifier.
+      tags:
+        - cells
+      parameters:
+        - name: cell_id
+          in: path
+          description: ID of clone to return
+          required: true
+          schema:
+            type: string
+      operationId: get_cell
+      responses:
+        '200':
+          description: >
+            A successful call returns the clone annotation data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cell_id_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /cell:
+    post:
+      description: >
+        This query service returns cell annotation data.
+      operationId: query_cell
+      tags:
+        - cells
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/query_object'
+      operationId: query_cells
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of cell annotation data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cell_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+  
+  /expression:
+    post:
+      description: >
+        This query service returns gene expression data.
+      operationId: query_expression
+      tags:
+        - expression
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/query_object'
+      operationId: query_expression
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of gene expression data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/expression_response'
         '400':
           description: Invalid request
           content:
