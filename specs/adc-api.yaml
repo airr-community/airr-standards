@@ -356,6 +356,23 @@ definitions:
       Facet:
         $ref: '#/definitions/facet_list'
 
+  # list of gene expression features
+  expression_list:
+    type: array
+    items:
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Cell'
+
+  # The response object for the /expression endpoint
+  expression_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      GeneExpression:
+        $ref: '#/definitions/expression_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
+
   # error response
   error_response:
     type: object
@@ -766,6 +783,59 @@ paths:
             A successful call returns an array of cell annotation data.
           schema:
             $ref: '#/definitions/cell_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /expression:
+    x-swagger-router-controller: expression
+    post:
+      description: >
+        This query service returns gene expression data.
+      tags:
+        - expression
+      parameters:
+        - in: body
+          name: data
+          schema:
+            type: object
+            properties:
+              filters:
+                type: object
+              format:
+                type: string
+                default: json
+                enum:
+                  - json
+                  - tsv
+              fields:
+                type: array
+                items:
+                  type: string
+              size:
+                type: integer
+              from:
+                type: integer
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
+              facets:
+                type: string
+      operationId: queryExpression
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of gene expression  data.
+          schema:
+            $ref: '#/definitions/expression_response'
         '400':
           description: Invalid request
           schema:
