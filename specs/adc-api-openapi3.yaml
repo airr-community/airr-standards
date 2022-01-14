@@ -194,7 +194,7 @@ components:
               adc-api-optional: false
               adc-query_support: true
               name: J gene
-            adc_c_subgroup:
+          adc_c_subgroup:
             type: string
             description: >
               C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
