@@ -711,7 +711,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/query_object'
-      operationId: query_cells
       responses:
         '200':
           description: >
@@ -745,7 +744,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/query_object'
-      operationId: query_expression
       responses:
         '200':
           description: >
