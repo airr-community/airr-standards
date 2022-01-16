@@ -679,7 +679,7 @@ AlleleDescription:
         species_subgroup:
             type: string
             description: Race, strain or other species subgroup to which this subject belongs
-            example: BALB/C
+            example: BALB/c
         species_subgroup_type:
             type: string
             enum:
@@ -695,7 +695,7 @@ AlleleDescription:
                 - draft
                 - retired
                 - withdrawn
-            description: Status of record, assumed active if the field is not proesent
+            description: Status of record, assumed active if the field is not present
         subgroup_designation:
             type: string
             description: Identifier of the gene subgroup or clade, as (and if) defined
@@ -765,7 +765,7 @@ AlleleDescription:
             description: End co-ordinate (in the sequence field) of J recombination site (J-genes only)
         j_donor_splice:
             type: integer
-            description: Co-ordinate (in the sequence field) of the 3' splice donor site (J-genes only)
+            description: Co-ordinate (in the sequence field) of the final 3' nucleotide of the J-REGION (J-genes only)
         v_gene_delineations:
             type: array
             items:
@@ -878,7 +878,7 @@ GermlineSet:
         species_subgroup:
             type: string
             description: Race, strain or other species subgroup to which this subject belongs
-            example: BALB/C
+            example: BALB/c
         species_subgroup_type:
             type: string
             enum:

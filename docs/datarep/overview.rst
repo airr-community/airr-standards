@@ -85,6 +85,12 @@ Here are the primary schema objects of the AIRR Data Model:
       - Composite object that combines the schema objects ``Study``, ``Subject``, ``Diagnosis``, ``Sample``, ``CellProcessing``, ``NucleicAcidProcessing``, ``SequencingRun``, and ``DataProcessing``. Each ``Repertoire`` has a unique identifier ``repertoire_id`` for linking with other data files, e.g. ``Rearrangements``. ``Repertoires`` have their own schema and file format described :ref:`here <RepertoireSchema>`.
     * - ``Rearrangments``
       - Annotated sequences describing adaptive immune receptor chains. ``Rearrangements`` have their own schema and file format described :ref:`here <RearrangementSchema>`.
+    * - ``GermlineSet``
+      - Lists the receptor germline sequences that have been identified for a single locus within a particular species or sub-species, together with supporting evidence and additional metadata to assist with sequence annotation. Brings togteher the subsidiary objects ``AlleleDescription``, ``SequenceDelineationV``, ``RearrangedSequence``, ``UnrearrangedSequence``, ``Acknowledgement``.
+    * - ``GenotypeSet``
+      - Lists the receptor germline sequences that have been identified within a single subject, including both those that are listed within ``GermlineSets`` and those that have not been so listed. References the subsidiary object ``Genotype``, which covers a single locus.
+ 
+  
 
 Relationship between Schema Objects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
