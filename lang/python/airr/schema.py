@@ -453,9 +453,18 @@ CachedSchema = {
     'SequencingRun': Schema('SequencingRun'),
     'RawSequenceData': Schema('RawSequenceData'),
     'DataProcessing': Schema('DataProcessing'),
-    'SampleProcessing': Schema('SampleProcessing')
+    'SampleProcessing': Schema('SampleProcessing'),
+    'GermlineSet': Schema('GermlineSet'),
+    'Acknowledgement': Schema('Acknowledgement'),
+    'RearrangedSequence': Schema('RearrangedSequence'),
+    'UnrearrangedSequence': Schema('UnrearrangedSequence'),
+    'SequenceDelineationV': Schema('SequenceDelineationV'),
+    'AlleleDescription': Schema('AlleleDescription'),
+    'GenotypeSet': Schema('GenotypeSet'),
+    'Genotype': Schema('Genotype'),
 }
 
 AlignmentSchema = CachedSchema['Alignment']
 RearrangementSchema = CachedSchema['Rearrangement']
 RepertoireSchema = CachedSchema['Repertoire']
+GermlineSetSchema = CachedSchema['GermlineSet']
