@@ -23,7 +23,7 @@ else: # Python 2 code in this block
 
 
 # Load imports
-from airr.schema import ValidationError, GermlineSetSchema
+from airr.schema import ValidationError, GermlineSetSchema, GenotypeSetSchema
 
 def load_object(filename, object_name, schema, validate=False, debug=False):
     ext = filename.split('.')[-1]
@@ -45,7 +45,7 @@ def load_object(filename, object_name, schema, validate=False, debug=False):
 
     # validate if requested
     if validate:
-        validate_object(md[object], object_name, schema, debug)
+        validate_object(md[object_name], object_name, schema, debug)
 
     # we do not perform any additional processing
     return md
@@ -117,7 +117,7 @@ def write_germline_set(filename, germline_set, debug=False):
 
 def validate_germline_set(germline_set, debug=False):
     """
-    Validates an AIRR rearrangements object
+    Validates an AIRR GenotypeSet
 
     Arguments:
       germline_set (GermlineSet): the object to validate
@@ -127,7 +127,7 @@ def validate_germline_set(germline_set, debug=False):
       bool: True if files passed validation, otherwise False.
     """
 
-    return validate_object(germline_set, GermlineSetSchema, debug=debug)
+    return validate_object(germline_set, 'GermlineSet', GermlineSetSchema, debug=debug)
 
 
 def validate_germline_set_file(filename, debug=False):
@@ -144,3 +144,66 @@ def validate_germline_set_file(filename, debug=False):
 
     load_germline_set(filename, validate=True, debug=debug)
 
+
+def load_genotype_set(filename, validate=False, debug=False):
+    """
+    Read an AIRR genotype set file into a GenotypeSet
+
+    Arguments:
+      file (str): path to the input file.
+      validate (bool): whether to validate data as it is read, raising a ValidationError
+                       exception in the event of an error.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      airr.genotype_set.GermlineSet - germline set object
+    """
+
+    return load_object(filename, 'GenotypeSet', GenotypeSetSchema, validate=validate, debug=debug)
+
+
+def write_genotype_set(filename, genotype_set, debug=False):
+    """
+    Write a GenotypeSet to a file
+
+    Arguments:
+      filename (str): output file path.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      None
+    """
+
+    md = OrderedDict()
+    md['GenotypeSet'] = genotype_set
+    write_object(filename, md, debug)
+
+
+def validate_genotype_set(genotype_set, debug=False):
+    """
+    Validates an AIRR GenotypeSet
+
+    Arguments:
+      genotype_set (GenotypeSet): the object to validate
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      bool: True if files passed validation, otherwise False.
+    """
+
+    return validate_object(genotype_set, 'GenotypeSet', GenotypeSetSchema, debug=debug)
+
+
+def validate_genotype_set_file(filename, debug=False):
+    """
+    Validates an AIRR GenotypeSet file
+
+    Arguments:
+      genotype_set (GenotypeSet): the object to validate
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      bool: True if files passed validation, otherwise False.
+    """
+
+    load_genotype_set(filename, validate=True, debug=debug)
