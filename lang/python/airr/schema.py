@@ -5,8 +5,10 @@ AIRR Data Representation Schema
 # Imports
 import sys
 import yaml
+import io
 import yamlordereddictloader
 from pkg_resources import resource_stream
+from collections import OrderedDict
 
 
 class ValidationError(Exception):
@@ -52,15 +54,19 @@ class Schema:
             raise KeyError('Info is an invalid schema definition name')
 
         # Load object definition
-        with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
-            spec = yaml.load(f, Loader=yamlordereddictloader.Loader)
+        if isinstance(definition, dict):       # on-the-fly definition of a nested object
+            self.definition = definition
+            spec = {'Info': []}
+        else:
+            with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
+                spec = yaml.load(f, Loader=yamlordereddictloader.Loader)
 
-        try:
-            self.definition = spec[definition]
-        except KeyError:
-            raise KeyError('Schema definition %s cannot be found in the specifications' % definition)
-        except:
-            raise
+            try:
+                self.definition = spec[definition]
+            except KeyError:
+                raise KeyError('Schema definition %s cannot be found in the specifications' % definition)
+            except:
+                raise
 
         try:
             self.info = spec['Info']
@@ -413,6 +419,9 @@ class Schema:
                     elif spec['items'].get('type') == 'number':
                         if not isinstance(row, float) and not isinstance(row, int):
                             raise ValidationError('array field %s does not have number type: %s' % (full_field, row))
+                    elif spec['items'].get('type') == 'object':
+                        sub_schema = Schema({'properties': spec['items'].get('properties')})
+                        sub_schema.validate_object(row, missing, nonairr, context)
                     else:
                         raise ValidationError('Internal error: array field %s in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'object':
@@ -468,3 +477,4 @@ AlignmentSchema = CachedSchema['Alignment']
 RearrangementSchema = CachedSchema['Rearrangement']
 RepertoireSchema = CachedSchema['Repertoire']
 GermlineSetSchema = CachedSchema['GermlineSet']
+GenotypeSetSchema = CachedSchema['GenotypeSet']
