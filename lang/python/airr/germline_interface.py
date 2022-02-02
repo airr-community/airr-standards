@@ -40,8 +40,8 @@ def load_object(filename, object_name, schema, validate=False, debug=False):
 
     if object_name not in md:
         if debug:
-            sys.stderr.write('%s is missing "Repertoire" key\n' % (filename))
-        raise KeyError('Repertoire object cannot be found in the file')
+            sys.stderr.write('%s is missing %s key\n' % (filename, object_name))
+        raise KeyError('%s object cannot be found in the file' % object_name)
 
     # validate if requested
     if validate:
@@ -124,7 +124,7 @@ def validate_germline_set(germline_set, debug=False):
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
-      bool: True if files passed validation, otherwise False.
+      Throws a ValidationError if the object is invalid
     """
 
     return validate_object(germline_set, 'GermlineSet', GermlineSetSchema, debug=debug)
@@ -139,7 +139,7 @@ def validate_germline_set_file(filename, debug=False):
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
-      bool: True if files passed validation, otherwise False.
+      Throws a ValidationError if the file is invalid
     """
 
     load_germline_set(filename, validate=True, debug=debug)
@@ -188,7 +188,7 @@ def validate_genotype_set(genotype_set, debug=False):
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
-      bool: True if files passed validation, otherwise False.
+      Throws a ValidationError if the object is invalid
     """
 
     return validate_object(genotype_set, 'GenotypeSet', GenotypeSetSchema, debug=debug)
@@ -203,7 +203,7 @@ def validate_genotype_set_file(filename, debug=False):
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
-      bool: True if files passed validation, otherwise False.
+      Throws a ValidationError if the file is invalid
     """
 
     load_genotype_set(filename, validate=True, debug=debug)
