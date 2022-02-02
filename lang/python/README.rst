@@ -122,8 +122,9 @@ keeping all of the existing fields from the original file. The
 Validating AIRR data files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``airr`` package can validate repertoire and rearrangement data files
-to insure that they contain all required fields and that the fields types
+The ``airr`` package can validate repertoire, rearrangement, germline set
+and genotype data files
+to ensure that they contain all required fields and that the fields types
 match the AIRR Schema. This can be done using the ``airr-tools`` command
 line program or the validate functions in the library can be called::
 
@@ -132,6 +133,12 @@ line program or the validate functions in the library can be called::
 
     # Validate a repertoire metadata file
     airr-tools validate repertoire -a input.airr.json
+
+    # Validate a germline set file
+    airr-tools validate germline_set -a germline_set.json
+
+    # Validate a genotype set file
+    airr-tools validate genotype_set -a genotype_set.json
 
 Combining Repertoire metadata and Rearrangement files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -165,3 +172,64 @@ for doing that, in this case doing gender specific computation::
             # do female specific computation
         else:
             # do other specific computation
+
+Reading AIRR Germline Sets and Genotype Sets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+As for repertoires, The ``airr`` package contains functions to read and write AIRR
+germline and genotype sets.
+files. The file format is either YAML or JSON, and the package provides a
+light wrapper over the standard parsers. The file needs a ``json``, ``yaml``, or ``yml``
+file extension so that the proper parser is utilized::
+
+    import airr
+
+    data = airr.load_germline_set('data/good_germline_set.json')
+    germline_set = data['GermlineSet']
+
+    for allele_description in germline_set['allele_descriptions']:
+        print(allele_description['label'])
+
+    data = airr.load_genotype_set('data/good_genotype_set.json')
+    genotype_set = data['GenotypeSet']
+
+    for genotype_class in genotype_set['genotype_class_list']:
+        print(genotype_class['locus'])
+
+Validating AIRR Genotypes and Germline Sets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can validate germline set and genotype sets as they are loaded using the validate flag::
+
+    import airr
+
+    try:
+        data = airr.load_germline_set('data/bad_germline_set.json', validate=True)
+    except airr.ValidationError:
+        print('The format of the germline set is invalid')
+
+    try:
+        data = airr.load_genotype_set('data/bad_genotype_set.json', validate=True)
+    except airr.ValidationError:
+        print('The format of the genotype set is invalid')
+
+
+You can validate germline sets and genotype sets in-memory (for example sets that
+you have created or manipulated) using validate_germline_set and validate_genotype_set::
+
+    import airr
+
+    try:
+        data = airr.load_germline_set('data/bad_germline_set.json')
+        airr.validate_germline_set(data)
+    except airr.ValidationError:
+        print('The format of the germline set is invalid')
+
+    try:
+        data = airr.load_genotype_set('data/bad_genotype_set.json')
+        airr.validate_genotype_set(data)
+    except airr.ValidationError:
+        print('The format of the genotype set is invalid')
+
+
+
