@@ -600,3 +600,169 @@ write_repertoire <- function(data, file) {
     stop("File extenstion must be either .yaml or .json")
   }
 }
+
+#' @details
+#' \code{write_repertoire} writes a object containing AIRR Repertoire data to yaml.
+#' 
+#' @rdname write_airr_yaml
+#' @export
+write_repertoire <- function(data, file) {
+  # guess from file name whether json or yaml format for writing
+  if (grepl(".json$",file)) {
+    write_airr_json(data, file, schema=RepertoireSchema)
+  } else if (grepl(".yaml$",file)) {
+    write_airr_yaml(data, file, schema=RepertoireSchema)
+  } else {
+    stop("File extenstion must be either .yaml or .json")
+  }
+}
+
+
+#' Read json without built-in validation
+#' 
+#' \code{read_json} reads a json containing AIRR records.
+#'
+#' @param    file    input file path in json format.
+#' 
+#' @return   An object of the data contained in the input file.
+#'                   
+#' 
+#' 
+#' @export
+read_json <- function(file) {
+  
+  #JSON format
+  data <- jsonlite::fromJSON(file, simplifyVector = FALSE)
+  return(data)
+}
+
+#' Read yaml without built-in validation
+#' 
+#' \code{read_yaml} reads a json containing AIRR records.
+#'
+#' @param    file    input file path in json format.
+#' 
+#' @return   An object of the data contained in the input file.
+#'                   
+#' 
+#' 
+#' @export
+read_yaml <- function(file) {
+  
+  # YAML format
+  data <- yaml.load_file(file)  
+  return(data)
+}
+
+
+#' Validate GermlineSet
+#' 
+#' \code{validate_germline_set} validates a GermlineSet containing AIRR object.
+#'
+#' @param    data  Data object from yaml import. This data contains the AIRR records.
+#' 
+#' @return   Returns \code{TRUE} if the input \code{data} is compliant with AIRR standards and
+#'           \code{FALSE} if not. 
+#'                   
+#' @seealso  
+#' See \link{Schema} for the AIRR schema object definition.
+#' See \link{validate_airr_yaml_json} for validating yaml formatted AIRR data.
+#' 
+#' @examples
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
+#' 
+#' # Load data file
+#' repr <- read_repertoire(file)
+#' 
+#' # Validate
+#' validate_germline_set(repr)
+#' 
+#' @export
+validate_germline_set <- function(data) {
+  validate_airr_entry(data, GermlineSetSchema)
+}
+
+#' Validate GenotypeSet
+#' 
+#' \code{validate_genotype_set} validates a GermlineSet containing AIRR object.
+#'
+#' @param    data  Data object from yaml import. This data contains the AIRR records.
+#' 
+#' @return   Returns \code{TRUE} if the input \code{data} is compliant with AIRR standards and
+#'           \code{FALSE} if not. 
+#'                   
+#' @seealso  
+#' See \link{Schema} for the AIRR schema object definition.
+#' See \link{validate_airr_yaml_json} for validating yaml formatted AIRR data.
+#' 
+#' 
+#' @export
+validate_genotype_set <- function(data) {
+  validate_airr_entry(data, GenotypeSetSchema)
+}
+
+
+
+#' Read germline set
+#' \code{read_germline_set} reads a yaml or json file containing an AIRR germline set
+#' 
+#' @param	file	filename to read from 
+#' @param	validate	if TRUE, the contents are validated against the AIRR schema 
+#' 
+#' @return	returns the GermlineSet object
+#' 
+#' @rdname read_germline_set
+#' @export
+read_germline_set <- function(file, validate=T) {
+  # guess if the file is yaml or json formatted
+  # based on file name extension
+  
+  if (grepl(".json$",file)) {
+    result = read_json(file)
+    result = result['GermlineSet']
+  } else if (grepl(".yaml$",file)) {
+    result = read_yaml(file)
+  } else {
+    stop("File extenstion must be either .yaml or .json")
+  }
+  
+  if (validate) {
+    validate_germline_set(result[[1]])
+  }
+  
+  result
+}
+
+
+#' Read genotype set
+#' \code{read_genotype_set} reads a yaml or json file containing an AIRR germline set
+#' 
+#' @param	file	filename to read from 
+#' @param	validate	if TRUE, the contents are validated against the AIRR schema 
+#' 
+#' @return	returns the GenotypeSet object
+#' 
+#' @rdname read_genotype_set
+#' @export
+read_genotype_set <- function(file, validate=T) {
+  # guess if the file is yaml or json formatted
+  # based on file name extension
+  
+  if (grepl(".json$",file)) {
+    result = read_json(file)
+    result = result['GenotypeSet']
+    #cat(str(result))
+  } else if (grepl(".yaml$",file)) {
+    result = read_yaml(file)
+  } else {
+    stop("File extenstion must be either .yaml or .json")
+  }
+  
+  if (validate) {
+    validate_genotype_set(result[[1]])
+  }
+  
+  result
+}
+

@@ -169,3 +169,48 @@ test_that("validate_repertoire with bad data returns an error", {
     bad_data <- suppressWarnings(read_airr_yaml(bad_repertoire_file, schema = RepertoireSchema))
     expect_false(suppressWarnings(validate_repertoire(bad_data)))
 })
+
+
+# GERMLINE
+
+good_germline_set_file <- system.file("extdata", "good_germline_set.json", package="airr")
+bad_germline_set_file <- system.file("extdata", "bad_germline_set.json", package="airr")
+
+
+#### Germline Set I/O  ####
+
+context("Germline set I/O - good data")
+
+test_that("read_germline_set loads a list", {
+  rep_1 <- read_germline_set(good_germline_set_file)
+  expect_true(is.list(rep_1))
+})
+
+context("Germline set I/O - bad data")
+
+test_that("validate_germline_set with bad data returns an error", {
+  bad_data <- suppressWarnings(read_germline_set(bad_germline_set_file, validate=F))
+  expect_false(suppressWarnings(validate_germline_set(bad_data)))
+})
+
+# GENOTYPE
+
+good_genotype_set_file <- system.file("extdata", "good_genotype_set.json", package="airr")
+bad_genotype_set_file <- system.file("extdata", "bad_genotype_set.json", package="airr")
+
+
+#### Genotype Set I/O  ####
+
+context("Genotype set I/O - good data")
+
+test_that("read_genotype_set loads a list", {
+  rep_1 <- read_genotype_set(good_genotype_set_file)
+  expect_true(is.list(rep_1))
+})
+
+context("Genotype set I/O - bad data")
+
+test_that("validate_genotype_set with bad data returns an error", {
+  bad_data <- suppressWarnings(read_genotype_set(bad_genotype_set_file, validate=F))
+  expect_false(suppressWarnings(validate_genotype_set(bad_data)))
+})

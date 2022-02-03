@@ -234,3 +234,15 @@ RearrangementSchema <- load_schema("Rearrangement")
 #' @rdname    Schema-class
 #' @export
 RepertoireSchema <- load_schema("Repertoire")
+
+#' @details   \code{RepertoireSchema}: AIRR Repertoire \code{Schema}.
+#' @rdname    Schema-class
+#' @export
+GermlineSetSchema <- load_schema("GermlineSet")
+
+#' @details   \code{RepertoireSchema}: AIRR Repertoire \code{Schema}.
+#' @rdname    Schema-class
+#' @export
+GenotypeSetSchema <- load_schema("GenotypeSet")
+
+
