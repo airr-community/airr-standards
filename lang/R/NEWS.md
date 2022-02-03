@@ -4,6 +4,7 @@ Version 1.4.0-dev:  In development
 + Added the `aux_types` argument to `read_airr` (and dependent functions) to
   allow explicit declaration of the type for fields that are not defined
   in the schema.
++ Added support for GermlineSet and GenotypeSet
 
 Version 1.3.0:  May 26, 2020
 -------------------------------------------------------------------------------
