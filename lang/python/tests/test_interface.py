@@ -40,7 +40,7 @@ class TestInferface(unittest.TestCase):
         t = time.time() - self.start
         print('<- %.3f %s()' % (t, self.id()))
 
-    @unittest.skip('-> load(): skipped\n')
+    # @unittest.skip('-> load(): skipped\n')
     def test_load(self):
         # Good data
         result = airr.load_rearrangement(self.data_good)
@@ -50,7 +50,7 @@ class TestInferface(unittest.TestCase):
         result = airr.load_rearrangement(self.data_bad)
         self.assertTupleEqual(result.shape, self.shape_bad, 'load(): bad data failed')
 
-    @unittest.skip('-> repertoire_template(): skipped\n')
+    # @unittest.skip('-> repertoire_template(): skipped\n')
     def test_repertoire_template(self):
         try:
             rep = airr.repertoire_template()
@@ -59,7 +59,7 @@ class TestInferface(unittest.TestCase):
         except:
             self.assertTrue(False, 'repertoire_template(): repertoire template failed validation')
 
-    @unittest.skip('-> validate(): skipped\n')
+    # @unittest.skip('-> validate(): skipped\n')
     def test_validate(self):
         # Good data
         try:
@@ -76,7 +76,7 @@ class TestInferface(unittest.TestCase):
             print(type(inst))
             raise inst
 
-    @unittest.skip('-> load_repertoire(): skipped\n')
+    # @unittest.skip('-> load_repertoire(): skipped\n')
     def test_load_repertoire(self):
         # Good data
         try:
