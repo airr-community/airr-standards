@@ -57,7 +57,7 @@ CURIEResolution:
   -
     curie_prefix: ENSG
     iri_prefix:
-      - "https://uswest.ensembl.org/Multi/Search/Results?q="
+      - "https://www.ensembl.org/Multi/Search/Results?q="
 
 # AIRR specification extensions
 #
