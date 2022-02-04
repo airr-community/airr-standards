@@ -54,7 +54,10 @@ CURIEResolution:
     curie_prefix: CL
     iri_prefix:
       - "http://purl.obolibrary.org/obo/CL_"
-
+  -
+    curie_prefix: ENSG
+    iri_prefix:
+      - "https://uswest.ensembl.org/Multi/Search/Results?q="
 
 # AIRR specification extensions
 #
@@ -3973,6 +3976,19 @@ GeneExpression:
                 nullable: true
                 adc-query-support: true
                 name: Name of the propery
+        property:
+            $ref: '#/Ontology'
+            description: Name of the property observed, typically a gene idenifier from a canonical resource such as Ensembl and its label (e.g. ENSG00000275747, IGHV3-79)
+            title: Gene name
+            example:
+                id: ENSG:ENSG00000275747
+                label: IGHV3-79
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                format: ontology
+                name: Name of the property
         value:
             type: number
             description: Level at which the property was observed in the experiment (non-normalized).
