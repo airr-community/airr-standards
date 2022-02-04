@@ -3967,16 +3967,6 @@ GeneExpression:
                 adc-query-support: true
                 name: Data processing for cell
         property:
-            type: string
-            description: Name of the property observed, typically a gene idenifier from a canonical resource such as Ensembl (e.g. ENSG00000275747 rather than IGHV3-79)
-            title: Name of the property
-            example: ENSG00000275747
-            x-airr:
-                miairr: defined
-                nullable: true
-                adc-query-support: true
-                name: Name of the propery
-        property:
             $ref: '#/Ontology'
             description: Name of the property observed, typically a gene idenifier from a canonical resource such as Ensembl and its label (e.g. ENSG00000275747, IGHV3-79)
             title: Gene name
