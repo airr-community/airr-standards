@@ -3760,10 +3760,10 @@ Clone:
         junction_end:
             type: integer
             description: Junction region end position in the alignment (1-based closed interval).
-        sequence_count:
+        umi_count:
             type: integer
             description: Number of Rearrangement records (sequences) included in this clone.
-        clone_abundance:
+        clone_count:
             type: integer
             description: Non-normalized absolute count of the number of members (immune cells) in this clone.
         seed_id:
