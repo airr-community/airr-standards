@@ -4492,21 +4492,25 @@ Receptor:
                 adc-api-optional: true
         reactivity_measurements:
             type: array
+            nullable: true
             description: Records of reactivity measurement
             items:
                 type: object
                 properties:
                     antigen:
                         type: string
+                        nullable: true
                         description: >
                            The antigen against which the receptor was tested. For TCRs this is the combination of MHC and peptide.
                     reactivity_value:
                         type: float
+                        nullable: true
                         description: >
                            The absolute (processed) value of the measurement.
                         example: 357.89
                     reactivity_unit:
                         type: string
+                        nullable: true
                         description: >
                            The physical unit of the measurement
                         example: M or kJ mol-1
