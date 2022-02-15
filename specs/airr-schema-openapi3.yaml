@@ -186,10 +186,7 @@ InformationProvider:
                 ontology_id: UO
             OLS:
                 ontology_id: uo
-<<<<<<< HEAD
-=======
 
->>>>>>> beb368a (Fix indentation of CURIE and Provider objects)
 
 # AIRR specification extensions
 #
@@ -4418,3 +4415,97 @@ CellExpression:
                 miairr: defined
                 adc-query-support: true
                 name: Property value
+
+
+# The Receptor object hold information about a receptor and its reactivity.
+#
+Receptor:
+    discriminator: AIRR
+    type: object
+    required:
+        - receptor_gid
+        - receptor_chain_1
+        - receptor_chain_2
+    properties:
+        receptor_gid:
+            type: string
+            description: >
+                Global identifier of the receptor, calculated as sha256(concat(receptor_chain_1,receptor_chain_2),
+                represented as base16 encoded string.
+            title: Receptor GID
+            example: aa1c4b77a6f4927611ab39f5267415beaa0ba07a952c233d803b07e52261f026
+            x-airr:
+                miairr: defined
+                nullable: false
+                adc-query-support: true
+                name: Receptor GID
+        receptor_chain_1:
+            type: string
+            description: >
+                Complete amino acid sequence of the mature variable domain of the Ig heavy, TCR beta or TCR delta chain.
+                The mature variable domain is defined as encompassing all AA from and including first AA after the the
+                signal peptide to and including the last AA that is completely encoded by the J gene.
+            example: >
+                QVQLQQPGAELVKPGASVKLSCKASGYTFTSYWMHWVKQRPGRGLEWIGRIDPNSGGTKYNEKFKSKATLTVDKPSSTAYMQLSSLTSEDSAVYYCARYDYYGSSYFDYWGQGTTLTVSS
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        receptor_chain_2:
+            type: string
+            description: >
+                Complete amino acid sequence of the mature variable domain of the Ig light, TCR alpha or TCR gamma chain.
+                The mature variable domain is defined as encompassing all AA from and including first AA after the the
+                signal peptide to and including the last AA that is completely encoded by the J gene.
+            example: >
+                QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        reactivity_study_method:
+            type: string
+            enum:
+                -SPR
+                -ITC
+            description: >
+                  Keyword describing the methodology used to assess expression. This values for this field MUST come
+                  from a controlled vocabulary.
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        reactivity_UID:
+            type: string
+            description: UID of the receptor at IEDB, which can hold additional and richer data records.
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        reactivity_raw_DOI:
+            type: string
+            description: DOI of raw data measurements.
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        reactivity_measurements:
+            type: array
+            description: Records of reactivity measurement
+            items:
+                type: object
+                properties:
+                    antigen:
+                        type: string
+                        description: >
+                           The antigen against which the receptor was tested. For TCRs this is the combination of MHC and peptide.
+                    reactivity_value:
+                        type: float
+                        description: >
+                           The absolute (processed) value of the measurement.
+                        example: 357.89
+                    reactivity_unit:
+                        type: string
+                        description: >
+                           The physical unit of the measurement
+                        example: M or kJ mol-1
