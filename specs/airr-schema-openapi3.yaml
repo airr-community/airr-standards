@@ -4229,7 +4229,7 @@ Cell:
         propertyName: AIRR
     type: object
     required:
-        - cell_id #redefined cell_id > how to centralize it in the yaml
+        - cell_id
         - rearrangements
         - repertoire_id
         - virtual_pairing
@@ -4420,7 +4420,8 @@ CellExpression:
 # The Receptor object hold information about a receptor and its reactivity.
 #
 Receptor:
-    discriminator: AIRR
+    discriminator:
+        propertyName: AIRR
     type: object
     required:
         - receptor_gid
@@ -4429,6 +4430,7 @@ Receptor:
     properties:
         receptor_gid:
             type: string
+            nullable: false
             description: >
                 Global identifier of the receptor, calculated as sha256(concat(receptor_chain_1,receptor_chain_2),
                 represented as base16 encoded string.
@@ -4436,11 +4438,11 @@ Receptor:
             example: aa1c4b77a6f4927611ab39f5267415beaa0ba07a952c233d803b07e52261f026
             x-airr:
                 miairr: defined
-                nullable: false
                 adc-query-support: true
                 name: Receptor GID
         receptor_chain_1:
             type: string
+            nullable: true
             description: >
                 Complete amino acid sequence of the mature variable domain of the Ig heavy, TCR beta or TCR delta chain.
                 The mature variable domain is defined as encompassing all AA from and including first AA after the the
@@ -4449,10 +4451,10 @@ Receptor:
                 QVQLQQPGAELVKPGASVKLSCKASGYTFTSYWMHWVKQRPGRGLEWIGRIDPNSGGTKYNEKFKSKATLTVDKPSSTAYMQLSSLTSEDSAVYYCARYDYYGSSYFDYWGQGTTLTVSS
             x-airr:
                 miairr: defined
-                nullable: true
                 adc-api-optional: true
         receptor_chain_2:
             type: string
+            nullable: true
             description: >
                 Complete amino acid sequence of the mature variable domain of the Ig light, TCR alpha or TCR gamma chain.
                 The mature variable domain is defined as encompassing all AA from and including first AA after the the
@@ -4461,10 +4463,10 @@ Receptor:
                 QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL
             x-airr:
                 miairr: defined
-                nullable: true
                 adc-api-optional: true
         reactivity_study_method:
             type: string
+            nullable: true
             enum:
                 -SPR
                 -ITC
@@ -4473,21 +4475,20 @@ Receptor:
                   from a controlled vocabulary.
             x-airr:
                 miairr: defined
-                nullable: true
                 adc-api-optional: true
         reactivity_UID:
             type: string
+            nullable: true
             description: UID of the receptor at IEDB, which can hold additional and richer data records.
             x-airr:
                 miairr: defined
-                nullable: true
                 adc-api-optional: true
         reactivity_raw_DOI:
             type: string
+            nullable: true
             description: DOI of raw data measurements.
             x-airr:
                 miairr: defined
-                nullable: true
                 adc-api-optional: true
         reactivity_measurements:
             type: array

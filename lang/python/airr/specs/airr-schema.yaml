@@ -4015,7 +4015,7 @@ Cell:
     discriminator: AIRR
     type: object
     required:
-        - cell_id #redefined cell_id > how to centralize it in the yaml
+        - cell_id
         - rearrangements
         - repertoire_id
         - virtual_pairing
