@@ -145,7 +145,7 @@ API is available for VDJServer's data repository.
 
 .. code-block:: bash
 
-  curl https://vdjserver.org/airr/v1
+  curl -H "Content-Type: application/json" https://vdjserver.org/airr/v1
 
 The response should indicate success.
 
@@ -159,7 +159,7 @@ The following is an example ``GET`` request to get information about the service
 
 .. code-block:: bash
 
-  curl https://vdjserver.org/airr/v1
+  curl https://vdjserver.org/airr/v1/info
 
 The response provides various information.
 
@@ -188,7 +188,7 @@ field (``fields``).
 
 .. code-block:: bash
 
-  curl --data @query1-2_repertoire.json https://vdjserver.org/airr/v1/repertoire
+  curl -H "Content-Type: application/json" --data @query1-2_repertoire.json https://vdjserver.org/airr/v1/repertoire
 
 The content of the :download:`JSON payload <../examples/queries/query1-2_repertoire.json>`.
 
@@ -341,7 +341,7 @@ repertoires of human IG heavy chain receptors for all studies in the data reposi
 
 .. code-block:: bash
 
-  curl --data @query2_repertoire.json https://vdjserver.org/airr/v1/repertoire
+  curl -H "Content-Type: application/json" --data @query2_repertoire.json https://vdjserver.org/airr/v1/repertoire
 
 The content of the :download:`JSON payload <../examples/queries/query2_repertoire.json>`.
 
@@ -417,7 +417,7 @@ requested in JSON or :ref:`AIRR TSV <TSVSpecification>` format.
 
 .. code-block:: bash
 
-  curl --data @query1_rearrangement.json https://vdjserver.org/airr/v1/rearrangement
+  curl -H "Content-Type: application/json" --data @query1_rearrangement.json https://vdjserver.org/airr/v1/rearrangement
 
 The content of the :download:`JSON payload <../examples/queries/query1_rearrangement.json>`.
 
@@ -754,7 +754,7 @@ Sending this query in an API request.
 
 .. code-block:: bash
 
-  curl --data @facets1_repertoire.json https://vdjserver.org/airr/v1/repertoire
+  curl -H "Content-Type: application/json" --data @facets1_repertoire.json https://vdjserver.org/airr/v1/repertoire
 
 The output from the request is similar to normal queries except the data is
 provided with the `Facet` key.
@@ -788,7 +788,7 @@ Sending this query in an API request.
 
 .. code-block:: bash
 
-  curl --data @facets2_repertoire.json https://vdjserver.org/airr/v1/repertoire
+  curl -H "Content-Type: application/json" --data @facets2_repertoire.json https://vdjserver.org/airr/v1/repertoire
 
 Example output from the request. This result indicates there are ten
 subjects each with two IGH repertoires.
