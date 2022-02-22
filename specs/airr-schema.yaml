@@ -3774,7 +3774,8 @@ Clone:
             description: >
                 Absolute count of the size (number of members) of this clone in the repertoire.
                 This could simply be the number of sequences (Rearrangement records) observed in this clone,
-                or it may be a more sophisticated analysis calculation intertwined with an experimental protocol.
+                the number of distinct cell barcodes (unique cell_id values),
+                or a more sophisticated calculation appropriate to the experimental protocol.
                 Absolute count is provided versus a frequency so that downstream analysis tools can perform their own normalization.
         seed_id:
             type: string
