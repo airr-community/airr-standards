@@ -3771,7 +3771,7 @@ Clone:
                 Number of distinct UMIs observed across all sequences (Rearrangement records) in this clone.
         clone_count:
             type: integer
-            description: Number of sequences (Rearrangement records) observed in this clone.
+            description: Non-normalized absolute count of the number of members (immune cells) in this clone.
         seed_id:
             type: string
             description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
