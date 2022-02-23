@@ -189,6 +189,13 @@ DataFile:
               $ref: '#/GermlineSet'
             x-airr:
                 nullable: false
+        GenotypeSet:
+            type: array
+            description: List of genotype sets
+            items:
+              $ref: '#/GenotypeSet'
+            x-airr:
+                nullable: false
         DataProcessing:
             type: array
             description: List of data processing workflows
@@ -556,7 +563,7 @@ SequenceDelineationV:
               type: string
             description: one string for each codon in the fields v_start to cdr3_start indicating the label of that codon according to the numbering of the delineation scheme
 
-# The Gene Description
+# Description of a putative or confirmed Ig receptor gene/allele
 AlleleDescription:
     discriminator: AIRR
     description: Details of a putative or confirmed Ig receptor gene/allele inferred from one or more observations

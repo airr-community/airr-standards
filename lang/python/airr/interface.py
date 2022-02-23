@@ -22,7 +22,7 @@ else: # Python 2 code in this block
 
 # Load imports
 from airr.io import RearrangementReader, RearrangementWriter
-from airr.schema import ValidationError, RearrangementSchema, RepertoireSchema
+from airr.schema import ValidationError, RearrangementSchema, RepertoireSchema, DataFileSchema, CachedSchema
 
 
 def read_rearrangement(filename, validate=False, debug=False):
@@ -228,24 +228,10 @@ def load_repertoire(filename, validate=False, debug=False):
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
-      list: list of Repertoire dictionaries.
+      dict: dictionary of AIRR Data objects.
     """
-    # Because the repertoires are read in completely, we do not bother
-    # with a reader class.
-    md = None
-
-    # determine file type from extension and use appropriate loader
-    ext = filename.split('.')[-1]
-    if ext in ('yaml', 'yml'):
-        with open(filename, 'r', encoding='utf-8') as handle:
-            md = yaml.load(handle, Loader=yamlordereddictloader.Loader)
-    elif ext == 'json':
-        with open(filename, 'r', encoding='utf-8') as handle:
-            md = json.load(handle)
-    else:
-        if debug:
-            sys.stderr.write('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
-        raise TypeError('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
+    # use standard load function, we only validate Repertoire if requested
+    md = load_airr_data(filename, False, debug)
 
     if md.get('Repertoire') is None:
         if debug:
@@ -361,3 +347,140 @@ def repertoire_template():
 
     return object['Repertoire'][0]
 
+
+def load_airr_data(filename, validate=False, debug=False):
+    """
+    Load an AIRR Data file
+
+    Arguments:
+      filename (str): path to the input file.
+      validate (bool): whether to validate data as it is read, raising a ValidationError
+                       exception in the event of an error.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      dict: dictionary of AIRR Data objects.
+    """
+    # Because the AIRR Data File is read in completely, we do not bother
+    # with a reader class.
+    md = None
+
+    # determine file type from extension and use appropriate loader
+    ext = filename.split('.')[-1]
+    if ext in ('yaml', 'yml'):
+        with open(filename, 'r', encoding='utf-8') as handle:
+            md = yaml.load(handle, Loader=yamlordereddictloader.Loader)
+    elif ext == 'json':
+        with open(filename, 'r', encoding='utf-8') as handle:
+            md = json.load(handle)
+    else:
+        if debug:
+            sys.stderr.write('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
+        raise TypeError('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
+
+    # validate if requested
+    if validate:
+        valid = True
+        # loop through each potential AIRR object and validate each
+        for p in DataFileSchema.properties:
+            if p == 'Info':
+                continue
+
+            data = md.get(p)
+            if not data:
+                continue
+
+            # needs to be an array to continue
+            if not isinstance(data, list):
+                valid = False
+                if debug:
+                    sys.stderr.write('%s contains %s but the data is not an array.\n' % (filename, p))
+                continue
+
+            schema = CachedSchema[p]
+            i = 0
+            for obj in data:
+                try:
+                    schema.validate_object(obj)
+                except ValidationError as e:
+                    valid = False
+                    if debug:
+                        sys.stderr.write('%s has %s at array position %i with validation error: %s\n' % (filename, p, i, e))
+                i = i + 1
+
+        if not valid:
+            raise ValidationError('AIRR Data file %s has validation errors\n' % (filename))
+
+    # we do not perform any additional processing
+    return md
+
+
+def validate_airr_data(filename, debug=False):
+    """
+    Validates an AIRR Data file
+
+    Arguments:
+      filename (str): path of the file to validate.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      bool: True if files passed validation, otherwise False.
+    """
+    valid = True
+    if debug:
+        sys.stderr.write('Validating: %s\n' % filename)
+
+    # load with validate
+    try:
+        data = load_airr_data(filename, validate=True, debug=debug)
+    except TypeError:
+        valid = False
+    except KeyError:
+        valid = False
+    except ValidationError as e:
+        valid = False
+        if debug:
+            sys.stderr.write('%s has validation error: %s\n' % (filename, e))
+
+    return valid
+
+def write_airr_data(filename, data, info=None, debug=False):
+    """
+    Write an AIRR Data file
+
+    Arguments:
+      file (str): path to the output file.
+      data (dict): dictionary of AIRR objects.
+      info (object): info object to write. Will write current AIRR Schema info if not specified.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      bool: True if the file is written without error.
+    """
+    if not isinstance(repertoires, list):
+        if debug:
+            sys.stderr.write('Repertoires parameter is not a list\n')
+        raise TypeError('Repertoires parameter is not a list')
+
+    md = OrderedDict()
+    if info is None:
+        info = RearrangementSchema.info.copy()
+        info['title'] = 'Repertoire metadata'
+        info['description'] = 'Repertoire metadata written by AIRR Standards Python Library'
+    md['Info'] = info
+    md['Repertoire'] = repertoires
+
+    # determine file type from extension and use appropriate loader
+    ext = filename.split('.')[-1]
+    if ext == 'yaml' or ext == 'yml':
+        with open(filename, 'w') as handle:
+            md = yaml.dump(md, handle, default_flow_style=False)
+    elif ext == 'json':
+        with open(filename, 'w') as handle:
+            md = json.dump(md, handle, sort_keys=False, indent=2)
+    else:
+        if debug:
+            sys.stderr.write('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
+        raise TypeError('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
+        
+    return True

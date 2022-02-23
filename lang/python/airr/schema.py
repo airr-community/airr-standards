@@ -449,6 +449,7 @@ class Schema:
 
 # Preloaded schema
 CachedSchema = {
+    'DataFile': Schema('DataFile'),
     'Alignment': Schema('Alignment'),
     'Rearrangement': Schema('Rearrangement'),
     'Repertoire': Schema('Repertoire'),
@@ -473,6 +474,7 @@ CachedSchema = {
     'Genotype': Schema('Genotype'),
 }
 
+DataFileSchema = CachedSchema['DataFile']
 AlignmentSchema = CachedSchema['Alignment']
 RearrangementSchema = CachedSchema['Rearrangement']
 RepertoireSchema = CachedSchema['Repertoire']

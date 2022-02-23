@@ -1,38 +1,38 @@
 {
-	"GenotypeSet": {
-		"receptor_genotype_set_id": "1",
-		"genotype_class_list": [
-			{
-				"receptor_genotype_id": "1",
-				"locus": "IGH",
-				"documented_alleles": [
-					{
-						"label": "IGHV1-69*01",
-						"germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
-						"phasing": 1
-					},
-					{
-						"label": "IGHV1-69*02",
-						"germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
-						"phasing": 2
-					}
-				],
-				"undocumented_alleles": [
-					{
-						"allele_name": "IGHD3-1*01_S1234",
-						"sequence": "agtagtagtagt",
-						"phasing": 1
-					}
-				],
-				"deleted_genes": [
-					{
-						"label": "IGHV3-30-3",
-						"germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
-						"phasing": 1
-					}
-				],
-				"inference_process": "repertoire_sequencing"
-			}
-		]
-	}
+    "GenotypeSet": [{
+        "receptor_genotype_set_id": "1",
+        "genotype_class_list": [
+            {
+                "receptor_genotype_id": "1",
+                "locus": "IGH",
+                "documented_alleles": [
+                    {
+                        "label": "IGHV1-69*01",
+                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                        "phasing": 1
+                    },
+                    {
+                        "label": "IGHV1-69*02",
+                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                        "phasing": 2
+                    }
+                ],
+                "undocumented_alleles": [
+                    {
+                        "allele_name": "IGHD3-1*01_S1234",
+                        "sequence": "agtagtagtagt",
+                        "phasing": 1
+                    }
+                ],
+                "deleted_genes": [
+                    {
+                        "label": "IGHV3-30-3",
+                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                        "phasing": 1
+                    }
+                ],
+                "inference_process": "repertoire_sequencing"
+            }
+        ]
+    }]
 }
