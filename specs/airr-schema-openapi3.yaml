@@ -185,6 +185,12 @@ DataFile:
             description: List of germline sets
             items:
               $ref: '#/GermlineSet'
+        GenotypeSet:
+            type: array
+            nullable: false
+            description: List of genotype sets
+            items:
+              $ref: '#/GenotypeSet'
         DataProcessing:
             type: array
             nullable: false
