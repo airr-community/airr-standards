@@ -313,20 +313,7 @@ def write_repertoire(filename, repertoires, info=None, debug=False):
     md['Info'] = info
     md['Repertoire'] = repertoires
 
-    # determine file type from extension and use appropriate loader
-    ext = filename.split('.')[-1]
-    if ext == 'yaml' or ext == 'yml':
-        with open(filename, 'w') as handle:
-            md = yaml.dump(md, handle, default_flow_style=False)
-    elif ext == 'json':
-        with open(filename, 'w') as handle:
-            md = json.dump(md, handle, sort_keys=False, indent=2)
-    else:
-        if debug:
-            sys.stderr.write('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
-        raise TypeError('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
-        
-    return True
+    return write_airr_data(filename, md, info=info, debug=debug)
 
 
 def repertoire_template():
@@ -457,18 +444,29 @@ def write_airr_data(filename, data, info=None, debug=False):
     Returns:
       bool: True if the file is written without error.
     """
-    if not isinstance(repertoires, list):
+    if not isinstance(data, dict):
         if debug:
-            sys.stderr.write('Repertoires parameter is not a list\n')
-        raise TypeError('Repertoires parameter is not a list')
+            sys.stderr.write('Data parameter is not a dictionary\n')
+        raise TypeError('Data parameter is not a dictionary')
 
     md = OrderedDict()
     if info is None:
         info = RearrangementSchema.info.copy()
-        info['title'] = 'Repertoire metadata'
-        info['description'] = 'Repertoire metadata written by AIRR Standards Python Library'
+        info['title'] = 'AIRR Data File'
+        info['description'] = 'AIRR Data File written by AIRR Standards Python Library'
     md['Info'] = info
-    md['Repertoire'] = repertoires
+
+    # loop through each potential AIRR object and add them
+    # this code implies that you cannot write out non-AIRR objects
+    for p in DataFileSchema.properties:
+        if p == 'Info':
+            continue
+
+        obj = data.get(p)
+        if not obj:
+            continue
+        else:
+            md[p] = data[p]
 
     # determine file type from extension and use appropriate loader
     ext = filename.split('.')[-1]
@@ -482,5 +480,5 @@ def write_airr_data(filename, data, info=None, debug=False):
         if debug:
             sys.stderr.write('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
         raise TypeError('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % (ext))
-        
+
     return True
