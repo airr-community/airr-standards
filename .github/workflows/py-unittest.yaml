@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ '2.7', '3.6' ]
+        python-version: [ '3.6' ]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
@@ -33,6 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install jsondiff
       - name: Install package
         run: |
           python setup.py install
