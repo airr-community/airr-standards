@@ -33,6 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install jsondiff
       - name: Install package
         run: |
           python setup.py install
