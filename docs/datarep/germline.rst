@@ -101,6 +101,9 @@ overall ``GermlineSet`` as specified in the schema.
 
 + Some fields require the use of a particular ontology or controlled vocabulary.
 
++ ``GermlineSet`` and ``AlleleDescription`` contain reference fields ``germline_set_ref`` and ``allele_description_ref``. These are intended to be globally unique references (containing identifiers of 
+  the repository, object and version) that can be used in a query API.
+
 + The structure is the same regardless of whether the data is stored in a file or retrieved from a data repository. For example, The :ref:`ADC API <DataCommonsAPI>` will return a properly structured JSON object that can be saved to a file and used directly without modification.
 
 .. _GermlineSetFields:
