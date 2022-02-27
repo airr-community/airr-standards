@@ -789,6 +789,7 @@ AlleleDescription:
             example:
                 id: NCBITAXON:9606
                 label: Homo sapiens
+            nullable: false
         species_subgroup:
             type: string
             nullable: true
@@ -1009,11 +1010,6 @@ GermlineSet:
             description: Publications describing the germline set
             example: "PMID:85642,PMID:12345"
         species:
-            type: string
-            nullable: false
-            description: Binomial designation of subject's species
-            example: Mus musculus
-        species:
             $ref: '#/Ontology'
             nullable: false
             description: Binomial designation of subject's species
@@ -1021,6 +1017,11 @@ GermlineSet:
             example:
                 id: NCBITAXON:9606
                 label: Homo sapiens
+        species_subgroup:
+            type: string
+            description: Race, strain or other species subgroup to which this subject belongs
+            example: BALB/c
+            nullable: true
         species_subgroup_type:
             type: string
             nullable: true
