@@ -88,7 +88,9 @@ overall ``GermlineSet`` as specified in the schema.
 
 + The file should correspond to a list of ``AlleleDescription`` objects, using ``AlleleDescription`` as the key to the list.
 
-+ Each ``AlleleDescription`` object should contain a top-level key/value pair for ``allele_description_id`` that uniquely identifies the allele description object in the file.
++ There should be only one ``AlleleDescription`` for each allele in the list.
+
++ Each ``AlleleDescription`` object should contain a top-level key/value pair for ``allele_description_id`` that uniquely identifies the allele description object in the file. 
 
 + Each ``GermlineSet`` object should contain a top-level key/value pair for ``germline_set_id`` that uniquely identifies the germline set object in the file.
 
