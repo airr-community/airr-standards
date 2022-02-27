@@ -82,6 +82,11 @@ overall ``GermlineSet`` as specified in the schema.
 
 + The file as a whole is considered a dictionary (key/value pair) structure with the keys ``Info``, ``GermlineSet``, and ``AlleleDescription``.
 
++ The ``GermlineSet`` contains fields ``release_version``, ``release_description`` and ``release_date``, which are intended to be used for version identification, under the control of the authors of the
+  ``GermlineSet`` as identified by the fields ``author``, ``lab_name`` and ``lab_address``. If the set is modified by a party other than these authors, that these 6 fields should be
+  modified to reflect the authors of the modification, and their own version identication. These modifications MUST be made if the ``GermlineSet`` is, or is likely to become, public, in order
+  to avoid confusion with the original set prior to modification. Repositories are encouraged to manage version fields automatically.
+
 + The file can (optionally) contain an ``Info`` object, at the beginning of the file, based upon the ``Info`` schema in the OpenAPI specification. If provided, ``version`` in ``Info`` should reference the version of the AIRR schema for the file.
 
 + The file should correspond to a list of ``GermlineSet`` objects, using ``GermlineSet`` as the key to the list.
