@@ -781,10 +781,13 @@ AlleleDescription:
                 - Rearranged only
             description: Type of inference(s) from which this gene sequence was inferred
         species:
-            type: string
+            $ref: '#/Ontology'
             nullable: false
             description: Binomial designation of subject's species
-            example: Mus musculus
+            title: Organism
+            example:
+                id: NCBITAXON:9606
+                label: Homo sapiens
         species_subgroup:
             type: string
             nullable: true
@@ -1008,11 +1011,14 @@ GermlineSet:
             nullable: false
             description: Binomial designation of subject's species
             example: Mus musculus
-        species_subgroup:
-            type: string
-            nullable: true
-            description: Race, strain or other species subgroup to which this subject belongs
-            example: BALB/c
+        species:
+            $ref: '#/Ontology'
+            nullable: false
+            description: Binomial designation of subject's species
+            title: Organism
+            example:
+                id: NCBITAXON:9606
+                label: Homo sapiens
         species_subgroup_type:
             type: string
             nullable: true
