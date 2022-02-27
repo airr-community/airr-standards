@@ -693,6 +693,11 @@ AlleleDescription:
             type: string
             nullable: false
             description: Unique identifier of this AlleleDescription within the file
+        allele_description_ref:
+            type: string
+            nullable: false
+            description: Unique reference to the allele description, in standardized form (Repo:Label:Version)
+            example: OGRDB:Human_IGH:IGHV1-69*01.001
         maintainer:
             type: string
             nullable: false
