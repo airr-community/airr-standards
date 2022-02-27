@@ -718,6 +718,7 @@ AlleleDescription:
             description: Version number of this record, updated whenever a revised version is published or released
         release_date:
             type: string
+            format: date
             nullable: false
             description: Date of this release
         release_description:
@@ -990,6 +991,7 @@ GermlineSet:
             description: Brief descriptive notes of the reason for this release and the changes embodied
         release_date:
             type: string
+            format: date
             nullable: false
             description: Date of this release
         germline_set_name:
