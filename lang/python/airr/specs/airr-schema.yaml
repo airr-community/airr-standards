@@ -709,6 +709,12 @@ AlleleDescription:
             description: Unique identifier of this AlleleDescription within the file
             x-airr:
                 nullable: false
+        allele_description_ref:
+            type: string
+            description: Unique reference to the allele description, in standardized form (Repo:Label:Version)
+            example: OGRDB:Human_IGH:IGHV1-69*01.001
+            x-airr:
+                nullable: false
         maintainer:
             type: string
             description: Maintainer of this sequence record
@@ -731,6 +737,7 @@ AlleleDescription:
                 nullable: false
         release_date:
             type: string
+            format: date
             description: Date of this release
             x-airr:
                 nullable: false
@@ -799,9 +806,12 @@ AlleleDescription:
             x-airr:
                 nullable: false
         species:
-            type: string
+            $ref: '#/Ontology'
             description: Binomial designation of subject's species
-            example: Mus musculus
+            title: Organism
+            example:
+                id: NCBITAXON:9606
+                label: Homo sapiens
             x-airr:
                 nullable: false
         species_subgroup:
@@ -979,6 +989,7 @@ GermlineSet:
                 nullable: false
         release_date:
             type: string
+            format: date
             description: Date of this release
             x-airr:
                 nullable: false
@@ -998,9 +1009,12 @@ GermlineSet:
             description: Publications describing the germline set
             example: "PMID:85642,PMID:12345"
         species:
-            type: string
+            $ref: '#/Ontology'
             description: Binomial designation of subject's species
-            example: Mus musculus
+            title: Organism
+            example:
+                id: NCBITAXON:9606
+                label: Homo sapiens
             x-airr:
                 nullable: false
         species_subgroup:
