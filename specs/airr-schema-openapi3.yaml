@@ -4440,9 +4440,9 @@ Receptor:
                 miairr: defined
                 adc-query-support: true
                 name: Receptor GID
-        receptor_chain_1:
+        receptor_variable_domain_1_aa:
             type: string
-            nullable: true
+            nullable: false
             description: >
                 Complete amino acid sequence of the mature variable domain of the Ig heavy, TCR beta or TCR delta chain.
                 The mature variable domain is defined as encompassing all AA from and including first AA after the the
@@ -4452,7 +4452,7 @@ Receptor:
             x-airr:
                 miairr: defined
                 adc-api-optional: true
-        receptor_chain_2:
+        receptor_variable_domain_2_aa:
             type: string
             nullable: true
             description: >
@@ -4461,6 +4461,29 @@ Receptor:
                 signal peptide to and including the last AA that is completely encoded by the J gene.
             example: >
                 QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL
+            x-airr:
+                miairr: defined
+                adc-api-optional: true
+        receptor_variable_domain_1_locus:
+            type: string
+            nullable: false
+            enum:
+                - IGH
+                - TRB
+                - TRD
+            example: Locus from which the variable domain originates
+            x-airr:
+                miairr: defined
+                adc-api-optional: true
+        receptor_variable_domain_2_locus:
+            type: string
+            nullable: true
+            enum:
+                - IGK
+                - IGL
+                - TRA
+                - TRG
+            example: Locus from which the variable domain originates
             x-airr:
                 miairr: defined
                 adc-api-optional: true

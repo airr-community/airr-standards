@@ -4224,7 +4224,7 @@ Receptor:
                 nullable: false
                 adc-query-support: true
                 name: Receptor GID
-        receptor_chain_1:
+        receptor_variable_domain_1_aa:
             type: string
             description: >
                 Complete amino acid sequence of the mature variable domain of the Ig heavy, TCR beta or TCR delta chain.
@@ -4234,9 +4234,9 @@ Receptor:
                 QVQLQQPGAELVKPGASVKLSCKASGYTFTSYWMHWVKQRPGRGLEWIGRIDPNSGGTKYNEKFKSKATLTVDKPSSTAYMQLSSLTSEDSAVYYCARYDYYGSSYFDYWGQGTTLTVSS
             x-airr:
                 miairr: defined
-                nullable: true
+                nullable: false
                 adc-api-optional: true
-        receptor_chain_2:
+        receptor_variable_domain_2_aa:
             type: string
             description: >
                 Complete amino acid sequence of the mature variable domain of the Ig light, TCR alpha or TCR gamma chain.
@@ -4244,6 +4244,29 @@ Receptor:
                 signal peptide to and including the last AA that is completely encoded by the J gene.
             example: >
                 QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
+        receptor_variable_domain_1_locus:
+            type: string
+            enum:
+                - IGH
+                - TRB
+                - TRD
+            example: Locus from which the variable domain originates
+            x-airr:
+                miairr: defined
+                nullable: false
+                adc-api-optional: true
+        receptor_variable_domain_2_locus:
+            type: string
+            enum:
+                - IGK
+                - IGL
+                - TRA
+                - TRG
+            example: Locus from which the variable domain originates
             x-airr:
                 miairr: defined
                 nullable: true
