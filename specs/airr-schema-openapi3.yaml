@@ -503,10 +503,10 @@ RearrangedSequence:
             enum:
                 - direct sequencing
                 - inference from repertoire
-        notes:
+        rearranged_sequence_description:
             type: string
             nullable: true
-            description: Notes
+            description: Curational notes on the sequence
         repository_name:
             type: string
             nullable: false
@@ -551,10 +551,10 @@ UnrearrangedSequence:
             type: string
             nullable: false
             description: Sequence of interest described in this record (typically this will include gene and promoter region)
-        notes:
+        unrearranged_sequence_description:
             type: string
             nullable: true
-            description: Notes
+            description: Curational notes on the sequence
         repository_name:
             type: string
             nullable: false
@@ -926,10 +926,10 @@ AlleleDescription:
             items:
                 type: string
             description: Gene symbols of any paralogs
-        notes:
+        allele_description_description:
             type: string
             nullable: true
-            description: Notes
+            description: Curational notes on the AlleleDescription. This can be used to give more extensive notes on the decisions taken than are provided in the release_description.
         curational_tags:
             type: array
             nullable: true
@@ -1049,10 +1049,10 @@ GermlineSet:
             items:
               $ref: '#/AlleleDescription'
             description: list of allele_descriptions in the germline set
-        notes:
+        germline_set_description:
             type: string
             nullable: true
-            description: Notes
+            description: Curational notes on the GermlineSet. This can be used to give more extensive notes on the decisions taken than are provided in the release_description.
 
 #
 # Genotype schema
