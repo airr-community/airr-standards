@@ -519,11 +519,11 @@ RearrangedSequence:
             type: string
             nullable: false
             description: Version number of the sequence within the repository
-        seq_start:
+        sequence_start:
             type: integer
             nullable: false
             description: Start co-ordinate of the sequence detailed in this record, within the sequence deposited
-        seq_end:
+        sequence_end:
             type: integer
             nullable: false
             description: End co-ordinate of the sequence detailed in this record, within the sequence deposited
