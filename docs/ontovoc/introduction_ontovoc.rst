@@ -118,8 +118,8 @@ Ontologies used within AIRR standards
 
 .. _ONTO_CRIT_CURRENT_7:
 
-7. SHOULD comply to the  `OBO Foundry Principles`_. This does not imply
-   a preference 
+7. SHOULD comply to the `OBO Foundry Principles`_. This does not imply
+   a preference.
 
 
 Comments on criteria:
@@ -449,7 +449,7 @@ response we receive from the above starts with a JSON object as follows.
       "short_form" : "DOID_9538",
       "obo_id" : "DOID:9538",
       [Content edited because of length]
-      
+
 In this repsonse, you can see that the Ontology object that we requested
 has a ``label`` field that contains the value ``multiple myeloma`` and
 that the ``id`` field has a value of ``DOID:9538``.
