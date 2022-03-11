@@ -403,7 +403,7 @@ components:
       properties:
         Info:
           $ref: '#/components/schemas/info_object'
-        Clone:
+        Cell:
           $ref: '#/components/schemas/cell_list'
         Facet:
           $ref: '#/components/schemas/facet_list'
