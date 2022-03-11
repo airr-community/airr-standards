@@ -57,7 +57,10 @@ CURIEResolution:
     curie_prefix: CL
     iri_prefix:
       - "http://purl.obolibrary.org/obo/CL_"
-
+  -
+    curie_prefix: ENSG
+    iri_prefix:
+      - "https://www.ensembl.org/Multi/Search/Results?q="
 
 # AIRR specification extensions
 #
