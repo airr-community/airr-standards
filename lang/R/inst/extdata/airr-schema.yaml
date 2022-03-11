@@ -2964,7 +2964,7 @@ Rearrangement:
                 adc-query-support: true
                 set: 6
                 subset: data (processed sequence)
-                name: V gene with allele      
+                name: V gene with allele
         d_call:
             type: string
             description: >
@@ -3975,12 +3975,12 @@ GeneExpression:
             $ref: '#/Ontology'
             description: Name of the property observed, typically a gene idenifier from a canonical resource such as Ensembl and its label (e.g. ENSG00000275747, IGHV3-79)
             title: Gene name
+            nullable: true
             example:
                 id: ENSG:ENSG00000275747
                 label: IGHV3-79
             x-airr:
                 miairr: defined
-                nullable: true
                 adc-query-support: true
                 format: ontology
                 name: Name of the property
