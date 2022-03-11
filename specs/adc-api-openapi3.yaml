@@ -120,12 +120,12 @@ components:
         properties:
           count:
             type: integer
-  
+
     # list of rearrangement extension fields
     rearrangement_extension:
       description: The extended Rearrangement object with additional query fields for the ADC.
       allOf:
-        - $ref: https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Rearrangement
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Rearrangement'
         - type: object
           properties:
             adc_v_subgroup:
@@ -217,113 +217,143 @@ components:
               adc-query_support: true
               name: C gene
               
-  # list of rearrangement annotations
+    # list of rearrangement annotations
     rearrangement_list:
       type: array
       items:
         $ref: '#/components/schemas/rearrangement_extension'
 
-  # list of clone extension fields
-  clone_extension:
-    description: The extended Clone object with additional query fields for the ADC.
-    allOf:
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Clone'
-      - type: object
-        properties:
-          adc_v_subgroup:
-            type: string
-            description: >
-              V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-              the relevant gene nomenclature should be followed (e.g., IGHV4).
-            example: IGHV4
-            x-airr:
-              nullable: true
-              adc-api-optional: false
-              adc-query_support: true
-              name: V gene subgroup
-          adc_v_gene:
-            type: string
-            description: >
-              V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-              the relevant gene nomenclature should be followed (e.g., IGHV4-59).
-            example: IGHV4-59
-            x-airr:
-              nullable: true
-              adc-api-optional: false
-              adc-query_support: true
-              name: V gene
-          adc_d_subgroup:
-            type: string
-            description: >
-              D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-              the relevant gene nomenclature should be followed (e.g., IGHD3).
-            example: IGHD3
-            x-airr:
-              nullable: true
-              adc-api-optional: false
-              adc-query_support: true
-              name: D gene subgroup
-          adc_d_gene:
-            type: string
-            description: >
-              D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-              the relevant gene nomenclature should be followed (e.g., IGHD3-10).
-            example: IGHD3-10
-            x-airr:
-              nullable: true
-              adc-api-optional: false
-              adc-query_support: true
-              name: D gene
-          adc_j_subgroup:
-            type: string
-            description: >
-              J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-              the relevant gene nomenclature should be followed (e.g., IGHJ4).
-            example: IGHJ4
-            x-airr:
-              nullable: true
-              adc-api-optional: false
-              adc-query_support: true
-              name: J gene subgroup
-          adc_j_gene:
-            type: string
-            description: >
-              J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-              the relevant gene nomenclature should be followed (e.g., IGHJ4).
-            example: IGHJ4
-            x-airr:
-              nullable: true
-              adc-api-optional: false
-              adc-query_support: true
-              name: J gene
-          adc_c_subgroup:
-            type: string
-            description: >
-              C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-              the relevant gene nomenclature should be followed (e.g., IGHG1).
-            example: IGHG1
-            x-airr:
-              nullable: true
-              adc-api-optional: false
-              adc-query_support: true
-              name: C gene subgroup
-          adc_c_gene:
-            type: string
-            description: >
-              C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
-              the relevant gene nomenclature should be followed (e.g., IGHG1).
-            example: IGHG1
-            x-airr:
-              nullable: true
-              adc-api-optional: false
-              adc-query_support: true
-              name: C gene
+    # list of clone extension fields
+    clone_extension:
+      description: The extended Clone object with additional query fields for the ADC.
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Clone'
+        - type: object
+          properties:
+            adc_v_subgroup:
+              type: string
+              description: >
+                V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHV4).
+              example: IGHV4
+              x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: V gene subgroup
+            adc_v_gene:
+              type: string
+              description: >
+                V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHV4-59).
+              example: IGHV4-59
+              x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: V gene
+            adc_d_subgroup:
+              type: string
+              description: >
+                D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHD3).
+              example: IGHD3
+              x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: D gene subgroup
+            adc_d_gene:
+              type: string
+              description: >
+                D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHD3-10).
+              example: IGHD3-10
+              x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: D gene
+            adc_j_subgroup:
+              type: string
+              description: >
+                J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHJ4).
+              example: IGHJ4
+              x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: J gene subgroup
+            adc_j_gene:
+              type: string
+              description: >
+                J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHJ4).
+              example: IGHJ4
+              x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: J gene
+            adc_c_subgroup:
+              type: string
+              description: >
+                C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHG1).
+              example: IGHG1
+              x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: C gene subgroup
+            adc_c_gene:
+              type: string
+              description: >
+                C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHG1).
+              example: IGHG1
+              x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: C gene
               
     # list of clone annotations
     clone_list:
       type: array
       items:
-      $ref: '#/definitions/clone_extension'
+        $ref: '#/components/schemas/clone_extension'
+
+    # list of cell extension fields
+    cell_extension:
+      description: The extended Cell object with additional query fields for the ADC.
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Cell'
+        - type: object
+          properties:
+            adc_annotation_cell_id:
+              type: string
+              description: >
+                The Cell ID used by the annotation tool to annotate the Cell during data processing.
+              example: AAACCTGAGCACCGCT-1
+              x-airr:
+                nullable: true
+                adc-api-optional: false
+                adc-query_support: true
+                name: Tool Cell ID
+
+    # list of cell annotations
+    cell_list:
+      type: array
+      items:
+        $ref: '#/components/schemas/cell_extension'
+
+    # list of gene expression features
+    expression_list:
+      type: array
+      items:
+        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/GeneExpression'
 
     # The response object /repertoire endpoint
     repertoire_response:
@@ -367,48 +397,36 @@ components:
         Facet:
           $ref: '#/components/schemas/facet_list'
 
-# list of cell annotations
-  cell_list:
-    type: array
-    items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Cell'
+    # The response object /clone endpoint
+    cell_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        Clone:
+          $ref: '#/components/schemas/cell_list'
+        Facet:
+          $ref: '#/components/schemas/facet_list'
+          
+    # The response object /cell/{cell_id} endpoint
+    cell_id_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        Cell:
+          $ref: '#/components/schemas/cell_list'
 
-  # The response object /cell/{cell_id} endpoint
-  cell_id_response:
-    type: object
-    properties:
-      Info:
-        $ref: '#/definitions/info_object'
-      Cell:
-        $ref: '#/definitions/cell_list'
-
-  # The response object /cell endpoint
-  cell_response:
-    type: object
-    properties:
-      Info:
-        $ref: '#/definitions/info_object'
-      Cell:
-        $ref: '#/definitions/cell_list'
-      Facet:
-        $ref: '#/definitions/facet_list'
-
-  # list of gene expression features
-  expression_list:
-    type: array
-    items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Cell'
-
-  # The response object for the /expression endpoint
-  expression_response:
-    type: object
-    properties:
-      Info:
-        $ref: '#/definitions/info_object'
-      GeneExpression:
-        $ref: '#/definitions/expression_list'
-      Facet:
-        $ref: '#/definitions/facet_list'
+    # The response object for the /expression endpoint
+    expression_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        GeneExpression:
+          $ref: '#/components/schemas/expression_list'
+        Facet:
+          $ref: '#/components/schemas/facet_list'
 
     # error response
     error_response:
