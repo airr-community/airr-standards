@@ -4163,28 +4163,28 @@ GeneExpression:
             description: >
                 Identifier of the cell to which this expression data is related.
             title: Cell identifier
+            nullable: false
             example: W06_046_091
             x-airr:
                 miairr: defined
-                nullable: false
                 adc-query-support: true
                 name: Cell identifier
         repertoire_id:
             type: string
             description: Identifier for the associated repertoire in study metadata.
             title: Parental repertoire of cell
+            nullable: true
             x-airr:
                 miairr: defined
-                nullable: true
                 adc-query-support: true
                 name: Parental repertoire of cell
         data_processing_id:
             type: string
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             title: Data processing for cell
+            nullable: true
             x-airr:
                 miairr: defined
-                nullable: true
                 adc-query-support: true
                 name: Data processing for cell
         property:
@@ -4204,9 +4204,9 @@ GeneExpression:
             type: number
             description: Level at which the property was observed in the experiment (non-normalized).
             title: Property value
+            nullable: true
             example: 3
             x-airr:
                 miairr: defined
-                nullable: true
                 adc-query-support: true
                 name: Property value
