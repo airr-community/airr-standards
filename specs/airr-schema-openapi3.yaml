@@ -656,7 +656,7 @@ AlleleDescription:
             type: string
             nullable: true
             description: Race, strain or other species subgroup to which this subject belongs
-            example: BALB/C
+            example: BALB/c
         species_subgroup_type:
             type: string
             nullable: true
@@ -674,7 +674,7 @@ AlleleDescription:
                 - draft
                 - retired
                 - withdrawn
-            description: Status of record, assumed active if the field is not proesent
+            description: Status of record, assumed active if the field is not present
         subgroup_designation:
             type: string
             nullable: true
@@ -766,7 +766,7 @@ AlleleDescription:
         j_donor_splice:
             type: integer
             nullable: true
-            description: Co-ordinate (in the sequence field) of the 3' splice donor site (J-genes only)
+            description: Co-ordinate (in the sequence field) of the final 3' nucleotide of the J-REGION (J-genes only)
         v_gene_delineations:
             type: array
             nullable: true
@@ -879,7 +879,7 @@ GermlineSet:
             type: string
             nullable: true
             description: Race, strain or other species subgroup to which this subject belongs
-            example: BALB/C
+            example: BALB/c
         species_subgroup_type:
             type: string
             nullable: true
@@ -916,7 +916,7 @@ GermlineSet:
 # Genotype schema
 #
 
-# GenotypeSet lists the  Genotypes (describing different loci) inferred for this subject
+# GenotypeSet lists the Genotypes (describing different loci) inferred for this subject
 
 GenotypeSet:
     discriminator:
@@ -1299,15 +1299,20 @@ Study:
                 type: string
                 enum:
                     - contains_ig
-                    - contains_tcr
-                    - contains_single_cell
+                    - contains_tr
                     - contains_paired_chain
+                    - contains_schema_rearrangement
+                    - contains_schema_clone
+                    - contains_schema_cell
+                    - contains_schema_receptor
             nullable: true
             description: Keywords describing properties of one or more data sets in a study
             title: Keywords for study
             example:
               - contains_ig
-              - contains_paired_chain
+              - contains_schema_rearrangement
+              - contains_schema_clone
+              - contains_schema_cell
             x-airr:
                 miairr: important
                 adc-query-support: true

@@ -38,8 +38,6 @@ File Format Specification
 
 Data for ``Rearrangement`` or ``Alignment`` objects are stored as rows in a
 *tab-delimited* file and should be compatible with any TSV reader.
-A dataset is defined in this context as: a TSV file, a TSV with a companion YAML file
-containing metadata, or a directory containing multiple TSV files and YAML files.
 
 Encoding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
