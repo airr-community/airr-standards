@@ -352,7 +352,7 @@ definitions:
   cell_list:
     type: array
     items:
-      $ref: '#/definitions/clone_extension'
+      $ref: '#/definitions/cell_extension'
 
   # The response object /cell/{cell_id} endpoint
   cell_id_response:
