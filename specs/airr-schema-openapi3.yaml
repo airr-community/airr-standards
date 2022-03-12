@@ -4149,7 +4149,8 @@ Cell:
 # data_processing_id as cell_id is not guaranteed to be unique outside the data processing for 
 # a single repertoire.
 GeneExpression:
-    discriminator: AIRR
+    discriminator:
+        propertyName: AIRR
     type: object
     required:
         - reperotire_id
