@@ -737,8 +737,10 @@ AlleleDescription:
                 nullable: false
         release_date:
             type: string
-            format: date
+            format: date-time
             description: Date of this release
+            title: Release Date
+            example: "2021-02-02"
             x-airr:
                 nullable: false
         release_description:
@@ -989,8 +991,10 @@ GermlineSet:
                 nullable: false
         release_date:
             type: string
-            format: date
+            format: date-time
             description: Date of this release
+            title: Release Date
+            example: "2021-02-02"
             x-airr:
                 nullable: false
         germline_set_name:
