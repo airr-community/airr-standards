@@ -45,8 +45,12 @@ These data repositories all implement the AIRR Data Commons (ADC) API programmat
 query and download AIRR-seq data. 
 
 + :ref:`iReceptor Public Archive <iReceptor>`
-
++ :ref:`iReceptor COVID-19 Repository <iReceptor>`
 + :ref:`VDJServer Community Data Portal <VDJServer>`
++ sciReptor (Germany)
++ VDJBase (Canada)
++ NICD (Africa)
++ University of Muenster (Germany)
 
 Querying the AIRR Data Commons
 ---------------------------------------
