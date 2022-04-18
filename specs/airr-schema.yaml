@@ -3928,11 +3928,11 @@ Cell:
                 adc-query-support: true
                 name: Virtual pairing
 
-# The GeneExpression object acts as a container to hold a single expression level measurement from
+# The CellExpression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and 
 # data_processing_id as cell_id is not guaranteed to be unique outside the data processing for 
 # a single repertoire.
-GeneExpression:
+CellExpression:
     discriminator: AIRR
     type: object
     required:
