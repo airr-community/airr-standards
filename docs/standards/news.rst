@@ -32,7 +32,8 @@ New Schemas:
 
 New fields:
 
-Repertoire
+Repertoire:
+
 - study_contact
 - adc_publish_date
 - adc_update_data
@@ -40,7 +41,8 @@ Repertoire
 - collection_time_point_relative_unit
 - template_amount_unit
 
-Alignment
+Alignment:
+
 - quality
 - quality_alignment
 - c_sequence_start
@@ -54,10 +56,12 @@ Alignment
 - d_frame
 - d2_frame
 
-Clone
+Clone:
+
 - clone_abundance
 
 Changed fields:
+
 - keywords_study
 - collection_time_point_relative
 - template_amount
