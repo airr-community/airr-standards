@@ -8,7 +8,59 @@ Version 1.4.0-dev: (In development)
 
 **Version 1.4-dev, In development.**
 
-New Schema:
+New Schemas:
+
+- DataFile
+- InfoObject
+- TimePoint
+- Acknowledgement
+- RearrangedSequence
+- UnRearrangedSequence
+- SequenceDelineationV
+- AlleleDescription
+- GermlineSet
+- GenotypeSet
+- Genotype
+- MHCGenotypeSet
+- MHCGenotype
+- RepertoireGroup
+- Clone
+- Node
+- Tree
+- Cell
+- CellExpression
+
+New fields:
+
+Repertoire
+- study_contact
+- adc_publish_date
+- adc_update_data
+- genotype
+- collection_time_point_relative_unit
+- template_amount_unit
+
+Alignment
+- quality
+- quality_alignment
+- c_sequence_start
+- c_sequence_end
+- c_germline_start
+- c_germline_end
+- c_alignment_start
+- c_alignment_end
+- v_frameshift
+- j_frameshift
+- d_frame
+- d2_frame
+
+Clone
+- clone_abundance
+
+Changed fields:
+- keywords_study
+- collection_time_point_relative
+- template_amount
 
 1. Introduced the ``RepertoireGroup`` Schema for describing sets of repertoires
    to be analyzed together. Has support for defining a time series using ``TimePoint``.
