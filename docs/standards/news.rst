@@ -8,7 +8,7 @@ Version 1.4.0-dev: (In development)
 
 **Version 1.4-dev, In development.**
 
-New Schemas:
+***New Schemas***
 
 - DataFile
 - InfoObject
@@ -30,7 +30,7 @@ New Schemas:
 - Cell
 - CellExpression
 
-New fields:
+***New fields***
 
 Repertoire:
 
@@ -60,7 +60,7 @@ Clone:
 
 - clone_abundance
 
-Changed fields:
+***Changed fields***
 
 - keywords_study
 - collection_time_point_relative
