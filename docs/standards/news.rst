@@ -8,11 +8,11 @@ Version 1.4.0-dev: (In development)
 
 **Version 1.4-dev, In development.**
 
-***New Schemas***
+**New Schemas**
 
 - DataFile
 - InfoObject
-- TimePoint
+- TimePoint: Time series object
 - Acknowledgement
 - RearrangedSequence
 - UnRearrangedSequence
@@ -23,14 +23,14 @@ Version 1.4.0-dev: (In development)
 - Genotype
 - MHCGenotypeSet
 - MHCGenotype
-- RepertoireGroup
+- RepertoireGroup: describing sets of repertoires to be analyzed together.
 - Clone
 - Node
 - Tree
 - Cell
 - CellExpression
 
-***New fields***
+**New fields**
 
 Repertoire:
 
@@ -51,29 +51,20 @@ Alignment:
 - c_germline_end
 - c_alignment_start
 - c_alignment_end
-- v_frameshift
-- j_frameshift
-- d_frame
-- d2_frame
+- v_frameshift: annotation field related to alignment reading frames.
+- j_frameshift: annotation field related to alignment reading frames.
+- d_frame: annotation field related to alignment reading frames.
+- d2_frame: annotation field related to alignment reading frames.
 
 Clone:
 
 - clone_abundance
 
-***Changed fields***
+**Changed fields**
 
 - keywords_study
 - collection_time_point_relative
 - template_amount
-
-1. Introduced the ``RepertoireGroup`` Schema for describing sets of repertoires
-   to be analyzed together. Has support for defining a time series using ``TimePoint``.
-
-Rearrangement Schema:
-
-1. Added the optional fields ``v_frameshift``, ``j_frameshift``,
-   ``d_frame`` and ``d2_frame`` defining annotations related to alignment
-   reading frames.
 
 
 Version 1.3.1: October 13, 2020
