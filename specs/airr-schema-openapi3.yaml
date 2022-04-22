@@ -3734,6 +3734,7 @@ Rearrangement:
                 where frame 1 is relative to the first codon of D gene reference sequence.
         consensus_count:
             type: integer
+            nullable: true
             description: >
                 Number of reads contributing to the UMI consensus or contig assembly for this sequence.
                 For example, the sum of the number of reads for all UMIs that contribute to
@@ -3753,6 +3754,7 @@ Rearrangement:
                 name: Read count
         umi_count:
             type: integer
+            nullable: true
             description: >
                 Number of distinct UMIs represented by this sequence.
                 For example, the total number of UMIs that contribute to
