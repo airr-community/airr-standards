@@ -374,7 +374,7 @@ definitions:
     properties:
       Info:
         $ref: '#/definitions/info_object'
-      GeneExpression:
+      CellExpression:
         $ref: '#/definitions/expression_list'
       Facet:
         $ref: '#/definitions/facet_list'
