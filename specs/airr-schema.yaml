@@ -1192,9 +1192,11 @@ MHCGenotype:
                 nullable: false
         genotype_class:
             type: string
+            description: Genotype class for this Genotype, either MHC Class 1 or MHC Class 2.
             enum:
-              - MHC    # do we need this enum??
-            example: MHC
+              - MH1
+              - MH2
+            example: MH1
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -1221,11 +1223,15 @@ MHCGenotype:
         genotype_process:
             type: string
             enum:
-                - genomic_sequencing
-                - repertoire_sequencing
+                - pcr_low_resolution
+                - pcr_high_resolution
+                - sequence_low_resolution
+                - sequence_high_resolution
+                - inference_low_resolution
+                - inference_high_resolution
             description: Information on how the genotype was acquired. Controlled vocabulary.
             title: Genotype acquisition process
-            example: repertoire_sequencing
+            example: pcr_low_resolution
             x-airr:
                 nullable: true
                 adc-query-support: true
