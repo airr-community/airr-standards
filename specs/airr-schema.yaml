@@ -3973,8 +3973,8 @@ CellExpression:
                 name: Data processing for cell
         property:
             $ref: '#/Ontology'
-            description: Name of the property observed, typically a gene idenifier from a canonical resource such as Ensembl and its label (e.g. ENSG00000275747, IGHV3-79)
-            title: Gene name
+            description: Name of the property observed, typically a gene or antibody idenifier (and its label) from a canonical resource such as Ensembl (e.g. ENSG00000275747, IGHV3-79) or Antibody Registry (ABREG:1236456, Purified anti-mouse/rat/human CD27 antibody).
+            title: Property information
             nullable: true
             example:
                 id: ENSG:ENSG00000275747
@@ -3983,7 +3983,7 @@ CellExpression:
                 miairr: defined
                 adc-query-support: true
                 format: ontology
-                name: Name of the property
+                name: Property information
         value:
             type: number
             description: Level at which the property was observed in the experiment (non-normalized).
