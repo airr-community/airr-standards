@@ -61,6 +61,10 @@ CURIEResolution:
     curie_prefix: ENSG
     iri_prefix:
       - "https://www.ensembl.org/Multi/Search/Results?q="
+  -
+    curie_prefix: ABREG
+    iri_prefix:
+      - "http://antibodyregistry.org/AB_"
 
 # AIRR specification extensions
 #
