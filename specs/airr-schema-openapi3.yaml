@@ -3756,7 +3756,7 @@ Rearrangement:
             description: >
                 Number of distinct UMIs represented by this sequence.
                 For example, the total number of UMIs that contribute to
-                the contig assembly for the query sequence.              
+                the contig assembly for the query sequence.
         cell_id:
             type: string
             nullable: true
