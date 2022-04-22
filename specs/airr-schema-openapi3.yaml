@@ -3970,10 +3970,12 @@ Clone:
             description: Junction region end position in the alignment (1-based closed interval).
         umi_count:
             type: integer
+            nullable: true
             description: >
                 Number of distinct UMIs observed across all sequences (Rearrangement records) in this clone.
         clone_count:
             type: integer
+            nullable: true
             description: >
                 Absolute count of the size (number of members) of this clone in the repertoire.
                 This could simply be the number of sequences (Rearrangement records) observed in this clone,
