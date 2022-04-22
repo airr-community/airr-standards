@@ -411,7 +411,7 @@ components:
       properties:
         Info:
           $ref: '#/components/schemas/info_object'
-        GeneExpression:
+        CellExpression:
           $ref: '#/components/schemas/expression_list'
         Facet:
           $ref: '#/components/schemas/facet_list'
