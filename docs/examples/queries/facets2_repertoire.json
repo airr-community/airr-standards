@@ -1,10 +1,22 @@
 {
     "filters":{
-        "op":"=",
-        "content": {
-            "field":"sample.pcr_target.pcr_target_locus",
-            "value":"IGH"
-        }
+        "op":"and",
+        "content": [
+            {
+                "op":"=",
+                "content": {
+                    "field":"study.study_id",
+                    "value":"PRJNA300878"
+                }
+            },
+            {
+                "op":"=",
+                "content": {
+                    "field":"sample.pcr_target.pcr_target_locus",
+                    "value":"IGH"
+                }
+            }
+        ]
     },
     "facets":"subject.subject_id"
 }
