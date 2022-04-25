@@ -2599,7 +2599,7 @@ RawSequenceData:
     discriminator: AIRR
     type: object
     required:
-        - sequencing_data_pid
+        - sequence_data_ref
         - file_type
         - filename
         - read_direction
@@ -2608,7 +2608,7 @@ RawSequenceData:
         - paired_read_direction
         - paired_read_length
     properties:
-        sequencing_data_pid:
+        sequence_data_ref:
             type: string
             description: Persistent identifier of raw data stored in an archive (e.g. INSDC run ID). Data archive should be identified in the CURIE prefix.
             title: Raw sequencing data persistent identifier
