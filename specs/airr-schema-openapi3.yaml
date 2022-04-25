@@ -3736,7 +3736,7 @@ Rearrangement:
             type: integer
             nullable: true
             description: >
-                Number of reads contributing to the (UMI) consensus for this sequence.
+                Number of reads contributing to the UMI consensus or contig assembly for this sequence.
                 For example, the sum of the number of reads for all UMIs that contribute to
                 the query sequence.
         duplicate_count:
@@ -3744,8 +3744,7 @@ Rearrangement:
             nullable: true
             description: >
                 Copy number or number of duplicate observations for the query sequence.
-                For example, the number of UMIs sharing an identical sequence or the number
-                of identical observations of this sequence absent UMIs.
+                For example, the number of identical reads observed for this sequence.
             title: Read count
             example: 123
             x-airr:
@@ -3753,6 +3752,13 @@ Rearrangement:
                 set: 6
                 subset: data (processed sequence)
                 name: Read count
+        umi_count:
+            type: integer
+            nullable: true
+            description: >
+                Number of distinct UMIs represented by this sequence.
+                For example, the total number of UMIs that contribute to
+                the contig assembly for the query sequence.
         cell_id:
             type: string
             nullable: true
@@ -3962,14 +3968,20 @@ Clone:
             type: integer
             nullable: true
             description: Junction region end position in the alignment (1-based closed interval).
-        sequence_count:
+        umi_count:
             type: integer
             nullable: true
-            description: Number of Rearrangement records (sequences) included in this clone.
-        clone_abundance:
+            description: >
+                Number of distinct UMIs observed across all sequences (Rearrangement records) in this clone.
+        clone_count:
             type: integer
             nullable: true
-            description: Non-normalized absolute count of the number of members (immune cells) in this clone.
+            description: >
+                Absolute count of the size (number of members) of this clone in the repertoire.
+                This could simply be the number of sequences (Rearrangement records) observed in this clone,
+                the number of distinct cell barcodes (unique cell_id values),
+                or a more sophisticated calculation appropriate to the experimental protocol.
+                Absolute count is provided versus a frequency so that downstream analysis tools can perform their own normalization.
         seed_id:
             type: string
             nullable: true
