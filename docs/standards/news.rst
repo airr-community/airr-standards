@@ -41,6 +41,10 @@ Repertoire:
 - collection_time_point_relative_unit
 - template_amount_unit
 
+Rearrangement:
+
+- umi_count
+
 Alignment:
 
 - quality
@@ -58,13 +62,14 @@ Alignment:
 
 Clone:
 
-- clone_abundance
+- clone_count
 
 **Changed fields**
 
 - keywords_study
 - collection_time_point_relative
 - template_amount
+- duplicate_count
 
 
 Version 1.3.1: October 13, 2020
