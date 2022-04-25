@@ -4477,6 +4477,7 @@ Receptor:
             enum:
                 - IGH
                 - TRB
+                - TRD
             description: Locus from which the variable domain originates (chain type)
             x-airr:
                 miairr: defined
@@ -4488,6 +4489,7 @@ Receptor:
                 - IGK
                 - IGL
                 - TRA
+                - TRG
             description: Locus from which the variable domain originates (chain tye)
             x-airr:
                 miairr: defined
@@ -4505,28 +4507,43 @@ Receptor:
                             - MHC:peptide
                             - MHC:non-peptide
                             - peptide
+                            - non-peptide
                         description: >
                            Structure of ligand binding to receptor. For TCRs this is the combination of MHC and peptide
-                    mhc_allele_name:
+                    mhc_class:
                         type: string
                         nullable: true
                         description: >
-                           MHC restriction of the antigen (only for TCR)
+                           Defining the classes of major histocompatibility complex (MHC) molecules (only for TCR)
+                        example: human MHC class II
+                    mhc_locus:
+                        type: string
+                        nullable: true
+                        description: MHC molecules which the peptidic or non-peptidic antigen is bound into
                         example: HLA-DR
+                    mhc_chain_1_name:
+                        type: string
+                        nullable: true
+                        description: Allele name of an MHC alpha chain
+                        example: HLA-DRA
+                    mhc_chain_2_name:
+                        type: string
+                        nullable: true
+                        description: Allele name of an MHC class II beta chain or an invariant beta2-microglobin chain
+                        example: HLA-DRB1*04:01
                     antigen:
                         type: string
                         description: >
-                           The amino acid sequences of peptide against which the receptor was tested. Any substance that stimulates an immune response in the body, such as through antibody production or by presentation to a T-cell receptor after binding to a major histocompability complex (MHC)
+                           The substance against which the receptor was tested. Any substance that stimulates an immune response in the body, such as through antibody production or by presentation to a T-cell receptor after binding to a major histocompability complex (MHC)
                         example: PSDKHIKEYLNKIQN
                     antigen_type:
                         type: string
                         description: >
-                           Defining the structure of an antigen. There are non-peptidic structures bindng to major histocompatibility complex (MHC). 
+                           Defining the structure of an antigen. There are non-peptidic structures bindng to antibody or  major histocompatibility complex (MHC) to stimulate immune response. 
                         example: peptide
                     antigen_curie:
                         type: string
-                        description: >
-                            Identifiers for antigen reference source
+                        description: Identifiers for antigen reference source
                         example: UNIPROT:P19597
                     peptide_start:
                         type: integer
