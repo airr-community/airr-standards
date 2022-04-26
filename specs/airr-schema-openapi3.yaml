@@ -1235,6 +1235,22 @@ MHCGenotype:
                         description: >
                             The accepted designation of an allele, usually its gene symbol plus allele/sub-allele/etc
                             identifiers, if provided by the mhc_typing method
+                    gene:
+                        $ref: '#/Ontology'
+                        nullable: true
+                        description: The MHC gene to which the described allele belongs
+                        title: MHC gene
+                        example:
+                            id: MRO:0000046
+                            label: HLA-A
+                        x-airr:
+                            adc-query-support: false
+                            format: ontology
+                            ontology:
+                                draft: true
+                                top_node:
+                                    id: MRO:0000004
+                                    label: MHC gene
                     reference_set_ref:
                         type: string
                         nullable: false
