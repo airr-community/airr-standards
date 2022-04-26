@@ -1168,15 +1168,16 @@ MHCGenotypeSet:
     type: object
     required:
         - mhc_genotype_set_id
+        - mhc_genotype_list
     properties:
         mhc_genotype_set_id:
             type: string
             nullable: false
-            description: A unique identifier for this MHC Genotype Set
-        mhc_genotype_class_list:
-            description: List of classes included in this MHC Genotype set
+            description: A unique identifier for this MHCGenotypeSet
+        mhc_genotype_list:
+            description: List of MHCGenotypes included in this set
             type: array
-            nullable: true
+            nullable: false
             items:
                 $ref: '#/MHCGenotype'
 
