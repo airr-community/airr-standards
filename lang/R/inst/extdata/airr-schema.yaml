@@ -1233,6 +1233,22 @@ MHCGenotype:
                             identifiers, if provided by the mhc_typing method
                         x-airr:
                             nullable: false
+                    gene:
+                        $ref: '#/Ontology'
+                        description: The MHC gene to which the described allele belongs
+                        title: MHC gene
+                        example:
+                            id: MRO:0000046
+                            label: HLA-A
+                        x-airr:
+                            nullable: true
+                            adc-query-support: false
+                            format: ontology
+                            ontology:
+                                draft: true
+                                top_node:
+                                    id: MRO:0000004
+                                    label: MHC gene
                     reference_set_ref:
                         type: string
                         description: Repository and list from which it was taken (issuer/name/version)
