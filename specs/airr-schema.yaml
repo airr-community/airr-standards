@@ -1192,11 +1192,11 @@ MHCGenotype:
                 nullable: false
         genotype_class:
             type: string
-            description: Genotype class for this Genotype, either MHC Class 1 or MHC Class 2.
+            description: Genotype class for this Genotype, either MHC class I or MHC class II.
             enum:
-              - MH1
-              - MH2
-            example: MH1
+              - mhc_class_i
+              - mhc_class_ii
+            example: mhc_class_i
             x-airr:
                 nullable: true
                 adc-query-support: true
