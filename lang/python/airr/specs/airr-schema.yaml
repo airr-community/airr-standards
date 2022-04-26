@@ -1178,7 +1178,7 @@ MHCGenotypeSet:
             items:
                 $ref: '#/MHCGenotype'
 
-# Genotype of major histocompatibility complex (MHC) class I and II receptors
+# Genotype of major histocompatibility complex (MHC) class I and II loci
 MHCGenotype:
     discriminator: AIRR
     type: object
@@ -1187,12 +1187,12 @@ MHCGenotype:
     properties:
         mhc_genotype_id:
             type: string
-            description: A unique identifier for this MHC Genotype, assumed to be unique in the context of the study.
+            description: A unique identifier for this MHCGenotype, assumed to be unique in the context of the study.
             x-airr:
                 nullable: false
         genotype_class:
             type: string
-            description: Genotype class for this Genotype, either MHC class I or MHC class II.
+            description: Genotype class for this MHCGenotype, either MHC class I or class II.
             enum:
               - mhc_class_i
               - mhc_class_ii
@@ -1229,8 +1229,8 @@ MHCGenotype:
                 - sequence_high_resolution
                 - inference_low_resolution
                 - inference_high_resolution
-            description: Information on how the genotype was acquired. Controlled vocabulary.
-            title: Genotype acquisition process
+            description: Information on how the genotype was acquired
+            title: MHC genotype acquisition process
             example: pcr_low_resolution
             x-airr:
                 nullable: true
