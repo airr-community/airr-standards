@@ -44,6 +44,14 @@ CURIEMap:
     map:
       OBO:
         iri_prefix: "http://purl.obolibrary.org/obo/DOID_"
+  MRO:
+    type: ontology
+    default:
+      map: OBO
+      provider: OLS
+    map:
+      OBO:
+        iri_prefix: "http://purl.obolibrary.org/obo/MRO_"
   NCBITAXON:
     type: taxonomy
     default:
@@ -148,6 +156,11 @@ InformationProvider:
         ontology_id: DOID
       OLS:
         ontology_id: doid
+    MRO:
+      Ontobee:
+        ontology_id: MRO
+      OLS:
+        ontology_id: mro
     NCBITAXON:
       Ontobee:
         ontology_id: NCBITaxon
