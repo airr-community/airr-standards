@@ -186,6 +186,10 @@ InformationProvider:
                 ontology_id: UO
             OLS:
                 ontology_id: uo
+<<<<<<< HEAD
+=======
+
+>>>>>>> beb368a (Fix indentation of CURIE and Provider objects)
 
 # AIRR specification extensions
 #
