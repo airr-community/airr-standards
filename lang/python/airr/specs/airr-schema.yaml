@@ -1159,8 +1159,7 @@ Genotype:
                 adc-query-support: true
                 format: controlled vocabulary
 
-# List of MHCGenotypes used for analysis to describe
-# a subject's genotype
+# List of MHCGenotypes describing a subject's genotype
 MHCGenotypeSet:
     discriminator: AIRR
     type: object
@@ -1169,73 +1168,72 @@ MHCGenotypeSet:
     properties:
         mhc_genotype_set_id:
             type: string
-            description: A unique identifier for this MHC Genotype Set.
+            description: A unique identifier for this MHCGenotypeSet
             x-airr:
                 nullable: false
         mhc_genotype_class_list:
-            description: List of classes included in this MHC Genotype set.
+            description: List of classes included in this MHC Genotype set
             type: array
             items:
                 $ref: '#/MHCGenotype'
 
-# Genotype of major histocompatibility complex (MHC) class I and II loci
+# Genotype of major histocompatibility complex (MHC) class I, class II and non-classical loci
 MHCGenotype:
     discriminator: AIRR
     type: object
     required:
         - mhc_genotype_id
+        - mhc_class
+        - mhc_alleles
     properties:
         mhc_genotype_id:
             type: string
-            description: A unique identifier for this MHCGenotype, assumed to be unique in the context of the study.
+            description: A unique identifier for this MHCGenotype, assumed to be unique in the context of the study
             x-airr:
                 nullable: false
-        genotype_class:
+        mhc_class:
             type: string
-            description: Genotype class for this MHCGenotype, either MHC class I or class II.
+            description: Class of MHC alleles described by the MHCGenotype
             enum:
-              - mhc_class_i
-              - mhc_class_ii
-            example: mhc_class_i
+              - MHC-I
+              - MHC-II
+              - MHC-nonclassical
+            example: MHC-I
             x-airr:
-                nullable: true
+                nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
-        germline_alleles:
+        mhc_alleles:
             type: array
-            description: Array of gene descriptions
+            description: List of MHC alleles of the indicated mhc_class identified in an individual
             items:
                 type: object
                 properties:
-                    gene_symbol:
+                    allele_designation:
                         type: string
-                        description: The accepted name for this gene
+                        description: >
+                            The accepted designation of an allele, usually its gene symbol plus allele/sub-allele/etc
+                            identifiers, if provided by the mhc_typing method
                         x-airr:
                             nullable: false
-                    germline_set_ref:
+                    reference_set_ref:
                         type: string
                         description: Repository and list from which it was taken (issuer/name/version)
                         x-airr:
                             nullable: false
             x-airr:
-                nullable: true
+                nullable: false
                 adc-query-support: true
-        genotype_process:
+        mhc_genotyping_method:
             type: string
-            enum:
-                - pcr_low_resolution
-                - pcr_high_resolution
-                - sequence_low_resolution
-                - sequence_high_resolution
-                - inference_low_resolution
-                - inference_high_resolution
-            description: Information on how the genotype was acquired
-            title: MHC genotype acquisition process
+            description: >
+                Information on how the genotype was determined. The content of this field should come from a list of
+                recommended terms provided in the AIRR Schema documentation.
+            title: MHC genotyping method
             example: pcr_low_resolution
             x-airr:
                 nullable: true
                 adc-query-support: true
-                format: controlled vocabulary
 
 #
 # Repertoire metadata schema
