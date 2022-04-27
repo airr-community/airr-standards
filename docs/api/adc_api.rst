@@ -159,24 +159,54 @@ The following is an example ``GET`` request to get information about the service
 
 .. code-block:: bash
 
-  curl https://vdjserver.org/airr/v1
+  curl https://vdjserver.org/airr/v1/info
 
 The response provides various information.
 
 .. code-block:: json
 
-  {
-    "name": "adc-api-js-mongodb",
-    "description": "AIRR Data Commons API reference implementation",
-    "version": "1.0.0",
-    "airr_schema_version": 1.3,
-    "max_size": 1000,
-    "max_query_size": 2097152,
-    "contact": {
-      "name": "AIRR Community",
-      "url": "https://github.com/airr-community"
+    {
+      "title": "api-js-tapis",
+      "description": "AIRR Data Commons API for VDJServer Community Data Portal",
+      "version": "2.0.0",
+      "contact": {
+        "name": "VDJServer",
+        "url": "http://vdjserver.org/",
+        "email": "vdjserver@utsouthwestern.edu"
+      },
+      "license": {
+        "name": "GNU AGPL V3"
+      },
+      "api": {
+        "title": "AIRR Data Commons API",
+        "version": "1.0.0",
+        "contact": {
+          "name": "AIRR Community",
+          "url": "http://www.airr-community.org/",
+          "email": "join@airr-community.org"
+        },
+        "description": "Major Version 1 of the Adaptive Immune Receptor Repertoire (AIRR) data repository web service application programming interface (API).\n",
+        "license": {
+          "name": "Creative Commons Attribution 4.0 International",
+          "url": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      },
+      "schema": {
+        "title": "AIRR Schema",
+        "description": "Schema definitions for AIRR standards objects",
+        "version": "1.3",
+        "contact": {
+          "name": "AIRR Community",
+          "url": "https://github.com/airr-community"
+        },
+        "license": {
+          "name": "Creative Commons Attribution 4.0 International",
+          "url": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      },
+      "max_size": 1000,
+      "max_query_size": 2097152
     }
-  }
 
 **Query Repertoire Example**
 
@@ -188,7 +218,7 @@ field (``fields``).
 
 .. code-block:: bash
 
-  curl --data @query1-2_repertoire.json https://vdjserver.org/airr/v1/repertoire
+  curl --data @query1-2_repertoire.json -H 'content-type: application/json' https://vdjserver.org/airr/v1/repertoire
 
 The content of the :download:`JSON payload <../examples/queries/query1-2_repertoire.json>`.
 
@@ -216,11 +246,11 @@ the OpenAPI v2.0 specification.
     },
     "Repertoire":
     [
-        {"repertoire_id": "4357957907784536551-242ac11c-0001-012"},
-        {"repertoire_id": "4476756703191896551-242ac11c-0001-012"},
-        {"repertoire_id": "6205695788196696551-242ac11c-0001-012"},
-        {"repertoire_id": "6393557657723736551-242ac11c-0001-012"},
-        {"repertoire_id": "7158276584776536551-242ac11c-0001-012"}
+        {"repertoire_id": "5993695857891348971-242ac118-0001-012"},
+        {"repertoire_id": "5981154557681996267-242ac118-0001-012"},
+        {"repertoire_id": "6018649617881108971-242ac118-0001-012"},
+        {"repertoire_id": "5959121371158548971-242ac118-0001-012"},
+        {"repertoire_id": "5939278622251028971-242ac118-0001-012"}
     ]
   }
 
@@ -270,69 +300,170 @@ returned.
 
 .. code-block:: bash
 
-  curl https://vdjserver.org/airr/v1/repertoire/4357957907784536551-242ac11c-0001-012
+  curl https://vdjserver.org/airr/v1/repertoire/5993695857891348971-242ac118-0001-012
 
 The response will provide the ``Repertoire`` data in JSON format.
 
 .. code-block:: json
 
-  {
-    "Info":
     {
-        "title": "AIRR Data Commons API reference implementation",
-        "description": "API response for repertoire query",
-        "version": 1.3,
-        "contact":
-        {
-            "name": "AIRR Community",
-            "url": "https://github.com/airr-community"
+      "Info": {
+        "title": "AIRR Data Commons API for VDJServer Community Data Portal",
+        "description": "VDJServer ADC API response for repertoire query",
+        "version": "1.3",
+        "contact": {
+          "name": "VDJServer",
+          "url": "http://vdjserver.org/",
+          "email": "vdjserver@utsouthwestern.edu"
         }
-    },
-    "Repertoire":
-    [
-      {
-        "repertoire_id":"4357957907784536551-242ac11c-0001-012",
-        "study":{
-           "study_id":"PRJNA300878",
-           "submitted_by":"Florian Rubelt",
-           "pub_ids":"PMID:27005435",
-           "lab_name":"Mark M. Davis",
-           "lab_address":"Stanford University",
-           "study_title":"Homo sapiens B and T cell repertoire - MZ twins"
-        },
-        "subject":{
-           "subject_id":"TW02A",
-           "synthetic":false,
-           "linked_subjects":"TW02B",
-           "organism":{"id":"9606","value":"Homo sapiens"},
-           "age":"25yr",
-           "link_type":"twin",
-           "sex":"F"
-        },
-        "sample":[
-          {"sample_id":"TW02A_T_memory_CD4",
-           "pcr_target":[{"pcr_target_locus":"TRB"}],
-           "cell_isolation":"FACS",
-           "read_length":"300",
-           "cell_phenotype":"expression of CD45RO and CCR7",
-           "cell_subset":"Memory CD4+ T cell",
-           "filename":"SRR2905669_R1.fastq.gz",
-           "single_cell":false,
-           "file_type":"fastq",
-           "tissue":"PBMC",
-           "template_class":"RNA",
-           "paired_filename":"SRR2905669_R2.fastq.gz",
-           "paired_read_direction":"reverse",
-           "read_direction":"forward",
-           "sequencing_platform":"Illumina MiSeq"}
-        ],
-        "data_processing":[
-          {"data_processing_id":"4976322832749171176-242ac11c-0001-012",
-           "analysis_provenance_id":"651223970338378216-242ac11b-0001-007"}
-        ]
-      }
-    ]
-  }
+      },
+      "Repertoire": [
+        {
+          "repertoire_id": "5993695857891348971-242ac118-0001-012",
+          "repertoire_name": null,
+          "repertoire_description": null,
+          "study": {
+            "study_id": "4995411523885404651-242ac118-0001-012",
+            "study_title": "T cell Receptor Repertoires Acquired via Routine Pap Testing May Help Refine Cervical Cancer and Precancer Risk Estimates",
+            "study_type": {
+              "id": "NCIT:C16084",
+              "label": "Observational Study"
+            },
+            "study_description": "Cervical cancer is the fourth most common cancer and fourth leading cause of cancer death among women worldwide. In low Human Development Index settings, it ranks second. Screening and surveillance involve the cytology-based Papanicolaou (Pap) test and testing for high-risk human papillomavirus (hrHPV). The Pap test has low sensitivity to detect precursor lesions, while a single hrHPV test cannot distinguish a persistent infection from one that the immune system will naturally clear. Furthermore, among women who are hrHPV-positive and progress to high-grade cervical lesions, testing cannot identify the ~20% who would progress to cancer if not treated. Thus, reliable detection and treatment of cancers and precancers requires routine screening followed by frequent surveillance among those with past abnormal or positive results. The consequence is overtreatment, with its associated risks and complications, in screened populations and an increased risk of cancer in under-screened populations. Methods to improve cervical cancer risk assessment, particularly assays to predict regression of precursor lesions or clearance of hrHPV infection, would benefit both populations. Here we show that women who have lower risk results on follow-up testing relative to index testing have evidence of enhanced T cell clonal expansion in the index cervical cytology sample compared to women who persist with higher risk results from index to follow-up. We further show that a machine learning classifier based on the index sample T cells predicts this transition to lower risk with 95% accuracy (19/20) by leave-one-out cross-validation. Using T cell receptor deep sequencing and machine learning, we identified a biophysicochemical motif in the complementarity-determining region 3 of T cell receptor β chains whose presence predicts this transition. While these results must still be tested on an independent cohort in a prospective study, they suggest that this approach could improve cervical cancer screening by helping distinguish women likely to spontaneously regress from those at elevated risk of progression to cancer. The advancement of such a strategy could reduce surveillance frequency and overtreatment in screened populations and improve the delivery of screening to under-screened populations.",
+            "inclusion_exclusion_criteria": "We included samples from White Hispanic women age 18 years or older. We excluded women who were HIV+, pregnant, had an intrauterine device, or had a sexually transmitted disease at the time of sample collection. We obtained samples across all cytology result categories: Negative for Intraepithelial Lesion or Malignancy (NILM, Normal), Abnormal Squamous Cells of Undetermined Significance (ASCUS), Low-grade Squamous Intraepithelial Lesion (LSIL), and High-grade Squamous Intraepithelial Lesion (HSIL). At Parkland Health and Hospital System (PHHS), the primary screening strategy is cytology alone with a reflex hrHPV test for women with an ASCUS cytology result. The test assays for positivity across 14 HPV types, and the ASCUS result category is divided into ASCUS/HPV- (negative for all 14 types) and ASCUS/HPV+ (positive for at least one type). An additional exclusion criterion was applied to women with a result of Normal, ASCUS/HPV-, and ASCUS/HPV+, and that is they were excluded if they had previously had cervical cancer or previous treatment of cervical pre-cancerous lesions.\n\nWe applied these inclusion and exclusion criteria in a quota sampling scheme to ensure adequate representation of women across all five result categories. We targeted a minimum of 100 samples total with a minimum of 15 samples in each category, and then rescued all samples meeting our criteria each week until all minimums were reached.",
+            "lab_name": "Lindsay G. Cowell",
+            "lab_address": "UT Southwestern Medical Center",
+            "submitted_by": "Scott Christley, scott.christley@utsouthwestern.edu, UT Southwestern Medical Center",
+            "grants": "This research was supported by Simmons Comprehensive Cancer Center Development Funds and by a charitable donation from Young Texans Against Cancer, both to LC and JT.",
+            "pub_ids": "PMID: 33868241",
+            "keywords_study": [
+              "contains_tcr"
+            ],
+            "adc_publish_date": "2021-08-05T03:50:02.295Z",
+            "adc_update_date": "2021-08-05T05:43:14.260Z",
+            "collected_by": null
+          },
+          "subject": {
+            "subject_id": "5_20",
+            "synthetic": false,
+            "species": {
+              "id": "NCBITAXON:9606",
+              "label": "Homo sapiens"
+            },
+            "sex": "female",
+            "age_min": 49.1,
+            "age_max": 49.1,
+            "age_unit": {
+              "id": "UO:0000036",
+              "label": "year"
+            },
+            "ethnicity": "Hispanic",
+            "race": "White",
+            "diagnosis": [
+              {
+                "disease_diagnosis": {
+                  "id": null,
+                  "label": null
+                },
+                "study_group_description": null,
+                "disease_length": null,
+                "disease_stage": null,
+                "prior_therapies": null,
+                "immunogen": null,
+                "intervention": null,
+                "medical_history": null
+              }
+            ],
+            "age_event": null,
+            "ancestry_population": null,
+            "strain_name": null,
+            "linked_subjects": null,
+            "link_type": null
+          },
+          "sample": [
+            {
+              "sample_id": "5_20_DNA",
+              "sample_type": "cytology",
+              "tissue": {
+                "id": "UBERON:0004801",
+                "label": "cervix epithelium"
+              },
+              "anatomic_site": "cervix",
+              "disease_state_sample": "hsil",
+              "cell_species": {
+                "id": null,
+                "label": null
+              },
+              "single_cell": false,
+              "cell_storage": false,
+              "template_class": "DNA",
+              "template_amount": "2ug",
+              "library_generation_method": "PCR",
+              "library_generation_protocol": "Adaptive Biotechnologies",
+              "library_generation_kit_version": "v3",
+              "pcr_target": [
+                {
+                  "pcr_target_locus": "TRB",
+                  "forward_pcr_primer_target_location": null,
+                  "reverse_pcr_primer_target_location": null
+                }
+              ],
+              "complete_sequences": "partial",
+              "physical_linkage": "none",
+              "sequencing_run_id": "UTSW-Monson-P02-04",
+              "sequencing_run_date": "11/16/17",
+              "sequencing_files": {
+                "file_type": "fasta",
+                "filename": "5-20_DNA.fasta",
+                "read_direction": "forward",
+                "read_length": null,
+                "paired_filename": null,
+                "paired_read_direction": null,
+                "paired_read_length": null
+              },
+              "sample_processing_id": null,
+              "collection_time_point_relative": null,
+              "collection_time_point_reference": null,
+              "biomaterial_provider": null,
+              "tissue_processing": null,
+              "cell_subset": {
+                "id": null,
+                "label": null
+              },
+              "cell_phenotype": null,
+              "cell_number": null,
+              "cells_per_reaction": null,
+              "cell_quality": null,
+              "cell_isolation": null,
+              "cell_processing_protocol": null,
+              "template_quality": null,
+              "total_reads_passing_qc_filter": null,
+              "sequencing_platform": null,
+              "sequencing_facility": null,
+              "sequencing_kit": null
+            }
+          ],
+          "data_processing": [
+            {
+              "data_processing_id": "bf0617e7-b4a4-480f-99e3-b53eef9ca6d4-007",
+              "primary_annotation": true,
+              "software_versions": "igblast-ls5-1.14u2",
+              "data_processing_files": [
+                "5-20_DNA.igblast.airr.tsv.gz"
+              ],
+              "germline_database": "VDJServer IMGT 2019.01.23",
+              "paired_reads_assembly": null,
+              "quality_thresholds": null,
+              "primer_match_cutoffs": null,
+              "collapsing_method": null,
+              "data_processing_protocols": null,
+              "analysis_provenance_id": null
+            }
+          ]
+        }
+      ]
+    }
+
 
 *Query against all Repertoires*
 
@@ -341,7 +472,7 @@ repertoires of human IG heavy chain receptors for all studies in the data reposi
 
 .. code-block:: bash
 
-  curl --data @query2_repertoire.json https://vdjserver.org/airr/v1/repertoire
+  curl --data @query2_repertoire.json -H 'content-type: application/json' https://vdjserver.org/airr/v1/repertoire
 
 The content of the :download:`JSON payload <../examples/queries/query2_repertoire.json>`.
 
@@ -375,7 +506,7 @@ be returned.
 
 .. code-block:: bash
 
-  curl https://vdjserver.org/airr/v1/rearrangement/5d6fba725dca5569326aa104
+  curl https://vdjserver.org/airr/v1/rearrangement/610b77f6d5812c007f79bba3
 
 The response will provide the ``Rearrangement`` data in JSON format.
 
@@ -396,8 +527,9 @@ The response will provide the ``Rearrangement`` data in JSON format.
     "Rearrangement":
     [
       {
-        "sequence_id":"5d6fba725dca5569326aa104",
-        "repertoire_id":"1841923116114776551-242ac11c-0001-012",
+        "sequence_id":"610b77f6d5812c007f79bba3",
+        "repertoire_id":"5993695857891348971-242ac118-0001-012",
+        "data_processing_id": "bf0617e7-b4a4-480f-99e3-b53eef9ca6d4-007",
 
         "... remaining fields":"snipped for space"
       }
@@ -417,7 +549,7 @@ requested in JSON or :ref:`AIRR TSV <TSVSpecification>` format.
 
 .. code-block:: bash
 
-  curl --data @query1_rearrangement.json https://vdjserver.org/airr/v1/rearrangement
+  curl --data @query1_rearrangement.json -H 'content-type: application/json' https://vdjserver.org/airr/v1/rearrangement
 
 The content of the :download:`JSON payload <../examples/queries/query1_rearrangement.json>`.
 
@@ -428,17 +560,18 @@ Here is the response in AIRR TSV format.
 
 .. code-block:: text
 
-  productive	v_call	sequence_id	repertoire_id
-  true	IGHV1-69*04	5d6fba725dca5569326aa106	1841923116114776551-242ac11c-0001-012
-  true	IGHV1-69*04	5d6fba725dca5569326aa11b	1841923116114776551-242ac11c-0001-012
-  true	IGHV1-69*10	5d6fba725dca5569326aa149	1841923116114776551-242ac11c-0001-012
-  true	IGHV1-69*04	5d6fba735dca5569326aa245	1841923116114776551-242ac11c-0001-012
-  true	IGHV1-69*04	5d6fba735dca5569326aa274	1841923116114776551-242ac11c-0001-012
-  true	IGHV1-69*04	5d6fba735dca5569326aa27b	1841923116114776551-242ac11c-0001-012
-  true	IGHV1-69*04	5d6fba735dca5569326aa27c	1841923116114776551-242ac11c-0001-012
-  true	IGHV1-24*01	5d6fba735dca5569326aa2a0	1841923116114776551-242ac11c-0001-012
-  true	IGHV1-69*04	5d6fba745dca5569326aa359	1841923116114776551-242ac11c-0001-012
-  true	IGHV1-69*04	5d6fba745dca5569326aa408	1841923116114776551-242ac11c-0001-012
+    sequence_id	productive	v_call	repertoire_id
+    5f70b421e10383007e3038ad	true	IGHV1-69*04	2564613624180576746-242ac113-0001-012
+    5f70b421e10383007e3038c2	true	IGHV1-69*04	2564613624180576746-242ac113-0001-012
+    5f70b421e10383007e3038f0	true	IGHV1-69*10	2564613624180576746-242ac113-0001-012
+    5f70b421e10383007e3039ec	true	IGHV1-69*04	2564613624180576746-242ac113-0001-012
+    5f70b421e10383007e303a1b	true	IGHV1-69*04	2564613624180576746-242ac113-0001-012
+    5f70b421e10383007e303a22	true	IGHV1-69*04	2564613624180576746-242ac113-0001-012
+    5f70b421e10383007e303a23	true	IGHV1-69*04	2564613624180576746-242ac113-0001-012
+    5f70b421e10383007e303a47	true	IGHV1-24*01	2564613624180576746-242ac113-0001-012
+    5f70b421e10383007e303b00	true	IGHV1-69*04	2564613624180576746-242ac113-0001-012
+    5f70b421e10383007e303baf	true	IGHV1-69*04	2564613624180576746-242ac113-0001-012
+
 
 Request Parameters
 ~~~~~~~~~~~~~~~~~~
@@ -754,28 +887,47 @@ Sending this query in an API request.
 
 .. code-block:: bash
 
-  curl --data @facets1_repertoire.json https://vdjserver.org/airr/v1/repertoire
+  curl --data @facets1_repertoire.json -H 'content-type: application/json' https://vdjserver.org/airr/v1/repertoire
 
 The output from the request is similar to normal queries except the data is
 provided with the `Facet` key.
 
 .. code-block:: json
 
-  {
-    "Info": {
-      "title": "AIRR Data Commons API reference implementation",
-      "description": "API response for repertoire query",
-      "version": 1.3,
-      "contact": {
-        "name": "AIRR Community",
-        "url": "https://github.com/airr-community"
-      }
-    },
-    "Facet": [
-      {"sample.pcr_target.pcr_target_locus":[["TRB"]],"count":40},
-      {"sample.pcr_target.pcr_target_locus":[["IGH"]],"count":20}
-    ]
-  }
+    {
+      "Info": {
+        "title": "AIRR Data Commons API for VDJServer Community Data Portal",
+        "description": "VDJServer ADC API response for repertoire query",
+        "version": "1.3",
+        "contact": {
+          "name": "VDJServer",
+          "url": "http://vdjserver.org/",
+          "email": "vdjserver@utsouthwestern.edu"
+        }
+      },
+      "Facet": [
+        {
+          "sample.pcr_target.pcr_target_locus": "TRB",
+          "count": 2786
+        },
+        {
+          "sample.pcr_target.pcr_target_locus": "TRA",
+          "count": 242
+        },
+        {
+          "sample.pcr_target.pcr_target_locus": "IGK",
+          "count": 122
+        },
+        {
+          "sample.pcr_target.pcr_target_locus": "IGH",
+          "count": 547
+        },
+        {
+          "sample.pcr_target.pcr_target_locus": "IGL",
+          "count": 121
+        }
+      ]
+    }
 
 Here is a query with both ``filters`` and ``facets`` parameters, which restricts
 the data records used for the facets count. The content of
@@ -788,7 +940,7 @@ Sending this query in an API request.
 
 .. code-block:: bash
 
-  curl --data @facets2_repertoire.json https://vdjserver.org/airr/v1/repertoire
+  curl --data @facets2_repertoire.json -H 'content-type: application/json' https://vdjserver.org/airr/v1/repertoire
 
 Example output from the request. This result indicates there are ten
 subjects each with two IGH repertoires.

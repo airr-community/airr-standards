@@ -30,6 +30,7 @@ jobs:
         run: |
           install.packages(c("remotes", "testthat", "roxygen2", "devtools", "rcmdcheck"))
           remotes::install_deps(dependencies=TRUE, upgrade="never")
+          tinytex::tlmgr_install("amsmath")
         shell: Rscript {0}
 
       - name: Document

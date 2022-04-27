@@ -39,7 +39,7 @@ uses a controlled vocabulary, the individual values are described below:
 | ``DNA``            |  ``PCR``                      | Conventional PCR on genomic DNA  |
 |                    |                               | of a vertebrate host (requires:  |
 |                    |                               | ``synthetic`` == ``false`` )     |
-+                    |                               +----------------------------------+
+|                    |                               +----------------------------------+
 |                    |                               | Conventional PCR on DNA of a     |
 |                    |                               | synthetic library (requires:     |
 |                    |                               | ``synthetic`` == ``true`` )      |
@@ -113,6 +113,34 @@ In this case:
 *  +39 (marker ``[c]``) is the most distal templated nucleotide
 
 
+cell_subset
+-----------
+
+The ``cell_subset`` field is ontology-controlled, i.e., if present, it
+MUST refer to a Cell Ontology (CL) term via its ``id`` field.
+
+*  In general, the provided annotation MUST NOT contradict the
+   experimentally determined phenotype. E.g., if the experiment shows
+   that the population is CD27+ a term that is explicitly defined in CL
+   as CD27- MUST NOT be used.
+*  However, this does not mean that all markers listed in the
+   description of an ontology term need to be confirmed, as long as
+   the existing information is considered sufficient for classification
+   and not contradictory (see above).
+*  In case the experimentally isolated cells to not match any "leaf"
+   term, e.g., due to the isolation of multiple populations that
+   contradict the definitions, the general advice is to move up the
+   CL hierarchy to the most distal term that is no-contradictory.
+   In this case, ``cell_phenotype`` should be used to define the
+   markers that were used experimentally.
+*  Note that ontology-controlled fields allow exactly one term.
+   Therefore, mixtures of defined cell populations either need to be
+   demultiplexed, or -- if this is not possible -- use the last (i.e,,
+   most distal) common term of all cell populations involved. Again,
+   ``cell_phenotype`` can be used to provide the markers used in the
+   experiment.
+
+
 Specific Use Cases and Experimental Setups
 ==========================================
 
@@ -129,10 +157,9 @@ following annotation SHOULD/MUST be used:
 *  ``synthetic``: MUST be set to ``true``
 *  ``species``:  It is assumed that every synthetic library is derived
    from V and J genes that exist in some vertebrate species. This field
-   SHOULD encode this species. Importantly, it MUST NOT encode the
-   phage vector, the bacterial host or the comparable biological
-   component of the library system that constitutes the presenting
-   particle.
+   SHOULD encode that species. Importantly, it MUST NOT encode the
+   phage vector, the bacterial host or a comparable biological component
+   of the library system that constitutes the presenting particle.
 *  ``sample_type``: SHOULD be ``NULL``.
 *  ``single_cell``: Only ``true`` if individual particles are isolated and
    sequenced. Note that colonies or plaques, even if containing

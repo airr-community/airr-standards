@@ -26,42 +26,149 @@ Ontology:
             type: string
             description: Label of the concept in the respective ontology
 
+# Map to expand CURIE prefixes to full IRIs
+CURIEMap:
+  CL:
+    type: ontology
+    default:
+      map: OBO
+      provider: OLS
+    map:
+      OBO:
+        iri_prefix: "http://purl.obolibrary.org/obo/CL_"
+  DOID:
+    type: ontology
+    default:
+      map: OBO
+      provider: OLS
+    map:
+      OBO:
+        iri_prefix: "http://purl.obolibrary.org/obo/DOID_"
+  NCBITAXON:
+    type: taxonomy
+    default:
+      map: OBO
+      provider: OLS
+    map:
+      OBO:
+        iri_prefix: "http://purl.obolibrary.org/obo/NCBITaxon_"
+      BioPortal:
+        iri_prefix: "http://purl.bioontology.org/ontology/NCBITAXON/"
+  NCIT:
+    type: ontology
+    default:
+      map: OBO
+      provider: OLS
+    map:
+      OBO:
+        iri_prefix: "http://purl.obolibrary.org/obo/NCIT_"
+  UBERON:
+    type: ontology
+    default:
+      map: OBO
+      provider: OLS
+    map:
+      OBO:
+        iri_prefix: "http://purl.obolibrary.org/obo/UBERON_"
+  UO:
+    type: ontology
+    default:
+      map: OBO
+      provider: OLS
+    map:
+      OBO:
+        iri_prefix: "http://purl.obolibrary.org/obo/UO_"
+  ORCID:
+    type: catalog
+    default:
+      map: ORCID
+      provider: ORCID
+    map:
+      ORCID:
+        iri_prefix: "https://orcid.org/"
+  DOI:
+    type: identifier
+    default:
+      map: DOI
+    map:
+      DOI:
+        iri_prefix: "https://doi.org/"
+  ROR:
+    type: catalog
+    default:
+      map: ROR
+      provider: ROR
+    map:
+      ROR:
+        iri_prefix: "https://ror.org/"
+  ENSG:
+    type: identifier
+    default:
+      map: ENSG
+    map:
+      ENSG:
+        iri_prefix: "https://www.ensembl.org/Multi/Search/Results?q="
+  ABREG:
+    type: identifier
+    default:
+      map: ABREG
+    map:
+      ABREG:
+        iri_prefix: "http://antibodyregistry.org/AB_"
 
-CURIEResolution:
-  -
-    curie_prefix: NCBITAXON
-    iri_prefix:
-      - "http://purl.obolibrary.org/obo/NCBITaxon_"
-      - "http://purl.bioontology.org/ontology/NCBITAXON/"
-  -
-    curie_prefix: NCIT
-    iri_prefix:
-      - "http://purl.obolibrary.org/obo/NCIT_"
-      - "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#"
-  -
-    curie_prefix: UO
-    iri_prefix:
-      - "http://purl.obolibrary.org/obo/UO_"
-  -
-    curie_prefix: DOID
-    iri_prefix:
-      - "http://purl.obolibrary.org/obo/DOID_"
-  -
-    curie_prefix: UBERON
-    iri_prefix:
-      - "http://purl.obolibrary.org/obo/UBERON_"
-  -
-    curie_prefix: CL
-    iri_prefix:
-      - "http://purl.obolibrary.org/obo/CL_"
-  -
-    curie_prefix: ENSG
-    iri_prefix:
-      - "https://www.ensembl.org/Multi/Search/Results?q="
-  -
-    curie_prefix: ABREG
-    iri_prefix:
-      - "http://antibodyregistry.org/AB_"
+InformationProvider:
+  provider:
+    OLS:
+      request:
+        url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
+        response: application/json
+    Ontobee:
+      request:
+        url: "http://www.ontobee.org/ontology/rdf/{ontology_id}?iri={iri}"
+        response: application/rdf+xml
+    ORCID:
+      request:
+        url: "https://pub.orcid.org/v2.1/{local_id}"
+        header:
+          Accept: application/json
+        response: application/json
+    ROR:
+      request:
+        url: "https://api.ror.org/organizations/{iri}"
+        response: application/json
+  parameter:
+    CL:
+      Ontobee:
+        ontology_id: CL
+      OLS:
+        ontology_id: cl
+    DOID:
+      Ontobee:
+        ontology_id: DOID
+      OLS:
+        ontology_id: doid
+    NCBITAXON:
+      Ontobee:
+        ontology_id: NCBITaxon
+      OLS:
+        ontology_id: ncbitaxon
+      BioPortal:
+        ontology_id: NCBITAXON
+    NCIT:
+      Ontobee:
+        ontology_id: NCIT
+      OLS:
+        ontology_id: ncit
+    UBERON:
+      Ontobee:
+        ontology_id: UBERON
+      OLS:
+        ontology_id: uberon
+    UO:
+      Ontobee:
+        ontology_id: UO
+      OLS:
+        ontology_id: uo
 
 # AIRR specification extensions
 #
@@ -1926,8 +2033,8 @@ CellProcessing:
             $ref: '#/Ontology'
             description: >
                 Binomial designation of the species from which the analyzed cells originate. Typically, this value
-                should be identical to `species`, if which case it SHOULD NOT be set explicitly. Howver, there are
-                valid experimental setups in which the two might differ, e.g. chimeric animal models. If set, this
+                should be identical to `species`, in which case it SHOULD NOT be set explicitly. However, there are
+                valid experimental setups in which the two might differ, e.g., chimeric animal models. If set, this
                 key will overwrite the `species` information for all lower layers of the schema.
             title: Cell species
             example:
@@ -3564,15 +3671,14 @@ Rearrangement:
         consensus_count:
             type: integer
             description: >
-                Number of reads contributing to the (UMI) consensus for this sequence.
+                Number of reads contributing to the UMI consensus or contig assembly for this sequence.
                 For example, the sum of the number of reads for all UMIs that contribute to
                 the query sequence.
         duplicate_count:
             type: integer
             description: >
                 Copy number or number of duplicate observations for the query sequence.
-                For example, the number of UMIs sharing an identical sequence or the number
-                of identical observations of this sequence absent UMIs.
+                For example, the number of identical reads observed for this sequence.
             title: Read count
             example: 123
             x-airr:
@@ -3581,6 +3687,12 @@ Rearrangement:
                 set: 6
                 subset: data (processed sequence)
                 name: Read count
+        umi_count:
+            type: integer
+            description: >
+                Number of distinct UMIs represented by this sequence.
+                For example, the total number of UMIs that contribute to
+                the contig assembly for the query sequence.
         cell_id:
             type: string
             description: >
@@ -3767,12 +3879,18 @@ Clone:
         junction_end:
             type: integer
             description: Junction region end position in the alignment (1-based closed interval).
-        sequence_count:
+        umi_count:
             type: integer
-            description: Number of Rearrangement records (sequences) included in this clone.
-        clone_abundance:
+            description: >
+                Number of distinct UMIs observed across all sequences (Rearrangement records) in this clone.
+        clone_count:
             type: integer
-            description: Non-normalized absolute count of the number of members (immune cells) in this clone.
+            description: >
+                Absolute count of the size (number of members) of this clone in the repertoire.
+                This could simply be the number of sequences (Rearrangement records) observed in this clone,
+                the number of distinct cell barcodes (unique cell_id values),
+                or a more sophisticated calculation appropriate to the experimental protocol.
+                Absolute count is provided versus a frequency so that downstream analysis tools can perform their own normalization.
         seed_id:
             type: string
             description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
