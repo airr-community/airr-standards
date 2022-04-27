@@ -4539,15 +4539,15 @@ Receptor:
                     antigen:
                         type: string
                         description: >
-                           The substance against which the receptor was tested. Any substance that stimulates an immune
-                           response in the body, such as through antibody production or by presentation to a TCR after
-                           binding to an MHC molecule.
+                            The substance against which the receptor was tested. Any substance that stimulates an immune
+                            response in the body, such as through antibody production or by presentation to a TCR after
+                            binding to an MHC molecule.
                         example: PSDKHIKEYLNKIQN
                     antigen_type:
                         type: string
                         description: >
-                           Defining the structure of an antigen. There are non-peptidic structures bindng to antibody or
-                           major histocompatibility complex (MHC) to stimulate immune response. 
+                            Defining the structure of an antigen. There are non-peptidic structures bindng to antibody or
+                            major histocompatibility complex (MHC) to stimulate immune response.
                         example: peptide
                     antigen_curie:
                         type: string
