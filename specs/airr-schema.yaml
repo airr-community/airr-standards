@@ -2588,18 +2588,18 @@ SequencingRun:
                 subset: process (sequencing)
                 name: Sequencing kit
         sequencing_files:
-            $ref: '#/RawSequenceData'
+            $ref: '#/SequencingData'
             description: Set of sequencing files produced by the sequencing run
             x-airr:
                 nullable: false
                 adc-query-support: true
 
 # Resultant raw sequencing files from a SequencingRun
-RawSequenceData:
+SequencingData:
     discriminator: AIRR
     type: object
     required:
-        - raw_sequence_data_id
+        - sequencing_data_id
         - file_type
         - filename
         - read_direction
@@ -2608,7 +2608,7 @@ RawSequenceData:
         - paired_read_direction
         - paired_read_length
     properties:
-        raw_sequence_data_id:
+        sequencing_data_id:
             type: string
             description: Persistent identifier of raw data stored in an archive (e.g. INSDC run ID). Data archive should be identified in the CURIE prefix.
             title: Raw sequencing data persistent identifier
