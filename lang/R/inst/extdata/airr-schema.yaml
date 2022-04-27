@@ -4331,16 +4331,22 @@ Receptor:
                             response in the body, such as through antibody production or by presentation to a TCR after
                             binding to an MHC molecule.
                         example: PSDKHIKEYLNKIQN
+                        x-airr:
+                            nullable: true
                     antigen_type:
                         type: string
                         description: >
                             Defining the structure of an antigen. There are non-peptidic structures bindng to antibody or
                             major histocompatibility complex (MHC) to stimulate immune response.
                         example: peptide
+                        x-airr:
+                            nullable: true
                     antigen_curie:
                         type: string
                         description: Identifiers for antigen reference source
                         example: UNIPROT:P19597
+                        x-airr:
+                            nullable: true
                     peptide_start:
                         type: integer
                         description: Start position of the peptide within the reference protein sequence
@@ -4360,6 +4366,8 @@ Receptor:
                             - cytometry
                             - biological activity
                         description: The methodology used to assess expression (assay implemented in experiment)
+                        x-airr:
+                            nullable: false
                     reactivity_item:
                         type: string
                         enum:
@@ -4371,13 +4379,19 @@ Receptor:
                             - pf traversal inhibition
                         description: The items calculated in measurement
                         example: IL-2 release
+                        x-airr:
+                            nullable: false
                     reactivity_value:
                         type: float
                         description: The absolute (processed) value of the measurement
                         example: 162.26
+                        x-airr:
+                            nullable: false
                     reactivity_unit:
                         type: string
                         description: The physical unit of the measurement
                         example: pg/ml or M
+                        x-airr:
+                            nullable: false
             x-airr:
                 nullable: true
