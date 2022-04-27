@@ -4538,6 +4538,7 @@ Receptor:
                         example: HLA-DRB1*04:01
                     antigen:
                         type: string
+                        nullable: true
                         description: >
                             The substance against which the receptor was tested. Any substance that stimulates an immune
                             response in the body, such as through antibody production or by presentation to a TCR after
@@ -4545,12 +4546,14 @@ Receptor:
                         example: PSDKHIKEYLNKIQN
                     antigen_type:
                         type: string
+                        nullable: true
                         description: >
                             Defining the structure of an antigen. There are non-peptidic structures bindng to antibody or
                             major histocompatibility complex (MHC) to stimulate immune response.
                         example: peptide
                     antigen_curie:
                         type: string
+                        nullable: true
                         description: Identifiers for antigen reference source
                         example: UNIPROT:P19597
                     peptide_start:
@@ -4563,6 +4566,7 @@ Receptor:
                         description: End position of the peptide within the reference protein sequence        
                     reactivity_study_method:
                         type: string
+                        nullable: false
                         enum:
                             - SPR
                             - ITC
@@ -4572,6 +4576,7 @@ Receptor:
                         description: The methodology used to assess expression (assay implemented in experiment)
                     reactivity_item:
                         type: string
+                        nullable: false
                         enum:
                             - IL-2 release
                             - binding strength
@@ -4583,9 +4588,11 @@ Receptor:
                         example: IL-2 release
                     reactivity_value:
                         type: float
+                        nullable: false
                         description: The absolute (processed) value of the measurement
                         example: 162.26
                     reactivity_unit:
                         type: string
+                        nullable: false
                         description: The physical unit of the measurement
                         example: pg/ml or M
