@@ -4318,7 +4318,7 @@ Cell:
                 adc-api-optional: true
         virtual_pairing:
             type: boolean
-            nullable: true # assuming only done for sc experiments, otherwise does not exist
+            nullable: true
             description: >
                 boolean to indicate if pairing was inferred.
             title: Virtual pairing
@@ -4420,26 +4420,39 @@ CellExpression:
 # The Receptor object hold information about a receptor and its reactivity.
 #
 Receptor:
-    discriminator: AIRR
+    discriminator:
+        propertyName: AIRR
     type: object
     required:
+        - receptor_hash
+        - receptor_type
         - receptor_variable_domain_1_aa
+        - receptor_variable_domain_1_locus
         - receptor_variable_domain_2_aa
+        - receptor_variable_domain_2_locus
     properties:
-        receptor_hash_id:
+        receptor_hash:
             type: string
+            nullable: false
             description: >
-                A unique identifier of the receptor, calculated as sha256(concat(receptor_chain_1,receptor_chain_2),
-                represented as base16 encoded string.
-            title: Receptor Hash Identifier
-            example: ad6086cc22694c03ec0b9e85477958cd2581b2c06543ed4d89a41a82ab8a60e0
+                The SHA256 hash of the receptor amino acid sequence, calculated as
+                sha256(concat(receptor_variable_domain_1_aa,receptor_variable_domain_2_aa) and represented as base16-encoded string.
+            title: Receptor hash ID
+            example: aa1c4b77a6f4927611ab39f5267415beaa0ba07a952c233d803b07e52261f026
             x-airr:
-                miairr: defined
-                nullable: false
                 adc-query-support: true
-                name: Receptor Hash ID
+        receptor_type:
+            type: string
+            nullable: false
+            enum:
+                - Ig
+                - TCR
+            description: The top-level receptor type, either Immunoglobulin (Ig) or T Cell Receptor (TCR).
+            x-airr:
+                adc-api-optional: true
         receptor_variable_domain_1_aa:
             type: string
+            nullable: false
             description: >
                 Complete amino acid sequence of the mature variable domain of the Ig heavy, TCR beta or TCR delta chain.
                 The mature variable domain is defined as encompassing all AA from and including first AA after the the
@@ -4447,11 +4460,21 @@ Receptor:
             example: >
                 QVQLQQPGAELVKPGASVKLSCKASGYTFTSYWMHWVKQRPGRGLEWIGRIDPNSGGTKYNEKFKSKATLTVDKPSSTAYMQLSSLTSEDSAVYYCARYDYYGSSYFDYWGQGTTLTVSS
             x-airr:
-                miairr: defined
-                nullable: false
+                adc-api-optional: true
+        receptor_variable_domain_1_locus:
+            type: string
+            nullable: false
+            enum:
+                - IGH
+                - TRB
+                - TRD
+            description: Locus from which the variable domain in receptor_variable_domain_1_aa originates
+            example: IGH
+            x-airr:
                 adc-api-optional: true
         receptor_variable_domain_2_aa:
             type: string
+            nullable: false
             description: >
                 Complete amino acid sequence of the mature variable domain of the Ig light, TCR alpha or TCR gamma chain.
                 The mature variable domain is defined as encompassing all AA from and including first AA after the the
@@ -4459,63 +4482,45 @@ Receptor:
             example: >
                 QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL
             x-airr:
-                miairr: defined
-                nullable: false
-                adc-api-optional: true
-        receptor_type:
-            type: string
-            enum:
-                - Immunoglobulin
-                - TCR
-            description: presenting the receptor type
-            x-airr:
-                miairr: defined
-                nullable: false
-                adc-api-optional: true
-        receptor_variable_domain_1_locus:
-            type: string
-            enum:
-                - IGH
-                - TRB
-                - TRD
-            description: Locus from which the variable domain originates (chain type)
-            x-airr:
-                miairr: defined
-                nullable: false
                 adc-api-optional: true
         receptor_variable_domain_2_locus:
             type: string
+            nullable: false
             enum:
                 - IGK
                 - IGL
                 - TRA
                 - TRG
-            description: Locus from which the variable domain originates (chain tye)
+            description: Locus from which the variable domain in receptor_variable_domain_2_aa originates
+            example: IGL
             x-airr:
-                miairr: defined
-                nullable: false
                 adc-api-optional: true
         reactivity_measurements:
             type: array
+            nullable: true
             description: Records of reactivity measurement
             items:
                 type: object
                 properties:
                     ligand_type:
                         type: string
+                        nullable: false
                         enum:
                             - MHC:peptide
                             - MHC:non-peptide
                             - peptide
                             - non-peptide
-                        description: >
-                           Structure of ligand binding to receptor. For TCRs this is the combination of MHC and peptide
+                        description: Classification of ligand binding to receptor
+                        example: non-peptide
                     mhc_class:
                         type: string
                         nullable: true
-                        description: >
-                           Defining the classes of major histocompatibility complex (MHC) molecules (only for TCR)
-                        example: human MHC class II
+                        enum:
+                            - MHC-I
+                            - MHC-II
+                            - MHC-nonclassical
+                        description: (only for MHC:* ligand_type:) Classes MHC molecule
+                        example: MHC-II
                     mhc_locus:
                         type: string
                         nullable: true
@@ -4534,12 +4539,15 @@ Receptor:
                     antigen:
                         type: string
                         description: >
-                           The substance against which the receptor was tested. Any substance that stimulates an immune response in the body, such as through antibody production or by presentation to a T-cell receptor after binding to a major histocompability complex (MHC)
+                           The substance against which the receptor was tested. Any substance that stimulates an immune
+                           response in the body, such as through antibody production or by presentation to a TCR after
+                           binding to an MHC molecule.
                         example: PSDKHIKEYLNKIQN
                     antigen_type:
                         type: string
                         description: >
-                           Defining the structure of an antigen. There are non-peptidic structures bindng to antibody or  major histocompatibility complex (MHC) to stimulate immune response. 
+                           Defining the structure of an antigen. There are non-peptidic structures bindng to antibody or
+                           major histocompatibility complex (MHC) to stimulate immune response. 
                         example: peptide
                     antigen_curie:
                         type: string
@@ -4548,21 +4556,20 @@ Receptor:
                     peptide_start:
                         type: integer
                         nullable: true
-                        description: >
-                            Start position of the peptide within the reference protein sequence
+                        description: Start position of the peptide within the reference protein sequence
                     peptide_end:
                         type: integer
                         nullable: true
-                        description: >
-                            End position of the peptide within the reference protein sequence        
+                        description: End position of the peptide within the reference protein sequence        
                     reactivity_study_method:
                         type: string
                         enum:
                             - SPR
+                            - ITC
                             - ELISA
+                            - cytometry
                             - biological activity
-                        description: >
-                           The methodology used to assess expression (assay implemented in experiment)
+                        description: The methodology used to assess expression (assay implemented in experiment)
                     reactivity_item:
                         type: string
                         enum:

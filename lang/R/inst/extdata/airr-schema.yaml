@@ -4109,7 +4109,7 @@ Cell:
             title: Virtual pairing
             x-airr:
                 miairr: defined
-                nullable: true # assuming only done for sc experiments, otherwise does not exist
+                nullable: true
                 adc-query-support: true
                 name: Virtual pairing
         adc_annotation_cell_id:
@@ -4208,22 +4208,32 @@ Receptor:
     discriminator: AIRR
     type: object
     required:
-        - receptor_gid
-        - receptor_chain_1
-        - receptor_chain_2
+        - receptor_hash
+        - receptor_type
+        - receptor_variable_domain_1_aa
+        - receptor_variable_domain_1_locus
+        - receptor_variable_domain_2_aa
+        - receptor_variable_domain_2_locus
     properties:
-        receptor_gid:
+        receptor_hash:
             type: string
             description: >
-                Global identifier of the receptor, calculated as sha256(concat(receptor_chain_1,receptor_chain_2),
-                represented as base16 encoded string.
-            title: Receptor GID
+                The SHA256 hash of the receptor amino acid sequence, calculated as
+                sha256(concat(receptor_variable_domain_1_aa,receptor_variable_domain_2_aa) and represented as base16-encoded string.
+            title: Receptor hash ID
             example: aa1c4b77a6f4927611ab39f5267415beaa0ba07a952c233d803b07e52261f026
             x-airr:
-                miairr: defined
                 nullable: false
                 adc-query-support: true
-                name: Receptor GID
+        receptor_type:
+            type: string
+            enum:
+                - Ig
+                - TCR
+            description: The top-level receptor type, either Immunoglobulin (Ig) or T Cell Receptor (TCR).
+            x-airr:
+                nullable: false
+                adc-api-optional: true
         receptor_variable_domain_1_aa:
             type: string
             description: >
@@ -4233,7 +4243,17 @@ Receptor:
             example: >
                 QVQLQQPGAELVKPGASVKLSCKASGYTFTSYWMHWVKQRPGRGLEWIGRIDPNSGGTKYNEKFKSKATLTVDKPSSTAYMQLSSLTSEDSAVYYCARYDYYGSSYFDYWGQGTTLTVSS
             x-airr:
-                miairr: defined
+                nullable: false
+                adc-api-optional: true
+        receptor_variable_domain_1_locus:
+            type: string
+            enum:
+                - IGH
+                - TRB
+                - TRD
+            description: Locus from which the variable domain in receptor_variable_domain_1_aa originates
+            example: IGH
+            x-airr:
                 nullable: false
                 adc-api-optional: true
         receptor_variable_domain_2_aa:
@@ -4245,19 +4265,7 @@ Receptor:
             example: >
                 QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL
             x-airr:
-                miairr: defined
                 nullable: true
-                adc-api-optional: true
-        receptor_variable_domain_1_locus:
-            type: string
-            enum:
-                - IGH
-                - TRB
-                - TRD
-            example: Locus from which the variable domain originates
-            x-airr:
-                miairr: defined
-                nullable: false
                 adc-api-optional: true
         receptor_variable_domain_2_locus:
             type: string
@@ -4266,35 +4274,9 @@ Receptor:
                 - IGL
                 - TRA
                 - TRG
-            example: Locus from which the variable domain originates
+            description: Locus from which the variable domain in receptor_variable_domain_2_aa originates
+            example: IGL
             x-airr:
-                miairr: defined
-                nullable: true
-                adc-api-optional: true
-        reactivity_study_method:
-            type: string
-            enum:
-                -SPR
-                -ITC
-            description: >
-                  Keyword describing the methodology used to assess expression. This values for this field MUST come
-                  from a controlled vocabulary.
-            x-airr:
-                miairr: defined
-                nullable: true
-                adc-api-optional: true
-        reactivity_UID:
-            type: string
-            description: UID of the receptor at IEDB, which can hold additional and richer data records.
-            x-airr:
-                miairr: defined
-                nullable: true
-                adc-api-optional: true
-        reactivity_raw_DOI:
-            type: string
-            description: DOI of raw data measurements.
-            x-airr:
-                miairr: defined
                 nullable: true
                 adc-api-optional: true
         reactivity_measurements:
@@ -4303,17 +4285,97 @@ Receptor:
             items:
                 type: object
                 properties:
+                    ligand_type:
+                        type: string
+                        enum:
+                            - MHC:peptide
+                            - MHC:non-peptide
+                            - peptide
+                            - non-peptide
+                        description: Classification of ligand binding to receptor
+                        example: non-peptide
+                        x-airr:
+                            nullable: false
+                    mhc_class:
+                        type: string
+                        enum:
+                            - MHC-I
+                            - MHC-II
+                            - MHC-nonclassical
+                        description: (only for MHC:* ligand_type:) Classes MHC molecule
+                        example: MHC-II
+                        x-airr:
+                            nullable: true
+                    mhc_locus:
+                        type: string
+                        description: MHC molecules which the peptidic or non-peptidic antigen is bound into
+                        example: HLA-DR
+                        x-airr:
+                            nullable: true
+                    mhc_chain_1_name:
+                        type: string
+                        description: Allele name of an MHC alpha chain
+                        example: HLA-DRA
+                        x-airr:
+                            nullable: true
+                    mhc_chain_2_name:
+                        type: string
+                        description: Allele name of an MHC class II beta chain or an invariant beta2-microglobin chain
+                        example: HLA-DRB1*04:01
+                        x-airr:
+                            nullable: true
                     antigen:
                         type: string
                         description: >
-                           The antigen against which the receptor was tested. For TCRs this is the combination of MHC and peptide.
-                    reactivity_value:
-                        type: float
-                        description: >
-                           The absolute (processed) value of the measurement.
-                        example: 357.89
-                    reactivity_unit:
+                           The substance against which the receptor was tested. Any substance that stimulates an immune
+                           response in the body, such as through antibody production or by presentation to a TCR after
+                           binding to an MHC molecule.
+                        example: PSDKHIKEYLNKIQN
+                    antigen_type:
                         type: string
                         description: >
-                           The physical unit of the measurement
-                        example: M or kJ mol-1
+                           Defining the structure of an antigen. There are non-peptidic structures bindng to antibody or
+                           major histocompatibility complex (MHC) to stimulate immune response. 
+                        example: peptide
+                    antigen_curie:
+                        type: string
+                        description: Identifiers for antigen reference source
+                        example: UNIPROT:P19597
+                    peptide_start:
+                        type: integer
+                        nullable: true
+                        description: Start position of the peptide within the reference protein sequence
+                    peptide_end:
+                        type: integer
+                        nullable: true
+                        description: End position of the peptide within the reference protein sequence        
+                    reactivity_study_method:
+                        type: string
+                        enum:
+                            - SPR
+                            - ITC
+                            - ELISA
+                            - cytometry
+                            - biological activity
+                        description: The methodology used to assess expression (assay implemented in experiment)
+                    reactivity_item:
+                        type: string
+                        enum:
+                            - IL-2 release
+                            - binding strength
+                            - dissociation constant KD
+                            - on rate
+                            - off rate
+                            - pf traversal inhibition
+                        description: The items calculated in measurement
+                        example: IL-2 release
+                    reactivity_value:
+                        type: float
+                        description: The absolute (processed) value of the measurement
+                        example: 162.26
+                    reactivity_unit:
+                        type: string
+                        description: The physical unit of the measurement
+                        example: pg/ml or M
+            x-airr:
+                nullable: true
