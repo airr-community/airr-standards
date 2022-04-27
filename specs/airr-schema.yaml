@@ -26,7 +26,6 @@ Ontology:
             type: string
             description: Label of the concept in the respective ontology
 
-
 # Map to expand CURIE prefixes to full IRIs
 CURIEMap:
   CL:
@@ -102,7 +101,20 @@ CURIEMap:
     map:
       ROR:
         iri_prefix: "https://ror.org/"
-
+  ENSG:
+    type: identifier
+    default:
+      map: ENSG
+    map:
+      ENSG:
+        iri_prefix: "https://www.ensembl.org/Multi/Search/Results?q="
+  ABREG:
+    type: identifier
+    default:
+      map: ABREG
+    map:
+      ABREG:
+        iri_prefix: "http://antibodyregistry.org/AB_"
 
 InformationProvider:
   provider:
@@ -157,7 +169,6 @@ InformationProvider:
         ontology_id: UO
       OLS:
         ontology_id: uo
-
 
 # AIRR specification extensions
 #
@@ -4028,23 +4039,6 @@ Cell:
                 miairr: defined
                 nullable: true
                 adc-api-optional: true
-        expression_tabular:
-            type: array
-            description: >
-                Expression definitions for single-cell
-            items:
-                type: object
-                properties:
-                    expression_marker:
-                        type: string
-                        description: >
-                           standardized designation of the transcript or epitope
-                        example: CD27
-                    expression_value:
-                        type: number
-                        description: >
-                           transformed and normalized expression level.
-                        example: 14567.30
         virtual_pairing:
             type: boolean
             description: >
@@ -4055,3 +4049,80 @@ Cell:
                 nullable: true # assuming only done for sc experiments, otherwise does not exist
                 adc-query-support: true
                 name: Virtual pairing
+        adc_annotation_cell_id:
+            type: string
+            description: >
+              The Cell ID used by the annotation tool to annotate the Cell during data processing.
+            example: AAACCTGAGCACCGCT-1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: Tool Cell ID
+
+# The CellExpression object acts as a container to hold a single expression level measurement from
+# an experiment. Expression data is associated with a cell_id and the related repertoire_id and 
+# data_processing_id as cell_id is not guaranteed to be unique outside the data processing for 
+# a single repertoire.
+CellExpression:
+    discriminator: AIRR
+    type: object
+    required:
+        - reperotire_id
+        - data_processing_id
+        - cell_id
+        - property
+        - value
+    properties:
+        cell_id:
+            type: string
+            description: >
+                Identifier of the cell to which this expression data is related.
+            title: Cell identifier
+            example: W06_046_091
+            x-airr:
+                miairr: defined
+                nullable: false
+                adc-query-support: true
+                name: Cell identifier
+        repertoire_id:
+            type: string
+            description: Identifier for the associated repertoire in study metadata.
+            title: Parental repertoire of cell
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                name: Parental repertoire of cell
+        data_processing_id:
+            type: string
+            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            title: Data processing for cell
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                name: Data processing for cell
+        property:
+            $ref: '#/Ontology'
+            description: Name of the property observed, typically a gene or antibody idenifier (and its label) from a canonical resource such as Ensembl (e.g. ENSG00000275747, IGHV3-79) or Antibody Registry (ABREG:1236456, Purified anti-mouse/rat/human CD27 antibody).
+            title: Property information
+            nullable: true
+            example:
+                id: ENSG:ENSG00000275747
+                label: IGHV3-79
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                format: ontology
+                name: Property information
+        value:
+            type: number
+            description: Level at which the property was observed in the experiment (non-normalized).
+            title: Property value
+            example: 3
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                name: Property value
