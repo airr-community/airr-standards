@@ -38,6 +38,14 @@ CURIEMap:
         map:
             ABREG:
                 iri_prefix: "http://antibodyregistry.org/AB_"
+    CHEBI:
+        type: ontology
+        default:
+          map: OBO
+          provider: OLS
+        map:
+          OBO:
+            iri_prefix: "http://purl.obolibrary.org/obo/CHEBI_"
     CL:
         type: ontology
         default:
@@ -118,6 +126,13 @@ CURIEMap:
         map:
             OBO:
                 iri_prefix: "http://purl.obolibrary.org/obo/UBERON_"
+    UNIPROT:
+        type: identifier
+        default:
+            map: UNIPROT
+        map:
+            UniProt:
+                iri_prefix: "http://purl.uniprot.org/uniprot/"
     UO:
         type: ontology
         default:
@@ -149,6 +164,11 @@ InformationProvider:
                 url: "https://api.ror.org/organizations/{iri}"
                 response: application/json
     parameter:
+        CHEBI:
+            Ontobee:
+                ontology_id: CHEBI
+            OLS:
+                ontology_id: chebi
         CL:
             Ontobee:
                 ontology_id: CL
