@@ -60,7 +60,28 @@ assembled into contigs, but could not be fully assembled. In this case the co-lo
 the co-location across the entire locus can not be. Co-location is therefore indicated by means of the ``phasing`` parameter, which in this 
 case would be assigned a different value for alleles on each contig. 
 
-Correspondingly, ``MHCGenotype`` amd ``MHCGenotypeSet`` describe the MHC alleles found in a subject.
+
+MHC Genotypes
+-------------
+
+Similary to the IG/TR genotypes, the ``MHCGenotype`` amd ``MHCGenotypeSet``
+objects describe the MHC alleles found in a subject. ``MHCGenotype`` objects
+assemble alleles from one class: ``MHC-I``, ``MHC-II`` or ``MHC-nonclassical``.
+The method used to determine the genotype can be provided in the
+``mhc_genotyping_method`` field. As different methods might be use for the
+various classes, this field is located in the `MHCGenotype` object, not the
+``MHCGenotypeSet``.
+
+The ``mhc_genotyping_method`` allows free-text descriptions, however data
+curators are asked to keep close to the following terms if applicable:
+
+*  ``PCR-based typing``: Methods whose read-out is the amplification
+   of specific sequences, but which do not provide sequence data by themselves.
+   This includes SSP and SSOP.
+*  ``Sequencing-based typing``: Clinical-grade NGS-based assays, providing
+   high quality and resolution.
+*  ``Inference-based typing``: Allele inferrence based on genome-wide DNA
+   or RNA sequencing.
 
 File Format Specification
 -------------------------
