@@ -4228,6 +4228,7 @@ Receptor:
     discriminator: AIRR
     type: object
     required:
+        - receptor_id
         - receptor_hash
         - receptor_type
         - receptor_variable_domain_1_aa
@@ -4235,6 +4236,14 @@ Receptor:
         - receptor_variable_domain_2_aa
         - receptor_variable_domain_2_locus
     properties:
+        receptor_id:
+            type: string
+            description: ID of the current Receptor object, unique within the local repository.
+            title: Receptor ID
+            example: TCR-MM-012345
+            x-airr:
+                nullable: false
+                adc-query-support: true
         receptor_hash:
             type: string
             description: >
@@ -4299,6 +4308,16 @@ Receptor:
             x-airr:
                 nullable: false
                 adc-api-optional: true
+        receptor_ref:
+            type: array
+            description: Array of receptor identifiers defined for the Receptor object
+            title: Receptor cross-references
+            items:
+                type: string
+            example: ["IEDB_RECEPTOR:10"]
+            x-airr:
+                nullable: true
+                adc-query-support: true
         reactivity_measurements:
             type: array
             description: Records of reactivity measurement
@@ -4310,63 +4329,53 @@ Receptor:
                         enum:
                             - MHC:peptide
                             - MHC:non-peptide
+                            - protein
                             - peptide
-                            - non-peptide
+                            - non-peptidic
                         description: Classification of ligand binding to receptor
                         example: non-peptide
                         x-airr:
                             nullable: false
-                    mhc_class:
-                        type: string
-                        enum:
-                            - MHC-I
-                            - MHC-II
-                            - MHC-nonclassical
-                        description: (only for MHC:* ligand_type:) Classes MHC molecule
-                        example: MHC-II
-                        x-airr:
-                            nullable: true
-                    mhc_locus:
-                        type: string
-                        description: MHC molecules which the peptidic or non-peptidic antigen is bound into
-                        example: HLA-DR
-                        x-airr:
-                            nullable: true
-                    mhc_chain_1_name:
-                        type: string
-                        description: Allele name of an MHC alpha chain
-                        example: HLA-DRA
-                        x-airr:
-                            nullable: true
-                    mhc_chain_2_name:
-                        type: string
-                        description: Allele name of an MHC class II beta chain or an invariant beta2-microglobin chain
-                        example: HLA-DRB1*04:01
-                        x-airr:
-                            nullable: true
-                    antigen:
-                        type: string
-                        description: >
-                            The substance against which the receptor was tested. Any substance that stimulates an immune
-                            response in the body, such as through antibody production or by presentation to a TCR after
-                            binding to an MHC molecule.
-                        example: PSDKHIKEYLNKIQN
-                        x-airr:
-                            nullable: true
                     antigen_type:
                         type: string
+                        enum:
+                            - protein
+                            - peptide
+                            - non-peptidic
                         description: >
-                            Defining the structure of an antigen. There are non-peptidic structures bindng to antibody or
-                            major histocompatibility complex (MHC) to stimulate immune response.
-                        example: peptide
+                            The type of antigen before processing by the immune system.
+                        example: protein
+                        x-airr:
+                            nullable: false
+                    antigen:
+                        $ref: '#/Ontology'
+                        description: >
+                            The substance against which the receptor was tested. This can be any substance that
+                            stimulates an adaptive immune response in the host, either through antibody production
+                            or by T cell activation after presentation via an MHC molecule.
+                        title: Antigen
+                        example:
+                            id: UNIPROT:P19597
+                            label: Circumsporozoite protein
+                        x-airr:
+                            nullable: false
+                            adc-query-support: true
+                            format: ontology
+                    antigen_source_species:
+                        $ref: '#/Ontology'
+                        description: The species from which the antigen was isolated
+                        title: Source species of antigen
+                        example:
+                            id: NCBITAXON:5843
+                            label: Plasmodium falciparum NF54
                         x-airr:
                             nullable: true
-                    antigen_curie:
-                        type: string
-                        description: Identifiers for antigen reference source
-                        example: UNIPROT:P19597
-                        x-airr:
-                            nullable: true
+                            format: ontology
+                            ontology:
+                                draft: true
+                                top_node:
+                                    id: NCBITAXON:1
+                                    label: root
                     peptide_start:
                         type: integer
                         description: Start position of the peptide within the reference protein sequence
@@ -4374,10 +4383,62 @@ Receptor:
                             nullable: true
                     peptide_end:
                         type: integer
-                        description: End position of the peptide within the reference protein sequence        
+                        description: End position of the peptide within the reference protein sequence
                         x-airr:
                             nullable: true
-                    reactivity_study_method:
+                    mhc_class:
+                        type: string
+                        enum:
+                            - MHC-I
+                            - MHC-II
+                            - MHC-nonclassical
+                        description: Class of MHC molecule, only present for MHC:x ligand types
+                        example: MHC-II
+                        x-airr:
+                            nullable: true
+                    mhc_gene_1:
+                        $ref: '#/Ontology'
+                        description: The MHC gene to which the mhc_allele_1 belongs
+                        title: MHC gene 1
+                        example:
+                            id: MRO:0000055
+                            label: HLA-DRA
+                        x-airr:
+                            nullable: true
+                            format: ontology
+                            ontology:
+                                draft: true
+                                top_node:
+                                    id: MRO:0000004
+                                    label: MHC gene
+                    mhc_allele_1:
+                        type: string
+                        description: Allele designation of the MHC alpha chain
+                        example: HLA-DRA
+                        x-airr:
+                            nullable: true
+                    mhc_gene_2:
+                        $ref: '#/Ontology'
+                        description: The MHC gene to which the mhc_allele_2 belongs
+                        title: MHC gene 2
+                        example:
+                            id: MRO:0000057
+                            label: HLA-DRB1
+                        x-airr:
+                            nullable: true
+                            format: ontology
+                            ontology:
+                                draft: true
+                                top_node:
+                                    id: MRO:0000004
+                    mhc_allele_2:
+                        type: string
+                        description: >
+                            Allele designation of the MHC class II beta chain or the invariant beta2-microglobin chain
+                        example: HLA-DRB1*04:01
+                        x-airr:
+                            nullable: true
+                    reactivity_method:
                         type: string
                         enum:
                             - SPR
@@ -4388,17 +4449,17 @@ Receptor:
                         description: The methodology used to assess expression (assay implemented in experiment)
                         x-airr:
                             nullable: false
-                    reactivity_item:
+                    reactivity_readout:
                         type: string
                         enum:
-                            - IL-2 release
                             - binding strength
+                            - cytokine release
                             - dissociation constant KD
                             - on rate
                             - off rate
-                            - pf traversal inhibition
-                        description: The items calculated in measurement
-                        example: IL-2 release
+                            - pathogen inhibition
+                        description: Reactivity measurement read-out
+                        example: cytokine release
                         x-airr:
                             nullable: false
                     reactivity_value:
@@ -4409,8 +4470,8 @@ Receptor:
                             nullable: false
                     reactivity_unit:
                         type: string
-                        description: The physical unit of the measurement
-                        example: pg/ml or M
+                        description: The unit of the measurement
+                        example: pg/ml
                         x-airr:
                             nullable: false
             x-airr:
