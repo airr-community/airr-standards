@@ -628,9 +628,9 @@ be returned.
 
 .. code-block:: bash
 
-  curl https://covid19-1.ireceptor.org/airr/v1/rearrangement/{clone_id}
+  curl https://covid19-1.ireceptor.org/airr/v1/clone/{clone_id}
 
-Where clone_id is the ID of a clone object in the repository. The response will provide the ``Rearrangement`` data in JSON format.
+Where clone_id is the ID of a clone object in the repository. The response will provide the ``Clone`` data in JSON format.
 
 .. code-block:: json
 
@@ -674,15 +674,14 @@ searched, though it isn't necessary.
 
 This example queries for clones with a specific junction amino
 acid sequence among a set of repertoires. A limited set of fields is
-requested to be returned. The resultant data can be
-requested in JSON or :ref:`AIRR TSV <TSVSpecification>` format.
+requested to be returned. The resultant data is provided in JSON format.
 
 .. code-block:: bash
 
-  curl -d '{"filters":{"op":"=","content":{"field":"junction_aa","value":"CARAHCSWGSSRFGAFDMW"}},"size":1}' -H 'content-type: application/json' https://vdjserver.org/airr/v1/clone
+  curl -d '{"filters":{"op":"=","content":{"field":"junction_aa","value":"CARAHCSWGSSRFGAFDMW"}},"size":1}' -H 'content-type: application/json' http://covid19-1.ireceptor.org/airr/v1/clone
   
-This query searches the repository for clones that have a specific `junction_aa` field with a value of `CARAHCSWGSSRFGAFDMW` and requests only a
-single object in the response (`"size":1`).
+This query searches the repository for clones that have a specific ``junction_aa`` field with a value of ``CARAHCSWGSSRFGAFDMW`` and requests only a
+single object in the response (``"size":1``). The response would be similar to that provided by the single clone query given above.
 
 **Cell Endpoint**
 
@@ -701,6 +700,59 @@ be queryable and only a limited set of query capabilities must be
 supported. The queryable fields are described in the Fields section
 below.
 
+*Retrieve a Single Cell*
+
+Given a ``cell_id``, a single ``Cell`` object will
+be returned.
+
+.. code-block:: bash
+
+  curl https://covid19-1.ireceptor.org/airr/v1/cell/{cell_id}
+
+Where cell_id is the ID of a cell object in the repository. The response will provide the ``Cell`` data in JSON format.
+
+.. code-block:: json
+
+ {"Info":{
+    "title": "airr-api-ireceptor",
+    "description": "AIRR Data Commons API for iReceptor",
+    "version": "3.0",
+    "last_update": null,
+    "contact": {
+        "name": "iReceptor",
+        "url": "http://www.ireceptor.org",
+        "email": "support@ireceptor.org"
+    }
+  }, "Cell":[
+  {
+    "cell_id": "AAACCTGCACCGATAT-1",
+    "rearrangements": null,
+    "receptors": null,
+    "repertoire_id": "PRJCA002413-ERS1-CELL",
+    "data_processing_id": "PRJCA002413-ERS1",
+    "expression_study_method": "single-cell transcriptome",
+    "expression_raw_doi": null,
+    "expression_index": null,
+    "virtual_pairing": false,
+  }]}
+
+*Query against all Cells*
+
+Supplying a ``repertoire_id``, when it is known, should greatly speed
+up the query as it can significantly reduce the amount of data to be
+searched, though it isn't necessary.
+
+This example queries for clones with a specific junction amino
+acid sequence among a set of repertoires. A limited set of fields is
+requested to be returned. The resultant data is provided in JSON format.
+
+.. code-block:: bash
+
+  curl -d '{"filters":{"op":"=","content":{"field":"repertoire_id","value":"PRJCA002413-ERS1-CELL"}},"size":1}' -H 'content-type: application/json' http://covid19-1.ireceptor.org/airr/v1/cell
+  
+This query searches the repository for cells that have a specific ``repertoire_id`` field with a value of ``PRJCA002413-ERS1-CELL`` and requests only a
+single object in the response (``"size":1``). The response would be similar to that provided by the single cell query given above.
+
 **Expression Endpoint**
 
 The ``expression`` endpoint provides access to all fields in
@@ -717,6 +769,57 @@ performance. Therefore, the ADC API does not require that all fields
 be queryable and only a limited set of query capabilities must be
 supported. The queryable fields are described in the Fields section
 below.
+
+*Retrieve a Cell Expression Property*
+
+Given a ``expression_id``, a single ``Expression`` object will
+be returned.
+
+.. code-block:: bash
+
+  curl https://covid19-1.ireceptor.org/airr/v1/expression/{expression_id}
+
+Where expression_id is the ID of an expression object in the repository. The response will provide the ``CellExpression`` data in JSON format.
+
+.. code-block:: json
+
+  {"Info":{
+    "title": "airr-api-ireceptor",
+    "description": "AIRR Data Commons API for iReceptor",
+    "version": "3.0",
+    "last_update": null,
+    "contact": {
+        "name": "iReceptor",
+        "url": "http://www.ireceptor.org",
+        "email": "support@ireceptor.org"
+    }
+  }, "CellExpression":[
+  {
+    "expression_id": "61fc6c454f24ed3af5456a54",
+    "cell_id": "AAACCTGCAGCTTAAC-1",
+    "repertoire_id": "PRJCA002413-Healthy_Control_1-CELL",
+    "data_processing_id": "PRJCA002413-Healthy_Control_1",
+    "property": {
+        "label": "ISG15",
+        "id": "ENSG:ENSG00000187608"
+    },
+    "value": 1,
+  }]}
+
+*Query against all Cell Expression data*
+
+Supplying a ``repertoire_id`` or ``cell_id``, when it is known, should greatly speed
+up the query as it can significantly reduce the amount of data to be
+searched, though it isn't necessary.
+
+This example queries for cell expression data with an ENSEMBL gene ID with the value ``ENSG:ENSG0000017575`` and
+requests only a single object response (``"size":1``). The resultant data is provided
+in JSON format and would be similar to that provided by the single expression property query given above.
+
+.. code-block:: bash
+
+  curl -d '{"filters":{"op":"=","content":{"field":"property.id","value":"ENSG:ENSG00000175756"}},"size":1}' -H 'content-type: application/json' http://covid19-1.ireceptor.org/airr/v1/expression
+
 
 **Receptor Endpoint**
 
