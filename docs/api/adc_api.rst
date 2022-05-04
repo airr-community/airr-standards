@@ -76,6 +76,38 @@ specific functionality as summarized in the following table:
       - Query rearrangements
       - ``POST``
       - Upon success, returns a list of ``Rearrangements`` in JSON or AIRR TSV format according to the :ref:`Rearrangement schema <RearrangementSchema>`.
+    * - ``/v1/clone/{clone_id}``
+      - Retrieve a Clone given its ``clone_id``
+      - ``GET``
+      - Upon success, returns the ``Clone`` information in JSON format according to the :ref:`Clone schema <CloneSchema>`.
+    * - ``/v1/clone``
+      - Query clones
+      - ``POST``
+      - Upon success, returns a list of ``Clones`` in JSON format according to the :ref:`Clone schema <CloneSchema>`. 
+    * - ``/v1/cell/{cell_id}``
+      - Retrieve a Cell given its ``cell_id``
+      - ``GET``
+      - Upon success, returns the ``Cell`` information in JSON format according to the :ref:`Cell schema <CellSchema>`.
+    * - ``/v1/cell``
+      - Query cells
+      - ``POST``
+      - Upon success, returns a list of ``Cells`` in JSON format according to the :ref:`Cell schema <CellSchema>`. 
+    * - ``/v1/expression/{expression_id}``
+      - Retrieve a Expression Property given its ``expression_id``
+      - ``GET``
+      - Upon success, returns the ``Expression`` information in JSON format according to the :ref:`CellExpression schema <CellExpressionSchema>`.
+    * - ``/v1/expression``
+      - Query Cell Expression properties
+      - ``POST``
+      - Upon success, returns a list of ``Expression Properties`` in JSON format according to the :ref:`CellExperssion schema <CellExpressionSchema>`. 
+    * - ``/v1/receptor/{receptor_id}``
+      - Retrieve a Receptor given its ``receptor_id``
+      - ``GET``
+      - Upon success, returns the ``Receptor`` information in JSON format according to the :ref:`Receptor schema <ReceptorSchema>`.
+    * - ``/v1/receptor``
+      - Query Receptor properties
+      - ``POST``
+      - Upon success, returns a list of ``Receptors`` in JSON format according to the :ref:`Receptor schema <ReceptorSchema>`. 
 
 **Authentication**
 
