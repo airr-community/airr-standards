@@ -733,7 +733,7 @@ Where cell_id is the ID of a cell object in the repository. The response will pr
     "expression_study_method": "single-cell transcriptome",
     "expression_raw_doi": null,
     "expression_index": null,
-    "virtual_pairing": false,
+    "virtual_pairing": false
   }]}
 
 *Query against all Cells*
@@ -803,7 +803,7 @@ Where expression_id is the ID of an expression object in the repository. The res
         "label": "ISG15",
         "id": "ENSG:ENSG00000187608"
     },
-    "value": 1,
+    "value": 1
   }]}
 
 *Query against all Cell Expression data*
@@ -837,6 +837,43 @@ performance. Therefore, the ADC API does not require that all fields
 be queryable and only a limited set of query capabilities must be
 supported. The queryable fields are described in the Fields section
 below.
+
+*Retrieve a Receptor*
+
+Given a ``receptor_id``, a single ``Receptor`` object will
+be returned.
+
+.. code-block:: bash
+
+  curl https://covid19-1.ireceptor.org/airr/v1/receptor/{receptor_id}
+
+Where receptor_id is the ID of a receptor object in the repository. The response will provide the ``Receptor`` data in JSON format.
+
+.. code-block:: json
+
+  {"Info":{
+    "title": "airr-api-ireceptor",
+    "description": "AIRR Data Commons API for iReceptor",
+    "version": "3.0",
+    "last_update": null,
+    "contact": {
+        "name": "iReceptor",
+        "url": "http://www.ireceptor.org",
+        "email": "support@ireceptor.org"
+    }
+  }, "Receptor":[
+  {
+  }]}
+
+*Query against all Receptor data*
+
+This example queries for receptor data that has a TCR receptor type and
+requests only a single object response (``"size":1``). The resultant data is provided
+in JSON format and would be similar to that provided by the single expression property query given above.
+
+.. code-block:: bash
+
+  curl -d '{"filters":{"op":"=","content":{"field":"receptor_rtype","value":"TCR"}},"size":1}' -H 'content-type: application/json' http://covid19-1.ireceptor.org/airr/v1/receptor
 
 Request Parameters
 ~~~~~~~~~~~~~~~~~~
