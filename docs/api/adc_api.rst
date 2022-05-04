@@ -823,35 +823,31 @@ in JSON format and would be similar to that provided by the single expression pr
 
 **Receptor Endpoint**
 
-The ``receptor`` endpoint provides access to all fields in
-the :ref:`Receptor schema <ReceptorSchema>`. There are two
-type of endpoints; one for retrieving a single receptor given its
-identifier, and another for performing a query across all
-receptors in the data repository.
+The ``receptor`` endpoint provides access to all fields in the
+:ref:`Receptor schema`. There are two type of endpoints: One for
+retrieving a single receptor given its identifier, and another for
+performing a query across all receptors in the data repository.
 
-Unlike repertoire data, data repositories are expected to store
-millions of receptor records, where performing
-"simple" queries can quickly become computationally expensive. Data
-repositories will need to optimize their databases for
-performance. Therefore, the ADC API does not require that all fields
-be queryable and only a limited set of query capabilities must be
+To allow data repositories to optimize their databases for performance,
+the ADC API does not require that all fields in the ``Receptor`` object
+to be queryable and only a limited set of query capabilities must be
 supported. The queryable fields are described in the Fields section
 below.
 
 *Retrieve a Receptor*
 
-Given a ``receptor_id``, a single ``Receptor`` object will
-be returned.
+Given a ``receptor_id``, a single ``Receptor`` object will be returned.
 
 .. code-block:: bash
 
   curl https://covid19-1.ireceptor.org/airr/v1/receptor/{receptor_id}
 
-Where receptor_id is the ID of a receptor object in the repository. The response will provide the ``Receptor`` data in JSON format.
+Where ``receptor_id`` is the ID of a ``Receptor`` object in the
+repository. The response will provide the object in JSON format.
 
 .. code-block:: json
 
-  {"Info":{
+  {"Info": {
     "title": "airr-api-ireceptor",
     "description": "AIRR Data Commons API for iReceptor",
     "version": "3.0",
@@ -861,15 +857,41 @@ Where receptor_id is the ID of a receptor object in the repository. The response
         "url": "http://www.ireceptor.org",
         "email": "support@ireceptor.org"
     }
-  }, "Receptor":[
-  {
-  }]}
+  }, "Receptor": [
+    {
+      "receptor_id": "IG-MM-BALB-123456",
+      "receptor_hash": "aa1c4b77a6f4927611ab39f5267415beaa0ba07a952c233d803b07e52261f026",
+      "receptor_type": "Ig",
+      "receptor_variable_domain_1_aa": "QVQLQQPGAELVKPGASVKLSCKASGYTFTSYWMHWVKQRPGRGLEWIGRIDPNSGGTKYNEKFKSKATLTVDKPSSTAYMQLSSLTSEDSAVYYCARYDYYGSSYFDYWGQGTTLTVSS",
+      "receptor_variable_domain_1_locus": "IGH",
+      "receptor_variable_domain_2_aa": "QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL",
+      "receptor_variable_domain_2_locus": "IGL",
+      "receptor_ref": [
+        "IEDB_RECEPTOR:29263"
+      ],
+      "reactivity_measurements": [
+        {
+          "ligand_type": "non-peptidic",
+          "antigen_type": "non-peptidic",
+          "antigen": {
+            "id": "CHEBI:53793",
+            "label": "(4-hydroxy-3-nitrophenyl)acetyl group"
+          },
+          "reactivity_method": "SPR",
+          "reactivity_readout": "dissociation constant KD",
+          "reactivity_value": 1.2E-6,
+          "reactivity_unit": "M-1"
+        }
+      ]
+    }
+  ]}
 
 *Query against all Receptor data*
 
 This example queries for receptor data that has a TCR receptor type and
-requests only a single object response (``"size":1``). The resultant data is provided
-in JSON format and would be similar to that provided by the single expression property query given above.
+requests only a single object response (``"size":1``). The resultant
+data is provided in JSON format and would be similar to that provided
+by the single expression property query given above.
 
 .. code-block:: bash
 
