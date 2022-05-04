@@ -18,13 +18,13 @@ validated. Such deposition also facilitates reuse of data for the
 generation of new hypotheses and new knowledge.
 
 The AIRR Common Repository Working Group (CRWG) developed a set of
-recommendations__ (v0.6.0) that promote the deposit, sharing, and use
+recommendations__ (v0.7.0) that promote the deposit, sharing, and use
 of AIRR sequence data. These recommendations were refined following
 community discussions at the AIRR 2016 and 2017 Community Meetings and
 were approved through a vote by the AIRR Community at the AIRR
 Community Meeting in December 2017.
 
-.. __: https://github.com/airr-community/common-repo-wg/blob/v0.6.0/recommendations.md
+.. __: https://github.com/airr-community/common-repo-wg/blob/v0.7.0/recommendations.md
 
 Overview
 --------
