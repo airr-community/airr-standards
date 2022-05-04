@@ -604,13 +604,142 @@ Here is the response in AIRR TSV format.
     5f70b421e10383007e303b00	true	IGHV1-69*04	2564613624180576746-242ac113-0001-012
     5f70b421e10383007e303baf	true	IGHV1-69*04	2564613624180576746-242ac113-0001-012
 
+**Clone Endpoint**
+
+The ``clone`` endpoint provides access to all fields in
+the :ref:`Clone schema <CloneSchema>`. There are two
+type of endpoints; one for retrieving a single clone given its
+identifier, and another for performing a query across all
+clones in the data repository.
+
+Unlike repertoire data, data repositories are expected to store
+millions or billions of clone records, where performing
+"simple" queries can quickly become computationally expensive. Data
+repositories will need to optimize their databases for
+performance. Therefore, the ADC API does not require that all fields
+be queryable and only a limited set of query capabilities must be
+supported. The queryable fields are described in the Fields section
+below.
+
+*Retrieve a Single Clone*
+
+Given a ``clone_id``, a single ``Clone`` object will
+be returned.
+
+.. code-block:: bash
+
+  curl https://covid19-1.ireceptor.org/airr/v1/rearrangement/{clone_id}
+
+Where clone_id is the ID of a clone object in the repository. The response will provide the ``Rearrangement`` data in JSON format.
+
+.. code-block:: json
+
+    {
+      "Info":
+      {
+        "title": "airr-api-ireceptor",
+        "description": "AIRR Data Commons API for iReceptor",
+        "version": "3.0",
+        "last_update": null,
+        "contact": {
+            "name": "iReceptor",
+            "url": "http://www.ireceptor.org",
+            "email": "support@ireceptor.org"
+        }
+      }, 
+      "Clone":
+      [
+        {
+          "clone_id": "clonotype1",
+          "repertoire_id": "PRJCA002413-Healthy_Control_1-IG",
+          "data_processing_id": "PRJCA002413-Healthy_Control_1",
+          "sequences": null,
+          "v_call": "IGHV2-70",
+          "d_call": "",
+          "j_call": "IGHJ3",
+          "junction": "TGCGCACGGGCTCATTGTTCGTGGGGCAGCAGCAGGTTCGGTGCTTTTGATATGTGG",
+          "junction_aa": "CARAHCSWGSSRFGAFDMW",
+          "junction_length": 57,
+          "junction_aa_length": 19,
+          "FIELDS REMOVED" : "FOR SPACE"
+        }
+      ]
+    }
+
+*Query against all Clones*
+
+Supplying a ``repertoire_id``, when it is known, should greatly speed
+up the query as it can significantly reduce the amount of data to be
+searched, though it isn't necessary.
+
+This example queries for clones with a specific junction amino
+acid sequence among a set of repertoires. A limited set of fields is
+requested to be returned. The resultant data can be
+requested in JSON or :ref:`AIRR TSV <TSVSpecification>` format.
+
+.. code-block:: bash
+
+  curl -d '{"filters":{"op":"=","content":{"field":"junction_aa","value":"CARAHCSWGSSRFGAFDMW"}},"size":1}' -H 'content-type: application/json' https://vdjserver.org/airr/v1/clone
+  
+This query searches the repository for clones that have a specific `junction_aa` field with a value of `CARAHCSWGSSRFGAFDMW` and requests only a
+single object in the response (`"size":1`).
+
+**Cell Endpoint**
+
+The ``cell`` endpoint provides access to all fields in
+the :ref:`Cell schema <CellSchema>`. There are two
+type of endpoints; one for retrieving a single cell given its
+identifier, and another for performing a query across all
+cells in the data repository.
+
+Unlike repertoire data, data repositories are expected to store
+millions of cell records, where performing
+"simple" queries can quickly become computationally expensive. Data
+repositories will need to optimize their databases for
+performance. Therefore, the ADC API does not require that all fields
+be queryable and only a limited set of query capabilities must be
+supported. The queryable fields are described in the Fields section
+below.
+
+**Expression Endpoint**
+
+The ``expression`` endpoint provides access to all fields in
+the :ref:`CellExpression schema <CellExpressionSchema>`. There are two
+type of endpoints; one for retrieving a single expression property given its
+identifier, and another for performing a query across all
+expression properties in the data repository.
+
+Unlike repertoire data, data repositories are expected to store
+millions or billions of cell expression records, where performing
+"simple" queries can quickly become computationally expensive. Data
+repositories will need to optimize their databases for
+performance. Therefore, the ADC API does not require that all fields
+be queryable and only a limited set of query capabilities must be
+supported. The queryable fields are described in the Fields section
+below.
+
+**Receptor Endpoint**
+
+The ``receptor`` endpoint provides access to all fields in
+the :ref:`Receptor schema <ReceptorSchema>`. There are two
+type of endpoints; one for retrieving a single receptor given its
+identifier, and another for performing a query across all
+receptors in the data repository.
+
+Unlike repertoire data, data repositories are expected to store
+millions of receptor records, where performing
+"simple" queries can quickly become computationally expensive. Data
+repositories will need to optimize their databases for
+performance. Therefore, the ADC API does not require that all fields
+be queryable and only a limited set of query capabilities must be
+supported. The queryable fields are described in the Fields section
+below.
 
 Request Parameters
 ~~~~~~~~~~~~~~~~~~
 
 The ADC API supports the follow query parameters. These are only
-applicable to the ``repertoire`` and ``rearrangement`` query
-endpoints, i.e. the HTTP ``POST`` endpoints.
+applicable to the query endpoints, i.e. the HTTP ``POST`` endpoints.
 
 .. list-table::
     :widths: auto
