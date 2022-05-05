@@ -76,6 +76,14 @@ CURIEMap:
         map:
             ENSG:
                 iri_prefix: "https://www.ensembl.org/Multi/Search/Results?q="
+    IEDB_RECEPTOR:
+        type: identifier
+        default:
+            map: IEDB
+            provider: IEDB
+        map:
+            IEDB:
+                iri_prefix: "https://www.iedb.org/receptor/"
     MRO:
         type: ontology
         default:
@@ -145,6 +153,10 @@ CURIEMap:
 
 InformationProvider:
     provider:
+        IEDB:
+            request:
+                url: "https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}"
+                response: application/json
         OLS:
             request:
                 url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
