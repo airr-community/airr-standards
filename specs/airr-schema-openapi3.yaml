@@ -4320,6 +4320,7 @@ CellExpression:
         propertyName: AIRR
     type: object
     required:
+        - expression_id
         - reperotire_id
         - data_processing_id
         - cell_id
