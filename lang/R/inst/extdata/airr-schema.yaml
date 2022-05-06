@@ -4117,9 +4117,9 @@ CellExpression:
             description: >
                 Identifier of this expression property measurement.
             title: Expression property measurement identifier
-            nullable: false
             x-airr:
                 miairr: defined
+                nullable: false
                 adc-query-support: true
                 name: Expression measurement identifier
         cell_id:
