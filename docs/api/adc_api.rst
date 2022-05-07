@@ -824,7 +824,7 @@ in JSON format and would be similar to that provided by the single expression pr
 **Receptor Endpoint**
 
 The ``receptor`` endpoint provides access to all fields in the
-:ref:`Receptor schema`. There are two type of endpoints: One for
+:ref:`ReceptorSchema`. There are two type of endpoints: One for
 retrieving a single receptor given its identifier, and another for
 performing a query across all receptors in the data repository.
 
