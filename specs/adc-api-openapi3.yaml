@@ -405,6 +405,15 @@ components:
         Cell:
           $ref: '#/components/schemas/cell_list'
 
+    # The response object /expression/{expression_id} endpoint
+    expression_id_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        Cell:
+          $ref: '#/components/schemas/expression_list'
+
     # The response object for the /expression endpoint
     expression_response:
       type: object
