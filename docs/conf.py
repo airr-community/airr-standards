@@ -406,7 +406,7 @@ html_context['MiAIRR_schema'] = miairr_schema
 fields = ['Name', 'Type', 'Attributes', 'Definition']
 tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
           'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing',
-          'Rearrangement', 'Alignment', 'Clone', 'Tree', 'Node', 'Cell',
+          'Rearrangement', 'Alignment', 'Clone', 'Tree', 'Node', 'Cell', 'CellExpression',
           'RearrangedSequence', 'UnrearrangedSequence', 'SequenceDelineationV', 'AlleleDescription', 'GermlineSet',
           'GenotypeSet', 'Genotype', 'MHCGenotypeSet', 'MHCGenotype']
 for spec in tables:

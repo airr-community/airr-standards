@@ -18,13 +18,13 @@ validated. Such deposition also facilitates reuse of data for the
 generation of new hypotheses and new knowledge.
 
 The AIRR Common Repository Working Group (CRWG) developed a set of
-recommendations__ (v0.6.0) that promote the deposit, sharing, and use
+recommendations__ (v0.7.0) that promote the deposit, sharing, and use
 of AIRR sequence data. These recommendations were refined following
 community discussions at the AIRR 2016 and 2017 Community Meetings and
 were approved through a vote by the AIRR Community at the AIRR
 Community Meeting in December 2017.
 
-.. __: https://github.com/airr-community/common-repo-wg/blob/v0.6.0/recommendations.md
+.. __: https://github.com/airr-community/common-repo-wg/blob/v0.7.0/recommendations.md
 
 Overview
 --------
@@ -76,6 +76,51 @@ specific functionality as summarized in the following table:
       - Query rearrangements
       - ``POST``
       - Upon success, returns a list of ``Rearrangements`` in JSON or AIRR TSV format according to the :ref:`Rearrangement schema <RearrangementSchema>`.
+    * - ``/v1/clone/{clone_id}``
+      - Retrieve a Clone given its ``clone_id``
+      - ``GET``
+      - Upon success, returns the ``Clone`` information in JSON format according to the :ref:`Clone schema <CloneSchema>`.
+    * - ``/v1/clone``
+      - Query clones
+      - ``POST``
+      - Upon success, returns a list of ``Clones`` in JSON format according to the :ref:`Clone schema <CloneSchema>`. 
+    * - ``/v1/cell/{cell_id}``
+      - Retrieve a Cell given its ``cell_id``
+      - ``GET``
+      - Upon success, returns the ``Cell`` information in JSON format according to the :ref:`Cell schema <CellSchema>`.
+    * - ``/v1/cell``
+      - Query cells
+      - ``POST``
+      - Upon success, returns a list of ``Cells`` in JSON format according to the :ref:`Cell schema <CellSchema>`. 
+    * - ``/v1/expression/{expression_id}``
+      - Retrieve a Expression Property given its ``expression_id``
+      - ``GET``
+      - Upon success, returns the ``Expression`` information in JSON format according to the :ref:`CellExpression schema <CellExpressionSchema>`.
+    * - ``/v1/expression``
+      - Query Cell Expression properties
+      - ``POST``
+      - Upon success, returns a list of ``Expression Properties`` in JSON format according to the :ref:`CellExperssion schema <CellExpressionSchema>`. 
+    * - ``/v1/receptor/{receptor_id}``
+      - Retrieve a Receptor given its ``receptor_id``
+      - ``GET``
+      - Upon success, returns the ``Receptor`` information in JSON format according to the :ref:`Receptor schema <ReceptorSchema>`.
+    * - ``/v1/receptor``
+      - Query Receptor properties
+      - ``POST``
+      - Upon success, returns a list of ``Receptors`` in JSON format according to the :ref:`Receptor schema <ReceptorSchema>`. 
+
+**Repository implementation principles**
+
+Implementers of the ADC API should follow the following high level principles. Users of the ADC API can expect
+the following principles to be followed.
+
++ All API endpoints should return JSON encodings as an API repsonse.
+  
++ For some API endpoints it is possible to request TSV files, and those endpoints that support TSV files are documented here (see above).
+  
++ Endpoints that are not documented as supporting TSV can reject TSV requests.
+    
++ If an API endpoint returns a field, then the content of that field in the JSON and TSV respsonse must be equivalent.
 
 **Authentication**
 
@@ -572,13 +617,304 @@ Here is the response in AIRR TSV format.
     5f70b421e10383007e303b00	true	IGHV1-69*04	2564613624180576746-242ac113-0001-012
     5f70b421e10383007e303baf	true	IGHV1-69*04	2564613624180576746-242ac113-0001-012
 
+**Clone Endpoint**
+
+The ``clone`` endpoint provides access to all fields in
+the :ref:`Clone schema <CloneSchema>`. There are two
+type of endpoints; one for retrieving a single clone given its
+identifier, and another for performing a query across all
+clones in the data repository.
+
+Unlike repertoire data, data repositories are expected to store
+millions or billions of clone records, where performing
+"simple" queries can quickly become computationally expensive. Data
+repositories will need to optimize their databases for
+performance. Therefore, the ADC API does not require that all fields
+be queryable and only a limited set of query capabilities must be
+supported. The queryable fields are described in the Fields section
+below.
+
+*Retrieve a Single Clone*
+
+Given a ``clone_id``, a single ``Clone`` object will
+be returned.
+
+.. code-block:: bash
+
+  curl https://covid19-1.ireceptor.org/airr/v1/clone/{clone_id}
+
+Where clone_id is the ID of a clone object in the repository. The response will provide the ``Clone`` data in JSON format.
+
+.. code-block:: json
+
+    {
+      "Info":
+      {
+        "title": "airr-api-ireceptor",
+        "description": "AIRR Data Commons API for iReceptor",
+        "version": "3.0",
+        "last_update": null,
+        "contact": {
+            "name": "iReceptor",
+            "url": "http://www.ireceptor.org",
+            "email": "support@ireceptor.org"
+        }
+      }, 
+      "Clone":
+      [
+        {
+          "clone_id": "clonotype1",
+          "repertoire_id": "PRJCA002413-Healthy_Control_1-IG",
+          "data_processing_id": "PRJCA002413-Healthy_Control_1",
+          "sequences": null,
+          "v_call": "IGHV2-70",
+          "d_call": "",
+          "j_call": "IGHJ3",
+          "junction": "TGCGCACGGGCTCATTGTTCGTGGGGCAGCAGCAGGTTCGGTGCTTTTGATATGTGG",
+          "junction_aa": "CARAHCSWGSSRFGAFDMW",
+          "junction_length": 57,
+          "junction_aa_length": 19,
+          "FIELDS REMOVED" : "FOR SPACE"
+        }
+      ]
+    }
+
+*Query against all Clones*
+
+Supplying a ``repertoire_id``, when it is known, should greatly speed
+up the query as it can significantly reduce the amount of data to be
+searched, though it isn't necessary.
+
+This example queries for clones with a specific junction amino
+acid sequence among a set of repertoires. A limited set of fields is
+requested to be returned. The resultant data is provided in JSON format.
+
+.. code-block:: bash
+
+  curl -d '{"filters":{"op":"=","content":{"field":"junction_aa","value":"CARAHCSWGSSRFGAFDMW"}},"size":1}' -H 'content-type: application/json' http://covid19-1.ireceptor.org/airr/v1/clone
+  
+This query searches the repository for clones that have a specific ``junction_aa`` field with a value of ``CARAHCSWGSSRFGAFDMW`` and requests only a
+single object in the response (``"size":1``). The response would be similar to that provided by the single clone query given above.
+
+**Cell Endpoint**
+
+The ``cell`` endpoint provides access to all fields in
+the :ref:`Cell schema <CellSchema>`. There are two
+type of endpoints; one for retrieving a single cell given its
+identifier, and another for performing a query across all
+cells in the data repository.
+
+Unlike repertoire data, data repositories are expected to store
+millions of cell records, where performing
+"simple" queries can quickly become computationally expensive. Data
+repositories will need to optimize their databases for
+performance. Therefore, the ADC API does not require that all fields
+be queryable and only a limited set of query capabilities must be
+supported. The queryable fields are described in the Fields section
+below.
+
+*Retrieve a Single Cell*
+
+Given a ``cell_id``, a single ``Cell`` object will
+be returned.
+
+.. code-block:: bash
+
+  curl https://covid19-1.ireceptor.org/airr/v1/cell/{cell_id}
+
+Where cell_id is the ID of a cell object in the repository. The response will provide the ``Cell`` data in JSON format.
+
+.. code-block:: json
+
+ {"Info":{
+    "title": "airr-api-ireceptor",
+    "description": "AIRR Data Commons API for iReceptor",
+    "version": "3.0",
+    "last_update": null,
+    "contact": {
+        "name": "iReceptor",
+        "url": "http://www.ireceptor.org",
+        "email": "support@ireceptor.org"
+    }
+  }, "Cell":[
+  {
+    "cell_id": "AAACCTGCACCGATAT-1",
+    "rearrangements": null,
+    "receptors": null,
+    "repertoire_id": "PRJCA002413-ERS1-CELL",
+    "data_processing_id": "PRJCA002413-ERS1",
+    "expression_study_method": "single-cell transcriptome",
+    "expression_raw_doi": null,
+    "expression_index": null,
+    "virtual_pairing": false
+  }]}
+
+*Query against all Cells*
+
+Supplying a ``repertoire_id``, when it is known, should greatly speed
+up the query as it can significantly reduce the amount of data to be
+searched, though it isn't necessary.
+
+This example queries for clones with a specific junction amino
+acid sequence among a set of repertoires. A limited set of fields is
+requested to be returned. The resultant data is provided in JSON format.
+
+.. code-block:: bash
+
+  curl -d '{"filters":{"op":"=","content":{"field":"repertoire_id","value":"PRJCA002413-ERS1-CELL"}},"size":1}' -H 'content-type: application/json' http://covid19-1.ireceptor.org/airr/v1/cell
+  
+This query searches the repository for cells that have a specific ``repertoire_id`` field with a value of ``PRJCA002413-ERS1-CELL`` and requests only a
+single object in the response (``"size":1``). The response would be similar to that provided by the single cell query given above.
+
+**Expression Endpoint**
+
+The ``expression`` endpoint provides access to all fields in
+the :ref:`CellExpression schema <CellExpressionSchema>`. There are two
+type of endpoints; one for retrieving a single expression property given its
+identifier, and another for performing a query across all
+expression properties in the data repository.
+
+Unlike repertoire data, data repositories are expected to store
+millions or billions of cell expression records, where performing
+"simple" queries can quickly become computationally expensive. Data
+repositories will need to optimize their databases for
+performance. Therefore, the ADC API does not require that all fields
+be queryable and only a limited set of query capabilities must be
+supported. The queryable fields are described in the Fields section
+below.
+
+*Retrieve a Cell Expression Property*
+
+Given a ``expression_id``, a single ``Expression`` object will
+be returned.
+
+.. code-block:: bash
+
+  curl https://covid19-1.ireceptor.org/airr/v1/expression/{expression_id}
+
+Where expression_id is the ID of an expression object in the repository. The response will provide the ``CellExpression`` data in JSON format.
+
+.. code-block:: json
+
+  {"Info":{
+    "title": "airr-api-ireceptor",
+    "description": "AIRR Data Commons API for iReceptor",
+    "version": "3.0",
+    "last_update": null,
+    "contact": {
+        "name": "iReceptor",
+        "url": "http://www.ireceptor.org",
+        "email": "support@ireceptor.org"
+    }
+  }, "CellExpression":[
+  {
+    "expression_id": "61fc6c454f24ed3af5456a54",
+    "cell_id": "AAACCTGCAGCTTAAC-1",
+    "repertoire_id": "PRJCA002413-Healthy_Control_1-CELL",
+    "data_processing_id": "PRJCA002413-Healthy_Control_1",
+    "property": {
+        "label": "ISG15",
+        "id": "ENSG:ENSG00000187608"
+    },
+    "value": 1
+  }]}
+
+*Query against all Cell Expression data*
+
+Supplying a ``repertoire_id`` or ``cell_id``, when it is known, should greatly speed
+up the query as it can significantly reduce the amount of data to be
+searched, though it isn't necessary.
+
+This example queries for cell expression data with an ENSEMBL gene ID with the value ``ENSG:ENSG0000017575`` and
+requests only a single object response (``"size":1``). The resultant data is provided
+in JSON format and would be similar to that provided by the single expression property query given above.
+
+.. code-block:: bash
+
+  curl -d '{"filters":{"op":"=","content":{"field":"property.id","value":"ENSG:ENSG00000175756"}},"size":1}' -H 'content-type: application/json' http://covid19-1.ireceptor.org/airr/v1/expression
+
+
+**Receptor Endpoint**
+
+The ``receptor`` endpoint provides access to all fields in the
+:ref:`ReceptorSchema`. There are two type of endpoints: One for
+retrieving a single receptor given its identifier, and another for
+performing a query across all receptors in the data repository.
+
+To allow data repositories to optimize their databases for performance,
+the ADC API does not require that all fields in the ``Receptor`` object
+to be queryable and only a limited set of query capabilities must be
+supported. The queryable fields are described in the Fields section
+below.
+
+*Retrieve a Receptor*
+
+Given a ``receptor_id``, a single ``Receptor`` object will be returned.
+
+.. code-block:: bash
+
+  curl https://covid19-1.ireceptor.org/airr/v1/receptor/{receptor_id}
+
+Where ``receptor_id`` is the ID of a ``Receptor`` object in the
+repository. The response will provide the object in JSON format.
+
+.. code-block:: json
+
+  {"Info": {
+    "title": "airr-api-ireceptor",
+    "description": "AIRR Data Commons API for iReceptor",
+    "version": "3.0",
+    "last_update": null,
+    "contact": {
+        "name": "iReceptor",
+        "url": "http://www.ireceptor.org",
+        "email": "support@ireceptor.org"
+    }
+  }, "Receptor": [
+    {
+      "receptor_id": "IG-MM-BALB-123456",
+      "receptor_hash": "aa1c4b77a6f4927611ab39f5267415beaa0ba07a952c233d803b07e52261f026",
+      "receptor_type": "Ig",
+      "receptor_variable_domain_1_aa": "QVQLQQPGAELVKPGASVKLSCKASGYTFTSYWMHWVKQRPGRGLEWIGRIDPNSGGTKYNEKFKSKATLTVDKPSSTAYMQLSSLTSEDSAVYYCARYDYYGSSYFDYWGQGTTLTVSS",
+      "receptor_variable_domain_1_locus": "IGH",
+      "receptor_variable_domain_2_aa": "QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL",
+      "receptor_variable_domain_2_locus": "IGL",
+      "receptor_ref": [
+        "IEDB_RECEPTOR:29263"
+      ],
+      "reactivity_measurements": [
+        {
+          "ligand_type": "non-peptidic",
+          "antigen_type": "non-peptidic",
+          "antigen": {
+            "id": "CHEBI:53793",
+            "label": "(4-hydroxy-3-nitrophenyl)acetyl group"
+          },
+          "reactivity_method": "SPR",
+          "reactivity_readout": "dissociation constant KD",
+          "reactivity_value": 1.2E-6,
+          "reactivity_unit": "M-1"
+        }
+      ]
+    }
+  ]}
+
+*Query against all Receptor data*
+
+This example queries for receptor data that has a TCR receptor type and
+requests only a single object response (``"size":1``). The resultant
+data is provided in JSON format and would be similar to that provided
+by the single expression property query given above.
+
+.. code-block:: bash
+
+  curl -d '{"filters":{"op":"=","content":{"field":"receptor_rtype","value":"TCR"}},"size":1}' -H 'content-type: application/json' http://covid19-1.ireceptor.org/airr/v1/receptor
 
 Request Parameters
 ~~~~~~~~~~~~~~~~~~
 
 The ADC API supports the follow query parameters. These are only
-applicable to the ``repertoire`` and ``rearrangement`` query
-endpoints, i.e. the HTTP ``POST`` endpoints.
+applicable to the query endpoints, i.e. the HTTP ``POST`` endpoints.
 
 .. list-table::
     :widths: auto
