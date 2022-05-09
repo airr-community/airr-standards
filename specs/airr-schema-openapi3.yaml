@@ -4476,8 +4476,8 @@ Receptor:
             type: string
             nullable: false
             description: >
-                The SHA256 hash of the receptor amino acid sequence, calculated as
-                sha256(concat(receptor_variable_domain_1_aa,receptor_variable_domain_2_aa) and represented as base16-encoded string.
+                The SHA256 hash of the receptor amino acid sequence, calculated on the concatenated
+                ``receptor_variable_domain_*_aa`` sequences and represented as base16-encoded string.
             title: Receptor hash ID
             example: aa1c4b77a6f4927611ab39f5267415beaa0ba07a952c233d803b07e52261f026
             x-airr:
