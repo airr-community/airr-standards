@@ -80,3 +80,26 @@ dual IGK/IGL expressing B cells their individual reactivity is
 not measured on a regular basis. Therefore they are currently not
 supported in the ``Receptor`` schema.
 
+
+.. _ReceptorFields:
+
+Receptor Fields
+-----------------------------
+
+:download:`Download as TSV <../_downloads/Receptor.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in Receptor_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
