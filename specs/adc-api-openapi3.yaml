@@ -747,7 +747,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error_response'
   
-    /expression/{expression_id}:
+  /expression/{expression_id}:
     x-swagger-router-controller: expression
     get:
       description: >
