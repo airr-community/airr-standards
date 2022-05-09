@@ -217,5 +217,5 @@ Schema Definitions
    Alignment Schema (Experimental) <alignments>
    Clone and Lineage Tree Schema (Experimental) <clone>
    Cell Schema (Experimental) <cell>
-   Cell Expression Schema (Experimental) <expression>
+   Cell Expression Schema (Experimental) <cellexpression>
    Germline Schema (Experimental) <germline>
