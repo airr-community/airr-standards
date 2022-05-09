@@ -221,3 +221,5 @@ Schema Definitions
    Cell Schema (Experimental) <cell>
    Cell Expression Schema (Experimental) <cellexpression>
    Germline Schema (Experimental) <germline>
+   Receptor Schema (Experimental) <receptor>
+
