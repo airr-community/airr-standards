@@ -2785,6 +2785,13 @@ DataProcessing:
                 set: 5
                 subset: data (processed sequence)
                 name: V(D)J germline reference database
+        germline_set_ref:
+            type: string
+            description: Unique identifier of the germline set and version, in standardized form (Repo:Label:Version)
+            example: OGRDB:Human_IGH:2021.11
+            x-airr:
+                nullable: true
+                adc-query-support: true
         analysis_provenance_id:
             type: string
             description: Identifier for machine-readable PROV model of analysis provenance
