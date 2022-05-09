@@ -109,6 +109,16 @@ specific functionality as summarized in the following table:
       - ``POST``
       - Upon success, returns a list of ``Receptors`` in JSON format according to the :ref:`Receptor schema <ReceptorSchema>`. 
 
+** Repository implementation principles**
+
+Implementers of the ADC API should follow the following high level principles. Users of the ADC API can expect
+the following principles to be followed.
+
+  * All API endpoints should return JSON encodings as an API repsonse.
+  * For some API endpoints it is possible to request TSV files, and those endpoints that support TSV files are documented below.
+    * Endpoints that are not documented as supporting TSV can reject TSV requests.
+  * If an API endpoint returns a field, then the content of that field in the JSON and TSV respsonse must be equivalent.
+
 **Authentication**
 
 The ADC API currently does not define an authentication
