@@ -451,7 +451,7 @@ CachedSchema = {
     'PCRTarget': Schema('PCRTarget'),
     'NucleicAcidProcessing': Schema('NucleicAcidProcessing'),
     'SequencingRun': Schema('SequencingRun'),
-    'RawSequenceData': Schema('RawSequenceData'),
+    'SequencingData': Schema('SequencingData'),
     'DataProcessing': Schema('DataProcessing'),
     'SampleProcessing': Schema('SampleProcessing')
 }
