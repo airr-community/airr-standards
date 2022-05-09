@@ -10,7 +10,7 @@ The file format has not been specified yet.
 
 .. _CellExpressionFields:
 
-Cell Fields
+Cell Expression Fields
 ------------------------------
 
 :download:`Download as TSV <../_downloads/CellExpression.tsv>`
