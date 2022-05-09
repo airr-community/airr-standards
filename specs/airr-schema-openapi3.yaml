@@ -4338,12 +4338,23 @@ CellExpression:
         propertyName: AIRR
     type: object
     required:
+        - expression_id
         - reperotire_id
         - data_processing_id
         - cell_id
         - property
         - value
     properties:
+        expression_id:
+            type: string
+            description: >
+                Identifier of this expression property measurement.
+            title: Expression property measurement identifier
+            nullable: false
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Expression measurement identifier
         cell_id:
             type: string
             description: >
