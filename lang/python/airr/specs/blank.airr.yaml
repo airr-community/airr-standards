@@ -106,7 +106,7 @@ Repertoire:
         sequencing_kit: null
         # raw data
         sequencing_files:
-          sequencing_data_pid: null
+          sequencing_data_id: null
           file_type: null
           filename: null
           read_direction: null
@@ -114,6 +114,8 @@ Repertoire:
           paired_filename: null
           paired_read_direction: null
           paired_read_length: null
+          index_filename: null
+          index_length: null
     data_processing:
       - data_processing_id: null
         primary_annotation: false
