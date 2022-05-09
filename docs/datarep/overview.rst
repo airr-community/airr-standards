@@ -92,7 +92,9 @@ Here are the primary schema objects of the AIRR Data Model:
     * - ``CellExpression properties``
       - Information about expression properties observed for a specific cell. ``CellExpression`` properties have their own schema and file format described :ref:`here <CellExpressionSchema>`.
     * - ``Receptor``
-      - Information about immune receptors that are linked to observed Cells in a study. ``Receptors``  have their own schema and file format described :ref:`here <ReceptorSchema>`.
+      - Information about adaptive immune receptors (i.e., Ig and TCR) that are
+        linked to observed Cells in a study. ``Receptors`` have their own schema
+        and file format described :ref:`here <ReceptorSchema>`.
     * - ``GermlineSet``
       - Lists the receptor germline sequences that have been identified for a single locus within a particular species or sub-species, together with supporting evidence and additional metadata to assist with sequence annotation. Brings togteher the subsidiary objects ``AlleleDescription``, ``SequenceDelineationV``, ``RearrangedSequence``, ``UnrearrangedSequence``, ``Acknowledgement``.
     * - ``GenotypeSet``
