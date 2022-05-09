@@ -41,22 +41,22 @@ The ``Receptor`` objects has two properties that serve as identifiers:
 *  ``receptor_hash`` is the SHA256 hash of the receptors variable domain
    amino acid sequences, which serves as a **globally unique**
    identifier that can be independently calculated by repositories
-   without requiring prior communication. It is calculated as follows
+   without requiring prior communication. It is calculated as follows,
    where ``base16`` designates the function described in `RFC4648
    Section 6`_:
 
    .. code-block::
 
-   lower_case(
-       base16(
-           sha256(
-               concatenate(
-                   upper_case(receptor_variable_domain_1_aa),
-                   upper_case(receptor_variable_domain_2_aa)
-               )
-           )
-       )
-   )
+      lower_case(
+          base16(
+              sha256(
+                  concatenate(
+                      upper_case(receptor_variable_domain_1_aa),
+                      upper_case(receptor_variable_domain_2_aa)
+                  )
+              )
+          )
+      )
 
 
 Relations to other AIRR Schema objects
