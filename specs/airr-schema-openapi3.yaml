@@ -164,7 +164,6 @@ CURIEMap:
             OBO:
                 iri_prefix: "http://purl.obolibrary.org/obo/UO_"
 
-
 InformationProvider:
     provider:
         ENA:
