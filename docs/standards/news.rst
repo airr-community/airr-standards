@@ -29,6 +29,7 @@ Version 1.4.0-dev: (In development)
 - Tree
 - Cell
 - CellExpression
+- Receptor
 
 **New fields**
 
