@@ -85,6 +85,22 @@ Here are the primary schema objects of the AIRR Data Model:
       - Composite object that combines the schema objects ``Study``, ``Subject``, ``Diagnosis``, ``Sample``, ``CellProcessing``, ``NucleicAcidProcessing``, ``SequencingRun``, and ``DataProcessing``. Each ``Repertoire`` has a unique identifier ``repertoire_id`` for linking with other data files, e.g. ``Rearrangements``. ``Repertoires`` have their own schema and file format described :ref:`here <RepertoireSchema>`.
     * - ``Rearrangments``
       - Annotated sequences describing adaptive immune receptor chains. ``Rearrangements`` have their own schema and file format described :ref:`here <RearrangementSchema>`.
+    * - ``Clones``
+      - Information about inferred clones from a study. ``Clones`` have their own schema and file format described :ref:`here <CloneSchema>`.
+    * - ``Cells``
+      - Information about an observed Cell in a study. ``Cells`` have their own schema and file format described :ref:`here <CellSchema>`.
+    * - ``CellExpression properties``
+      - Information about expression properties observed for a specific cell. ``CellExpression`` properties have their own schema and file format described :ref:`here <CellExpressionSchema>`.
+    * - ``Receptor``
+      - Information about adaptive immune receptors (i.e., Ig and TCR) that are
+        linked to observed Cells in a study. ``Receptors`` have their own schema
+        and file format described :ref:`here <ReceptorSchema>`.
+    * - ``GermlineSet``
+      - Lists the receptor germline sequences that have been identified for a single locus within a particular species or sub-species, together with supporting evidence and additional metadata to assist with sequence annotation. Brings togteher the subsidiary objects ``AlleleDescription``, ``SequenceDelineationV``, ``RearrangedSequence``, ``UnrearrangedSequence``, ``Acknowledgement``.
+    * - ``GenotypeSet``
+      - Lists the receptor germline sequences that have been identified within a single subject, including both those that are listed within ``GermlineSets`` and those that have not been so listed. References the subsidiary object ``Genotype``, which covers a single locus.
+ 
+  
 
 Relationship between Schema Objects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -203,3 +219,7 @@ Schema Definitions
    Alignment Schema (Experimental) <alignments>
    Clone and Lineage Tree Schema (Experimental) <clone>
    Cell Schema (Experimental) <cell>
+   Cell Expression Schema (Experimental) <cellexpression>
+   Germline Schema (Experimental) <germline>
+   Receptor Schema (Experimental) <receptor>
+

@@ -5,17 +5,17 @@
             {
                 "op":"=",
                 "content": {
-                    "field":"subject.organism.id",
-                    "value":"9606"
+                    "field":"subject.species.id",
+                    "value":"NCBITAXON:9606"
                 }
-	    },
-	    {
+            },
+            {
                 "op":"=",
                 "content": {
                     "field":"sample.pcr_target.pcr_target_locus",
                     "value":"IGH"
                 }
-	    }
-	]
+            }
+        ]
     }
 }

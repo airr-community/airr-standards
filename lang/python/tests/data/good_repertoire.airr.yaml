@@ -21,7 +21,7 @@ Repertoire:
       grants: null
       keywords_study: 
         - "contains_ig"
-        - "contains_tcr"
+        - "contains_tr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -77,6 +77,7 @@ Repertoire:
             reverse_pcr_primer_target_location: null
         sequencing_platform: "Illumina MiSeq"
         sequencing_files:
+          sequencing_data_id: SRA:SRR2905656
           file_type: fastq
           filename: SRR2905656_R1.fastq.gz
           read_direction: forward
@@ -84,6 +85,8 @@ Repertoire:
           paired_filename: SRR2905656_R2.fastq.gz
           paired_read_direction: reverse
           paired_read_length: 300
+          index_filename: SRR2905656_R3.fastq.gz
+          index_length: 8
         anatomic_site: null
         disease_state_sample: null
         collection_time_point_relative: null
@@ -143,7 +146,7 @@ Repertoire:
       grants: null
       keywords_study:
         - "contains_ig"
-        - "contains_tcr"
+        - "contains_tr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -199,6 +202,7 @@ Repertoire:
             reverse_pcr_primer_target_location: null
         sequencing_platform: "Illumina MiSeq"
         sequencing_files:
+          sequencing_data_id: SRA:SRR2905655
           file_type: fastq
           filename: SRR2905655_R1.fastq.gz
           read_direction: forward
@@ -206,6 +210,8 @@ Repertoire:
           paired_filename: SRR2905655_R2.fastq.gz
           paired_read_direction: reverse
           paired_read_length: 300
+          index_filename: SRR2905655_R3.fastq.gz
+          index_length: 8
         anatomic_site: null
         disease_state_sample: null
         collection_time_point_relative: null
@@ -265,7 +271,7 @@ Repertoire:
       grants: null
       keywords_study:
         - "contains_ig"
-        - "contains_tcr"
+        - "contains_tr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -321,6 +327,7 @@ Repertoire:
             reverse_pcr_primer_target_location: null
         sequencing_platform: "Illumina MiSeq"
         sequencing_files:
+          sequencing_data_id: SRA:SRR2905659
           file_type: fastq
           filename: SRR2905659_R1.fastq.gz
           read_direction: forward
@@ -328,6 +335,8 @@ Repertoire:
           paired_filename: SRR2905659_R2.fastq.gz
           paired_read_direction: reverse
           paired_read_length: 300
+          index_filename: SRR2905659_R3.fastq.gz
+          index_length: 8
         anatomic_site: null
         disease_state_sample: null
         collection_time_point_relative: null

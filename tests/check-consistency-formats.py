@@ -47,7 +47,7 @@ for spec_name in spec_files:
     # Check python package
     if jsondiff.diff(gold_spec, py_spec) != {}:
         print('{} spec is different from python version'.format(spec_name), file=sys.stderr)
-        print(jsondiff.diff(gold_spec, py_spec), file=sys.stderr)
+        print(jsondiff.diff(gold_spec, py_spec, syntax='explicit'), file=sys.stderr)
         sys.exit(1)
 
     # Check R package
