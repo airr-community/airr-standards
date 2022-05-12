@@ -293,9 +293,6 @@ validate_airr_entry <- function(definition_list, schema) {
   
   # loop through all fields in the list and check if they refer to other schemes
   for(f in names(definition_list)) {
-    print(f)
-    print(class(definition_list[[f]]))
-    print(schema[f][["type"]])
       
     # get the reference scheme
     reference_schemes <- schema[f]$ref
