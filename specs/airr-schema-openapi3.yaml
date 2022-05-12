@@ -2898,7 +2898,8 @@ DataProcessing:
                 adc-query-support: true
 
 SampleProcessing:
-    discriminator: AIRR
+    discriminator:
+        propertyName: AIRR
     allOf:
         - type: object
           properties:
