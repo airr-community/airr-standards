@@ -146,6 +146,7 @@ repertoire_file <- system.file("extdata", "good_repertoire.airr.yaml", package="
 
 # Bad repertoire pointer
 bad_repertoire_file <- file.path("..", "data-tests", "bad_repertoire.airr.yaml")
+# bad_repertoire_file <- file.path("tests", "data-tests", "bad_repertoire.airr.yaml")
 
 
 #### Repertoire I/O  ####

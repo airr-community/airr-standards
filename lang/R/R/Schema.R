@@ -182,10 +182,33 @@ load_schema <- function(definition) {
     info <- spec_list[["Info"]]
 
     # Define member attributes
-    fields <- names(definition_list[["properties"]])
-    properties <- definition_list[["properties"]]
+    if (!is.null(definition_list[["properties"]])) {
+        fields <- names(definition_list[["properties"]])
+        properties <- definition_list[["properties"]]
+        required <- definition_list[["required"]]
+    } else if (!is.null(definition_list[["allOf"]])) {
+        properties <- NULL
+        required <- NULL
+        for (s in definition_list[["allOf"]]) {
+            # this logic should probably be in extract_field_content above, but it expects a field name
+            if (!is.null(s[["type"]]) && s[["type"]] == "object") {
+                properties <- c(properties, s[["properties"]])
+            } else if (!is.null(s$`$ref`)) {
+                # name of the AIRR scheme element to refer to
+                ref_element <- s$`$ref`
+                # remove #/
+                ref_element <- substr(ref_element, 3, nchar(ref_element))
+                ref_schema <- load_schema(ref_element)
+                # add the properties for the Schema it is referencing to
+                properties <- c(properties, ref_schema@properties)
+                required <- c(required, ref_schema@required)
+            }
+        }
+        fields <- names(properties)
+    } else {
+        # TODO: this is an error
+    }
 
-    required <- definition_list[["required"]]
     optional <- setdiff(fields, required)
     
     for (f in fields) {
