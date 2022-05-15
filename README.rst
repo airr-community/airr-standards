@@ -89,7 +89,7 @@ References
 
 .. [Breden_2017] Breden F *et al*. Reproducibility and Reuse of
    Adaptive Immune Receptor Repertoire Data. Front Immunol 8:1418
-   (2017) `[PMID: 29163494]`_ `[DOI: 10.3389/fimmu.2017.01418]`_
+   (2017) `[PMID:29163494]`_ `[DOI:10.3389/fimmu.2017.01418]`_
 .. [Christley_2020] Christley S *et al*. The ADC API: A Web API for the
    Programmatic Query of the AIRR Data Commons. Front Big Data (2020)
    `[PMID:33693395]`_ `[DOI:10.3389/fdata.2020.00022]`_
@@ -98,13 +98,13 @@ References
    `[PMID:31566225]`_ `[DOI:10.1093/nar/gkz822]`_
 .. [Rubelt_2017] Rubelt F *et al*. AIRR Community Recommendations for
    Sharing Immune Repertoire Sequencing Data. Nat Immunol 18:1274
-   (2017) `[PMID: 29144493]`_ `[DOI: 10.1038/ni.3873]`_
+   (2017) `[PMID:29144493]`_ `[DOI:10.1038/ni.3873]`_
 .. [Vander_Heiden_2018] Vander Heiden JA *et al*. AIRR Community
    Standardized Representations for Annotated Immune Repertoires. Front
    Immunol 9:2206 (2018) `[PMID:30323809]`_
    `[DOI:10.3389/fimmu.2018.02206]`_
 .. [Zenodo_1185414] Release archive of the AIRR Standards repository.
-   (2015-2020) `[DOI: 10.5281/zenodo.1185414]`_
+   (2018-2022) `[DOI:10.5281/zenodo.1185414]`_
 
 
 Copyright & License
