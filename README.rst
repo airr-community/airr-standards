@@ -1,3 +1,10 @@
+.. image:: https://github.com/airr-community/airr-standards/actions/workflows/schema-test.yaml/badge.svg?branch=master
+   :target: https://github.com/airr-community/airr-standards/actions/workflows/schema-test.yaml
+.. image:: https://github.com/airr-community/airr-standards/actions/workflows/py-unittest.yaml/badge.svg?branch=master
+   :target: https://github.com/airr-community/airr-standards/actions/workflows/py-unittest.yaml
+.. image:: https://github.com/airr-community/airr-standards/actions/workflows/r-check.yaml/badge.svg?branch=master
+   :target: https://github.com/airr-community/airr-standards/actions/workflows/r-check.yaml
+
 =============================
 AIRR Community Data Standards
 =============================
@@ -13,10 +20,10 @@ global endeavor to make scientific data `FAIR`_ (findable, accessible,
 interoperable, reusable). The current Standards developed from three
 initially separate initatives (Minimal Information, Data Representation,
 API), which converged over time. The further development of the
-Standards is currently carried out by the AIRR Community's 
-`Standards Working Group`_ (WG), which was the result of the fusion of
-the "Data Representation", "Minimal Standards" and parts of the
-`Common Repository`_ WGs.
+Standards is currently carried out by the AIRR Community's `Standards
+Working Group`_ (WG), which was the result of the fusion of the "Data
+Representation", "Minimal Standards" and parts of the `Common
+Repository`_ WGs.
 
 
 MiAIRR Minimal Information Standard
@@ -61,23 +68,20 @@ The AIRR Standards are supported by the following services:
 *  `CEDAR-AIRR`_
 
 
+Releases and Issues
+===================
+
+Official releases can be found in the `release`_ section of the
+repository. There releases are also permanently archived on Zenodo,
+where they can be referenced to via the archive's DOI [Zenodo_1185414]_.
+
+
 Contributions
 =============
 
 The AIRR Community is an open initiative and we welcome all
 contributions. Please review our `development process`_ before
 contributing changes.
-
-
-Build Status, Issues and Archive
-================================
-
-.. image:: https://travis-ci.com/airr-community/airr-standards.svg?branch=master
-   :target: https://travis-ci.com/airr-community/airr-standards
-
-Please report problems, bugs, comments or enhancement requests using
-the `issue tracker`_. Official releases are archived and DOI referenced
-via Zenodo [Zenodo_1185414]_.
 
 
 References
@@ -140,4 +144,5 @@ International License`_.
 .. _`MiAIRR section`: https://docs.airr-community.org/en/stable/miairr/introduction_miairr.html
 .. _`OpenAPI v2`: https://github.com/airr-community/airr-standards/blob/master/specs/airr-schema.yaml
 .. _`OpenAPI v3`: https://github.com/airr-community/airr-standards/blob/master/specs/airr-schema-openapi3.yaml
+.. _`release`: https://github.com/airr-community/airr-standards/releases
 .. _`Standards Working Group`: https://www.antibodysociety.org/the-airr-community/airr-working-groups/standards/
