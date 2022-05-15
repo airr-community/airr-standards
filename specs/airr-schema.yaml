@@ -347,14 +347,14 @@ DataFile:
             type: array
             description: List of Repertoire metadata
             items:
-              $ref: '#/Repertoire'
+                $ref: '#/Repertoire'
             x-airr:
                 nullable: false
         RepertoireGroup:
             type: array
             description: List of Repertoire groups
             items:
-              $ref: '#/RepertoireGroup'
+                $ref: '#/RepertoireGroup'
             x-airr:
                 nullable: false
         AlleleDescription:
@@ -375,35 +375,35 @@ DataFile:
             type: array
             description: List of data processing workflows
             items:
-              $ref: '#/DataProcessing'
+                $ref: '#/DataProcessing'
             x-airr:
                 nullable: false
         Cell:
             type: array
             description: List of cells
             items:
-              $ref: '#/Cell'
+                $ref: '#/Cell'
             x-airr:
                 nullable: false
         Rearrangement:
             type: array
             description: List of rearrangement records
             items:
-              $ref: '#/Rearrangement'
+                $ref: '#/Rearrangement'
             x-airr:
                 nullable: false
         Clone:
             type: array
             description: List of clones
             items:
-              $ref: '#/Clone'
+                $ref: '#/Clone'
             x-airr:
                 nullable: false
         Tree:
             type: array
             description: List of trees
             items:
-              $ref: '#/Tree'
+                $ref: '#/Tree'
             x-airr:
                 nullable: false
 
@@ -417,36 +417,36 @@ InfoObject:
         - title
         - version
     properties:
-      title:
-        type: string
-        x-airr:
-            nullable: false
-      version:
-        type: string
-        x-airr:
-            nullable: false
-      description:
-        type: string
-      contact:
-        type: object
-        properties:
-          name:
-            type: string
-          url:
-            type: string
-          email:
-            type: string
-      license:
-        type: object
-        required:
-            - name
-        properties:
-          name:
+        title:
             type: string
             x-airr:
                 nullable: false
-          url:
+        version:
             type: string
+            x-airr:
+                nullable: false
+        description:
+            type: string
+        contact:
+            type: object
+            properties:
+                name:
+                    type: string
+                url:
+                    type: string
+                email:
+                    type: string
+        license:
+            type: object
+            required:
+                - name
+            properties:
+                name:
+                    type: string
+                    x-airr:
+                        nullable: false
+                url:
+                    type: string
 
 # A time point
 TimePoint:
@@ -2888,18 +2888,18 @@ SampleProcessing:
     allOf:
         - type: object
           properties:
-            sample_processing_id:
-                type: string
-                description: >
-                    Identifier for the sample processing object. This field should be unique within the repertoire.
-                    This field can be used to uniquely identify the combination of sample, cell processing,
-                    nucleic acid processing and sequencing run information for the repertoire.
-                title: Sample processing ID
-                x-airr:
-                    nullable: true
-                    name: Sample processing ID
-                    adc-query-support: true
-                    identifier: true
+              sample_processing_id:
+                  type: string
+                  description: >
+                      Identifier for the sample processing object. This field should be unique within the repertoire.
+                      This field can be used to uniquely identify the combination of sample, cell processing,
+                      nucleic acid processing and sequencing run information for the repertoire.
+                  title: Sample processing ID
+                  x-airr:
+                      nullable: true
+                      name: Sample processing ID
+                      adc-query-support: true
+                      identifier: true
         - $ref: '#/Sample'
         - $ref: '#/CellProcessing'
         - $ref: '#/NucleicAcidProcessing'
@@ -4116,7 +4116,7 @@ Cell:
         rearrangements:
             type: array
             description: >
-                  Array of sequence identifiers defined for the Rearrangement object
+                Array of sequence identifiers defined for the Rearrangement object
             title: Cell-associated rearrangements
             items:
                 type: string
@@ -4129,7 +4129,7 @@ Cell:
         receptors:
             type: array
             description: >
-                  Array of receptor identifiers defined for the Receptor object
+                Array of receptor identifiers defined for the Receptor object
             title: Cell-associated receptors
             items:
                 type: string
@@ -4163,7 +4163,7 @@ Cell:
                 - "flow cytometry"
                 - "single-cell transcriptome"
             description: >
-                  keyword describing the methodology used to assess expression. This values for this field MUST come from a controlled vocabulary
+                keyword describing the methodology used to assess expression. This values for this field MUST come from a controlled vocabulary
             x-airr:
                 miairr: defined
                 nullable: true
@@ -4171,7 +4171,7 @@ Cell:
         expression_raw_doi:
             type: string
             description: >
-                  DOI of raw data set containing the current event
+                DOI of raw data set containing the current event
             x-airr:
                 miairr: defined
                 nullable: true
@@ -4179,7 +4179,7 @@ Cell:
         expression_index:
             type: string
             description: >
-                  Index addressing the current event within the raw data set.
+                Index addressing the current event within the raw data set.
             x-airr:
                 miairr: defined
                 nullable: true
