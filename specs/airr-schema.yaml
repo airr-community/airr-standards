@@ -79,6 +79,14 @@ CURIEMap:
         map:
             ENSG:
                 iri_prefix: "https://www.ensembl.org/Multi/Search/Results?q="
+    GAZ:
+        type: ontology
+        default:
+            map: OBO
+            provider: OLS
+        map:
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/GAZ_"
     IEDB_RECEPTOR:
         type: identifier
         default:
@@ -208,6 +216,11 @@ InformationProvider:
                 ontology_id: DOID
             OLS:
                 ontology_id: doid
+        GAZ:
+            Ontobee:
+                ontology_id: GAZ
+            OLS:
+                ontology_id: gaz
         MRO:
             Ontobee:
                 ontology_id: MRO
