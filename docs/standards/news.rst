@@ -31,12 +31,12 @@ Version 1.4.0:
 
 **Analysis object schemas**
 
-- Clone: A unique inferred clone object that has been constructed within a single data processing for a single repertoire and a subset of its sequences and/or rearrangements.
-- Node: Encapsulates information about a Node in a Tree.
-- Tree: Encapsulates information about a Tree.
-- Cell: An object that encapsulates data that can be related to an individual cell, either by direct observation or inference.
-- CellExpression: An object acts encapsulates a single expression level measurement from an experiment. Expression data is associated with a cell_id and the related repertoire_id and data_processing_id.
-- Receptor: Object to hold information about a receptor and its reactivity.
+- Clone: Information about an inferred clone that has been constructed within a single data processing for a single repertoire and a subset of its sequences and/or rearrangements.
+- Node: Information about a Node in a Tree.
+- Tree: Information about a Tree.
+- Cell: Information that can be related to an individual cell, either by direct observation or inference.
+- CellExpression: Information about a single expression level measurement from an experiment. Expression data is associated with a cell_id and the related repertoire_id and data_processing_id.
+- Receptor: Information about a receptor and its reactivity.
 
 **New fields**
 
