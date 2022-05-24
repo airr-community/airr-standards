@@ -16,11 +16,11 @@ Version 1.4.0:
 
 **Germline related schemas**
 
-- ``RearrangedSequence``
-- ``UnRearrangedSequence``
-- ``SequenceDelineationV``
-- ``AlleleDescription``
-- ``GermlineSet``
+- ``RearrangedSequence``: Details of a directly observed rearranged sequence or an inference from rearranged sequences contributing support for a gene or allele.
+- ``UnRearrangedSequence``: Details of an unrearranged sequence contributing support for a gene or allele.
+- ``SequenceDelineationV``: Delineation of a V-gene in a particular system.
+- ``AlleleDescription``: Details of a putative or confirmed Ig receptor gene/allele inferred from one or more observations.
+- ``GermlineSet``: Details of a 'germline set' bringing together multiple AlleleDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus. 
 
 **Genotype schemas**
 
