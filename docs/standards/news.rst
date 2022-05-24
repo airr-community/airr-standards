@@ -42,12 +42,12 @@ Version 1.4.0:
 
 Repertoire:
 
-- study_contact
-- adc_publish_date
-- adc_update_data
-- genotype
-- collection_time_point_relative_unit
-- template_amount_unit
+- ``study_contact: Full contact information of the contact persons for this study This should include an e-mail address and a persistent identifier such as an ORCID ID.
+- ``adc_publish_date``: Date the study was first published in the AIRR Data Commons.
+- ``adc_update_data``: Date the study data was updated in the AIRR Data Commons.
+- ``genotype``: Genotype for this subject (immune receptor and MHC), if known
+- ``collection_time_point_relative_unit``: Unit of Sample collection time from Unit Ontology (UO)
+- ``template_amount_unit``: Unit of template amount from Unit Ontology (UO)
 
 Rearrangement:
 
