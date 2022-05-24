@@ -42,7 +42,7 @@ Version 1.4.0:
 
 Repertoire:
 
-- ``study_contact: Full contact information of the contact persons for this study This should include an e-mail address and a persistent identifier such as an ORCID ID.
+- ``study_contact``: Full contact information of the contact persons for this study This should include an e-mail address and a persistent identifier such as an ORCID ID.
 - ``adc_publish_date``: Date the study was first published in the AIRR Data Commons.
 - ``adc_update_data``: Date the study data was updated in the AIRR Data Commons.
 - ``genotype``: Genotype for this subject (immune receptor and MHC), if known
