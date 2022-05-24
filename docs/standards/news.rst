@@ -3,27 +3,34 @@
 Schema Release Notes
 ================================================================================
 
-Version 1.4.0-dev: (In development)
+Version 1.4.0:
 --------------------------------------------------------------------------------
 
-**Version 1.4-dev, In development.**
+**Utility schemas**
 
-**New Schemas**
+- DataFile: A JSON data file object that holds Repertoire metadata, data processing analysis objects, or any object in the AIRR Data Model.
+- RepertoireGroup: A collection of repertoires for analysis purposes, includes optional time course.
+- InfoObject: Provides information about data and API responses.
+- TimePoint: Time point at which an observation or other action was performed.
+- Acknowledgement: Individual whose contribution to this work should be acknowledged.
 
-- DataFile
-- InfoObject
-- TimePoint: Time series object
-- Acknowledgement
+**Germline related schemas**
+
 - RearrangedSequence
 - UnRearrangedSequence
 - SequenceDelineationV
 - AlleleDescription
 - GermlineSet
-- GenotypeSet
-- Genotype
-- MHCGenotypeSet
-- MHCGenotype
-- RepertoireGroup: describing sets of repertoires to be analyzed together.
+
+**Genotype schemas**
+
+- GenotypeSet: Lists the Genotypes (describing different loci) inferred for this subject
+- Genotype: Enumerates the alleles and gene deletions inferred in a single subject for a single locus. Included alleles may either be listed by reference to a GermlineSet, or listed as 'undocumented', in which case the inferred sequence is provided
+- MHCGenotypeSet: List of MHCGenotypes describing a subject's MHC genotype.
+- MHCGenotype: Genotype of major histocompatibility complex (MHC) class I, class II and non-classical loci.
+
+**Analysis object schemas**
+
 - Clone
 - Node
 - Tree
