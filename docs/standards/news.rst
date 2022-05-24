@@ -8,35 +8,35 @@ Version 1.4.0:
 
 **Utility schemas**
 
-- `DataFile`: A JSON data file object that holds Repertoire metadata, data processing analysis objects, or any object in the AIRR Data Model.
-- `RepertoireGroup`: A collection of repertoires for analysis purposes, includes optional time course.
-- `InfoObject`: Provides information about data and API responses.
-- `TimePoint`: Time point at which an observation or other action was performed.
-- `Acknowledgement`: Individual whose contribution to this work should be acknowledged.
+- ``DataFile``: A JSON data file object that holds Repertoire metadata, data processing analysis objects, or any object in the AIRR Data Model.
+- ``RepertoireGroup``: A collection of repertoires for analysis purposes, includes optional time course.
+- ``InfoObject``: Provides information about data and API responses.
+- ``TimePoint``: Time point at which an observation or other action was performed.
+- ``Acknowledgement``: Individual whose contribution to this work should be acknowledged.
 
 **Germline related schemas**
 
-- `RearrangedSequence`
-- `UnRearrangedSequence`
-- `SequenceDelineationV`
-- `AlleleDescription`
-- `GermlineSet`
+- ``RearrangedSequence``
+- ``UnRearrangedSequence``
+- ``SequenceDelineationV``
+- ``AlleleDescription``
+- ``GermlineSet``
 
 **Genotype schemas**
 
-- `GenotypeSet`: Lists the Genotypes (describing different loci) inferred for this subject
-- `Genotype`: Enumerates the alleles and gene deletions inferred in a single subject for a single locus. Included alleles may either be listed by reference to a GermlineSet, or listed as 'undocumented', in which case the inferred sequence is provided
-- `MHCGenotypeSet`: List of MHCGenotypes describing a subject's MHC genotype.
-- `MHCGenotype`: Genotype of major histocompatibility complex (MHC) class I, class II and non-classical loci.
+- ``GenotypeSet``: Lists the Genotypes (describing different loci) inferred for this subject
+- ``Genotype``: Enumerates the alleles and gene deletions inferred in a single subject for a single locus. Included alleles may either be listed by reference to a GermlineSet, or listed as 'undocumented', in which case the inferred sequence is provided
+- ``MHCGenotypeSet``: List of MHCGenotypes describing a subject's MHC genotype.
+- ``MHCGenotype``: Genotype of major histocompatibility complex (MHC) class I, class II and non-classical loci.
 
 **Analysis object schemas**
 
-- `Clone`: Information about an inferred clone that has been constructed within a single data processing for a single repertoire and a subset of its sequences and/or rearrangements.
-- `Node`: Information about a Node in a Tree.
-- `Tree`: Information about a Tree.
-- `Cell`: Information that can be related to an individual cell, either by direct observation or inference.
-- `CellExpression`: Information about a single expression level measurement from an experiment. Expression data is associated with a cell_id and the related repertoire_id and data_processing_id.
-- `Receptor`: Information about a receptor and its reactivity.
+- ``Clone``: Information about an inferred clone that has been constructed within a single data processing for a single repertoire and a subset of its sequences and/or rearrangements.
+- ``Node``: Information about a Node in a Tree.
+- ``Tree``: Information about a Tree.
+- ``Cell``: Information that can be related to an individual cell, either by direct observation or inference.
+- ``CellExpression``: Information about a single expression level measurement from an experiment. Expression data is associated with a cell_id and the related repertoire_id and data_processing_id.
+- ``Receptor``: Information about a receptor and its reactivity.
 
 **New fields**
 
