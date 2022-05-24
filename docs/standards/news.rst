@@ -74,9 +74,9 @@ Clone:
 
 **Changed fields**
 
-- keywords_study
-- collection_time_point_relative
-- template_amount
+- ``keywords_study``: Keywords describing properties of one or more data sets in a study. Enumerated keywors supported are now ``contains_ig, contains_tr, contains_paired_chain, contains_schema_rearrangement, contains_schema_clone, contains_schema_cell, contains_schema_receptor``
+``collection_time_point_relative``: Time point at which sample was taken, relative to `Collection time event`. This field used to be a string, but now is a number combined with a unit ontology field (``collection_time_point_relative_unit``)
+- ``template_amount``: Amount of template that went into the process. This field used to be a string, but now is a number combined with a unit ontology field (``template_amount_unit``).
 - duplicate_count
 
 
