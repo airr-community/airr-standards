@@ -999,7 +999,7 @@ paths:
                   - airr-schema
               facets:
                 type: string
-      operationId: queryCells
+      operationId: queryReceptors
       responses:
         '200':
           description: >
