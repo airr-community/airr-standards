@@ -13,6 +13,7 @@ import json
 import yaml
 import yamlordereddictloader
 from io import open
+import gzip
 
 if (sys.version_info > (3, 0)):
     from io import StringIO
@@ -38,8 +39,12 @@ def read_rearrangement(filename, validate=False, debug=False):
     Returns:
       airr.io.RearrangementReader: iterable reader class.
     """
-
-    return RearrangementReader(open(filename, 'r'), validate=validate, debug=debug)
+    if filename.endswith(".gz"):
+        handle = gzip.open(filename, 'r')
+    else:
+        handle = open(filename, 'r')
+        
+    return RearrangementReader(handle, validate=validate, debug=debug)
 
 
 def create_rearrangement(filename, fields=None, debug=False):
