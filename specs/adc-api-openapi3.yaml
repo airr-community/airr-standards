@@ -423,7 +423,7 @@ components:
       properties:
         Info:
           $ref: '#/components/schemas/info_object'
-        Cell:
+        CellExpression:
           $ref: '#/components/schemas/expression_list'
 
     # The response object for the /expression endpoint
