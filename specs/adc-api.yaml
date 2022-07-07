@@ -374,7 +374,7 @@ definitions:
     properties:
       Info:
         $ref: '#/definitions/info_object'
-      Cell:
+      CellExpression:
         $ref: '#/definitions/expression_list'
   
   # The response object for the /expression endpoint
