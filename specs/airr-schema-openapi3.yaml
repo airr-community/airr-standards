@@ -845,7 +845,6 @@ AlleleDescription:
             example:
                 id: NCBITAXON:9606
                 label: Homo sapiens
-            nullable: false
         species_subgroup:
             type: string
             nullable: true
