@@ -215,7 +215,7 @@ read_germline_set <- function(file, validate=T) {
         validate_germline_set(result[[1]])
     }
     
-    result
+    return(result)
 }
 
 

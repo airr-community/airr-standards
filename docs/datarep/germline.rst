@@ -60,7 +60,28 @@ assembled into contigs, but could not be fully assembled. In this case the co-lo
 the co-location across the entire locus can not be. Co-location is therefore indicated by means of the ``phasing`` parameter, which in this 
 case would be assigned a different value for alleles on each contig. 
 
-Correspondingly, ``MHCGenotype`` amd ``MHCGenotypeSet`` describe the MHC alleles found in a subject.
+
+MHC Genotypes
+-------------
+
+Similary to the IG/TR genotypes, the ``MHCGenotype`` amd ``MHCGenotypeSet``
+objects describe the MHC alleles found in a subject. ``MHCGenotype`` objects
+assemble alleles from one class: ``MHC-I``, ``MHC-II`` or ``MHC-nonclassical``.
+The method used to determine the genotype can be provided in the
+``mhc_genotyping_method`` field. As different methods might be use for the
+various classes, this field is located in the `MHCGenotype` object, not the
+``MHCGenotypeSet``.
+
+The ``mhc_genotyping_method`` allows free-text descriptions, however data
+curators are asked to keep close to the following terms if applicable:
+
+*  ``PCR-based typing``: Methods whose read-out is the amplification
+   of specific sequences, but which do not provide sequence data by themselves.
+   This includes SSP and SSOP.
+*  ``Sequencing-based typing``: Clinical-grade NGS-based assays, providing
+   high quality and resolution.
+*  ``Inference-based typing``: Allele inferrence based on genome-wide DNA
+   or RNA sequencing.
 
 File Format Specification
 -------------------------
@@ -82,17 +103,27 @@ overall ``GermlineSet`` as specified in the schema.
 
 + The file as a whole is considered a dictionary (key/value pair) structure with the keys ``Info``, ``GermlineSet``, and ``AlleleDescription``.
 
++ The ``GermlineSet`` contains fields ``release_version``, ``release_description`` and ``release_date``, which are intended to be used for version identification, under the control of the authors of the
+  ``GermlineSet`` as identified by the fields ``author``, ``lab_name`` and ``lab_address``. If the set is modified by a party other than these authors, that these 6 fields should be
+  modified to reflect the authors of the modification, and their own version identication. These modifications MUST be made if the ``GermlineSet`` is, or is likely to become, public, in order
+  to avoid confusion with the original set prior to modification. Repositories are encouraged to manage version fields automatically.
+
 + The file can (optionally) contain an ``Info`` object, at the beginning of the file, based upon the ``Info`` schema in the OpenAPI specification. If provided, ``version`` in ``Info`` should reference the version of the AIRR schema for the file.
 
 + The file should correspond to a list of ``GermlineSet`` objects, using ``GermlineSet`` as the key to the list.
 
 + The file should correspond to a list of ``AlleleDescription`` objects, using ``AlleleDescription`` as the key to the list.
 
-+ Each ``AlleleDescription`` object should contain a top-level key/value pair for ``allele_description_id`` that uniquely identifies the allele description object in the file.
++ There should be only one ``AlleleDescription`` for each allele in the list.
+
++ Each ``AlleleDescription`` object should contain a top-level key/value pair for ``allele_description_id`` that uniquely identifies the allele description object in the file. 
 
 + Each ``GermlineSet`` object should contain a top-level key/value pair for ``germline_set_id`` that uniquely identifies the germline set object in the file.
 
 + Some fields require the use of a particular ontology or controlled vocabulary.
+
++ ``GermlineSet`` and ``AlleleDescription`` contain reference fields ``germline_set_ref`` and ``allele_description_ref``. These are intended to be globally unique references (containing identifiers of 
+  the repository, object and version) that can be used in a query API.
 
 + The structure is the same regardless of whether the data is stored in a file or retrieved from a data repository. For example, The :ref:`ADC API <DataCommonsAPI>` will return a properly structured JSON object that can be saved to a file and used directly without modification.
 

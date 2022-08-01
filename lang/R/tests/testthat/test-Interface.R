@@ -154,7 +154,6 @@ test_that("write_airr_tsv writes a bad file, with warnings, with logicals T/T", 
                  c("","T","F","T","T","F","F","F","T","T","T"))
 })
 
-
 #### Repertoire ####
 
 context("Repertoire I/O - good data")

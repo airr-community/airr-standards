@@ -47,7 +47,7 @@ for spec_name in spec_files:
     # Check python package
     if jsondiff.diff(gold_spec, py_spec) != {}:
         print('{} spec is different from python version'.format(spec_name), file=sys.stderr)
-        print(jsondiff.diff(gold_spec, py_spec), file=sys.stderr)
+        print(jsondiff.diff(gold_spec, py_spec, syntax='explicit'), file=sys.stderr)
         sys.exit(1)
 
     # Check R package
@@ -79,7 +79,9 @@ def translate_nullable(obj):
 
 # Make V2 look like V3 then compare
 for obj in v2_spec:
-    #print(obj)
+    # print(obj)
+    # print(v2_spec[obj])
+    # print(v3_spec[obj])
 
     # not a schema object
     if obj == 'CURIEResolution':
@@ -108,7 +110,11 @@ for obj in v2_spec:
             if v2_spec[obj]['properties'][prop].get('items') is not None:
                 if v2_spec[obj]['properties'][prop]['items'].get('properties') is not None:
                     translate_nullable(v2_spec[obj]['properties'][prop]['items'])
+    elif 'allOf' in v2_spec[obj]:
+        translate_nullable(v2_spec[obj]['allOf'][0])
 
+    # print(v2_spec[obj])
+    # print(v3_spec[obj])
     if jsondiff.diff(v2_spec[obj], v3_spec[obj]) != {}:
         print('{} object is different between V2 and V3 spec'.format(obj), file=sys.stderr)
         print(jsondiff.diff(v2_spec[obj], v3_spec[obj]), file=sys.stderr)

@@ -39,7 +39,7 @@ uses a controlled vocabulary, the individual values are described below:
 | ``DNA``            |  ``PCR``                      | Conventional PCR on genomic DNA  |
 |                    |                               | of a vertebrate host (requires:  |
 |                    |                               | ``synthetic`` == ``false`` )     |
-+                    |                               +----------------------------------+
+|                    |                               +----------------------------------+
 |                    |                               | Conventional PCR on DNA of a     |
 |                    |                               | synthetic library (requires:     |
 |                    |                               | ``synthetic`` == ``true`` )      |
@@ -113,8 +113,72 @@ In this case:
 *  +39 (marker ``[c]``) is the most distal templated nucleotide
 
 
+.. _Metadata_cell_subset:
+
+cell_subset
+-----------
+
+The ``cell_subset`` field is ontology-controlled, i.e., if present, it
+MUST refer to a Cell Ontology (CL) term via its ``id`` field. The field
+SHOULD NOT be used for values other than ``lymphocyte`` (CL:0000542) and
+its descendents. The reasoning behind this is that rearrangements of
+IG and TR loci are typically confined to this population, so that other
+nodes, do not provide further information. In addition, the field SHOULD
+only be used if the subset has been purified to a level that is
+comparable to flow cytometric cell sorting.
+
+*  In general, the provided annotation MUST NOT contradict the
+   experimentally determined phenotype. E.g., if the experiment shows
+   that the population is CD27+ a term that is explicitly defined in CL
+   as CD27- MUST NOT be used.
+*  However, this does not mean that all markers listed in the
+   description of an ontology term need to be confirmed, as long as
+   the existing information is considered sufficient for classification
+   and not contradictory (see above).
+*  In case the experimentally isolated cells to not match any "leaf"
+   term, e.g., due to the isolation of multiple populations that
+   contradict the definitions, the general advice is to move up the
+   CL hierarchy to the most distal term that is no-contradictory.
+   In this case, ``cell_phenotype`` should be used to define the
+   markers that were used experimentally.
+*  Note that ontology-controlled fields allow exactly one term.
+   Therefore, mixtures of defined cell populations either need to be
+   demultiplexed, or -- if this is not possible -- use the last (i.e,,
+   most distal) common term of all cell populations involved. Again,
+   ``cell_phenotype`` can be used to provide the markers used in the
+   experiment.
+
+
 Specific Use Cases and Experimental Setups
 ==========================================
+
+Peripheral Blood Mononuclear Cells (PBMCs)
+------------------------------------------
+
+PBMCs are frequently used starting material for AIRR-seq studies in
+humans and are prepared by a density-gradient centrifugation using
+Ficoll. As they constitute a mixture of myeloid and lymphoid cells,
+the following points should be taken into consideration when annotating
+experiments using PBMCs:
+
+*  The ``cell_population`` and ``cell_phenotype`` fields should be
+   ``NULL`` as PBMCs are neither sufficiently pure nor do they
+   exclusively contain cells of the lymphocytic lineage (see
+   :ref:`Metadata_cell_subset`).
+*  Note that while Cell Ontology does provide a term
+   ``peripheral blood mononuclear cell`` (CL:2000001), this is a sister
+   node of ``lymphocyte`` (CL:0000542) and therefore outside of the
+   current specification.
+*  The typical annotation for PBMC is therefore as follows::
+
+      sample_type:"peripheral venous puncture"
+      tissue:
+         label:"venous blood"
+         id:"UBERON:0013756"
+      tissue_processing"Ficoll gradient"
+      cell_subset:NULL
+      cell_phenotype:NULL
+
 
 Synthetic libraries
 -------------------
@@ -129,10 +193,9 @@ following annotation SHOULD/MUST be used:
 *  ``synthetic``: MUST be set to ``true``
 *  ``species``:  It is assumed that every synthetic library is derived
    from V and J genes that exist in some vertebrate species. This field
-   SHOULD encode this species. Importantly, it MUST NOT encode the
-   phage vector, the bacterial host or the comparable biological
-   component of the library system that constitutes the presenting
-   particle.
+   SHOULD encode that species. Importantly, it MUST NOT encode the
+   phage vector, the bacterial host or a comparable biological component
+   of the library system that constitutes the presenting particle.
 *  ``sample_type``: SHOULD be ``NULL``.
 *  ``single_cell``: Only ``true`` if individual particles are isolated and
    sequenced. Note that colonies or plaques, even if containing
