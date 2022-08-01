@@ -162,9 +162,6 @@ extract_field_content <- function(properties, field) {
 #' # Load the Rearrangement definition
 #' schema <- load_schema("Rearrangement")
 #' 
-#' # Load the Alignment definition
-#' schema <- load_schema("Alignment")
-#' 
 #' # Load the Repertoire definition
 #' schema <- load_schema("Repertoire")
 #' 

@@ -92,7 +92,7 @@ head(airr_rearrangement)
 ### Reading repertoires 
 
 ```{r read_repertoire }
-rep_file_good <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
+rep_file_good <- system.file("extdata", "repertoire-example.yaml", package="airr")
 ```
 
 Read a valid repertoire
@@ -103,7 +103,7 @@ repertoire1 <- read_repertoire(rep_file_good)
 Repertoires can also be read as JSON format
 
 ```{r}
-rep_file_good_json <- system.file("extdata", "warning_repertoire.airr.json", package="airr")
+rep_file_good_json <- system.file("extdata", "repertoire-example.json", package="airr")
 ```
 
 ```{r}

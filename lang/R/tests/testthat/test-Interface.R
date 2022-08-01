@@ -1,12 +1,26 @@
-# REARRANGEMENT
+#### Setup ####
 
-# Toy file pointer
-rearrangement_file <- file.path("..", "data-tests", "toy_data.tsv")
-#rearrangement_file <- file.path("tests", "data-tests", "toy_data.tsv")
+# Installed package context
+parent_path <- ".."
 
-# Toy file pointer
-bad_rearrangement_file <- file.path("..", "data-tests", "bad_data.tsv")
-#bad_rearrangement_file <- file.path("tests", "data-tests", "bad_data.tsv")
+# Local script context
+# library(testthat)
+# library(airr)
+# parent_path <- "tests"
+
+# Rearrangement test files
+good_rearrangement_file <- file.path(parent_path, "data-tests", "good_rearrangement.tsv")
+bad_rearrangement_file <- file.path(parent_path, "data-tests", "bad_rearrangement.tsv")
+
+# Repertoire test files
+good_repertoire_file <- file.path(parent_path, "data-tests", "good_repertoire.yaml")
+bad_repertoire_file <- file.path(parent_path, "data-tests", "bad_repertoire.yaml")
+
+# Germline test files
+good_germline_set_file <- file.path(parent_path, "data-tests", "good_germline_set.json")
+bad_germline_set_file <- file.path(parent_path, "data-tests", "bad_germline_set.json")
+good_genotype_set_file <- file.path(parent_path, "data-tests", "good_genotype_set.json")
+bad_genotype_set_file <- file.path(parent_path, "data-tests", "bad_genotype_set.json")
 
 # Expected warnings for bad_rearrangement_file
 expected_w <- c(
@@ -17,24 +31,25 @@ expected_w <- c(
     "Warning: productive is not logical for row(s): 1"
 )
 
-#### Rearrangement I/O  ####
+
+#### Rearrangement ####
 
 context("Rearrangement I/O - good data")
 
 test_that("read_rearrangement loads a data.frame", {
-    tbl_1 <- read_rearrangement(rearrangement_file, "1")
+    tbl_1 <- read_rearrangement(good_rearrangement_file, "1")
     expect_true(is.data.frame(tbl_1))
 })
 
 test_that("read_airr_tsv loads a data.frame", {
-    expect_error(read_airr_tsv(rearrangement_file, "1"))
-    tbl_1 <- read_airr_tsv(rearrangement_file, "1", schema = RearrangementSchema)
+    expect_error(read_airr_tsv(good_rearrangement_file, "1"))
+    tbl_1 <- read_airr_tsv(good_rearrangement_file, "1", schema = RearrangementSchema)
     expect_true(is.data.frame(tbl_1))
 })
 
 test_that("read_airr_tsv applies base", {
-    tbl_0 <- read_airr_tsv(rearrangement_file, "0", schema = RearrangementSchema)
-    tbl_1 <- read_airr_tsv(rearrangement_file, "1", schema = RearrangementSchema)
+    tbl_0 <- read_airr_tsv(good_rearrangement_file, "0", schema = RearrangementSchema)
+    tbl_1 <- read_airr_tsv(good_rearrangement_file, "1", schema = RearrangementSchema)
     expect_true(is.data.frame(tbl_0))
     expect_true(validate_airr_tsv(tbl_0, schema = RearrangementSchema))
     start_positions <- grep("_start$", names(tbl_0), perl=TRUE)
@@ -45,7 +60,7 @@ test_that("Columns are of expected type", {
     # Create test data
     tmp_file <- tempfile(fileext = ".tsv")
 
-    tbl_0 <- read_airr_tsv(rearrangement_file, "1", schema = RearrangementSchema)
+    tbl_0 <- read_airr_tsv(good_rearrangement_file, "1", schema = RearrangementSchema)
 
     # Create non-schema  columns
     extra_cols <- data.frame(
@@ -83,7 +98,7 @@ test_that("Columns are of expected type", {
     expect_is(tbl_0$extra.character, "character")
 
     expect_is(read_airr_tsv(
-        rearrangement_file, "1", schema = RearrangementSchema,
+        good_rearrangement_file, "1", schema = RearrangementSchema,
         aux_types =
             c(extra.int = "integer",
               extra.double = "double",
@@ -106,7 +121,7 @@ test_that("Columns are of expected type", {
 
 
 test_that("write_airr_tsv writes a file with logicals encoded T/F", {
-    tbl <- read_airr_tsv(rearrangement_file, schema = RearrangementSchema)
+    tbl <- read_airr_tsv(good_rearrangement_file, schema = RearrangementSchema)
     out_file <- file.path(tempdir(), "test_out.tsv")
     write_airr_tsv(tbl, out_file, schema = RearrangementSchema)
     expect_true(file.exists(out_file))
@@ -139,27 +154,19 @@ test_that("write_airr_tsv writes a bad file, with warnings, with logicals T/T", 
                  c("","T","F","T","T","F","F","F","T","T","T"))
 })
 
-# REPERTOIRE
 
-# Good repertoire pointer
-repertoire_file <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
-
-# Bad repertoire pointer
-bad_repertoire_file <- file.path("..", "data-tests", "bad_repertoire.airr.yaml")
-
-
-#### Repertoire I/O  ####
+#### Repertoire ####
 
 context("Repertoire I/O - good data")
 
 test_that("read_repertoire loads a list", {
-    rep_1 <- read_repertoire(repertoire_file)
+    rep_1 <- read_repertoire(good_repertoire_file)
     expect_true(is.list(rep_1))
 })
 
 test_that("read_airr_yaml loads a list", {
-    expect_error(read_airr_yaml(repertoire_file))
-    rep_1 <- read_airr_yaml(repertoire_file, schema = RepertoireSchema)
+    expect_error(read_airr_yaml(good_repertoire_file))
+    rep_1 <- read_airr_yaml(good_repertoire_file, schema = RepertoireSchema)
     expect_true(is.list(rep_1))
 })
 
@@ -170,45 +177,32 @@ test_that("validate_repertoire with bad data returns an error", {
     expect_false(suppressWarnings(validate_repertoire(bad_data)))
 })
 
+#### GermlineSet ####
 
-# GERMLINE
-
-good_germline_set_file <- system.file("extdata", "good_germline_set.json", package="airr")
-bad_germline_set_file <- system.file("extdata", "bad_germline_set.json", package="airr")
-
-
-#### Germline Set I/O  ####
-
-context("Germline set I/O - good data")
+context("GermlineSet I/O - good data")
 
 test_that("read_germline_set loads a list", {
   rep_1 <- read_germline_set(good_germline_set_file)
   expect_true(is.list(rep_1))
 })
 
-context("Germline set I/O - bad data")
+context("GermlineSet I/O - bad data")
 
 test_that("validate_germline_set with bad data returns an error", {
   bad_data <- suppressWarnings(read_germline_set(bad_germline_set_file, validate=F))
   expect_false(suppressWarnings(validate_germline_set(bad_data)))
 })
 
-# GENOTYPE
+#### GenotypeSet ####
 
-good_genotype_set_file <- system.file("extdata", "good_genotype_set.json", package="airr")
-bad_genotype_set_file <- system.file("extdata", "bad_genotype_set.json", package="airr")
-
-
-#### Genotype Set I/O  ####
-
-context("Genotype set I/O - good data")
+context("GenotypeSet I/O - good data")
 
 test_that("read_genotype_set loads a list", {
   rep_1 <- read_genotype_set(good_genotype_set_file)
   expect_true(is.list(rep_1))
 })
 
-context("Genotype set I/O - bad data")
+context("GenotypeSet I/O - bad data")
 
 test_that("validate_genotype_set with bad data returns an error", {
   bad_data <- suppressWarnings(read_genotype_set(bad_genotype_set_file, validate=F))
