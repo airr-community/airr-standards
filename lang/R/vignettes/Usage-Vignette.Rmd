@@ -116,7 +116,7 @@ The `airr` package contains the function `write_rearrangement` to write
 Rearrangement records to the AIRR TSV format.
 
 ### Writing rearrangements
-```{r, eval=F}
+```{r}
 out_file <- file.path(tempdir(), "airr_out.tsv")
 write_rearrangement(airr_rearrangement, out_file)
 ```
@@ -124,13 +124,13 @@ write_rearrangement(airr_rearrangement, out_file)
 ### Writing repertoires
 
 Write a valid repertoire in yaml format
-```{r, eval=F}
+```{r}
 out_file1 <- file.path(tempdir(), "airr_repertoire1_out.yaml")
 write_repertoire(repertoire1, out_file1)
 ```
 
 Write a valid repertoire in json format
-```{r, eval=F}
+```{r}
 out_file2 <- file.path(tempdir(), "airr_repertoire2_out.json")
 write_repertoire(repertoire2, out_file2)
 ```
