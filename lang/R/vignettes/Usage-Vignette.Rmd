@@ -79,7 +79,7 @@ positional fields may be converted to 1-based closed
 intervals using the argument `base="0"`.
 
 ### Reading rearrangements
-```{r, message=FALSE}
+```{r}
 library(airr)
 
 example_data <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
@@ -91,14 +91,14 @@ head(airr_rearrangement)
 
 Repertoires can be read from a YAML format:
 
-```{r, message=FALSE}
+```{r}
 rep_file_good <- system.file("extdata", "repertoire-example.yaml", package="airr")
 repertoire1 <- read_repertoire(rep_file_good)
 ```
 
 Repertoires can also be read from a JSON format:
 
-```{r, eval=FALSE}
+```{r}
 rep_file_good_json <- system.file("extdata", "repertoire-example.json", package="airr")
 repertoire2 <- read_repertoire(rep_file_good_json)
 ```
@@ -123,7 +123,7 @@ write_repertoire(repertoire1, out_file1)
 ```
 
 Write a valid repertoire in json format
-```{r, eval=FALSE}
+```{r}
 out_file2 <- file.path(tempdir(), "airr_repertoire2_out.json")
 write_repertoire(repertoire2, out_file2)
 ```
