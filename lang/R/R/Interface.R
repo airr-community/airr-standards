@@ -55,7 +55,7 @@ read_airr_tsv <- function(file, base=c("1", "0"), schema, aux_types=NULL,...) {
     data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None"), ...))
 
     # Validate file
-    valid_data <- validate_airr_tsv(data, schema=schema)
+    valid_data <- validate_table(data, schema=schema)
     
     # Adjust indexes
     if (base == "0") {
@@ -94,8 +94,8 @@ read_alignment <- function(file, base=c("1", "0"), ...) {
 #' 
 #' \code{read_airr_yaml} reads a yaml containing AIRR records.
 #'
-#' @param    file    input file path in yaml format.
-#' @param    schema  \code{Schema} object defining the output format.
+#' @param    file      input file path in yaml format.
+#' @param    validate  run schema validation if \code{TRUE}.
 #' 
 #' @return   An object of the data contained in the input file.
 #'                   
@@ -111,14 +111,16 @@ read_alignment <- function(file, base=c("1", "0"), ...) {
 #' repr <- read_repertoire(file)
 #' 
 #' @export
-read_airr_yaml <- function(file, schema) {
+read_airr_yaml <- function(file, validate=TRUE) {
   
   # YAML format
   data <- yaml.load_file(file)
 
   # validate
   # warnings will appear when not airr conform
-  valid <- validate_airr_yaml_json(data = data, schema = schema)
+  if (validate) {
+      valid <- validate_airr(data)
+  }
   
   return(data)
 }
@@ -129,7 +131,7 @@ read_airr_yaml <- function(file, schema) {
 #' \code{read_airr_json} reads a json containing AIRR records.
 #'
 #' @param    file    input file path in json format.
-#' @param    schema  \code{Schema} object defining the output format.
+#' @param    validate  run schema validation if \code{TRUE}.
 #' 
 #' @return   An object of the data contained in the input file.
 #'                   
@@ -145,14 +147,17 @@ read_airr_yaml <- function(file, schema) {
 #' repr <- read_repertoire(file)
 #' 
 #' @export
-read_airr_json <- function(file, schema) {
+read_airr_json <- function(file, validate=TRUE) {
   
   #JSON format
-  data <- jsonlite::fromJSON(file, simplifyVector = FALSE)
+  data <- jsonlite::fromJSON(file, simplifyVector=FALSE)
   
   # validate
   # warnings will appear when not airr conform
-  valid <- validate_airr_yaml_json(data = data["Repertoire"], schema = schema)
+  if (validate) {
+      valid <- validate_airr(data)
+  }
+  
   
   return(data)
 }
@@ -166,7 +171,7 @@ read_airr_json <- function(file, schema) {
 # @return   An object of the data contained in the input file.
 read_json <- function(file) {
     #JSON format
-    data <- jsonlite::fromJSON(file, simplifyVector = FALSE)
+    data <- jsonlite::fromJSON(file, simplifyVector=FALSE)
     return(data)
 }
 
@@ -223,7 +228,7 @@ read_germline_set <- function(file, validate=T) {
 #' \code{read_genotype_set} reads a yaml or json file containing an AIRR germline set
 #' 
 #' @param	file	filename to read from 
-#' @param	validate	if TRUE, the contents are validated against the AIRR schema 
+#' @param	validate if TRUE, the contents are validated against the AIRR schema 
 #' 
 #' @return	returns the GenotypeSet object
 #' 
@@ -264,9 +269,9 @@ read_repertoire <- function(file) {
   # guess if the file is yaml or json formatted
   # based on file name extension
   if (grepl(".json$",file)) {
-    read_airr_json(file, schema=RepertoireSchema)
+    read_airr_json(file)
   } else if (grepl(".yaml$",file)) {
-    read_airr_yaml(file, schema=RepertoireSchema)
+    read_airr_yaml(file)
   } else {
     stop("File extenstion must be either .yaml or .json")
   }
@@ -337,7 +342,7 @@ write_airr_tsv <- function(data, file, base=c("1", "0"), schema, ...) {
             data[, start_positions] <- data[, start_positions] - 1
         }
     }
-    valid <- suppressWarnings(validate_airr_tsv(data, schema))
+    valid <- suppressWarnings(validate_table(data, schema))
     if (!valid) {
         w <- names(warnings())
         w <- gsub("Warning: *", "" ,w)
@@ -392,9 +397,9 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' 
 #' \code{write_airr_yaml} writes a yaml containing AIRR formatted records.
 #'
-#' @param    data    object containing Repertoire data.
-#' @param    file    output file name.
-#' @param    schema  \code{Schema} object defining the output format.
+#' @param    data      object containing Repertoire data.
+#' @param    file      output file name.
+#' @param    validate  run schema validation prior to write if \code{TRUE}.
 #'
 #' @return   NULL
 #' 
@@ -414,9 +419,11 @@ write_alignment <- function(data, file, base=c("1", "0"), ...) {
 #' write_repertoire(repr, outfile)
 #' 
 #' @export
-write_airr_yaml <- function(data, file, schema) {
-  
-    valid <- validate_airr_yaml_json(data = data, schema = schema)
+write_airr_yaml <- function(data, file, validate=TRUE) {
+    # Validate prior to write
+    if (validate) {
+        valid <- validate_airr(data)
+    }
     
     # what kind of other tests do we need to implement here?
     # where does the data come from?
@@ -431,7 +438,7 @@ write_airr_yaml <- function(data, file, schema) {
 #'
 #' @param    data    object containing Repertoire data.
 #' @param    file    output file name.
-#' @param    schema  \code{Schema} object defining the output format.
+#' @param    validate  run schema validation prior to write if \code{TRUE}.
 #'
 #' @return   NULL
 #' 
@@ -451,9 +458,11 @@ write_airr_yaml <- function(data, file, schema) {
 #' write_repertoire(repr, outfile)
 #' 
 #' @export
-write_airr_json <- function(data, file, schema) {
-  
-  valid <- validate_airr_yaml_json(data = data["Repertoire"], schema = schema)
+write_airr_json <- function(data, file, validate=TRUE) {
+    # Validate prior to write
+    if (validate) {
+        valid <- validate_airr(data)
+    }
   
   # what kind of other tests do we need to implement here?
   # where does the data come from?
@@ -471,25 +480,9 @@ write_airr_json <- function(data, file, schema) {
 write_repertoire <- function(data, file) {
   # guess from file name whether json or yaml format for writing
   if (grepl(".json$",file)) {
-    write_airr_json(data, file, schema=RepertoireSchema)
+    write_airr_json(data, file)
   } else if (grepl(".yaml$",file)) {
-    write_airr_yaml(data, file, schema=RepertoireSchema)
-  } else {
-    stop("File extenstion must be either .yaml or .json")
-  }
-}
-
-#' @details
-#' \code{write_repertoire} writes a object containing AIRR Repertoire data to yaml.
-#' 
-#' @rdname write_airr_yaml
-#' @export
-write_repertoire <- function(data, file) {
-  # guess from file name whether json or yaml format for writing
-  if (grepl(".json$",file)) {
-    write_airr_json(data, file, schema=RepertoireSchema)
-  } else if (grepl(".yaml$",file)) {
-    write_airr_yaml(data, file, schema=RepertoireSchema)
+    write_airr_yaml(data, file)
   } else {
     stop("File extenstion must be either .yaml or .json")
   }
@@ -498,9 +491,9 @@ write_repertoire <- function(data, file) {
 
 #### Validate DataFrame ####
 
-#' Validate AIRR data in tsv format, especially rearrangement data
+#' Validate tabular AIRR data
 #' 
-#' \code{validate_airr_tsv} validates compliance of the contents of a data.frame 
+#' \code{validate_table} validates compliance of the contents of a data.frame 
 #' to the AIRR data standards.
 #'
 #' @param    data    data.frame to validate.
@@ -509,7 +502,7 @@ write_repertoire <- function(data, file) {
 #' @return   Returns \code{TRUE} if the input \code{data} is compliant and
 #'           \code{FALSE} if not.
 #'           
-validate_airr_tsv <- function(data, schema){
+validate_table <- function(data, schema) {
     
     valid <- TRUE
     
@@ -582,47 +575,66 @@ validate_airr_tsv <- function(data, schema){
 #' 
 #' @export
 validate_rearrangement <- function(data) {
-    validate_airr_tsv(data, schema=RearrangementSchema)
+    validate_table(data, schema=RearrangementSchema)
 }
 
 #### Validate Nested List ####
 
-#' Validate an AIRR yaml
+#' Validate an AIRR Data Model nested list representation
 #' 
-#' \code{validate_airr_yaml_json} reads a yaml or json containing AIRR records.
+#' \code{validate_airr} validates the fields in a nested list representation of the AIRR Data Model
+#' typically generating by reading of JSON or YAML formatted AIRR files.
 #'
-#' @param    data  Data object from yaml or json import. This data contains the AIRR records.
-#' @param    schema  \code{Schema} object defining the output format.
-#' @param    format ["yaml","json"]
+#' @param    data     data object as a nest list from YAML or JSON import. This data contains the AIRR records.
 #' 
 #' @return   Returns \code{TRUE} if the input \code{data} is compliant with AIRR standards and
 #'           \code{FALSE} if not. 
 #'                   
 #' @seealso  
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{write_airr_yaml} for writing AIRR data.
+#' See \link{write_airr_yaml} and \link{write_airr_json} for writing AIRR Data Models.
 #' 
-validate_airr_yaml_json <- function(data, schema, format) {
+#' @examples
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "repertoire-example.yaml", package="airr")
+#' 
+#' # Load data file
+#' repr <- read_repertoire(file)
+#' 
+#' # Validate
+#' validate_airr(repr)
+#' 
+#' @export
+validate_airr <- function(data) {
     # This is a wrapper function to allow recursive validation of the different entries in yaml file
-    # Directly calling validate_airr_entry does not work, because the function
-    # validate_airr_entry also needs to work for recursive calling of reference schemes
+    # Directly calling validate_entry does not work, because the function
+    # validate_entry also needs to work for recursive calling of reference schemes
     
-    yaml_list <- data[[1]]
-    
-    # yaml file can contain multiple entries
-    entries_n <- seq_len(length(yaml_list))
-    
-    # recursively validate all entries
-    valid_list <- sapply(entries_n,  function(X) validate_airr_entry(yaml_list[[X]], schema = schema))
+    valid_sum <- logical()
+    for (n in names(data)) {
+        yaml_list <- data[[n]]
+        y <- if (n %in% names(AIRRSchema)) { AIRRSchema[[n]] } else { load_schema(n) }
+        
+        # yaml file can contain multiple entries
+        entries_n <- seq_len(length(yaml_list))
+        
+        # recursively validate all entries
+        valid_list <- sapply(entries_n,  function(x) validate_entry(yaml_list[[x]], schema=y))
+        valid_sum <- append(all(valid_list), valid_sum)
+    }
     
     # data only valid if all entries valid
-    return(all(valid_list))
+    return(all(valid_sum))
 }
 
 
 # Validation function for a single entry in the yaml file
-validate_airr_entry <- function(definition_list, schema) {
-    
+#
+# @param    definition_list    AIRR data in a nested list structure
+# @param    schema             Schema definition object
+# @returns  TRUE or FALSE
+validate_entry <- function(definition_list, schema) {
+    schema_name <- schema@definition
     valid <- TRUE
     
     # Check all required fields exist
@@ -630,7 +642,7 @@ validate_airr_entry <- function(definition_list, schema) {
     
     if (length(missing_fields) > 0 ) {
         valid <- FALSE
-        warning(paste("Warning: File is missing AIRR mandatory field(s):",
+        warning(paste("Warning:", schema_name, "object is missing AIRR mandatory field(s):",
                       paste(missing_fields, collapse = ", "), "\n"))
     }
     
@@ -644,7 +656,7 @@ validate_airr_entry <- function(definition_list, schema) {
         # in this case the type on the 1st level is NULL
         if (is.na(schema[f][["type"]]) || is.null(schema[f][["type"]])) {
             if (!is.null(reference_schemes)) {
-                valid <- validate_airr_entry(definition_list[[f]], schema = reference_schemes)
+                valid <- validate_entry(definition_list[[f]], schema = reference_schemes)
             }
             # entry of array type with a list of on or several reference schemes
         } else if (schema[f][["type"]] == "array" & !is.null(reference_schemes)) {
@@ -656,7 +668,7 @@ validate_airr_entry <- function(definition_list, schema) {
             for (n_ref in seq_len(n_schemes)) {
                 # recursively validate the entries in the array
                 for (n_array in seq_len(n_array_entries)) {
-                    valid <- validate_airr_entry(definition_list[[f]][[n_array]], schema = reference_schemes[[n_ref]])
+                    valid <- validate_entry(definition_list[[f]][[n_array]], schema = reference_schemes[[n_ref]])
                 }
             }
             # check if the entry type is correct
@@ -676,13 +688,11 @@ validate_airr_entry <- function(definition_list, schema) {
                     # we test whether the entries are numeric
                     if (!(schema[f][["type"]] == "numeric" & is.numeric(definition_list[[f]]))) {
                         valid <- FALSE
-                        warning(paste("Warning: Following entry does not have the required type",
+                        warning(paste("Warning:", schema_name, "entry does not have the required type",
                                       schema[f][["type"]], ":", f, "\n"))
                     }  
                 }
-                
             }
-            
         }
     }
     
@@ -702,7 +712,7 @@ validate_airr_entry <- function(definition_list, schema) {
 #'                   
 #' @seealso  
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{validate_airr_yaml_json} for validating yaml formatted AIRR data.
+#' See \link{validate_airr} for validating yaml formatted AIRR data.
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
@@ -716,7 +726,7 @@ validate_airr_entry <- function(definition_list, schema) {
 #' 
 #' @export
 validate_repertoire <- function(data) {
-    validate_airr_yaml_json(data, schema = RepertoireSchema)
+    validate_airr(data)
 }
 
 
@@ -731,7 +741,7 @@ validate_repertoire <- function(data) {
 #'                   
 #' @seealso  
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{validate_airr_yaml_json} for validating yaml formatted AIRR data.
+#' See \link{validate_airr} for validating yaml formatted AIRR data.
 #' 
 #' @examples
 #' # Load example file
@@ -743,7 +753,7 @@ validate_repertoire <- function(data) {
 #' 
 #' @export
 validate_germline_set <- function(data) {
-    validate_airr_entry(data, GermlineSetSchema)
+    validate_entry(data, schema=GermlineSetSchema)
 }
 
 #' Validate GenotypeSet
@@ -757,7 +767,7 @@ validate_germline_set <- function(data) {
 #'                   
 #' @seealso  
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{validate_airr_yaml_json} for validating yaml formatted AIRR data.
+#' See \link{validate_airr} for validating yaml formatted AIRR data.
 #' 
 #' @examples
 #' # Load example file
@@ -769,5 +779,5 @@ validate_germline_set <- function(data) {
 #' 
 #' @export
 validate_genotype_set <- function(data) {
-    validate_airr_entry(data, GenotypeSetSchema)
+    validate_entry(data, GenotypeSetSchema)
 }

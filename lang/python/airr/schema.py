@@ -23,8 +23,9 @@ class Schema:
     AIRR schema definitions
 
     Attributes:
-      properties (collections.OrderedDict): field definitions.
+      definition: name of the schema definition.
       info (collections.OrderedDict): schema info.
+      properties (collections.OrderedDict): field definitions.
       required (list): list of mandatory fields.
       optional (list): list of non-required fields.
       false_values (list): accepted string values for False.

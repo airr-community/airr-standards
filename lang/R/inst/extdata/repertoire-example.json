@@ -91,7 +91,7 @@
                     ],
                     "sequencing_platform": "Illumina MiSeq",
                     "sequencing_files": {
-                        "sequencing_data_pid": "SRR2905656",
+                        "sequencing_data_id": "SRR2905656",
                         "file_type": "fastq",
                         "filename": "SRR2905656_R1.fastq.gz",
                         "read_direction": "forward",
@@ -239,7 +239,7 @@
                     ],
                     "sequencing_platform": "Illumina MiSeq",
                     "sequencing_files": {
-                        "sequencing_data_pid": "SRR2905655",
+                        "sequencing_data_id": "SRR2905655",
                         "file_type": "fastq",
                         "filename": "SRR2905655_R1.fastq.gz",
                         "read_direction": "forward",
@@ -387,7 +387,7 @@
                     ],
                     "sequencing_platform": "Illumina MiSeq",
                     "sequencing_files": {
-                        "sequencing_data_pid": "SRR2905659",
+                        "sequencing_data_id": "SRR2905659",
                         "file_type": "fastq",
                         "filename": "SRR2905659_R1.fastq.gz",
                         "read_direction": "forward",

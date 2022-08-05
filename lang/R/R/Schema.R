@@ -5,6 +5,7 @@
 #' \code{Schema} defines a common data structure for AIRR Data Representation 
 #' standards.
 #' 
+#' @slot    definition  name of the schema definition.
 #' @slot    required    \code{character} vector of required fields.
 #' @slot    optional    \code{character} vector of non-required fields.
 #' @slot    properties  \code{list} of field definitions.
@@ -24,7 +25,8 @@
 #' @aliases      Schema
 #' @exportClass  Schema
 setClass("Schema", 
-         slots=c(required="character",
+         slots=c(definition="character",
+                 required="character",
                  optional="character",
                  properties="list",
                  info="list"))
@@ -65,7 +67,6 @@ setMethod("$",
 
 
 # Function to extract entries from individual fields
-
 extract_field_content <- function(properties, field) {
     
     types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="numeric", "array"="array", "object"="object")
@@ -146,14 +147,15 @@ extract_field_content <- function(properties, field) {
 #' \itemize{
 #'   \item   \code{"Rearrangement"}
 #'   \item   \code{"Alignment"}
+#'   \item   \code{"Repertoire"}
 #'   \item   \code{"Study"}
 #'   \item   \code{"Subject"}
 #'   \item   \code{"Diagnosis"}
 #'   \item   \code{"Sample"}
-#'   \item   \code{"CellProcessing"}
-#'   \item   \code{"NucleicAcidProcessing"}
-#'   \item   \code{"RawSequenceData"}
-#'   \item   \code{"SoftwareProcessing"}
+#'   \item   \code{"SampleProcessing"}
+#'   \item   \code{"DataProcessing"}
+#'   \item   \code{"GermlineSet"}
+#'   \item   \code{"GenotypeSet"}
 #' }
 #'    
 #' @seealso  See \link{Schema} for the return object.
@@ -182,7 +184,7 @@ load_schema <- function(definition) {
     if (!is.null(definition_list[["properties"]])) {
         fields <- names(definition_list[["properties"]])
         properties <- definition_list[["properties"]]
-        required <- definition_list[["required"]]
+        required <- if ("required" %in% names(definition_list)) { definition_list[["required"]] } else { character() }
     } else if (!is.null(definition_list[["allOf"]])) {
         properties <- NULL
         required <- NULL
@@ -213,11 +215,15 @@ load_schema <- function(definition) {
         properties <- extract_field_content(properties, f)
     }
     
+    # NOTE: This bit was moved up, as it applies to any object without "required"
     # for ontology, required in NULL and this is not type character
     # this leads to a problem returning "none" in the validation function.
     # to be taken care of when array type recursion implemented
-    if(is.null(required)) {required <- character(0)}
-    return(new("Schema", required=required, optional=optional, properties=properties, info=info))
+    # if (is.null(required)) { required <- character(0) }
+    
+    schema_object <- new("Schema", definition=definition, required=required, optional=optional, 
+                        properties=properties, info=info)
+    return(schema_object)
 }
 
 
@@ -255,14 +261,45 @@ RearrangementSchema <- load_schema("Rearrangement")
 #' @export
 RepertoireSchema <- load_schema("Repertoire")
 
-#' @details   \code{RepertoireSchema}: AIRR Repertoire \code{Schema}.
+#' @details   \code{GermlineSetSchema}: AIRR GermlineSet \code{Schema}.
 #' @rdname    Schema-class
 #' @export
 GermlineSetSchema <- load_schema("GermlineSet")
 
-#' @details   \code{RepertoireSchema}: AIRR Repertoire \code{Schema}.
+#' @details   \code{GenotypeSetSchema}: AIRR GenotypeSet \code{Schema}.
 #' @rdname    Schema-class
 #' @export
 GenotypeSetSchema <- load_schema("GenotypeSet")
 
+#' @details   \code{DataFileSchema}: AIRR DataFile \code{Schema}.
+#' @rdname    Schema-class
+#' @export
+DataFileSchema <- load_schema("DataFile")
 
+#' @details   \code{AIRRSchema}: named list containing all non-experimental 
+#'                               AIRR \code{Schema} objects.
+#' @rdname    Schema-class
+#' @export
+AIRRSchema <- list("DataFile"=load_schema("DataFile"),
+                   "Alignment"=load_schema("Alignment"),
+                   "Rearrangement"=load_schema("Rearrangement"),
+                   "Repertoire"=load_schema("Repertoire"),
+                   "Ontology"=load_schema("Ontology"),
+                   "Study"=load_schema("Study"),
+                   "Subject"=load_schema("Subject"),
+                   "Diagnosis"=load_schema("Diagnosis"),
+                   "CellProcessing"=load_schema("CellProcessing"),
+                   "PCRTarget"=load_schema("PCRTarget"),
+                   "NucleicAcidProcessing"=load_schema("NucleicAcidProcessing"),
+                   "SequencingRun"=load_schema("SequencingRun"),
+                   "SequencingData"=load_schema("SequencingData"),
+                   "DataProcessing"=load_schema("DataProcessing"),
+                   "SampleProcessing"=load_schema("SampleProcessing"),
+                   "GermlineSet"=load_schema("GermlineSet"),
+                   "Acknowledgement"=load_schema("Acknowledgement"),
+                   "RearrangedSequence"=load_schema("RearrangedSequence"),
+                   "UnrearrangedSequence"=load_schema("UnrearrangedSequence"),
+                   "SequenceDelineationV"=load_schema("SequenceDelineationV"),
+                   "AlleleDescription"=load_schema("AlleleDescription"),
+                   "GenotypeSet"=load_schema("GenotypeSet"),
+                   "Genotype"=load_schema("Genotype"))

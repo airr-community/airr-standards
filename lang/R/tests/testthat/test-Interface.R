@@ -15,6 +15,7 @@ bad_rearrangement_file <- file.path(parent_path, "data-tests", "bad_rearrangemen
 # Repertoire test files
 good_repertoire_file <- file.path(parent_path, "data-tests", "good_repertoire.yaml")
 bad_repertoire_file <- file.path(parent_path, "data-tests", "bad_repertoire.yaml")
+warn_repertoire_file <- file.path(parent_path, "data-tests", "warn_repertoire.json")
 
 # Germline test files
 good_germline_set_file <- file.path(parent_path, "data-tests", "good_germline_set.json")
@@ -51,7 +52,7 @@ test_that("read_airr_tsv applies base", {
     tbl_0 <- read_airr_tsv(good_rearrangement_file, "0", schema = RearrangementSchema)
     tbl_1 <- read_airr_tsv(good_rearrangement_file, "1", schema = RearrangementSchema)
     expect_true(is.data.frame(tbl_0))
-    expect_true(validate_airr_tsv(tbl_0, schema = RearrangementSchema))
+    expect_true(validate_table(tbl_0, schema = RearrangementSchema))
     start_positions <- grep("_start$", names(tbl_0), perl=TRUE)
     expect_equivalent(tbl_0[, start_positions] - 1, tbl_1[, start_positions])
 })
@@ -136,9 +137,9 @@ context("Rearrangement I/O - bad data")
 test_that("read_airr_tsv with bad data", {
     # Expect valid==FALSE
     bad_data <- suppressWarnings(read_airr_tsv(bad_rearrangement_file, "1", schema = RearrangementSchema))
-    expect_false(suppressWarnings(validate_airr_tsv(bad_data, schema = RearrangementSchema)))
+    expect_false(suppressWarnings(validate_table(bad_data, schema = RearrangementSchema)))
     # Check error messages
-    w <- capture_warnings(validate_airr_tsv(bad_data, schema = RearrangementSchema))
+    w <- capture_warnings(validate_table(bad_data, schema = RearrangementSchema))
     expect_equal(w, expected_w)
 })
 
@@ -164,16 +165,15 @@ test_that("read_repertoire loads a list", {
 })
 
 test_that("read_airr_yaml loads a list", {
-    expect_error(read_airr_yaml(good_repertoire_file))
-    rep_1 <- read_airr_yaml(good_repertoire_file, schema = RepertoireSchema)
+    rep_1 <- read_airr_yaml(good_repertoire_file)
     expect_true(is.list(rep_1))
 })
 
 context("Repertoire I/O - bad data")
 
-test_that("validate_repertoire with bad data returns an error", {
-    bad_data <- suppressWarnings(read_airr_yaml(bad_repertoire_file, schema = RepertoireSchema))
-    expect_false(suppressWarnings(validate_repertoire(bad_data)))
+test_that("validate_airr with bad data returns an error", {
+    bad_data <- expect_warning(read_airr_yaml(bad_repertoire_file))
+    expect_false(suppressWarnings(validate_airr(bad_data)))
 })
 
 #### GermlineSet ####
@@ -188,8 +188,8 @@ test_that("read_germline_set loads a list", {
 context("GermlineSet I/O - bad data")
 
 test_that("validate_germline_set with bad data returns an error", {
-  bad_data <- suppressWarnings(read_germline_set(bad_germline_set_file, validate=F))
-  expect_false(suppressWarnings(validate_germline_set(bad_data)))
+  bad_data <- read_germline_set(bad_germline_set_file, validate=F)
+  expect_false(suppressWarnings(validate_airr(bad_data)))
 })
 
 #### GenotypeSet ####
@@ -204,6 +204,6 @@ test_that("read_genotype_set loads a list", {
 context("GenotypeSet I/O - bad data")
 
 test_that("validate_genotype_set with bad data returns an error", {
-  bad_data <- suppressWarnings(read_genotype_set(bad_genotype_set_file, validate=F))
-  expect_false(suppressWarnings(validate_genotype_set(bad_data)))
+  bad_data <- read_genotype_set(bad_genotype_set_file, validate=F)
+  expect_false(suppressWarnings(validate_airr(bad_data)))
 })
