@@ -2,7 +2,6 @@
 
 export(AIRRSchema)
 export(AlignmentSchema)
-export(DataFileSchema)
 export(GenotypeSetSchema)
 export(GermlineSetSchema)
 export(RearrangementSchema)

@@ -46,10 +46,6 @@ Usage
 
 ::
 
-   DataFileSchema
-
-::
-
    AIRRSchema
 
 Arguments
@@ -77,9 +73,7 @@ An object of class ``Schema`` of length 1.
 
 An object of class ``Schema`` of length 1.
 
-An object of class ``Schema`` of length 1.
-
-An object of class ``list`` of length 23.
+An object of class ``list`` of length 22.
 
 Details
 ~~~~~~~
@@ -95,8 +89,6 @@ The following predefined Schema objects are defined:
 ``GermlineSetSchema``: AIRR GermlineSet ``Schema``.
 
 ``GenotypeSetSchema``: AIRR GenotypeSet ``Schema``.
-
-``DataFileSchema``: AIRR DataFile ``Schema``.
 
 ``AIRRSchema``: named list containing all non-experimental AIRR
 ``Schema`` objects.

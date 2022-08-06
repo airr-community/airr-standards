@@ -150,12 +150,12 @@ from either a YAML or JSON formatted file into a nested list.
 
    # Read GermlineSet example file
    f3 <- system.file("extdata", "germline-example.json", package="airr")
-   germline <- read_airr(f3, validate=F)
+   germline <- read_airr(f3)
    glimpse(germline)
 
 ::
 
-   ## List of 1
+   ## List of 2
    ##  $ GermlineSet:List of 17
    ##   ..$ germline_set_id      : chr "OGRDB:G00007"
    ##   ..$ author               : chr "William Lees"
@@ -176,6 +176,10 @@ from either a YAML or JSON formatted file into a nested list.
    ##   .. ..$ :List of 39
    ##   .. ..$ :List of 39
    ##   ..$ notes                : chr ""
+   ##  $ GenotypeSet:List of 2
+   ##   ..$ receptor_genotype_set_id: chr "1"
+   ##   ..$ genotype_class_list     :List of 1
+   ##   .. ..$ :List of 6
 
 Writing AIRR formatted files
 ----------------------------
@@ -203,7 +207,7 @@ AIRR Data Model records can be written to either YAML or JSON using the
    write_airr(repertoire, x2, format="yaml")
 
    x3 <- file.path(tempdir(), "airr_germline_out.json")
-   write_airr(germline, x3, format="json", validate=F)
+   write_airr(germline, x3, format="json")
 
 References
 ----------

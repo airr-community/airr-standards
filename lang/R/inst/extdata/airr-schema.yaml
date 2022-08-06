@@ -399,20 +399,20 @@ DataFile:
                 $ref: '#/Rearrangement'
             x-airr:
                 nullable: false
-        # Clone:
-        #     type: array
-        #     description: List of clones
-        #     items:
-        #         $ref: '#/Clone'
-        #     x-airr:
-        #         nullable: false
-        # Tree:
-        #     type: array
-        #     description: List of trees
-        #     items:
-        #         $ref: '#/Tree'
-        #     x-airr:
-        #         nullable: false
+        Clone:
+            type: array
+            description: List of clones
+            items:
+                $ref: '#/Clone'
+            x-airr:
+                nullable: false
+        Tree:
+            type: array
+            description: List of trees
+            items:
+                $ref: '#/Tree'
+            x-airr:
+                nullable: false
 
 
 # AIRR Info object, should be similar to openapi

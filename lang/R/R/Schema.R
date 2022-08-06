@@ -235,13 +235,21 @@ load_schema <- function(definition) {
 #'
 #' @format
 #' \code{extdata/rearrangement-example.tsv.gz}: Rearrangement TSV file.
+#' \code{extdata/repertoire-example.yaml}: Repertoire YAML file.
+#' \code{extdata/germline-example.json}: GermlineSet and GenotypeSet JSON file.
 #' 
 #' @examples
-#' # Get path to the rearrangement-example file
+#' # Load Rearrangement example
 #' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#' rearrangement <- read_rearrangement(file)
 #' 
-#' # Load data file
-#' df <- read_rearrangement(file)
+#' # Load Repertoire example
+#' file <- system.file("extdata", "repertoire-example.yaml", package="airr")
+#' repertoire <- read_airr(file)
+#' 
+#' # Load GermlineSet and GenotypeSet examples
+#' file <- system.file("extdata", "germline-example.json", package="airr")
+#' germline <- read_airr(file)
 #' 
 #' @name ExampleData
 NULL
@@ -271,17 +279,11 @@ GermlineSetSchema <- load_schema("GermlineSet")
 #' @export
 GenotypeSetSchema <- load_schema("GenotypeSet")
 
-#' @details   \code{DataFileSchema}: AIRR DataFile \code{Schema}.
-#' @rdname    Schema-class
-#' @export
-DataFileSchema <- load_schema("DataFile")
-
 #' @details   \code{AIRRSchema}: named list containing all non-experimental 
 #'                               AIRR \code{Schema} objects.
 #' @rdname    Schema-class
 #' @export
-AIRRSchema <- list("DataFile"=load_schema("DataFile"),
-                   "Alignment"=load_schema("Alignment"),
+AIRRSchema <- list("Alignment"=load_schema("Alignment"),
                    "Rearrangement"=load_schema("Rearrangement"),
                    "Repertoire"=load_schema("Repertoire"),
                    "Ontology"=load_schema("Ontology"),

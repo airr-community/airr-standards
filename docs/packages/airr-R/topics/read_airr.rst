@@ -47,67 +47,6 @@ Examples
    repertoire <- read_airr(f1)
    germline <- read_airr(f2)
 
-*Warning*:Warning: GermlineSet object is missing AIRR mandatory
-field(s): germline_set_id, author, lab_name, lab_address,
-release_version, release_description, release_date, germline_set_name,
-germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
-GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
-author, lab_name, lab_address, release_version, release_description,
-release_date, germline_set_name, germline_set_ref, species, locus,
-allele_descriptions *Warning*:Warning: GermlineSet object is missing
-AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
-release_version, release_description, release_date, germline_set_name,
-germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
-GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
-author, lab_name, lab_address, release_version, release_description,
-release_date, germline_set_name, germline_set_ref, species, locus,
-allele_descriptions *Warning*:Warning: GermlineSet object is missing
-AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
-release_version, release_description, release_date, germline_set_name,
-germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
-GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
-author, lab_name, lab_address, release_version, release_description,
-release_date, germline_set_name, germline_set_ref, species, locus,
-allele_descriptions *Warning*:Warning: GermlineSet object is missing
-AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
-release_version, release_description, release_date, germline_set_name,
-germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
-GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
-author, lab_name, lab_address, release_version, release_description,
-release_date, germline_set_name, germline_set_ref, species, locus,
-allele_descriptions *Warning*:Warning: GermlineSet object is missing
-AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
-release_version, release_description, release_date, germline_set_name,
-germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
-GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
-author, lab_name, lab_address, release_version, release_description,
-release_date, germline_set_name, germline_set_ref, species, locus,
-allele_descriptions *Warning*:Warning: GermlineSet object is missing
-AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
-release_version, release_description, release_date, germline_set_name,
-germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
-GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
-author, lab_name, lab_address, release_version, release_description,
-release_date, germline_set_name, germline_set_ref, species, locus,
-allele_descriptions *Warning*:Warning: GermlineSet object is missing
-AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
-release_version, release_description, release_date, germline_set_name,
-germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
-GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
-author, lab_name, lab_address, release_version, release_description,
-release_date, germline_set_name, germline_set_ref, species, locus,
-allele_descriptions *Warning*:Warning: GermlineSet object is missing
-AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
-release_version, release_description, release_date, germline_set_name,
-germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
-GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
-author, lab_name, lab_address, release_version, release_description,
-release_date, germline_set_name, germline_set_ref, species, locus,
-allele_descriptions *Warning*:Warning: GermlineSet object is missing
-AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
-release_version, release_description, release_date, germline_set_name,
-germline_set_ref, species, locus, allele_descriptions
-
 See also
 ~~~~~~~~
 

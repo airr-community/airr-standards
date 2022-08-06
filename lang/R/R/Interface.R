@@ -576,12 +576,11 @@ validate_airr <- function(data, each=FALSE) {
         # Recursively validate all entries
         if (is.null(names(entry))) {
             # Assume a list of records if the top-level names are NULL
-            valid <- sapply(entry,  validate_entry, schema=schema)
+            valid <- sapply(entry, validate_entry, schema=schema)
         } else {
             # Assume a single record if the top-level list is named
             valid <- validate_entry(entry, schema=schema)
         }
-        
         valid_sum <- append(setNames(all(valid), n), valid_sum)
     }
     
@@ -594,15 +593,15 @@ validate_airr <- function(data, each=FALSE) {
 
 # Validation function for a single entry in the yaml file
 #
-# @param    definition_list    AIRR data in a nested list structure
+# @param    entry    AIRR data in a nested list structure
 # @param    schema             Schema definition object
 # @returns  TRUE or FALSE
-validate_entry <- function(definition_list, schema) {
+validate_entry <- function(entry, schema) {
     schema_name <- schema@definition
     valid <- TRUE
     
     # Check all required fields exist
-    missing_fields <- setdiff(schema@required, names(definition_list))
+    missing_fields <- setdiff(schema@required, names(entry))
     
     if (length(missing_fields) > 0 ) {
         valid <- FALSE
@@ -611,8 +610,7 @@ validate_entry <- function(definition_list, schema) {
     }
     
     # loop through all fields in the list and check if they refer to other schemes
-    for(f in names(definition_list)) {
-        
+    for(f in names(entry)) {
         # get the reference scheme
         reference_schemes <- schema[f]$ref
         
@@ -620,37 +618,36 @@ validate_entry <- function(definition_list, schema) {
         # in this case the type on the 1st level is NULL
         if (is.na(schema[f][["type"]]) || is.null(schema[f][["type"]])) {
             if (!is.null(reference_schemes)) {
-                valid <- validate_entry(definition_list[[f]], schema = reference_schemes)
+                v <- validate_entry(entry[[f]], schema=reference_schemes)
+                if (!v) { valid <- FALSE }
             }
-            # entry of array type with a list of on or several reference schemes
+        # entry of array type with a list of on or several reference schemes
         } else if (schema[f][["type"]] == "array" & !is.null(reference_schemes)) {
             # this is the number of different reference schemes
             n_schemes <- length(reference_schemes)
             # this is the number of elements in the array
-            n_array_entries <- length(definition_list[[f]])
+            n_array_entries <- length(entry[[f]])
             # loop over all reference schemes in list
             for (n_ref in seq_len(n_schemes)) {
                 # recursively validate the entries in the array
                 for (n_array in seq_len(n_array_entries)) {
-                    valid <- validate_entry(definition_list[[f]][[n_array]], schema = reference_schemes[[n_ref]])
+                    v <- validate_entry(entry[[f]][[n_array]], schema = reference_schemes[[n_ref]])
+                    if (!v) { valid <- FALSE }
                 }
             }
-            # check if the entry type is correct
-        } else if (class(definition_list[[f]]) != schema[f][["type"]]) {
-            
+        # check if the entry type is correct
+        } else if (class(entry[[f]]) != schema[f][["type"]]) {
             # one reason for non-identical types can be that the entry is nullable
             nullable <- schema[f][["x-airr"]][["nullable"]]
             # if not specified, it should be nullable
             if (is.null(nullable)) { nullable <- TRUE }
-            if (!(nullable & is.null(definition_list[[f]]))) {
-                
+            if (!(nullable & is.null(entry[[f]]))) {
                 # another reason for types not matching is the array format
                 # we test whether the entries are lists
-                if (!(schema[f][["type"]] == "array" & is.vector(definition_list[[f]]))) {
-                    
+                if (!(schema[f][["type"]] == "array" & is.vector(entry[[f]]))) {
                     # another reason for types not matching is the numeric arguments being read as integers
                     # we test whether the entries are numeric
-                    if (!(schema[f][["type"]] == "numeric" & is.numeric(definition_list[[f]]))) {
+                    if (!(schema[f][["type"]] == "numeric" & is.numeric(entry[[f]]))) {
                         valid <- FALSE
                         warning(paste("Warning:", schema_name, "entry does not have the required type",
                                       schema[f][["type"]], ":", f, "\n"))

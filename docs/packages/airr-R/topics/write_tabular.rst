@@ -65,7 +65,7 @@ Examples
 
 ::
 
-   [1mindexed[0m [32m0B[0m in [36m 0s[0m, [32m0B/s[0m[1mindexed[0m [32m1.00TB[0m in [36m 0s[0m, [32m1.49PB/s[0m                                                                                                                                                                                          [1mindexed[0m [32m0B[0m in [36m 0s[0m, [32m0B/s[0m[1mindexed[0m [32m1.00TB[0m in [36m 0s[0m, [32m925.89TB/s[0m                                                                                                                                                                                          
+   [1mindexed[0m [32m0B[0m in [36m 0s[0m, [32m0B/s[0m[1mindexed[0m [32m1.00TB[0m in [36m 0s[0m, [32m842.57TB/s[0m                                                                                                                                                                                          [1mindexed[0m [32m0B[0m in [36m 0s[0m, [32m0B/s[0m[1mindexed[0m [32m1.00TB[0m in [36m 0s[0m, [32m499.26TB/s[0m                                                                                                                                                                                          
 
 .. code:: r
 
@@ -76,7 +76,7 @@ Examples
 
 ::
 
-   [1mwrote[0m [32m11.45kB[0m in [36m 0s[0m, [32m1.04GB/s[0m[1mwrote[0m [32m1.00TB[0m in [36m 0s[0m, [32m360.12TB/s[0m                                                                                                                                                                                          
+   [1mwrote[0m [32m11.45kB[0m in [36m 0s[0m, [32m1.04GB/s[0m[1mwrote[0m [32m1.00TB[0m in [36m 0s[0m, [32m431.96TB/s[0m                                                                                                                                                                                          
 
 See also
 ~~~~~~~~
