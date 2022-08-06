@@ -24,7 +24,7 @@ import sys
 # Local imports
 from airr import __version__
 import airr.interface
-import airr.germline_interface
+# import airr.germline_interface
 
 # internal wrapper function before calling merge interface method
 def merge_cmd(out_file, airr_files, drop=False, debug=False):
@@ -83,42 +83,42 @@ def validate_repertoire_cmd(airr_files, debug=True):
 
 
 # internal wrapper function before calling validate interface method
-def validate_germline_set_cmd(airr_files, debug=True):
-    """
-    Validates one or more AIRR germline set files
+# def validate_germline_set_cmd(airr_files, debug=True):
+#     """
+#     Validates one or more AIRR germline set files
+#
+#     Arguments:
+#       airr_files (list): list of input files to validate.
+#       debug (bool): debug flag. If True print debugging information to standard error.
+#
+#     Returns:
+#       boolean: True if all files passed validation, otherwise False
+#     """
+#     try:
+#         valid = [airr.germline_interface.validate_germline_set_file(f, debug=debug) for f in airr_files]
+#         return all(valid)
+#     except Exception as err:
+#         sys.stderr.write('Error occurred while validating AIRR germline set files: ' + str(err) + '\n')
+#         return False
 
-    Arguments:
-      airr_files (list): list of input files to validate.
-      debug (bool): debug flag. If True print debugging information to standard error.
 
-    Returns:
-      boolean: True if all files passed validation, otherwise False
-    """
-    try:
-        valid = [airr.germline_interface.validate_germline_set_file(f, debug=debug) for f in airr_files]
-        return all(valid)
-    except Exception as err:
-        sys.stderr.write('Error occurred while validating AIRR germline set files: ' + str(err) + '\n')
-        return False
-
-
-def validate_genotype_set_cmd(airr_files, debug=True):
-    """
-    Validates one or more AIRR germline set files
-
-    Arguments:
-      airr_files (list): list of input files to validate.
-      debug (bool): debug flag. If True print debugging information to standard error.
-
-    Returns:
-      boolean: True if all files passed validation, otherwise False
-    """
-    try:
-        valid = [airr.germline_interface.validate_genotype_set_file(f, debug=debug) for f in airr_files]
-        return all(valid)
-    except Exception as err:
-        sys.stderr.write('Error occurred while validating AIRR genotype files: ' + str(err) + '\n')
-        return False
+# def validate_genotype_set_cmd(airr_files, debug=True):
+#     """
+#     Validates one or more AIRR germline set files
+#
+#     Arguments:
+#       airr_files (list): list of input files to validate.
+#       debug (bool): debug flag. If True print debugging information to standard error.
+#
+#     Returns:
+#       boolean: True if all files passed validation, otherwise False
+#     """
+#     try:
+#         valid = [airr.germline_interface.validate_genotype_set_file(f, debug=debug) for f in airr_files]
+#         return all(valid)
+#     except Exception as err:
+#         sys.stderr.write('Error occurred while validating AIRR genotype files: ' + str(err) + '\n')
+#         return False
 
 
 def define_args():
@@ -204,24 +204,24 @@ def define_args():
     parser_validate.set_defaults(func=validate_cmd)
 
     # Subparser to validate germline set files
-    parser_validate = validate_subparser.add_parser('germline_set', parents=[common_parser],
-                                            add_help=False,
-                                            help='Validate AIRR germline set files.',
-                                            description='Validate AIRR germline set files.')
-    group_validate = parser_validate.add_argument_group('validate arguments')
-    group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
-                                help='A list of AIRR germline set files.')
-    parser_validate.set_defaults(func=validate_germline_set_cmd)
+    # parser_validate = validate_subparser.add_parser('germline_set', parents=[common_parser],
+    #                                         add_help=False,
+    #                                         help='Validate AIRR germline set files.',
+    #                                         description='Validate AIRR germline set files.')
+    # group_validate = parser_validate.add_argument_group('validate arguments')
+    # group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
+    #                             help='A list of AIRR germline set files.')
+    # parser_validate.set_defaults(func=validate_germline_set_cmd)
 
     # Subparser to validate genotype set files
-    parser_validate = validate_subparser.add_parser('genotype_set', parents=[common_parser],
-                                            add_help=False,
-                                            help='Validate AIRR germline set files.',
-                                            description='Validate AIRR genotype set files.')
-    group_validate = parser_validate.add_argument_group('validate arguments')
-    group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
-                                help='A list of AIRR germline set files.')
-    parser_validate.set_defaults(func=validate_genotype_set_cmd)
+    # parser_validate = validate_subparser.add_parser('genotype_set', parents=[common_parser],
+    #                                         add_help=False,
+    #                                         help='Validate AIRR germline set files.',
+    #                                         description='Validate AIRR genotype set files.')
+    # group_validate = parser_validate.add_argument_group('validate arguments')
+    # group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
+    #                             help='A list of AIRR germline set files.')
+    # parser_validate.set_defaults(func=validate_genotype_set_cmd)
 
     return parser
 

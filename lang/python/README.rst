@@ -63,7 +63,7 @@ Writing an AIRR Data File is also a light wrapper over standard YAML or JSON
 parsers. Multiple AIRR objects, such as Repertoire, GermlineSet, and etc., can be
 written together into the same file.
 
- The ``airr`` library provides a function to create a blank repertoire object
+The ``airr`` library provides a function to create a blank repertoire object
 in the appropriate format with all of the required fields. As with the load function,
 the complete list of repertoires are written at once, there is no streaming interface::
 
