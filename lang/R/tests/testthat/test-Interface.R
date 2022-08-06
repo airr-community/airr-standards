@@ -23,6 +23,11 @@ bad_germline_set_file <- file.path(parent_path, "data-tests", "bad_germline_set.
 good_genotype_set_file <- file.path(parent_path, "data-tests", "good_genotype_set.json")
 bad_genotype_set_file <- file.path(parent_path, "data-tests", "bad_genotype_set.json")
 
+# Combined test files
+good_combined_yaml <- file.path(parent_path, "data-tests", "good_combined_airr.yaml")
+good_combined_json <- file.path(parent_path, "data-tests", "good_combined_airr.json")
+good_combined_names <- c("Repertoire", "GermlineSet", "GenotypeSet")
+
 # Expected warnings for bad_rearrangement_file
 expected_w <- c(
     "Warning: File is missing AIRR mandatory field(s): sequence",
@@ -208,3 +213,26 @@ test_that("validate_airr with bad data returns an error", {
   bad_data <- read_airr(bad_genotype_set_file, validate=F)
   expect_false(expect_warning(validate_airr(bad_data)))
 })
+
+#### Combined Data ####
+
+context("Combined I/O - good data")
+
+test_that("read_airr loads a combined yaml file", {
+    repr <- read_airr(good_combined_yaml, validate=T)
+    expect_true(is.list(repr))
+    expect_equal(names(repr), good_combined_names)
+})
+
+test_that("read_airr loads a combined json file", {
+    repr <- read_airr(good_combined_json, validate=T)
+    expect_true(is.list(repr))
+    expect_equal(names(repr), good_combined_names)
+})
+
+# TODO: This fails because character arrays are loaded from JSON as lists and from YAML as vectors 
+# test_that("read_airr json and yaml load identical objects", {
+#     repr_yaml <- read_airr(good_combined_yaml, validate=T)
+#     repr_json <- read_airr(good_combined_json, validate=T)
+#     expect_identical(repr_yaml, repr_json)
+# })

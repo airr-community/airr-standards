@@ -165,7 +165,7 @@ read_airr <- function(file, format=c("auto", "yaml", "json"), validate=TRUE) {
 read_airr_yaml <- function(file, validate=TRUE) {
   
   # YAML format
-  data <- yaml::yaml.load_file(file)
+  data <- yaml::read_yaml(file)
 
   # Validation. Warnings are thrown for fields for AIRR compliance failures
   if (validate) {

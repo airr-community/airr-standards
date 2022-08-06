@@ -171,7 +171,7 @@ extract_field_content <- function(properties, field) {
 load_schema <- function(definition) {
     # Load schema from yaml file
     spec_file <- system.file("extdata", "airr-schema.yaml", package="airr")
-    spec_list <- yaml.load_file(spec_file)
+    spec_list <- yaml::read_yaml(spec_file)
     
     # Load definition
     definition_list <- spec_list[[definition]]

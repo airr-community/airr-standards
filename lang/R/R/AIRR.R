@@ -5,5 +5,5 @@
 #' @importFrom  stringi   stri_trim
 #' @importFrom  jsonlite  fromJSON toJSON
 #' @importFrom  tools     file_ext
-#' @importFrom  yaml      yaml.load_file write_yaml
+#' @importFrom  yaml      read_yaml write_yaml
 NULL
