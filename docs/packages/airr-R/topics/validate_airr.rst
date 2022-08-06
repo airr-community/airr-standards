@@ -1,34 +1,34 @@
 validate_airr
 -------------
 
-**Validate AIRR data**
+**Validate an AIRR Data Model nested list representation**
 
 Description
 ~~~~~~~~~~~
 
-``validate_airr`` validates compliance of the contents of a data.frame
-to the AIRR data standards.
+``validate_airr`` validates the fields in a named nested list
+representation of the AIRR Data Model. Typically, generating by reading
+of JSON or YAML formatted AIRR files.
 
 Usage
 ~~~~~
 
 ::
 
-   validate_airr(data, schema = RearrangementSchema)
+   validate_airr(data)
 
 Arguments
 ~~~~~~~~~
 
 data
-   data.frame to validate.
-schema
-   ``Schema`` object defining the data standard.
+   ``list`` containing records of an AIRR Data Model objected imported
+   from a YAML or JSON representation.
 
 Value
 ~~~~~
 
-Returns ``TRUE`` if the input ``data`` is compliant and ``FALSE`` if
-not.
+Returns ``TRUE`` if the input ``data`` is compliant with AIRR standards
+and ``FALSE`` if not.
 
 Examples
 ~~~~~~~~
@@ -36,15 +36,22 @@ Examples
 .. code:: r
 
    # Get path to the rearrangement-example file
-   file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+   file <- system.file("extdata", "repertoire-example.yaml", package="airr")
 
    # Load data file
-   df <- read_rearrangement(file)
+   repr <- read_airr(file)
 
-   # Validate a data.frame against the Rearrangement schema
-   validate_airr(df, schema=RearrangementSchema)
+   # Validate
+   validate_airr(repr)
 
 ::
 
    [1] TRUE
 
+See also
+~~~~~~~~
+
+See `Schema <Schema-class.html>`__ for the AIRR schema definitions. See
+`read_airr <read_airr.html>`__ for loading AIRR Data Models from a file.
+See `write_airr <write_airr.html>`__ for writing AIRR Data Models to a
+file.

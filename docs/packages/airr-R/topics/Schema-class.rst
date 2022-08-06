@@ -32,6 +32,26 @@ Usage
 
    RearrangementSchema
 
+::
+
+   RepertoireSchema
+
+::
+
+   GermlineSetSchema
+
+::
+
+   GenotypeSetSchema
+
+::
+
+   DataFileSchema
+
+::
+
+   AIRRSchema
+
 Arguments
 ~~~~~~~~~
 
@@ -51,6 +71,16 @@ An object of class ``Schema`` of length 1.
 
 An object of class ``Schema`` of length 1.
 
+An object of class ``Schema`` of length 1.
+
+An object of class ``Schema`` of length 1.
+
+An object of class ``Schema`` of length 1.
+
+An object of class ``Schema`` of length 1.
+
+An object of class ``list`` of length 23.
+
 Details
 ~~~~~~~
 
@@ -60,9 +90,22 @@ The following predefined Schema objects are defined:
 
 ``RearrangementSchema``: AIRR Rearrangement ``Schema``.
 
+``RepertoireSchema``: AIRR Repertoire ``Schema``.
+
+``GermlineSetSchema``: AIRR GermlineSet ``Schema``.
+
+``GenotypeSetSchema``: AIRR GenotypeSet ``Schema``.
+
+``DataFileSchema``: AIRR DataFile ``Schema``.
+
+``AIRRSchema``: named list containing all non-experimental AIRR
+``Schema`` objects.
+
 Slots
 ~~~~~
 
+``definition``
+   name of the schema definition.
 ``required``
    ``character`` vector of required fields.
 ``optional``
@@ -76,6 +119,4 @@ See also
 ~~~~~~~~
 
 See `load_schema <load_schema.html>`__ for loading a ``Schema`` from the
-definition set. See `read_airr <read_airr.html>`__,
-`write_airr <write_airr.html>`__ and `validate_airr <validate_airr.html>`__
-schema operators.
+definition set.

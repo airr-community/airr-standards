@@ -414,6 +414,7 @@ DataFile:
         #     x-airr:
         #         nullable: false
 
+
 # AIRR Info object, should be similar to openapi
 # should we point to an openapi schema?
 InfoObject:

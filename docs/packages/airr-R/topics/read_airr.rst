@@ -1,71 +1,116 @@
 read_airr
 ---------
 
-**Read an AIRR TSV**
+**Read an AIRR Data Model file in YAML or JSON format**
 
 Description
 ~~~~~~~~~~~
 
-``read_airr`` reads a TSV containing AIRR records.
+``read_airr`` loads a YAML or JSON file containing AIRR Data Model
+records.
 
 Usage
 ~~~~~
 
 ::
 
-   read_airr(file, base = c("1", "0"), schema = RearrangementSchema, ...)
-
-::
-
-   read_rearrangement(file, base = c("1", "0"), ...)
-
-::
-
-   read_alignment(file, base = c("1", "0"), ...)
+   read_airr(file, format = c("auto", "yaml", "json"), validate = TRUE)
 
 Arguments
 ~~~~~~~~~
 
 file
-   input file path.
-base
-   starting index for positional fields in the input file. If ``"1"``,
-   then these fields will not be modified. If ``"0"``, then fields
-   ending in ``"_start"`` and ``"_end"`` are 0-based half-open intervals
-   (python style) in the input file and will be converted to 1-based
-   closed-intervals (R style).
-schema
-   ``Schema`` object defining the output format.
-…
-   additional arguments to pass to
-   `read_delim <http://www.rdocumentation.org/packages/readr/topics/read_delim>`__.
+   path to the input file.
+format
+   format of the input file. Must be one of ``"auto"``, ``"yaml"``, or
+   ``"json"``. If ``"auto"`` (default), the format will be detected from
+   the ``file`` extension.
+validate
+   run schema validation if ``TRUE``.
 
 Value
 ~~~~~
 
-A data.frame of the TSV file with appropriate type and position
-conversion for fields defined in the specification.
-
-Details
-~~~~~~~
-
-``read_rearrangement`` reads an AIRR TSV containing Rearrangement data.
-
-``read_alignment`` reads an AIRR TSV containing Alignment data.
+A named nested ``list`` contained in the AIRR Data Model with the
+top-level names reflecting the individual AIRR objects.
 
 Examples
 ~~~~~~~~
 
 .. code:: r
 
-   # Get path to the rearrangement-example file
-   file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+   # Get path to the Reportoire and GermlineSet example files
+   f1 <- system.file("extdata", "repertoire-example.yaml", package="airr")
+   f2 <- system.file("extdata", "germline-example.json", package="airr")
 
-   # Load data file
-   df <- read_rearrangement(file)
+   # Load data files
+   repertoire <- read_airr(f1)
+   germline <- read_airr(f2)
+
+*Warning*:Warning: GermlineSet object is missing AIRR mandatory
+field(s): germline_set_id, author, lab_name, lab_address,
+release_version, release_description, release_date, germline_set_name,
+germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
+GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
+author, lab_name, lab_address, release_version, release_description,
+release_date, germline_set_name, germline_set_ref, species, locus,
+allele_descriptions *Warning*:Warning: GermlineSet object is missing
+AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
+release_version, release_description, release_date, germline_set_name,
+germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
+GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
+author, lab_name, lab_address, release_version, release_description,
+release_date, germline_set_name, germline_set_ref, species, locus,
+allele_descriptions *Warning*:Warning: GermlineSet object is missing
+AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
+release_version, release_description, release_date, germline_set_name,
+germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
+GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
+author, lab_name, lab_address, release_version, release_description,
+release_date, germline_set_name, germline_set_ref, species, locus,
+allele_descriptions *Warning*:Warning: GermlineSet object is missing
+AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
+release_version, release_description, release_date, germline_set_name,
+germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
+GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
+author, lab_name, lab_address, release_version, release_description,
+release_date, germline_set_name, germline_set_ref, species, locus,
+allele_descriptions *Warning*:Warning: GermlineSet object is missing
+AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
+release_version, release_description, release_date, germline_set_name,
+germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
+GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
+author, lab_name, lab_address, release_version, release_description,
+release_date, germline_set_name, germline_set_ref, species, locus,
+allele_descriptions *Warning*:Warning: GermlineSet object is missing
+AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
+release_version, release_description, release_date, germline_set_name,
+germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
+GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
+author, lab_name, lab_address, release_version, release_description,
+release_date, germline_set_name, germline_set_ref, species, locus,
+allele_descriptions *Warning*:Warning: GermlineSet object is missing
+AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
+release_version, release_description, release_date, germline_set_name,
+germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
+GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
+author, lab_name, lab_address, release_version, release_description,
+release_date, germline_set_name, germline_set_ref, species, locus,
+allele_descriptions *Warning*:Warning: GermlineSet object is missing
+AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
+release_version, release_description, release_date, germline_set_name,
+germline_set_ref, species, locus, allele_descriptions *Warning*:Warning:
+GermlineSet object is missing AIRR mandatory field(s): germline_set_id,
+author, lab_name, lab_address, release_version, release_description,
+release_date, germline_set_name, germline_set_ref, species, locus,
+allele_descriptions *Warning*:Warning: GermlineSet object is missing
+AIRR mandatory field(s): germline_set_id, author, lab_name, lab_address,
+release_version, release_description, release_date, germline_set_name,
+germline_set_ref, species, locus, allele_descriptions
 
 See also
 ~~~~~~~~
 
-See `Schema <Schema-class.html>`__ for the AIRR schema object definition.
-See `write_airr <write_airr.html>`__ for writing AIRR data.
+See `Schema <Schema-class.html>`__ for the AIRR schema definition objects.
+See `write_airr <write_airr.html>`__ for writing AIRR Data Model records
+in YAML or JSON format.

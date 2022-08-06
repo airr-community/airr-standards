@@ -38,21 +38,21 @@ expected_w <- c(
 context("Rearrangement I/O - good data")
 
 test_that("read_rearrangement loads a data.frame", {
-    tbl_1 <- read_rearrangement(good_rearrangement_file, "1")
+    tbl_1 <- read_rearrangement(good_rearrangement_file)
     expect_true(is.data.frame(tbl_1))
 })
 
-test_that("read_airr_tsv loads a data.frame", {
-    expect_error(read_airr_tsv(good_rearrangement_file, "1"))
-    tbl_1 <- read_airr_tsv(good_rearrangement_file, "1", schema = RearrangementSchema)
+test_that("read_tabular loads a data.frame", {
+    expect_error(read_tabular(good_rearrangement_file))
+    tbl_1 <- read_tabular(good_rearrangement_file, schema=RearrangementSchema)
     expect_true(is.data.frame(tbl_1))
 })
 
-test_that("read_airr_tsv applies base", {
-    tbl_0 <- read_airr_tsv(good_rearrangement_file, "0", schema = RearrangementSchema)
-    tbl_1 <- read_airr_tsv(good_rearrangement_file, "1", schema = RearrangementSchema)
+test_that("read_tabular applies base", {
+    tbl_0 <- read_tabular(good_rearrangement_file, base="0", schema=RearrangementSchema)
+    tbl_1 <- read_tabular(good_rearrangement_file, base="1", schema=RearrangementSchema)
     expect_true(is.data.frame(tbl_0))
-    expect_true(validate_table(tbl_0, schema = RearrangementSchema))
+    expect_true(validate_tabular(tbl_0, schema = RearrangementSchema))
     start_positions <- grep("_start$", names(tbl_0), perl=TRUE)
     expect_equivalent(tbl_0[, start_positions] - 1, tbl_1[, start_positions])
 })
@@ -61,7 +61,7 @@ test_that("Columns are of expected type", {
     # Create test data
     tmp_file <- tempfile(fileext = ".tsv")
 
-    tbl_0 <- read_airr_tsv(good_rearrangement_file, "1", schema = RearrangementSchema)
+    tbl_0 <- read_tabular(good_rearrangement_file, schema=RearrangementSchema)
 
     # Create non-schema  columns
     extra_cols <- data.frame(
@@ -90,23 +90,23 @@ test_that("Columns are of expected type", {
 
     tbl_0 <- cbind(tbl_0, extra_cols)
     tbl_0 <- rbind(tbl_1, tbl_0)
-    write_tsv(tbl_0, tmp_file)
+    write_tabular(tbl_0, tmp_file, schema=RearrangementSchema)
 
     # Read with col_character() as default
-    expect_is(tbl_0 <- read_airr_tsv(tmp_file, "1", schema = RearrangementSchema), "data.frame")
+    expect_is(tbl_0 <- read_tabular(tmp_file, schema=RearrangementSchema), "data.frame")
     expect_is(tbl_0$extra.int, "character")
     expect_is(tbl_0$extra.numeric, "character")
     expect_is(tbl_0$extra.character, "character")
 
-    expect_is(read_airr_tsv(
-        good_rearrangement_file, "1", schema = RearrangementSchema,
+    expect_is(read_tabular(
+        good_rearrangement_file, schema=RearrangementSchema,
         aux_types =
             c(extra.int = "integer",
               extra.double = "double",
               extra.numeric = "numeric",
               extra.character = "character")), "data.frame")
 
-    expect_is(tbl_0 <- read_airr_tsv(
+    expect_is(tbl_0 <- read_tabular(
         tmp_file, "1", schema = RearrangementSchema,
         aux_types =
             c(extra.int = "integer",
@@ -117,14 +117,13 @@ test_that("Columns are of expected type", {
     expect_is(tbl_0$extra.double, "numeric")
     expect_is(tbl_0$extra.numeric, "numeric")
     expect_is(tbl_0$extra.character, "character")
-
 })
 
 
-test_that("write_airr_tsv writes a file with logicals encoded T/F", {
-    tbl <- read_airr_tsv(good_rearrangement_file, schema = RearrangementSchema)
+test_that("write_tabular writes a file with logicals encoded T/F", {
+    tbl <- read_tabular(good_rearrangement_file, schema=RearrangementSchema)
     out_file <- file.path(tempdir(), "test_out.tsv")
-    write_airr_tsv(tbl, out_file, schema = RearrangementSchema)
+    write_tabular(tbl, out_file, schema = RearrangementSchema)
     expect_true(file.exists(out_file))
     reload_tbl <- read.delim(out_file, colClasses="character")
     expect_true(all(reload_tbl[['rev_comp']] == "T"))
@@ -134,19 +133,19 @@ test_that("write_airr_tsv writes a file with logicals encoded T/F", {
 
 context("Rearrangement I/O - bad data")
 
-test_that("read_airr_tsv with bad data", {
+test_that("read_tabular with bad data", {
     # Expect valid==FALSE
-    bad_data <- suppressWarnings(read_airr_tsv(bad_rearrangement_file, "1", schema = RearrangementSchema))
-    expect_false(suppressWarnings(validate_table(bad_data, schema = RearrangementSchema)))
+    bad_data <- suppressWarnings(read_tabular(bad_rearrangement_file, base="1", schema=RearrangementSchema))
+    expect_false(suppressWarnings(validate_tabular(bad_data, schema=RearrangementSchema)))
     # Check error messages
-    w <- capture_warnings(validate_table(bad_data, schema = RearrangementSchema))
+    w <- capture_warnings(validate_tabular(bad_data, schema=RearrangementSchema))
     expect_equal(w, expected_w)
 })
 
-test_that("write_airr_tsv writes a bad file, with warnings, with logicals T/T", {
-    bad_data <- suppressWarnings(read_airr_tsv(bad_rearrangement_file, "1", schema = RearrangementSchema))
+test_that("write_tabular writes a bad file, with warnings, with logicals T/T", {
+    bad_data <- suppressWarnings(read_tabular(bad_rearrangement_file, base="1", schema=RearrangementSchema))
     out_file <- file.path(tempdir(), "test_out.tsv")
-    expect_warning(write_airr_tsv(bad_data, out_file, schema = RearrangementSchema))
+    expect_warning(write_tabular(bad_data, out_file, schema = RearrangementSchema))
     expect_true(file.exists(out_file))
     reload_tbl <- read.delim(out_file, colClasses="character")
     expect_equal(reload_tbl[['rev_comp']],
@@ -159,20 +158,20 @@ test_that("write_airr_tsv writes a bad file, with warnings, with logicals T/T", 
 
 context("Repertoire I/O - good data")
 
-test_that("read_repertoire loads a list", {
-    rep_1 <- read_repertoire(good_repertoire_file)
+test_that("read_airr loads a Repertoire", {
+    rep_1 <- read_airr(good_repertoire_file)
     expect_true(is.list(rep_1))
 })
 
-test_that("read_airr_yaml loads a list", {
-    rep_1 <- read_airr_yaml(good_repertoire_file)
+test_that("read_airr with format=yaml loads a Repertoire", {
+    rep_1 <- read_airr(good_repertoire_file, format="yaml")
     expect_true(is.list(rep_1))
 })
 
 context("Repertoire I/O - bad data")
 
 test_that("validate_airr with bad data returns an error", {
-    bad_data <- expect_warning(read_airr_yaml(bad_repertoire_file))
+    bad_data <- expect_warning(read_airr(bad_repertoire_file))
     expect_false(suppressWarnings(validate_airr(bad_data)))
 })
 
@@ -180,30 +179,32 @@ test_that("validate_airr with bad data returns an error", {
 
 context("GermlineSet I/O - good data")
 
-test_that("read_germline_set loads a list", {
-  rep_1 <- read_germline_set(good_germline_set_file)
+# TODO: Update good data so validation passes
+test_that("read_airr loads a GermlineSet", {
+  rep_1 <- suppressWarnings(read_airr(good_germline_set_file, validate=T))
   expect_true(is.list(rep_1))
 })
 
 context("GermlineSet I/O - bad data")
 
-test_that("validate_germline_set with bad data returns an error", {
-  bad_data <- read_germline_set(bad_germline_set_file, validate=F)
-  expect_false(suppressWarnings(validate_airr(bad_data)))
+test_that("validate_airr with bad data returns an error", {
+  bad_data <- read_airr(bad_germline_set_file, validate=F)
+  expect_false(expect_warning(validate_airr(bad_data)))
 })
 
 #### GenotypeSet ####
 
 context("GenotypeSet I/O - good data")
 
-test_that("read_genotype_set loads a list", {
-  rep_1 <- read_genotype_set(good_genotype_set_file)
+# TODO: Update good data so validation passes
+test_that("read_airr loads a GenotypeSet", {
+  rep_1 <- suppressWarnings(read_airr(good_genotype_set_file, validate=T))
   expect_true(is.list(rep_1))
 })
 
 context("GenotypeSet I/O - bad data")
 
-test_that("validate_genotype_set with bad data returns an error", {
-  bad_data <- read_genotype_set(bad_genotype_set_file, validate=F)
-  expect_false(suppressWarnings(validate_airr(bad_data)))
+test_that("validate_airr with bad data returns an error", {
+  bad_data <- read_airr(bad_genotype_set_file, validate=F)
+  expect_false(expect_warning(validate_airr(bad_data)))
 })

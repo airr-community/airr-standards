@@ -45,7 +45,7 @@ machine-readable form. The `airr` R package provide read, write and validation o
 following the AIRR Data Representation schemas. This vignette provides a set of 
 simple use examples.
 
-### AIRR Data Representation Standards
+### AIRR Data Standards
 
 The AIRR Community's recommendations for a minimal set of metadata that should be 
 used to describe an AIRR-seq data set when published or deposited in a 
@@ -78,54 +78,58 @@ not be modified under the default setting of `base="1"`. If the input file is us
 positional fields may be converted to 1-based closed 
 intervals using the argument `base="0"`.
 
-### Reading rearrangements
+### Reading Rearrangements
 ```{r}
+# Imports
 library(airr)
+library(tibble)
 
-example_data <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
-airr_rearrangement <- read_rearrangement(example_data)
-head(airr_rearrangement)
+# Read Rearrangement example file
+f1 <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+rearrangement <- read_rearrangement(f1)
+glimpse(rearrangement)
 ```
 
-### Reading repertoires 
+### Reading AIRR Data Models
 
-Repertoires can be read from a YAML format:
+AIRR Data Model records, such as Repertoire and GermlineSet, can be read from either a YAML 
+or JSON formatted file into a nested list.
 
 ```{r}
-rep_file_good <- system.file("extdata", "repertoire-example.yaml", package="airr")
-repertoire1 <- read_repertoire(rep_file_good)
+# Read Repertoire example file
+f2 <- system.file("extdata", "repertoire-example.yaml", package="airr")
+repertoire <- read_airr(f2)
+glimpse(repertoire)
+
+# Read GermlineSet example file
+f3 <- system.file("extdata", "germline-example.json", package="airr")
+germline <- read_airr(f3, validate=F)
+glimpse(germline)
 ```
 
-Repertoires can also be read from a JSON format:
-
-```{r}
-rep_file_good_json <- system.file("extdata", "repertoire-example.json", package="airr")
-repertoire2 <- read_repertoire(rep_file_good_json)
-```
 
 ## Writing AIRR formatted files
 
 The `airr` package contains the function `write_rearrangement` to write
 Rearrangement records to the AIRR TSV format.
 
-### Writing rearrangements
+### Writing Rearrangements
+
 ```{r}
-out_file <- file.path(tempdir(), "airr_out.tsv")
-write_rearrangement(airr_rearrangement, out_file)
+x1 <- file.path(tempdir(), "airr_out.tsv")
+write_rearrangement(rearrangement, x1)
 ```
 
-### Writing repertoires
+### Writing AIRR Data Models
 
-Write a valid repertoire in yaml format
-```{r}
-out_file1 <- file.path(tempdir(), "airr_repertoire1_out.yaml")
-write_repertoire(repertoire1, out_file1)
-```
+AIRR Data Model records can be written to either YAML or JSON using the `write_airr` function.
 
-Write a valid repertoire in json format
 ```{r}
-out_file2 <- file.path(tempdir(), "airr_repertoire2_out.json")
-write_repertoire(repertoire2, out_file2)
+x2 <- file.path(tempdir(), "airr_repertoire_out.yaml")
+write_airr(repertoire, x2, format="yaml")
+
+x3 <- file.path(tempdir(), "airr_germline_out.json")
+write_airr(germline, x3, format="json", validate=F)
 ```
 
 
