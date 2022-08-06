@@ -230,9 +230,8 @@ test_that("read_airr loads a combined json file", {
     expect_equal(names(repr), good_combined_names)
 })
 
-# TODO: This fails because character arrays are loaded from JSON as lists and from YAML as vectors 
-# test_that("read_airr json and yaml load identical objects", {
-#     repr_yaml <- read_airr(good_combined_yaml, validate=T)
-#     repr_json <- read_airr(good_combined_json, validate=T)
-#     expect_identical(repr_yaml, repr_json)
-# })
+test_that("read_airr json and yaml load identical objects", {
+    repr_yaml <- read_airr(good_combined_yaml, validate=T)
+    repr_json <- read_airr(good_combined_json, validate=T)
+    expect_identical(repr_yaml, repr_json)
+})

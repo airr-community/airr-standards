@@ -199,7 +199,11 @@ read_airr_yaml <- function(file, validate=TRUE) {
 read_airr_json <- function(file, validate=TRUE) {
   
   # Read JSON format
-  data <- jsonlite::fromJSON(file, simplifyVector=FALSE)
+  data <- jsonlite::fromJSON(file, 
+                             simplifyVector=TRUE,
+                             simplifyMatrix=FALSE,
+                             simplifyDataFrame=FALSE,
+                             flatten=FALSE)
   
   # Validation. Warnings are thrown for fields for AIRR compliance failures
   if (validate) {
