@@ -103,7 +103,7 @@ glimpse(repertoire)
 
 # Read GermlineSet example file
 f3 <- system.file("extdata", "germline-example.json", package="airr")
-germline <- read_airr(f3, validate=F)
+germline <- read_airr(f3)
 glimpse(germline)
 ```
 
@@ -129,7 +129,7 @@ x2 <- file.path(tempdir(), "airr_repertoire_out.yaml")
 write_airr(repertoire, x2, format="yaml")
 
 x3 <- file.path(tempdir(), "airr_germline_out.json")
-write_airr(germline, x3, format="json", validate=F)
+write_airr(germline, x3, format="json")
 ```
 
 

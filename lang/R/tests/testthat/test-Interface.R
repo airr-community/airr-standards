@@ -181,7 +181,7 @@ context("GermlineSet I/O - good data")
 
 # TODO: Update good data so validation passes
 test_that("read_airr loads a GermlineSet", {
-  rep_1 <- suppressWarnings(read_airr(good_germline_set_file, validate=T))
+  rep_1 <- read_airr(good_germline_set_file, validate=T)
   expect_true(is.list(rep_1))
 })
 
@@ -198,7 +198,7 @@ context("GenotypeSet I/O - good data")
 
 # TODO: Update good data so validation passes
 test_that("read_airr loads a GenotypeSet", {
-  rep_1 <- suppressWarnings(read_airr(good_genotype_set_file, validate=T))
+  rep_1 <- read_airr(good_genotype_set_file, validate=T))
   expect_true(is.list(rep_1))
 })
 

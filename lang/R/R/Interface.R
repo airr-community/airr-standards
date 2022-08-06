@@ -192,10 +192,10 @@ read_airr_yaml <- function(file, validate=TRUE) {
 # 
 # @examples
 # # Get path to the rearrangement-example file
-# file <- system.file("extdata", "repertoire-example.json", package="airr")
+# file <- system.file("extdata", "germline-example.json", package="airr")
 # 
 # # Load data file
-# repr <- read_repertoire(file)
+# repr <- read_airr_json(file)
 read_airr_json <- function(file, validate=TRUE) {
   
   # Read JSON format
@@ -422,14 +422,14 @@ write_airr_yaml <- function(data, file, validate=TRUE) {
 # 
 # @examples
 # # Get path to the rearrangement-example file
-# file <- system.file("extdata", "repertoire-example.json", package="airr")
+# file <- system.file("extdata", "germline-example.json", package="airr")
 # 
 # # Load data file
-# repr <- read_repertoire(file)
+# repr <- read_airr(germline)
 # 
 # # Write a Rearrangement data file
 # outfile <- file.path(tempdir(), "output.json")
-# write_repertoire(repr, outfile)
+# write_airr_json(repr, outfile)
 write_airr_json <- function(data, file, validate=TRUE) {
     # Validate prior to write
     if (validate) {
@@ -534,9 +534,12 @@ validate_rearrangement <- function(data) {
 #'
 #' @param    data     \code{list} containing records of an AIRR Data Model objected imported from 
 #'                    a YAML or JSON representation.
+#' @param    each     if \code{TRUE} return a logical vector with results for each object in \code{data}
+#'                    instead of a single \code{TRUE} or \code{FALSE} value.
 #' 
 #' @return   Returns \code{TRUE} if the input \code{data} is compliant with AIRR standards and
-#'           \code{FALSE} if not. 
+#'           \code{FALSE} if not. If \code{each=TRUE} is set, then a vector with results for each
+#'           each object in \code{data} is returned instead.
 #'                   
 #' @seealso  
 #' See \link{Schema} for the AIRR schema definitions.
@@ -545,35 +548,47 @@ validate_rearrangement <- function(data) {
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "repertoire-example.yaml", package="airr")
+#' f1 <- system.file("extdata", "repertoire-example.yaml", package="airr")
+#' f2 <- system.file("extdata", "germline-example.json", package="airr")
 #' 
 #' # Load data file
-#' repr <- read_airr(file)
+#' repertoire <- read_airr(f1)
+#' germline <- read_airr(f2)
 #' 
-#' # Validate
-#' validate_airr(repr)
+#' # Validate a single record
+#' validate_airr(repertoire)
+#' 
+#' # Return validation for individual objects
+#' validate_airr(germline, each=TRUE)
 #' 
 #' @export
-validate_airr <- function(data) {
+validate_airr <- function(data, each=FALSE) {
     # This is a wrapper function to allow recursive validation of the different entries in yaml file
     # Directly calling validate_entry does not work, because the function
     # validate_entry also needs to work for recursive calling of reference schemes
     
+    # Iterate through objects in input data
     valid_sum <- logical()
     for (n in names(data)) {
-        yaml_list <- data[[n]]
-        y <- if (n %in% names(AIRRSchema)) { AIRRSchema[[n]] } else { load_schema(n) }
+        entry <- data[[n]]
+        schema <- if (n %in% names(AIRRSchema)) { AIRRSchema[[n]] } else { load_schema(n) }
         
-        # yaml file can contain multiple entries
-        entries_n <- seq_len(length(yaml_list))
+        # Recursively validate all entries
+        if (is.null(names(entry))) {
+            # Assume a list of records if the top-level names are NULL
+            valid <- sapply(entry,  validate_entry, schema=schema)
+        } else {
+            # Assume a single record if the top-level list is named
+            valid <- validate_entry(entry, schema=schema)
+        }
         
-        # recursively validate all entries
-        valid_list <- sapply(entries_n,  function(x) validate_entry(yaml_list[[x]], schema=y))
-        valid_sum <- append(all(valid_list), valid_sum)
+        valid_sum <- append(setNames(all(valid), n), valid_sum)
     }
     
-    # data only valid if all entries valid
-    return(all(valid_sum))
+    # Data only valid if all entries valid
+    if (!each) { valid_sum <- all(valid_sum) }
+    
+    return(valid_sum)
 }
 
 
