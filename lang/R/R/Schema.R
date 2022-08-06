@@ -234,9 +234,11 @@ load_schema <- function(definition) {
 #' Example data files compliant with the the AIRR Data Representation standards.
 #'
 #' @format
-#' \code{extdata/rearrangement-example.tsv.gz}: Rearrangement TSV file.
-#' \code{extdata/repertoire-example.yaml}: Repertoire YAML file.
-#' \code{extdata/germline-example.json}: GermlineSet and GenotypeSet JSON file.
+#' \itemize{
+#'   \item  \code{extdata/rearrangement-example.tsv.gz}: Rearrangement TSV file.
+#'   \item  \code{extdata/repertoire-example.yaml}: Repertoire YAML file.
+#'   \item  \code{extdata/germline-example.json}: GermlineSet and GenotypeSet JSON file.
+#' }
 #' 
 #' @examples
 #' # Load Rearrangement example
