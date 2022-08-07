@@ -44,7 +44,7 @@ def merge_cmd(out_file, airr_files, drop=False, debug=False):
     return airr.interface.merge_rearrangement(out_file, airr_files, drop=drop, debug=debug)
 
 # internal wrapper function before calling validate interface method
-def validate_cmd(airr_files, debug=True):
+def validate_rearrangement_cmd(airr_files, debug=True):
     """
     Validates one or more AIRR rearrangements files
 
@@ -61,6 +61,26 @@ def validate_cmd(airr_files, debug=True):
     except Exception as err:
         sys.stderr.write('Error occurred while validating AIRR rearrangement files: ' + str(err) + '\n')
         return False
+
+def validate_airr_cmd(airr_files, debug=True):
+    """
+    Validates one or more AIRR Data Model files
+
+    Arguments:
+      airr_files (list): list of input files to validate.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      boolean: True if all files passed validation, otherwise False
+    """
+    try:
+        valid = [airr.interface.validate_airr(f, debug=debug) for f in airr_files]
+        return all(valid)
+    except Exception as err:
+        sys.stderr.write('Error occurred while validating AIRR Data Model files: ' + str(err) + '\n')
+        return False
+
+#### Deprecated ####
 
 # internal wrapper function before calling validate interface method
 def validate_repertoire_cmd(airr_files, debug=True):
@@ -80,45 +100,6 @@ def validate_repertoire_cmd(airr_files, debug=True):
     except Exception as err:
         sys.stderr.write('Error occurred while validating AIRR repertoire metadata files: ' + str(err) + '\n')
         return False
-
-
-# internal wrapper function before calling validate interface method
-# def validate_germline_set_cmd(airr_files, debug=True):
-#     """
-#     Validates one or more AIRR germline set files
-#
-#     Arguments:
-#       airr_files (list): list of input files to validate.
-#       debug (bool): debug flag. If True print debugging information to standard error.
-#
-#     Returns:
-#       boolean: True if all files passed validation, otherwise False
-#     """
-#     try:
-#         valid = [airr.germline_interface.validate_germline_set_file(f, debug=debug) for f in airr_files]
-#         return all(valid)
-#     except Exception as err:
-#         sys.stderr.write('Error occurred while validating AIRR germline set files: ' + str(err) + '\n')
-#         return False
-
-
-# def validate_genotype_set_cmd(airr_files, debug=True):
-#     """
-#     Validates one or more AIRR germline set files
-#
-#     Arguments:
-#       airr_files (list): list of input files to validate.
-#       debug (bool): debug flag. If True print debugging information to standard error.
-#
-#     Returns:
-#       boolean: True if all files passed validation, otherwise False
-#     """
-#     try:
-#         valid = [airr.germline_interface.validate_genotype_set_file(f, debug=debug) for f in airr_files]
-#         return all(valid)
-#     except Exception as err:
-#         sys.stderr.write('Error occurred while validating AIRR genotype files: ' + str(err) + '\n')
-#         return False
 
 
 def define_args():
@@ -178,20 +159,10 @@ def define_args():
     # Subparser to validate files
     parser_validate = subparsers.add_parser('validate', parents=[common_parser],
                                             add_help=False,
-                                            help='Validate AIRR files.',
-                                            description='Validate AIRR files.')
+                                            help='Validate files for AIRR Standards compliance.',
+                                            description='Validate files for AIRR Standards compliance.')
     validate_subparser = parser_validate.add_subparsers(title='subcommands', metavar='',
                                        help='Database operation')
-
-    # Subparser to validate repertoire files
-    parser_validate = validate_subparser.add_parser('repertoire', parents=[common_parser],
-                                            add_help=False,
-                                            help='Validate AIRR repertoire metadata files.',
-                                            description='Validate AIRR repertoire metadata files.')
-    group_validate = parser_validate.add_argument_group('validate arguments')
-    group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
-                                help='A list of AIRR repertoire metadata files.')
-    parser_validate.set_defaults(func=validate_repertoire_cmd)
 
     # Subparser to validate rearrangement files
     parser_validate = validate_subparser.add_parser('rearrangement', parents=[common_parser],
@@ -201,27 +172,27 @@ def define_args():
     group_validate = parser_validate.add_argument_group('validate arguments')
     group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
                                 help='A list of AIRR rearrangement files.')
-    parser_validate.set_defaults(func=validate_cmd)
+    parser_validate.set_defaults(func=validate_rearrangement_cmd)
 
-    # Subparser to validate germline set files
-    # parser_validate = validate_subparser.add_parser('germline_set', parents=[common_parser],
-    #                                         add_help=False,
-    #                                         help='Validate AIRR germline set files.',
-    #                                         description='Validate AIRR germline set files.')
-    # group_validate = parser_validate.add_argument_group('validate arguments')
-    # group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
-    #                             help='A list of AIRR germline set files.')
-    # parser_validate.set_defaults(func=validate_germline_set_cmd)
+    # Subparser to validate AIRR Data Model files
+    parser_validate = validate_subparser.add_parser('airr', parents=[common_parser],
+                                            add_help=False,
+                                            help='Validate AIRR Data Model files.',
+                                            description='Validate AIRR Data Model files.')
+    group_validate = parser_validate.add_argument_group('validate arguments')
+    group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
+                                help='A list of AIRR Data Model files.')
+    parser_validate.set_defaults(func=validate_airr_cmd)
 
-    # Subparser to validate genotype set files
-    # parser_validate = validate_subparser.add_parser('genotype_set', parents=[common_parser],
-    #                                         add_help=False,
-    #                                         help='Validate AIRR germline set files.',
-    #                                         description='Validate AIRR genotype set files.')
-    # group_validate = parser_validate.add_argument_group('validate arguments')
-    # group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
-    #                             help='A list of AIRR germline set files.')
-    # parser_validate.set_defaults(func=validate_genotype_set_cmd)
+    # Subparser to validate repertoire files
+    parser_validate = validate_subparser.add_parser('repertoire', parents=[common_parser],
+                                                    add_help=False,
+                                                    help='Validate AIRR repertoire metadata files.',
+                                                    description='Validate AIRR repertoire metadata files.')
+    group_validate = parser_validate.add_argument_group('validate arguments')
+    group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
+                                help='A list of AIRR repertoire metadata files.')
+    parser_validate.set_defaults(func=validate_repertoire_cmd)
 
     return parser
 

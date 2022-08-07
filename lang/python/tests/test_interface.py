@@ -61,7 +61,8 @@ class TestInferface(unittest.TestCase):
     # @unittest.skip('-> repertoire_template(): skipped\n')
     def test_repertoire_template(self):
         try:
-            rep = airr.repertoire_template()
+            with self.assertWarns(DeprecationWarning, msg='repertoire_template(): failed to issue DeprecationWarning'):
+                rep = airr.repertoire_template()
             result = airr.schema.RepertoireSchema.validate_object(rep)
             self.assertTrue(result, 'repertoire_template(): repertoire template failed validation')
         except:
@@ -132,17 +133,19 @@ class TestInferface(unittest.TestCase):
             raise inst
 
     # @unittest.skip('-> load_repertoire(): skipped\n')
-    def test_read_repertoire(self):
+    def test_load_repertoire(self):
         # Good data
         try:
-            data = airr.load_repertoire(self.rep_good, validate=True, debug=True)
+            with self.assertWarns(DeprecationWarning, msg='load_repertoire(): failed to issue DeprecationWarning'):
+                data = airr.load_repertoire(self.rep_good, validate=True, debug=True)
         except:
             self.assertTrue(False, 'load_repertoire(): good data failed')
 
         # Bad data
         try:
-            data = airr.load_repertoire(self.rep_bad, validate=True, debug=True)
-            self.assertFalse(True, 'load_repertoire(): bad data failed')
+            with self.assertWarns(DeprecationWarning, msg='load_repertoire(): failed to issue DeprecationWarning'):
+                data = airr.load_repertoire(self.rep_bad, validate=True, debug=True)
+            self.assertFalse(True, 'load_repertoire(): bad data passed')
         except ValidationError:
             pass
         except Exception as inst:
@@ -153,11 +156,13 @@ class TestInferface(unittest.TestCase):
     def test_write_repertoire(self):
         # Good data
         try:
-            data = airr.load_repertoire(self.rep_good, validate=True, debug=True)
-            result = airr.write_repertoire(self.output_rep_good, data['Repertoire'], debug=True)
-
-            # verify we can read it
-            obj = airr.load_repertoire(self.output_rep_good, validate=True, debug=True)
+            with self.assertWarns(DeprecationWarning, msg='load_repertoire(): failed to issue DeprecationWarning'):
+                data = airr.load_repertoire(self.rep_good, validate=True, debug=True)
+            with self.assertWarns(DeprecationWarning, msg='write_repertoire(): failed to issue DeprecationWarning'):
+                result = airr.write_repertoire(self.output_rep_good, data['Repertoire'], debug=True)
+            with self.assertWarns(DeprecationWarning, msg='load_repertoire(): failed to issue DeprecationWarning'):
+                # verify we can read it
+                obj = airr.load_repertoire(self.output_rep_good, validate=True, debug=True)
 
             # is the data identical?
             if jsondiff.diff(obj['Repertoire'], data['Repertoire']) != {}:

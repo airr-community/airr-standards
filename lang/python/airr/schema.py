@@ -466,7 +466,6 @@ class Schema:
 
 # Preloaded schema
 AIRRSchema = {
-    'DataFile': Schema('DataFile'),
     'Alignment': Schema('Alignment'),
     'Rearrangement': Schema('Rearrangement'),
     'Repertoire': Schema('Repertoire'),
@@ -474,13 +473,13 @@ AIRRSchema = {
     'Study': Schema('Study'),
     'Subject': Schema('Subject'),
     'Diagnosis': Schema('Diagnosis'),
+    'SampleProcessing': Schema('SampleProcessing'),
     'CellProcessing': Schema('CellProcessing'),
     'PCRTarget': Schema('PCRTarget'),
     'NucleicAcidProcessing': Schema('NucleicAcidProcessing'),
     'SequencingRun': Schema('SequencingRun'),
     'SequencingData': Schema('SequencingData'),
     'DataProcessing': Schema('DataProcessing'),
-    'SampleProcessing': Schema('SampleProcessing'),
     'GermlineSet': Schema('GermlineSet'),
     'Acknowledgement': Schema('Acknowledgement'),
     'RearrangedSequence': Schema('RearrangedSequence'),
@@ -491,7 +490,6 @@ AIRRSchema = {
     'Genotype': Schema('Genotype'),
 }
 
-DataFileSchema = AIRRSchema['DataFile']
 AlignmentSchema = AIRRSchema['Alignment']
 RearrangementSchema = AIRRSchema['Rearrangement']
 RepertoireSchema = AIRRSchema['Repertoire']
