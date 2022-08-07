@@ -11,7 +11,7 @@
         "germline_set_name": "CAST IGH",
         "germline_set_ref": "OGRDB:G00007.1",
         "pub_ids": "",
-        "species": {"id": "NCBITAXON:10090", "label": "Mus musculus"},
+        "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
         "species_subgroup": "CAST_EiJ",
         "species_subgroup_type": "strain",
         "locus": "IGH",
@@ -36,7 +36,7 @@
                 "sequence_type": "V",
                 "functional": true,
                 "inference_type": "Rearranged",
-                "species": "Mouse",
+                "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
                 "species_subgroup": "CAST_EiJ",
                 "species_subgroup_type": "strain",
                 "status": "active",
@@ -179,11 +179,12 @@
                 "unrearranged_support": [],
                 "rearranged_support": [],
                 "paralogs": [],
-                "curation": "Imported to OGRDB with the following notes:\r\nwatson_et_al: CAST_EiJ_IGHV5-3",
+                "curation": "Imported to OGRDB with the following notes: watson_et_al: CAST_EiJ_IGHV5-3",
                 "curational_tags": null
             },
             {
                 "allele_description_id": "OGRDB:A00314",
+                "allele_description_ref": "OGRDB:Mouse_IGH:IGHV-2ETO",
                 "maintainer": "William Lees",
                 "acknowledgements": [],
                 "lab_address": "Birkbeck College, University of London, Malet Street, London",
@@ -201,7 +202,7 @@
                 "sequence_type": "V",
                 "functional": true,
                 "inference_type": "Rearranged",
-                "species": "Mouse",
+                "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
                 "species_subgroup": "CAST_EiJ",
                 "species_subgroup_type": "strain",
                 "status": "active",
@@ -344,10 +345,10 @@
                 "unrearranged_support": [],
                 "rearranged_support": [],
                 "paralogs": [],
-                "curation": "Imported to OGRDB with the following notes:\r\nwatson_et_al: CAST_EiJ_IGHV8-2",
+                "curation": "Imported to OGRDB with the following notes: watson_et_al: CAST_EiJ_IGHV8-2",
                 "curational_tags": null
             }
         ],
-        "curation": ""
+        "curation": null
     }
 }

@@ -32,11 +32,11 @@ Imports:
     readr,
     stats,
     stringi,
-    tibble,
     tools,
     yaml
 Suggests:
     knitr,
     rmarkdown,
+    tibble,
     testthat
 RoxygenNote: 7.1.2

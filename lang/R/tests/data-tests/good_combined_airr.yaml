@@ -1,410 +1,410 @@
 Repertoire:
-- repertoire_id: 1841923116114776551-242ac11c-0001-012
-  study:
-    study_id: PRJNA300878
-    study_title: Homo sapiens B and T cell repertoire - MZ twins
-    study_type:
-      id:
-      label:
-    study_description: The adaptive immune system's capability to protect the body
-      requires a highly diverse lymphocyte antigen receptor repertoire. However, the
-      influence of individual genetic and epigenetic differences on these repertoires
-      is not typically measured. By leveraging the unique characteristics of B, CD4+
-      T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified
-      the impact of heritable factors on both the V(D)J recombination process and
-      thymic selection in the case of T cell receptors, and show that the repertoires
-      of both naive and antigen experienced cells are subject to biases resulting
-      from differences in recombination. We show that biases in V(D)J usage, as well
-      as biased N/P additions, contribute to significant variation in the CDR3 region.
-      Moreover, we show that the relative usage of V and J gene segments is chromosomally
-      biased, with approximately 1.5 times as many rearrangements originating from
-      a single chromosome. These data refine our understanding of the heritable mechanisms
-      affecting the repertoire, and show that biases are evident on a chromosome-wide
-      level.
-    study_contact: Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X
-    inclusion_exclusion_criteria:
-    lab_name: Mark M. Davis
-    lab_address: Stanford University
-    submitted_by: Florian Rubelt
-    pub_ids: PMID:27005435
-    collected_by:
-    grants:
-    keywords_study:
-    - contains_ig
-    - contains_tcr
-  subject:
-    subject_id: TW01A
-    synthetic: false
-    species:
-      id: NCBITaxon_9606
-      label: Homo sapiens
-    sex: F
-    age_min: 27
-    age_max: 27
-    age_unit:
-      id: UO_0000036
-      label: year
-    age_event:
-    ancestry_population:
-    ethnicity:
-    race:
-    strain_name:
-    linked_subjects: TW01B
-    link_type: twin
-    diagnosis:
-    - study_group_description:
-      disease_diagnosis:
+  - repertoire_id: 1841923116114776551-242ac11c-0001-012
+    study:
+      study_id: PRJNA300878
+      study_title: Homo sapiens B and T cell repertoire - MZ twins
+      study_type:
         id:
         label:
-      disease_length:
-      disease_stage:
-      prior_therapies:
-      immunogen:
-      intervention:
-      medical_history:
-  sample:
-  - sample_id: TW01A_B_naive
-    sample_processing_id:
-    sample_type: peripheral venous puncture
-    tissue:
-      id: UBERON_0000178
-      label: blood
-    tissue_processing: Ficoll gradient
-    cell_subset:
-      id: CL_0000788
-      label: naive B cell
-    cell_phenotype: expression of CD20 and the absence of CD27
-    cell_species:
-      id: NCBITaxon_9606
-      label: Homo sapiens
-    single_cell: false
-    cell_isolation: FACS
-    template_class: RNA
-    pcr_target:
-    - pcr_target_locus: IGH
-      forward_pcr_primer_target_location:
-      reverse_pcr_primer_target_location:
-    sequencing_platform: Illumina MiSeq
-    sequencing_files:
-      sequencing_data_id: SRR2905656
-      file_type: fastq
-      filename: SRR2905656_R1.fastq.gz
-      read_direction: forward
-      read_length: 300
-      paired_filename: SRR2905656_R2.fastq.gz
-      paired_read_direction: reverse
-      paired_read_length: 300
-    anatomic_site:
-    disease_state_sample:
-    collection_time_point_relative:
-    collection_time_point_relative_unit:
-      id:
-      label:
-    collection_time_point_reference:
-    biomaterial_provider:
-    cell_number:
-    cells_per_reaction:
-    cell_storage: false
-    cell_quality:
-    cell_processing_protocol:
-    template_quality:
-    template_amount:
-    template_amount_unit:
-      id:
-      label:
-    library_generation_method: RT(oligo-dT)+PCR
-    library_generation_protocol:
-    library_generation_kit_version:
-    complete_sequences: partial
-    physical_linkage: none
-    sequencing_run_id:
-    total_reads_passing_qc_filter:
-    sequencing_facility:
-    sequencing_run_date:
-    sequencing_kit:
-  data_processing:
-  - data_processing_id: 3059369183532618216-242ac11b-0001-007
-    primary_annotation: true
-    software_versions:
-    paired_reads_assembly:
-    quality_thresholds:
-    primer_match_cutoffs:
-    collapsing_method:
-    data_processing_protocols:
-    data_processing_files:
-    germline_database:
-    analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
-- repertoire_id: 1602908186092376551-242ac11c-0001-012
-  study:
-    study_id: PRJNA300878
-    study_title: Homo sapiens B and T cell repertoire - MZ twins
-    study_type:
-      id:
-      label:
-    study_description: The adaptive immune system's capability to protect the body
-      requires a highly diverse lymphocyte antigen receptor repertoire. However, the
-      influence of individual genetic and epigenetic differences on these repertoires
-      is not typically measured. By leveraging the unique characteristics of B, CD4+
-      T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified
-      the impact of heritable factors on both the V(D)J recombination process and
-      thymic selection in the case of T cell receptors, and show that the repertoires
-      of both naive and antigen experienced cells are subject to biases resulting
-      from differences in recombination. We show that biases in V(D)J usage, as well
-      as biased N/P additions, contribute to significant variation in the CDR3 region.
-      Moreover, we show that the relative usage of V and J gene segments is chromosomally
-      biased, with approximately 1.5 times as many rearrangements originating from
-      a single chromosome. These data refine our understanding of the heritable mechanisms
-      affecting the repertoire, and show that biases are evident on a chromosome-wide
-      level.
-    study_contact: Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X
-    inclusion_exclusion_criteria:
-    lab_name: Mark M. Davis
-    lab_address: Stanford University
-    submitted_by: Florian Rubelt
-    pub_ids: PMID:27005435
-    collected_by:
-    grants:
-    keywords_study:
-    - contains_ig
-    - contains_tcr
-  subject:
-    subject_id: TW01A
-    synthetic: false
-    species:
-      id: NCBITaxon_9606
-      label: Homo sapiens
-    sex: F
-    age_min: 27
-    age_max: 27
-    age_unit:
-      id: UO_0000036
-      label: year
-    age_event:
-    ancestry_population:
-    ethnicity:
-    race:
-    strain_name:
-    linked_subjects: TW01B
-    link_type: twin
-    diagnosis:
-    - study_group_description:
-      disease_diagnosis:
+      study_description: The adaptive immune system's capability to protect the body
+        requires a highly diverse lymphocyte antigen receptor repertoire. However, the
+        influence of individual genetic and epigenetic differences on these repertoires
+        is not typically measured. By leveraging the unique characteristics of B, CD4+
+        T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified
+        the impact of heritable factors on both the V(D)J recombination process and
+        thymic selection in the case of T cell receptors, and show that the repertoires
+        of both naive and antigen experienced cells are subject to biases resulting
+        from differences in recombination. We show that biases in V(D)J usage, as well
+        as biased N/P additions, contribute to significant variation in the CDR3 region.
+        Moreover, we show that the relative usage of V and J gene segments is chromosomally
+        biased, with approximately 1.5 times as many rearrangements originating from
+        a single chromosome. These data refine our understanding of the heritable mechanisms
+        affecting the repertoire, and show that biases are evident on a chromosome-wide
+        level.
+      study_contact: Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X
+      inclusion_exclusion_criteria:
+      lab_name: Mark M. Davis
+      lab_address: Stanford University
+      submitted_by: Florian Rubelt
+      pub_ids: PMID:27005435
+      collected_by:
+      grants:
+      keywords_study:
+        - contains_ig
+        - contains_tcr
+    subject:
+      subject_id: TW01A
+      synthetic: false
+      species:
+        id: NCBITaxon_9606
+        label: Homo sapiens
+      sex: F
+      age_min: 27
+      age_max: 27
+      age_unit:
+        id: UO_0000036
+        label: year
+      age_event:
+      ancestry_population:
+      ethnicity:
+      race:
+      strain_name:
+      linked_subjects: TW01B
+      link_type: twin
+      diagnosis:
+        - study_group_description:
+          disease_diagnosis:
+            id:
+            label:
+          disease_length:
+          disease_stage:
+          prior_therapies:
+          immunogen:
+          intervention:
+          medical_history:
+    sample:
+      - sample_id: TW01A_B_naive
+        sample_processing_id:
+        sample_type: peripheral venous puncture
+        tissue:
+          id: UBERON_0000178
+          label: blood
+        tissue_processing: Ficoll gradient
+        cell_subset:
+          id: CL_0000788
+          label: naive B cell
+        cell_phenotype: expression of CD20 and the absence of CD27
+        cell_species:
+          id: NCBITaxon_9606
+          label: Homo sapiens
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+            forward_pcr_primer_target_location:
+            reverse_pcr_primer_target_location:
+        sequencing_platform: Illumina MiSeq
+        sequencing_files:
+          sequencing_data_id: SRR2905656
+          file_type: fastq
+          filename: SRR2905656_R1.fastq.gz
+          read_direction: forward
+          read_length: 300
+          paired_filename: SRR2905656_R2.fastq.gz
+          paired_read_direction: reverse
+          paired_read_length: 300
+        anatomic_site:
+        disease_state_sample:
+        collection_time_point_relative:
+        collection_time_point_relative_unit:
+          id:
+          label:
+        collection_time_point_reference:
+        biomaterial_provider:
+        cell_number:
+        cells_per_reaction:
+        cell_storage: false
+        cell_quality:
+        cell_processing_protocol:
+        template_quality:
+        template_amount:
+        template_amount_unit:
+          id:
+          label:
+        library_generation_method: RT(oligo-dT)+PCR
+        library_generation_protocol:
+        library_generation_kit_version:
+        complete_sequences: partial
+        physical_linkage: none
+        sequencing_run_id:
+        total_reads_passing_qc_filter:
+        sequencing_facility:
+        sequencing_run_date:
+        sequencing_kit:
+    data_processing:
+      - data_processing_id: 3059369183532618216-242ac11b-0001-007
+        primary_annotation: true
+        software_versions:
+        paired_reads_assembly:
+        quality_thresholds:
+        primer_match_cutoffs:
+        collapsing_method:
+        data_processing_protocols:
+        data_processing_files:
+        germline_database:
+        analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
+  - repertoire_id: 1602908186092376551-242ac11c-0001-012
+    study:
+      study_id: PRJNA300878
+      study_title: Homo sapiens B and T cell repertoire - MZ twins
+      study_type:
         id:
         label:
-      disease_length:
-      disease_stage:
-      prior_therapies:
-      immunogen:
-      intervention:
-      medical_history:
-  sample:
-  - sample_id: TW01A_B_memory
-    sample_processing_id:
-    sample_type: peripheral venous puncture
-    tissue:
-      id: UBERON_0000178
-      label: blood
-    tissue_processing: Ficoll gradient
-    cell_subset:
-      id: CL_0000787
-      label: memory B cell
-    cell_phenotype: expression of CD20 and CD27
-    cell_species:
-      id: NCBITaxon_9606
-      label: Homo sapiens
-    single_cell: false
-    cell_isolation: FACS
-    template_class: RNA
-    pcr_target:
-    - pcr_target_locus: IGH
-      forward_pcr_primer_target_location:
-      reverse_pcr_primer_target_location:
-    sequencing_platform: Illumina MiSeq
-    sequencing_files:
-      sequencing_data_id: SRR2905655
-      file_type: fastq
-      filename: SRR2905655_R1.fastq.gz
-      read_direction: forward
-      read_length: 300
-      paired_filename: SRR2905655_R2.fastq.gz
-      paired_read_direction: reverse
-      paired_read_length: 300
-    anatomic_site:
-    disease_state_sample:
-    collection_time_point_relative:
-    collection_time_point_relative_unit:
-      id:
-      label:
-    collection_time_point_reference:
-    biomaterial_provider:
-    cell_number:
-    cells_per_reaction:
-    cell_storage: false
-    cell_quality:
-    cell_processing_protocol:
-    template_quality:
-    template_amount:
-    template_amount_unit:
-      id:
-      label:
-    library_generation_method: RT(oligo-dT)+PCR
-    library_generation_protocol:
-    library_generation_kit_version:
-    complete_sequences: partial
-    physical_linkage: none
-    sequencing_run_id:
-    total_reads_passing_qc_filter:
-    sequencing_facility:
-    sequencing_run_date:
-    sequencing_kit:
-  data_processing:
-  - data_processing_id: 3059369183532618216-242ac11b-0001-007
-    primary_annotation: true
-    software_versions:
-    paired_reads_assembly:
-    quality_thresholds:
-    primer_match_cutoffs:
-    collapsing_method:
-    data_processing_protocols:
-    data_processing_files:
-    germline_database:
-    analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
-- repertoire_id: 2366080924918616551-242ac11c-0001-012
-  study:
-    study_id: PRJNA300878
-    study_title: Homo sapiens B and T cell repertoire - MZ twins
-    study_type:
-      id:
-      label:
-    study_description: The adaptive immune system's capability to protect the body
-      requires a highly diverse lymphocyte antigen receptor repertoire. However, the
-      influence of individual genetic and epigenetic differences on these repertoires
-      is not typically measured. By leveraging the unique characteristics of B, CD4+
-      T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified
-      the impact of heritable factors on both the V(D)J recombination process and
-      thymic selection in the case of T cell receptors, and show that the repertoires
-      of both naive and antigen experienced cells are subject to biases resulting
-      from differences in recombination. We show that biases in V(D)J usage, as well
-      as biased N/P additions, contribute to significant variation in the CDR3 region.
-      Moreover, we show that the relative usage of V and J gene segments is chromosomally
-      biased, with approximately 1.5 times as many rearrangements originating from
-      a single chromosome. These data refine our understanding of the heritable mechanisms
-      affecting the repertoire, and show that biases are evident on a chromosome-wide
-      level.
-    study_contact: Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X
-    inclusion_exclusion_criteria:
-    lab_name: Mark M. Davis
-    lab_address: Stanford University
-    submitted_by: Florian Rubelt
-    pub_ids: PMID:27005435
-    collected_by:
-    grants:
-    keywords_study:
-    - contains_ig
-    - contains_tcr
-  subject:
-    subject_id: TW01A
-    synthetic: false
-    species:
-      id: NCBITaxon_9606
-      label: Homo sapiens
-    sex: F
-    age_min: 27
-    age_max: 27
-    age_unit:
-      id: UO_0000036
-      label: year
-    age_event:
-    ancestry_population:
-    ethnicity:
-    race:
-    strain_name:
-    linked_subjects: TW01B
-    link_type: twin
-    diagnosis:
-    - study_group_description:
-      disease_diagnosis:
+      study_description: The adaptive immune system's capability to protect the body
+        requires a highly diverse lymphocyte antigen receptor repertoire. However, the
+        influence of individual genetic and epigenetic differences on these repertoires
+        is not typically measured. By leveraging the unique characteristics of B, CD4+
+        T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified
+        the impact of heritable factors on both the V(D)J recombination process and
+        thymic selection in the case of T cell receptors, and show that the repertoires
+        of both naive and antigen experienced cells are subject to biases resulting
+        from differences in recombination. We show that biases in V(D)J usage, as well
+        as biased N/P additions, contribute to significant variation in the CDR3 region.
+        Moreover, we show that the relative usage of V and J gene segments is chromosomally
+        biased, with approximately 1.5 times as many rearrangements originating from
+        a single chromosome. These data refine our understanding of the heritable mechanisms
+        affecting the repertoire, and show that biases are evident on a chromosome-wide
+        level.
+      study_contact: Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X
+      inclusion_exclusion_criteria:
+      lab_name: Mark M. Davis
+      lab_address: Stanford University
+      submitted_by: Florian Rubelt
+      pub_ids: PMID:27005435
+      collected_by:
+      grants:
+      keywords_study:
+        - contains_ig
+        - contains_tcr
+    subject:
+      subject_id: TW01A
+      synthetic: false
+      species:
+        id: NCBITaxon_9606
+        label: Homo sapiens
+      sex: F
+      age_min: 27
+      age_max: 27
+      age_unit:
+        id: UO_0000036
+        label: year
+      age_event:
+      ancestry_population:
+      ethnicity:
+      race:
+      strain_name:
+      linked_subjects: TW01B
+      link_type: twin
+      diagnosis:
+        - study_group_description:
+          disease_diagnosis:
+            id:
+            label:
+          disease_length:
+          disease_stage:
+          prior_therapies:
+          immunogen:
+          intervention:
+          medical_history:
+    sample:
+      - sample_id: TW01A_B_memory
+        sample_processing_id:
+        sample_type: peripheral venous puncture
+        tissue:
+          id: UBERON_0000178
+          label: blood
+        tissue_processing: Ficoll gradient
+        cell_subset:
+          id: CL_0000787
+          label: memory B cell
+        cell_phenotype: expression of CD20 and CD27
+        cell_species:
+          id: NCBITaxon_9606
+          label: Homo sapiens
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: IGH
+            forward_pcr_primer_target_location:
+            reverse_pcr_primer_target_location:
+        sequencing_platform: Illumina MiSeq
+        sequencing_files:
+          sequencing_data_id: SRR2905655
+          file_type: fastq
+          filename: SRR2905655_R1.fastq.gz
+          read_direction: forward
+          read_length: 300
+          paired_filename: SRR2905655_R2.fastq.gz
+          paired_read_direction: reverse
+          paired_read_length: 300
+        anatomic_site:
+        disease_state_sample:
+        collection_time_point_relative:
+        collection_time_point_relative_unit:
+          id:
+          label:
+        collection_time_point_reference:
+        biomaterial_provider:
+        cell_number:
+        cells_per_reaction:
+        cell_storage: false
+        cell_quality:
+        cell_processing_protocol:
+        template_quality:
+        template_amount:
+        template_amount_unit:
+          id:
+          label:
+        library_generation_method: RT(oligo-dT)+PCR
+        library_generation_protocol:
+        library_generation_kit_version:
+        complete_sequences: partial
+        physical_linkage: none
+        sequencing_run_id:
+        total_reads_passing_qc_filter:
+        sequencing_facility:
+        sequencing_run_date:
+        sequencing_kit:
+    data_processing:
+      - data_processing_id: 3059369183532618216-242ac11b-0001-007
+        primary_annotation: true
+        software_versions:
+        paired_reads_assembly:
+        quality_thresholds:
+        primer_match_cutoffs:
+        collapsing_method:
+        data_processing_protocols:
+        data_processing_files:
+        germline_database:
+        analysis_provenance_id: 6623294219256599016-242ac11c-0001-012
+  - repertoire_id: 2366080924918616551-242ac11c-0001-012
+    study:
+      study_id: PRJNA300878
+      study_title: Homo sapiens B and T cell repertoire - MZ twins
+      study_type:
         id:
         label:
-      disease_length:
-      disease_stage:
-      prior_therapies:
-      immunogen:
-      intervention:
-      medical_history:
-  sample:
-  - sample_id: TW01A_T_naive_CD4
-    sample_processing_id:
-    sample_type: peripheral venous puncture
-    tissue:
-      id: UBERON_0000178
-      label: blood
-    tissue_processing: Ficoll gradient
-    cell_subset:
-      id: CL_0000895
-      label: naive thymus-derived CD4-positive, alpha-beta T cell
-    cell_phenotype: expression of CD8 and absence of CD4 and CD45RO
-    cell_species:
-      id: NCBITaxon_9606
-      label: Homo sapiens
-    single_cell: false
-    cell_isolation: FACS
-    template_class: RNA
-    pcr_target:
-    - pcr_target_locus: TRB
-      forward_pcr_primer_target_location:
-      reverse_pcr_primer_target_location:
-    sequencing_platform: Illumina MiSeq
-    sequencing_files:
-      sequencing_data_id: SRR2905659
-      file_type: fastq
-      filename: SRR2905659_R1.fastq.gz
-      read_direction: forward
-      read_length: 300
-      paired_filename: SRR2905659_R2.fastq.gz
-      paired_read_direction: reverse
-      paired_read_length: 300
-    anatomic_site:
-    disease_state_sample:
-    collection_time_point_relative:
-    collection_time_point_relative_unit:
-      id:
-      label:
-    collection_time_point_reference:
-    biomaterial_provider:
-    cell_number:
-    cells_per_reaction:
-    cell_storage: false
-    cell_quality:
-    cell_processing_protocol:
-    template_quality:
-    template_amount:
-    template_amount_unit:
-      id:
-      label:
-    library_generation_method: RT(oligo-dT)+PCR
-    library_generation_protocol:
-    library_generation_kit_version:
-    complete_sequences: partial
-    physical_linkage: none
-    sequencing_run_id:
-    total_reads_passing_qc_filter:
-    sequencing_facility:
-    sequencing_run_date:
-    sequencing_kit:
-  data_processing:
-  - data_processing_id: 651223970338378216-242ac11b-0001-007
-    primary_annotation: true
-    software_versions:
-    paired_reads_assembly:
-    quality_thresholds:
-    primer_match_cutoffs:
-    collapsing_method:
-    data_processing_protocols:
-    data_processing_files:
-    germline_database:
-    analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
-    
+      study_description: The adaptive immune system's capability to protect the body
+        requires a highly diverse lymphocyte antigen receptor repertoire. However, the
+        influence of individual genetic and epigenetic differences on these repertoires
+        is not typically measured. By leveraging the unique characteristics of B, CD4+
+        T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified
+        the impact of heritable factors on both the V(D)J recombination process and
+        thymic selection in the case of T cell receptors, and show that the repertoires
+        of both naive and antigen experienced cells are subject to biases resulting
+        from differences in recombination. We show that biases in V(D)J usage, as well
+        as biased N/P additions, contribute to significant variation in the CDR3 region.
+        Moreover, we show that the relative usage of V and J gene segments is chromosomally
+        biased, with approximately 1.5 times as many rearrangements originating from
+        a single chromosome. These data refine our understanding of the heritable mechanisms
+        affecting the repertoire, and show that biases are evident on a chromosome-wide
+        level.
+      study_contact: Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X
+      inclusion_exclusion_criteria:
+      lab_name: Mark M. Davis
+      lab_address: Stanford University
+      submitted_by: Florian Rubelt
+      pub_ids: PMID:27005435
+      collected_by:
+      grants:
+      keywords_study:
+        - contains_ig
+        - contains_tcr
+    subject:
+      subject_id: TW01A
+      synthetic: false
+      species:
+        id: NCBITaxon_9606
+        label: Homo sapiens
+      sex: F
+      age_min: 27
+      age_max: 27
+      age_unit:
+        id: UO_0000036
+        label: year
+      age_event:
+      ancestry_population:
+      ethnicity:
+      race:
+      strain_name:
+      linked_subjects: TW01B
+      link_type: twin
+      diagnosis:
+        - study_group_description:
+          disease_diagnosis:
+            id:
+            label:
+          disease_length:
+          disease_stage:
+          prior_therapies:
+          immunogen:
+          intervention:
+          medical_history:
+    sample:
+      - sample_id: TW01A_T_naive_CD4
+        sample_processing_id:
+        sample_type: peripheral venous puncture
+        tissue:
+          id: UBERON_0000178
+          label: blood
+        tissue_processing: Ficoll gradient
+        cell_subset:
+          id: CL_0000895
+          label: naive thymus-derived CD4-positive, alpha-beta T cell
+        cell_phenotype: expression of CD8 and absence of CD4 and CD45RO
+        cell_species:
+          id: NCBITaxon_9606
+          label: Homo sapiens
+        single_cell: false
+        cell_isolation: FACS
+        template_class: RNA
+        pcr_target:
+          - pcr_target_locus: TRB
+            forward_pcr_primer_target_location:
+            reverse_pcr_primer_target_location:
+        sequencing_platform: Illumina MiSeq
+        sequencing_files:
+          sequencing_data_id: SRR2905659
+          file_type: fastq
+          filename: SRR2905659_R1.fastq.gz
+          read_direction: forward
+          read_length: 300
+          paired_filename: SRR2905659_R2.fastq.gz
+          paired_read_direction: reverse
+          paired_read_length: 300
+        anatomic_site:
+        disease_state_sample:
+        collection_time_point_relative:
+        collection_time_point_relative_unit:
+          id:
+          label:
+        collection_time_point_reference:
+        biomaterial_provider:
+        cell_number:
+        cells_per_reaction:
+        cell_storage: false
+        cell_quality:
+        cell_processing_protocol:
+        template_quality:
+        template_amount:
+        template_amount_unit:
+          id:
+          label:
+        library_generation_method: RT(oligo-dT)+PCR
+        library_generation_protocol:
+        library_generation_kit_version:
+        complete_sequences: partial
+        physical_linkage: none
+        sequencing_run_id:
+        total_reads_passing_qc_filter:
+        sequencing_facility:
+        sequencing_run_date:
+        sequencing_kit:
+    data_processing:
+      - data_processing_id: 651223970338378216-242ac11b-0001-007
+        primary_annotation: true
+        software_versions:
+        paired_reads_assembly:
+        quality_thresholds:
+        primer_match_cutoffs:
+        collapsing_method:
+        data_processing_protocols:
+        data_processing_files:
+        germline_database:
+        analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
+
 GermlineSet:
   germline_set_id: OGRDB:G00007
   author: William Lees
@@ -417,349 +417,355 @@ GermlineSet:
   germline_set_name: CAST IGH
   germline_set_ref: OGRDB:G00007.1
   pub_ids: ''
-  species: Mouse
+  species:
+    id: NCBITAXON:10090
+    label: Mus musculus
   species_subgroup: CAST_EiJ
   species_subgroup_type: strain
   locus: IGH
   allele_descriptions:
-  - allele_description_id: OGRDB:A00301
-    maintainer: William Lees
-    acknowledgements: []
-    lab_address: Birkbeck College, University of London, Malet Street, London
-    release_version: 1
-    release_date: 24-Nov-2021
-    release_description: First release
-    label: IGHV-2DBF
-    sequence: GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGATGGTAGTGGCACCTACTATCTGGACTCCTTGAAGAGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA
-    coding_sequence: GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA
-    aliases:
-    - watson_et_al:CAST_EiJ_IGHV5-3
-    locus: IGH
-    chromosome:
-    sequence_type: V
-    functional: true
-    inference_type: Rearranged
-    species:
-      id: NCBITAXON:10090
-      label: Mus musculus
-    species_subgroup: CAST_EiJ
-    species_subgroup_type: strain
-    status: active
-    gene_designation:
-    subgroup_designation:
-    allele_designation:
-    gene_start:
-    gene_end:
-    utr_5_prime_start:
-    utr_5_prime_end:
-    leader_1_start:
-    leader_1_end:
-    leader_2_start:
-    leader_2_end:
-    v_rs_start:
-    v_rs_end:
-    v_gene_delineations:
-    - sequence_delineation_id: '1'
-      delineation_scheme: IMGT
-      fwr1_start: 1
-      fwr1_end: 78
-      cdr1_start: 79
-      cdr1_end: 114
-      fwr2_start: 115
-      fwr2_end: 165
-      cdr2_start: 166
-      cdr2_end: 195
-      fwr3_start: 196
-      fwr3_end: 312
-      cdr3_start: 313
-      alignment:
-      - '1'
-      - '2'
-      - '3'
-      - '4'
-      - '5'
-      - '6'
-      - '7'
-      - '8'
-      - '9'
-      - '10'
-      - '11'
-      - '12'
-      - '13'
-      - '14'
-      - '15'
-      - '16'
-      - '17'
-      - '18'
-      - '19'
-      - '20'
-      - '21'
-      - '22'
-      - '23'
-      - '24'
-      - '25'
-      - '26'
-      - '27'
-      - '28'
-      - '29'
-      - '30'
-      - '31'
-      - '32'
-      - '33'
-      - '34'
-      - '35'
-      - '36'
-      - '37'
-      - '38'
-      - '39'
-      - '40'
-      - '41'
-      - '42'
-      - '43'
-      - '44'
-      - '45'
-      - '46'
-      - '47'
-      - '48'
-      - '49'
-      - '50'
-      - '51'
-      - '52'
-      - '53'
-      - '54'
-      - '55'
-      - '56'
-      - '57'
-      - '58'
-      - '59'
-      - '60'
-      - '61'
-      - '62'
-      - '63'
-      - '64'
-      - '65'
-      - '66'
-      - '67'
-      - '68'
-      - '69'
-      - '70'
-      - '71'
-      - '72'
-      - '73'
-      - '74'
-      - '75'
-      - '76'
-      - '77'
-      - '78'
-      - '79'
-      - '80'
-      - '81'
-      - '82'
-      - '83'
-      - '84'
-      - '85'
-      - '86'
-      - '87'
-      - '88'
-      - '89'
-      - '90'
-      - '91'
-      - '92'
-      - '93'
-      - '94'
-      - '95'
-      - '96'
-      - '97'
-      - '98'
-      - '99'
-      - '100'
-      - '101'
-      - '102'
-      - '103'
-      - '104'
-    unrearranged_support: []
-    rearranged_support: []
-    paralogs: []
-    notes: "Imported to OGRDB with the following notes:\r\nwatson_et_al: CAST_EiJ_IGHV5-3"
-    curational_tags:
-  - allele_description_id: OGRDB:A00314
-    maintainer: William Lees
-    acknowledgements: []
-    lab_address: Birkbeck College, University of London, Malet Street, London
-    release_version: 1
-    release_date: 24-Nov-2021
-    release_description: First release
-    label: IGHV-2ETO
-    sequence: CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC
-    coding_sequence: CAAGTTACTCTAAAAGAGTCTGGCCCT...GGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGC......ACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGAT.........GATGATAAGTACTATAACCCATCCCTGAAG...AGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC
-    aliases:
-    - watson_et_al:CAST_EiJ_IGHV8-2
-    locus: IGH
-    chromosome:
-    sequence_type: V
-    functional: true
-    inference_type: Rearranged
-    species: Mouse
-    species_subgroup: CAST_EiJ
-    species_subgroup_type: strain
-    status: active
-    gene_designation:
-    subgroup_designation:
-    allele_designation:
-    gene_start:
-    gene_end:
-    utr_5_prime_start:
-    utr_5_prime_end:
-    leader_1_start:
-    leader_1_end:
-    leader_2_start:
-    leader_2_end:
-    v_rs_start:
-    v_rs_end:
-    v_gene_delineations:
-    - sequence_delineation_id: '1'
-      delineation_scheme: IMGT
-      fwr1_start: 1
-      fwr1_end: 78
-      cdr1_start: 79
-      cdr1_end: 114
-      fwr2_start: 115
-      fwr2_end: 165
-      cdr2_start: 166
-      cdr2_end: 195
-      fwr3_start: 196
-      fwr3_end: 312
-      cdr3_start: 313
-      alignment:
-      - '1'
-      - '2'
-      - '3'
-      - '4'
-      - '5'
-      - '6'
-      - '7'
-      - '8'
-      - '9'
-      - '10'
-      - '11'
-      - '12'
-      - '13'
-      - '14'
-      - '15'
-      - '16'
-      - '17'
-      - '18'
-      - '19'
-      - '20'
-      - '21'
-      - '22'
-      - '23'
-      - '24'
-      - '25'
-      - '26'
-      - '27'
-      - '28'
-      - '29'
-      - '30'
-      - '31'
-      - '32'
-      - '33'
-      - '34'
-      - '35'
-      - '36'
-      - '37'
-      - '38'
-      - '39'
-      - '40'
-      - '41'
-      - '42'
-      - '43'
-      - '44'
-      - '45'
-      - '46'
-      - '47'
-      - '48'
-      - '49'
-      - '50'
-      - '51'
-      - '52'
-      - '53'
-      - '54'
-      - '55'
-      - '56'
-      - '57'
-      - '58'
-      - '59'
-      - '60'
-      - '61'
-      - '62'
-      - '63'
-      - '64'
-      - '65'
-      - '66'
-      - '67'
-      - '68'
-      - '69'
-      - '70'
-      - '71'
-      - '72'
-      - '73'
-      - '74'
-      - '75'
-      - '76'
-      - '77'
-      - '78'
-      - '79'
-      - '80'
-      - '81'
-      - '82'
-      - '83'
-      - '84'
-      - '85'
-      - '86'
-      - '87'
-      - '88'
-      - '89'
-      - '90'
-      - '91'
-      - '92'
-      - '93'
-      - '94'
-      - '95'
-      - '96'
-      - '97'
-      - '98'
-      - '99'
-      - '100'
-      - '101'
-      - '102'
-      - '103'
-      - '104'
-    unrearranged_support: []
-    rearranged_support: []
-    paralogs: []
-    notes: "Imported to OGRDB with the following notes:\r\nwatson_et_al: CAST_EiJ_IGHV8-2"
-    curational_tags:
-  notes: ''
+    - allele_description_id: OGRDB:A00301
+      allele_description_ref: OGRDB:Mouse_IGH:IGHV-2DBF
+      maintainer: William Lees
+      acknowledgements: []
+      lab_address: Birkbeck College, University of London, Malet Street, London
+      release_version: 1
+      release_date: 24-Nov-2021
+      release_description: First release
+      label: IGHV-2DBF
+      sequence: GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGATGGTAGTGGCACCTACTATCTGGACTCCTTGAAGAGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA
+      coding_sequence: GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA
+      aliases:
+        - watson_et_al:CAST_EiJ_IGHV5-3
+      locus: IGH
+      chromosome:
+      sequence_type: V
+      functional: true
+      inference_type: Rearranged
+      species:
+        id: NCBITAXON:10090
+        label: Mus musculus
+      species_subgroup: CAST_EiJ
+      species_subgroup_type: strain
+      status: active
+      gene_designation:
+      subgroup_designation:
+      allele_designation:
+      gene_start:
+      gene_end:
+      utr_5_prime_start:
+      utr_5_prime_end:
+      leader_1_start:
+      leader_1_end:
+      leader_2_start:
+      leader_2_end:
+      v_rs_start:
+      v_rs_end:
+      v_gene_delineations:
+        - sequence_delineation_id: '1'
+          delineation_scheme: IMGT
+          fwr1_start: 1
+          fwr1_end: 78
+          cdr1_start: 79
+          cdr1_end: 114
+          fwr2_start: 115
+          fwr2_end: 165
+          cdr2_start: 166
+          cdr2_end: 195
+          fwr3_start: 196
+          fwr3_end: 312
+          cdr3_start: 313
+          alignment:
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+            - '6'
+            - '7'
+            - '8'
+            - '9'
+            - '10'
+            - '11'
+            - '12'
+            - '13'
+            - '14'
+            - '15'
+            - '16'
+            - '17'
+            - '18'
+            - '19'
+            - '20'
+            - '21'
+            - '22'
+            - '23'
+            - '24'
+            - '25'
+            - '26'
+            - '27'
+            - '28'
+            - '29'
+            - '30'
+            - '31'
+            - '32'
+            - '33'
+            - '34'
+            - '35'
+            - '36'
+            - '37'
+            - '38'
+            - '39'
+            - '40'
+            - '41'
+            - '42'
+            - '43'
+            - '44'
+            - '45'
+            - '46'
+            - '47'
+            - '48'
+            - '49'
+            - '50'
+            - '51'
+            - '52'
+            - '53'
+            - '54'
+            - '55'
+            - '56'
+            - '57'
+            - '58'
+            - '59'
+            - '60'
+            - '61'
+            - '62'
+            - '63'
+            - '64'
+            - '65'
+            - '66'
+            - '67'
+            - '68'
+            - '69'
+            - '70'
+            - '71'
+            - '72'
+            - '73'
+            - '74'
+            - '75'
+            - '76'
+            - '77'
+            - '78'
+            - '79'
+            - '80'
+            - '81'
+            - '82'
+            - '83'
+            - '84'
+            - '85'
+            - '86'
+            - '87'
+            - '88'
+            - '89'
+            - '90'
+            - '91'
+            - '92'
+            - '93'
+            - '94'
+            - '95'
+            - '96'
+            - '97'
+            - '98'
+            - '99'
+            - '100'
+            - '101'
+            - '102'
+            - '103'
+            - '104'
+      unrearranged_support: []
+      rearranged_support: []
+      paralogs: []
+      curation: 'Imported to OGRDB with the following notes: watson_et_al: CAST_EiJ_IGHV5-3'
+      curational_tags:
+    - allele_description_id: OGRDB:A00314
+      allele_description_ref: OGRDB:Mouse_IGH:IGHV-2ETO
+      maintainer: William Lees
+      acknowledgements: []
+      lab_address: Birkbeck College, University of London, Malet Street, London
+      release_version: 1
+      release_date: 24-Nov-2021
+      release_description: First release
+      label: IGHV-2ETO
+      sequence: CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC
+      coding_sequence: CAAGTTACTCTAAAAGAGTCTGGCCCT...GGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGC......ACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGAT.........GATGATAAGTACTATAACCCATCCCTGAAG...AGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC
+      aliases:
+        - watson_et_al:CAST_EiJ_IGHV8-2
+      locus: IGH
+      chromosome:
+      sequence_type: V
+      functional: true
+      inference_type: Rearranged
+      species:
+        id: NCBITAXON:10090
+        label: Mus musculus
+      species_subgroup: CAST_EiJ
+      species_subgroup_type: strain
+      status: active
+      gene_designation:
+      subgroup_designation:
+      allele_designation:
+      gene_start:
+      gene_end:
+      utr_5_prime_start:
+      utr_5_prime_end:
+      leader_1_start:
+      leader_1_end:
+      leader_2_start:
+      leader_2_end:
+      v_rs_start:
+      v_rs_end:
+      v_gene_delineations:
+        - sequence_delineation_id: '1'
+          delineation_scheme: IMGT
+          fwr1_start: 1
+          fwr1_end: 78
+          cdr1_start: 79
+          cdr1_end: 114
+          fwr2_start: 115
+          fwr2_end: 165
+          cdr2_start: 166
+          cdr2_end: 195
+          fwr3_start: 196
+          fwr3_end: 312
+          cdr3_start: 313
+          alignment:
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+            - '6'
+            - '7'
+            - '8'
+            - '9'
+            - '10'
+            - '11'
+            - '12'
+            - '13'
+            - '14'
+            - '15'
+            - '16'
+            - '17'
+            - '18'
+            - '19'
+            - '20'
+            - '21'
+            - '22'
+            - '23'
+            - '24'
+            - '25'
+            - '26'
+            - '27'
+            - '28'
+            - '29'
+            - '30'
+            - '31'
+            - '32'
+            - '33'
+            - '34'
+            - '35'
+            - '36'
+            - '37'
+            - '38'
+            - '39'
+            - '40'
+            - '41'
+            - '42'
+            - '43'
+            - '44'
+            - '45'
+            - '46'
+            - '47'
+            - '48'
+            - '49'
+            - '50'
+            - '51'
+            - '52'
+            - '53'
+            - '54'
+            - '55'
+            - '56'
+            - '57'
+            - '58'
+            - '59'
+            - '60'
+            - '61'
+            - '62'
+            - '63'
+            - '64'
+            - '65'
+            - '66'
+            - '67'
+            - '68'
+            - '69'
+            - '70'
+            - '71'
+            - '72'
+            - '73'
+            - '74'
+            - '75'
+            - '76'
+            - '77'
+            - '78'
+            - '79'
+            - '80'
+            - '81'
+            - '82'
+            - '83'
+            - '84'
+            - '85'
+            - '86'
+            - '87'
+            - '88'
+            - '89'
+            - '90'
+            - '91'
+            - '92'
+            - '93'
+            - '94'
+            - '95'
+            - '96'
+            - '97'
+            - '98'
+            - '99'
+            - '100'
+            - '101'
+            - '102'
+            - '103'
+            - '104'
+      unrearranged_support: []
+      rearranged_support: []
+      paralogs: []
+      curation: 'Imported to OGRDB with the following notes: watson_et_al: CAST_EiJ_IGHV8-2'
+      curational_tags:
+  curation:
 
 GenotypeSet:
   receptor_genotype_set_id: '1'
   genotype_class_list:
-  - receptor_genotype_id: '1'
-    locus: IGH
-    documented_alleles:
-    - label: IGHV1-69*01
-      germline_set_ref: IMGT:Homo sapiens:2022.1.31
-      phasing: 1
-    - label: IGHV1-69*02
-      germline_set_ref: IMGT:Homo sapiens:2022.1.31
-      phasing: 2
-    undocumented_alleles:
-    - allele_name: IGHD3-1*01_S1234
-      sequence: agtagtagtagt
-      phasing: 1
-    deleted_genes:
-    - label: IGHV3-30-3
-      germline_set_ref: IMGT:Homo sapiens:2022.1.31
-      phasing: 1
-    inference_process: repertoire_sequencing
+    - receptor_genotype_id: '1'
+      locus: IGH
+      documented_alleles:
+        - label: IGHV1-69*01
+          germline_set_ref: IMGT:Homo sapiens:2022.1.31
+          phasing: 1
+        - label: IGHV1-69*02
+          germline_set_ref: IMGT:Homo sapiens:2022.1.31
+          phasing: 2
+      undocumented_alleles:
+        - allele_name: IGHD3-1*01_S1234
+          sequence: agtagtagtagt
+          phasing: 1
+      deleted_genes:
+        - label: IGHV3-30-3
+          germline_set_ref: IMGT:Homo sapiens:2022.1.31
+          phasing: 1
+      inference_process: repertoire_sequencing
