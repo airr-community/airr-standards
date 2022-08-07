@@ -20,6 +20,7 @@ AIRR tools and utilities
 # System imports
 import argparse
 import sys
+from warnings import warn
 
 # Local imports
 from airr import __version__
@@ -94,6 +95,10 @@ def validate_repertoire_cmd(airr_files, debug=True):
     Returns:
       boolean: True if all files passed validation, otherwise False
     """
+    # Deprecation
+    warn('validate_repertoire_cmd is deprecated and will be removed in a future release.\nUse =validate_airr_cmd instead.\n',
+         DeprecationWarning, stacklevel=2)
+
     try:
         valid = [airr.interface.validate_repertoire(f, debug=debug) for f in airr_files]
         return all(valid)
@@ -212,6 +217,11 @@ def main():
     args_dict = args.__dict__.copy()
     del args_dict['command']
     del args_dict['func']
+
+    # Deprecation warnings
+    if args.func is validate_repertoire_cmd:
+        print('The "repertoire" subcommand is deprecated and will be removed in a future release.',
+              '\nUse the "airr" subcommand instead.\n')
 
     # Call tool function
     result = args.func(**args_dict)
