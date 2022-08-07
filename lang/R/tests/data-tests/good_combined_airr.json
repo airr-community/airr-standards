@@ -458,13 +458,14 @@
         "germline_set_name": "CAST IGH",
         "germline_set_ref": "OGRDB:G00007.1",
         "pub_ids": "",
-        "species": "Mouse",
+        "species": {"id": "NCBITAXON:10090", "label": "Mus musculus"},
         "species_subgroup": "CAST_EiJ",
         "species_subgroup_type": "strain",
         "locus": "IGH",
         "allele_descriptions": [
             {
                 "allele_description_id": "OGRDB:A00301",
+                "allele_description_ref": "OGRDB:Mouse_IGH:IGHV-2DBF",
                 "maintainer": "William Lees",
                 "acknowledgements": [],
                 "lab_address": "Birkbeck College, University of London, Malet Street, London",
@@ -625,7 +626,7 @@
                 "unrearranged_support": [],
                 "rearranged_support": [],
                 "paralogs": [],
-                "notes": "Imported to OGRDB with the following notes:\r\nwatson_et_al: CAST_EiJ_IGHV5-3",
+                "curation": "Imported to OGRDB with the following notes:\r\nwatson_et_al: CAST_EiJ_IGHV5-3",
                 "curational_tags": null
             },
             {
@@ -790,11 +791,11 @@
                 "unrearranged_support": [],
                 "rearranged_support": [],
                 "paralogs": [],
-                "notes": "Imported to OGRDB with the following notes:\r\nwatson_et_al: CAST_EiJ_IGHV8-2",
+                "curation": "Imported to OGRDB with the following notes:\r\nwatson_et_al: CAST_EiJ_IGHV8-2",
                 "curational_tags": null
             }
         ],
-        "notes": ""
+        "curation": ""
     },
     
     "GenotypeSet": {

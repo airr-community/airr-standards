@@ -439,7 +439,9 @@ GermlineSet:
     sequence_type: V
     functional: true
     inference_type: Rearranged
-    species: Mouse
+    species:
+      id: NCBITAXON:10090
+      label: Mus musculus
     species_subgroup: CAST_EiJ
     species_subgroup_type: strain
     status: active

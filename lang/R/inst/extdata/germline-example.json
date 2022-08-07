@@ -11,7 +11,7 @@
         "germline_set_name": "CAST IGH",
         "germline_set_ref": "OGRDB:G00007.1",
         "pub_ids": "",
-        "species": "Mouse",
+        "species": {"id": "NCBITAXON:10090", "label": "Mus musculus"},
         "species_subgroup": "CAST_EiJ",
         "species_subgroup_type": "strain",
         "locus": "IGH",
