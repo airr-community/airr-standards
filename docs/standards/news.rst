@@ -6,79 +6,101 @@ Schema Release Notes
 Version 1.4.0:
 --------------------------------------------------------------------------------
 
-**Utility schemas**
+**Version 1.4 schema release.**
 
-- ``DataFile``: A JSON data file object that holds Repertoire metadata, data processing analysis objects, or any object in the AIRR Data Model.
-- ``RepertoireGroup``: A collection of repertoires for analysis purposes, includes optional time course.
-- ``InfoObject``: Provides information about data and API responses.
-- ``TimePoint``: Time point at which an observation or other action was performed.
-- ``Acknowledgement``: Individual whose contribution to this work should be acknowledged.
+New General Purpose Schema:
 
-**Germline related schemas**
+1. Introduced the experimental ``DataFile`` object, which defines a JSON file
+   holding Repertoire metadata, data processing analysis objects, or any object
+   in the AIRR Data Model.
+2. Introduced the experimental ``RepertoireGroup`` Schema for describing sets of repertoires
+   to be analyzed together.
+3. Introduced the ``InfoObject`` object, which provides information about
+   data and ADC API responses.
+4. Introduced the ``TimePoint`` Schema for defining the time point at which an
+   observation or other action was performed.
+5. Introduced the ``Acknowledgement`` Schema to define contributors to a study,
+   analysis, or data resource.
+
+New Germline and Genotype Schema:
 
 - ``RearrangedSequence``: Details of a directly observed rearranged sequence or an inference from rearranged sequences contributing support for a gene or allele.
-- ``UnRearrangedSequence``: Details of an unrearranged sequence contributing support for a gene or allele.
+- ``UnrearrangedSequence``: Details of an unrearranged sequence contributing support for a gene or allele.
 - ``SequenceDelineationV``: Delineation of a V-gene in a particular system.
 - ``AlleleDescription``: Details of a putative or confirmed Ig receptor gene/allele inferred from one or more observations.
-- ``GermlineSet``: Details of a 'germline set' bringing together multiple AlleleDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus. 
-
-**Genotype schemas**
-
+- ``GermlineSet``: Details of a 'germline set' bringing together multiple AlleleDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
 - ``GenotypeSet``: Lists the Genotypes (describing different loci) inferred for this subject
 - ``Genotype``: Enumerates the alleles and gene deletions inferred in a single subject for a single locus. Included alleles may either be listed by reference to a GermlineSet, or listed as 'undocumented', in which case the inferred sequence is provided
 - ``MHCGenotypeSet``: List of MHCGenotypes describing a subject's MHC genotype.
 - ``MHCGenotype``: Genotype of major histocompatibility complex (MHC) class I, class II and non-classical loci.
 
-**Analysis object schemas**
+New Single-cell Schema:
 
-- ``Clone``: Information about an inferred clone that has been constructed within a single data processing for a single repertoire and a subset of its sequences and/or rearrangements.
-- ``Node``: Information about a Node in a Tree.
-- ``Tree``: Information about a Tree.
 - ``Cell``: Information that can be related to an individual cell, either by direct observation or inference.
 - ``CellExpression``: Information about a single expression level measurement from an experiment. Expression data is associated with a cell_id and the related repertoire_id and data_processing_id.
 - ``Receptor``: Information about a receptor and its reactivity.
 
-**New fields**
+Rearrangement Schema Changes:
 
-Repertoire:
+1. Added the optional fields ``v_frameshift``, ``j_frameshift``,
+   ``d_frame`` and ``d2_frame`` defining annotations related to alignment
+   reading frames.
+2. Added the optional field ``umi_count`` to represent the count of distinct
+   UMIs for a sequence.
+3. Modified the definition of ``duplicate_count`` to remove ambiguity with the
+   new ``umi_count`` field in a single-cell context. There is now a distinction
+   between duplicate observed sequences (``duplicate_count``) and UMIs
+   (``umi_count``).
+4. The optional ``quality`` and ``quality_alignment`` alignment fields were
+   added to store Phred quality scores for base calls in the ``sequence`` and
+   ``sequence_alignment`` fields, respectively.
+5. The following optional fields were added to denote constant region
+   (``c_call``) alignment positions: ``c_sequence_start``, ``c_sequence_end``,
+   ``c_germline_start``, ``c_germline_end``, ``c_alignment_start``,
+   ``c_alignment_end``.
 
-- ``study_contact``: Full contact information of the contact persons for this study This should include an e-mail address and a persistent identifier such as an ORCID ID.
-- ``adc_publish_date``: Date the study was first published in the AIRR Data Commons.
-- ``adc_update_data``: Date the study data was updated in the AIRR Data Commons.
-- ``genotype``: Genotype for this subject (immune receptor and MHC), if known
-- ``collection_time_point_relative_unit``: Unit of Sample collection time from Unit Ontology (UO)
-- ``template_amount_unit``: Unit of template amount from Unit Ontology (UO)
+Study Schema Changes:
 
-Rearrangement:
+1. Added the optional fields ``study_contact`` to store contact information for
+   the primary study contact.
+2. Added the optional fields ``adc_publish_date`` and ``adc_update_data`` that
+   timestamp AIRR Data Commons initial publication and last update,
+   respectively.
+3. Modified the enumerated values supported by ``keywords_study`` to the
+   following set:
+   ``contains_ig``, ``contains_tr``, ``contains_paired_chain``,
+   ``contains_schema_rearrangement``, ``contains_schema_clone``,
+   ``contains_schema_cell``, ``contains_schema_receptor``
 
-- umi_count
+Subject Schema Changes:
 
-Alignment:
+1. Added the optional ``genotype`` field linking to the new ``GenotypeSet`` and
+   ``MHCGenotypeSet`` objects.
 
-- quality
-- quality_alignment
-- c_sequence_start
-- c_sequence_end
-- c_germline_start
-- c_germline_end
-- c_alignment_start
-- c_alignment_end
-- v_frameshift: annotation field related to alignment reading frames.
-- j_frameshift: annotation field related to alignment reading frames.
-- d_frame: annotation field related to alignment reading frames.
-- d2_frame: annotation field related to alignment reading frames.
+Sample Schema Changes:
 
-Clone:
+1. Added the required field ``collection_time_point_relative_unit`` defining
+   the units for the sample collection timestamp.
+2. Modified the type of the field ``collection_time_point_relative`` from a
+   string to a number defined in combination with the new unit ontology field
+   ``collection_time_point_relative_unit``.
 
-- clone_count
+NucleicAcidProcessing Schema Changes:
 
-**Changed fields**
+1. Added the required field ``template_amount_unit`` defining the units for the
+   input template quantification.
+2. Modified the type of the ``template_amount`` field from a string to a number
+   defined in the combination with the new unit ontology field
+   ``template_amount_unit`.
 
-- ``keywords_study``: Keywords describing properties of one or more data sets in a study. Enumerated keywors supported are now ``contains_ig, contains_tr, contains_paired_chain, contains_schema_rearrangement, contains_schema_clone, contains_schema_cell, contains_schema_receptor``
-- ``collection_time_point_relative``: Time point at which sample was taken, relative to `Collection time event`. This field used to be a string, but now is a number combined with a unit ontology field (``collection_time_point_relative_unit``)
-- ``template_amount``: Amount of template that went into the process. This field used to be a string, but now is a number combined with a unit ontology field (``template_amount_unit``).
-- duplicate_count
+Clone Schema Changes:
 
+1. Added the optional ``clone_count`` field to specify absolute count of clonal members.
+2. Added the optional ``umi_count`` field to specify the total UMI count of all clonal members.
+
+Cell Schema Changes:
+
+1. Surely there are some?
 
 Version 1.3.1: October 13, 2020
 --------------------------------------------------------------------------------
@@ -99,12 +121,12 @@ Version 1.3.0: May 28, 2020
 New Schema:
 
 1. Introduced the ``Repertoire`` Schema for describing study meta data.
-2. Introduced the PCRTarget Schema for describing primer target locations.
-3. Introduced the SampleProcessing Schema for describing experimental processing
+2. Introduced the ``PCRTarget`` Schema for describing primer target locations.
+3. Introduced the ``SampleProcessing`` Schema for describing experimental processing
    steps for a sample.
-4. Replaced the SoftwareProcessing schema with the DataProcessing schema.
+4. Replaced the ``SoftwareProcessing`` schema with the ``DataProcessing`` schema.
 5. Introduced experimental schema for clonal clusters, lineage trees, tree nodes,
-   and cells as Clone, Tree, Node, and Cell objects, respectively.
+   and cells as ``Clone``, ``Tree``, ``Node``, and ``Cell`` objects, respectively.
 
 General Updates:
 
