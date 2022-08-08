@@ -13,8 +13,8 @@ New General Purpose Schema:
 1. Introduced the experimental ``DataFile`` object, which defines a JSON file
    holding Repertoire metadata, data processing analysis objects, or any object
    in the AIRR Data Model.
-2. Introduced the experimental ``RepertoireGroup`` Schema for describing sets of repertoires
-   to be analyzed together.
+2. Introduced the experimental ``RepertoireGroup`` Schema for describing sets
+   of repertoires to be analyzed together.
 3. Introduced the ``InfoObject`` object, which provides information about
    data and ADC API responses.
 4. Introduced the ``TimePoint`` Schema for defining the time point at which an
@@ -40,7 +40,7 @@ New Single-cell Schema:
 - ``CellExpression``: Information about a single expression level measurement from an experiment. Expression data is associated with a cell_id and the related repertoire_id and data_processing_id.
 - ``Receptor``: Information about a receptor and its reactivity.
 
-Rearrangement Schema Changes:
+Rearrangement Schema:
 
 1. Added the optional fields ``v_frameshift``, ``j_frameshift``,
    ``d_frame`` and ``d2_frame`` defining annotations related to alignment
@@ -59,7 +59,7 @@ Rearrangement Schema Changes:
    ``c_germline_start``, ``c_germline_end``, ``c_alignment_start``,
    ``c_alignment_end``.
 
-Study Schema Changes:
+Study Schema:
 
 1. Added the optional fields ``study_contact`` to store contact information for
    the primary study contact.
@@ -72,12 +72,12 @@ Study Schema Changes:
    ``contains_schema_rearrangement``, ``contains_schema_clone``,
    ``contains_schema_cell``, ``contains_schema_receptor``
 
-Subject Schema Changes:
+Subject Schema:
 
 1. Added the optional ``genotype`` field linking to the new ``GenotypeSet`` and
    ``MHCGenotypeSet`` objects.
 
-Sample Schema Changes:
+Sample Schema:
 
 1. Added the required field ``collection_time_point_relative_unit`` defining
    the units for the sample collection timestamp.
@@ -85,7 +85,7 @@ Sample Schema Changes:
    string to a number defined in combination with the new unit ontology field
    ``collection_time_point_relative_unit``.
 
-NucleicAcidProcessing Schema Changes:
+NucleicAcidProcessing Schema:
 
 1. Added the required field ``template_amount_unit`` defining the units for the
    input template quantification.
@@ -93,14 +93,14 @@ NucleicAcidProcessing Schema Changes:
    defined in the combination with the new unit ontology field
    ``template_amount_unit`.
 
-Clone Schema Changes:
+Clone Schema:
 
 1. Added the optional ``clone_count`` field to specify absolute count of clonal members.
 2. Added the optional ``umi_count`` field to specify the total UMI count of all clonal members.
 
-Cell Schema Changes:
+Cell Schema:
 
-1. Surely there are some?
+1. Surely there are some changes?
 
 Version 1.3.1: October 13, 2020
 --------------------------------------------------------------------------------
