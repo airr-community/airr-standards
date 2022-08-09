@@ -24,21 +24,36 @@ New General Purpose Schema:
 
 New Germline and Genotype Schema:
 
-- ``RearrangedSequence``: Details of a directly observed rearranged sequence or an inference from rearranged sequences contributing support for a gene or allele.
-- ``UnrearrangedSequence``: Details of an unrearranged sequence contributing support for a gene or allele.
-- ``SequenceDelineationV``: Delineation of a V-gene in a particular system.
-- ``AlleleDescription``: Details of a putative or confirmed Ig receptor gene/allele inferred from one or more observations.
-- ``GermlineSet``: Details of a 'germline set' bringing together multiple AlleleDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
-- ``GenotypeSet``: Lists the Genotypes (describing different loci) inferred for this subject
-- ``Genotype``: Enumerates the alleles and gene deletions inferred in a single subject for a single locus. Included alleles may either be listed by reference to a GermlineSet, or listed as 'undocumented', in which case the inferred sequence is provided
-- ``MHCGenotypeSet``: List of MHCGenotypes describing a subject's MHC genotype.
-- ``MHCGenotype``: Genotype of major histocompatibility complex (MHC) class I, class II and non-classical loci.
+The following experimental schema were introduced to support storage of
+VDJ germline reference sequences, VDJ genotypes, and MHC genotypes:
+
+1. ``GermlineSet``: Defines a collection of ``AlleleDescriptions`` from the
+   same strain or species.
+2. ``AlleleDescription``: Details of a putative or confirmed Ig receptor
+   gene/allele inferred from one or more observations.
+3. ``RearrangedSequence``: Details of a directly observed rearranged sequence
+   or an inference from rearranged sequences contributing support for a gene
+   or allele.
+4. ``UnrearrangedSequence``: Details of an unrearranged sequence contributing
+   support for a gene or allele.
+5. ``SequenceDelineationV``: Delineation of a V-gene in a particular system.
+6. ``GenotypeSet``: Defines a collection a VDJ genotypes for a given subject.
+7. ``Genotype``: Enumerates the alleles and gene deletions inferred in a
+   single subject for a single locus.
+8. ``MHCGenotypeSet``: Defines a collection of MHC genotypes for a given
+   subject.
+9. ``MHCGenotype``: Details the genotype of major histocompatibility complex
+   (MHC) class I, class II and non-classical loci.
 
 New Single-cell Schema:
 
-- ``Cell``: Information that can be related to an individual cell, either by direct observation or inference.
-- ``CellExpression``: Information about a single expression level measurement from an experiment. Expression data is associated with a cell_id and the related repertoire_id and data_processing_id.
-- ``Receptor``: Information about a receptor and its reactivity.
+The following experimental schema were introduced to improve support
+for single-cell data and extend the ``Cell`` schema.
+
+1. ``CellExpression``: Defines a container to store single-cell expression
+   level measurements.
+2. ``Receptor``: Describes a complete receptor protein sequence and its
+   reactivity.
 
 Rearrangement Schema:
 
@@ -95,12 +110,15 @@ NucleicAcidProcessing Schema:
 
 Clone Schema:
 
-1. Added the optional ``clone_count`` field to specify absolute count of clonal members.
-2. Added the optional ``umi_count`` field to specify the total UMI count of all clonal members.
+1. Added the optional ``clone_count`` field to specify absolute count of clonal
+   members.
+2. Added the optional ``umi_count`` field to specify the total UMI count of all
+   clonal members.
 
 Cell Schema:
 
-1. Surely there are some changes?
+1. Removed the field ``expression_tabular`` whose functionality has been
+   replaced by the new ``CellExpression`` schema.
 
 Version 1.3.1: October 13, 2020
 --------------------------------------------------------------------------------
