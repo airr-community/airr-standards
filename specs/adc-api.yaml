@@ -94,7 +94,37 @@ definitions:
         $ref: '#/definitions/repertoire_list'
       Facet:
         $ref: '#/definitions/facet_list'
-        
+
+  # list of study extension fields
+  study_extension:
+    description: The extended Study object with additional query fields for the ADC.
+    allOf:
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Study'
+      - type: object
+        properties:
+          adc_publish_date:
+            type: string
+            format: date-time
+            description: >
+              Date the study was first published in the AIRR Data Commons.
+            title: ADC Publish Date
+            example: "2021-02-02"
+            x-airr:
+              nullable: true
+              adc-query-support: true
+              name: ADC Publish Date
+          adc_update_date:
+            type: string
+            format: date-time
+            description: >
+              Date the study data was updated in the AIRR Data Commons.
+            title: ADC Update Date
+            example: "2021-02-02"
+            x-airr:
+              nullable: true
+              adc-query-support: true
+              name: ADC Update Date
+
   # list of rearrangement extension fields
   rearrangement_extension:
     description: The extended Rearrangement object with additional query fields for the ADC.
@@ -335,6 +365,18 @@ definitions:
     description: The extended Cell object with additional query fields for the ADC.
     allOf:
       - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Cell'
+      - type: object
+        properties:
+          adc_annotation_cell_id:
+            type: string
+            description: >
+              The Cell ID used by the annotation tool to annotate the Cell during data processing.
+            example: AAACCTGAGCACCGCT-1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: Tool Cell ID
 
   # list of cell annotations
   cell_list:

@@ -1546,29 +1546,6 @@ Study:
                 subset: study
                 name: Keywords for study
                 format: controlled vocabulary
-        adc_publish_date:
-            type: string
-            format: date-time
-            description: >
-                Date the study was first published in the AIRR Data Commons.
-            title: ADC Publish Date
-            example: "2021-02-02"
-            x-airr:
-                nullable: true
-                adc-query-support: true
-                name: ADC Publish Date
-        adc_update_date:
-            type: string
-            format: date-time
-            description: >
-                Date the study data was updated in the AIRR Data Commons.
-            title: ADC Update Date
-            example: "2021-02-02"
-            x-airr:
-                nullable: true
-                adc-query-support: true
-                name: ADC Update Date
-
 
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
@@ -4205,16 +4182,6 @@ Cell:
                 nullable: true
                 adc-query-support: true
                 name: Virtual pairing
-        adc_annotation_cell_id:
-            type: string
-            description: >
-              The Cell ID used by the annotation tool to annotate the Cell during data processing.
-            example: AAACCTGAGCACCGCT-1
-            x-airr:
-              nullable: true
-              adc-api-optional: false
-              adc-query_support: true
-              name: Tool Cell ID
 
 # The CellExpression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and 

@@ -112,6 +112,36 @@ components:
       items:
         $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Repertoire'
 
+    # list of study extension fields
+    study_extension:
+      description: The extended Study object with additional query fields for the ADC.
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Study'
+        - type: object
+          properties:
+            adc_publish_date:
+              type: string
+              format: date-time
+              nullable: true
+              description: >
+                Date the study was first published in the AIRR Data Commons.
+              title: ADC Publish Date
+              example: "2021-02-02"
+              x-airr:
+                adc-query-support: true
+                name: ADC Publish Date
+            adc_update_date:
+              type: string
+              format: date-time
+              nullable: true
+              description: >
+                Date the study data was updated in the AIRR Data Commons.
+              title: ADC Update Date
+              example: "2021-02-02"
+              x-airr:
+                adc-query-support: true
+                name: ADC Update Date
+
     # list of facets
     facet_list:
       type: array
@@ -330,6 +360,18 @@ components:
       description: The extended Cell object with additional query fields for the ADC.
       allOf:
         - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Cell'
+        - type: object
+          properties:
+            adc_annotation_cell_id:
+              type: string
+              nullable: true
+              description: >
+                The Cell ID used by the annotation tool to annotate the Cell during data processing.
+              example: AAACCTGAGCACCGCT-1
+              x-airr:
+                adc-api-optional: false
+                adc-query_support: true
+                name: Tool Cell ID
 
     # list of cell annotations
     cell_list:
