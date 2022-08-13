@@ -62,6 +62,24 @@ test_that("read_tabular applies base", {
     expect_equivalent(tbl_0[, start_positions] - 1, tbl_1[, start_positions])
 })
 
+test_that("read_airr_tsv reads zipped tsv", {
+  # Create test data gzip
+  tmp_file <- tempfile(fileext = ".tsv.gz")
+
+  x <- readr::read_tsv(rearrangement_file)
+  readr::write_tsv(x, file = tmp_file)
+
+  tbl_1 <- read_airr_tsv(tmp_file, "1", schema = RearrangementSchema)
+  expect_true(is.data.frame(tbl_1))
+
+  # bzip2
+  tmp_file <- tempfile(fileext = ".tsv.bz2")
+  readr::write_tsv(x, file = tmp_file)
+
+  tbl_1 <- read_airr_tsv(tmp_file, "1", schema = RearrangementSchema)
+  expect_true(is.data.frame(tbl_1))
+})
+
 test_that("Columns are of expected type", {
     # Create test data
     tmp_file <- tempfile(fileext = ".tsv")
