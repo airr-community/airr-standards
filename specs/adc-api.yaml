@@ -220,6 +220,16 @@ definitions:
               adc-api-optional: false
               adc-query_support: true
               name: C gene
+          adc_annotation_cell_id:
+            type: string
+            description: >
+              The Cell ID used by the annotation tool to annotate the Cell during data processing.
+            example: AAACCTGAGCACCGCT-1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: Tool Cell ID
 
   # list of rearrangement annotations
   rearrangement_list:
