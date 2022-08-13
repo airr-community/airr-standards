@@ -230,106 +230,113 @@ def read_airr(filename, format=None, validate=False, debug=False):
       format (str): input file format valid strings are "yaml" or "json". If set to None,
                     the file format will be automatically detected from the file extension.
       validate (bool): whether to validate data as it is read, raising a ValidationError
-                       exception in the event of an error.
+                       exception in the event of a validation failure.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       dict: dictionary of AIRR Data objects.
     """
     # Because the AIRR Data File is read in completely, we do not bother with a reader class.
-    md = None
-
     # Determine file type from extension and use appropriate loader
     ext = str.lower(filename.split('.')[-1]) if not format else format
     if ext in ('yaml', 'yml'):
         with open(filename, 'r', encoding='utf-8') as handle:
-            md = yaml.load(handle, Loader=yamlordereddictloader.Loader)
+            data = yaml.load(handle, Loader=yamlordereddictloader.Loader)
     elif ext == 'json':
         with open(filename, 'r', encoding='utf-8') as handle:
-            md = json.load(handle)
+            data = json.load(handle)
     else:
         if debug:  sys.stderr.write('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % ext)
         raise TypeError('Unknown file type: %s. Supported file extensions are "yaml", "yml" or "json"\n' % ext)
+        data = None
 
     # Validate if requested
     if validate:
-        valid = True
-        # Loop through each AIRR object and validate
-        for k, data in md.items():
-            if k == 'Info':  continue
-            if not data:  continue
-
-            schema = AIRRSchema[k]
-            # Validate array object
-            if not isinstance(data, list):
-                try:
-                    schema.validate_object(data)
-                except ValidationError as e:
-                    valid = False
-                    if debug:  sys.stderr.write('%s has %s with validation error: %s\n' % (filename, k, e))
-            else:
-                for i, obj in enumerate(data):
-                    try:
-                        schema.validate_object(obj)
-                    except ValidationError as e:
-                        valid = False
-                        if debug:  sys.stderr.write('%s has %s at array position %i with validation error: %s\n' % (filename, k, i, e))
-
-        if not valid:
-            raise ValidationError('AIRR Data file %s has validation errors\n' % (filename))
+        if debug:  sys.stderr.write('Validating: %s\n' % filename)
+        try:
+            valid = validate_airr(data, debug=debug)
+        except ValidationError as e:
+            if debug:  sys.stderr.write('%s failed validation\n' % filename)
+            raise ValidationError(e)
 
     # We do not perform any additional processing
-    return md
+    return data
 
 
-def validate_airr(filename, format=None, debug=False):
+def validate_airr(data, debug=False):
     """
     Validates an AIRR Data file
 
     Arguments:
-      filename (str): path of the file to validate.
-      format (str): input file format valid strings are "yaml" or "json". If set to None,
-                    the file format will be automatically detected from the file extension.
+      data (dict): dictionary containing AIRR Data Model objects
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       bool: True if files passed validation, otherwise False.
     """
-    valid = True
-    if debug:  sys.stderr.write('Validating: %s\n' % filename)
+    # Type check that input type is either dict or OrderedDict
+    if not hasattr(data, 'items'):
+        if debug:  sys.stderr.write('Data parameter is not a dictionary\n')
+        raise TypeError('Data parameter is not a dictionary')
 
-    # load with validate
-    try:
-        read_airr(filename, format=format, validate=True, debug=debug)
-    except TypeError:
-        valid = False
-    except KeyError:
-        valid = False
-    except ValidationError as e:
-        valid = False
-        if debug:  sys.stderr.write('%s has validation error: %s\n' % (filename, e))
+    # Loop through each AIRR object and validate
+    valid = True
+    for k, object in data.items():
+        if k == 'Info':  continue
+        if not object:  continue
+
+        schema = AIRRSchema[k]
+        # Validate array object
+        if not isinstance(object, list):
+            try:
+                schema.validate_object(object)
+            except ValidationError as e:
+                valid = False
+                if debug:  sys.stderr.write('%s has validation error: %s\n' % (k, e))
+        else:
+            for i, record in enumerate(object):
+                try:
+                    schema.validate_object(record)
+                except ValidationError as e:
+                    valid = False
+                    if debug:  sys.stderr.write('%s at array position %i with validation error: %s\n' % (k, i, e))
+
+    if not valid:
+        raise ValidationError('AIRR Data Model has validation failures')
 
     return valid
 
 
-def write_airr(filename, data, format=None, info=None, debug=False):
+def write_airr(filename, data, format=None, info=None, validate=False, debug=False):
     """
     Write an AIRR Data file
 
     Arguments:
       filename (str): path to the output file.
-      data (dict): dictionary of AIRR objects.
+      data (dict): dictionary of AIRR Data Model objects.
       format (str): output file format valid strings are "yaml" or "json". If set to None,
                     the file format will be automatically detected from the file extension.
       info (object): info object to write. Will write current AIRR Schema info if not specified.
+      validate (bool): whether to validate data before it is written, raising a ValidationError
+                       exception in the event of a validation failure.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
       bool: True if the file is written without error.
     """
-    if not isinstance(data, dict):
+    # Type check that input type is either dict or OrderedDict
+    if not hasattr(data, 'items'):
         if debug:  sys.stderr.write('Data parameter is not a dictionary\n')
         raise TypeError('Data parameter is not a dictionary')
+
+    # Validate if requested
+    if validate:
+        if debug:  sys.stderr.write('Validating: %s\n' % filename)
+        try:
+            valid = validate_airr(data, debug=debug)
+        except ValidationError as e:
+            if debug:  sys.stderr.write(e)
+            raise ValidationError(e)
 
     md = OrderedDict()
     if info is None:

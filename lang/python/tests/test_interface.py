@@ -88,22 +88,26 @@ class TestInferface(unittest.TestCase):
     # @unittest.skip('-> read_airr(): skipped\n')
     def test_read_airr(self):
         # Good data
+        print('--> Good data')
         try:
             data = airr.read_airr(self.rep_good, validate=True, debug=True)
         except:
             self.fail('read_airr(): good data failed')
 
         # Bad data
+        print('--> Bad data')
         with self.assertRaises(ValidationError, msg="read_airr(): bad data passed validation"):
             data = airr.read_airr(self.rep_bad, validate=True, debug=True)
 
         # Combined yaml
+        print('--> Combined YAML')
         try:
             data_yaml = airr.read_airr(self.combined_yaml, validate=True, debug=True)
         except:
             self.fail('read_airr(): combined yaml failed')
 
-        # Combined yaml
+        # Combined json
+        print('--> Combined JSON')
         try:
             data_json = airr.read_airr(self.combined_json, validate=True, debug=True)
         except:
@@ -117,15 +121,17 @@ class TestInferface(unittest.TestCase):
     def test_validate_airr(self):
         # Good data
         try:
-            result = airr.validate_airr(self.rep_good, debug=True)
-            self.assertTrue(result, 'validate_airr(): good data failed')
+            result = airr.read_airr(self.rep_good, validate=True, debug=True)
+            valid = airr.validate_airr(result, debug=True)
+            self.assertTrue(valid, 'validate_airr(): good data failed')
         except:
             self.assertTrue(False, 'validate_airr(): good data failed')
 
         # Bad data
         try:
-            result = airr.validate_airr(self.rep_bad, debug=True)
-            self.assertFalse(result, 'validate_airr(): bad data failed')
+            result = airr.read_airr(self.rep_bad, validate=True, debug=True)
+            valid = airr.validate_airr(result, debug=True)
+            self.assertFalse(valid, 'validate_airr(): bad data failed')
         except ValidationError:
             pass
         except Exception as inst:
@@ -190,28 +196,34 @@ class TestInferface(unittest.TestCase):
     # @unittest.skip('-> validate_germline(): skipped\n')
     def test_validate_germline(self):
         # Good data
+        print('--> Good data')
         try:
-            result = airr.validate_airr(self.germline_good, debug=True)
-            self.assertTrue(result, 'validate_germline(): good data failed')
+            result = airr.read_airr(self.germline_good, validate=True, debug=True)
+            valid = airr.validate_airr(result, debug=True)
+            self.assertTrue(valid, 'validate_germline(): good data failed')
         except ValidationError:
             self.assertTrue(False, 'validate_germline(): good data failed')
 
         # Bad data
+        print('--> Bad data')
         try:
-            result = airr.validate_airr(self.germline_bad, debug=True)
-            self.assertFalse(result, 'validate_germline(): bad data succeeded')
+            result = airr.read_airr(self.germline_bad, validate=True, debug=True)
+            valid = airr.validate_airr(result, debug=True)
+            self.assertFalse(valid, 'validate_germline(): bad data succeeded')
         except ValidationError:
             pass
 
     # @unittest.skip('-> load_genotype(): skipped\n')
     def test_read_genotype(self):
         # Good data
+        print('--> Good data')
         try:
             result = airr.read_airr(self.genotype_good, validate=True, debug=True)
         except ValidationError:
             self.assertTrue(False, 'load_genotype(): good data failed')
 
         # Bad data
+        print('--> Bad data')
         try:
             result = airr.read_airr(self.genotype_bad, validate=True, debug=True)
             self.assertFalse(True, 'load_genotype(): bad data succeeded')
@@ -221,16 +233,20 @@ class TestInferface(unittest.TestCase):
     # @unittest.skip('-> validate_genotype(): skipped\n')
     def test_validate_genotype(self):
         # Good data
+        print('--> Good data')
         try:
-            result = airr.validate_airr(self.genotype_good, debug=True)
-            self.assertTrue(result, 'validate_genotype(): good data failed')
+            result = airr.read_airr(self.genotype_good, validate=True, debug=True)
+            valid = airr.validate_airr(result, debug=True)
+            self.assertTrue(valid, 'validate_genotype(): good data failed')
         except ValidationError:
             self.assertTrue(False, 'validate_genotype(): good data failed')
 
         # Bad data
+        print('--> Bad data')
         try:
-            result = airr.validate_airr(self.genotype_bad, debug=True)
-            self.assertFalse(result, 'validate_genotype(): bad data succeeded')
+            result = airr.read_airr(self.genotype_bad, validate=True, debug=True)
+            valid = airr.validate_airr(result, debug=True)
+            self.assertFalse(valid, 'validate_genotype(): bad data succeeded')
         except ValidationError:
             pass
 
@@ -247,7 +263,7 @@ class TestInferface(unittest.TestCase):
             obj['Repertoire'] = repertoire_data['Repertoire']
             obj['GermlineSet'] = germline_data['GermlineSet']
             obj['GenotypeSet'] = genotype_data['GenotypeSet']
-            airr.write_airr(self.output_good, obj, debug=True)
+            airr.write_airr(self.output_good, obj, validate=True, debug=True)
 
             # verify we can read it
             data = airr.read_airr(self.output_good, validate=True, debug=True)

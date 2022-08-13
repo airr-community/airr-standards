@@ -75,7 +75,8 @@ def validate_airr_cmd(airr_files, debug=True):
       boolean: True if all files passed validation, otherwise False
     """
     try:
-        valid = [airr.interface.validate_airr(f, debug=debug) for f in airr_files]
+        airr_data = [airr.interface.read_airr(f, validate=False, debug=debug) for f in airr_files]
+        valid = [airr.interface.validate_airr(x, debug=debug) for x in airr_data]
         return all(valid)
     except Exception as err:
         sys.stderr.write('Error occurred while validating AIRR Data Model files: ' + str(err) + '\n')
