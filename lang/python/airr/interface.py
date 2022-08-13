@@ -384,15 +384,16 @@ def repertoire_template():
       object: empty repertoire object.
     """
     # Deprecation
-    warn('repertoire_template is deprecated and will be removed in a future release.\n',
+    warn('repertoire_template is deprecated and will be removed in a future release.\nUse RepertoireSchema.template() instead.\n',
          DeprecationWarning, stacklevel=2)
 
     # TODO: I suppose we should dynamically create this from the schema versus loading a template.
     # Load blank template
-    f = resource_filename(__name__, 'specs/blank.airr.yaml')
-    object = load_repertoire(f)
+    # f = resource_filename(__name__, 'specs/blank.airr.yaml')
+    object = RepertoireSchema.template()
+    print(object)
 
-    return object['Repertoire'][0]
+    return object
 
 
 def load_repertoire(filename, validate=False, debug=False):

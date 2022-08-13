@@ -322,9 +322,8 @@ class Schema:
         Raises:
           airr.ValidationError: raised if object fails validation.
         """
-
         # object has to be a dictionary
-        if not isinstance(obj, dict):
+        if not hasattr(obj, 'items'):
             if context is None:
                 raise ValidationError('object is not a dictionary')
             else:
@@ -462,6 +461,34 @@ class Schema:
                     raise ValidationError('Internal error: Field "%s" with type %s in schema not handled by validation. File a bug report.' % (full_field, field_type))
 
         return True
+
+    def template(self):
+        """
+        Create an empty template object
+
+        Returns:
+          collections.OrderedDict: dictionary with all schema properties set as None or an empty list.
+        """
+        # Fetch schema template definition for a $ref string
+        def _ref(ref):
+            x = ref.split('/')[-1]
+            schema = AIRRSchema.get(x, Schema(x))
+            return(schema.template())
+
+        # Populate empty object
+        object = OrderedDict()
+        for k, spec in self.properties.items():
+            if '$ref' in spec:
+                object[k] = _ref(spec['$ref'])
+            elif spec['type'] == 'array':
+                if '$ref' in spec['items']:
+                    object[k] = [_ref(spec['items']['$ref'])]
+                else:
+                    object[k] = []
+            else:
+                object[k] = None
+
+        return(object)
 
 
 # Preloaded schema
