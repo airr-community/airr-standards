@@ -78,10 +78,7 @@ Study Schema:
 
 1. Added the optional fields ``study_contact`` to store contact information for
    the primary study contact.
-2. Added the optional fields ``adc_publish_date`` and ``adc_update_data`` that
-   timestamp AIRR Data Commons initial publication and last update,
-   respectively.
-3. Modified the enumerated values supported by ``keywords_study`` to the
+2. Modified the enumerated values supported by ``keywords_study`` to the
    following set:
    ``contains_ig``, ``contains_tr``, ``contains_paired_chain``,
    ``contains_schema_rearrangement``, ``contains_schema_clone``,
