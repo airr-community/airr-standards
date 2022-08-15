@@ -37,7 +37,7 @@ Software tools and libraries
 
 + :ref:`R reference library <ROverview>` for reading/writing/validating AIRR data files.
 
-+ :ref:`ADC API reference implementation <ADCAPIReference>` for a local data repository.
++ :ref:`ADC API reference implementation <DataCommonsAPIReference>` for a local data repository.
 
 + :ref:`Resources and tools <Community>` that support the AIRR Standards.
 

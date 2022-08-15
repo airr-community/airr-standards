@@ -1,4 +1,4 @@
-.. _ADCAPIReference:
+.. _DataCommonsAPIReference:
 
 ADC API Reference Implementation
 ================================
@@ -16,8 +16,8 @@ security and no optimizations for large data so it should not be used
 directly for production systems.
 
 The reference implementation consists of three GitHub repositories:
-`adc-api`_, `adc-api-js-mongodb`_, and `adc-api-mongodb-repository`_. The three
-repositories correspond to the top-level service composition
+`adc-api`_, `adc-api-js-mongodb`_, and `adc-api-mongodb-repository`_.
+The three repositories correspond to the top-level service composition
 (adc-api), a JavaScript web service that responds to API requests and
 queries a MongoDB database (adc-api-js-mongodb), and a MongoDB
 database for holding AIRR-seq data
@@ -27,8 +27,7 @@ components together into a single service. Complete documentation for
 configuring and deploying the reference implementation is available in
 the adc-api repository.
 
+
 .. _`adc-api`: https://github.com/airr-community/adc-api
-
 .. _`adc-api-js-mongodb`: https://github.com/airr-community/adc-api-js-mongodb
-
 .. _`adc-api-mongodb-repository`: https://github.com/airr-community/adc-api-mongodb-repository
