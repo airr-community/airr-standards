@@ -8,7 +8,7 @@ import unittest
 import jsondiff
 import sys
 
-# Load imports
+# airr imports
 import airr
 from airr.schema import ValidationError
 
@@ -124,18 +124,43 @@ class TestInferface(unittest.TestCase):
     # @unittest.skip('-> validate_airr(): skipped\n')
     def test_validate_airr(self):
         # Good data
+        print('--> Good data')
+        # As array
         try:
-            result = airr.read_airr(self.rep_good, validate=True, debug=True)
-            valid = airr.validate_airr(result, debug=True)
-            self.assertTrue(valid, 'validate_airr(): good data failed')
+            data = airr.read_airr(self.rep_good, validate=True, debug=True)
+            valid = airr.validate_airr(data, debug=True)
+            self.assertTrue(valid, 'validate_airr(): good data array failed')
         except:
-            self.assertTrue(False, 'validate_airr(): good data failed')
+            self.assertTrue(False, 'validate_airr(): good data array failed')
+
+        # As dict
+        try:
+            array = airr.read_airr(self.rep_good, validate=False, debug=False)
+            data = {'Repertoire': {x['repertoire_id']: x for x in array['Repertoire']}}
+            valid = airr.validate_airr(data, debug=True)
+            self.assertTrue(valid, 'validate_airr(): good data dict failed')
+        except:
+            self.assertTrue(False, 'validate_airr(): good data dict failed')
 
         # Bad data
+        print('--> Bad data')
+        # As array
         try:
-            result = airr.read_airr(self.rep_bad, validate=True, debug=True)
-            valid = airr.validate_airr(result, debug=True)
-            self.assertFalse(valid, 'validate_airr(): bad data failed')
+            data = airr.read_airr(self.rep_bad, validate=True, debug=True)
+            valid = airr.validate_airr(data, debug=True)
+            self.assertFalse(valid, 'validate_airr(): bad data array failed')
+        except ValidationError:
+            pass
+        except Exception as inst:
+            print(type(inst))
+            raise inst
+
+        # As dict
+        try:
+            array = airr.read_airr(self.rep_bad, validate=False, debug=False)
+            data = {'Repertoire': {x['repertoire_id']: x for x in array['Repertoire']}}
+            valid = airr.validate_airr(data, debug=True)
+            self.assertFalse(valid, 'validate_airr(): bad data dict failed')
         except ValidationError:
             pass
         except Exception as inst:
@@ -256,11 +281,45 @@ class TestInferface(unittest.TestCase):
 
     # @unittest.skip('-> load_genotype(): skipped\n')
     def test_write_airr(self):
-        # Good data
+        # Good data as array
         try:
             repertoire_data = airr.read_airr(self.rep_good, validate=True, debug=True)
             germline_data = airr.read_airr(self.germline_good, validate=True, debug=True)
             genotype_data = airr.read_airr(self.genotype_good, validate=True, debug=True)
+
+            # combine together and write
+            obj = {}
+            obj['Repertoire'] = repertoire_data['Repertoire']
+            obj['GermlineSet'] = germline_data['GermlineSet']
+            obj['GenotypeSet'] = genotype_data['GenotypeSet']
+            airr.write_airr(self.output_good, obj, validate=True, debug=True)
+
+            # verify we can read it
+            data = airr.read_airr(self.output_good, validate=True, debug=True)
+
+            # is the data identical?
+            del data['Info']
+            if jsondiff.diff(obj, data) != {}:
+                print('Output data does not match', file=sys.stderr)
+                print(jsondiff.diff(obj, data), file=sys.stderr)
+                self.assertTrue(False, 'write_airr_data(): Output data does not match')
+
+        except Exception as inst:
+            self.assertTrue(False, 'write_airr_data(): good data failed')
+            print(type(inst))
+            raise inst
+
+        # Good data as dict
+        try:
+            # Load data
+            repertoire_array = airr.read_airr(self.rep_good, validate=True, debug=True)
+            germline_array = airr.read_airr(self.germline_good, validate=True, debug=True)
+            genotype_array = airr.read_airr(self.genotype_good, validate=True, debug=True)
+
+            # Build keyed representation
+            repertoire_data = {'Repertoire': {x['repertoire_id']: x for x in repertoire_array['Repertoire']}}
+            germline_data = {'GermlineSet': {x['germline_set_id']: x for x in germline_array['GermlineSet']}}
+            genotype_data = {'GenotypeSet': {x['receptor_genotype_set_id']: x for x in genotype_array['GenotypeSet']}}
 
             # combine together and write
             obj = {}

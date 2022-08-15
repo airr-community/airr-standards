@@ -286,20 +286,27 @@ def validate_airr(data, debug=False):
         if not object:  continue
 
         schema = AIRRSchema[k]
-        # Validate array object
-        if not isinstance(object, list):
+
+        # Determine input type and set appropriate iterator
+        if hasattr(object, 'items'):
+            # Validate named array (dict) or a single object (dict)
+            obj_iter = object.items() if 'definition' not in object.keys() else [0, object]
+        elif isinstance(object, list):
+            # Validate array
+            obj_iter = enumerate(object)
+        else:
+            # Unrecognized data structure
+            valid = False
+            if debug:  sys.stderr.write('%s is an unrecognized data structure: %s\n' % k)
+            continue
+
+        # Validate each record in array
+        for i, record in obj_iter:
             try:
-                schema.validate_object(object)
+                schema.validate_object(record)
             except ValidationError as e:
                 valid = False
-                if debug:  sys.stderr.write('%s has validation error: %s\n' % (k, e))
-        else:
-            for i, record in enumerate(object):
-                try:
-                    schema.validate_object(record)
-                except ValidationError as e:
-                    valid = False
-                    if debug:  sys.stderr.write('%s at array position %i with validation error: %s\n' % (k, i, e))
+                if debug:  sys.stderr.write('%s at array position %s with validation error: %s\n' % (k, i, e))
 
     if not valid:
         raise ValidationError('AIRR Data Model has validation failures')

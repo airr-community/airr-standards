@@ -446,7 +446,7 @@
         }
     ],
 
-    "GermlineSet": {
+    "GermlineSet": [{
         "germline_set_id": "OGRDB:G00007",
         "author": "William Lees",
         "lab_name": "",
@@ -797,9 +797,9 @@
             }
         ],
         "curation": null
-    },
+    }],
 
-    "GenotypeSet": {
+    "GenotypeSet": [{
         "receptor_genotype_set_id": "1",
         "genotype_class_list": [
             {
@@ -834,5 +834,5 @@
                 "inference_process": "repertoire_sequencing"
             }
         ]
-    }
+    }]
 }
