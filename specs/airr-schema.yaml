@@ -345,44 +345,16 @@ DataFile:
                 nullable: false
         Repertoire:
             type: array
-            description: List of Repertoire metadata
+            description: List of repertoires
             items:
                 $ref: '#/Repertoire'
             x-airr:
                 nullable: false
-        RepertoireGroup:
+        RepertoireSet:
             type: array
-            description: List of Repertoire groups
+            description: List of repertoire sets
             items:
-                $ref: '#/RepertoireGroup'
-            x-airr:
-                nullable: false
-        AlleleDescription:
-            type: array
-            description: List of allele descriptions
-            items:
-              $ref: '#/AlleleDescription'
-            x-airr:
-                nullable: false
-        GermlineSet:
-            type: array
-            description: List of germline sets
-            items:
-              $ref: '#/GermlineSet'
-            x-airr:
-                nullable: false
-        DataProcessing:
-            type: array
-            description: List of data processing workflows
-            items:
-                $ref: '#/DataProcessing'
-            x-airr:
-                nullable: false
-        Cell:
-            type: array
-            description: List of cells
-            items:
-                $ref: '#/Cell'
+                $ref: '#/RepertoireSet'
             x-airr:
                 nullable: false
         Rearrangement:
@@ -392,6 +364,13 @@ DataFile:
                 $ref: '#/Rearrangement'
             x-airr:
                 nullable: false
+        Cell:
+            type: array
+            description: List of cells
+            items:
+                $ref: '#/Cell'
+            x-airr:
+                nullable: false
         Clone:
             type: array
             description: List of clones
@@ -399,11 +378,18 @@ DataFile:
                 $ref: '#/Clone'
             x-airr:
                 nullable: false
-        Tree:
+        GermlineSet:
             type: array
-            description: List of trees
+            description: List of germline sets
             items:
-                $ref: '#/Tree'
+                $ref: '#/GermlineSet'
+            x-airr:
+                nullable: false
+        GenotypeSet:
+            type: array
+            description: List of genotype sets
+            items:
+                $ref: '#/GenotypeSet'
             x-airr:
                 nullable: false
 
@@ -2989,20 +2975,20 @@ Repertoire:
                 adc-query-support: true
 
 # A collection of repertoires for analysis purposes, includes optional time course
-RepertoireGroup:
+RepertoireSet:
     discriminator: AIRR
     type: object
     required:
-        - repertoire_group_id
+        - repertoire_set_id
         - repertoires
     properties:
-        repertoire_group_id:
+        repertoire_set_id:
             type: string
             description: Identifier for this repertoire group
-        repertoire_group_name:
+        repertoire_set_name:
             type: string
             description: Short display name for this repertoire group
-        repertoire_group_description:
+        repertoire_set_description:
             type: string
             description: Repertoire group description
         repertoires:
