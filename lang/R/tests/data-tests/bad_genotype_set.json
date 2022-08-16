@@ -1,5 +1,5 @@
 {
-	"GenotypeSet": {
+	"GenotypeSet": [{
 		"receptor_genotype_set_id": "1",
 		"genotype_class_list": [
 			{
@@ -40,5 +40,5 @@
 				"inference_process": "repertoire_sequencing"
 			}
 		]
-	}
+	}]
 }

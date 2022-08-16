@@ -1,5 +1,5 @@
 {
-    "GermlineSet": {
+    "GermlineSet": [{
         "germline_set_id": "OGRDB:G00007",
         "author": "William Lees",
         "lab_name": "",
@@ -350,5 +350,5 @@
             }
         ],
         "curation": null
-    }
+    }]
 }

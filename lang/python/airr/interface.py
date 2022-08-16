@@ -285,12 +285,15 @@ def validate_airr(data, debug=False):
         if k == 'Info':  continue
         if not object:  continue
 
+        # Check for DataFile here
         schema = AIRRSchema[k]
 
         # Determine input type and set appropriate iterator
         if hasattr(object, 'items'):
+            # Validate named array (dict)
+            obj_iter = object.items()
             # Validate named array (dict) or a single object (dict)
-            obj_iter = object.items() if 'definition' not in object.keys() else [0, object]
+            # obj_iter = object.items() if 'definition' not in object.keys() else [0, object]
         elif isinstance(object, list):
             # Validate array
             obj_iter = enumerate(object)

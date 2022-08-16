@@ -574,17 +574,15 @@ validate_airr <- function(data, each=FALSE) {
     # Iterate through objects in input data
     valid_sum <- logical()
     for (n in names(data)) {
+        if (n == 'Info') { next }
         entry <- data[[n]]
+        if (is.null(entry)) { next }
+        
+        # Load schema
         schema <- if (n %in% names(AIRRSchema)) { AIRRSchema[[n]] } else { load_schema(n) }
         
         # Recursively validate all entries
-        if (is.null(names(entry))) {
-            # Assume a list of records if the top-level names are NULL
-            valid <- sapply(entry, validate_entry, schema=schema)
-        } else {
-            # Assume a single record if the top-level list is named
-            valid <- validate_entry(entry, schema=schema)
-        }
+        valid <- sapply(entry, validate_entry, schema=schema)
         valid_sum <- append(setNames(all(valid), n), valid_sum)
     }
     
