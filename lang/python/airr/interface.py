@@ -24,7 +24,7 @@ else:
 
 # Load imports
 from airr.io import RearrangementReader, RearrangementWriter
-from airr.schema import ValidationError, RearrangementSchema, RepertoireSchema, AIRRSchema
+from airr.schema import Schema, RearrangementSchema, RepertoireSchema, AIRRSchema, DataFileSchema, ValidationError
 
 #### Rearrangement ####
 
@@ -263,12 +263,14 @@ def read_airr(filename, format=None, validate=False, debug=False):
     return data
 
 
-def validate_airr(data, debug=False):
+def validate_airr(data, adf=True, debug=False):
     """
     Validates an AIRR Data file
 
     Arguments:
       data (dict): dictionary containing AIRR Data Model objects
+      adf (bool): If True only validate objects defined in the AIRR DataFile schema.
+                  If False, attempt validation of all top-level objects
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
@@ -282,11 +284,16 @@ def validate_airr(data, debug=False):
     # Loop through each AIRR object and validate
     valid = True
     for k, object in data.items():
-        if k == 'Info':  continue
+        if k in ('Info', 'DataFile'):  continue
         if not object:  continue
 
-        # Check for DataFile here
-        schema = AIRRSchema[k]
+        # Check for DataFile schema
+        if adf and k not in DataFileSchema.properties:
+            if debug:  sys.stderr.write('Skipping non-DataFile object: %s\n' % k)
+            continue
+
+        # Get Schema
+        schema = AIRRSchema.get(k, Schema(k))
 
         # Determine input type and set appropriate iterator
         if hasattr(object, 'items'):
@@ -317,7 +324,7 @@ def validate_airr(data, debug=False):
     return valid
 
 
-def write_airr(filename, data, format=None, info=None, validate=False, debug=False):
+def write_airr(filename, data, format=None, info=None, validate=False, adf=True, debug=False):
     """
     Write an AIRR Data file
 
@@ -329,6 +336,8 @@ def write_airr(filename, data, format=None, info=None, validate=False, debug=Fal
       info (object): info object to write. Will write current AIRR Schema info if not specified.
       validate (bool): whether to validate data before it is written, raising a ValidationError
                        exception in the event of a validation failure.
+      adf (bool): If True only validate and write objects defined in the AIRR DataFile schema.
+                  If False, attempt validation and write of all top-level objects
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
@@ -343,7 +352,7 @@ def write_airr(filename, data, format=None, info=None, validate=False, debug=Fal
     if validate:
         if debug:  sys.stderr.write('Validating: %s\n' % filename)
         try:
-            valid = validate_airr(data, debug=debug)
+            valid = validate_airr(data, adf=adf, debug=debug)
         except ValidationError as e:
             if debug:  sys.stderr.write(e)
             raise ValidationError(e)
@@ -355,17 +364,14 @@ def write_airr(filename, data, format=None, info=None, validate=False, debug=Fal
         info['description'] = 'AIRR Data File written by AIRR Standards Python Library'
     md['Info'] = info
 
-    # Check for supported schema
-    for k in data.keys():
-        if k not in AIRRSchema.keys():  sys.stderr.write('Unsupported schema %s found\n' % k)
-
-    # Loop through each supported AIRR object and add them in standard ordering
-    # This code implies that you cannot write out non-AIRR objects
-    for k in AIRRSchema.keys():
-        if k == 'Info':  continue
-        obj = data.get(k, None)
+    # Loop through each object and add them to the output dict
+    for k, obj in data.items():
+        if k in ('Info', 'DataFile'):  continue
         if not obj:  continue
-        md[k] = data[k]
+        if adf and k not in DataFileSchema.properties:
+            if debug:  sys.stderr.write('Skipping non-DataFile object: %s\n' % k)
+            continue
+        md[k] = obj
 
     # Determine file type from extension and use appropriate loader
     ext = str.lower(filename.split('.')[-1]) if not format else format
@@ -401,7 +407,6 @@ def repertoire_template():
     # Load blank template
     # f = resource_filename(__name__, 'specs/blank.airr.yaml')
     object = RepertoireSchema.template()
-    print(object)
 
     return object
 

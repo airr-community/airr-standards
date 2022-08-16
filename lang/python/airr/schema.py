@@ -469,22 +469,37 @@ class Schema:
         Returns:
           collections.OrderedDict: dictionary with all schema properties set as None or an empty list.
         """
+        # Set defaults for each data type
+        type_default = {'boolean': False, 'integer': 0, 'number': 0.0, 'string': '', 'array':[]}
+
         # Fetch schema template definition for a $ref string
-        def _ref(ref):
+        def _reference(ref):
             x = ref.split('/')[-1]
             schema = AIRRSchema.get(x, Schema(x))
             return(schema.template())
+
+        # Get default value
+        def _default(spec):
+            if 'nullable' in spec['x-airr'] and not spec['x-airr']['nullable']:
+                if 'enum' in spec:
+                    return spec['enum'][0]
+                else:
+                    return type_default.get(spec['type'], None)
+            else:
+                return None
 
         # Populate empty object
         object = OrderedDict()
         for k, spec in self.properties.items():
             if '$ref' in spec:
-                object[k] = _ref(spec['$ref'])
+                object[k] = _reference(spec['$ref'])
             elif spec['type'] == 'array':
                 if '$ref' in spec['items']:
-                    object[k] = [_ref(spec['items']['$ref'])]
+                    object[k] = [_reference(spec['items']['$ref'])]
                 else:
                     object[k] = []
+            elif 'x-airr' in spec:
+                object[k] = _default(spec)
             else:
                 object[k] = None
 
@@ -493,6 +508,8 @@ class Schema:
 
 # Preloaded schema
 AIRRSchema = {
+    'Info': Schema('InfoObject'),
+    'DataFile': Schema('DataFile'),
     'Alignment': Schema('Alignment'),
     'Rearrangement': Schema('Rearrangement'),
     'Repertoire': Schema('Repertoire'),
@@ -515,10 +532,17 @@ AIRRSchema = {
     'AlleleDescription': Schema('AlleleDescription'),
     'GenotypeSet': Schema('GenotypeSet'),
     'Genotype': Schema('Genotype'),
+    'Cell': Schema('Cell'),
+    'Clone': Schema('Clone')
 }
 
+InfoSchema = AIRRSchema['Info']
+DataFileSchema = AIRRSchema['DataFile']
 AlignmentSchema = AIRRSchema['Alignment']
 RearrangementSchema = AIRRSchema['Rearrangement']
 RepertoireSchema = AIRRSchema['Repertoire']
 GermlineSetSchema = AIRRSchema['GermlineSet']
 GenotypeSetSchema = AIRRSchema['GenotypeSet']
+CellSchema = AIRRSchema['Cell']
+CloneSchema = AIRRSchema['Clone']
+

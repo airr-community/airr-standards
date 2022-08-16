@@ -66,11 +66,38 @@ class TestInferface(unittest.TestCase):
                 rep = airr.repertoire_template()
             airr.write_airr(self.output_blank, {'Repertoire': rep}, validate=False, debug=True)
             # rep = airr.schema.RepertoireSchema.template()
-            result = airr.schema.RepertoireSchema.validate_object(rep)
+            # result = airr.schema.RepertoireSchema.validate_object(rep)
             # self.assertTrue(result, 'repertoire_template(): repertoire template failed validation')
         except:
             # self.assertTrue(False, 'repertoire_template(): repertoire template failed validation')
             pass
+
+    # @unittest.skip('-> schema.template(): skipped\n')
+    def test_schema_template(self):
+        # Repertoire template
+        try:
+            data = airr.schema.RepertoireSchema.template()
+            valid = airr.schema.RepertoireSchema.validate_object(data)
+            # airr.write_airr(self.output_blank, {'Repertoire': data}, validate=False, debug=True)
+            self.assertTrue(valid, 'Schema.template("Repertoire"): repertoire template failed validation')
+        except:
+            self.assertTrue(False, 'Schema.template("Repertoire"): repertoire template failed validation')
+
+        # GermlineSet template
+        try:
+            data = airr.schema.GermlineSetSchema.template()
+            valid = airr.schema.GermlineSetSchema.validate_object(data)
+            self.assertTrue(valid, 'Schema.template("GermlineSet"): repertoire template failed validation')
+        except:
+            self.assertTrue(False, 'Schema.template("GermlineSet"): repertoire template failed validation')
+
+         # GenotypeSet template
+        try:
+            data = airr.schema.GenotypeSetSchema.template()
+            valid = airr.schema.GenotypeSetSchema.validate_object(data)
+            self.assertTrue(valid, 'Schema.template("GenotypeSet"): repertoire template failed validation')
+        except:
+            self.assertTrue(False, 'Schema.template("GenotypeSet"): repertoire template failed validation')
 
     # @unittest.skip('-> validate(): skipped\n')
     def test_validate_rearrangement(self):
