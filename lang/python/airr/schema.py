@@ -543,6 +543,3 @@ RearrangementSchema = AIRRSchema['Rearrangement']
 RepertoireSchema = AIRRSchema['Repertoire']
 GermlineSetSchema = AIRRSchema['GermlineSet']
 GenotypeSetSchema = AIRRSchema['GenotypeSet']
-CellSchema = AIRRSchema['Cell']
-CloneSchema = AIRRSchema['Clone']
-

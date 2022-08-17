@@ -256,6 +256,16 @@ load_schema <- function(definition) {
 #' @name ExampleData
 NULL
 
+#' @details   \code{InfoSchema}: AIRR Info \code{Schema}.
+#' @rdname    Schema-class
+#' @export
+InfoSchema <- load_schema("InfoObject")
+
+#' @details   \code{DataFileSchema}: AIRR DataFile \code{Schema}.
+#' @rdname    Schema-class
+#' @export
+DataFileSchema <- load_schema("DataFile")
+
 #' @details   \code{AlignmentSchema}: AIRR Alignment \code{Schema}.
 #' @rdname    Schema-class
 #' @export
@@ -285,7 +295,9 @@ GenotypeSetSchema <- load_schema("GenotypeSet")
 #'                               AIRR \code{Schema} objects.
 #' @rdname    Schema-class
 #' @export
-AIRRSchema <- list("Alignment"=load_schema("Alignment"),
+AIRRSchema <- list("Info"=load_schema("InfoObject"),
+                   "DataFile"=load_schema("DataFile"),
+                   "Alignment"=load_schema("Alignment"),
                    "Rearrangement"=load_schema("Rearrangement"),
                    "Repertoire"=load_schema("Repertoire"),
                    "Ontology"=load_schema("Ontology"),
@@ -306,4 +318,6 @@ AIRRSchema <- list("Alignment"=load_schema("Alignment"),
                    "SequenceDelineationV"=load_schema("SequenceDelineationV"),
                    "AlleleDescription"=load_schema("AlleleDescription"),
                    "GenotypeSet"=load_schema("GenotypeSet"),
-                   "Genotype"=load_schema("Genotype"))
+                   "Genotype"=load_schema("Genotype"),
+                   "Cell"=load_schema("Cell"),
+                   "Clone"=load_schema("Clone"))

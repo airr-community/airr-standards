@@ -2,8 +2,10 @@
 
 export(AIRRSchema)
 export(AlignmentSchema)
+export(DataFileSchema)
 export(GenotypeSetSchema)
 export(GermlineSetSchema)
+export(InfoSchema)
 export(RearrangementSchema)
 export(RepertoireSchema)
 export(load_schema)
