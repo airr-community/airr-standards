@@ -83,6 +83,9 @@ Study Schema:
    ``contains_ig``, ``contains_tr``, ``contains_paired_chain``,
    ``contains_schema_rearrangement``, ``contains_schema_clone``,
    ``contains_schema_cell``, ``contains_schema_receptor``
+3. Added the optional fields ``adc_publish_date`` and ``adc_update_data`` that
+   timestamp AIRR Data Commons initial publication and last update,
+   respectively.
 
 Subject Schema:
 
