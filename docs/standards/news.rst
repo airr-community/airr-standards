@@ -13,14 +13,12 @@ New General Purpose Schema:
 1. Introduced the experimental ``DataFile`` object, which defines a JSON file
    holding Repertoire metadata, data processing analysis objects, or any object
    in the AIRR Data Model.
-2. Introduced the experimental ``RepertoireGroup`` Schema for describing sets
+2. Introduced the experimental ``RepertoireSet`` Schema for describing sets
    of repertoires to be analyzed together.
-3. Introduced the ``InfoObject`` object, which provides information about
-   data and ADC API responses.
-4. Introduced the ``TimePoint`` Schema for defining the time point at which an
-   observation or other action was performed.
-5. Introduced the ``Acknowledgement`` Schema to define contributors to a study,
-   analysis, or data resource.
+3. Introduced the experimental ``InfoObject`` Schema, which provides information
+   about data and ADC API responses.
+4. Introduced the experimental ``TimePoint`` Schema for defining the time point
+   at which an observation or other action was performed.
 
 New Germline and Genotype Schema:
 
@@ -44,6 +42,8 @@ VDJ germline reference sequences, VDJ genotypes, and MHC genotypes:
    subject.
 9. ``MHCGenotype``: Details the genotype of major histocompatibility complex
    (MHC) class I, class II and non-classical loci.
+10. ``Acknowledgement``: Defines contributors to the germline or genotype
+    description.
 
 New Single-cell Schema:
 
