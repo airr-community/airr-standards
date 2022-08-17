@@ -406,13 +406,13 @@ DataFile:
                 $ref: '#/Clone'
             x-airr:
                 nullable: false
-        # Tree:
-        #     type: array
-        #     description: List of trees
-        #     items:
-        #         $ref: '#/Tree'
-        #     x-airr:
-        #         nullable: false
+        Tree:
+            type: array
+            description: List of trees
+            items:
+                $ref: '#/Tree'
+            x-airr:
+                nullable: false
 
 
 # AIRR Info object, should be similar to openapi
