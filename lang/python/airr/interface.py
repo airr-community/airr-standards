@@ -221,7 +221,7 @@ def validate_rearrangement(filename, debug=False):
 
 #### AIRR Data Model ####
 
-def read_airr(filename, format=None, validate=False, debug=False):
+def read_airr(filename, format=None, validate=False, adf=True, debug=False):
     """
     Load an AIRR Data file
 
@@ -231,6 +231,9 @@ def read_airr(filename, format=None, validate=False, debug=False):
                     the file format will be automatically detected from the file extension.
       validate (bool): whether to validate data as it is read, raising a ValidationError
                        exception in the event of a validation failure.
+      adf (bool): If True only validate objects defined in the AIRR DataFile schema.
+                  If False, attempt validation of all top-level objects.
+                  Ignored if validate=False.
       debug (bool): debug flag. If True print debugging information to standard error.
 
     Returns:
@@ -254,7 +257,7 @@ def read_airr(filename, format=None, validate=False, debug=False):
     if validate:
         if debug:  sys.stderr.write('Validating: %s\n' % filename)
         try:
-            valid = validate_airr(data, debug=debug)
+            valid = validate_airr(data, adf=adf, debug=debug)
         except ValidationError as e:
             if debug:  sys.stderr.write('%s failed validation\n' % filename)
             raise ValidationError(e)
@@ -403,9 +406,7 @@ def repertoire_template():
     warn('repertoire_template is deprecated and will be removed in a future release.\nUse RepertoireSchema.template() instead.\n',
          DeprecationWarning, stacklevel=2)
 
-    # TODO: I suppose we should dynamically create this from the schema versus loading a template.
-    # Load blank template
-    # f = resource_filename(__name__, 'specs/blank.airr.yaml')
+    # Build template
     object = RepertoireSchema.template()
 
     return object
