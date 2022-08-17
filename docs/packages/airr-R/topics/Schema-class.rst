@@ -26,6 +26,14 @@ Usage
 
 ::
 
+   InfoSchema
+
+::
+
+   DataFileSchema
+
+::
+
    AlignmentSchema
 
 ::
@@ -73,12 +81,20 @@ An object of class ``Schema`` of length 1.
 
 An object of class ``Schema`` of length 1.
 
-An object of class ``list`` of length 22.
+An object of class ``Schema`` of length 1.
+
+An object of class ``Schema`` of length 1.
+
+An object of class ``list`` of length 26.
 
 Details
 ~~~~~~~
 
 The following predefined Schema objects are defined:
+
+``InfoSchema``: AIRR Info ``Schema``.
+
+``DataFileSchema``: AIRR DataFile ``Schema``.
 
 ``AlignmentSchema``: AIRR Alignment ``Schema``.
 

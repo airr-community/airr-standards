@@ -132,6 +132,21 @@ x3 <- file.path(tempdir(), "airr_germline_out.json")
 write_airr(germline, x3, format="json")
 ```
 
+## Validating AIRR data structures
+
+The `airr` package contains the function `validate_rearrangement` to validate
+tabular (`data.frame`) Rearrangement records and AIRR Data Model objects, respectively.
+
+```{r}
+# Validate Rearrangement data.frame
+validate_rearrangement(rearrangement)
+
+# Validate an AIRR Data Model
+validate_airr(repertoire)
+
+# Validate AIRR Data Model records individual 
+validate_airr(germline, each=TRUE)
+```
 
 ## References
 

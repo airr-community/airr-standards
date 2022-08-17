@@ -15,7 +15,7 @@ Usage
 
 ::
 
-   validate_airr(data, each = FALSE)
+   validate_airr(data, adf = TRUE, each = FALSE)
 
 Arguments
 ~~~~~~~~~
@@ -23,6 +23,9 @@ Arguments
 data
    ``list`` containing records of an AIRR Data Model objected imported
    from a YAML or JSON representation.
+adf
+   if ``TRUE`` validate only AIRR DataFile defined objects. If ``FALSE``
+   attempt validation of all objects in ``data``.
 each
    if ``TRUE`` return a logical vector with results for each object in
    ``data`` instead of a single ``TRUE`` or ``FALSE`` value.

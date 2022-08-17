@@ -191,6 +191,24 @@ test_that("read_airr with format=yaml loads a Repertoire", {
     expect_true(is.list(rep_1))
 })
 
+test_that("write_airr writes a yaml Repertoire", {
+    geno <- read_airr(good_repertoire_file, validate=T)
+    
+    tmp_file <- tempfile(fileext=".yaml")
+    write_airr(geno, tmp_file, validate=T, adf=F)
+    geno_tmp <- read_airr(tmp_file, validate=T, adf=F)
+    expect_identical(geno, geno_tmp)
+})
+
+test_that("write_airr writes a json Repertoire", {
+    geno <- read_airr(good_repertoire_file, validate=T)
+    
+    tmp_file <- tempfile(fileext=".json")
+    write_airr(geno, tmp_file, validate=T, adf=F)
+    geno_tmp <- read_airr(tmp_file, validate=T, adf=F)
+    expect_identical(geno, geno_tmp)
+})
+
 context("Repertoire I/O - bad data")
 
 test_that("validate_airr with bad data returns an error", {
@@ -234,7 +252,7 @@ test_that("validate_airr with bad data returns an error", {
 
 #### Combined Data ####
 
-context("Combined I/O - good data")
+context("Combined I/O")
 
 test_that("read_airr loads a combined yaml file", {
     repr <- read_airr(good_combined_yaml, validate=T)
@@ -252,4 +270,101 @@ test_that("read_airr json and yaml load identical objects", {
     repr_yaml <- read_airr(good_combined_yaml, validate=T)
     repr_json <- read_airr(good_combined_json, validate=T)
     expect_identical(repr_yaml, repr_json)
+})
+
+test_that("write_airr writes a combined yaml file", {
+    repr <- read_airr(good_combined_yaml, validate=T)
+    
+    tmp_file <- tempfile(fileext=".yaml")
+    write_airr(repr, tmp_file, validate=T, adf=F)
+    repr_tmp <- read_airr(tmp_file, validate=T, adf=F)
+    expect_identical(repr, repr_tmp)
+})
+
+test_that("write_airr writes a combined json file", {
+    repr <- read_airr(good_combined_json, validate=T)
+    
+    tmp_file <- tempfile(fileext=".json")
+    write_airr(repr, tmp_file, validate=T, adf=F)
+    repr_tmp <- read_airr(tmp_file, validate=T, adf=F)
+    expect_identical(repr, repr_tmp)
+})
+
+test_that("write_airr json and yaml writes identical objects", {
+    repr <- read_airr(good_combined_yaml, validate=T)
+    
+    tmp_yaml <- tempfile(fileext=".yaml")
+    write_airr(repr, tmp_yaml, validate=T)
+    repr_yaml <- read_airr(tmp_yaml, validate=T)
+    
+    tmp_json <- tempfile(fileext=".json")
+    write_airr(repr, tmp_json, validate=T)
+    repr_json <- read_airr(tmp_json, validate=T)
+    
+    expect_identical(repr_yaml, repr_json)
+})
+
+#### DataFile ####
+
+context("DataFile")
+
+test_that("read_airr works with DataFile", {
+    rep1 <- read_airr(good_combined_yaml, validate=T, adf=F)
+    rep2 <- read_airr(good_combined_yaml, validate=T, adf=T)
+    expect_identical(rep1, rep2)
+})
+
+test_that("validate_airr works with DataFile", {
+    rep <- read_airr(good_combined_yaml, validate=F, adf=F)
+    rep[["Nonsense"]] <- list(list(id="id", data="data"))
+    expect_true(expect_warning(validate_airr(rep, adf=T),
+                               "Skipping validation of non-DataFile object: Nonsense"))
+    expect_false(expect_warning(validate_airr(rep, adf=F),
+                                "Unrecognized schema: Nonsense"))
+})
+
+test_that("write_airr yaml works with DataFile", {
+    # Test data
+    repr <- read_airr(good_combined_yaml, validate=F, adf=F)
+    repr_extra <- repr
+    repr_extra[["Nonsense"]] <- list(list(id="id", data="data"))
+
+    # Write without DataFile constraint
+    tmp_file <- tempfile(fileext=".yaml")
+    expect_warning(write_airr(repr_extra, tmp_file, validate=T, adf=F),
+                   "Unrecognized schema: Nonsense")
+    repr_tmp <- expect_warning(read_airr(tmp_file, validate=T, adf=T),
+                               "Skipping validation of non-DataFile object: Nonsense")
+    expect_true("Nonsense" %in% names(repr_tmp))
+    expect_identical(repr_extra, repr_tmp)
+    
+    # Write with DataFile constraint
+    expect_warning(write_airr(repr_extra, tmp_file, validate=T, adf=T),
+                   "Skipping validation of non-DataFile object: Nonsense")
+    repr_tmp <- read_airr(tmp_file, validate=T, adf=T)
+    expect_false("Nonsense" %in% names(repr_tmp))
+    expect_identical(repr, repr_tmp)
+})
+
+test_that("write_airr json works with DataFile", {
+    # Test data
+    repr <- read_airr(good_combined_json, validate=F, adf=F)
+    repr_extra <- repr
+    repr_extra[["Nonsense"]] <- list(list(id="id", data="data"))
+    
+    # Write without DataFile constraint
+    tmp_file <- tempfile(fileext=".json")
+    expect_warning(write_airr(repr_extra, tmp_file, validate=T, adf=F),
+                   "Unrecognized schema: Nonsense")
+    repr_tmp <- expect_warning(read_airr(tmp_file, validate=T, adf=T),
+                               "Skipping validation of non-DataFile object: Nonsense")
+    expect_true("Nonsense" %in% names(repr_tmp))
+    expect_identical(repr_extra, repr_tmp)
+    
+    # Write with DataFile constraint
+    expect_warning(write_airr(repr_extra, tmp_file, validate=T, adf=T),
+                   "Skipping validation of non-DataFile object: Nonsense")
+    repr_tmp <- read_airr(tmp_file, validate=T, adf=T)
+    expect_false("Nonsense" %in% names(repr_tmp))
+    expect_identical(repr, repr_tmp)
 })

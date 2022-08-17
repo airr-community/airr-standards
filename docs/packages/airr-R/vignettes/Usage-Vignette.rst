@@ -156,30 +156,29 @@ from either a YAML or JSON formatted file into a nested list.
 ::
 
    ## List of 2
-   ##  $ GermlineSet:List of 17
-   ##   ..$ germline_set_id      : chr "OGRDB:G00007"
-   ##   ..$ author               : chr "William Lees"
-   ##   ..$ lab_name             : chr ""
-   ##   ..$ lab_address          : chr "Birkbeck College, University of London, Malet Street, London"
-   ##   ..$ acknowledgements     : list()
-   ##   ..$ release_version      : int 1
-   ##   ..$ release_description  : chr ""
-   ##   ..$ release_date         : chr "2021-11-24"
-   ##   ..$ germline_set_name    : chr "CAST IGH"
-   ##   ..$ germline_set_ref     : chr "OGRDB:G00007.1"
-   ##   ..$ pub_ids              : chr ""
-   ##   ..$ species              : chr "Mouse"
-   ##   ..$ species_subgroup     : chr "CAST_EiJ"
-   ##   ..$ species_subgroup_type: chr "strain"
-   ##   ..$ locus                : chr "IGH"
-   ##   ..$ allele_descriptions  :List of 2
-   ##   .. ..$ :List of 39
-   ##   .. ..$ :List of 39
-   ##   ..$ notes                : chr ""
-   ##  $ GenotypeSet:List of 2
-   ##   ..$ receptor_genotype_set_id: chr "1"
-   ##   ..$ genotype_class_list     :List of 1
-   ##   .. ..$ :List of 6
+   ##  $ GermlineSet:List of 1
+   ##   ..$ :List of 17
+   ##   .. ..$ germline_set_id      : chr "OGRDB:G00007"
+   ##   .. ..$ author               : chr "William Lees"
+   ##   .. ..$ lab_name             : chr ""
+   ##   .. ..$ lab_address          : chr "Birkbeck College, University of London, Malet Street, London"
+   ##   .. ..$ acknowledgements     : list()
+   ##   .. ..$ release_version      : int 1
+   ##   .. ..$ release_description  : chr ""
+   ##   .. ..$ release_date         : chr "2021-11-24"
+   ##   .. ..$ germline_set_name    : chr "CAST IGH"
+   ##   .. ..$ germline_set_ref     : chr "OGRDB:G00007.1"
+   ##   .. ..$ pub_ids              : chr ""
+   ##   .. ..$ species              :List of 2
+   ##   .. ..$ species_subgroup     : chr "CAST_EiJ"
+   ##   .. ..$ species_subgroup_type: chr "strain"
+   ##   .. ..$ locus                : chr "IGH"
+   ##   .. ..$ allele_descriptions  :List of 2
+   ##   .. ..$ curation             : NULL
+   ##  $ GenotypeSet:List of 1
+   ##   ..$ :List of 2
+   ##   .. ..$ receptor_genotype_set_id: chr "1"
+   ##   .. ..$ genotype_class_list     :List of 1
 
 Writing AIRR formatted files
 ----------------------------
@@ -208,6 +207,41 @@ AIRR Data Model records can be written to either YAML or JSON using the
 
    x3 <- file.path(tempdir(), "airr_germline_out.json")
    write_airr(germline, x3, format="json")
+
+Validating AIRR data structures
+-------------------------------
+
+The ``airr`` package contains the function ``validate_rearrangement`` to
+validate tabular (``data.frame``) Rearrangement records and AIRR Data
+Model objects, respectively.
+
+.. code:: r
+
+   # Validate Rearrangement data.frame
+   validate_rearrangement(rearrangement)
+
+::
+
+   ## [1] TRUE
+
+.. code:: r
+
+   # Validate an AIRR Data Model
+   validate_airr(repertoire)
+
+::
+
+   ## [1] TRUE
+
+.. code:: r
+
+   # Validate AIRR Data Model records individual 
+   validate_airr(germline, each=TRUE)
+
+::
+
+   ## GenotypeSet GermlineSet 
+   ##        TRUE        TRUE
 
 References
 ----------

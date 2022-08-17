@@ -14,7 +14,13 @@ Usage
 
 ::
 
-   write_airr(data, file, format = c("auto", "yaml", "json"), validate = TRUE)
+   write_airr(
+   data,
+   file,
+   format = c("auto", "yaml", "json"),
+   validate = TRUE,
+   adf = TRUE
+   )
 
 Arguments
 ~~~~~~~~~
@@ -29,6 +35,9 @@ format
    the ``file`` extension.
 validate
    run schema validation prior to write if ``TRUE``.
+adf
+   if ``TRUE`` validate and write only AIRR DataFile defined objects. If
+   ``FALSE`` attempt validation and write of all objects in ``data``.
 
 Examples
 ~~~~~~~~

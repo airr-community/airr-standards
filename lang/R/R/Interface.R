@@ -464,8 +464,8 @@ write_airr_json <- function(data, file, validate=TRUE, adf=TRUE) {
     }
     
     # Write
-    write(jsonlite::toJSON(data), file)
-
+    json <- jsonlite::toJSON(data, auto_unbox=TRUE, null="null", na="null")
+    write(json, file)
 }
 
 
@@ -606,15 +606,27 @@ validate_airr <- function(data, adf=TRUE, each=FALSE) {
 
         # Check for non-DataFile objects
         if (adf && !(n %in% names(DataFileSchema@properties))) { 
-            warning('Skipping validation of non-DataFile object ', n)
+            warning('Skipping validation of non-DataFile object: ', n)
             next 
         }
         
         # Load schema
-        schema <- if (n %in% names(AIRRSchema)) { AIRRSchema[[n]] } else { load_schema(n) }
+        if (n %in% names(AIRRSchema)) { 
+            schema <- AIRRSchema[[n]] 
+        } else { 
+            schema <- tryCatch(load_schema(n), error=function(e) NULL)
+        }
         
-        # Recursively validate all entries
-        valid <- sapply(entry, validate_entry, schema=schema)
+        # Fail invalid schema
+        if (is.null(schema)) {
+            warning('Unrecognized schema: ', n)
+            valid <- FALSE
+        } else {
+            # Recursively validate all entries
+            valid <- sapply(entry, validate_entry, schema=schema)
+        }
+        
+        # Store check result
         valid_sum <- append(setNames(all(valid), n), valid_sum)
     }
     

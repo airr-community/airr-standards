@@ -12,9 +12,8 @@ Dependencies
 ------------
 
 | **Depends:** FALSE
-| **Imports:** jsonlite, methods, readr, stats, stringi, tibble, tools,
-  yaml
-| **Suggests:** knitr, rmarkdown, testthat
+| **Imports:** jsonlite, methods, readr, stats, stringi, tools, yaml
+| **Suggests:** knitr, rmarkdown, tibble, testthat
 
 Authors
 -------
