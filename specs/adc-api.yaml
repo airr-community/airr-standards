@@ -95,36 +95,6 @@ definitions:
       Facet:
         $ref: '#/definitions/facet_list'
 
-  # list of study extension fields
-  study_extension:
-    description: The extended Study object with additional query fields for the ADC.
-    allOf:
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Study'
-      - type: object
-        properties:
-          adc_publish_date:
-            type: string
-            format: date-time
-            description: >
-              Date the study was first published in the AIRR Data Commons.
-            title: ADC Publish Date
-            example: "2021-02-02"
-            x-airr:
-              nullable: true
-              adc-query-support: true
-              name: ADC Publish Date
-          adc_update_date:
-            type: string
-            format: date-time
-            description: >
-              Date the study data was updated in the AIRR Data Commons.
-            title: ADC Update Date
-            example: "2021-02-02"
-            x-airr:
-              nullable: true
-              adc-query-support: true
-              name: ADC Update Date
-
   # list of rearrangement extension fields
   rearrangement_extension:
     description: The extended Rearrangement object with additional query fields for the ADC.

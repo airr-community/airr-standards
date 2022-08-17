@@ -112,36 +112,6 @@ components:
       items:
         $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Repertoire'
 
-    # list of study extension fields
-    study_extension:
-      description: The extended Study object with additional query fields for the ADC.
-      allOf:
-        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Study'
-        - type: object
-          properties:
-            adc_publish_date:
-              type: string
-              format: date-time
-              nullable: true
-              description: >
-                Date the study was first published in the AIRR Data Commons.
-              title: ADC Publish Date
-              example: "2021-02-02"
-              x-airr:
-                adc-query-support: true
-                name: ADC Publish Date
-            adc_update_date:
-              type: string
-              format: date-time
-              nullable: true
-              description: >
-                Date the study data was updated in the AIRR Data Commons.
-              title: ADC Update Date
-              example: "2021-02-02"
-              x-airr:
-                adc-query-support: true
-                name: ADC Update Date
-
     # list of facets
     facet_list:
       type: array
