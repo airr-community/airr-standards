@@ -82,6 +82,7 @@ def validate_airr_cmd(airr_files, debug=True):
     """
     valid = []
     for f in airr_files:
+        if debug: sys.stderr.write('Validating: %s\n' % f)
         try:
             data = airr.interface.read_airr(f, validate=False, debug=debug)
             v = airr.interface.validate_airr(data, debug=debug)
