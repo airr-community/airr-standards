@@ -157,8 +157,8 @@ the MiAIRR information, it complicates data entry and write access to
 the information because updates need to be propagated to all of the
 duplicate records. Therefore, ``Repertoire`` was designed to be easily
 transformed into a normalized form, representing the full hierarchy of
-the objects, by utilizing the `study_id`, `subject_id`, `sample_id`, and
-`sample_processing_id` fields to uniquely identify the ``Study``, ``Subject``, ``Sample``, and
+the objects, by utilizing the ``study_id``, ``subject_id``, ``sample_id``, and
+``sample_processing_id`` fields to uniquely identify the ``Study``, ``Subject``, ``Sample``, and
 ``SampleProcessing`` objects across multiple repertoires. The exception is that
 ``CellProcessing`` and ``NucleicAcidProcessing`` do not have their own
 unique identifiers, so they are included within ``SampleProcessing``.
