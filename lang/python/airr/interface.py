@@ -4,16 +4,17 @@ Interface functions for file operations
 from __future__ import absolute_import
 
 # System imports
+import gzip
+import json
 import os
 import sys
 import pandas as pd
-from collections import OrderedDict
-from itertools import chain
-from pkg_resources import resource_filename
-import json
 import yaml
 import yamlordereddictloader
+from collections import OrderedDict
+from itertools import chain
 from io import open
+from pkg_resources import resource_filename
 from warnings import warn
 
 if (sys.version_info > (3, 0)):
@@ -41,8 +42,12 @@ def read_rearrangement(filename, validate=False, debug=False):
     Returns:
       airr.io.RearrangementReader: iterable reader class.
     """
-
-    return RearrangementReader(open(filename, 'r'), validate=validate, debug=debug)
+    if filename.endswith(".gz"):
+        handle = gzip.open(filename, 'r')
+    else:
+        handle = open(filename, 'r')
+        
+    return RearrangementReader(handle, validate=validate, debug=debug)
 
 
 def create_rearrangement(filename, fields=None, debug=False):
