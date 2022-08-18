@@ -34,14 +34,15 @@ Valid definitions include:
 
 -  ``"Rearrangement"``
 -  ``"Alignment"``
+-  ``"Repertoire"``
 -  ``"Study"``
 -  ``"Subject"``
 -  ``"Diagnosis"``
 -  ``"Sample"``
--  ``"CellProcessing"``
--  ``"NucleicAcidProcessing"``
--  ``"RawSequenceData"``
--  ``"SoftwareProcessing"``
+-  ``"SampleProcessing"``
+-  ``"DataProcessing"``
+-  ``"GermlineSet"``
+-  ``"GenotypeSet"``
 
 Examples
 ~~~~~~~~
@@ -51,8 +52,8 @@ Examples
    # Load the Rearrangement definition
    schema <- load_schema("Rearrangement")
 
-   # Load the Alignment definition
-   schema <- load_schema("Alignment")
+   # Load the Repertoire definition
+   schema <- load_schema("Repertoire")
 
 See also
 ~~~~~~~~

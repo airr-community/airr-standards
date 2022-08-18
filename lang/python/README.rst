@@ -14,38 +14,56 @@ source code directory::
 Quick Start
 ------------------------------------------------------------------------------
 
-Reading AIRR Repertoire metadata files
+Deprecation Notice
+^^^^^^^^^^^^^^^^^^^^
+
+The ``load_repertoire``, ``write_repertoire``, and ``validate_repertoire`` functions
+have been deprecated for the new generic ``load_airr_data`, ``write_airr_data``, and
+``validate_airr_data`` functions. These new functions are backwards compatible with
+the Repertoire metadata format but also support the new AIRR objects such as GermlineSet,
+RepertoireGroup, GenotypeSet, Cell and Clone. This new format is called the AIRR Data File.
+Currently the AIRR Data File does not completely support Rearrangement, so users should
+continue using AIRR TSV files and its specific functions.
+
+Reading AIRR Data Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``airr`` package contains functions to read and write AIRR repertoire metadata
-files. The file format is either YAML or JSON, and the package provides a
+The ``airr`` package contains functions to read and write AIRR Data
+Files. The file format is either YAML or JSON, and the package provides a
 light wrapper over the standard parsers. The file needs a ``json``, ``yaml``, or ``yml``
-file extension so that the proper parser is utilized. All of the repertoires are loaded
+file extension so that the proper parser is utilized. All of the AIRR Objects are loaded
 into memory at once and no streaming interface is provided::
 
     import airr
 
-    # Load the repertoires
-    data = airr.load_repertoire('input.airr.json')
+    # Load the AIRR data
+    data = airr.load_airr_data('input.airr.json')
+    # loop through the repertoires
     for rep in data['Repertoire']:
         print(rep)
 
-Why are the repertoires in a list versus in a dictionary keyed by the ``repertoire_id``?
-There are two primary reasons for this. First, the ``repertoire_id`` might not have been
-assigned yet. Some systems might allow MiAIRR metadata to be entered but the
-``repertoire_id`` is assigned to that data later by another process. Without the
-``repertoire_id``, the data could not be stored in a dictionary. Secondly, the list allows
-the repertoire data to have a default ordering. If you know that the repertoires all have
-a unique ``repertoire_id`` then you can quickly create a dictionary object using a
-comprehension::
+Why are the AIRR objects, such as Repertoire, GermlineSet, and etc., in a list versus in a
+dictionary keyed by their identifier (e.g. ``repertoire_id``)? There are two primary reasons for
+this. First, the identifier might not have been assigned yet. Some systems might allow MiAIRR
+metadata to be entered but the identifier is assigned to that data later by another process. Without
+the identifier, the data could not be stored in a dictionary. Secondly, the list allows the data to
+have a default ordering. If you know that the data has a unique identifier then you can quickly
+create a dictionary object using a comprehension. For example, with repertoires::
 
     rep_dict = { obj['repertoire_id'] : obj for obj in data['Repertoire'] }
 
-Writing AIRR Repertoire metadata files
+another example with germline sets::
+
+    germline_dict = { obj['germline_set_id'] : obj for obj in data['GermlineSet'] }
+
+Writing AIRR Data Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Writing AIRR repertoire metadata is also a light wrapper over standard YAML or JSON
-parsers. The ``airr`` library provides a function to create a blank repertoire object
+Writing an AIRR Data File is also a light wrapper over standard YAML or JSON
+parsers. Multiple AIRR objects, such as Repertoire, GermlineSet, and etc., can be
+written together into the same file.
+
+The ``airr`` library provides a function to create a blank repertoire object
 in the appropriate format with all of the required fields. As with the load function,
 the complete list of repertoires are written at once, there is no streaming interface::
 
@@ -56,8 +74,8 @@ the complete list of repertoires are written at once, there is no streaming inte
     for i in range(5):
         reps.append(airr.repertoire_template())
 
-    # Write the repertoires
-    airr.write_repertoire('output.airr.json', reps)
+    # Write the AIRR Data
+    airr.write_airr_data('output.airr.json', reps)
 
 Reading AIRR Rearrangement TSV files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -122,8 +140,9 @@ keeping all of the existing fields from the original file. The
 Validating AIRR data files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``airr`` package can validate repertoire and rearrangement data files
-to insure that they contain all required fields and that the fields types
+The ``airr`` package can validate repertoire, rearrangement, germline set
+and genotype data files
+to ensure that they contain all required fields and that the fields types
 match the AIRR Schema. This can be done using the ``airr-tools`` command
 line program or the validate functions in the library can be called::
 
@@ -133,11 +152,18 @@ line program or the validate functions in the library can be called::
     # Validate a repertoire metadata file
     airr-tools validate repertoire -a input.airr.json
 
+    # Validate a germline set file
+    airr-tools validate germline_set -a germline_set.json
+
+    # Validate a genotype set file
+    airr-tools validate genotype_set -a genotype_set.json
+
 Combining Repertoire metadata and Rearrangement files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``airr`` package does not keep track of which repertoire metadata files
-are associated with rearrangement files, so users will need to handle those
+The ``airr`` package does not currently keep track of which AIRR Data Files
+are associated with rearrangement TSV files, though there is ongoing work to define
+a standardized manifest, so users will need to handle those
 associations themselves. However, in the data, the ``repertoire_id`` field forms
 the link. The typical usage is that a program is going to perform some
 computation on the rearrangements, and it needs access to the repertoire metadata
@@ -146,8 +172,8 @@ for doing that, in this case doing gender specific computation::
 
     import airr
 
-    # Load the repertoires
-    data = airr.load_repertoire('input.airr.json')
+    # Load AIRR data containing repertoires
+    data = airr.load_airr_data('input.airr.json')
 
     # Put repertoires in dictionary keyed by repertoire_id
     rep_dict = { obj['repertoire_id'] : obj for obj in data['Repertoire'] }
@@ -165,3 +191,4 @@ for doing that, in this case doing gender specific computation::
             # do female specific computation
         else:
             # do other specific computation
+

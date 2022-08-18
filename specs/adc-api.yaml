@@ -94,7 +94,7 @@ definitions:
         $ref: '#/definitions/repertoire_list'
       Facet:
         $ref: '#/definitions/facet_list'
-        
+
   # list of rearrangement extension fields
   rearrangement_extension:
     description: The extended Rearrangement object with additional query fields for the ADC.
@@ -190,6 +190,16 @@ definitions:
               adc-api-optional: false
               adc-query_support: true
               name: C gene
+          adc_annotation_cell_id:
+            type: string
+            description: >
+              The Cell ID used by the annotation tool to annotate the Cell during data processing.
+            example: AAACCTGAGCACCGCT-1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: Tool Cell ID
 
   # list of rearrangement annotations
   rearrangement_list:
@@ -335,6 +345,18 @@ definitions:
     description: The extended Cell object with additional query fields for the ADC.
     allOf:
       - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Cell'
+      - type: object
+        properties:
+          adc_annotation_cell_id:
+            type: string
+            description: >
+              The Cell ID used by the annotation tool to annotate the Cell during data processing.
+            example: AAACCTGAGCACCGCT-1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: Tool Cell ID
 
   # list of cell annotations
   cell_list:
@@ -374,7 +396,7 @@ definitions:
     properties:
       Info:
         $ref: '#/definitions/info_object'
-      Cell:
+      CellExpression:
         $ref: '#/definitions/expression_list'
   
   # The response object for the /expression endpoint
