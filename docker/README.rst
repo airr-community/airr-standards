@@ -19,8 +19,26 @@ Download
 ========
 
 ::
-
+    # this may be out of date, sorry, no automated builds
     docker pull airrc/airr-standards:latest
+
+    # the recent version
+    docker pull airrc/airr-standards:v1.4.0
+
+Build from Source
+=================
+
+More detailed instructions exist in the `Development Setup`_ of CONTRIBUTING.
+
+::
+    # get the source code
+    git clone https://github.com/airr-community/airr-standards.git
+
+    # build
+    cd airr-standards
+    docker build -f docker/Dockerfile -t airrc/airr-standards:latest .
+
+.. _`Development Setup`: https://github.com/airr-community/airr-standards/blob/master/CONTRIBUTING.rst#development-setup
 
 Singularity
 ===========
