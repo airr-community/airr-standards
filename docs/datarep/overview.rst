@@ -192,7 +192,7 @@ supported AIRR extension properties:
     * - ``nullable``
       - Assumes ``miairr``. False if the annotated property must not be
         ``NULL`` by the MiAIRR standard, otherwise True or null. This extension
-        is not valid for OpenAPI V3 as it has the ``nullable`` builtin property.
+        is not valid for OpenAPI V3 as the ``nullable`` builtin property should be used.
     * - ``set``
       - Assumes ``miairr``. The MiAIRR set for the annotated property.
     * - ``subset``
@@ -209,15 +209,14 @@ supported AIRR extension properties:
     * - ``identifier``
       - True if the field is an identifier required to link metadata and/or individual
         sequence records across objects in the complete AIRR Data Model and ADC API.
-            default: false
     * - ``adc-query-support``
       - True if an ADC API implementation must support queries on the field.
         If false, query support for the field in ADC API implementations is optional.
     * - ``deprecated``
       - True if the field has been deprecated from the schema.
-    * - deprecated-description:
+    * - ``deprecated-description``
       - Information regarding the deprecation of the field.
-    * - deprecated-replaced-by:
+    * - ``deprecated-replaced-by``
       - The deprecated field is replaced by this list of fields.
 
 
