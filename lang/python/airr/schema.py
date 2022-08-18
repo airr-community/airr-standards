@@ -6,6 +6,7 @@ AIRR Data Representation Schema
 import sys
 import yaml
 import yamlordereddictloader
+from collections import OrderedDict
 from pkg_resources import resource_stream
 
 
@@ -21,8 +22,9 @@ class Schema:
     AIRR schema definitions
 
     Attributes:
-      properties (collections.OrderedDict): field definitions.
+      definition: name of the schema definition.
       info (collections.OrderedDict): schema info.
+      properties (collections.OrderedDict): field definitions.
       required (list): list of mandatory fields.
       optional (list): list of non-required fields.
       false_values (list): accepted string values for False.
@@ -52,15 +54,19 @@ class Schema:
             raise KeyError('Info is an invalid schema definition name')
 
         # Load object definition
-        with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
-            spec = yaml.load(f, Loader=yamlordereddictloader.Loader)
+        if isinstance(definition, dict):       # on-the-fly definition of a nested object
+            self.definition = definition
+            spec = {'Info': []}
+        else:
+            with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
+                spec = yaml.load(f, Loader=yamlordereddictloader.Loader)
 
-        try:
-            self.definition = spec[definition]
-        except KeyError:
-            raise KeyError('Schema definition %s cannot be found in the specifications' % definition)
-        except:
-            raise
+            try:
+                self.definition = spec[definition]
+            except KeyError:
+                raise KeyError('Schema definition %s cannot be found in the specifications' % definition)
+            except:
+                raise
 
         try:
             self.info = spec['Info']
@@ -316,13 +322,12 @@ class Schema:
         Raises:
           airr.ValidationError: raised if object fails validation.
         """
-
         # object has to be a dictionary
-        if not isinstance(obj, dict):
+        if not hasattr(obj, 'items'):
             if context is None:
                 raise ValidationError('object is not a dictionary')
             else:
-                raise ValidationError('field %s is not a dictionary object' % context)
+                raise ValidationError('field "%s" is not a dictionary object' % context)
 
         # first warn about non-AIRR fields
         if nonairr:
@@ -354,20 +359,20 @@ class Schema:
             # check MiAIRR keys exist
             if xairr and xairr.get('miairr'):
                 if is_missing_key:
-                    raise ValidationError('MiAIRR field %s is missing' % full_field)
+                    raise ValidationError('MiAIRR field "%s" is missing' % full_field)
 
             # check if required field
             if f in self.required and is_missing_key:
-                raise ValidationError('Required field %s is missing' % full_field)
+                raise ValidationError('Required field "%s" is missing' % full_field)
 
             # check if identifier field
             if xairr and xairr.get('identifier'):
                 if is_missing_key:
                     if xairr.get('nullable'):
                         sys.stderr.write(
-                            'Warning: Nullable identifier field %s is missing.\n' % full_field)
+                            'Warning: Nullable identifier field "%s" is missing.\n' % full_field)
                     else:
-                        raise ValidationError('Not-nullable identifier field %s is missing' % full_field)
+                        raise ValidationError('Not-nullable identifier field "%s" is missing' % full_field)
 
             # check nullable requirements
             if is_null:
@@ -379,7 +384,7 @@ class Schema:
                     continue
                 else:
                     # nullable not allowed
-                    raise ValidationError('Non-nullable field %s is null or missing' % full_field)
+                    raise ValidationError('Non-nullable field "%s" is null or missing' % full_field)
 
             # if get to here, field should exist with non null value
 
@@ -389,16 +394,16 @@ class Schema:
                 # for referenced object, recursively call validate with object and schema
                 if spec.get('$ref') is not None:
                     schema_name = spec['$ref'].split('/')[-1]
-                    if CachedSchema.get(schema_name):
-                        schema = CachedSchema[schema_name]
+                    if AIRRSchema.get(schema_name):
+                        schema = AIRRSchema[schema_name]
                     else:
                         schema = Schema(schema_name)
                     schema.validate_object(obj[f], missing, nonairr, full_field)
                 else:
-                    raise ValidationError('Internal error: field %s in schema not handled by validation. File a bug report.' % full_field)
+                    raise ValidationError('Internal error: field "%s" in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'array':
                 if not isinstance(obj[f], list):
-                    raise ValidationError('field %s is not an array' % full_field)
+                    raise ValidationError('field "%s" is not an array' % full_field)
 
                 # for array, check each object in it
                 for row in obj[f]:
@@ -410,53 +415,101 @@ class Schema:
                         for s in spec['items']['allOf']:
                             if s.get('$ref') is not None:
                                 schema_name = s['$ref'].split('/')[-1]
-                                if CachedSchema.get(schema_name):
-                                    schema = CachedSchema[schema_name]
+                                if AIRRSchema.get(schema_name):
+                                    schema = AIRRSchema[schema_name]
                                 else:
                                     schema = Schema(schema_name)
                                 schema.validate_object(row, missing, False, full_field)
                     elif spec['items'].get('enum') is not None:
                         if row not in spec['items']['enum']:
-                            raise ValidationError('field %s has value "%s" not among possible enumeration values' % (full_field, row))
+                            raise ValidationError('field "%s" has value "%s" not among possible enumeration values' % (full_field, row))
                     elif spec['items'].get('type') == 'string':
                         if not isinstance(row, str):
-                            raise ValidationError('array field %s does not have string type: %s' % (full_field, row))
+                            raise ValidationError('array field "%s" does not have string type: %s' % (full_field, row))
                     elif spec['items'].get('type') == 'boolean':
                         if not isinstance(row, bool):
-                            raise ValidationError('array field %s does not have boolean type: %s' % (full_field, row))
+                            raise ValidationError('array field "%s" does not have boolean type: %s' % (full_field, row))
                     elif spec['items'].get('type') == 'integer':
                         if not isinstance(row, int):
-                            raise ValidationError('array field %s does not have integer type: %s' % (full_field, row))
+                            raise ValidationError('array field "%s" does not have integer type: %s' % (full_field, row))
                     elif spec['items'].get('type') == 'number':
                         if not isinstance(row, float) and not isinstance(row, int):
-                            raise ValidationError('array field %s does not have number type: %s' % (full_field, row))
+                            raise ValidationError('array field "%s" does not have number type: %s' % (full_field, row))
+                    elif spec['items'].get('type') == 'object':
+                        sub_schema = Schema({'properties': spec['items'].get('properties')})
+                        sub_schema.validate_object(row, missing, nonairr, context)
                     else:
-                        raise ValidationError('Internal error: array field %s in schema not handled by validation. File a bug report.' % full_field)
+                        raise ValidationError('Internal error: array field "%s" in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'object':
                 # right now all arrays of objects use $ref
-                raise ValidationError('Internal error: field %s in schema not handled by validation. File a bug report.' % full_field)
+                raise ValidationError('Internal error: field "%s" in schema not handled by validation. File a bug report.' % full_field)
             else:
                 # check basic types
                 if field_type == 'string':
                     if not isinstance(obj[f], str):
-                        raise ValidationError('Field %s does not have string type: %s' % (full_field, obj[f]))
+                        raise ValidationError('Field "%s" does not have string type: %s' % (full_field, obj[f]))
                 elif field_type == 'boolean':
                     if not isinstance(obj[f], bool):
-                        raise ValidationError('Field %s does not have boolean type: %s' % (full_field, obj[f]))
+                        raise ValidationError('Field "%s" does not have boolean type: %s' % (full_field, obj[f]))
                 elif field_type == 'integer':
                     if not isinstance(obj[f], int):
-                        raise ValidationError('Field %s does not have integer type: %s' % (full_field, obj[f]))
+                        raise ValidationError('Field "%s" does not have integer type: %s' % (full_field, obj[f]))
                 elif field_type == 'number':
                     if not isinstance(obj[f], float) and not isinstance(obj[f], int):
-                        raise ValidationError('Field %s does not have number type: %s' % (full_field, obj[f]))
+                        raise ValidationError('Field "%s" does not have number type: %s' % (full_field, obj[f]))
                 else:
-                    raise ValidationError('Internal error: Field %s with type %s in schema not handled by validation. File a bug report.' % (full_field, field_type))
+                    raise ValidationError('Internal error: Field "%s" with type %s in schema not handled by validation. File a bug report.' % (full_field, field_type))
 
         return True
 
+    def template(self):
+        """
+        Create an empty template object
+
+        Returns:
+          collections.OrderedDict: dictionary with all schema properties set as None or an empty list.
+        """
+        # Set defaults for each data type
+        type_default = {'boolean': False, 'integer': 0, 'number': 0.0, 'string': '', 'array':[]}
+
+        # Fetch schema template definition for a $ref string
+        def _reference(ref):
+            x = ref.split('/')[-1]
+            schema = AIRRSchema.get(x, Schema(x))
+            return(schema.template())
+
+        # Get default value
+        def _default(spec):
+            if 'nullable' in spec['x-airr'] and not spec['x-airr']['nullable']:
+                if 'enum' in spec:
+                    return spec['enum'][0]
+                else:
+                    return type_default.get(spec['type'], None)
+            else:
+                return None
+
+        # Populate empty object
+        object = OrderedDict()
+        for k, spec in self.properties.items():
+            if '$ref' in spec:
+                object[k] = _reference(spec['$ref'])
+            elif spec['type'] == 'array':
+                if '$ref' in spec['items']:
+                    object[k] = [_reference(spec['items']['$ref'])]
+                else:
+                    object[k] = []
+            elif 'x-airr' in spec:
+                object[k] = _default(spec)
+            else:
+                object[k] = None
+
+        return(object)
+
 
 # Preloaded schema
-CachedSchema = {
+AIRRSchema = {
+    'Info': Schema('InfoObject'),
+    'DataFile': Schema('DataFile'),
     'Alignment': Schema('Alignment'),
     'Rearrangement': Schema('Rearrangement'),
     'Repertoire': Schema('Repertoire'),
@@ -464,15 +517,29 @@ CachedSchema = {
     'Study': Schema('Study'),
     'Subject': Schema('Subject'),
     'Diagnosis': Schema('Diagnosis'),
+    'SampleProcessing': Schema('SampleProcessing'),
     'CellProcessing': Schema('CellProcessing'),
     'PCRTarget': Schema('PCRTarget'),
     'NucleicAcidProcessing': Schema('NucleicAcidProcessing'),
     'SequencingRun': Schema('SequencingRun'),
     'SequencingData': Schema('SequencingData'),
     'DataProcessing': Schema('DataProcessing'),
-    'SampleProcessing': Schema('SampleProcessing')
+    'GermlineSet': Schema('GermlineSet'),
+    'Acknowledgement': Schema('Acknowledgement'),
+    'RearrangedSequence': Schema('RearrangedSequence'),
+    'UnrearrangedSequence': Schema('UnrearrangedSequence'),
+    'SequenceDelineationV': Schema('SequenceDelineationV'),
+    'AlleleDescription': Schema('AlleleDescription'),
+    'GenotypeSet': Schema('GenotypeSet'),
+    'Genotype': Schema('Genotype'),
+    'Cell': Schema('Cell'),
+    'Clone': Schema('Clone')
 }
 
-AlignmentSchema = CachedSchema['Alignment']
-RearrangementSchema = CachedSchema['Rearrangement']
-RepertoireSchema = CachedSchema['Repertoire']
+InfoSchema = AIRRSchema['Info']
+DataFileSchema = AIRRSchema['DataFile']
+AlignmentSchema = AIRRSchema['Alignment']
+RearrangementSchema = AIRRSchema['Rearrangement']
+RepertoireSchema = AIRRSchema['Repertoire']
+GermlineSetSchema = AIRRSchema['GermlineSet']
+GenotypeSetSchema = AIRRSchema['GenotypeSet']

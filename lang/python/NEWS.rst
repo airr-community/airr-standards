@@ -4,7 +4,13 @@ Version 1.4.0:  In development
 1. Updated pandas requirement to 0.24.0 or higher.
 2. Added support for missing integer values (``NaN``) in ``load_rearrangement``
    by casting to the pandas ``Int64`` data type.
-
+3. Added support for arrays of objects
+4. Added support for GermlineSet and GenotypeSet and associated objects
+5. Added support for the AIRR Data File, which is a combined data format to hold
+   AIRR object of multiple types. It is backwards compatible with Repertoire metadata.
+6. Deprecated ``load_repertoire``. Use ``load_airr_data`` instead.
+7. Deprecated ``write_repertoire``. Use ``write_airr_data`` instead.
+8. Deprecated ``validate_repertoire``. Use ``validate_airr_data`` instead.
 
 Version 1.3.1:  October 13, 2020
 --------------------------------------------------------------------------------

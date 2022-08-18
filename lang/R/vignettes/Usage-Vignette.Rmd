@@ -3,17 +3,6 @@ title: 'AIRR Data Representation Reference Library Usage'
 author: "The AIRR Community"
 date: '`r Sys.Date()`'
 output:
-  pdf_document:
-    dev: pdf
-    fig_height: 4
-    fig_width: 7.5
-    highlight: pygments
-    toc: yes
-  md_document:
-    fig_height: 4
-    fig_width: 7.5
-    preserve_yaml: no
-    toc: yes
   html_document:
     standalone: true
     fig_height: 4
@@ -21,12 +10,23 @@ output:
     highlight: pygments
     theme: readable
     toc: yes 
+  md_document:
+    fig_height: 4
+    fig_width: 7.5
+    preserve_yaml: no
+    toc: yes
+  pdf_document:
+    dev: pdf
+    fig_height: 4
+    fig_width: 7.5
+    highlight: pygments
+    toc: yes
 geometry: margin=1in
 fontsize: 11pt
 vignette: >
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Usage Vignette}
   %\usepackage[utf8]{inputenc}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
 ## Introduction
@@ -45,7 +45,7 @@ machine-readable form. The `airr` R package provide read, write and validation o
 following the AIRR Data Representation schemas. This vignette provides a set of 
 simple use examples.
 
-### AIRR Data Representation Standards
+### AIRR Data Standards
 
 The AIRR Community's recommendations for a minimal set of metadata that should be 
 used to describe an AIRR-seq data set when published or deposited in a 
@@ -78,63 +78,75 @@ not be modified under the default setting of `base="1"`. If the input file is us
 positional fields may be converted to 1-based closed 
 intervals using the argument `base="0"`.
 
-### Reading rearrangements
-```{r read_rearrangement, message=FALSE}
+### Reading Rearrangements
+```{r}
+# Imports
 library(airr)
+library(tibble)
 
-example_data <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
-basename(example_data)
-airr_rearrangement <- read_rearrangement(example_data)
-class(airr_rearrangement)
-head(airr_rearrangement)
+# Read Rearrangement example file
+f1 <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+rearrangement <- read_rearrangement(f1)
+glimpse(rearrangement)
 ```
 
-### Reading repertoires 
+### Reading AIRR Data Models
 
-```{r read_repertoire }
-rep_file_good <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
-```
-
-Read a valid repertoire
-```{r}
-repertoire1 <- read_repertoire(rep_file_good)
-```
-
-Repertoires can also be read as JSON format
+AIRR Data Model records, such as Repertoire and GermlineSet, can be read from either a YAML 
+or JSON formatted file into a nested list.
 
 ```{r}
-rep_file_good_json <- system.file("extdata", "warning_repertoire.airr.json", package="airr")
+# Read Repertoire example file
+f2 <- system.file("extdata", "repertoire-example.yaml", package="airr")
+repertoire <- read_airr(f2)
+glimpse(repertoire)
+
+# Read GermlineSet example file
+f3 <- system.file("extdata", "germline-example.json", package="airr")
+germline <- read_airr(f3)
+glimpse(germline)
 ```
 
-```{r}
-repertoire2 <- read_repertoire(rep_file_good_json)
-```
 
 ## Writing AIRR formatted files
 
 The `airr` package contains the function `write_rearrangement` to write
 Rearrangement records to the AIRR TSV format.
 
-### Writing rearrangements
-```{r write_rearrangement}
-out_file <- file.path(tempdir(), "airr_out.tsv")
-write_rearrangement(airr_rearrangement, out_file)
-```
+### Writing Rearrangements
 
-### Writing repertoires
-
-Write a valid repertoire in yaml format
 ```{r}
-out_file1 <- file.path(tempdir(), "airr_repertoire1_out.yaml")
-write_repertoire(repertoire1, out_file1)
+x1 <- file.path(tempdir(), "airr_out.tsv")
+write_rearrangement(rearrangement, x1)
 ```
 
-Write a valid repertoire in json format
+### Writing AIRR Data Models
+
+AIRR Data Model records can be written to either YAML or JSON using the `write_airr` function.
+
 ```{r}
-out_file2 <- file.path(tempdir(), "airr_repertoire2_out.json")
-write_repertoire(repertoire2, out_file2)
+x2 <- file.path(tempdir(), "airr_repertoire_out.yaml")
+write_airr(repertoire, x2, format="yaml")
+
+x3 <- file.path(tempdir(), "airr_germline_out.json")
+write_airr(germline, x3, format="json")
 ```
 
+## Validating AIRR data structures
+
+The `airr` package contains the function `validate_rearrangement` to validate
+tabular (`data.frame`) Rearrangement records and AIRR Data Model objects, respectively.
+
+```{r}
+# Validate Rearrangement data.frame
+validate_rearrangement(rearrangement)
+
+# Validate an AIRR Data Model
+validate_airr(repertoire)
+
+# Validate AIRR Data Model records individual 
+validate_airr(germline, each=TRUE)
+```
 
 ## References
 

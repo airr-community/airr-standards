@@ -20,10 +20,12 @@ AIRR tools and utilities
 # System imports
 import argparse
 import sys
+from warnings import warn
 
 # Local imports
 from airr import __version__
 import airr.interface
+# import airr.germline_interface
 
 # internal wrapper function before calling merge interface method
 def merge_cmd(out_file, airr_files, drop=False, debug=False):
@@ -43,7 +45,7 @@ def merge_cmd(out_file, airr_files, drop=False, debug=False):
     return airr.interface.merge_rearrangement(out_file, airr_files, drop=drop, debug=debug)
 
 # internal wrapper function before calling validate interface method
-def validate_cmd(airr_files, debug=True):
+def validate_rearrangement_cmd(airr_files, debug=True):
     """
     Validates one or more AIRR rearrangements files
 
@@ -61,6 +63,27 @@ def validate_cmd(airr_files, debug=True):
         sys.stderr.write('Error occurred while validating AIRR rearrangement files: ' + str(err) + '\n')
         return False
 
+def validate_airr_cmd(airr_files, debug=True):
+    """
+    Validates one or more AIRR Data Model files
+
+    Arguments:
+      airr_files (list): list of input files to validate.
+      debug (bool): debug flag. If True print debugging information to standard error.
+
+    Returns:
+      boolean: True if all files passed validation, otherwise False
+    """
+    try:
+        airr_data = [airr.interface.read_airr(f, validate=False, debug=debug) for f in airr_files]
+        valid = [airr.interface.validate_airr(x, debug=debug) for x in airr_data]
+        return all(valid)
+    except Exception as err:
+        sys.stderr.write('Error occurred while validating AIRR Data Model files: ' + str(err) + '\n')
+        return False
+
+#### Deprecated ####
+
 # internal wrapper function before calling validate interface method
 def validate_repertoire_cmd(airr_files, debug=True):
     """
@@ -73,12 +96,17 @@ def validate_repertoire_cmd(airr_files, debug=True):
     Returns:
       boolean: True if all files passed validation, otherwise False
     """
+    # Deprecation
+    warn('validate_repertoire_cmd is deprecated and will be removed in a future release.\nUse =validate_airr_cmd instead.\n',
+         DeprecationWarning, stacklevel=2)
+
     try:
         valid = [airr.interface.validate_repertoire(f, debug=debug) for f in airr_files]
         return all(valid)
     except Exception as err:
         sys.stderr.write('Error occurred while validating AIRR repertoire metadata files: ' + str(err) + '\n')
         return False
+
 
 def define_args():
     """
@@ -137,20 +165,10 @@ def define_args():
     # Subparser to validate files
     parser_validate = subparsers.add_parser('validate', parents=[common_parser],
                                             add_help=False,
-                                            help='Validate AIRR files.',
-                                            description='Validate AIRR files.')
+                                            help='Validate files for AIRR Standards compliance.',
+                                            description='Validate files for AIRR Standards compliance.')
     validate_subparser = parser_validate.add_subparsers(title='subcommands', metavar='',
                                        help='Database operation')
-
-    # Subparser to validate repertoire files
-    parser_validate = validate_subparser.add_parser('repertoire', parents=[common_parser],
-                                            add_help=False,
-                                            help='Validate AIRR repertoire metadata files.',
-                                            description='Validate AIRR repertoire metadata files.')
-    group_validate = parser_validate.add_argument_group('validate arguments')
-    group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
-                                help='A list of AIRR repertoire metadata files.')
-    parser_validate.set_defaults(func=validate_repertoire_cmd)
 
     # Subparser to validate rearrangement files
     parser_validate = validate_subparser.add_parser('rearrangement', parents=[common_parser],
@@ -160,7 +178,27 @@ def define_args():
     group_validate = parser_validate.add_argument_group('validate arguments')
     group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
                                 help='A list of AIRR rearrangement files.')
-    parser_validate.set_defaults(func=validate_cmd)
+    parser_validate.set_defaults(func=validate_rearrangement_cmd)
+
+    # Subparser to validate AIRR Data Model files
+    parser_validate = validate_subparser.add_parser('airr', parents=[common_parser],
+                                            add_help=False,
+                                            help='Validate AIRR Data Model files.',
+                                            description='Validate AIRR Data Model files.')
+    group_validate = parser_validate.add_argument_group('validate arguments')
+    group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
+                                help='A list of AIRR Data Model files.')
+    parser_validate.set_defaults(func=validate_airr_cmd)
+
+    # Subparser to validate repertoire files
+    parser_validate = validate_subparser.add_parser('repertoire', parents=[common_parser],
+                                                    add_help=False,
+                                                    help='Validate AIRR repertoire metadata files.',
+                                                    description='Validate AIRR repertoire metadata files.')
+    group_validate = parser_validate.add_argument_group('validate arguments')
+    group_validate.add_argument('-a', nargs='+', action='store', dest='airr_files', required=True,
+                                help='A list of AIRR repertoire metadata files.')
+    parser_validate.set_defaults(func=validate_repertoire_cmd)
 
     return parser
 
@@ -180,6 +218,11 @@ def main():
     args_dict = args.__dict__.copy()
     del args_dict['command']
     del args_dict['func']
+
+    # Deprecation warnings
+    if args.func is validate_repertoire_cmd:
+        print('The "repertoire" subcommand is deprecated and will be removed in a future release.',
+              '\nUse the "airr" subcommand instead.\n')
 
     # Call tool function
     result = args.func(**args_dict)

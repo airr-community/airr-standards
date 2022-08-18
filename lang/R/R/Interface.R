@@ -1,8 +1,8 @@
-#### AIRR Input, tsv format ####
+#### Read TSV ####
 
-#' Read an AIRR TSV
+#' Read AIRR tabular data
 #' 
-#' \code{read_airr_tsv} reads a TSV containing AIRR records.
+#' \code{read_tabular} reads a tab-delimited (TSV) file containing tabular AIRR records.
 #'
 #' @param    file        input file path.
 #' @param    base        starting index for positional fields in the input file.
@@ -17,12 +17,12 @@
 #'                       \code{"i"} (integer), \code{"d"} (double), or \code{"n"} (numeric).
 #' @param    ...         additional arguments to pass to \link[readr]{read_delim}.
 #'
-#' @return   A data.frame of the TSV file with appropriate type and position conversion
+#' @return   A \code{data.frame} of the TSV file with appropriate type and position conversion
 #'           for fields defined in the specification.
 #'
 #' @seealso
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{write_airr_tsv} for writing AIRR data.
+#' See \link{write_tabular} for writing AIRR data.
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
@@ -32,7 +32,7 @@
 #' df <- read_rearrangement(file)
 #'
 #' @export
-read_airr_tsv <- function(file, base=c("1", "0"), schema, aux_types=NULL,...) {
+read_tabular <- function(file, schema, base=c("1", "0"), aux_types=NULL,...) {
     # Check arguments
     base <- match.arg(base)
 
@@ -55,7 +55,7 @@ read_airr_tsv <- function(file, base=c("1", "0"), schema, aux_types=NULL,...) {
     data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None"), ...))
 
     # Validate file
-    valid_data <- validate_airr_tsv(data, schema=schema)
+    valid_data <- validate_tabular(data, schema=schema)
     
     # Adjust indexes
     if (base == "0") {
@@ -68,340 +68,167 @@ read_airr_tsv <- function(file, base=c("1", "0"), schema, aux_types=NULL,...) {
     return(data)
 }
 
-#' Validate AIRR data in tsv format, especially rearrangement data
-#' 
-#' \code{validate_airr_tsv} validates compliance of the contents of a data.frame 
-#' to the AIRR data standards.
-#'
-#' @param    data    data.frame to validate.
-#' @param    schema  \code{Schema} object defining the data standard.
-#'
-#' @return   Returns \code{TRUE} if the input \code{data} is compliant and
-#'           \code{FALSE} if not.
-#'           
-validate_airr_tsv <- function(data, schema){
-  
-  valid <- TRUE
-  
-  # Check all required fields exist
-  missing_fields <- setdiff(schema@required, names(data))
-  
-  if (length(missing_fields) > 0 ) {
-    valid <- FALSE
-    warning(paste("Warning: File is missing AIRR mandatory field(s):",
-                  paste(missing_fields, collapse = ", ")))
-  }
-  
-  # Validate sequence_id: 
-  # - uniqueness
-  # - not empty
-  if ("sequence_id" %in% colnames(data)) {
-    dup_ids <- duplicated(data[['sequence_id']])
-    if (any(dup_ids)) {
-      valid <- FALSE
-      warning(paste("Warning: sequence_id(s) are not unique:",
-                    paste(data[['sequence_id']][dup_ids], collapse = ", ")))
-    }
-    empty_rows <- which(data[['sequence_id']] %in% c("None", "", NA))
-    if (length(empty_rows) > 0 ) {
-      # TODO
-      # valid <- FALSE
-      warning(paste("Warning: sequence_id is empty for row(s):",
-                    paste(empty_rows, collapse = ", ")))           
-    }
-  }
-  
-  # check logical fields
-  logical_fields <- names(which(sapply(schema@properties, 
-                                       '[[', "type") == "logical"))
-  logical_fields <- intersect(colnames(data), logical_fields)
-  if (length(logical_fields) > 0 ) {
-    for (log_field in logical_fields) {
-      not_logical <- data[[log_field]] %in% c(TRUE, FALSE) == FALSE
-      if (any(not_logical)) {
-        warning(paste("Warning:",log_field,"is not logical for row(s):",
-                      paste(which(not_logical), collapse = ", ")))            
-      } else {
-        NULL
-      }
-    }
-  }
-  
-  valid
-}
-
-#' Validate AIRR rearrangement data
-#' 
-#' \code{validate_rearrangement} validates compliance of the contents of a data.frame 
-#' to the AIRR data standards Rearrangement format.
-#'
-#' @param    data    data.frame to validate.
-#'
-#' @return   Returns \code{TRUE} if the input \code{data} is compliant and
-#'           \code{FALSE} if not.
-#'           
-#' @examples
-#' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
-#'
-#' # Load data file
-#' df <- read_rearrangement(file)
-#'
-#' # Validate a data.frame against the Rearrangement schema
-#' validate_rearrangement(df)
-#' 
-#' @export
-validate_rearrangement <- function(data) {
-  validate_airr_tsv(data, schema=RearrangementSchema)
-}
 
 #' @details
 #' \code{read_rearrangement} reads an AIRR TSV containing Rearrangement data.
 #' 
-#' @rdname read_airr_tsv
+#' @rdname read_tabular
 #' @export
 read_rearrangement <- function(file, base=c("1", "0"), ...) {
-  read_airr_tsv(file, base=base, schema=RearrangementSchema, ...)
+  read_tabular(file, base=base, schema=RearrangementSchema, ...)
 }
 
 #' @details
 #' \code{read_alignment} reads an AIRR TSV containing Alignment data.
 #' 
-#' @rdname read_airr_tsv
+#' @rdname read_tabular
 #' @export
 read_alignment <- function(file, base=c("1", "0"), ...) {
-  read_airr_tsv(file, base=base, schema=AlignmentSchema, ...)
+  msg <- paste("read_alignment is deprecated and will be removed in a future release.",
+               "Use read_tabular with the argument schema=AlignmentSchema instead.",
+               "See help(\"Deprecated\")", 
+               sep="\n")
+  .Deprecated(msg=msg)
+  read_tabular(file, base=base, schema=AlignmentSchema, ...)
 }
 
 
-#### AIRR Input, yaml format ####
+#### Read YAML/JSON ####
 
-#' Read an AIRR yaml
+#' Read an AIRR Data Model file in YAML or JSON format
 #' 
-#' \code{read_airr_yaml} reads a yaml containing AIRR records.
+#' \code{read_airr} loads a YAML or JSON file containing AIRR Data Model records.
 #'
-#' @param    file    input file path in yaml format.
-#' @param    schema  \code{Schema} object defining the output format.
+#' @param    file      path to the input file.
+#' @param    format    format of the input file. Must be one of \code{"auto"}, \code{"yaml"}, or 
+#'                     \code{"json"}. If \code{"auto"} (default), the format will be 
+#'                     detected from the \code{file} extension.
+#' @param    validate  run schema validation if \code{TRUE}.
+#' @param    adf       if \code{TRUE} validate only AIRR DataFile defined objects. If \code{FALSE} 
+#'                     attempt validation of all objects in \code{data}.
+#'                     Ignored if \code{validate=FALSE}
 #' 
-#' @return   An object of the data contained in the input file.
+#' @return   A named nested \code{list} contained in the AIRR Data Model with the top-level
+#'           names reflecting the individual AIRR objects.
 #'                   
 #' @seealso  
-#' See \link{Schema} for the AIRR schema object definition.
-#' See \link{write_airr_yaml} for writing AIRR data in yaml format.
+#' See \link{Schema} for the AIRR schema definition objects.
+#' See \link{write_airr} for writing AIRR Data Model records in YAML or JSON format.
 #' 
 #' @examples
-#' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
+#' # Get path to the Reportoire and GermlineSet example files
+#' f1 <- system.file("extdata", "repertoire-example.yaml", package="airr")
+#' f2 <- system.file("extdata", "germline-example.json", package="airr")
 #' 
-#' # Load data file
-#' repr <- read_repertoire(file)
+#' # Load data files
+#' repertoire <- read_airr(f1)
+#' germline <- read_airr(f2)
 #' 
 #' @export
-read_airr_yaml <- function(file, schema) {
+read_airr <- function(file, format=c("auto", "yaml", "json"), validate=TRUE, adf=TRUE) {
+    # Check arguments
+    format <- match.arg(format)
+    
+    # Autodetect format
+    if (format == "auto") { format <- tolower(tools::file_ext(file)) }
+    
+    # Load data
+    if (format == "yaml") {
+        records <- read_airr_yaml(file, validate=validate, adf=adf)
+    } else if (format == "json") {
+        records <- read_airr_json(file, validate=validate, adf=adf)
+    } else {
+        stop("Unrecognized file extension ", format, "; must be either .json or .yaml.")
+    }
+    
+    # Return
+    return(records)
+}
+
+# Read an AIRR YAML file
+# 
+# \code{read_airr_yaml} loads a YAML file containing AIRR Data Model records.
+#
+# @param    file      path to the YAML input file.
+# @param    validate  run schema validation if \code{TRUE}.
+# @param    adf       if \code{TRUE} validate only AIRR DataFile defined objects. If \code{FALSE} 
+#                     attempt validation of all objects in \code{data}.
+#                     Ignored if \code{validate=FALSE}
+#                      
+# @return   A named nested \code{list} contained in the AIRR Data Model with the top-level
+#           names reflecting the individual AIRR objects.
+#                   
+# @seealso  
+# See \link{Schema} for the AIRR schema definition objects.
+# See \link{write_airr_yaml} for writing AIRR data in YAML format.
+# 
+# @examples
+# # Get path to the repertoire-example file
+# file <- system.file("extdata", "repertoire-example.yaml", package="airr")
+# 
+# # Load data file
+# repr <- read_airr_yaml(file)
+read_airr_yaml <- function(file, validate=TRUE, adf=TRUE) {
   
   # YAML format
-  data <- yaml.load_file(file)
+  data <- yaml::read_yaml(file)
 
-  # validate
-  # warnings will appear when not airr conform
-  valid <- validate_airr_yaml_json(data = data, schema = schema)
+  # Validation. Warnings are thrown for fields for AIRR compliance failures
+  if (validate) {
+      valid <- validate_airr(data, adf=adf)
+  }
   
   return(data)
 }
 
-#### AIRR Input, JSON format ####
 
-#' Read an AIRR JSON
-#' 
-#' \code{read_airr_json} reads a json containing AIRR records.
-#'
-#' @param    file    input file path in json format.
-#' @param    schema  \code{Schema} object defining the output format.
-#' 
-#' @return   An object of the data contained in the input file.
-#'                   
-#' @seealso  
-#' See \link{Schema} for the AIRR schema object definition.
-#' See \link{write_airr_json} for writing AIRR data in json format.
-#' 
-#' @examples
-#' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "warning_repertoire.airr.json", package="airr")
-#' 
-#' # Load data file
-#' repr <- read_repertoire(file)
-#' 
-#' @export
-read_airr_json <- function(file, schema) {
+# Read an AIRR JSON file
+# 
+# \code{read_airr_json} loads a JSON file containing AIRR Data Model records.
+#
+# @param    file      path to the JSON input file.
+# @param    validate  run schema validation if \code{TRUE}.
+# @param    adf       if \code{TRUE} validate only AIRR DataFile defined objects. If \code{FALSE} 
+#                     attempt validation of all objects in \code{data}.
+#                     Ignored if \code{validate=FALSE}
+#
+# @return   A named nested \code{list} contained in the AIRR Data Model with the top-level
+#           names reflecting the individual AIRR objects.
+#                   
+# @seealso  
+# See \link{Schema} for the AIRR schema object definition.
+# See \link{write_airr_json} for writing AIRR data in JSON format.
+# 
+# @examples
+# # Get path to the rearrangement-example file
+# file <- system.file("extdata", "germline-example.json", package="airr")
+# 
+# # Load data file
+# repr <- read_airr_json(file)
+read_airr_json <- function(file, validate=TRUE, adf=TRUE) {
   
-  #JSON format
-  data <- jsonlite::fromJSON(file, simplifyVector = FALSE)
+  # Read JSON format
+  data <- jsonlite::fromJSON(file, 
+                             simplifyVector=TRUE,
+                             simplifyMatrix=FALSE,
+                             simplifyDataFrame=FALSE,
+                             flatten=FALSE)
   
-  # validate
-  # warnings will appear when not airr conform
-  valid <- validate_airr_yaml_json(data = data["Repertoire"], schema = schema)
+  # Validation. Warnings are thrown for fields for AIRR compliance failures
+  if (validate) {
+      valid <- validate_airr(data, adf=adf)
+  }
   
   return(data)
 }
 
-#' Validate an AIRR yaml
+#### Write TSV ####
+
+#' Write an AIRR tabular data
 #' 
-#' \code{validate_airr_yaml_json} reads a yaml or json containing AIRR records.
+#' \code{write_tabular} writes a TSV containing AIRR tabular records.
 #'
-#' @param    data  Data object from yaml or json import. This data contains the AIRR records.
-#' @param    schema  \code{Schema} object defining the output format.
-#' @param    format ["yaml","json"]
-#' 
-#' @return   Returns \code{TRUE} if the input \code{data} is compliant with AIRR standards and
-#'           \code{FALSE} if not. 
-#'                   
-#' @seealso  
-#' See \link{Schema} for the AIRR schema object definition.
-#' See \link{write_airr_yaml} for writing AIRR data.
-#' 
-validate_airr_yaml_json <- function(data, schema, format) {
-  # This is a wrapper function to allow recursive validation of the different entries in yaml file
-  # Directly calling validate_airr_entry does not work, because the function
-  # validate_airr_entry also needs to work for recursive calling of reference schemes
-
-  yaml_list <- data[[1]]
-  
-  # yaml file can contain multiple entries
-  entries_n <- seq_len(length(yaml_list))
-
-  # recursively validate all entries
-  valid_list <- sapply(entries_n,  function(X) validate_airr_entry(yaml_list[[X]], schema = schema))
-
-  # data only valid if all entries valid
-  return(all(valid_list))
-}
-
-
-# Validation function for a single entry in the yaml file
-validate_airr_entry <- function(definition_list, schema) {
-  
-  valid <- TRUE
-  
-  # Check all required fields exist
-  missing_fields <- setdiff(schema@required, names(definition_list))
-  
-  if (length(missing_fields) > 0 ) {
-    valid <- FALSE
-    warning(paste("Warning: File is missing AIRR mandatory field(s):",
-                  paste(missing_fields, collapse = ", "), "\n"))
-  }
-  
-  # loop through all fields in the list and check if they refer to other schemes
-  for(f in names(definition_list)) {
-      
-    # get the reference scheme
-    reference_schemes <- schema[f]$ref
-    
-    # simple recursive (reference scheme in 1st level)
-    # in this case the type on the 1st level is NULL
-    if (is.na(schema[f][["type"]]) || is.null(schema[f][["type"]])) {
-      if (!is.null(reference_schemes)) {
-        valid <- validate_airr_entry(definition_list[[f]], schema = reference_schemes)
-      }
-      # entry of array type with a list of on or several reference schemes
-    } else if (schema[f][["type"]] == "array" & !is.null(reference_schemes)) {
-      # this is the number of different reference schemes
-      n_schemes <- length(reference_schemes)
-      # this is the number of elements in the array
-      n_array_entries <- length(definition_list[[f]])
-      # loop over all reference schemes in list
-      for (n_ref in seq_len(n_schemes)) {
-          # recursively validate the entries in the array
-        for (n_array in seq_len(n_array_entries)) {
-          valid <- validate_airr_entry(definition_list[[f]][[n_array]], schema = reference_schemes[[n_ref]])
-        }
-      }
-      # check if the entry type is correct
-    } else if (class(definition_list[[f]]) != schema[f][["type"]]) {
-      
-      # one reason for non-identical types can be that the entry is nullable
-      nullable <- schema[f][["x-airr"]][["nullable"]]
-      # if not specified, it should be nullable
-      if (is.null(nullable)) { nullable <- TRUE }
-      if (!(nullable & is.null(definition_list[[f]]))) {
-        
-        # another reason for types not matching is the array format
-        # we test whether the entries are lists
-        if (!(schema[f][["type"]] == "array" & is.vector(definition_list[[f]]))) {
-          
-          # another reason for types not matching is the numeric arguments being read as integers
-          # we test whether the entries are numeric
-          if (!(schema[f][["type"]] == "numeric" & is.numeric(definition_list[[f]]))) {
-            valid <- FALSE
-            warning(paste("Warning: Following entry does not have the required type",
-                          schema[f][["type"]], ":", f, "\n"))
-          }  
-       }
-        
-      }
-
-    }
-  }
-  
-  # return to indicate whether entries are valid
-  return(valid)
-}
-
-
-#' Validate Repertoire
-#' 
-#' \code{validate_repertoire} validates a Repertoire containing AIRR object.
-#'
-#' @param    data  Data object from yaml import. This data contains the AIRR records.
-#' 
-#' @return   Returns \code{TRUE} if the input \code{data} is compliant with AIRR standards and
-#'           \code{FALSE} if not. 
-#'                   
-#' @seealso  
-#' See \link{Schema} for the AIRR schema object definition.
-#' See \link{validate_airr_yaml_json} for validating yaml formatted AIRR data.
-#' 
-#' @examples
-#' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
-#' 
-#' # Load data file
-#' repr <- read_repertoire(file)
-#' 
-#' # Validate
-#' validate_repertoire(repr)
-#' 
-#' @export
-validate_repertoire <- function(data) {
-  validate_airr_yaml_json(data, schema = RepertoireSchema)
-}
-
-
-#' @details
-#' \code{read_repertoire} reads a yaml file containing AIRR Repertoire data.
-#' 
-#' @rdname read_airr_yaml
-#' @export
-read_repertoire <- function(file) {
-  # guess if the file is yaml or json formatted
-  # based on file name extension
-  if (grepl(".json$",file)) {
-    read_airr_json(file, schema=RepertoireSchema)
-  } else if (grepl(".yaml$",file)) {
-    read_airr_yaml(file, schema=RepertoireSchema)
-  } else {
-    stop("File extenstion must be either .yaml or .json")
-  }
-}
-
-
-#### AIRR output, tsv format ####
-
-#' Write an AIRR TSV
-#' 
-#' \code{write_airr_tsv} writes a TSV containing AIRR formatted records.
-#'
-#' @param    data    data.frame of Rearrangement data.
+#' @param    data    \code{data.frame} of Rearrangement data.
 #' @param    file    output file name.
 #' @param    base    starting index for positional fields in the output file.
 #'                   Fields in the input \code{data} are assumed to be 1-based
@@ -417,7 +244,7 @@ read_repertoire <- function(file) {
 #'
 #' @seealso
 #' See \link{Schema} for the AIRR schema object definition.
-#' See \link{read_airr_tsv} for reading to AIRR files.
+#' See \link{read_tabular} for reading to AIRR files.
 #' 
 #' @examples
 #' # Get path to the rearrangement-example file
@@ -428,10 +255,10 @@ read_repertoire <- function(file) {
 #'
 #' # Write a Rearrangement data file
 #' outfile <- file.path(tempdir(), "output.tsv")
-#' write_rearrangement(df, outfile)
+#' write_tabular(df, outfile, schema=RearrangementSchema)
 #'
 #' @export
-write_airr_tsv <- function(data, file, base=c("1", "0"), schema, ...) {
+write_tabular <- function(data, file, schema, base=c("1", "0"),  ...) {
     ## DEBUG
     # data <- data.frame("sequence_id"=1:4, "extra"=1:4, "a"=LETTERS[1:4])
 
@@ -459,7 +286,7 @@ write_airr_tsv <- function(data, file, base=c("1", "0"), schema, ...) {
             data[, start_positions] <- data[, start_positions] - 1
         }
     }
-    valid <- suppressWarnings(validate_airr_tsv(data, schema))
+    valid <- suppressWarnings(validate_tabular(data, schema))
     if (!valid) {
         w <- names(warnings())
         w <- gsub("Warning: *", "" ,w)
@@ -490,113 +317,392 @@ write_airr_tsv <- function(data, file, base=c("1", "0"), schema, ...) {
 
 
 #' @details
-#' \code{write_rearrangement} writes a data.frame containing AIRR Rearrangement data to TSV.
+#' \code{write_rearrangement} writes a \code{data.frame} containing AIRR Rearrangement data to TSV.
 #' 
-#' @rdname write_airr_tsv
+#' @rdname write_tabular
 #' @export
 write_rearrangement <- function(data, file, base=c("1", "0"), ...) {
-    write_airr_tsv(data, file, base=base, schema=RearrangementSchema, ...)
+    write_tabular(data, file, base=base, schema=RearrangementSchema, ...)
 }
 
 
 #' @details
-#' \code{write_alignment} writes a data.frame containing AIRR Alignment data to TSV.
+#' \code{write_alignment} writes a \code{data.frame} containing AIRR Alignment data to TSV.
 #' 
-#' @rdname write_airr_tsv
+#' @rdname write_tabular
 #' @export
 write_alignment <- function(data, file, base=c("1", "0"), ...) {
-    write_airr_tsv(data, file, base=base, schema=AlignmentSchema, ...)
+    msg <- paste("write_alignment is deprecated and will be removed in a future release.",
+                 "Use write_tabular with the argument schema=AlignmentSchema instead.",
+                 "See help(\"Deprecated\")", 
+                 sep="\n")
+    .Deprecated(msg=msg)
+    write_tabular(data, file, base=base, schema=AlignmentSchema, ...)
 }
 
-#### AIRR output, yaml format ####
+#### Write YAML/JSON ####
 
-#' Write an AIRR yaml
+#' Write AIRR Data Model records to YAML or JSON files
 #' 
-#' \code{write_airr_yaml} writes a yaml containing AIRR formatted records.
+#' \code{write_airr} writes a YAML or JSON file containing AIRR Data Model records.
 #'
-#' @param    data    object containing Repertoire data.
-#' @param    file    output file name.
-#' @param    schema  \code{Schema} object defining the output format.
-#'
-#' @return   NULL
+#' @param    data      \code{list} containing AIRR Model Records.
+#' @param    file      output file name.
+#' @param    format    format of the output file. Must be one of \code{"auto"}, \code{"yaml"}, or 
+#'                     \code{"json"}. If \code{"auto"} (default), the format will be 
+#'                     detected from the \code{file} extension.
+#' @param    validate  run schema validation prior to write if \code{TRUE}.
+#' @param    adf       if \code{TRUE} validate and write only AIRR DataFile defined objects. 
+#'                     If \code{FALSE} attempt validation and write of all objects in \code{data}.
 #' 
 #' @seealso
-#' See \link{Schema} for the AIRR schema object definition.
-#' See \link{read_airr_yaml} for reading to AIRR files.
+#' See \link{Schema} for the AIRR schema definition objects.
+#' See \link{read_airr} for reading to AIRR Data Model files.
 #' 
 #' @examples
-#' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "good_repertoire.airr.yaml", package="airr")
+#' # Get path to the repertoire-example file
+#' file <- system.file("extdata", "repertoire-example.yaml", package="airr")
 #' 
 #' # Load data file
-#' repr <- read_repertoire(file)
+#' repertoire <- read_airr(file)
 #' 
 #' # Write a Rearrangement data file
 #' outfile <- file.path(tempdir(), "output.yaml")
-#' write_repertoire(repr, outfile)
+#' write_airr(repertoire, outfile)
 #' 
 #' @export
-write_airr_yaml <- function(data, file, schema) {
-  
-    valid <- validate_airr_yaml_json(data = data, schema = schema)
+write_airr <- function(data, file, format=c("auto", "yaml", "json"), validate=TRUE, adf=TRUE) {
+    # Check arguments
+    format <- match.arg(format)
     
-    # what kind of other tests do we need to implement here?
-    # where does the data come from?
-  
+    # Autodetect format
+    if (format == "auto") { format <- tolower(tools::file_ext(file)) }
+    
+    # Write data
+    if (format == "yaml") {
+        write_airr_yaml(data, file, validate=validate, adf=adf)
+    } else if (format == "json") {
+        write_airr_json(data, file, validate=validate, adf=adf)
+    } else {
+        stop("Unrecognized file extension ", format, "; must be either .json or .yaml.")
+    }
+}
+
+
+# Write an AIRR yaml
+# 
+# \code{write_airr_yaml} writes a yaml containing AIRR formatted records.
+#
+# @param    data      object containing Repertoire data.
+# @param    file      output file name.
+# @param    validate  run schema validation prior to write if \code{TRUE}.
+# @param    adf       if \code{TRUE} validate only AIRR DataFile defined objects. If \code{FALSE} 
+#                     attempt validation of all objects in \code{data}.
+# 
+# @seealso
+# See \link{Schema} for the AIRR schema object definition.
+# See \link{read_airr_yaml} for reading to AIRR files.
+# 
+# @examples
+# # Get path to the rearrangement-example file
+# file <- system.file("extdata", "repertoire-example.yaml", package="airr")
+# 
+# # Load data file
+# repr <- read_airr(file)
+# 
+# # Write a Rearrangement data file
+# outfile <- file.path(tempdir(), "output.yaml")
+# write_airr_yaml(repr, outfile)
+write_airr_yaml <- function(data, file, validate=TRUE, adf=TRUE) {
+    # Validate prior to write
+    if (validate) {
+        valid <- validate_airr(data, adf=adf)
+    }
+    
+    # Subset to AIRR DataFile records
+    if (adf) {
+        data <- data[names(data) %in% names(DataFileSchema@properties)]
+    }
+    
     # Write
     yaml::write_yaml(data, file)
 }
 
-#' Write an AIRR json
-#' 
-#' \code{write_airr_json} writes a yaml containing AIRR formatted records.
-#'
-#' @param    data    object containing Repertoire data.
-#' @param    file    output file name.
-#' @param    schema  \code{Schema} object defining the output format.
-#'
-#' @return   NULL
-#' 
-#' @seealso
-#' See \link{Schema} for the AIRR schema object definition.
-#' See \link{read_airr_json} for reading to AIRR files.
-#' 
-#' @examples
-#' # Get path to the rearrangement-example file
-#' file <- system.file("extdata", "warning_repertoire.airr.json", package="airr")
-#' 
-#' # Load data file
-#' repr <- read_repertoire(file)
-#' 
-#' # Write a Rearrangement data file
-#' outfile <- file.path(tempdir(), "output.json")
-#' write_repertoire(repr, outfile)
-#' 
-#' @export
-write_airr_json <- function(data, file, schema) {
+# Write an AIRR json
+# 
+# \code{write_airr_json} writes a yaml containing AIRR formatted records.
+#
+# @param    data    object containing Repertoire data.
+# @param    file    output file name.
+# @param    validate  run schema validation prior to write if \code{TRUE}.
+#
+# @return   NULL
+# 
+# @seealso
+# See \link{Schema} for the AIRR schema object definition.
+# See \link{read_airr_json} for reading to AIRR files.
+# 
+# @examples
+# # Get path to the rearrangement-example file
+# file <- system.file("extdata", "germline-example.json", package="airr")
+# 
+# # Load data file
+# repr <- read_airr(germline)
+# 
+# # Write a Rearrangement data file
+# outfile <- file.path(tempdir(), "output.json")
+# write_airr_json(repr, outfile)
+write_airr_json <- function(data, file, validate=TRUE, adf=TRUE) {
+    # Validate prior to write
+    if (validate) {
+        valid <- validate_airr(data, adf=adf)
+    }
   
-  valid <- validate_airr_yaml_json(data = data["Repertoire"], schema = schema)
-  
-  # what kind of other tests do we need to implement here?
-  # where does the data come from?
-  
-  # Write
-  write(jsonlite::toJSON(data), file)
+    # Subset to AIRR DataFile records
+    if (adf) {
+        data <- data[names(data) %in% names(DataFileSchema@properties)]
+    }
+    
+    # Write
+    json <- jsonlite::toJSON(data, auto_unbox=TRUE, null="null", na="null")
+    write(json, file)
 }
 
 
-#' @details
-#' \code{write_repertoire} writes a object containing AIRR Repertoire data to yaml.
+#### Validation ####
+
+#' Validate tabular AIRR data
 #' 
-#' @rdname write_airr_yaml
+#' \code{validate_tabular} validates compliance of the contents of a \code{data.frame} 
+#' to the AIRR standards.
+#'
+#' @param    data    \code{data.frame} of tabular data to validate.
+#' @param    schema  \code{Schema} object defining the data standard of the table.
+#'
+#' @return   Returns \code{TRUE} if the input \code{data} is compliant and
+#'           \code{FALSE} if not.
+#' 
+#' @examples
+#' # Get path to the rearrangement-example file
+#' file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+#'
+#' # Load data file
+#' df <- read_rearrangement(file)
+#'
+#' # Validate a data.frame against the Rearrangement schema
+#' validate_rearrangement(df)
+#' 
 #' @export
-write_repertoire <- function(data, file) {
-  # guess from file name whether json or yaml format for writing
-  if (grepl(".json$",file)) {
-    write_airr_json(data, file, schema=RepertoireSchema)
-  } else if (grepl(".yaml$",file)) {
-    write_airr_yaml(data, file, schema=RepertoireSchema)
-  } else {
-    stop("File extenstion must be either .yaml or .json")
-  }
+validate_tabular <- function(data, schema) {
+    # Initialize return value
+    valid <- TRUE
+    
+    # Check all required fields exist
+    missing_fields <- setdiff(schema@required, names(data))
+    
+    if (length(missing_fields) > 0 ) {
+        valid <- FALSE
+        warning(paste("Warning: File is missing AIRR mandatory field(s):",
+                      paste(missing_fields, collapse = ", ")))
+    }
+    
+    # Validate sequence_id: 
+    # - uniqueness
+    # - not empty
+    if ("sequence_id" %in% colnames(data)) {
+        dup_ids <- duplicated(data[['sequence_id']])
+        if (any(dup_ids)) {
+            valid <- FALSE
+            warning(paste("Warning: sequence_id(s) are not unique:",
+                          paste(data[['sequence_id']][dup_ids], collapse = ", ")))
+        }
+        empty_rows <- which(data[['sequence_id']] %in% c("None", "", NA))
+        if (length(empty_rows) > 0 ) {
+            # TODO
+            # valid <- FALSE
+            warning(paste("Warning: sequence_id is empty for row(s):",
+                          paste(empty_rows, collapse = ", ")))           
+        }
+    }
+    
+    # check logical fields
+    logical_fields <- names(which(sapply(schema@properties, 
+                                         '[[', "type") == "logical"))
+    logical_fields <- intersect(colnames(data), logical_fields)
+    if (length(logical_fields) > 0 ) {
+        for (log_field in logical_fields) {
+            not_logical <- data[[log_field]] %in% c(TRUE, FALSE) == FALSE
+            if (any(not_logical)) {
+                warning(paste("Warning:",log_field,"is not logical for row(s):",
+                              paste(which(not_logical), collapse = ", ")))            
+            } else {
+                NULL
+            }
+        }
+    }
+    
+    return(valid)
+}
+
+#' @details
+#' \code{validate_rearrangement} validates the standards compliance of AIRR Rearrangement 
+#' data stored in a \code{data.frame}
+#' 
+#' @rdname validate_tabular
+#' @export
+validate_rearrangement <- function(data) {
+    validate_tabular(data, schema=RearrangementSchema)
+}
+
+
+#' Validate an AIRR Data Model nested list representation
+#' 
+#' \code{validate_airr} validates the fields in a named nested list representation of the 
+#' AIRR Data Model. Typically, generating by reading of JSON or YAML formatted AIRR files.
+#'
+#' @param    data     \code{list} containing records of an AIRR Data Model objected imported from 
+#'                    a YAML or JSON representation.
+#' @param    adf      if \code{TRUE} validate only AIRR DataFile defined objects. If \code{FALSE} 
+#'                    attempt validation of all objects in \code{data}.
+#' @param    each     if \code{TRUE} return a logical vector with results for each object in \code{data}
+#'                    instead of a single \code{TRUE} or \code{FALSE} value.
+#' 
+#' @return   Returns \code{TRUE} if the input \code{data} is compliant with AIRR standards and
+#'           \code{FALSE} if not. If \code{each=TRUE} is set, then a vector with results for each
+#'           each object in \code{data} is returned instead.
+#'                   
+#' @seealso  
+#' See \link{Schema} for the AIRR schema definitions.
+#' See \link{read_airr} for loading AIRR Data Models from a file.
+#' See \link{write_airr} for writing AIRR Data Models to a file.
+#' 
+#' @examples
+#' # Get path to the rearrangement-example file
+#' f1 <- system.file("extdata", "repertoire-example.yaml", package="airr")
+#' f2 <- system.file("extdata", "germline-example.json", package="airr")
+#' 
+#' # Load data file
+#' repertoire <- read_airr(f1)
+#' germline <- read_airr(f2)
+#' 
+#' # Validate a single record
+#' validate_airr(repertoire)
+#' 
+#' # Return validation for individual objects
+#' validate_airr(germline, each=TRUE)
+#' 
+#' @export
+validate_airr <- function(data, adf=TRUE, each=FALSE) {
+    # This is a wrapper function to allow recursive validation of the different entries in yaml file
+    # Directly calling validate_entry does not work, because the function
+    # validate_entry also needs to work for recursive calling of reference schemes
+    
+    # Iterate through objects in input data
+    valid_sum <- logical()
+    for (n in names(data)) {
+        if (n %in% c('Info', 'DataFile')) { next }
+        entry <- data[[n]]
+        if (is.null(entry)) { next }
+
+        # Check for non-DataFile objects
+        if (adf && !(n %in% names(DataFileSchema@properties))) { 
+            warning('Skipping validation of non-DataFile object: ', n)
+            next 
+        }
+        
+        # Load schema
+        if (n %in% names(AIRRSchema)) { 
+            schema <- AIRRSchema[[n]] 
+        } else { 
+            schema <- tryCatch(load_schema(n), error=function(e) NULL)
+        }
+        
+        # Fail invalid schema
+        if (is.null(schema)) {
+            warning('Unrecognized schema: ', n)
+            valid <- FALSE
+        } else {
+            # Recursively validate all entries
+            valid <- sapply(entry, validate_entry, schema=schema)
+        }
+        
+        # Store check result
+        valid_sum <- append(setNames(all(valid), n), valid_sum)
+    }
+    
+    # Data only valid if all entries valid
+    if (!each) { valid_sum <- all(valid_sum) }
+    
+    return(valid_sum)
+}
+
+
+# Validation function for a single entry in the yaml file
+#
+# @param    entry    AIRR data in a nested list structure
+# @param    schema             Schema definition object
+# @returns  TRUE or FALSE
+validate_entry <- function(entry, schema) {
+    schema_name <- schema@definition
+    valid <- TRUE
+    
+    # Check all required fields exist
+    missing_fields <- setdiff(schema@required, names(entry))
+    
+    if (length(missing_fields) > 0 ) {
+        valid <- FALSE
+        warning(paste("Warning:", schema_name, "object is missing AIRR mandatory field(s):",
+                      paste(missing_fields, collapse = ", "), "\n"))
+    }
+    
+    # loop through all fields in the list and check if they refer to other schemes
+    for(f in names(entry)) {
+        # get the reference scheme
+        reference_schemes <- schema[f]$ref
+        
+        # simple recursive (reference scheme in 1st level)
+        # in this case the type on the 1st level is NULL
+        if (is.na(schema[f][["type"]]) || is.null(schema[f][["type"]])) {
+            if (!is.null(reference_schemes)) {
+                v <- validate_entry(entry[[f]], schema=reference_schemes)
+                if (!v) { valid <- FALSE }
+            }
+        # entry of array type with a list of on or several reference schemes
+        } else if (schema[f][["type"]] == "array" & !is.null(reference_schemes)) {
+            # this is the number of different reference schemes
+            n_schemes <- length(reference_schemes)
+            # this is the number of elements in the array
+            n_array_entries <- length(entry[[f]])
+            # loop over all reference schemes in list
+            for (n_ref in seq_len(n_schemes)) {
+                # recursively validate the entries in the array
+                for (n_array in seq_len(n_array_entries)) {
+                    v <- validate_entry(entry[[f]][[n_array]], schema = reference_schemes[[n_ref]])
+                    if (!v) { valid <- FALSE }
+                }
+            }
+        # check if the entry type is correct
+        } else if (class(entry[[f]]) != schema[f][["type"]]) {
+            # one reason for non-identical types can be that the entry is nullable
+            nullable <- schema[f][["x-airr"]][["nullable"]]
+            # if not specified, it should be nullable
+            if (is.null(nullable)) { nullable <- TRUE }
+            if (!(nullable & is.null(entry[[f]]))) {
+                # another reason for types not matching is the array format
+                # we test whether the entries are lists
+                if (!(schema[f][["type"]] == "array" & is.vector(entry[[f]]))) {
+                    # another reason for types not matching is the numeric arguments being read as integers
+                    # we test whether the entries are numeric
+                    if (!(schema[f][["type"]] == "numeric" & is.numeric(entry[[f]]))) {
+                        valid <- FALSE
+                        warning(paste("Warning:", schema_name, "entry does not have the required type",
+                                      schema[f][["type"]], ":", f, "\n"))
+                    }  
+                }
+            }
+        }
+    }
+    
+    # return to indicate whether entries are valid
+    return(valid)
 }
