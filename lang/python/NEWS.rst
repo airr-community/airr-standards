@@ -11,6 +11,9 @@ Version 1.4.0:  In development
 6. Deprecated ``load_repertoire``. Use ``load_airr_data`` instead.
 7. Deprecated ``write_repertoire``. Use ``write_airr_data`` instead.
 8. Deprecated ``validate_repertoire``. Use ``validate_airr_data`` instead.
+9. Fixed a bug in the ``validate`` subcommand of ``airr-tools`` causing
+   validation errors to only be reporting for the first invalid file when
+   multiple files were specified on the command line.
 
 Version 1.3.1:  October 13, 2020
 --------------------------------------------------------------------------------
