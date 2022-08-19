@@ -393,7 +393,6 @@ DataFile:
             x-airr:
                 nullable: false
 
-
 # AIRR Info object, should be similar to openapi
 # should we point to an openapi schema?
 InfoObject:
@@ -2979,22 +2978,22 @@ RepertoireGroup:
     discriminator: AIRR
     type: object
     required:
-        - repertoire_set_id
+        - repertoire_group_id
         - repertoires
     properties:
-        repertoire_set_id:
+        repertoire_group_id:
             type: string
-            description: Identifier for this repertoire group
-        repertoire_set_name:
+            description: Identifier for this repertoire collection
+        repertoire_group_name:
             type: string
-            description: Short display name for this repertoire group
-        repertoire_set_description:
+            description: Short display name for this repertoire collection
+        repertoire_group_description:
             type: string
-            description: Repertoire group description
+            description: Repertoire collection description
         repertoires:
             type: array
             description: >
-                List of repertoires in this group with an associated description and time point designation
+                List of repertoires in this collection with an associated description and time point designation
             items:
                 type: object
                 properties:
