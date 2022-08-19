@@ -3016,7 +3016,7 @@ RepertoireGroup:
             type: array
             nullable: true
             description: >
-                List of repertoires in this group with an associated description and time point designation
+                List of repertoires in this collection with an associated description and time point designation
             items:
                 type: object
                 properties:
