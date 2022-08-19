@@ -13,8 +13,8 @@ New General Purpose Schema:
 1. Introduced the experimental ``DataFile`` object, which defines a JSON file
    holding Repertoire metadata, data processing analysis objects, or any object
    in the AIRR Data Model.
-2. Introduced the experimental ``RepertoireSet`` Schema for describing sets
-   of repertoires to be analyzed together.
+2. Introduced the experimental ``RepertoireGroup`` Schema for describing
+   collections of repertoires to be analyzed together.
 3. Introduced the experimental ``InfoObject`` Schema, which provides information
    about data and ADC API responses.
 4. Introduced the experimental ``TimePoint`` Schema for defining the time point
