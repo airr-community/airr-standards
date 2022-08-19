@@ -350,11 +350,11 @@ DataFile:
                 $ref: '#/Repertoire'
             x-airr:
                 nullable: false
-        RepertoireSet:
+        RepertoireGroup:
             type: array
-            description: List of repertoire sets
+            description: List of repertoire collections
             items:
-                $ref: '#/RepertoireSet'
+                $ref: '#/RepertoireGroup'
             x-airr:
                 nullable: false
         Rearrangement:
@@ -2975,7 +2975,7 @@ Repertoire:
                 adc-query-support: true
 
 # A collection of repertoires for analysis purposes, includes optional time course
-RepertoireSet:
+RepertoireGroup:
     discriminator: AIRR
     type: object
     required:
