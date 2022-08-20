@@ -513,6 +513,7 @@ AIRRSchema = {
     'Alignment': Schema('Alignment'),
     'Rearrangement': Schema('Rearrangement'),
     'Repertoire': Schema('Repertoire'),
+    'RepertoireGroup': Schema('RepertoireGroup'),
     'Ontology': Schema('Ontology'),
     'Study': Schema('Study'),
     'Subject': Schema('Subject'),
