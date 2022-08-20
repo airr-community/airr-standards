@@ -500,7 +500,7 @@ Acknowledgement:
         orcid_id:
             type: string
             nullable: true
-            description: Individual's ORCID
+            description: Individual's ORCID identifier
 
 #
 # Germline gene schema
