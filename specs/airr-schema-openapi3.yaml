@@ -497,10 +497,10 @@ Acknowledgement:
             type: string
             nullable: true
             description: Individual's department and institution name
-        ORCID_id:
+        orcid_id:
             type: string
             nullable: true
-            description: Individual's ORCID Id, if available
+            description: Individual's ORCID
 
 #
 # Germline gene schema
