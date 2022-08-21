@@ -406,6 +406,9 @@ def repertoire_template():
 
     Returns:
       object: empty repertoire object.
+
+    .. deprecated:: 1.4
+       Use :func:`RepertoireSchema.template` instead.
     """
     # Deprecation
     warn('repertoire_template is deprecated and will be removed in a future release.\nUse RepertoireSchema.template() instead.\n',
@@ -429,6 +432,9 @@ def load_repertoire(filename, validate=False, debug=False):
 
     Returns:
       dict: dictionary of AIRR Data objects.
+
+    .. deprecated:: 1.4
+       Use :func:`read_airr` instead.
     """
     # Deprecation
     warn('load_repertoire is deprecated and will be removed in a future release.\nUse read_airr instead.\n',
@@ -472,6 +478,9 @@ def validate_repertoire(filename, debug=False):
 
     Returns:
       bool: True if files passed validation, otherwise False.
+
+    .. deprecated:: 1.4
+       Use :func:`validate_airr` instead.
     """
     # Deprecation
     warn('validate_repertoire is deprecated and will be removed in a future release.\nUse validate_airr instead.\n',
@@ -507,6 +516,9 @@ def write_repertoire(filename, repertoires, info=None, debug=False):
 
     Returns:
       bool: True if the file is written without error.
+
+    .. deprecated:: 1.4
+       Use :func:`write_airr` instead.
     """
     # Deprecation
     warn('write_repertoire is deprecated and will be removed in a future release.\nUse write_airr instead.\n',
