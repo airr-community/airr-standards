@@ -55,12 +55,19 @@ def validate_rearrangement_cmd(airr_files, debug=True):
     Returns:
       boolean: True if all files passed validation, otherwise False
     """
-    try:
-        valid = [airr.interface.validate_rearrangement(f, debug=debug) for f in airr_files]
-        return all(valid)
-    except Exception as err:
-        sys.stderr.write('Error occurred while validating AIRR rearrangement files: ' + str(err) + '\n')
-        return False
+    valid = []
+    for f in airr_files:
+        try:
+            v = airr.interface.validate_rearrangement(f, debug=debug)
+            valid.append(v)
+        except Exception as e:
+            sys.stderr.write('%s\n' % e)
+            sys.stderr.write('Validation failed for file: %s\n\n' % f)
+            valid.append(False)
+        else:
+            if not v:  sys.stderr.write('Validation failed for file: %s\n\n' % f)
+
+    return all(valid)
 
 def validate_airr_cmd(airr_files, debug=True):
     """
@@ -73,13 +80,19 @@ def validate_airr_cmd(airr_files, debug=True):
     Returns:
       boolean: True if all files passed validation, otherwise False
     """
-    try:
-        airr_data = [airr.interface.read_airr(f, validate=False, debug=debug) for f in airr_files]
-        valid = [airr.interface.validate_airr(x, debug=debug) for x in airr_data]
-        return all(valid)
-    except Exception as err:
-        sys.stderr.write('Error occurred while validating AIRR Data Model files: ' + str(err) + '\n')
-        return False
+    valid = []
+    for f in airr_files:
+        if debug: sys.stderr.write('Validating: %s\n' % f)
+        try:
+            data = airr.interface.read_airr(f, validate=False, debug=debug)
+            v = airr.interface.validate_airr(data, debug=debug)
+            valid.append(v)
+        except Exception as e:
+            sys.stderr.write('%s\n' % e)
+            sys.stderr.write('Validation failed for file: %s\n\n' % f)
+            valid.append(False)
+
+    return all(valid)
 
 #### Deprecated ####
 
@@ -99,13 +112,17 @@ def validate_repertoire_cmd(airr_files, debug=True):
     warn('validate_repertoire_cmd is deprecated and will be removed in a future release.\nUse =validate_airr_cmd instead.\n',
          DeprecationWarning, stacklevel=2)
 
-    try:
-        valid = [airr.interface.validate_repertoire(f, debug=debug) for f in airr_files]
-        return all(valid)
-    except Exception as err:
-        sys.stderr.write('Error occurred while validating AIRR repertoire metadata files: ' + str(err) + '\n')
-        return False
+    valid = []
+    for f in airr_files:
+        try:
+            v = airr.interface.validate_repertoire(f, debug=debug)
+            valid.append(v)
+        except Exception as e:
+            sys.stderr.write('%s\n' % e)
+            sys.stderr.write('Validation failed for file: %s\n\n' % f)
+            valid.append(False)
 
+    return all(valid)
 
 def define_args():
     """
@@ -220,8 +237,8 @@ def main():
 
     # Deprecation warnings
     if args.func is validate_repertoire_cmd:
-        print('The "repertoire" subcommand is deprecated and will be removed in a future release.',
-              '\nUse the "airr" subcommand instead.\n')
+        print('The "validate repertoire" subcommand is deprecated and will be removed in a future release.',
+              '\nUse the "validate airr" subcommand instead.\n')
 
     # Call tool function
     result = args.func(**args_dict)

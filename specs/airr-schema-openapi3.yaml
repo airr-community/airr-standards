@@ -349,12 +349,12 @@ DataFile:
             description: List of repertoires
             items:
               $ref: '#/Repertoire'
-        RepertoireSet:
+        RepertoireGroup:
             type: array
             nullable: false
-            description: List of repertoire sets
+            description: List of repertoire collections
             items:
-              $ref: '#/RepertoireSet'
+              $ref: '#/RepertoireGroup'
         Rearrangement:
             type: array
             nullable: false
@@ -2992,31 +2992,31 @@ Repertoire:
                 adc-query-support: true
 
 # A collection of repertoires for analysis purposes, includes optional time course
-RepertoireSet:
+RepertoireGroup:
     discriminator:
         propertyName: AIRR
     type: object
     required:
-        - repertoire_set_id
+        - repertoire_group_id
         - repertoires
     properties:
-        repertoire_set_id:
+        repertoire_group_id:
             type: string
             nullable: true
-            description: Identifier for this repertoire group
-        repertoire_set_name:
+            description: Identifier for this repertoire collection
+        repertoire_group_name:
             type: string
             nullable: true
-            description: Short display name for this repertoire group
-        repertoire_set_description:
+            description: Short display name for this repertoire collection
+        repertoire_group_description:
             type: string
             nullable: true
-            description: Repertoire group description
+            description: Repertoire collection description
         repertoires:
             type: array
             nullable: true
             description: >
-                List of repertoires in this group with an associated description and time point designation
+                List of repertoires in this collection with an associated description and time point designation
             items:
                 type: object
                 properties:

@@ -10,11 +10,14 @@ General:
 4. Significant internal refactoring to improve schema generalizability,
    harmonize behavior between the python and R libraries, and prepare for
    AIRR Standards v2.0.
+5. Fixed a bug in the ``validate`` subcommand of ``airr-tools`` causing
+   validation errors to only be reporting for the first invalid file when
+   multiple files were specified on the command line.
 
 Data Model and Schema:
 
 1. Added support for arrays of objects in a single JSON or YAML file.
-2. Added support for the AIRR Model Data File and associated schema
+2. Added support for the AIRR Data File and associated schema
    (DataFile, Info). The Data File data format holds AIRR object of
    multiple types and is backwards compatible with Repertoire metadata.
 3. Added support for the new germline and genotyping schema
@@ -30,6 +33,7 @@ Deprecations:
 4. Deprecated ``repertoire_template``. Use ``schema.RepertoireSchema.template`` instead.
 5. Deprecated the commandline tool ``airr-tools validate repertoire``.
    Use ``airr-tools validate airr`` instead.
+
 
 Version 1.3.1:  October 13, 2020
 --------------------------------------------------------------------------------

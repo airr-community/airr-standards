@@ -492,6 +492,11 @@ class Schema:
         # Populate empty object
         object = OrderedDict()
         for k, spec in self.properties.items():
+            # Skip deprecated
+            if 'x-airr' in spec and spec['x-airr'].get('deprecated', False):
+                continue
+
+            # Population values
             if '$ref' in spec:
                 object[k] = _reference(spec['$ref'])
             elif spec['type'] == 'array':
@@ -514,6 +519,7 @@ AIRRSchema = {
     'Alignment': Schema('Alignment'),
     'Rearrangement': Schema('Rearrangement'),
     'Repertoire': Schema('Repertoire'),
+    'RepertoireGroup': Schema('RepertoireGroup'),
     'Ontology': Schema('Ontology'),
     'Study': Schema('Study'),
     'Subject': Schema('Subject'),
