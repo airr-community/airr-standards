@@ -406,10 +406,10 @@ def repertoire_template():
       object: empty repertoire object.
 
     .. deprecated:: 1.4
-       Use :meth:`RepertoireSchema.template` instead.
+       Use :meth:`schema.Schema.template` instead.
     """
     # Deprecation
-    warn('repertoire_template is deprecated and will be removed in a future release.\nUse RepertoireSchema.template() instead.\n',
+    warn('repertoire_template is deprecated and will be removed in a future release.\nUse schema.Schema.template() instead.\n',
          DeprecationWarning, stacklevel=2)
 
     # Build template
