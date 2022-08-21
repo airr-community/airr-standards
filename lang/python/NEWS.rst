@@ -1,16 +1,33 @@
-Version 1.4.0:  In development
+Version 1.4.0:  August 21, 2022
 --------------------------------------------------------------------------------
+
+General:
 
 1. Updated pandas requirement to 0.24.0 or higher.
 2. Added support for missing integer values (``NaN``) in ``load_rearrangement``
    by casting to the pandas ``Int64`` data type.
-3. Added support for arrays of objects
-4. Added support for GermlineSet and GenotypeSet and associated objects
-5. Added support for the AIRR Data File, which is a combined data format to hold
-   AIRR object of multiple types. It is backwards compatible with Repertoire metadata.
-6. Deprecated ``load_repertoire``. Use ``load_airr_data`` instead.
-7. Deprecated ``write_repertoire``. Use ``write_airr_data`` instead.
-8. Deprecated ``validate_repertoire``. Use ``validate_airr_data`` instead.
+3. Added gzip support to ``read_rearrangement``.
+4. Significant internal refactoring to improve schema generalizability,
+   harmonize behavior between the python and R libraries, and prepare for
+   AIRR Standards v2.0.
+
+Data Model and Schema:
+
+1. Added support for arrays of objects in a single JSON or YAML file.
+2. Added support for the AIRR Model Data File and associated schema
+   (DataFile, Info). The Data File data format holds AIRR object of
+   multiple types and is backwards compatible with Repertoire metadata.
+3. Added support for the new germline and genotyping schema
+   (GermlineSet, GenotypeSet) and associated schema.
+
+Deprecations:
+
+1. Deprecated ``load_repertoire``. Use ``read_airr`` instead.
+2. Deprecated ``write_repertoire``. Use ``write_airr`` instead.
+3. Deprecated ``validate_repertoire``. Use ``validate_airr`` instead.
+4. Deprecated ``repertoire_template``. Use ``schema.RepertoireSchema.template`` instead.
+5. Deprecated the commandline tool ``airr-tools validate repertoire``.
+   Use ``airr-tools validate airr`` instead.
 
 Version 1.3.1:  October 13, 2020
 --------------------------------------------------------------------------------

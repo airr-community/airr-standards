@@ -6,7 +6,6 @@ from __future__ import absolute_import
 # System imports
 import gzip
 import json
-import os
 import sys
 import pandas as pd
 import yaml
@@ -14,7 +13,6 @@ import yamlordereddictloader
 from collections import OrderedDict
 from itertools import chain
 from io import open
-from pkg_resources import resource_filename
 from warnings import warn
 
 if (sys.version_info > (3, 0)):
@@ -408,7 +406,7 @@ def repertoire_template():
       object: empty repertoire object.
 
     .. deprecated:: 1.4
-       Use :func:`RepertoireSchema.template` instead.
+       Use :meth:`RepertoireSchema.template` instead.
     """
     # Deprecation
     warn('repertoire_template is deprecated and will be removed in a future release.\nUse RepertoireSchema.template() instead.\n',

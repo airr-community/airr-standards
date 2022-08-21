@@ -25,7 +25,6 @@ from warnings import warn
 # Local imports
 from airr import __version__
 import airr.interface
-# import airr.germline_interface
 
 # internal wrapper function before calling merge interface method
 def merge_cmd(out_file, airr_files, drop=False, debug=False):
