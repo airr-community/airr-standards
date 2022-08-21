@@ -26,9 +26,6 @@ Examples
    file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
    rearrangement <- read_rearrangement(file)
 
-::
-
-   [1mindexed[0m [32m0B[0m in [36m 0s[0m, [32m0B/s[0m[1mindexed[0m [32m1.00TB[0m in [36m 0s[0m, [32m1.24PB/s[0m                                                                                                                                                                                          [1mindexed[0m [32m0B[0m in [36m 0s[0m, [32m0B/s[0m[1mindexed[0m [32m1.00TB[0m in [36m 0s[0m, [32m845.97TB/s[0m                                                                                                                                                                                          
 
 .. code:: r
 

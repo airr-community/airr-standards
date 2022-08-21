@@ -19,6 +19,8 @@ Data Model and Schema:
    multiple types and is backwards compatible with Repertoire metadata.
 3. Added support for the new germline and genotyping schema
    (GermlineSet, GenotypeSet) and associated schema.
+4. Renamed ``schema.CachedSchema`` to ``schema.AIRRSchema``.
+5. Removed ``specs/blank.airr.yaml``.
 
 Deprecations:
 

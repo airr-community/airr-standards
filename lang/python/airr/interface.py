@@ -224,7 +224,7 @@ def validate_rearrangement(filename, debug=False):
 
 #### AIRR Data Model ####
 
-def read_airr(filename, format=None, validate=False, adf=True, debug=False):
+def read_airr(filename, format=None, validate=False, model=True, debug=False):
     """
     Load an AIRR Data file
 
@@ -234,7 +234,7 @@ def read_airr(filename, format=None, validate=False, adf=True, debug=False):
                     the file format will be automatically detected from the file extension.
       validate (bool): whether to validate data as it is read, raising a ValidationError
                        exception in the event of a validation failure.
-      adf (bool): If True only validate objects defined in the AIRR DataFile schema.
+      model (bool): If True only validate objects defined in the AIRR DataFile schema.
                   If False, attempt validation of all top-level objects.
                   Ignored if validate=False.
       debug (bool): debug flag. If True print debugging information to standard error.
@@ -260,7 +260,7 @@ def read_airr(filename, format=None, validate=False, adf=True, debug=False):
     if validate:
         if debug:  sys.stderr.write('Validating: %s\n' % filename)
         try:
-            valid = validate_airr(data, adf=adf, debug=debug)
+            valid = validate_airr(data, model=model, debug=debug)
         except ValidationError as e:
             if debug:  sys.stderr.write('%s failed validation\n' % filename)
             raise ValidationError(e)
@@ -269,13 +269,13 @@ def read_airr(filename, format=None, validate=False, adf=True, debug=False):
     return data
 
 
-def validate_airr(data, adf=True, debug=False):
+def validate_airr(data, model=True, debug=False):
     """
     Validates an AIRR Data file
 
     Arguments:
       data (dict): dictionary containing AIRR Data Model objects
-      adf (bool): If True only validate objects defined in the AIRR DataFile schema.
+      model (bool): If True only validate objects defined in the AIRR DataFile schema.
                   If False, attempt validation of all top-level objects
       debug (bool): debug flag. If True print debugging information to standard error.
 
@@ -294,7 +294,7 @@ def validate_airr(data, adf=True, debug=False):
         if not object:  continue
 
         # Check for DataFile schema
-        if adf and k not in DataFileSchema.properties:
+        if model and k not in DataFileSchema.properties:
             if debug:  sys.stderr.write('Skipping non-DataFile object: %s\n' % k)
             continue
 
@@ -330,7 +330,7 @@ def validate_airr(data, adf=True, debug=False):
     return valid
 
 
-def write_airr(filename, data, format=None, info=None, validate=False, adf=True, debug=False):
+def write_airr(filename, data, format=None, info=None, validate=False, model=True, debug=False):
     """
     Write an AIRR Data file
 
@@ -342,7 +342,7 @@ def write_airr(filename, data, format=None, info=None, validate=False, adf=True,
       info (object): info object to write. Will write current AIRR Schema info if not specified.
       validate (bool): whether to validate data before it is written, raising a ValidationError
                        exception in the event of a validation failure.
-      adf (bool): If True only validate and write objects defined in the AIRR DataFile schema.
+      model (bool): If True only validate and write objects defined in the AIRR DataFile schema.
                   If False, attempt validation and write of all top-level objects
       debug (bool): debug flag. If True print debugging information to standard error.
 
@@ -358,7 +358,7 @@ def write_airr(filename, data, format=None, info=None, validate=False, adf=True,
     if validate:
         if debug:  sys.stderr.write('Validating: %s\n' % filename)
         try:
-            valid = validate_airr(data, adf=adf, debug=debug)
+            valid = validate_airr(data, model=model, debug=debug)
         except ValidationError as e:
             if debug:  sys.stderr.write(e)
             raise ValidationError(e)
@@ -374,7 +374,7 @@ def write_airr(filename, data, format=None, info=None, validate=False, adf=True,
     for k, obj in data.items():
         if k in ('Info', 'DataFile'):  continue
         if not obj:  continue
-        if adf and k not in DataFileSchema.properties:
+        if model and k not in DataFileSchema.properties:
             if debug:  sys.stderr.write('Skipping non-DataFile object: %s\n' % k)
             continue
         md[k] = obj
@@ -409,7 +409,7 @@ def repertoire_template():
        Use :meth:`schema.Schema.template` instead.
     """
     # Deprecation
-    warn('repertoire_template is deprecated and will be removed in a future release.\nUse schema.Schema.template() instead.\n',
+    warn('repertoire_template is deprecated and will be removed in a future release.\nUse schema.Schema.template instead.\n',
          DeprecationWarning, stacklevel=2)
 
     # Build template

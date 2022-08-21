@@ -1,10 +1,28 @@
-Version 1.4.0:  August 17, 2022
+Version 1.4.0:  August 21, 2022
 -------------------------------------------------------------------------------
-    
-+ Added the `aux_types` argument to `read_airr` (and dependent functions) to
-  allow explicit declaration of the type for fields that are not defined
-  in the schema.
-+ Added support for GermlineSet and GenotypeSet.
+
+Significant internal refactoring to improve schema generalizability,
+harmonize behavior between the python and R libraries, and prepare for
+AIRR Standards v2.0.
+   
+Rearrangement:
+
++ Added the `aux_types` argument to `read_tabular`, `read_rearrangement`, and 
+  `read_alignment` to allow explicit declaration of the type for fields that 
+  are not defined in the schema.
++ Renamed `read_airr`, `write_airr`, and `validate_airr` to `read_tabular`,
+  `validate_tabular`, and `validate_tabular`, respectively.
+
+Data Model and Schema:
+
++ Defined new `read_airr`, `write_airr`, and `validate_airr` functions that
+  support AIRR Data Model files that store arrays of objects in JSON or YAML.
++ Added support for the AIRR Model Data File and associated schema
+  (DataFile, Info). The Data File data format holds AIRR object of
+  multiple types and is backwards compatible with Repertoire metadata.
++ Added support for the new germline and genotyping schema
+  (GermlineSet, GenotypeSet) and associated schema.
+
 
 Version 1.3.0:  May 26, 2020
 -------------------------------------------------------------------------------

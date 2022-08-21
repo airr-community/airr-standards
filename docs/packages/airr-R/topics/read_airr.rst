@@ -18,7 +18,7 @@ Usage
    file,
    format = c("auto", "yaml", "json"),
    validate = TRUE,
-   adf = TRUE
+   model = TRUE
    )
 
 Arguments
@@ -32,7 +32,7 @@ format
    the ``file`` extension.
 validate
    run schema validation if ``TRUE``.
-adf
+model
    if ``TRUE`` validate only AIRR DataFile defined objects. If ``FALSE``
    attempt validation of all objects in ``data``. Ignored if
    ``validate=FALSE``
