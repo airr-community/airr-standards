@@ -142,8 +142,8 @@ keeping all of the existing fields from the original file. The
 Validating AIRR data files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``airr`` package can validate AIRR Data Model and Rearrangement TSV files
-to ensure that they contain all required fields and that the fields types
+The ``airr`` package can validate AIRR Data Model JSON/YAML files and Rearrangement
+TSV files to ensure that they contain all required fields and that the fields types
 match the AIRR Schema. This can be done using the ``airr-tools`` command
 line program or the validate functions in the library can be called::
 
