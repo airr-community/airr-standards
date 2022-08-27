@@ -131,6 +131,7 @@ class Schema:
 
     def pandas_types(self):
         """
+        Map of schema types to pandas types
 
         Returns:
           dict: mapping dictionary for pandas types

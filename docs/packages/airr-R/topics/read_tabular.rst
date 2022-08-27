@@ -70,10 +70,6 @@ Examples
    # Load data file
    df <- read_rearrangement(file)
 
-::
-
-   [1mindexed[0m [32m0B[0m in [36m 0s[0m, [32m0B/s[0m[1mindexed[0m [32m1.00TB[0m in [36m 0s[0m, [32m1.42PB/s[0m                                                                                                                                                                                          [1mindexed[0m [32m0B[0m in [36m 0s[0m, [32m0B/s[0m[1mindexed[0m [32m1.00TB[0m in [36m 0s[0m, [32m1.06PB/s[0m                                                                                                                                                                                          
-
 See also
 ~~~~~~~~
 

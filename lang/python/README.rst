@@ -18,32 +18,35 @@ Deprecation Notice
 ^^^^^^^^^^^^^^^^^^^^
 
 The ``load_repertoire``, ``write_repertoire``, and ``validate_repertoire`` functions
-have been deprecated for the new generic ``load_airr_data`, ``write_airr_data``, and
+have been deprecated for the new generic ``load_airr_data``, ``write_airr_data``, and
 ``validate_airr_data`` functions. These new functions are backwards compatible with
 the Repertoire metadata format but also support the new AIRR objects such as GermlineSet,
-RepertoireGroup, GenotypeSet, Cell and Clone. This new format is called the AIRR Data File.
-Currently the AIRR Data File does not completely support Rearrangement, so users should
-continue using AIRR TSV files and its specific functions.
+RepertoireGroup, GenotypeSet, Cell and Clone. This new format is defined by the DataFile
+Schema, which describes a standard set of objects included in a file containing
+AIRR Data Model presentations. Currently, the AIRR DataFile does not completely support
+Rearrangement, so users should continue using AIRR TSV files and its specific functions.
+Also, the ``repertoire_template`` function has been deprecated for the ``Schema.template``
+method, which can now be called on any AIRR Schema to create a blank object.
 
 Reading AIRR Data Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``airr`` package contains functions to read and write AIRR Data
-Files. The file format is either YAML or JSON, and the package provides a
+Model files. The file format is either YAML or JSON, and the package provides a
 light wrapper over the standard parsers. The file needs a ``json``, ``yaml``, or ``yml``
-file extension so that the proper parser is utilized. All of the AIRR Objects are loaded
-into memory at once and no streaming interface is provided::
+file extension so that the proper parser is utilized. All of the AIRR objects
+are loaded into memory at once and no streaming interface is provided::
 
     import airr
 
     # Load the AIRR data
-    data = airr.load_airr_data('input.airr.json')
+    data = airr.read_airr('input.airr.json')
     # loop through the repertoires
     for rep in data['Repertoire']:
         print(rep)
 
 Why are the AIRR objects, such as Repertoire, GermlineSet, and etc., in a list versus in a
-dictionary keyed by their identifier (e.g. ``repertoire_id``)? There are two primary reasons for
+dictionary keyed by their identifier (e.g., ``repertoire_id``)? There are two primary reasons for
 this. First, the identifier might not have been assigned yet. Some systems might allow MiAIRR
 metadata to be entered but the identifier is assigned to that data later by another process. Without
 the identifier, the data could not be stored in a dictionary. Secondly, the list allows the data to
@@ -61,27 +64,26 @@ Writing AIRR Data Files
 
 Writing an AIRR Data File is also a light wrapper over standard YAML or JSON
 parsers. Multiple AIRR objects, such as Repertoire, GermlineSet, and etc., can be
-written together into the same file.
-
-The ``airr`` library provides a function to create a blank repertoire object
-in the appropriate format with all of the required fields. As with the load function,
-the complete list of repertoires are written at once, there is no streaming interface::
+written together into the same file. In this example, we use the ``airr`` library ``template``
+method to create some blank Repertoire objects, and write them to a file.
+As with the read function, the complete list of repertoires are written at once,
+there is no streaming interface::
 
     import airr
 
     # Create some blank repertoire objects in a list
-    reps = []
+    data = { 'Repertoire': [] }
     for i in range(5):
-        reps.append(airr.repertoire_template())
+        data['Repertoire'].append(airr.schema.RepertoireSchema.template())
 
     # Write the AIRR Data
-    airr.write_airr_data('output.airr.json', reps)
+    airr.write_airr('output.airr.json', data)
 
 Reading AIRR Rearrangement TSV files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``airr`` package contains functions to read and write AIRR rearrangement files
-as either iterables or pandas data frames. The usage is straightforward,
+The ``airr`` package contains functions to read and write AIRR Rearrangement
+TSV files as either iterables or pandas data frames. The usage is straightforward,
 as the file format is a typical tab delimited file, but the package
 performs some additional validation and type conversion beyond using a
 standard CSV reader::
@@ -95,7 +97,7 @@ standard CSV reader::
     # Load the entire file into a pandas data frame
     df = airr.load_rearrangement('input.tsv')
 
-Writing AIRR formatted files
+Writing AIRR Rearrangement TSV files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Similar to the read operations, write functions are provided for either creating
@@ -140,40 +142,34 @@ keeping all of the existing fields from the original file. The
 Validating AIRR data files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``airr`` package can validate repertoire, rearrangement, germline set
-and genotype data files
-to ensure that they contain all required fields and that the fields types
+The ``airr`` package can validate AIRR Data Model JSON/YAML files and Rearrangement
+TSV files to ensure that they contain all required fields and that the fields types
 match the AIRR Schema. This can be done using the ``airr-tools`` command
 line program or the validate functions in the library can be called::
 
-    # Validate a rearrangement file
+    # Validate a rearrangement TSV file
     airr-tools validate rearrangement -a input.tsv
 
-    # Validate a repertoire metadata file
-    airr-tools validate repertoire -a input.airr.json
-
-    # Validate a germline set file
-    airr-tools validate germline_set -a germline_set.json
-
-    # Validate a genotype set file
-    airr-tools validate genotype_set -a genotype_set.json
+    # Validate an AIRR DataFile
+    airr-tools validate airr -a input.airr.json
 
 Combining Repertoire metadata and Rearrangement files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``airr`` package does not currently keep track of which AIRR Data Files
-are associated with rearrangement TSV files, though there is ongoing work to define
+The ``airr`` package does not currently keep track of which AIRR Data Model files
+are associated with which Rearrangement TSV files, though there is ongoing work to define
 a standardized manifest, so users will need to handle those
-associations themselves. However, in the data, the ``repertoire_id`` field forms
-the link. The typical usage is that a program is going to perform some
-computation on the rearrangements, and it needs access to the repertoire metadata
+associations themselves. However, in the data, AIRR identifier fields, such as ``repertoire_id``,
+form the link between objects in the AIRR Data Model.
+The typical usage is that a program is going to perform some
+computation on the Rearrangements, and it needs access to the Repertoire metadata
 as part of the computation logic. This example code shows the basic framework
 for doing that, in this case doing gender specific computation::
 
     import airr
 
     # Load AIRR data containing repertoires
-    data = airr.load_airr_data('input.airr.json')
+    data = airr.read_airr('input.airr.json')
 
     # Put repertoires in dictionary keyed by repertoire_id
     rep_dict = { obj['repertoire_id'] : obj for obj in data['Repertoire'] }

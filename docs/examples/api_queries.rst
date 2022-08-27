@@ -27,7 +27,7 @@ downloaded as JSON or in the :ref:`AIRR TSV format <RearrangementSchema>`.
 .. _`Design Decisions`: https://github.com/airr-community/common-repo-wg/blob/master/decisions.md
 .. _`OpenAPI V2.0 Specification`: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md
 
-Query Example 1
+Query Example
 ---------------
 
 What human full length TCR-beta sequences have junction amino acid sequence: “CASSYIKLN”?
@@ -52,44 +52,45 @@ What human full length TCR-beta sequences have junction amino acid sequence: “
 .. literalinclude:: queries/query1_rearrangement.json
   :language: JSON
 
-Query Example 2
----------------
+..
+    Query Example 2
+    ---------------
 
-What human full length IgH sequences have been found in patients with an autoimmune diagnosis.
+    What human full length IgH sequences have been found in patients with an autoimmune diagnosis.
 
-- TO BE WRITTEN
+    - TO BE WRITTEN
 
-Query Example 3
----------------
+    Query Example 3
+    ---------------
 
-What is the antibody IG heavy chain V usage in people who have diabetes?
+    What is the antibody IG heavy chain V usage in people who have diabetes?
 
-- TO BE WRITTEN
+    - TO BE WRITTEN
 
-Query Example 4
----------------
+    Query Example 4
+    ---------------
 
-Give me all the anti-HIV antibody sequences that use IGHV1-69 in HIV infected individuals?
+    Give me all the anti-HIV antibody sequences that use IGHV1-69 in HIV infected individuals?
 
-- TO BE WRITTEN
+    - TO BE WRITTEN
 
-Query Example 5
----------------
+    Query Example 5
+    ---------------
 
-Repertoires from cancer patients where we have pre- and post-immunotherapy peripheral blood (or tumor biopsy).
+    Repertoires from cancer patients where we have pre- and post-immunotherapy peripheral blood (or tumor biopsy).
 
-- TO BE WRITTEN
+    - TO BE WRITTEN
 
-Query Example 6
----------------
+    Query Example 6
+    ---------------
 
-Return TCRs that score highly on a position weight matrix from subjects with a particular HLA allele that have been infected with TB.
+    Return TCRs that score highly on a position weight matrix from subjects with a particular HLA allele that have been infected with TB.
 
-- TO BE WRITTEN
+    - TO BE WRITTEN
 
-Query Example 7
----------------
+    Query Example 7
+    ---------------
 
-Repertoires from female patients with cancer.
+    Repertoires from female patients with cancer.
 
-- TO BE WRITTEN
+    - TO BE WRITTEN

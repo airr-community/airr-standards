@@ -5,6 +5,7 @@ Software	Version	Support	Reference
 `Cell Ranger <https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger>`_	4.0	Output	`10x Genomics, Inc. Pleasanton, CA USA. <https://www.10xgenomics.com>`_
 `Change-O <https://changeo.readthedocs.io>`_	0.4.2	"Input, output and conversion"	"`Gupta & Vander Heiden et al. Bioinformatics, 2015. <https://doi.org/10.1093/bioinformatics/btv359>`_"
 `Decombinator <https://github.com/innate2adaptive/Decombinator>`_	4.0.1	Output	"`Oakes et al. Front Immunol, 2017. <https://doi.org/10.3389/fimmu.2017.01267>`_"
+`dowser <https://dowser.readthedocs.io>`_	0.1.0	Input	"`Hoehn et al. PLoS Comput Biol, 2022. <https://doi.org/10.1371/journal.pcbi.1009885>`_"
 `IMGT/HighV-QUEST <http://www.imgt.org/IMGT_vquest/input>`_	1.7.0	Output	"`Alamyar et al. Methods Mol Biol, 2012. <https://doi.org/10.1007/978-1-61779-842-9_32>`_"
 `IMGT/V-QUEST <http://www.imgt.org/IMGT_vquest/input>`_	3.5.16	Output	"`Giudicelli et al. Cold Spring Harb Protoc, 2011. <https://doi.org/10.1101/pdb.prot5633>`_"
 `IgBLAST <https://www.ncbi.nlm.nih.gov/igblast>`_	1.11	Output	"`Ye et al. Nucleic Acids Res, 2013. <https://doi.org/10.1093/nar/gkt382>`_"
@@ -23,7 +24,3 @@ Software	Version	Support	Reference
 `TRIgS <https://github.com/williamdlees/TRIgS>`_	2	Input	"`Lees & Shepherd. J Immunol Res, 2015. <https://doi.org/10.1155/2015/323506>`_"
 `VDJServer <https://vdjserver.org>`_	1.2.0	Input and output	"`Christley et al. Front Immunol, 2018 <https://doi.org/10.3389/fimmu.2018.00976>`_"
 `Vidjil-algo <http://www.vidjil.org>`_	2018.1	Output	"`Giraud et al. BMC Genomics, 2014. <https://doi.org/10.1186/1471-2164-15-409>`_"
-`Vidjil Web Platform <http://www.vidjil.org>`_	TBD	Input and conversion	"`Duez et al. PLoS ONE, 2016. <https://doi.org/10.1371/journal.pone.0166126>`_"
-`IGoR <https://github.com/qmarcou/IGoR>`_	TBD	Input and output	"`Marcou et al. Nat Commun, 2018. <https://doi.org/10.1038/s41467-018-02832-w>`_"
-`OLGA <https://github.com/zsethna/OLGA>`_	TBD	Input and output	"`Sethna et al. Bioinformatics, 2019. <https://doi.org/10.1093/bioinformatics/btz035>`_"
-`Partis <https://github.com/psathyrella/partis>`_	TBD	Output	"`Ralph & Matsen. PLoS Comput Biol, 2016. <https://doi.org/10.1371/journal.pcbi.1004409>`_"

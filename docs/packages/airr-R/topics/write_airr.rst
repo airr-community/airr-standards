@@ -19,7 +19,7 @@ Usage
    file,
    format = c("auto", "yaml", "json"),
    validate = TRUE,
-   adf = TRUE
+   model = TRUE
    )
 
 Arguments
@@ -35,7 +35,7 @@ format
    the ``file`` extension.
 validate
    run schema validation prior to write if ``TRUE``.
-adf
+model
    if ``TRUE`` validate and write only AIRR DataFile defined objects. If
    ``FALSE`` attempt validation and write of all objects in ``data``.
 
