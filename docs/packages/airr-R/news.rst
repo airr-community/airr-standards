@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.4.0: August 21, 2022
+Version 1.4.0: August 27, 2022
 ------------------------------
 
 Significant internal refactoring to improve schema generalizability,
