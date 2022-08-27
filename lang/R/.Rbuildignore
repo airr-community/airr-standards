@@ -1,5 +1,6 @@
 ~$
 .DS_Store
+._
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.
