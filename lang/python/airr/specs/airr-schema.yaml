@@ -497,9 +497,9 @@ Acknowledgement:
         institution_name:
             type: string
             description: Individual's department and institution name
-        ORCID_id:
+        orcid_id:
             type: string
-            description: Individual's ORCID Id, if available
+            description: Individual's ORCID identifier
 
 #
 # Germline gene schema

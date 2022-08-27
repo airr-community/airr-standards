@@ -331,7 +331,7 @@ Attributes:
 # internally resolved unless the ID contains an external PID. This implies that AIRR
 # Data Files cannot be merged simply by concatenating arrays; any merge program
 # would need to manage duplicate or conflicting ID values.
-
+#
 # While the properties in an AIRR Data File are not required, if one is provided then
 # the value should not be null.
 
@@ -497,9 +497,9 @@ Acknowledgement:
         institution_name:
             type: string
             description: Individual's department and institution name
-        ORCID_id:
+        orcid_id:
             type: string
-            description: Individual's ORCID Id, if available
+            description: Individual's ORCID identifier
 
 #
 # Germline gene schema

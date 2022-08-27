@@ -1,5 +1,6 @@
-# emacs backup
-*~
+# System
+.env
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -79,9 +80,6 @@ target/
 # celery beat schedule file
 celerybeat-schedule
 
-# dotenv
-.env
-
 # virtualenv
 venv/
 ENV/
@@ -92,11 +90,10 @@ ENV/
 # Rope project settings
 .ropeproject
 
-# PyCharm
-.idea
-
-# emacs backups
+# Editor and IDE settings
 *~
+.idea
+.vscode/
 
 # R packages
 *.Rproj
@@ -106,5 +103,3 @@ man/
 **/vignettes/*.R
 **/vignettes/*.pdf
 **/vignettes/*.html
-
-.vscode/
