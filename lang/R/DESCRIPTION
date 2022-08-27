@@ -20,6 +20,7 @@ Description: Schema definitions and read, write and validation tools for data
 License: CC BY 4.0
 URL: http://docs.airr-community.org
 BugReports: https://github.com/airr-community/airr-standards/issues
+LazyData: true
 BuildVignettes: true
 VignetteBuilder: knitr
 Encoding: UTF-8
