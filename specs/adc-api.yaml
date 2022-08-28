@@ -73,7 +73,7 @@ definitions:
   repertoire_list:
     type: array
     items:
-      $ref: 'https://github.com/airr-community/airr-standards/blob/v1.4.0/specs/airr-schema.yaml#/Repertoire'
+      $ref: 'https://github.com/airr-community/airr-standards/blob/v1.4.1/specs/airr-schema.yaml#/Repertoire'
 
   # list of facets
   facet_list:
@@ -99,7 +99,7 @@ definitions:
   rearrangement_extension:
     description: The extended Rearrangement object with additional query fields for the ADC.
     allOf:
-      - $ref: 'https://github.com/airr-community/airr-standards/blob/v1.4.0/specs/airr-schema.yaml#/Rearrangement'
+      - $ref: 'https://github.com/airr-community/airr-standards/blob/v1.4.1/specs/airr-schema.yaml#/Rearrangement'
       - type: object
         properties:
           adc_v_subgroup:
@@ -212,7 +212,7 @@ definitions:
   clone_extension:
     description: The extended Clone object with additional query fields for the ADC.
     allOf:
-      - $ref: 'https://github.com/airr-community/airr-standards/blob/v1.4.0/specs/airr-schema.yaml#/Clone'
+      - $ref: 'https://github.com/airr-community/airr-standards/blob/v1.4.1/specs/airr-schema.yaml#/Clone'
       - type: object
         properties:
           adc_v_subgroup:
@@ -334,7 +334,7 @@ definitions:
   cell_extension:
     description: The extended Cell object with additional query fields for the ADC.
     allOf:
-      - $ref: 'https://github.com/airr-community/airr-standards/blob/v1.4.0/specs/airr-schema.yaml#/Cell'
+      - $ref: 'https://github.com/airr-community/airr-standards/blob/v1.4.1/specs/airr-schema.yaml#/Cell'
 
   # list of cell annotations
   cell_list:
@@ -366,7 +366,7 @@ definitions:
   expression_list:
     type: array
     items:
-      $ref: 'https://github.com/airr-community/airr-standards/blob/v1.4.0/specs/airr-schema.yamll#/CellExpression'
+      $ref: 'https://github.com/airr-community/airr-standards/blob/v1.4.1/specs/airr-schema.yamll#/CellExpression'
 
   # The response object /expression/{expression_id} endpoint
   expression_id_response:
