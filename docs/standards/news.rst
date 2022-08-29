@@ -3,22 +3,122 @@
 Schema Release Notes
 ================================================================================
 
-Version 1.4.0-dev: (In development)
+Version 1.4.1: August 27, 2022
 --------------------------------------------------------------------------------
 
-**Version 1.4-dev, In development.**
+**Version 1.4 schema release.**
 
-New Schema:
+New General Purpose Schema:
 
-1. Introduced the ``RepertoireGroup`` Schema for describing sets of repertoires
-   to be analyzed together. Has support for defining a time series using ``TimePoint``.
+1. Introduced the experimental ``DataFile`` object, which defines a JSON file
+   holding Repertoire metadata, data processing analysis objects, or any object
+   in the AIRR Data Model.
+2. Introduced the experimental ``RepertoireGroup`` Schema for describing
+   collections of repertoires to be analyzed together.
+3. Introduced the experimental ``InfoObject`` Schema, which provides information
+   about data and ADC API responses.
+4. Introduced the experimental ``TimePoint`` Schema for defining the time point
+   at which an observation or other action was performed.
+
+New Germline and Genotype Schema:
+
+The following experimental schema were introduced to support storage of
+VDJ germline reference sequences, VDJ genotypes, and MHC genotypes:
+
+1. ``GermlineSet``: Defines a collection of ``AlleleDescriptions`` from the
+   same strain or species.
+2. ``AlleleDescription``: Details of a putative or confirmed Ig receptor
+   gene/allele inferred from one or more observations.
+3. ``RearrangedSequence``: Details of a directly observed rearranged sequence
+   or an inference from rearranged sequences contributing support for a gene
+   or allele.
+4. ``UnrearrangedSequence``: Details of an unrearranged sequence contributing
+   support for a gene or allele.
+5. ``SequenceDelineationV``: Delineation of a V-gene in a particular system.
+6. ``GenotypeSet``: Defines a collection a VDJ genotypes for a given subject.
+7. ``Genotype``: Enumerates the alleles and gene deletions inferred in a
+   single subject for a single locus.
+8. ``MHCGenotypeSet``: Defines a collection of MHC genotypes for a given
+   subject.
+9. ``MHCGenotype``: Details the genotype of major histocompatibility complex
+   (MHC) class I, class II and non-classical loci.
+10. ``Acknowledgement``: Defines contributors to the germline or genotype
+    description.
+
+New Single-cell Schema:
+
+The following experimental schema were introduced to improve support
+for single-cell data and extend the ``Cell`` schema.
+
+1. ``CellExpression``: Defines a container to store single-cell expression
+   level measurements.
+2. ``Receptor``: Describes a complete receptor protein sequence and its
+   reactivity.
 
 Rearrangement Schema:
 
 1. Added the optional fields ``v_frameshift``, ``j_frameshift``,
    ``d_frame`` and ``d2_frame`` defining annotations related to alignment
    reading frames.
+2. Added the optional field ``umi_count`` to represent the count of distinct
+   UMIs for a sequence.
+3. Modified the definition of ``duplicate_count`` to remove ambiguity with the
+   new ``umi_count`` field in a single-cell context. There is now a distinction
+   between duplicate observed sequences (``duplicate_count``) and UMIs
+   (``umi_count``).
+4. The optional ``quality`` and ``quality_alignment`` alignment fields were
+   added to store Phred quality scores for base calls in the ``sequence`` and
+   ``sequence_alignment`` fields, respectively.
+5. The following optional fields were added to denote constant region
+   (``c_call``) alignment positions: ``c_sequence_start``, ``c_sequence_end``,
+   ``c_germline_start``, ``c_germline_end``, ``c_alignment_start``,
+   ``c_alignment_end``.
 
+Study Schema:
+
+1. Added the optional fields ``study_contact`` to store contact information for
+   the primary study contact.
+2. Modified the enumerated values supported by ``keywords_study`` to the
+   following set:
+   ``contains_ig``, ``contains_tr``, ``contains_paired_chain``,
+   ``contains_schema_rearrangement``, ``contains_schema_clone``,
+   ``contains_schema_cell``, ``contains_schema_receptor``
+3. Added the optional fields ``adc_publish_date`` and ``adc_update_data`` that
+   timestamp AIRR Data Commons initial publication and last update,
+   respectively.
+
+Subject Schema:
+
+1. Added the optional ``genotype`` field linking to the new ``GenotypeSet`` and
+   ``MHCGenotypeSet`` objects.
+
+Sample Schema:
+
+1. Added the required field ``collection_time_point_relative_unit`` defining
+   the units for the sample collection timestamp.
+2. Modified the type of the field ``collection_time_point_relative`` from a
+   string to a number defined in combination with the new unit ontology field
+   ``collection_time_point_relative_unit``.
+
+NucleicAcidProcessing Schema:
+
+1. Added the required field ``template_amount_unit`` defining the units for the
+   input template quantification.
+2. Modified the type of the ``template_amount`` field from a string to a number
+   defined in the combination with the new unit ontology field
+   ``template_amount_unit`.
+
+Clone Schema:
+
+1. Added the optional ``clone_count`` field to specify absolute count of clonal
+   members.
+2. Added the optional ``umi_count`` field to specify the total UMI count of all
+   clonal members.
+
+Cell Schema:
+
+1. Removed the field ``expression_tabular`` whose functionality has been
+   replaced by the new ``CellExpression`` schema.
 
 Version 1.3.1: October 13, 2020
 --------------------------------------------------------------------------------
@@ -39,12 +139,12 @@ Version 1.3.0: May 28, 2020
 New Schema:
 
 1. Introduced the ``Repertoire`` Schema for describing study meta data.
-2. Introduced the PCRTarget Schema for describing primer target locations.
-3. Introduced the SampleProcessing Schema for describing experimental processing
+2. Introduced the ``PCRTarget`` Schema for describing primer target locations.
+3. Introduced the ``SampleProcessing`` Schema for describing experimental processing
    steps for a sample.
-4. Replaced the SoftwareProcessing schema with the DataProcessing schema.
+4. Replaced the ``SoftwareProcessing`` schema with the ``DataProcessing`` schema.
 5. Introduced experimental schema for clonal clusters, lineage trees, tree nodes,
-   and cells as Clone, Tree, Node, and Cell objects, respectively.
+   and cells as ``Clone``, ``Tree``, ``Node``, and ``Cell`` objects, respectively.
 
 General Updates:
 

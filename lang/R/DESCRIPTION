@@ -1,7 +1,7 @@
 Package: airr
 Type: Package
-Version: 1.4.0
-Date: 2021-03-21
+Version: 1.4.1
+Date: 2022-08-27
 Authors@R: c(person("Jason", "Vander Heiden", role=c("aut", "cre"), 
                     email="jason.vanderheiden@gmail.com"),
              person("Susanna", "Marquez", role=c("aut"), 
@@ -27,14 +27,16 @@ Encoding: UTF-8
 Depends:
     R (>= 3.1.2)
 Imports:
+    jsonlite,
     methods,
     readr,
     stats,
     stringi,
-    yaml,
-    jsonlite
+    tools,
+    yaml
 Suggests:
     knitr,
     rmarkdown,
+    tibble,
     testthat
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1

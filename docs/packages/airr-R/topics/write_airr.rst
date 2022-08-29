@@ -1,74 +1,61 @@
 write_airr
 ----------
 
-**Write an AIRR TSV**
+**Write AIRR Data Model records to YAML or JSON files**
 
 Description
 ~~~~~~~~~~~
 
-``write_airr`` writes a TSV containing AIRR formatted records.
+``write_airr`` writes a YAML or JSON file containing AIRR Data Model
+records.
 
 Usage
 ~~~~~
 
 ::
 
-   write_airr(data, file, base = c("1", "0"), schema = RearrangementSchema, ...)
-
-::
-
-   write_rearrangement(data, file, base = c("1", "0"), ...)
-
-::
-
-   write_alignment(data, file, base = c("1", "0"), ...)
+   write_airr(
+   data,
+   file,
+   format = c("auto", "yaml", "json"),
+   validate = TRUE,
+   model = TRUE
+   )
 
 Arguments
 ~~~~~~~~~
 
 data
-   data.frame of Rearrangement data.
+   ``list`` containing AIRR Model Records.
 file
    output file name.
-base
-   starting index for positional fields in the output file. Fields in
-   the input ``data`` are assumed to be 1-based closed-intervals (R
-   style). If ``"1"``, then these fields will not be modified. If
-   ``"0"``, then fields ending in ``_start`` and ``_end`` will be
-   converted to 0-based half-open intervals (python style) in the output
-   file.
-schema
-   ``Schema`` object defining the output format.
-…
-   additional arguments to pass to
-   `write_delim <http://www.rdocumentation.org/packages/readr/topics/write_delim>`__.
-
-Details
-~~~~~~~
-
-``write_rearrangement`` writes a data.frame containing AIRR
-Rearrangement data to TSV.
-
-``write_alignment`` writes a data.frame containing AIRR Alignment data
-to TSV.
+format
+   format of the output file. Must be one of ``"auto"``, ``"yaml"``, or
+   ``"json"``. If ``"auto"`` (default), the format will be detected from
+   the ``file`` extension.
+validate
+   run schema validation prior to write if ``TRUE``.
+model
+   if ``TRUE`` validate and write only AIRR DataFile defined objects. If
+   ``FALSE`` attempt validation and write of all objects in ``data``.
 
 Examples
 ~~~~~~~~
 
 .. code:: r
 
-   # Get path to the rearrangement-example file
-   file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+   # Get path to the repertoire-example file
+   file <- system.file("extdata", "repertoire-example.yaml", package="airr")
 
    # Load data file
-   df <- read_rearrangement(file)
+   repertoire <- read_airr(file)
 
    # Write a Rearrangement data file
-   outfile <- file.path(tempdir(), "output.tsv")
-   write_rearrangement(df, outfile)
+   outfile <- file.path(tempdir(), "output.yaml")
+   write_airr(repertoire, outfile)
 
 See also
 ~~~~~~~~
 
-See `Schema <Schema-class.html>`__ for the AIRR schema object definition.
-See `read_airr <read_airr.html>`__ for reading to AIRR files.
+See `Schema <Schema-class.html>`__ for the AIRR schema definition objects.
+See `read_airr <read_airr.html>`__ for reading to AIRR Data Model files.

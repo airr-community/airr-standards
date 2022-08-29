@@ -1,69 +1,168 @@
 {
-    "license": "cc-by", 
-    "title": "AIRR Standards", 
-    "upload_type": "software", 
+    "upload_type": "software",
+    "title": "AIRR Standards",
     "creators": [
         {
-            "affiliation": "Yale University School of Medicine", 
-            "name": "Syed Ahmad Chan Bukhari"
-        }, 
+            "name": "Arcila, Francisco",
+            "affiliation": "German Cancer Research Center",
+            "orcid": "0000-0001-5286-9013"
+        },
         {
-            "affiliation": "German Cancer Research Center", 
-            "name": "Christian E. Busse", 
+            "name": "Bukhari, Syed Ahmad Chan",
+            "affiliation": "St. John's University",
+            "orcid": "0000-0002-6517-5261"
+        },
+        {
+            "name": "Bürckert, Jean-Philippe",
+            "affiliation": "Luxembourg Institute of Health",
+            "orcid": "0000-0001-7741-1164"
+        },
+        {
+            "name": "Busse, Christian E.",
+            "affiliation": "German Cancer Research Center",
             "orcid": "0000-0001-7553-905X"
-        }, 
+        },
         {
-            "affiliation": "UT Southwestern Medical Center", 
-            "name": "Scott Christley"
-        }, 
+            "name": "Christley, Scott",
+            "affiliation": "UT Southwestern Medical Center",
+            "orcid": "0000-0002-9889-1221"
+        },
         {
-            "affiliation": "iReceptor", 
-            "name": "Brian D. Correy"
-        }, 
+            "name": "Corrie, Brian D.",
+            "affiliation": "iReceptor / Simon Fraser University",
+            "orcid": "0000-0003-3888-6495"
+        },
         {
-            "affiliation": "Yale University School of Medicine", 
-            "name": "Jason Vander Heiden", 
-            "orcid": "0000-0002-1474-310X"
-        }, 
+            "name": "Cowell, Lindsay G.",
+            "affiliation": "UT Southwestern Medical Center",
+            "orcid": "0000-0003-1617-8244"
+        },
         {
-            "affiliation": "Yale University School of Medicine", 
-            "name": "Steven H. Kleinstein"
-        }, 
+            "name": "Harikrishnan, Srilakshmy L.",
+            "affiliation": "German Cancer Research Center",
+            "orcid": "0000-0002-0418-1350"
+        },
         {
-            "affiliation": "Icahn School of Medicine at Mount Sinai", 
-            "name": "Uri Laserson"
-        }, 
+            "name": "Hershberg, Uri",
+            "affiliation": "University of Haifa",
+            "orcid": "0000-0002-6425-5980"
+        },
         {
-            "affiliation": "Fred Hutchinson Cancer Research Center", 
-            "name": "Erick Matsen", 
+            "name": "Imkeller, Katharina",
+            "affiliation": "Frankfurt Cancer Institute",
+            "orcid": "0000-0002-5177-0852"
+        },
+        {
+            "name": "Kleinstein, Steven H.",
+            "affiliation": "Yale University School of Medicine",
+            "orcid": "0000-0003-4957-1544"
+        },
+        {
+            "name": "Marquez, Susanna",
+            "affiliation": "Yale University School of Medicine",
+            "orcid": ""
+        },
+        {
+            "name": "Matsen, Frederick A. 4th",
+            "affiliation": "Fred Hutchinson Cancer Research Center",
             "orcid": "0000-0003-0607-6025"
-        }, 
+        },
         {
-            "affiliation": "Stanford University School of Medicine", 
-            "name": "Florian Rubelt"
+            "name": "Laserson, Uri",
+            "affiliation": "Icahn School of Medicine at Mount Sinai",
+            "orcid": "0000-0002-8429-7686"
+        },
+        {
+            "name": "Lees, William D.",
+            "affiliation": "Birkbeck College, University of London",
+            "orcid": "0000-0001-9834-6840"
+        },
+        {
+            "name": "Luning Prak, Eline T.",
+            "affiliation": "University of Pennsylvania Perelman School of Medicine",
+            "orcid": "0000-0002-9478-9211"
+        },
+        {
+            "name": "Rubelt, Florian",
+            "affiliation": "Stanford University School of Medicine",
+            "orcid": ""
+        },
+        {
+            "name": "Vander Heiden, Jason A.",
+            "affiliation": "Yale University School of Medicine",
+            "orcid": "0000-0002-1474-310X"
+        },
+        {
+            "name": "Watson, Corey T.",
+            "affiliation": "University of Louisville",
+            "orcid": "0000-0001-7248-8787"
         }
-    ], 
-    "access_right": "open", 
+    ],
+    "description": "The AIRR Community Standards are developed to facilitate FAIR data sharing in the field of Adaptive Immune Receptor Repertoire (AIRR) sequencing. They currently encompass a data schema, a data representation, an API definition, code libraries for Python and R and the corresponding documentation",
+    "access_right": "open",
+    "license": "CC-BY-4.0",
+    "keywords": [
+        "Immunology",
+        "Adaptive Immune Receptor Repertoire",
+        "Minimal information standard",
+        "Data schema"
+    ],
     "related_identifiers": [
         {
-            "scheme": "url", 
-            "identifier": "https://github.com/airr-community/airr-standards/tree/v1.0.1", 
-            "relation": "isSupplementTo"
-        }, 
+            "scheme": "url",
+            "identifier": "https://github.com/airr-community/airr-standards/tree/v1.4.0",
+            "relation": "isSupplementTo",
+            "resource_type": "software"
+        },
         {
-            "scheme": "doi", 
-            "identifier": "10.5281/zenodo.1185414", 
-            "relation": "isPartOf"
+            "scheme": "doi",
+            "identifier": "10.5281/zenodo.1185414",
+            "relation": "isPartOf",
+            "resource_type": "software"
+        },
+        {
+            "scheme": "doi",
+            "identifier": "10.1038/ni.3873",
+            "relation": "describes",
+            "resource_type": "publication-article"
+        },
+        {
+            "scheme": "doi",
+            "identifier": "10.3389/fimmu.2017.01418",
+            "relation": "describes",
+            "resource_type": "publication-article"
+        },
+        {
+            "scheme": "doi",
+            "identifier": "10.3389/fimmu.2018.02206",
+            "relation": "describes",
+            "resource_type": "publication-article"
+        },
+        {
+            "scheme": "doi",
+            "identifier": "10.3389/fdata.2020.00022",
+            "relation": "describes",
+            "resource_type": "publication-article"
         }
-    ], 
+    ],
     "references": [
-        "Rubelt F et al. Adaptive Immune Receptor Repertoire Community recommendations for sharing immune-repertoire sequencing data. Nat Immunol 18:1274 (2017). DOI: 10.1038/ni.3873", 
-        "Breden F et al. Reproducibility and Reuse of Adaptive Immune Receptor Repertoire Data. Front Immunol 8:1418 (2017). DOI: 10.3389/fimmu.2017.01418"
-    ], 
+        "Rubelt F et al. Adaptive Immune Receptor Repertoire Community recommendations for sharing immune-repertoire sequencing data. Nat Immunol 18:1274 (2017)",
+        "Breden F et al. Reproducibility and Reuse of Adaptive Immune Receptor Repertoire Data. Front Immunol 8:1418 (2017)",
+        "Vander Heiden JA et al. AIRR Community Standardized Representations for Annotated Immune Repertoires. Front Immunol 9:2206 (2018)",
+        "Christley S et al. The ADC API: A Web API for the Programmatic Query of the AIRR Data Commons. Front Big Data 3:22 (2020)"
+    ],
     "communities": [
         {
-            "identifier": "airr"
+            "identifier": "airr-community"
+        },
+        {
+            "identifier": "ecfunded"
         }
-    ], 
+    ],
+    "grants": [
+        {
+            "id": "10.13039/501100000780::825821"
+        }
+    ],
     "language": "eng"
 }

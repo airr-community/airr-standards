@@ -41,6 +41,5 @@ setup(name='airr',
       classifiers=['Intended Audience :: Science/Research',
                    'Natural Language :: English',
                    'Operating System :: OS Independent',
-                   'Programming Language :: Python :: 2.7',
                    'Programming Language :: Python :: 3',
                    'Topic :: Scientific/Engineering :: Bio-Informatics'])

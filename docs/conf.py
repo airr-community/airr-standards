@@ -389,7 +389,7 @@ if not os.path.exists(download_path):  os.mkdir(download_path)
 # Write MiAIRR TSV
 fields = ['Set', 'Subset', 'Designation', 'Field', 'Type', 'Format', 'Level', 'Definition', 'Example']
 tables = ['Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
-          'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing']
+          'PCRTarget', 'SequencingRun', 'SequencingData', 'DataProcessing']
 # tables = data_elements.keys()
 miairr_schema = []
 with open(os.path.join(download_path, '%s.tsv' % 'AIRR_Minimal_Standard_Data_Elements'), 'w') as f:
@@ -405,10 +405,10 @@ html_context['MiAIRR_schema'] = miairr_schema
 # Write individual spec TSVs
 fields = ['Name', 'Type', 'Attributes', 'Definition']
 tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
-          'PCRTarget', 'SequencingRun', 'RawSequenceData', 'DataProcessing',
+          'PCRTarget', 'SequencingRun', 'SequencingData', 'DataProcessing',
           'Rearrangement', 'Alignment', 'Clone', 'Tree', 'Node', 'Cell', 'CellExpression',
           'RearrangedSequence', 'UnrearrangedSequence', 'SequenceDelineationV', 'AlleleDescription', 'GermlineSet',
-          'GenotypeSet', 'Genotype', 'MHCGenotypeSet', 'MHCGenotype']
+          'GenotypeSet', 'Genotype', 'MHCGenotypeSet', 'MHCGenotype', 'Receptor']
 for spec in tables:
     with open(os.path.join(download_path, '%s.tsv' % spec), 'w') as f:
         writer = csv.DictWriter(f, fieldnames=fields, dialect='excel-tab', extrasaction='ignore')

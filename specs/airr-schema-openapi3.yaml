@@ -38,6 +38,14 @@ CURIEMap:
         map:
             ABREG:
                 iri_prefix: "http://antibodyregistry.org/AB_"
+    CHEBI:
+        type: ontology
+        default:
+          map: OBO
+          provider: OLS
+        map:
+          OBO:
+            iri_prefix: "http://purl.obolibrary.org/obo/CHEBI_"
     CL:
         type: ontology
         default:
@@ -61,6 +69,13 @@ CURIEMap:
         map:
             OBO:
                 iri_prefix: "http://purl.obolibrary.org/obo/DOID_"
+    ENA:
+        type: identifier
+        default:
+            map: ENA
+        map:
+            ENA:
+                iri_prefix: "https://www.ebi.ac.uk/ena/browser/view/"
     ENSG:
         type: identifier
         default:
@@ -68,6 +83,14 @@ CURIEMap:
         map:
             ENSG:
                 iri_prefix: "https://www.ensembl.org/Multi/Search/Results?q="
+    IEDB_RECEPTOR:
+        type: identifier
+        default:
+            map: IEDB
+            provider: IEDB
+        map:
+            IEDB:
+                iri_prefix: "https://www.iedb.org/receptor/"
     MRO:
         type: ontology
         default:
@@ -110,6 +133,13 @@ CURIEMap:
         map:
             ROR:
                 iri_prefix: "https://ror.org/"
+    SRA:
+        type: identifier
+        default:
+            map: SRA
+        map:
+            SRA:
+                iri_prefix: "https://trace.ncbi.nlm.nih.gov/Traces/sra/?run="
     UBERON:
         type: ontology
         default:
@@ -118,6 +148,13 @@ CURIEMap:
         map:
             OBO:
                 iri_prefix: "http://purl.obolibrary.org/obo/UBERON_"
+    UNIPROT:
+        type: identifier
+        default:
+            map: UNIPROT
+        map:
+            UniProt:
+                iri_prefix: "http://purl.uniprot.org/uniprot/"
     UO:
         type: ontology
         default:
@@ -127,9 +164,16 @@ CURIEMap:
             OBO:
                 iri_prefix: "http://purl.obolibrary.org/obo/UO_"
 
-
 InformationProvider:
     provider:
+        ENA:
+            request:
+                url: "{iri}"
+                response: text/html
+        IEDB:
+            request:
+                url: "https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}"
+                response: application/json
         OLS:
             request:
                 url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
@@ -148,7 +192,16 @@ InformationProvider:
             request:
                 url: "https://api.ror.org/organizations/{iri}"
                 response: application/json
+        SRA:
+            request:
+                url: "{iri}"
+                response: text/html
     parameter:
+        CHEBI:
+            Ontobee:
+                ontology_id: CHEBI
+            OLS:
+                ontology_id: chebi
         CL:
             Ontobee:
                 ontology_id: CL
@@ -247,6 +300,7 @@ Attributes:
                 - ontology
                 - controlled vocabulary
                 - physical quantity
+                - CURIE
         ontology:
             type: object
             description: Ontology definition for field
@@ -277,7 +331,7 @@ Attributes:
 # internally resolved unless the ID contains an external PID. This implies that AIRR
 # Data Files cannot be merged simply by concatenating arrays; any merge program
 # would need to manage duplicate or conflicting ID values.
-
+#
 # While the properties in an AIRR Data File are not required, if one is provided then
 # the value should not be null.
 
@@ -292,57 +346,45 @@ DataFile:
         Repertoire:
             type: array
             nullable: false
-            description: List of Repertoire metadata
+            description: List of repertoires
             items:
               $ref: '#/Repertoire'
         RepertoireGroup:
             type: array
             nullable: false
-            description: List of Repertoire groups
+            description: List of repertoire collections
             items:
               $ref: '#/RepertoireGroup'
-        AlleleDescription:
+        Rearrangement:
             type: array
             nullable: false
-            description: List of allele descriptions
+            description: List of rearrangement records
             items:
-              $ref: '#/AlleleDescription'
-        GermlineSet:
-            type: array
-            nullable: false
-            description: List of germline sets
-            items:
-              $ref: '#/GermlineSet'
-        DataProcessing:
-            type: array
-            nullable: false
-            description: List of data processing workflows
-            items:
-              $ref: '#/DataProcessing'
+                $ref: '#/Rearrangement'
         Cell:
             type: array
             nullable: false
             description: List of cells
             items:
               $ref: '#/Cell'
-        Rearrangement:
-            type: array
-            nullable: false
-            description: List of rearrangement records
-            items:
-              $ref: '#/Rearrangement'
         Clone:
             type: array
             nullable: false
             description: List of clones
             items:
               $ref: '#/Clone'
-        Tree:
+        GermlineSet:
             type: array
             nullable: false
-            description: List of trees
+            description: List of germline sets
             items:
-              $ref: '#/Tree'
+                $ref: '#/GermlineSet'
+        GenotypeSet:
+            type: array
+            nullable: false
+            description: List of genotype sets
+            items:
+                $ref: '#/GenotypeSet'
 
 # AIRR Info object, should be similar to openapi
 # should we point to an openapi schema?
@@ -455,10 +497,10 @@ Acknowledgement:
             type: string
             nullable: true
             description: Individual's department and institution name
-        ORCID_id:
+        orcid_id:
             type: string
             nullable: true
-            description: Individual's ORCID Id, if available
+            description: Individual's ORCID identifier
 
 #
 # Germline gene schema
@@ -791,7 +833,6 @@ AlleleDescription:
             example:
                 id: NCBITAXON:9606
                 label: Homo sapiens
-            nullable: false
         species_subgroup:
             type: string
             nullable: true
@@ -1311,7 +1352,9 @@ Study:
         study_id:
             type: string
             nullable: true
-            description: Unique ID assigned by study registry
+            description: >
+                Unique ID assigned by study registry such as one of the International Nucleotide Sequence Database
+                Collaboration (INSDC) repositories.
             title: Study ID
             example: PRJNA001
             x-airr:
@@ -1389,7 +1432,8 @@ Study:
             type: string
             nullable: true
             description: >
-                Full contact information of the contact persons for this study This should include an e-mail address and a persistent identifier such as an ORCID ID.
+                Full contact information of the contact persons for this study This should include an e-mail address
+                and a persistent identifier such as an ORCID ID.
             title: Contact information (study)
             example: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
             x-airr:
@@ -1399,10 +1443,11 @@ Study:
             type: string
             nullable: true
             description: >
-                Full contact information of the data collector, i.e. the person who is legally responsible for
-                data collection and release. This should include an e-mail address.
+                Full contact information of the data collector, i.e. the person who is legally responsible for data
+                collection and release. This should include an e-mail address and a persistent identifier such as an
+                ORCID ID.
             title: Contact information (data collection)
-            example: Dr. P. Stibbons, p.stibbons@unseenu.edu
+            example: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
             x-airr:
                 miairr: important
                 adc-query-support: true
@@ -1437,10 +1482,11 @@ Study:
             type: string
             nullable: true
             description: >
-                Full contact information of the data depositor, i.e. the person submitting the data to a repository.
-                This is supposed to be a short-lived and technical role until the submission is relased.
+                Full contact information of the data depositor, i.e., the person submitting the data to a repository.
+                This should include an e-mail address and a persistent identifier such as an ORCID ID. This is
+                supposed to be a short-lived and technical role until the submission is relased.
             title: Contact information (data deposition)
-            example: Adrian Turnipseed, a.turnipseed@unseenu.edu
+            example: Adrian Turnipseed, a.turnipseed@unseenu.edu, https://orcid.org/0000-0002-1825-0097
             x-airr:
                 miairr: important
                 adc-query-support: true
@@ -1450,7 +1496,9 @@ Study:
         pub_ids:
             type: string
             nullable: true
-            description: Publications describing the rationale and/or outcome of the study
+            description: >
+                Publications describing the rationale and/or outcome of the study. Where ever possible, a persistent
+                identifier should be used such as a DOI or a Pubmed ID
             title: Relevant publications
             example: "PMID:85642"
             x-airr:
@@ -1534,7 +1582,9 @@ Subject:
         subject_id:
             type: string
             nullable: true
-            description: Subject ID assigned by submitter, unique within study
+            description: >
+                Subject ID assigned by submitter, unique within study. If possible, a persistent subject ID linked to
+                an INSDC or similar repository study should be used.
             title: Subject ID
             example: SUB856413
             x-airr:
@@ -1910,7 +1960,9 @@ Sample:
         sample_id:
             type: string
             nullable: true
-            description: Sample ID assigned by submitter, unique within study
+            description: >
+                Sample ID assigned by submitter, unique within study. If possible, a persistent sample ID linked to
+                INSDC or similar repository study should be used.
             title: Biological sample ID
             example: SUP52415
             x-airr:
@@ -2545,18 +2597,19 @@ SequencingRun:
                 subset: process (sequencing)
                 name: Sequencing kit
         sequencing_files:
-            $ref: '#/RawSequenceData'
+            $ref: '#/SequencingData'
             nullable: false
             description: Set of sequencing files produced by the sequencing run
             x-airr:
                 adc-query-support: true
 
 # Resultant raw sequencing files from a SequencingRun
-RawSequenceData:
+SequencingData:
     discriminator:
         propertyName: AIRR
     type: object
     required:
+        - sequencing_data_id
         - file_type
         - filename
         - read_direction
@@ -2565,6 +2618,18 @@ RawSequenceData:
         - paired_read_direction
         - paired_read_length
     properties:
+        sequencing_data_id:
+            type: string
+            nullable: true
+            description: Persistent identifier of raw data stored in an archive (e.g. INSDC run ID). Data archive should be identified in the CURIE prefix.
+            title: Raw sequencing data persistent identifier
+            example: "SRA:SRR11610494"
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 4
+                subset: data (raw reads)
+                format: CURIE
         file_type:
             type: string
             nullable: true
@@ -2619,7 +2684,7 @@ RawSequenceData:
                 miairr: important
                 adc-query-support: true
                 set: 4
-                subset: process (sequencing)
+                subset: data (raw reads)
                 name: Forward read length
         paired_filename:
             type: string
@@ -2660,8 +2725,24 @@ RawSequenceData:
                 miairr: important
                 adc-query-support: true
                 set: 4
-                subset: process (sequencing)
+                subset: data (raw reads)
                 name: Paired read length
+        index_filename:
+            type: string
+            nullable: true
+            description: File name for the index file
+            title: Sequencing index file name
+            example: MS10R-NMonson-C7JR9_S1_R3_001.fastq
+            x-airr:
+                adc-query-support: true
+        index_length:
+            type: integer
+            nullable: true
+            description: Read length in bases for the index file
+            title: Index read length
+            example: 8
+            x-airr:
+                adc-query-support: true
 
 # 1-to-n relationship between a repertoire and data processing
 #
@@ -2817,20 +2898,25 @@ DataProcessing:
 SampleProcessing:
     discriminator:
         propertyName: AIRR
-    type: object
-    properties:
-        sample_processing_id:
-            type: string
-            nullable: true
-            description: >
-                Identifier for the sample processing object. This field should be unique within the repertoire.
-                This field can be used to uniquely identify the combination of sample, cell processing,
-                nucleic acid processing and sequencing run information for the repertoire.
-            title: Sample processing ID
-            x-airr:
-                name: Sample processing ID
-                adc-query-support: true
-                identifier: true
+    allOf:
+        - type: object
+          properties:
+            sample_processing_id:
+                type: string
+                nullable: true
+                description: >
+                    Identifier for the sample processing object. This field should be unique within the repertoire.
+                    This field can be used to uniquely identify the combination of sample, cell processing,
+                    nucleic acid processing and sequencing run information for the repertoire.
+                title: Sample processing ID
+                x-airr:
+                    name: Sample processing ID
+                    adc-query-support: true
+                    identifier: true
+        - $ref: '#/Sample'
+        - $ref: '#/CellProcessing'
+        - $ref: '#/NucleicAcidProcessing'
+        - $ref: '#/SequencingRun'
 
 
 # The composite schema for the repertoire object
@@ -2891,14 +2977,9 @@ Repertoire:
         sample:
             type: array
             nullable: false
-            description: List of Sample objects
+            description: List of Sample Processing objects
             items:
-                allOf:
-                    - $ref: '#/SampleProcessing'
-                    - $ref: '#/Sample'
-                    - $ref: '#/CellProcessing'
-                    - $ref: '#/NucleicAcidProcessing'
-                    - $ref: '#/SequencingRun'
+                $ref: '#/SampleProcessing'
             x-airr:
                 adc-query-support: true
         data_processing:
@@ -2922,20 +3003,20 @@ RepertoireGroup:
         repertoire_group_id:
             type: string
             nullable: true
-            description: Identifier for this repertoire group
+            description: Identifier for this repertoire collection
         repertoire_group_name:
             type: string
             nullable: true
-            description: Short display name for this repertoire group
+            description: Short display name for this repertoire collection
         repertoire_group_description:
             type: string
             nullable: true
-            description: Repertoire group description
+            description: Repertoire collection description
         repertoires:
             type: array
             nullable: true
             description: >
-                List of repertoires in this group with an associated description and time point designation
+                List of repertoires in this collection with an associated description and time point designation
             items:
                 type: object
                 properties:
@@ -4228,7 +4309,7 @@ Cell:
         propertyName: AIRR
     type: object
     required:
-        - cell_id #redefined cell_id > how to centralize it in the yaml
+        - cell_id
         - rearrangements
         - repertoire_id
         - virtual_pairing
@@ -4317,7 +4398,7 @@ Cell:
                 adc-api-optional: true
         virtual_pairing:
             type: boolean
-            nullable: true # assuming only done for sc experiments, otherwise does not exist
+            nullable: true
             description: >
                 boolean to indicate if pairing was inferred.
             title: Virtual pairing
@@ -4325,16 +4406,6 @@ Cell:
                 miairr: defined
                 adc-query-support: true
                 name: Virtual pairing
-        adc_annotation_cell_id:
-            type: string
-            nullable: true
-            description: >
-              The Cell ID used by the annotation tool to annotate the Cell during data processing.
-            example: AAACCTGAGCACCGCT-1
-            x-airr:
-              adc-api-optional: false
-              adc-query_support: true
-              name: Tool Cell ID
 
 # The CellExpression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and 
@@ -4414,3 +4485,248 @@ CellExpression:
                 miairr: defined
                 adc-query-support: true
                 name: Property value
+
+
+# The Receptor object hold information about a receptor and its reactivity.
+#
+Receptor:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    required:
+        - receptor_id
+        - receptor_hash
+        - receptor_type
+        - receptor_variable_domain_1_aa
+        - receptor_variable_domain_1_locus
+        - receptor_variable_domain_2_aa
+        - receptor_variable_domain_2_locus
+    properties:
+        receptor_id:
+            type: string
+            nullable: false
+            description: ID of the current Receptor object, unique within the local repository.
+            title: Receptor ID
+            example: TCR-MM-012345
+            x-airr:
+                adc-query-support: true
+        receptor_hash:
+            type: string
+            nullable: false
+            description: >
+                The SHA256 hash of the receptor amino acid sequence, calculated on the concatenated
+                ``receptor_variable_domain_*_aa`` sequences and represented as base16-encoded string.
+            title: Receptor hash ID
+            example: aa1c4b77a6f4927611ab39f5267415beaa0ba07a952c233d803b07e52261f026
+            x-airr:
+                adc-query-support: true
+        receptor_type:
+            type: string
+            nullable: false
+            enum:
+                - Ig
+                - TCR
+            description: The top-level receptor type, either Immunoglobulin (Ig) or T Cell Receptor (TCR).
+            x-airr:
+                adc-api-optional: true
+        receptor_variable_domain_1_aa:
+            type: string
+            nullable: false
+            description: >
+                Complete amino acid sequence of the mature variable domain of the Ig heavy, TCR beta or TCR delta chain.
+                The mature variable domain is defined as encompassing all AA from and including first AA after the the
+                signal peptide to and including the last AA that is completely encoded by the J gene.
+            example: >
+                QVQLQQPGAELVKPGASVKLSCKASGYTFTSYWMHWVKQRPGRGLEWIGRIDPNSGGTKYNEKFKSKATLTVDKPSSTAYMQLSSLTSEDSAVYYCARYDYYGSSYFDYWGQGTTLTVSS
+            x-airr:
+                adc-api-optional: true
+        receptor_variable_domain_1_locus:
+            type: string
+            nullable: false
+            enum:
+                - IGH
+                - TRB
+                - TRD
+            description: Locus from which the variable domain in receptor_variable_domain_1_aa originates
+            example: IGH
+            x-airr:
+                adc-api-optional: true
+        receptor_variable_domain_2_aa:
+            type: string
+            nullable: false
+            description: >
+                Complete amino acid sequence of the mature variable domain of the Ig light, TCR alpha or TCR gamma chain.
+                The mature variable domain is defined as encompassing all AA from and including first AA after the the
+                signal peptide to and including the last AA that is completely encoded by the J gene.
+            example: >
+                QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL
+            x-airr:
+                adc-api-optional: true
+        receptor_variable_domain_2_locus:
+            type: string
+            nullable: false
+            enum:
+                - IGK
+                - IGL
+                - TRA
+                - TRG
+            description: Locus from which the variable domain in receptor_variable_domain_2_aa originates
+            example: IGL
+            x-airr:
+                adc-api-optional: true
+        receptor_ref:
+            type: array
+            nullable: true
+            description: Array of receptor identifiers defined for the Receptor object
+            title: Receptor cross-references
+            items:
+                type: string
+            example: ["IEDB_RECEPTOR:10"]
+            x-airr:
+                adc-query-support: true
+        reactivity_measurements:
+            type: array
+            nullable: true
+            description: Records of reactivity measurement
+            items:
+                type: object
+                properties:
+                    ligand_type:
+                        type: string
+                        nullable: false
+                        enum:
+                            - MHC:peptide
+                            - MHC:non-peptide
+                            - protein
+                            - peptide
+                            - non-peptidic
+                        description: Classification of ligand binding to receptor
+                        example: non-peptide
+                    antigen_type:
+                        type: string
+                        nullable: false
+                        enum:
+                            - protein
+                            - peptide
+                            - non-peptidic
+                        description: >
+                            The type of antigen before processing by the immune system.
+                        example: protein
+                    antigen:
+                        $ref: '#/Ontology'
+                        nullable: false
+                        description: >
+                            The substance against which the receptor was tested. This can be any substance that
+                            stimulates an adaptive immune response in the host, either through antibody production
+                            or by T cell activation after presentation via an MHC molecule.
+                        title: Antigen
+                        example:
+                            id: UNIPROT:P19597
+                            label: Circumsporozoite protein
+                        x-airr:
+                            adc-query-support: true
+                            format: ontology
+                    antigen_source_species:
+                        $ref: '#/Ontology'
+                        nullable: true
+                        description: The species from which the antigen was isolated
+                        title: Source species of antigen
+                        example:
+                            id: NCBITAXON:5843
+                            label: Plasmodium falciparum NF54
+                        x-airr:
+                            format: ontology
+                            ontology:
+                                draft: true
+                                top_node:
+                                    id: NCBITAXON:1
+                                    label: root
+                    peptide_start:
+                        type: integer
+                        nullable: true
+                        description: Start position of the peptide within the reference protein sequence
+                    peptide_end:
+                        type: integer
+                        nullable: true
+                        description: End position of the peptide within the reference protein sequence        
+                    mhc_class:
+                        type: string
+                        nullable: true
+                        enum:
+                            - MHC-I
+                            - MHC-II
+                            - MHC-nonclassical
+                        description: Class of MHC molecule, only present for MHC:x ligand types
+                        example: MHC-II
+                    mhc_gene_1:
+                        $ref: '#/Ontology'
+                        nullable: true
+                        description: The MHC gene to which the mhc_allele_1 belongs
+                        title: MHC gene 1
+                        example:
+                            id: MRO:0000055
+                            label: HLA-DRA
+                        x-airr:
+                            format: ontology
+                            ontology:
+                                draft: true
+                                top_node:
+                                    id: MRO:0000004
+                                    label: MHC gene
+                    mhc_allele_1:
+                        type: string
+                        nullable: true
+                        description: Allele designation of the MHC alpha chain
+                        example: HLA-DRA
+                    mhc_gene_2:
+                        $ref: '#/Ontology'
+                        nullable: true
+                        description: The MHC gene to which the mhc_allele_2 belongs
+                        title: MHC gene 2
+                        example:
+                            id: MRO:0000057
+                            label: HLA-DRB1
+                        x-airr:
+                            format: ontology
+                            ontology:
+                                draft: true
+                                top_node:
+                                    id: MRO:0000004
+                    mhc_allele_2:
+                        type: string
+                        nullable: true
+                        description: >
+                            Allele designation of the MHC class II beta chain or the invariant beta2-microglobin chain
+                        example: HLA-DRB1*04:01
+                    reactivity_method:
+                        type: string
+                        nullable: false
+                        enum:
+                            - SPR
+                            - ITC
+                            - ELISA
+                            - cytometry
+                            - biological activity
+                        description: The methodology used to assess expression (assay implemented in experiment)
+                    reactivity_readout:
+                        type: string
+                        nullable: false
+                        enum:
+                            - binding strength
+                            - cytokine release
+                            - dissociation constant KD
+                            - on rate
+                            - off rate
+                            - pathogen inhibition
+                        description: Reactivity measurement read-out
+                        example: cytokine release
+                    reactivity_value:
+                        type: float
+                        nullable: false
+                        description: The absolute (processed) value of the measurement
+                        example: 162.26
+                    reactivity_unit:
+                        type: string
+                        nullable: false
+                        description: The unit of the measurement
+                        example: pg/ml

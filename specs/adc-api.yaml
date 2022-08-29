@@ -94,7 +94,7 @@ definitions:
         $ref: '#/definitions/repertoire_list'
       Facet:
         $ref: '#/definitions/facet_list'
-        
+
   # list of rearrangement extension fields
   rearrangement_extension:
     description: The extended Rearrangement object with additional query fields for the ADC.
@@ -190,6 +190,16 @@ definitions:
               adc-api-optional: false
               adc-query_support: true
               name: C gene
+          adc_annotation_cell_id:
+            type: string
+            description: >
+              The Cell ID used by the annotation tool to annotate the Cell during data processing.
+            example: AAACCTGAGCACCGCT-1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query_support: true
+              name: Tool Cell ID
 
   # list of rearrangement annotations
   rearrangement_list:
@@ -386,7 +396,7 @@ definitions:
     properties:
       Info:
         $ref: '#/definitions/info_object'
-      Cell:
+      CellExpression:
         $ref: '#/definitions/expression_list'
   
   # The response object for the /expression endpoint
@@ -397,6 +407,38 @@ definitions:
         $ref: '#/definitions/info_object'
       CellExpression:
         $ref: '#/definitions/expression_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
+
+  # list of receptor extension fields
+  receptor_extension:
+    description: The extended Receptor object with additional query fields for the ADC.
+    allOf:
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Receptor'
+
+  # list of receptor annotations
+  receptor_list:
+    type: array
+    items:
+      $ref: '#/definitions/receptor_extension'
+
+  # The response object /receptor/{receptor_id} endpoint
+  receptor_id_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Receptor:
+        $ref: '#/definitions/receptor_list'
+
+  # The response object /receptor endpoint
+  receptor_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Receptor:
+        $ref: '#/definitions/receptor_list'
       Facet:
         $ref: '#/definitions/facet_list'
 
@@ -898,6 +940,94 @@ paths:
             A successful call returns an array of gene expression  data.
           schema:
             $ref: '#/definitions/expression_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /receptor/{receptor_id}:
+    x-swagger-router-controller: receptor
+    get:
+      description: >
+        Returns a receptor based upon its identifier.
+      tags:
+        - receptors
+      consumes:
+        - application/x-www-form-urlencoded
+        - application/json
+        - application/octet-stream
+      produces:
+        - application/json
+      parameters:
+        - name: receptor_id
+          in: path
+          description: ID of receptor to return
+          required: true
+          type: string
+      operationId: getReceptor
+      responses:
+        '200':
+          description: >
+            A successful call returns the receptor data.
+          schema:
+            $ref: '#/definitions/receptor_id_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /receptor:
+    x-swagger-router-controller: receptor
+    post:
+      description: >
+        This query service returns receptor data.
+      tags:
+        - receptors
+      parameters:
+        - in: body
+          name: data
+          schema:
+            type: object
+            properties:
+              filters:
+                type: object
+              format:
+                type: string
+                default: json
+                enum:
+                  - json
+                  - tsv
+              fields:
+                type: array
+                items:
+                  type: string
+              size:
+                type: integer
+              from:
+                type: integer
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
+              facets:
+                type: string
+      operationId: queryReceptors
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of receptor data.
+          schema:
+            $ref: '#/definitions/receptor_response'
         '400':
           description: Invalid request
           schema:
