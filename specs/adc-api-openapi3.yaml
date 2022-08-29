@@ -339,7 +339,7 @@ components:
     cell_extension:
       description: The extended Cell object with additional query fields for the ADC.
       allOf:
-        - $ref: 'https://github.com/airr-community/airr-standards/blob/v1.4.1/specs/airr-schema-openapi3.yaml#/Clone'
+        - $ref: 'https://github.com/airr-community/airr-standards/blob/v1.4.1/specs/airr-schema-openapi3.yaml#/Cell'
         - type: object
           properties:
             adc_annotation_cell_id:
