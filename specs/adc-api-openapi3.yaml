@@ -2,7 +2,7 @@ openapi: '3.0.0'
 
 info:
   title: AIRR Data Commons API
-  version: 1.0.0
+  version: 1.2.0
   contact:
     name: AIRR Community
     url: 'http://www.airr-community.org/'
@@ -110,7 +110,7 @@ components:
     repertoire_list:
       type: array
       items:
-        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Repertoire'
+        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema-openapi3.yaml#/Repertoire'
 
     # list of facets
     facet_list:
@@ -125,7 +125,7 @@ components:
     rearrangement_extension:
       description: The extended Rearrangement object with additional query fields for the ADC.
       allOf:
-        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema-openapi3.yaml#/Rearrangement'
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema-openapi3.yaml#/Rearrangement'
         - type: object
           properties:
             adc_v_subgroup:
@@ -237,7 +237,7 @@ components:
     clone_extension:
       description: The extended Clone object with additional query fields for the ADC.
       allOf:
-        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Clone'
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema-openapi3.yaml#/Clone'
         - type: object
           properties:
             adc_v_subgroup:
@@ -339,7 +339,7 @@ components:
     cell_extension:
       description: The extended Cell object with additional query fields for the ADC.
       allOf:
-        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Cell'
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema-openapi3.yaml#/Cell'
         - type: object
           properties:
             adc_annotation_cell_id:
@@ -363,13 +363,13 @@ components:
     expression_list:
       type: array
       items:
-        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/CellExpression'
+        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema-openapi3.yaml#/CellExpression'
 
     # list of receptor extension fields
     receptor_extension:
       description: The extended Receptor object with additional query fields for the ADC.
       allOf:
-        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Receptor'
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema-openapi3.yaml#/Receptor'
 
     # list of receptor annotations
     receptor_list:
