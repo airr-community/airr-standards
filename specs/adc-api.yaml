@@ -2,7 +2,7 @@ swagger: '2.0'
 
 info:
   title: AIRR Data Commons API
-  version: 1.1.0
+  version: 1.2.0
   contact:
     name: AIRR Community
     url: 'http://www.airr-community.org/'
@@ -73,7 +73,7 @@ definitions:
   repertoire_list:
     type: array
     items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Repertoire'
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Repertoire'
 
   # list of facets
   facet_list:
@@ -99,7 +99,7 @@ definitions:
   rearrangement_extension:
     description: The extended Rearrangement object with additional query fields for the ADC.
     allOf:
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Rearrangement'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Rearrangement'
       - type: object
         properties:
           adc_v_subgroup:
@@ -222,7 +222,7 @@ definitions:
   clone_extension:
     description: The extended Clone object with additional query fields for the ADC.
     allOf:
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Clone'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Clone'
       - type: object
         properties:
           adc_v_subgroup:
@@ -344,7 +344,7 @@ definitions:
   cell_extension:
     description: The extended Cell object with additional query fields for the ADC.
     allOf:
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Cell'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Cell'
       - type: object
         properties:
           adc_annotation_cell_id:
@@ -388,7 +388,7 @@ definitions:
   expression_list:
     type: array
     items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/CellExpression'
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/CellExpression'
 
   # The response object /expression/{expression_id} endpoint
   expression_id_response:
@@ -414,7 +414,7 @@ definitions:
   receptor_extension:
     description: The extended Receptor object with additional query fields for the ADC.
     allOf:
-      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Receptor'
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Receptor'
 
   # list of receptor annotations
   receptor_list:
