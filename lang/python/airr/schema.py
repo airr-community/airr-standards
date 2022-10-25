@@ -461,6 +461,14 @@ class Schema:
                 else:
                     raise ValidationError('Internal error: Field "%s" with type %s in schema not handled by validation. File a bug report.' % (full_field, field_type))
 
+                # check basic types enums
+                enums = dict(spec.items()).get("enum")
+                field_value = obj[f]
+                if enums is not None and field_value not in enums:
+                    raise ValidationError(
+                        'field "%s" has value "%s" not among possible enumeration values %s' % (full_field, field_value, enums)
+                    )
+
         return True
 
     def template(self):
