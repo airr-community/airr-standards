@@ -462,7 +462,7 @@ class Schema:
                     raise ValidationError('Internal error: Field "%s" with type %s in schema not handled by validation. File a bug report.' % (full_field, field_type))
 
                 # check basic types enums
-                enums = dict(spec.items()).get("enum")
+                enums = dict(spec.items()).get('enum')
                 field_value = obj[f]
                 if enums is not None and field_value not in enums:
                     raise ValidationError(
