@@ -769,3 +769,7 @@ GenotypeSet:
             germline_set_ref: IMGT:Homo sapiens:2022.1.31
             phasing: 1
         inference_process: repertoire_sequencing
+
+MHCGenotypeSet:
+  - mhc_genotype_set_id: 'this is a unique identifier'
+    mhc_genotype_list: []

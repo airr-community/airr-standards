@@ -834,5 +834,10 @@
                 "inference_process": "repertoire_sequencing"
             }
         ]
+    }],
+
+    "MHCGenotypeSet": [{
+        "mhc_genotype_set_id": "this is a unique identifier",
+        "mhc_genotype_list": []
     }]
 }
