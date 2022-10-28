@@ -4721,7 +4721,7 @@ Receptor:
                         description: Reactivity measurement read-out
                         example: cytokine release
                     reactivity_value:
-                        type: float
+                        type: number
                         nullable: false
                         description: The absolute (processed) value of the measurement
                         example: 162.26

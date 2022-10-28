@@ -331,7 +331,7 @@ Attributes:
 # internally resolved unless the ID contains an external PID. This implies that AIRR
 # Data Files cannot be merged simply by concatenating arrays; any merge program
 # would need to manage duplicate or conflicting ID values.
-
+#
 # While the properties in an AIRR Data File are not required, if one is provided then
 # the value should not be null.
 
@@ -4511,7 +4511,7 @@ Receptor:
                         x-airr:
                             nullable: false
                     reactivity_value:
-                        type: float
+                        type: number
                         description: The absolute (processed) value of the measurement
                         example: 162.26
                         x-airr:
