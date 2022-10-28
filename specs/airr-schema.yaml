@@ -4511,7 +4511,7 @@ Receptor:
                         x-airr:
                             nullable: false
                     reactivity_value:
-                        type: float
+                        type: number
                         description: The absolute (processed) value of the measurement
                         example: 162.26
                         x-airr:
