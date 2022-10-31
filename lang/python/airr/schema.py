@@ -39,7 +39,7 @@ class Schema:
     _to_bool_map.update({x: False for x in false_values + [0, False]})
     _from_bool_map = {k: 'T' if v else 'F' for k, v in _to_bool_map.items()}
 
-    def __init__(self, definition):
+    def __init__(self, definition: str | dict):
         """
         Initialization
 
@@ -307,7 +307,7 @@ class Schema:
 
         return True
 
-    def validate_object(self, obj, missing=True, nonairr=True, context=None):
+    def validate_object(self, obj, missing=True, nonairr=True, context=None, check_required_fields=True):
         """
         Validate Repertoire object data against schema
 
@@ -316,6 +316,7 @@ class Schema:
           missing (bool): provides warnings for missing optional fields.
           nonairr (bool: provides warning for non-AIRR fields that cannot be validated.
           context (string): used by recursion to indicate place in object hierarchy
+          check_required_fields (bool): check if data complies with the MiAIRR required fields
 
         Returns:
           bool: True if a ValidationError exception is not raised.
@@ -359,11 +360,11 @@ class Schema:
 
             # check MiAIRR keys exist
             if xairr and xairr.get('miairr'):
-                if is_missing_key:
+                if check_required_fields and is_missing_key:
                     raise ValidationError('MiAIRR field "%s" is missing' % full_field)
 
             # check if required field
-            if f in self.required and is_missing_key:
+            if check_required_fields and f in self.required and is_missing_key:
                 raise ValidationError('Required field "%s" is missing' % full_field)
 
             # check if identifier field
@@ -376,7 +377,7 @@ class Schema:
                         raise ValidationError('Not-nullable identifier field "%s" is missing' % full_field)
 
             # check nullable requirements
-            if is_null:
+            if check_required_fields and is_null:
                 if not xairr:
                     # default is true
                     continue
@@ -460,6 +461,16 @@ class Schema:
                         raise ValidationError('Field "%s" does not have number type: %s' % (full_field, obj[f]))
                 else:
                     raise ValidationError('Internal error: Field "%s" with type %s in schema not handled by validation. File a bug report.' % (full_field, field_type))
+
+                # check basic types enums
+                enums = spec.get('enum')
+
+                if enums is not None:
+                    field_value = obj[f]
+                    if field_value not in enums:
+                        raise ValidationError(
+                            'field "%s" has value "%s" not among possible enumeration values %s' % (full_field, field_value, enums)
+                        )
 
         return True
 

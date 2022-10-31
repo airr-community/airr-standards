@@ -269,7 +269,7 @@ def read_airr(filename, format=None, validate=False, model=True, debug=False):
     return data
 
 
-def validate_airr(data, model=True, debug=False):
+def validate_airr(data, model=True, debug=False, check_required_fields=True):
     """
     Validates an AIRR Data file
 
@@ -319,7 +319,7 @@ def validate_airr(data, model=True, debug=False):
         # Validate each record in array
         for i, record in obj_iter:
             try:
-                schema.validate_object(record)
+                schema.validate_object(record, check_required_fields=check_required_fields)
             except ValidationError as e:
                 valid = False
                 if debug:  sys.stderr.write('%s at array position %s with validation error: %s\n' % (k, i, e))

@@ -1277,9 +1277,9 @@ MHCGenotype:
             type: string
             description: Class of MHC alleles described by the MHCGenotype
             enum:
-              - MHC-I
-              - MHC-II
-              - MHC-nonclassical
+                - MHC-I
+                - MHC-II
+                - MHC-nonclassical
             example: MHC-I
             x-airr:
                 nullable: false
