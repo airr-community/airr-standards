@@ -377,7 +377,9 @@ class Schema:
                         raise ValidationError('Not-nullable identifier field "%s" is missing' % full_field)
 
             # check nullable requirements
-            if check_required_fields and is_null:
+            if is_null:
+                if not check_required_fields:
+                    continue
                 if not xairr:
                     # default is true
                     continue
@@ -400,7 +402,7 @@ class Schema:
                         schema = AIRRSchema[schema_name]
                     else:
                         schema = Schema(schema_name)
-                    schema.validate_object(obj[f], missing, nonairr, full_field)
+                    schema.validate_object(obj[f], missing, nonairr, full_field, check_required_fields)
                 else:
                     raise ValidationError('Internal error: field "%s" in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'array':
@@ -412,7 +414,7 @@ class Schema:
                     if spec['items'].get('$ref') is not None:
                         schema_name = spec['items']['$ref'].split('/')[-1]
                         schema = Schema(schema_name)
-                        schema.validate_object(row, missing, nonairr, full_field)
+                        schema.validate_object(row, missing, nonairr, full_field, check_required_fields)
                     elif spec['items'].get('allOf') is not None:
                         for s in spec['items']['allOf']:
                             if s.get('$ref') is not None:
@@ -421,7 +423,7 @@ class Schema:
                                     schema = AIRRSchema[schema_name]
                                 else:
                                     schema = Schema(schema_name)
-                                schema.validate_object(row, missing, False, full_field)
+                                schema.validate_object(row, missing, False, full_field, check_required_fields)
                     elif spec['items'].get('enum') is not None:
                         if row not in spec['items']['enum']:
                             raise ValidationError('field "%s" has value "%s" not among possible enumeration values' % (full_field, row))
@@ -439,7 +441,7 @@ class Schema:
                             raise ValidationError('array field "%s" does not have number type: %s' % (full_field, row))
                     elif spec['items'].get('type') == 'object':
                         sub_schema = Schema({'properties': spec['items'].get('properties')})
-                        sub_schema.validate_object(row, missing, nonairr, context)
+                        sub_schema.validate_object(row, missing, nonairr, context, check_required_fields)
                     else:
                         raise ValidationError('Internal error: array field "%s" in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'object':

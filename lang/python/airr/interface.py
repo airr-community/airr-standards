@@ -330,7 +330,7 @@ def validate_airr(data, model=True, debug=False, check_required_fields=True):
     return valid
 
 
-def write_airr(filename, data, format=None, info=None, validate=False, model=True, debug=False):
+def write_airr(filename, data, format=None, info=None, validate=False, model=True, debug=False, check_required_fields=True):
     """
     Write an AIRR Data file
 
@@ -358,7 +358,7 @@ def write_airr(filename, data, format=None, info=None, validate=False, model=Tru
     if validate:
         if debug:  sys.stderr.write('Validating: %s\n' % filename)
         try:
-            valid = validate_airr(data, model=model, debug=debug)
+            valid = validate_airr(data, model=model, debug=debug, check_required_fields=check_required_fields)
         except ValidationError as e:
             if debug:  sys.stderr.write(e)
             raise ValidationError(e)
