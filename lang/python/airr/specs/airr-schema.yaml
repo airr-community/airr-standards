@@ -392,13 +392,6 @@ DataFile:
                 $ref: '#/GenotypeSet'
             x-airr:
                 nullable: false
-        MHCGenotypeSet:
-            type: array
-            description: List of mhcgenotype sets
-            items:
-                $ref: '#/MHCGenotypeSet'
-            x-airr:
-                nullable: false
 
 # AIRR Info object, should be similar to openapi
 # should we point to an openapi schema?
@@ -1333,6 +1326,18 @@ MHCGenotype:
                 nullable: true
                 adc-query-support: true
 
+
+GenotypeSets:
+    discriminator: AIRR
+    type: object
+    properties:
+        receptor_genotype_set:
+            $ref: '#/GenotypeSet'
+            description: Immune receptor genotype set for this subject.
+        mhc_genotype_set:
+            $ref: '#/MHCGenotypeSet'
+            description: MHC genotype set for this subject.
+
 #
 # Repertoire metadata schema
 #
@@ -1807,6 +1812,10 @@ Subject:
             x-airr:
                 nullable: false
                 adc-query-support: true
+        genotype:
+            $ref: '#/GenotypeSets'
+            title: GenotypeSets
+            description: Genotype for this subject, if known
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:

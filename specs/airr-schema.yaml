@@ -392,13 +392,6 @@ DataFile:
                 $ref: '#/GenotypeSet'
             x-airr:
                 nullable: false
-        MHCGenotypeSet:
-            type: array
-            description: List of mhcgenotype sets
-            items:
-                $ref: '#/MHCGenotypeSet'
-            x-airr:
-                nullable: false
 
 # AIRR Info object, should be similar to openapi
 # should we point to an openapi schema?

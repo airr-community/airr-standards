@@ -394,6 +394,7 @@ class Schema:
 
             # check types
             field_type = self.type(f)
+
             if field_type is None:
                 # for referenced object, recursively call validate with object and schema
                 if spec.get('$ref') is not None:
