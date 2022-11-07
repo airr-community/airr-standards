@@ -1326,7 +1326,6 @@ MHCGenotype:
                 nullable: true
                 adc-query-support: true
 
-
 GenotypeSets:
     discriminator: AIRR
     type: object
