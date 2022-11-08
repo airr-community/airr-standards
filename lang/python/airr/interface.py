@@ -224,7 +224,7 @@ def validate_rearrangement(filename, debug=False):
 
 #### AIRR Data Model ####
 
-def read_airr(filename, format=None, validate=False, model=True, debug=False):
+def read_airr(filename, format=None, validate=False, model=True, debug=False, check_required_fields=True):
     """
     Load an AIRR Data file
 
@@ -260,7 +260,7 @@ def read_airr(filename, format=None, validate=False, model=True, debug=False):
     if validate:
         if debug:  sys.stderr.write('Validating: %s\n' % filename)
         try:
-            valid = validate_airr(data, model=model, debug=debug)
+            valid = validate_airr(data, model=model, debug=debug, check_required_fields=check_required_fields)
         except ValidationError as e:
             if debug:  sys.stderr.write('%s failed validation\n' % filename)
             raise ValidationError(e)
