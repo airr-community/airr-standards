@@ -30,7 +30,7 @@
                     "id": "NCBITaxon_9606",
                     "label": "Homo sapiens"
                 },
-                "sex": "F",
+                "sex": "female",
                 "age_min": 27,
                 "age_max": 27,
                 "age_unit": {
@@ -58,7 +58,64 @@
                         "intervention": null,
                         "medical_history": null
                     }
-                ]
+                ],
+                "genotype": {
+                    "receptor_genotype_set": {
+                        "receptor_genotype_set_id": "1",
+                        "genotype_class_list": [
+                            {
+                                "receptor_genotype_id": "1",
+                                "locus": "IGH",
+                                "documented_alleles": [
+                                    {
+                                        "label": "IGHV1-69*01",
+                                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                                        "phasing": 1
+                                    },
+                                    {
+                                        "label": "IGHV1-69*02",
+                                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                                        "phasing": 2
+                                    }
+                                ],
+                                "undocumented_alleles": [
+                                    {
+                                        "allele_name": "IGHD3-1*01_S1234",
+                                        "sequence": "agtagtagtagt",
+                                        "phasing": 1
+                                    }
+                                ],
+                                "deleted_genes": [
+                                    {
+                                        "label": "IGHV3-30-3",
+                                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                                        "phasing": 1
+                                    }
+                                ],
+                                "inference_process": "repertoire_sequencing"
+                            }
+                        ]
+                    },
+                    "mhc_genotype_set": {
+                        "mhc_genotype_set_id": "this is a unique identifier",
+                        "mhc_genotype_list": [
+                            {
+                                "mhc_genotype_id": "unique",
+                                "mhc_class": "MHC-I",
+                                "mhc_alleles": [
+                                    {
+                                        "allele_designation": "01:01",
+                                        "gene": {
+                                            "id": "MRO-0000046",
+                                            "label": "HLA-A"
+                                        },
+                                        "reference_set_ref": "blah"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
             },
             "sample": [
                 {
@@ -178,7 +235,7 @@
                     "id": "NCBITaxon_9606",
                     "label": "Homo sapiens"
                 },
-                "sex": "F",
+                "sex": "female",
                 "age_min": 27,
                 "age_max": 27,
                 "age_unit": {
@@ -326,7 +383,7 @@
                     "id": "NCBITaxon_9606",
                     "label": "Homo sapiens"
                 },
-                "sex": "F",
+                "sex": "female",
                 "age_min": 27,
                 "age_max": 27,
                 "age_unit": {
@@ -482,7 +539,7 @@
                 "chromosome": null,
                 "sequence_type": "V",
                 "functional": true,
-                "inference_type": "Rearranged",
+                "inference_type": "Rearranged only",
                 "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
                 "species_subgroup": "CAST_EiJ",
                 "species_subgroup_type": "strain",
@@ -648,7 +705,7 @@
                 "chromosome": null,
                 "sequence_type": "V",
                 "functional": true,
-                "inference_type": "Rearranged",
+                "inference_type": "Rearranged only",
                 "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
                 "species_subgroup": "CAST_EiJ",
                 "species_subgroup_type": "strain",
@@ -798,7 +855,6 @@
         ],
         "curation": null
     }],
-
     "GenotypeSet": [{
         "receptor_genotype_set_id": "1",
         "genotype_class_list": [
