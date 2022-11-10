@@ -1329,13 +1329,16 @@ MHCGenotype:
 
 
 GenotypeSets:
-    discriminator: AIRR
+    discriminator:
+        propertyName: AIRR
     type: object
     properties:
         receptor_genotype_set:
+            nullable: true
             $ref: '#/GenotypeSet'
             description: Immune receptor genotype set for this subject.
         mhc_genotype_set:
+            nullable: true
             $ref: '#/MHCGenotypeSet'
             description: MHC genotype set for this subject.
 
@@ -1818,6 +1821,7 @@ Subject:
             x-airr:
                 adc-query-support: true
         genotype:
+            nullable: true
             $ref: '#/GenotypeSets'
             title: GenotypeSets
             description: Genotype for this subject, if known
