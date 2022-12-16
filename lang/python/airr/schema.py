@@ -443,7 +443,7 @@ class Schema:
                         raise ValidationError('Internal error: array field "%s" in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'object':
                 # right now all arrays of objects use $ref
-                raise ValidationError('Internal error: field "%s" in schema not handled by validation. File a bug report.' % full_field)
+                raise ValidationError('Internal error: object "%s" in schema not handled by validation. File a bug report.' % full_field)
             else:
                 # check basic types
                 if field_type == 'string':
