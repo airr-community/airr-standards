@@ -1255,7 +1255,8 @@ MHCGenotypeSet:
                 $ref: '#/MHCGenotype'
 
 MHCAllele:
-    discriminator: AIRR
+    discriminator:
+        propertyName: AIRR
     type: object
     properties:
         allele_designation:
