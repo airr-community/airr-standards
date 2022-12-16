@@ -1254,6 +1254,36 @@ MHCGenotypeSet:
             items:
                 $ref: '#/MHCGenotype'
 
+MHCAllele:
+    discriminator: AIRR
+    type: object
+    properties:
+        allele_designation:
+            type: string
+            nullable: true
+            description: >
+                The accepted designation of an allele, usually its gene symbol plus allele/sub-allele/etc
+                identifiers, if provided by the mhc_typing method
+        gene:
+            $ref: '#/Ontology'
+            nullable: true
+            description: The MHC gene to which the described allele belongs
+            title: MHC gene
+            example:
+                id: MRO:0000046
+                label: HLA-A
+            x-airr:
+                adc-query-support: false
+                format: ontology
+                ontology:
+                    draft: true
+                    top_node:
+                        id: MRO:0000004
+                        label: MHC gene
+        reference_set_ref:
+            type: string
+            nullable: true
+            description: Repository and list from which it was taken (issuer/name/version)
 
 # Genotype of major histocompatibility complex (MHC) class I, class II and non-classical loci
 MHCGenotype:
@@ -1283,37 +1313,9 @@ MHCGenotype:
                 format: controlled vocabulary
         mhc_alleles:
             type: array
-            nullable: false
             description: List of MHC alleles of the indicated mhc_class identified in an individual
             items:
-                type: object
-                properties:
-                    allele_designation:
-                        type: string
-                        nullable: false
-                        description: >
-                            The accepted designation of an allele, usually its gene symbol plus allele/sub-allele/etc
-                            identifiers, if provided by the mhc_typing method
-                    gene:
-                        $ref: '#/Ontology'
-                        nullable: true
-                        description: The MHC gene to which the described allele belongs
-                        title: MHC gene
-                        example:
-                            id: MRO:0000046
-                            label: HLA-A
-                        x-airr:
-                            adc-query-support: false
-                            format: ontology
-                            ontology:
-                                draft: true
-                                top_node:
-                                    id: MRO:0000004
-                                    label: MHC gene
-                    reference_set_ref:
-                        type: string
-                        nullable: false
-                        description: Repository and list from which it was taken (issuer/name/version)
+                $ref: '#/MHCAllele'
             x-airr:
                 adc-query-support: true
         mhc_genotyping_method:
@@ -1326,6 +1328,20 @@ MHCGenotype:
             example: pcr_low_resolution
             x-airr:
                 adc-query-support: true
+
+SubjectGenotype:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    properties:
+        receptor_genotype_set:
+            nullable: true
+            $ref: '#/GenotypeSet'
+            description: Immune receptor genotype set for this subject.
+        mhc_genotype_set:
+            nullable: true
+            $ref: '#/MHCGenotypeSet'
+            description: MHC genotype set for this subject.
 
 #
 # Repertoire metadata schema
@@ -1806,18 +1822,9 @@ Subject:
             x-airr:
                 adc-query-support: true
         genotype:
-            type: object
+            $ref: '#/SubjectGenotype'
             nullable: true
             description: Genotype for this subject, if known
-            properties:
-                receptor_genotype_set:
-                    nullable: true
-                    $ref: '#/GenotypeSet'
-                    description: Immune receptor genotype set for this subject.
-                mhc_genotype_set:
-                    nullable: true
-                    $ref: '#/MHCGenotypeSet'
-                    description: MHC genotype set for this subject.
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
