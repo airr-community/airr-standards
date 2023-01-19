@@ -4,10 +4,14 @@ AIRR Data Representation Schema
 
 # Imports
 import sys
+from collections import OrderedDict
+
 import yaml
 import yamlordereddictloader
-from collections import OrderedDict
 from pkg_resources import resource_stream
+
+with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
+    DEFAULT_SPEC = yaml.load(f, Loader=yamlordereddictloader.Loader)
 
 
 class ValidationError(Exception):
@@ -54,12 +58,12 @@ class Schema:
             raise KeyError('Info is an invalid schema definition name')
 
         # Load object definition
-        if isinstance(definition, dict):       # on-the-fly definition of a nested object
+        if isinstance(definition, dict):  # on-the-fly definition of a nested object
             self.definition = definition
             spec = {'Info': []}
         else:
-            with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
-                spec = yaml.load(f, Loader=yamlordereddictloader.Loader)
+
+            spec = DEFAULT_SPEC
 
             try:
                 self.definition = spec[definition]
@@ -334,15 +338,19 @@ class Schema:
         # first warn about non-AIRR fields
         if nonairr:
             for f in obj:
-                if context is None: full_field = f
-                else: full_field = context + '.' + f
+                if context is None:
+                    full_field = f
+                else:
+                    full_field = context + '.' + f
                 if self.properties.get(f) is None:
                     sys.stderr.write('Warning: Object has non-AIRR field that cannot be validated (' + full_field + ').\n')
 
         # now walk through schema and check types
         for f in self.properties:
-            if context is None: full_field = f
-            else: full_field = context + '.' + f
+            if context is None:
+                full_field = f
+            else:
+                full_field = context + '.' + f
             spec = self.spec(f)
             xairr = spec.get('x-airr')
 
@@ -444,7 +452,8 @@ class Schema:
                         sub_schema = Schema({'properties': spec['items'].get('properties')})
                         sub_schema.validate_object(row, missing, nonairr, context, check_required_fields)
                     else:
-                        raise ValidationError('Internal error: array field "%s" in schema not handled by validation. File a bug report.' % full_field)
+                        raise ValidationError(
+                            'Internal error: array field "%s" in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'object':
                 # right now all arrays of objects use $ref
                 raise ValidationError('Internal error: field "%s" in schema not handled by validation. File a bug report.' % full_field)
@@ -463,7 +472,9 @@ class Schema:
                     if not isinstance(obj[f], float) and not isinstance(obj[f], int):
                         raise ValidationError('Field "%s" does not have number type: %s' % (full_field, obj[f]))
                 else:
-                    raise ValidationError('Internal error: Field "%s" with type %s in schema not handled by validation. File a bug report.' % (full_field, field_type))
+                    raise ValidationError(
+                        'Internal error: Field "%s" with type %s in schema not handled by validation. File a bug report.' % (
+                        full_field, field_type))
 
                 # check basic types enums
                 enums = spec.get('enum')
@@ -485,13 +496,13 @@ class Schema:
           collections.OrderedDict: dictionary with all schema properties set as None or an empty list.
         """
         # Set defaults for each data type
-        type_default = {'boolean': False, 'integer': 0, 'number': 0.0, 'string': '', 'array':[]}
+        type_default = {'boolean': False, 'integer': 0, 'number': 0.0, 'string': '', 'array': []}
 
         # Fetch schema template definition for a $ref string
         def _reference(ref):
             x = ref.split('/')[-1]
             schema = AIRRSchema.get(x, Schema(x))
-            return(schema.template())
+            return (schema.template())
 
         # Get default value
         def _default(spec):
@@ -523,7 +534,7 @@ class Schema:
             else:
                 object[k] = None
 
-        return(object)
+        return (object)
 
 
 # Preloaded schema
