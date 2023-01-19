@@ -62,9 +62,7 @@ class Schema:
             self.definition = definition
             spec = {'Info': []}
         else:
-
             spec = DEFAULT_SPEC
-
             try:
                 self.definition = spec[definition]
             except KeyError:
