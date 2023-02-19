@@ -38,7 +38,7 @@ Repertoire:
       species:
         id: NCBITaxon_9606
         label: Homo sapiens
-      sex: F
+      sex: female
       age_min: 27
       age_max: 27
       age_unit:
@@ -173,7 +173,7 @@ Repertoire:
       species:
         id: NCBITaxon_9606
         label: Homo sapiens
-      sex: F
+      sex: female
       age_min: 27
       age_max: 27
       age_unit:
@@ -308,7 +308,7 @@ Repertoire:
       species:
         id: NCBITaxon_9606
         label: Homo sapiens
-      sex: F
+      sex: female
       age_min: 27
       age_max: 27
       age_unit:
@@ -441,7 +441,7 @@ GermlineSet:
         chromosome:
         sequence_type: V
         functional: true
-        inference_type: Rearranged
+        inference_type: "Rearranged only"
         species:
           id: NCBITAXON:10090
           label: Mus musculus
@@ -602,7 +602,7 @@ GermlineSet:
         chromosome:
         sequence_type: V
         functional: true
-        inference_type: Rearranged
+        inference_type: "Rearranged only"
         species:
           id: NCBITAXON:10090
           label: Mus musculus

@@ -18,7 +18,7 @@ Repertoire:
       species:
         id: "NCBITaxon_9606"
         value: "Homo sapiens"
-      sex: F
+      sex: female
       age_min: 27
       age_max: 27
       age_unit:
@@ -66,7 +66,7 @@ Repertoire:
       species:
         id: "NCBITaxon_9606"
         value: "Homo sapiens"
-      sex: F
+      sex: female
       age_min: 27
       age_max: 27
       age_unit:
@@ -114,7 +114,7 @@ Repertoire:
       species:
         id: "NCBITaxon_9606"
         value: "Homo sapiens"
-      sex: F
+      sex: female
       age_min: 27
       age_max: 27
       age_unit:
