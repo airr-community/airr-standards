@@ -484,16 +484,6 @@ class Schema:
                             'field "%s" has value "%s" not among possible enumeration values %s' % (full_field, field_value, enums)
                         )
 
-                # check basic types enums
-                enums = spec.get('enum')
-
-                if enums is not None:
-                    field_value = obj[f]
-                    if field_value not in enums:
-                        raise ValidationError(
-                            'field "%s" has value "%s" not among possible enumeration values %s' % (full_field, field_value, enums)
-                        )
-
         return True
 
     def template(self):
