@@ -318,9 +318,9 @@ def parse_schema(spec, schema):
                     base_dic = xairr['ontology']
                     ontology_format = (str(base_dic['top_node']['id']), str(base_dic['top_node']['label']) )
                     # Replace name with url-linked name
-                    data_format = 'Ontology: { top_node: { id: %s, value: %s}}' % (ontology_format)
+                    data_format = 'Ontology: { top_node: { id: %s, label: %s}}' % (ontology_format)
                     # Get 'type' for ontology
-                    example = 'id: %s, value: %s' % (example['id'], example['label'])
+                    example = 'id: %s, label: %s' % (example['id'], example['label'])
                 elif xairr['format'] == 'controlled vocabulary':
                     if attr.get('enum', None) is not None:
                         data_format = 'Controlled vocabulary: %s' % ', '.join(attr['enum'])
