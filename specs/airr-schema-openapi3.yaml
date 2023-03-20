@@ -488,7 +488,8 @@ Acknowledgement:
         acknowledgement_id:
             type: string
             description: unique identifier of this Acknowledgement within the file
-            nullable: false
+            x-airr:
+                nullable: false
         name:
             type: string
             nullable: true
