@@ -799,7 +799,7 @@ AlleleDescription:
                 nullable: false
         coding_sequence:
             type: string
-            description: nucleotide sequence of the core region of the gene (V-, D-, J- or C-REGION), aligned, in the case of the V-REGION, with the IMGT numbering scheme
+            description: nucleotide sequence of the core region of the gene (V-, D-, J- or C-REGION), aligned, in the case of the V-REGION, with the IMGT numbering scheme with no additional inserted codons
             x-airr:
                 nullable: false
         aliases:
@@ -885,6 +885,12 @@ AlleleDescription:
         allele_designation:
             type: string
             description: Allele number or other identifier, as (and if) defined
+        allele_similarity_cluster_designation:
+            type: string
+            description: ID of the similarity cluster used in this germline set, if designated
+        allele_similarity_cluster_member_id:
+            type: string
+            description: Membership ID of the allele within the similarity cluster, if a cluster is designated
         j_codon_frame:
             type: integer
             enum:
@@ -916,6 +922,18 @@ AlleleDescription:
         leader_2_end:
             type: integer
             description: End co-ordinate (in the sequence field) of L-PART2 (V-genes only)
+        v_cdr1_start:
+            type: integer
+            description: Start co-ordinate (in the sequence field) of CDR1 (V-genes only)
+        v_cdr1_end:
+            type: integer
+            description: End co-ordinate (in the sequence field) of CDR1 (V-genes only)
+        v_cdr2_start:
+            type: integer
+            description: Start co-ordinate (in the sequence field) of CDR1 (V-genes only)
+        v_cdr2_end:
+            type: integer
+            description: End co-ordinate (in the sequence field) of CDR1 (V-genes only)
         v_rs_start:
             type: integer
             description: Start co-ordinate (in the sequence field) of V recombination site (V-genes only)
