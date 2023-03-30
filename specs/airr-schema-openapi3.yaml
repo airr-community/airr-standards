@@ -1387,7 +1387,7 @@ DocumentedAllele:
 # This describes a 'undocumented' allele found in a genotype
 # It is 'undocumented' in the sense that it was not found in reference sets consulted for the analysis
 
-DocumentedAllele:
+UndocumentedAllele:
     discriminator:
         propertyName: AIRR
     required:
