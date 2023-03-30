@@ -940,12 +940,17 @@ AlleleDescription:
                 miairr: important
         v_cdr2_start:
             type: integer
-            description: Start co-ordinate (in the sequence field) of CDR1 (V-genes only)
+            description: Start co-ordinate (in the sequence field) of CDR2 (V-genes only)
             x-airr:
                 miairr: important
         v_cdr2_end:
             type: integer
-            description: End co-ordinate (in the sequence field) of CDR1 (V-genes only)
+            description: End co-ordinate (in the sequence field) of CDR2 (V-genes only)
+            x-airr:
+                miairr: important
+        v_fwr3_end:
+            type: integer
+            description: End co-ordinate (in the sequence field) of FR3 (V-genes only)
             x-airr:
                 miairr: important
         v_rs_start:
