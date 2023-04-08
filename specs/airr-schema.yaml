@@ -663,66 +663,74 @@ SequenceDelineationV:
             example: Chothia
             x-airr:
                 miairr: important
+        unaligned_sequence:
+            type: string
+            x-airr:
+                miairr: important
+            description: entire V-sequence covered by this delineation
+        aligned_sequence:
+            type: string
+            description: aligned sequence, if this delineation provides an alignment (an aligned sequence should always be provided for IMGT delineations)
         fwr1_start:
             type: integer
-            description: FWR1 start co-ordinate in Gene Description 'alignment' field
+            description: FWR1 start co-ordinate in the 'unaligned sequence' field
             x-airr:
                 miairr: important
         fwr1_end:
             type: integer
-            description: FWR1 end co-ordinate in Gene Description 'alignment' field
+            description: FWR1 end co-ordinate in the 'unaligned sequence' field
             x-airr:
                 miairr: important
         cdr1_start:
             type: integer
-            description: CDR1 start co-ordinate in Gene Description 'alignment' field
+            description: CDR1 start co-ordinate in the 'unaligned sequence' field
             x-airr:
                 miairr: important
         cdr1_end:
             type: integer
-            description: CDR1 end co-ordinate in Gene Description 'alignment' field
+            description: CDR1 end co-ordinate in the 'unaligned sequence' field
             x-airr:
                 miairr: important
         fwr2_start:
             type: integer
-            description: FWR2 start co-ordinate in Gene Description 'alignment' field
+            description: FWR2 start co-ordinate in the 'unaligned sequence' field
             x-airr:
                 miairr: important
         fwr2_end:
             type: integer
-            description: FWR2 end co-ordinate in Gene Description 'alignment' field
+            description: FWR2 end co-ordinate in the 'unaligned sequence' field
             x-airr:
                 miairr: important
         cdr2_start:
             type: integer
-            description: CDR2 start co-ordinate in Gene Description 'alignment' field
+            description: CDR2 start co-ordinate in the 'unaligned sequence' field
             x-airr:
                 miairr: important
         cdr2_end:
             type: integer
-            description: CDR2 end co-ordinate in Gene Description 'alignment' field
+            description: CDR2 end co-ordinate in the 'unaligned sequence' field
             x-airr:
                 miairr: important
         fwr3_start:
             type: integer
-            description: FWR3 start co-ordinate in Gene Description 'alignment' field
+            description: FWR3 start co-ordinate in the 'unaligned sequence' field
             x-airr:
                 miairr: important
         fwr3_end:
             type: integer
-            description: FWR3 end co-ordinate in Gene Description 'alignment' field
+            description: FWR3 end co-ordinate in the 'unaligned sequence' field
             x-airr:
                 miairr: important
         cdr3_start:
             type: integer
-            description: CDR3 start co-ordinate in Gene Description 'alignment' field
+            description: CDR3 start co-ordinate in the 'unaligned sequence' field
             x-airr:
                 miairr: important
-        alignment:
+        alignment_labels:
             type: array
             items:
               type: string
-            description: one string for each codon in the fields v_start to cdr3_start indicating the label of that codon according to the numbering of the delineation scheme
+            description: one string for each codon in the aligned_sequence indicating the label of that codon according to the numbering of the delineation scheme, if it provides one
 
 # Description of a putative or confirmed Ig receptor gene/allele
 AlleleDescription:
@@ -801,7 +809,7 @@ AlleleDescription:
                 miairr: essential
         coding_sequence:
             type: string
-            description: nucleotide sequence of the core region of the gene (V-, D-, J- or C-REGION), aligned, in the case of the V-REGION, with the IMGT numbering scheme with no additional inserted codons
+            description: nucleotide sequence of the core region of the gene (V-, D-, J- or C-REGION)
             x-airr:
                 miairr: important
         aliases:
@@ -928,31 +936,6 @@ AlleleDescription:
         leader_2_end:
             type: integer
             description: End co-ordinate (in the sequence field) of L-PART2 (V-genes only)
-        v_cdr1_start:
-            type: integer
-            description: Start co-ordinate (in the sequence field) of CDR1 (V-genes only)
-            x-airr:
-                miairr: important
-        v_cdr1_end:
-            type: integer
-            description: End co-ordinate (in the sequence field) of CDR1 (V-genes only)
-            x-airr:
-                miairr: important
-        v_cdr2_start:
-            type: integer
-            description: Start co-ordinate (in the sequence field) of CDR2 (V-genes only)
-            x-airr:
-                miairr: important
-        v_cdr2_end:
-            type: integer
-            description: End co-ordinate (in the sequence field) of CDR2 (V-genes only)
-            x-airr:
-                miairr: important
-        v_fwr3_end:
-            type: integer
-            description: End co-ordinate (in the sequence field) of FR3 (V-genes only)
-            x-airr:
-                miairr: important
         v_rs_start:
             type: integer
             description: Start co-ordinate (in the sequence field) of V recombination site (V-genes only)
@@ -974,8 +957,6 @@ AlleleDescription:
         j_cdr3_end:
             type: integer
             description: In the case of a J-gene, the co-ordinate (in the sequence field) of the first nucelotide of the conserved PHE or TRP (IMGT codon position 118)
-            x-airr:
-                miairr: important
         j_rs_start:
             type: integer
             description: Start co-ordinate (in the sequence field) of J recombination site (J-genes only)
