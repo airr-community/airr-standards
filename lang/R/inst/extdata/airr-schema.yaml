@@ -38,11 +38,11 @@ CURIEMap:
     CHEBI:
         type: ontology
         default:
-          map: OBO
-          provider: OLS
+            map: OBO
+            provider: OLS
         map:
-          OBO:
-            iri_prefix: "http://purl.obolibrary.org/obo/CHEBI_"
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/CHEBI_"
     CL:
         type: ontology
         default:
@@ -721,7 +721,7 @@ SequenceDelineationV:
         alignment:
             type: array
             items:
-              type: string
+                type: string
             description: one string for each codon in the fields v_start to cdr3_start indicating the label of that codon according to the numbering of the delineation scheme
 
 # Description of a putative or confirmed Ig receptor gene/allele
@@ -822,7 +822,7 @@ AlleleDescription:
                 nullable: false
         chromosome:
             type: integer
-            description: chromosome on which the gene is located 
+            description: chromosome on which the gene is located
         sequence_type:
             type: string
             enum:
@@ -1089,7 +1089,7 @@ GermlineSet:
         allele_descriptions:
             type: array
             items:
-              $ref: '#/AlleleDescription'
+                $ref: '#/AlleleDescription'
             description: list of allele_descriptions in the germline set
             x-airr:
                 nullable: false
@@ -1120,7 +1120,7 @@ GenotypeSet:
             items:
                 $ref: '#/Genotype'
 
-# This enumerates the alleles and gene deletions inferred in a single subject. Included alleles may either be listed by reference to a GermlineSet, or 
+# This enumerates the alleles and gene deletions inferred in a single subject. Included alleles may either be listed by reference to a GermlineSet, or
 # listed as 'undocumented', in which case the inferred sequence is provided
 
 # Genotype of adaptive immune receptors
@@ -1270,9 +1270,9 @@ MHCGenotype:
             type: string
             description: Class of MHC alleles described by the MHCGenotype
             enum:
-              - MHC-I
-              - MHC-II
-              - MHC-nonclassical
+                - MHC-I
+                - MHC-II
+                - MHC-nonclassical
             example: MHC-I
             x-airr:
                 nullable: false
@@ -1325,6 +1325,17 @@ MHCGenotype:
             x-airr:
                 nullable: true
                 adc-query-support: true
+
+GenotypeSets:
+    discriminator: AIRR
+    type: object
+    properties:
+        receptor_genotype_set:
+            $ref: '#/GenotypeSet'
+            description: Immune receptor genotype set for this subject.
+        mhc_genotype_set:
+            $ref: '#/MHCGenotypeSet'
+            description: MHC genotype set for this subject.
 
 #
 # Repertoire metadata schema
@@ -1520,10 +1531,10 @@ Study:
             description: Keywords describing properties of one or more data sets in a study
             title: Keywords for study
             example:
-              - contains_ig
-              - contains_schema_rearrangement
-              - contains_schema_clone
-              - contains_schema_cell
+                - contains_ig
+                - contains_schema_rearrangement
+                - contains_schema_clone
+                - contains_schema_cell
             x-airr:
                 miairr: important
                 nullable: true
@@ -1801,15 +1812,8 @@ Subject:
                 nullable: false
                 adc-query-support: true
         genotype:
-            type: object
-            description: Genotype for this subject, if known
-            properties:
-                receptor_genotype_set:
-                    $ref: '#/GenotypeSet'
-                    description: Immune receptor genotype set for this subject.
-                mhc_genotype_set:
-                    $ref: '#/MHCGenotypeSet'
-                    description: MHC genotype set for this subject.
+            $ref: '#/GenotypeSets'
+            title: GenotypeSets
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
@@ -2364,7 +2368,7 @@ NucleicAcidProcessing:
         template_amount_unit:
             $ref: '#/Ontology'
             description: Unit of template amount
-            title:  Template amount time unit
+            title: Template amount time unit
             example:
                 id: UO:0000024
                 label: nanogram
@@ -2380,7 +2384,7 @@ NucleicAcidProcessing:
                     draft: false
                     top_node:
                         id: UO:0000002
-                        label:  physical quantity
+                        label: physical quantity
         library_generation_method:
             type: string
             enum:
@@ -2882,24 +2886,24 @@ DataProcessing:
 SampleProcessing:
     discriminator: AIRR
     allOf:
-        - type: object
-          properties:
-              sample_processing_id:
-                  type: string
-                  description: >
-                      Identifier for the sample processing object. This field should be unique within the repertoire.
-                      This field can be used to uniquely identify the combination of sample, cell processing,
-                      nucleic acid processing and sequencing run information for the repertoire.
-                  title: Sample processing ID
-                  x-airr:
-                      nullable: true
-                      name: Sample processing ID
-                      adc-query-support: true
-                      identifier: true
-        - $ref: '#/Sample'
-        - $ref: '#/CellProcessing'
-        - $ref: '#/NucleicAcidProcessing'
-        - $ref: '#/SequencingRun'
+        -   type: object
+            properties:
+                sample_processing_id:
+                    type: string
+                    description: >
+                        Identifier for the sample processing object. This field should be unique within the repertoire.
+                        This field can be used to uniquely identify the combination of sample, cell processing,
+                        nucleic acid processing and sequencing run information for the repertoire.
+                    title: Sample processing ID
+                    x-airr:
+                        nullable: true
+                        name: Sample processing ID
+                        adc-query-support: true
+                        identifier: true
+        -   $ref: '#/Sample'
+        -   $ref: '#/CellProcessing'
+        -   $ref: '#/NucleicAcidProcessing'
+        -   $ref: '#/SequencingRun'
 
 
 # The composite schema for the repertoire object
@@ -4116,7 +4120,7 @@ Cell:
             title: Cell-associated rearrangements
             items:
                 type: string
-            example: [id1, id2] #empty vs NULL?
+            example: [ id1, id2 ] #empty vs NULL?
             x-airr:
                 miairr: defined
                 nullable: true
@@ -4129,7 +4133,7 @@ Cell:
             title: Cell-associated receptors
             items:
                 type: string
-            example: [id1, id2] #empty vs NULL?
+            example: [ id1, id2 ] #empty vs NULL?
             x-airr:
                 miairr: defined
                 nullable: true
@@ -4192,8 +4196,8 @@ Cell:
                 name: Virtual pairing
 
 # The CellExpression object acts as a container to hold a single expression level measurement from
-# an experiment. Expression data is associated with a cell_id and the related repertoire_id and 
-# data_processing_id as cell_id is not guaranteed to be unique outside the data processing for 
+# an experiment. Expression data is associated with a cell_id and the related repertoire_id and
+# data_processing_id as cell_id is not guaranteed to be unique outside the data processing for
 # a single repertoire.
 CellExpression:
     discriminator: AIRR
@@ -4362,7 +4366,7 @@ Receptor:
             title: Receptor cross-references
             items:
                 type: string
-            example: ["IEDB_RECEPTOR:10"]
+            example: [ "IEDB_RECEPTOR:10" ]
             x-airr:
                 nullable: true
                 adc-query-support: true

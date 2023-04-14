@@ -1555,6 +1555,17 @@ Study:
                 adc-query-support: true
                 name: ADC Update Date
 
+GenotypeSets:
+    discriminator: AIRR
+    type: object
+    properties:
+        receptor_genotype_set:
+            $ref: '#/GenotypeSet'
+            description: Immune receptor genotype set for this subject.
+        mhc_genotype_set:
+            $ref: '#/MHCGenotypeSet'
+            description: MHC genotype set for this subject.
+
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
 Subject:
@@ -1801,15 +1812,8 @@ Subject:
                 nullable: false
                 adc-query-support: true
         genotype:
-            type: object
-            description: Genotype for this subject, if known
-            properties:
-                receptor_genotype_set:
-                    $ref: '#/GenotypeSet'
-                    description: Immune receptor genotype set for this subject.
-                mhc_genotype_set:
-                    $ref: '#/MHCGenotypeSet'
-                    description: MHC genotype set for this subject.
+            $ref: '#/GenotypeSets'
+            title: GenotypeSets
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
