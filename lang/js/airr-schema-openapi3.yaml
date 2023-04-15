@@ -1,0 +1,4660 @@
+#
+# Schema definitions for AIRR standards objects
+#
+Info:
+    title: AIRR Schema
+    description: Schema definitions for AIRR standards objects
+    version: "1.4"
+    contact:
+        name: AIRR Community
+        url: https://github.com/airr-community
+    license:
+        name: Creative Commons Attribution 4.0 International
+        url: https://creativecommons.org/licenses/by/4.0/
+
+
+# Properties that are based upon an ontology use this
+# standard schema definition
+Ontology:
+    type: object
+    properties:
+        id:
+            type: string
+            nullable: true
+            description: CURIE of the concept, encoding the ontology and the local ID
+        label:
+            type: string
+            nullable: true
+            description: Label of the concept in the respective ontology
+
+# Map to expand CURIE prefixes to full IRIs
+CURIEMap:
+    ABREG:
+        type: identifier
+        default:
+            map: ABREG
+        map:
+            ABREG:
+                iri_prefix: "http://antibodyregistry.org/AB_"
+    CHEBI:
+        type: ontology
+        default:
+          map: OBO
+          provider: OLS
+        map:
+          OBO:
+            iri_prefix: "http://purl.obolibrary.org/obo/CHEBI_"
+    CL:
+        type: ontology
+        default:
+            map: OBO
+            provider: OLS
+        map:
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/CL_"
+    DOI:
+        type: identifier
+        default:
+            map: DOI
+        map:
+            DOI:
+                iri_prefix: "https://doi.org/"
+    DOID:
+        type: ontology
+        default:
+            map: OBO
+            provider: OLS
+        map:
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/DOID_"
+    ENA:
+        type: identifier
+        default:
+            map: ENA
+        map:
+            ENA:
+                iri_prefix: "https://www.ebi.ac.uk/ena/browser/view/"
+    ENSG:
+        type: identifier
+        default:
+            map: ENSG
+        map:
+            ENSG:
+                iri_prefix: "https://www.ensembl.org/Multi/Search/Results?q="
+    IEDB_RECEPTOR:
+        type: identifier
+        default:
+            map: IEDB
+            provider: IEDB
+        map:
+            IEDB:
+                iri_prefix: "https://www.iedb.org/receptor/"
+    MRO:
+        type: ontology
+        default:
+            map: OBO
+            provider: OLS
+        map:
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/MRO_"
+    NCBITAXON:
+        type: taxonomy
+        default:
+            map: OBO
+            provider: OLS
+        map:
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/NCBITaxon_"
+            BioPortal:
+                iri_prefix: "http://purl.bioontology.org/ontology/NCBITAXON/"
+    NCIT:
+        type: ontology
+        default:
+            map: OBO
+            provider: OLS
+        map:
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/NCIT_"
+    ORCID:
+        type: catalog
+        default:
+            map: ORCID
+            provider: ORCID
+        map:
+            ORCID:
+                iri_prefix: "https://orcid.org/"
+    ROR:
+        type: catalog
+        default:
+            map: ROR
+            provider: ROR
+        map:
+            ROR:
+                iri_prefix: "https://ror.org/"
+    SRA:
+        type: identifier
+        default:
+            map: SRA
+        map:
+            SRA:
+                iri_prefix: "https://trace.ncbi.nlm.nih.gov/Traces/sra/?run="
+    UBERON:
+        type: ontology
+        default:
+            map: OBO
+            provider: OLS
+        map:
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/UBERON_"
+    UNIPROT:
+        type: identifier
+        default:
+            map: UNIPROT
+        map:
+            UniProt:
+                iri_prefix: "http://purl.uniprot.org/uniprot/"
+    UO:
+        type: ontology
+        default:
+            map: OBO
+            provider: OLS
+        map:
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/UO_"
+
+InformationProvider:
+    provider:
+        ENA:
+            request:
+                url: "{iri}"
+                response: text/html
+        IEDB:
+            request:
+                url: "https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}"
+                response: application/json
+        OLS:
+            request:
+                url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
+                response: application/json
+        Ontobee:
+            request:
+                url: "http://www.ontobee.org/ontology/rdf/{ontology_id}?iri={iri}"
+                response: application/rdf+xml
+        ORCID:
+            request:
+                url: "https://pub.orcid.org/v2.1/{local_id}"
+                header:
+                    Accept: application/json
+                response: application/json
+        ROR:
+            request:
+                url: "https://api.ror.org/organizations/{iri}"
+                response: application/json
+        SRA:
+            request:
+                url: "{iri}"
+                response: text/html
+    parameter:
+        CHEBI:
+            Ontobee:
+                ontology_id: CHEBI
+            OLS:
+                ontology_id: chebi
+        CL:
+            Ontobee:
+                ontology_id: CL
+            OLS:
+                ontology_id: cl
+        DOID:
+            Ontobee:
+                ontology_id: DOID
+            OLS:
+                ontology_id: doid
+        MRO:
+            Ontobee:
+                ontology_id: MRO
+            OLS:
+                ontology_id: mro
+        NCBITAXON:
+            Ontobee:
+                ontology_id: NCBITaxon
+            OLS:
+                ontology_id: ncbitaxon
+            BioPortal:
+                ontology_id: NCBITAXON
+        NCIT:
+            Ontobee:
+                ontology_id: NCIT
+            OLS:
+                ontology_id: ncit
+        UBERON:
+            Ontobee:
+                ontology_id: UBERON
+            OLS:
+                ontology_id: uberon
+        UO:
+            Ontobee:
+                ontology_id: UO
+            OLS:
+                ontology_id: uo
+
+# AIRR specification extensions
+#
+# The schema definitions for AIRR standards objects is extended to
+# provide a number of AIRR specific attributes. This schema definition
+# specifies the structure, property names and data types. These
+# attributes are attached to an AIRR field with the x-airr property.
+
+Attributes:
+    type: object
+    properties:
+        miairr:
+            type: string
+            description: MiAIRR requirement level.
+            enum:
+                - essential
+                - important
+                - defined
+            default: useful
+        identifier:
+            type: boolean
+            description: >
+                True if the field is an identifier required to link metadata and/or individual
+                sequence records across objects in the complete AIRR Data Model and ADC API.
+            default: false
+        adc-query-support:
+            type: boolean
+            description: >
+                True if an ADC API implementation must support queries on the field.
+                If false, query support for the field in ADC API implementations is optional.
+            default: false
+        deprecated:
+            type: boolean
+            description: True if the field has been deprecated from the schema.
+            default: false
+        deprecated-description:
+            type: string
+            description: Information regarding the deprecation of the field.
+        deprecated-replaced-by:
+            type: array
+            items:
+                type: string
+            description: The deprecated field is replaced by this list of fields.
+        set:
+            type: integer
+            description: MiAIRR set
+        subset:
+            type: string
+            description: MiAIRR subset
+        name:
+            type: string
+            description: MiAIRR name
+        format:
+            type: string
+            description: Field format. If null then assume the full range of the field data type
+            enum:
+                - ontology
+                - controlled vocabulary
+                - physical quantity
+                - CURIE
+        ontology:
+            type: object
+            description: Ontology definition for field
+            properties:
+                draft:
+                    type: boolean
+                    description: Indicates if ontology definition is a draft
+                top_node:
+                    type: object
+                    description: >
+                        Concept to use as top node for ontology. Note that this must have the same CURIE namespace
+                        as the actually annotated concept.
+                    properties:
+                        id:
+                            type: string
+                            description: CURIE for the top node term
+                        label:
+                            type: string
+                            description: Ontology name for the top node term
+
+# AIRR Data File
+#
+# A JSON data file that holds Repertoire metadata, data processing
+# analysis objects, or any object in the AIRR Data Model.
+#
+# It is presumed that the objects gathered together in an AIRR Data File are related
+# or relevant to each other, e.g. part of the same study; thus, the ID fields can be
+# internally resolved unless the ID contains an external PID. This implies that AIRR
+# Data Files cannot be merged simply by concatenating arrays; any merge program
+# would need to manage duplicate or conflicting ID values.
+#
+# While the properties in an AIRR Data File are not required, if one is provided then
+# the value should not be null.
+
+DataFile:
+    type: object
+    properties:
+        Info:
+            nullable: false
+            $ref: '#/InfoObject'
+        Repertoire:
+            type: array
+            nullable: false
+            description: List of repertoires
+            items:
+              $ref: '#/Repertoire'
+        RepertoireGroup:
+            type: array
+            nullable: false
+            description: List of repertoire collections
+            items:
+              $ref: '#/RepertoireGroup'
+        Rearrangement:
+            type: array
+            nullable: false
+            description: List of rearrangement records
+            items:
+                $ref: '#/Rearrangement'
+        Cell:
+            type: array
+            nullable: false
+            description: List of cells
+            items:
+              $ref: '#/Cell'
+        Clone:
+            type: array
+            nullable: false
+            description: List of clones
+            items:
+              $ref: '#/Clone'
+        GermlineSet:
+            type: array
+            nullable: false
+            description: List of germline sets
+            items:
+                $ref: '#/GermlineSet'
+        GenotypeSet:
+            type: array
+            nullable: false
+            description: List of genotype sets
+            items:
+                $ref: '#/GenotypeSet'
+
+# AIRR Info object, should be similar to openapi
+# should we point to an openapi schema?
+InfoObject:
+    type: object
+    description: Provides information about data and API responses.
+    required:
+        - title
+        - version
+    properties:
+      title:
+        type: string
+        nullable: false
+      version:
+        type: string
+        nullable: false
+      description:
+        type: string
+        nullable: true
+      contact:
+        type: object
+        nullable: true
+        properties:
+          name:
+            type: string
+            nullable: true
+          url:
+            type: string
+            nullable: true
+          email:
+            type: string
+            nullable: true
+      license:
+        type: object
+        nullable: true
+        required:
+            - name
+        properties:
+          name:
+            type: string
+            nullable: false
+          url:
+            type: string
+            nullable: true
+
+# A time point
+TimePoint:
+    description: Time point at which an observation or other action was performed.
+    type: object
+    properties:
+        label:
+            type: string
+            nullable: true
+            description: Informative label for the time point
+            example: Pre-operative sampling of cancer tissue
+            x-airr:
+                adc-query-support: true
+        value:
+            type: number
+            nullable: true
+            description: Value of the time point
+            example: -5.0
+            x-airr:
+                adc-query-support: true
+        unit:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Unit of the time point
+            title: Unit of immunization schedule
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
+
+#
+# General objects
+#
+
+# An individual
+Acknowledgement:
+    description: Individual whose contribution to this work should be acknowledged
+    type: object
+    required:
+        - acknowledgement_id
+        - name
+        - institution_name
+    properties:
+        acknowledgement_id:
+            type: string
+            nullable: false
+            description: unique identifier of this Acknowledgement within the file
+        name:
+            type: string
+            nullable: true
+            description: Full name of individual
+        institution_name:
+            type: string
+            nullable: true
+            description: Individual's department and institution name
+        orcid_id:
+            type: string
+            nullable: true
+            description: Individual's ORCID identifier
+
+#
+# Germline gene schema
+#
+
+# Rearranged and genomic germline sequences
+RearrangedSequence:
+    description: Details of a directly observed rearranged sequence or an inference from rearranged sequences contributing support for a gene or allele
+    type: object
+    required:
+        - sequence_id
+        - sequence
+        - derivation
+        - observation_type
+        - repository_name
+        - repository_id
+        - deposited_version
+        - seq_start
+        - seq_end
+    properties:
+        sequence_id:
+            type: string
+            nullable: false
+            description: Unique identifier of this RearrangedSequence within the file, typically generated by the repository hosting the schema, for example from the underlying ID of the database record
+        sequence:
+            type: string
+            nullable: false
+            description: nucleotide sequence
+        derivation:
+            type: string
+            nullable: false
+            enum:
+                - DNA
+                - RNA
+            description: The class of nucleic acid that was used as primary starting material
+        observation_type:
+            type: string
+            nullable: false
+            description: The type of observation from which this sequence was drawn, e.g. direct sequencing, inference from repertoire
+            enum:
+                - direct sequencing
+                - inference from repertoire
+        curation:
+            type: string
+            nullable: true
+            description: Curational notes on the sequence
+        repository_name:
+            type: string
+            nullable: false
+            description: Name of the repository in which the sequence has been deposited
+        repository_ref:
+            type: string
+            nullable: false
+            description: Queryable id or accession number of the sequence published by the repository
+        deposited_version:
+            type: string
+            nullable: false
+            description: Version number of the sequence within the repository
+        sequence_start:
+            type: integer
+            nullable: false
+            description: Start co-ordinate of the sequence detailed in this record, within the sequence deposited
+        sequence_end:
+            type: integer
+            nullable: false
+            description: End co-ordinate of the sequence detailed in this record, within the sequence deposited
+
+UnrearrangedSequence:
+    description: Details of an unrearranged sequence contributing support for a gene or allele
+    type: object
+    required:
+        - sequence_id
+        - sequence
+        - repository_name
+        - assembly_id
+        - gff_seqid
+        - gff_start
+        - gff_end
+        - strand
+    properties:
+        sequence_id:
+            type: string
+            nullable: false
+            description: unique identifier of this UnrearrangedSequence within the file
+        sequence:
+            type: string
+            nullable: false
+            description: Sequence of interest described in this record (typically this will include gene and promoter region)
+        curation:
+            type: string
+            nullable: true
+            description: Curational notes on the sequence
+        repository_name:
+            type: string
+            nullable: false
+            description: Name of the repository in which the assembly or contig is deposited
+        repository_ref:
+            type: string
+            nullable: false
+            description: Queryable id or accession number of the sequence published by the repository
+        patch_no:
+            type: string
+            nullable: true
+            description: Genome assembly patch number in which this gene was determined
+        gff_seqid:
+            type: string
+            nullable: true
+            description: Sequence (from the assembly) of a window including the gene and preferably also the promoter region
+        gff_start:
+            type: integer
+            nullable: true
+            description: Genomic co-ordinates of the start of the sequence of interest described in this record, in Ensemble GFF version 3
+        gff_end:
+            type: integer
+            nullable: true
+            description: Genomic co-ordinates of the end of the sequence of interest described in this record, in Ensemble GFF version 3
+        strand:
+            type: string
+            nullable: true
+            enum:
+                - +
+                - "-"
+            description: sense (+ or -)
+
+# V gene delineation
+SequenceDelineationV:
+    description: Delineation of a V-gene in a particular system
+    type: object
+    required:
+        - sequence_delineation_id
+        - delineation_scheme
+        - fwr1_start
+        - fwr1_end
+        - cdr1_start
+        - cdr1_end
+        - fwr2_start
+        - fwr2_end
+        - cdr2_start
+        - cdr2_end
+        - fwr3_start
+        - fwr3_end
+        - cdr3_start
+    properties:
+        sequence_delineation_id:
+            type: string
+            nullable: false
+            description: Unique identifier of this SequenceDelineationV within the file, typically generated by the repository hosting the schema, for example from the underlying ID of the database record
+        delineation_scheme:
+            type: string
+            nullable: false
+            description: Name of the delineation scheme
+            example: Chothia
+        fwr1_start:
+            type: integer
+            nullable: false
+            description: FWR1 start co-ordinate in Gene Description 'alignment' field
+        fwr1_end:
+            type: integer
+            nullable: false
+            description: FWR1 end co-ordinate in Gene Description 'alignment' field
+        cdr1_start:
+            type: integer
+            nullable: false
+            description: CDR1 start co-ordinate in Gene Description 'alignment' field
+        cdr1_end:
+            type: integer
+            nullable: false
+            description: CDR1 end co-ordinate in Gene Description 'alignment' field
+        fwr2_start:
+            type: integer
+            nullable: false
+            description: FWR2 start co-ordinate in Gene Description 'alignment' field
+        fwr2_end:
+            type: integer
+            nullable: false
+            description: FWR2 end co-ordinate in Gene Description 'alignment' field
+        cdr2_start:
+            type: integer
+            nullable: false
+            description: CDR2 start co-ordinate in Gene Description 'alignment' field
+        cdr2_end:
+            type: integer
+            nullable: false
+            description: CDR2 end co-ordinate in Gene Description 'alignment' field
+        fwr3_start:
+            type: integer
+            nullable: false
+            description: FWR3 start co-ordinate in Gene Description 'alignment' field
+        fwr3_end:
+            type: integer
+            nullable: false
+            description: FWR3 end co-ordinate in Gene Description 'alignment' field
+        cdr3_start:
+            type: integer
+            nullable: false
+            description: CDR3 start co-ordinate in Gene Description 'alignment' field
+        alignment:
+            type: array
+            nullable: true
+            items:
+              type: string
+            description: one string for each codon in the fields v_start to cdr3_start indicating the label of that codon according to the numbering of the delineation scheme
+
+# Description of a putative or confirmed Ig receptor gene/allele
+AlleleDescription:
+    description: Details of a putative or confirmed Ig receptor gene/allele inferred from one or more observations
+    type: object
+    required:
+        - allele_description_id
+        - maintainer
+        - lab_address
+        - release_version
+        - release_date
+        - release_description
+        - sequence
+        - coding_sequence
+        - locus
+        - sequence_type
+        - functional
+        - inference_type
+        - species
+    properties:
+        allele_description_id:
+            type: string
+            nullable: false
+            description: Unique identifier of this AlleleDescription within the file, typically generated by the repository hosting the schema, for example from the underlying ID of the database record
+        allele_description_ref:
+            type: string
+            nullable: false
+            description: Unique reference to the allele description, in standardized form (Repo:Label:Version)
+            example: OGRDB:Human_IGH:IGHV1-69*01.001
+        maintainer:
+            type: string
+            nullable: false
+            description: Maintainer of this sequence record
+        acknowledgements:
+            type: array
+            nullable: true
+            description: List of individuals whose contribution to the gene description should be acknowledged
+            items:
+                $ref: '#/Acknowledgement'
+        lab_address:
+            type: string
+            nullable: false
+            description: Institution and full address of corresponding author
+        release_version:
+            type: integer
+            nullable: false
+            description: Version number of this record, updated whenever a revised version is published or released
+        release_date:
+            type: string
+            format: date-time
+            nullable: false
+            description: Date of this release
+            title: Release Date
+            example: "2021-02-02"
+        release_description:
+            type: string
+            nullable: false
+            description: Brief descriptive notes of the reason for this release and the changes embodied
+        label:
+            type: string
+            nullable: true
+            description: The accepted name for this gene or allele
+            example: IGHV1-69*01
+        sequence:
+            type: string
+            nullable: false
+            description: nt sequence of the gene. This should cover the full length that is available, including where possible RSS, and 5' UTR and lead-in for V-gene sequences
+        coding_sequence:
+            type: string
+            nullable: false
+            description: nucleotide sequence of the core region of the gene (V-, D-, J- or C-REGION), aligned, in the case of the V-REGION, with the IMGT numbering scheme
+        aliases:
+            type: array
+            nullable: true
+            items:
+                type: string
+            description: Alternative names for this sequence
+        locus:
+            type: string
+            nullable: false
+            enum:
+                - IGH
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRG
+                - TRD
+            description: Gene locus
+        chromosome:
+            type: integer
+            nullable: true
+            description: chromosome on which the gene is located 
+        sequence_type:
+            type: string
+            nullable: false
+            enum:
+                - V
+                - D
+                - J
+                - C
+            description: Sequence type (V, D, J, C)
+        functional:
+            type: boolean
+            nullable: false
+            description: True if the gene is functional, false if it is a pseudogene
+        inference_type:
+            type: string
+            nullable: false
+            enum:
+                - Genomic and rearranged
+                - Genomic only
+                - Rearranged only
+            description: Type of inference(s) from which this gene sequence was inferred
+        species:
+            $ref: '#/Ontology'
+            nullable: false
+            description: Binomial designation of subject's species
+            title: Organism
+            example:
+                id: NCBITAXON:9606
+                label: Homo sapiens
+        species_subgroup:
+            type: string
+            nullable: true
+            description: Race, strain or other species subgroup to which this subject belongs
+            example: BALB/c
+        species_subgroup_type:
+            type: string
+            nullable: true
+            enum:
+                - breed
+                - strain
+                - inbred
+                - outbred
+                - locational
+        status:
+            type: string
+            nullable: true
+            enum:
+                - active
+                - draft
+                - retired
+                - withdrawn
+            description: Status of record, assumed active if the field is not present
+        subgroup_designation:
+            type: string
+            nullable: true
+            description: Identifier of the gene subgroup or clade, as (and if) defined
+        gene_designation:
+            type: string
+            nullable: true
+            description: Gene number or other identifier, as (and if) defined
+        allele_designation:
+            type: string
+            nullable: true
+            description: Allele number or other identifier, as (and if) defined
+        j_codon_frame:
+            type: integer
+            nullable: true
+            enum:
+                - 1
+                - 2
+                - 3
+            description: Codon position of the first nucleotide in the 'coding_sequence' field. Mandatory for J genes. Not used for V or D genes. ('1' means the sequence is in-frame, '2' means that the first bp is missing from the first codon, '3' means that the first 2 bp are missing)
+        gene_start:
+            type: integer
+            nullable: true
+            description: Co-ordinate (in the sequence field) of the first nucleotide in the coding_sequence field
+        gene_end:
+            type: integer
+            nullable: true
+            description: Co-ordinate (in the sequence field) of the last gene-coding nucleotide in the coding_sequence field
+        utr_5_prime_start:
+            type: integer
+            nullable: true
+            description: Start co-ordinate (in the sequence field) of 5 prime UTR (V-genes only)
+        utr_5_prime_end:
+            type: integer
+            nullable: true
+            description: End co-ordinate (in the sequence field) of 5 prime UTR (V-genes only)
+        leader_1_start:
+            type: integer
+            nullable: true
+            description: Start co-ordinate (in the sequence field) of L-PART1 (V-genes only)
+        leader_1_end:
+            type: integer
+            nullable: true
+            description: End co-ordinate (in the sequence field) of L-PART1 (V-genes only)
+        leader_2_start:
+            type: integer
+            nullable: true
+            description: Start co-ordinate (in the sequence field) of L-PART2 (V-genes only)
+        leader_2_end:
+            type: integer
+            nullable: true
+            description: End co-ordinate (in the sequence field) of L-PART2 (V-genes only)
+        v_rs_start:
+            type: integer
+            nullable: true
+            description: Start co-ordinate (in the sequence field) of V recombination site (V-genes only)
+        v_rs_end:
+            type: integer
+            nullable: true
+            description: End co-ordinate (in the sequence field) of V recombination site (V-genes only)
+        d_rs_3_prime_start:
+            type: integer
+            nullable: true
+            description: Start co-ordinate (in the sequence field) of 3 prime D recombination site (D-genes only)
+        d_rs_3_prime_end:
+            type: integer
+            nullable: true
+            description: End co-ordinate (in the sequence field) of 3 prime D recombination site (D-genes only)
+        d_rs_5_prime_start:
+            type: integer
+            nullable: true
+            description: Start co-ordinate (in the sequence field) of 5 prime D recombination site (D-genes only)
+        d_rs_5_prime_end:
+            type: integer
+            nullable: true
+            description: End co-ordinate (in the sequence field) of 5 prime D recombination site (D-genes only)
+        j_cdr3_end:
+            type: integer
+            nullable: true
+            description: In the case of a J-gene, the co-ordinate (in the sequence field) of the first nucelotide of the conserved PHE or TRP (IMGT codon position 118)
+        j_rs_start:
+            type: integer
+            nullable: true
+            description: Start co-ordinate (in the sequence field) of J recombination site (J-genes only)
+        j_rs_end:
+            type: integer
+            nullable: true
+            description: End co-ordinate (in the sequence field) of J recombination site (J-genes only)
+        j_donor_splice:
+            type: integer
+            nullable: true
+            description: Co-ordinate (in the sequence field) of the final 3' nucleotide of the J-REGION (J-genes only)
+        v_gene_delineations:
+            type: array
+            nullable: true
+            items:
+                $ref: '#/SequenceDelineationV'
+        unrearranged_support:
+            type: array
+            nullable: true
+            items:
+                $ref: '#/UnrearrangedSequence'
+        rearranged_support:
+            type: array
+            nullable: true
+            items:
+                $ref: '#/RearrangedSequence'
+        paralogs:
+            type: array
+            nullable: true
+            items:
+                type: string
+            description: Gene symbols of any paralogs
+        curation:
+            type: string
+            nullable: true
+            description: Curational notes on the AlleleDescription. This can be used to give more extensive notes on the decisions taken than are provided in the release_description.
+        curational_tags:
+            type: array
+            nullable: true
+            items:
+                type: string
+                enum:
+                    - likely_truncated
+                    - likely_full_length
+            description: Controlled-vocabulary tags applied to this description
+
+# Collection of gene descriptions into a germline set
+GermlineSet:
+    description: Details of a 'germline set' bringing together multiple AlleleDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
+    type: object
+    required:
+        - germline_set_id
+        - author
+        - lab_name
+        - lab_address
+        - release_version
+        - release_description
+        - release_date
+        - germline_set_name
+        - germline_set_ref
+        - species
+        - locus
+        - allele_descriptions
+    properties:
+        germline_set_id:
+            type: string
+            nullable: false
+            description: Unique identifier of the GermlineSet within this file, typically generated by the repository hosting the schema, for example from the underlying ID of the database record
+        author:
+            type: string
+            nullable: false
+            description: Corresponding author
+        lab_name:
+            type: string
+            nullable: false
+            description: Department of corresponding author
+        lab_address:
+            type: string
+            nullable: false
+            description: Institutional address of corresponding author
+        acknowledgements:
+            type: array
+            nullable: true
+            description: List of individuals whose contribution to the germline set should be acknowledged
+            items:
+                $ref: '#/Acknowledgement'
+        release_version:
+            type: number
+            nullable: false
+            description: Version number of this record, allocated automatically
+        release_description:
+            type: string
+            nullable: false
+            description: Brief descriptive notes of the reason for this release and the changes embodied
+        release_date:
+            type: string
+            format: date-time
+            nullable: false
+            description: Date of this release
+            title: Release Date
+            example: "2021-02-02"
+        germline_set_name:
+            type: string
+            nullable: false
+            description: descriptive name of this germline set
+        germline_set_ref:
+            type: string
+            nullable: false
+            description: Unique identifier of the germline set and version, in standardized form (Repo:Label:Version)
+            example: OGRDB:Human_IGH:2021.11
+        pub_ids:
+            type: string
+            nullable: true
+            description: Publications describing the germline set
+            example: "PMID:85642,PMID:12345"
+        species:
+            $ref: '#/Ontology'
+            nullable: false
+            description: Binomial designation of subject's species
+            title: Organism
+            example:
+                id: NCBITAXON:9606
+                label: Homo sapiens
+        species_subgroup:
+            type: string
+            description: Race, strain or other species subgroup to which this subject belongs
+            example: BALB/c
+            nullable: true
+        species_subgroup_type:
+            type: string
+            nullable: true
+            enum:
+                - breed
+                - strain
+                - inbred
+                - outbred
+                - locational
+        locus:
+            type: string
+            nullable: false
+            enum:
+                - IGH
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRG
+                - TRD
+            description: Gene locus
+        allele_descriptions:
+            type: array
+            nullable: false
+            items:
+              $ref: '#/AlleleDescription'
+            description: list of allele_descriptions in the germline set
+        curation:
+            type: string
+            nullable: true
+            description: Curational notes on the GermlineSet. This can be used to give more extensive notes on the decisions taken than are provided in the release_description.
+
+#
+# Genotype schema
+#
+
+# GenotypeSet lists the Genotypes (describing different loci) inferred for this subject
+
+GenotypeSet:
+    type: object
+    required:
+        - receptor_genotype_set_id
+    properties:
+        receptor_genotype_set_id:
+            type: string
+            nullable: false
+            description: A unique identifier for this Receptor Genotype Set, typically generated by the repository hosting the schema, for example from the underlying ID of the database record
+        genotype_class_list:
+            description: List of Genotypes included in this Receptor Genotype Set.
+            type: array
+            nullable: true
+            items:
+                $ref: '#/Genotype'
+
+
+# Genotype of adaptive immune receptors
+# This enumerates the alleles and gene deletions inferred in a single subject. 
+# Included alleles may either be listed by reference to a GermlineSet, or 
+# listed as 'undocumented', in which case the inferred sequence is provided
+
+Genotype:
+    type: object
+    required:
+        - receptor_genotype_id
+        - locus
+    properties:
+        receptor_genotype_id:
+            type: string
+            nullable: false
+            description: A unique identifier within the file for this Receptor Genotype, typically generated by the repository hosting the schema, for example from the underlying ID of the database record
+        locus:
+            type: string
+            nullable: false
+            enum:
+                - IGH
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
+            example: IGH
+            x-airr:
+                adc-query-support: true
+                format: controlled vocabulary
+        documented_alleles:
+            type: array
+            nullable: true
+            description: Array of alleles inferred to be present which are documented in GermlineSets
+            items:
+                type: object
+                properties:
+                    label:
+                        type: string
+                        nullable: false
+                        description: The accepted name for this allele, taken from the GermlineSet
+                    germline_set_ref:
+                        type: string
+                        nullable: false
+                        description: GermlineSet from which it was taken, referenced in standardized form (Repo:Label:Version)
+                        example: OGRDB:Human_IGH:2021.11
+                    phasing:
+                        type: integer
+                        nullable: true
+                        description: Chromosomal phasing indicator. Alleles with the same value are inferred to be located on the same chromosome
+            x-airr:
+                adc-query-support: true
+        undocumented_alleles:
+            type: array
+            nullable: true
+            description: Array of alleles inferred to be present and not documented in an identified GermlineSet
+            items:
+                type: object
+                properties:
+                    allele_name:
+                        type: string
+                        nullable: false
+                        description: Allele name as allocated by the inference pipeline
+                    sequence:
+                        type: string
+                        nullable: false
+                        description: nt sequence of the allele, as provided by the inference pipeline
+                    phasing:
+                        type: integer
+                        nullable: true
+                        description: Chromosomal phasing indicator. Alleles with the same value are inferred to be located on the same chromosome
+            x-airr:
+                adc-query-support: true
+        deleted_genes:
+            type: array
+            nullable: true
+            description: Array of genes identified as being deleted in this genotype
+            items:
+                type: object
+                properties:
+                    label:
+                        type: string
+                        nullable: false
+                        description: The accepted name for this gene, taken from the GermlineSet
+                    germline_set_ref:
+                        type: string
+                        nullable: false
+                        description: GermlineSet from which it was taken (issuer/name/version)
+                    phasing:
+                        type: integer
+                        nullable: true
+                        description: Chromosomal phasing indicator. Alleles with the same value are inferred to be located on the same chromosome
+            x-airr:
+                adc-query-support: true
+        inference_process:
+            type: string
+            nullable: true
+            enum:
+                - genomic_sequencing
+                - repertoire_sequencing
+            description: Information on how the genotype was acquired. Controlled vocabulary.
+            title: Genotype acquisition process
+            example: repertoire_sequencing
+            x-airr:
+                adc-query-support: true
+                format: controlled vocabulary
+
+
+# List of MHCGenotypes describing a subject's genotype
+MHCGenotypeSet:
+    type: object
+    required:
+        - mhc_genotype_set_id
+        - mhc_genotype_list
+    properties:
+        mhc_genotype_set_id:
+            type: string
+            nullable: false
+            description: A unique identifier for this MHCGenotypeSet
+        mhc_genotype_list:
+            description: List of MHCGenotypes included in this set
+            type: array
+            nullable: false
+            items:
+                $ref: '#/MHCGenotype'
+
+
+# Genotype of major histocompatibility complex (MHC) class I, class II and non-classical loci
+MHCGenotype:
+    type: object
+    required:
+        - mhc_genotype_id
+        - mhc_class
+        - mhc_alleles
+    properties:
+        mhc_genotype_id:
+            type: string
+            nullable: false
+            description: A unique identifier for this MHCGenotype, assumed to be unique in the context of the study
+        mhc_class:
+            type: string
+            nullable: false
+            description: Class of MHC alleles described by the MHCGenotype
+            enum:
+              - MHC-I
+              - MHC-II
+              - MHC-nonclassical
+            example: MHC-I
+            x-airr:
+                adc-query-support: true
+                format: controlled vocabulary
+        mhc_alleles:
+            type: array
+            nullable: false
+            description: List of MHC alleles of the indicated mhc_class identified in an individual
+            items:
+                type: object
+                properties:
+                    allele_designation:
+                        type: string
+                        nullable: false
+                        description: >
+                            The accepted designation of an allele, usually its gene symbol plus allele/sub-allele/etc
+                            identifiers, if provided by the mhc_typing method
+                    gene:
+                        $ref: '#/Ontology'
+                        nullable: true
+                        description: The MHC gene to which the described allele belongs
+                        title: MHC gene
+                        example:
+                            id: MRO:0000046
+                            label: HLA-A
+                        x-airr:
+                            adc-query-support: false
+                            format: ontology
+                            ontology:
+                                draft: true
+                                top_node:
+                                    id: MRO:0000004
+                                    label: MHC gene
+                    reference_set_ref:
+                        type: string
+                        nullable: false
+                        description: Repository and list from which it was taken (issuer/name/version)
+            x-airr:
+                adc-query-support: true
+        mhc_genotyping_method:
+            type: string
+            nullable: true
+            description: >
+                Information on how the genotype was determined. The content of this field should come from a list of
+                recommended terms provided in the AIRR Schema documentation.
+            title: MHC genotyping method
+            example: pcr_low_resolution
+            x-airr:
+                adc-query-support: true
+
+#
+# Repertoire metadata schema
+#
+
+# The overall study with a globally unique study_id
+Study:
+    type: object
+    required:
+        - study_id
+        - study_title
+        - study_type
+        - inclusion_exclusion_criteria
+        - grants
+        - collected_by
+        - lab_name
+        - lab_address
+        - submitted_by
+        - pub_ids
+        - keywords_study
+    properties:
+        study_id:
+            type: string
+            nullable: true
+            description: >
+                Unique ID assigned by study registry such as one of the International Nucleotide Sequence Database
+                Collaboration (INSDC) repositories.
+            title: Study ID
+            example: PRJNA001
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Study ID
+        study_title:
+            type: string
+            nullable: true
+            description: Descriptive study title
+            title: Study title
+            example: Effects of sun light exposure of the Treg repertoire
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Study title
+        study_type:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Type of study design
+            title: Study type
+            example:
+                id: NCIT:C15197
+                label: Case-Control Study
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Study type
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCIT:C63536
+                        label: Study
+        study_description:
+            type: string
+            nullable: true
+            description: Generic study description
+            title: Study description
+            example: Longer description
+            x-airr:
+                name: Study description
+                adc-query-support: true
+        inclusion_exclusion_criteria:
+            type: string
+            nullable: true
+            description: List of criteria for inclusion/exclusion for the study
+            title: Study inclusion/exclusion criteria
+            example: "Include: Clinical P. falciparum infection; Exclude: Seropositive for HIV"
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Study inclusion/exclusion criteria
+        grants:
+            type: string
+            nullable: true
+            description: Funding agencies and grant numbers
+            title: Grant funding agency
+            example: NIH, award number R01GM987654
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Grant funding agency
+        study_contact:
+            type: string
+            nullable: true
+            description: >
+                Full contact information of the contact persons for this study This should include an e-mail address
+                and a persistent identifier such as an ORCID ID.
+            title: Contact information (study)
+            example: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
+            x-airr:
+                adc-query-support: true
+                name: Contact information (study)
+        collected_by:
+            type: string
+            nullable: true
+            description: >
+                Full contact information of the data collector, i.e. the person who is legally responsible for data
+                collection and release. This should include an e-mail address and a persistent identifier such as an
+                ORCID ID.
+            title: Contact information (data collection)
+            example: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Contact information (data collection)
+        lab_name:
+            type: string
+            nullable: true
+            description: Department of data collector
+            title: Lab name
+            example: Department for Planar Immunology
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Lab name
+        lab_address:
+            type: string
+            nullable: true
+            description: Institution and institutional address of data collector
+            title: Lab address
+            example: School of Medicine, Unseen University, Ankh-Morpork, Disk World
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Lab address
+        submitted_by:
+            type: string
+            nullable: true
+            description: >
+                Full contact information of the data depositor, i.e., the person submitting the data to a repository.
+                This should include an e-mail address and a persistent identifier such as an ORCID ID. This is
+                supposed to be a short-lived and technical role until the submission is relased.
+            title: Contact information (data deposition)
+            example: Adrian Turnipseed, a.turnipseed@unseenu.edu, https://orcid.org/0000-0002-1825-0097
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Contact information (data deposition)
+        pub_ids:
+            type: string
+            nullable: true
+            description: >
+                Publications describing the rationale and/or outcome of the study. Where ever possible, a persistent
+                identifier should be used such as a DOI or a Pubmed ID
+            title: Relevant publications
+            example: "PMID:85642"
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Relevant publications
+        keywords_study:
+            type: array
+            items:
+                type: string
+                enum:
+                    - contains_ig
+                    - contains_tr
+                    - contains_paired_chain
+                    - contains_schema_rearrangement
+                    - contains_schema_clone
+                    - contains_schema_cell
+                    - contains_schema_receptor
+            nullable: true
+            description: Keywords describing properties of one or more data sets in a study
+            title: Keywords for study
+            example:
+              - contains_ig
+              - contains_schema_rearrangement
+              - contains_schema_clone
+              - contains_schema_cell
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Keywords for study
+                format: controlled vocabulary
+        adc_publish_date:
+            type: string
+            format: date-time
+            nullable: true
+            description: >
+                Date the study was first published in the AIRR Data Commons.
+            title: ADC Publish Date
+            example: "2021-02-02"
+            x-airr:
+                adc-query-support: true
+                name: ADC Publish Date
+        adc_update_date:
+            type: string
+            format: date-time
+            nullable: true
+            description: >
+                Date the study data was updated in the AIRR Data Commons.
+            title: ADC Update Date
+            example: "2021-02-02"
+            x-airr:
+                adc-query-support: true
+                name: ADC Update Date
+
+# 1-to-n relationship between a study and its subjects
+# subject_id is unique within a study
+Subject:
+    type: object
+    required:
+        - subject_id
+        - synthetic
+        - species
+        - sex
+        - age_min
+        - age_max
+        - age_unit
+        - age_event
+        - ancestry_population
+        - ethnicity
+        - race
+        - strain_name
+        - linked_subjects
+        - link_type
+    properties:
+        subject_id:
+            type: string
+            nullable: true
+            description: >
+                Subject ID assigned by submitter, unique within study. If possible, a persistent subject ID linked to
+                an INSDC or similar repository study should be used.
+            title: Subject ID
+            example: SUB856413
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Subject ID
+        synthetic:
+            type: boolean
+            nullable: false
+            description: TRUE for libraries in which the diversity has been synthetically generated (e.g. phage display)
+            title: Synthetic library
+            x-airr:
+                miairr: essential
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Synthetic library
+        species:
+            $ref: '#/Ontology'
+            nullable: false
+            description: Binomial designation of subject's species
+            title: Organism
+            example:
+                id: NCBITAXON:9606
+                label: Homo sapiens
+            x-airr:
+                miairr: essential
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Organism
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
+        organism:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Binomial designation of subject's species
+            x-airr:
+                deprecated: true
+                deprecated-description: Field was renamed to species for clarity.
+                deprecated-replaced-by:
+                    - species
+        sex:
+            type: string
+            enum:
+                - male
+                - female
+                - pooled
+                - hermaphrodite
+                - intersex
+                - "not collected"
+                - "not applicable"
+            nullable: true
+            description: Biological sex of subject
+            title: Sex
+            example: female
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Sex
+                format: controlled vocabulary
+        age_min:
+            type: number
+            nullable: true
+            description: Specific age or lower boundary of age range.
+            title: Age minimum
+            example: 60
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Age minimum
+        age_max:
+            type: number
+            nullable: true
+            description: >
+                Upper boundary of age range or equal to age_min for specific age.
+                This field should only be null if age_min is null.
+            title: Age maximum
+            example: 80
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Age maximum
+        age_unit:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Unit of age range
+            title: Age unit
+            example:
+                id: UO:0000036
+                label: year
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Age unit
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
+        age_event:
+            type: string
+            nullable: true
+            description: >
+                Event in the study schedule to which `Age` refers. For NCBI BioSample this MUST be `sampling`. For other
+                implementations submitters need to be aware that there is currently no mechanism to encode to potential
+                delta between `Age event` and `Sample collection time`, hence the chosen events should be in temporal proximity.
+            title: Age event
+            example: enrollment
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Age event
+        age:
+            type: string
+            nullable: true
+            x-airr:
+                deprecated: true
+                deprecated-description: Split into two fields to specify as an age range.
+                deprecated-replaced-by:
+                    - age_min
+                    - age_max
+                    - age_unit
+        ancestry_population:
+            type: string
+            nullable: true
+            description: Broad geographic origin of ancestry (continent)
+            title: Ancestry population
+            example: list of continents, mixed or unknown
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Ancestry population
+        ethnicity:
+            type: string
+            nullable: true
+            description: Ethnic group of subject (defined as cultural/language-based membership)
+            title: Ethnicity
+            example: English, Kurds, Manchu, Yakuts (and other fields from Wikipedia)
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Ethnicity
+        race:
+            type: string
+            nullable: true
+            description: Racial group of subject (as defined by NIH)
+            title: Race
+            example: White, American Indian or Alaska Native, Black, Asian, Native Hawaiian or Other Pacific Islander, Other
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Race
+        strain_name:
+            type: string
+            nullable: true
+            description: Non-human designation of the strain or breed of animal used
+            title: Strain name
+            example: C57BL/6J
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Strain name
+        linked_subjects:
+            type: string
+            nullable: true
+            description: Subject ID to which `Relation type` refers
+            title: Relation to other subjects
+            example: SUB1355648
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Relation to other subjects
+        link_type:
+            type: string
+            nullable: true
+            description: Relation between subject and `linked_subjects`, can be genetic or environmental (e.g.exposure)
+            title: Relation type
+            example: father, daughter, household
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Relation type
+        diagnosis:
+            type: array
+            nullable: false
+            description: Diagnosis information for subject
+            items:
+                $ref: '#/Diagnosis'
+            x-airr:
+                adc-query-support: true
+        genotype:
+            type: object
+            nullable: true
+            description: Genotype for this subject, if known
+            properties:
+                receptor_genotype_set:
+                    nullable: true
+                    $ref: '#/GenotypeSet'
+                    description: Immune receptor genotype set for this subject.
+                mhc_genotype_set:
+                    nullable: true
+                    $ref: '#/MHCGenotypeSet'
+                    description: MHC genotype set for this subject.
+
+# 1-to-n relationship between a subject and its diagnoses
+Diagnosis:
+    type: object
+    required:
+        - study_group_description
+        - disease_diagnosis
+        - disease_length
+        - disease_stage
+        - prior_therapies
+        - immunogen
+        - intervention
+        - medical_history
+    properties:
+        study_group_description:
+            type: string
+            nullable: true
+            description: Designation of study arm to which the subject is assigned to
+            title: Study group description
+            example: control
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: diagnosis and intervention
+                name: Study group description
+        disease_diagnosis:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Diagnosis of subject
+            title: Diagnosis
+            example:
+                id: DOID:9538
+                label: multiple myeloma
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: diagnosis and intervention
+                name: Diagnosis
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: DOID:4
+                        label: disease
+        disease_length:
+            type: string
+            nullable: true
+            description: Time duration between initial diagnosis and current intervention
+            title: Length of disease
+            example: 23 months
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: diagnosis and intervention
+                name: Length of disease
+                format: physical quantity
+        disease_stage:
+            type: string
+            nullable: true
+            description: Stage of disease at current intervention
+            title: Disease stage
+            example: Stage II
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: diagnosis and intervention
+                name: Disease stage
+        prior_therapies:
+            type: string
+            nullable: true
+            description: List of all relevant previous therapies applied to subject for treatment of `Diagnosis`
+            title: Prior therapies for primary disease under study
+            example: melphalan/prednisone
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: diagnosis and intervention
+                name: Prior therapies for primary disease under study
+        immunogen:
+            type: string
+            nullable: true
+            description: Antigen, vaccine or drug applied to subject at this intervention
+            title: Immunogen/agent
+            example: bortezomib
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: diagnosis and intervention
+                name: Immunogen/agent
+        intervention:
+            type: string
+            nullable: true
+            description: Description of intervention
+            title: Intervention definition
+            example: systemic chemotherapy, 6 cycles, 1.25 mg/m2
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: diagnosis and intervention
+                name: Intervention definition
+        medical_history:
+            type: string
+            nullable: true
+            description: Medical history of subject that is relevant to assess the course of disease and/or treatment
+            title: Other relevant medical history
+            example: MGUS, first diagnosed 5 years prior
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: diagnosis and intervention
+                name: Other relevant medical history
+
+# 1-to-n relationship between a subject and its samples
+# sample_id is unique within a study
+Sample:
+    type: object
+    required:
+        - sample_id
+        - sample_type
+        - tissue
+        - anatomic_site
+        - disease_state_sample
+        - collection_time_point_relative
+        - collection_time_point_relative_unit
+        - collection_time_point_reference
+        - biomaterial_provider
+    properties:
+        sample_id:
+            type: string
+            nullable: true
+            description: >
+                Sample ID assigned by submitter, unique within study. If possible, a persistent sample ID linked to
+                INSDC or similar repository study should be used.
+            title: Biological sample ID
+            example: SUP52415
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Biological sample ID
+        sample_type:
+            type: string
+            nullable: true
+            description: The way the sample was obtained, e.g. fine-needle aspirate, organ harvest, peripheral venous puncture
+            title: Sample type
+            example: Biopsy
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Sample type
+        tissue:
+            $ref: '#/Ontology'
+            nullable: true
+            description: The actual tissue sampled, e.g. lymph node, liver, peripheral blood
+            title: Tissue
+            example:
+                id: UBERON:0002371
+                label: bone marrow
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Tissue
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UBERON:0010000
+                        label: multicellular anatomical structure
+        anatomic_site:
+            type: string
+            nullable: true
+            description: The anatomic location of the tissue, e.g. Inguinal, femur
+            title: Anatomic site
+            example: Iliac crest
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Anatomic site
+        disease_state_sample:
+            type: string
+            nullable: true
+            description: Histopathologic evaluation of the sample
+            title: Disease state of sample
+            example: Tumor infiltration
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Disease state of sample
+        collection_time_point_relative:
+            type: number
+            nullable: true
+            description: Time point at which sample was taken, relative to `Collection time event`
+            title: Sample collection time
+            example: "14"
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Sample collection time
+        collection_time_point_relative_unit:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Unit of Sample collection time
+            title: Sample collection time unit
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Sample collection time unit
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
+        collection_time_point_reference:
+            type: string
+            nullable: true
+            description: Event in the study schedule to which `Sample collection time` relates to
+            title: Collection time event
+            example: Primary vaccination
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Collection time event
+        biomaterial_provider:
+            type: string
+            nullable: true
+            description: Name and address of the entity providing the sample
+            title: Biomaterial provider
+            example: Tissues-R-Us, Tampa, FL, USA
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Biomaterial provider
+
+# 1-to-n relationship between a sample and processing of its cells
+CellProcessing:
+    type: object
+    required:
+        - tissue_processing
+        - cell_subset
+        - cell_phenotype
+        - single_cell
+        - cell_number
+        - cells_per_reaction
+        - cell_storage
+        - cell_quality
+        - cell_isolation
+        - cell_processing_protocol
+    properties:
+        tissue_processing:
+            type: string
+            nullable: true
+            description: Enzymatic digestion and/or physical methods used to isolate cells from sample
+            title: Tissue processing
+            example: Collagenase A/Dnase I digested, followed by Percoll gradient
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Tissue processing
+        cell_subset:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Commonly-used designation of isolated cell population
+            title: Cell subset
+            example:
+                id: CL:0000972
+                label: class switched memory B cell
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Cell subset
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: CL:0000542
+                        label: lymphocyte
+        cell_phenotype:
+            type: string
+            nullable: true
+            description: List of cellular markers and their expression levels used to isolate the cell population
+            title: Cell subset phenotype
+            example: CD19+ CD38+ CD27+ IgM- IgD-
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Cell subset phenotype
+        cell_species:
+            $ref: '#/Ontology'
+            nullable: true
+            description: >
+                Binomial designation of the species from which the analyzed cells originate. Typically, this value
+                should be identical to `species`, in which case it SHOULD NOT be set explicitly. However, there are
+                valid experimental setups in which the two might differ, e.g., chimeric animal models. If set, this
+                key will overwrite the `species` information for all lower layers of the schema.
+            title: Cell species
+            example:
+                id: NCBITAXON:9606
+                label: Homo sapiens
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Cell species
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
+        single_cell:
+            type: boolean
+            nullable: true
+            description: TRUE if single cells were isolated into separate compartments
+            title: Single-cell sort
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Single-cell sort
+        cell_number:
+            type: integer
+            nullable: true
+            description: Total number of cells that went into the experiment
+            title: Number of cells in experiment
+            example: 1000000
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Number of cells in experiment
+        cells_per_reaction:
+            type: integer
+            nullable: true
+            description: Number of cells for each biological replicate
+            title: Number of cells per sequencing reaction
+            example: 50000
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Number of cells per sequencing reaction
+        cell_storage:
+            type: boolean
+            nullable: true
+            description: TRUE if cells were cryo-preserved between isolation and further processing
+            title: Cell storage
+            example: TRUE
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Cell storage
+        cell_quality:
+            type: string
+            nullable: true
+            description: Relative amount of viable cells after preparation and (if applicable) thawing
+            title: Cell quality
+            example: 90% viability as determined by 7-AAD
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Cell quality
+        cell_isolation:
+            type: string
+            nullable: true
+            description: Description of the procedure used for marker-based isolation or enrich cells
+            title: Cell isolation / enrichment procedure
+            example: >
+                Cells were stained with fluorochrome labeled antibodies and then sorted on a FlowMerlin (CE) cytometer.
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Cell isolation / enrichment procedure
+        cell_processing_protocol:
+            type: string
+            nullable: true
+            description: >
+                Description of the methods applied to the sample including cell preparation/ isolation/enrichment and
+                nucleic acid extraction. This should closely mirror the Materials and methods section in the manuscript.
+            title: Processing protocol
+            example: Stimulated wih anti-CD3/anti-CD28
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Processing protocol
+
+# object for PCR primer targets
+PCRTarget:
+    type: object
+    required:
+        - pcr_target_locus
+        - forward_pcr_primer_target_location
+        - reverse_pcr_primer_target_location
+    properties:
+        pcr_target_locus:
+            type: string
+            enum:
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
+            nullable: true
+            description: >
+                Designation of the target locus. Note that this field uses a controlled vocubulary that is meant to
+                provide a generic classification of the locus, not necessarily the correct designation according to
+                a specific nomenclature.
+            title: Target locus for PCR
+            example: IGK
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid [pcr])
+                name: Target locus for PCR
+                format: controlled vocabulary
+        forward_pcr_primer_target_location:
+            type: string
+            nullable: true
+            description: Position of the most distal nucleotide templated by the forward primer or primer mix
+            title: Forward PCR primer target location
+            example: IGHV, +23
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid [pcr])
+                name: Forward PCR primer target location
+        reverse_pcr_primer_target_location:
+            type: string
+            nullable: true
+            description: Position of the most proximal nucleotide templated by the reverse primer or primer mix
+            title: Reverse PCR primer target location
+            example: IGHG, +57
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid [pcr])
+                name: Reverse PCR primer target location
+
+# generally, a 1-to-1 relationship between a CellProcessing and processing of its nucleic acid
+# but may be 1-to-n for technical replicates.
+NucleicAcidProcessing:
+    type: object
+    required:
+        - template_class
+        - template_quality
+        - template_amount
+        - template_amount_unit
+        - library_generation_method
+        - library_generation_protocol
+        - library_generation_kit_version
+        - complete_sequences
+        - physical_linkage
+    properties:
+        template_class:
+            type: string
+            enum:
+                - DNA
+                - RNA
+            nullable: false
+            description: >
+                The class of nucleic acid that was used as primary starting material for the following procedures
+            title: Target substrate
+            example: RNA
+            x-airr:
+                miairr: essential
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid)
+                name: Target substrate
+                format: controlled vocabulary
+        template_quality:
+            type: string
+            nullable: true
+            description: Description and results of the quality control performed on the template material
+            title: Target substrate quality
+            example: RIN 9.2
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid)
+                name: Target substrate quality
+        template_amount:
+            type: number
+            nullable: true
+            description: Amount of template that went into the process
+            title: Template amount
+            example: 1000
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid)
+                name: Template amount
+        template_amount_unit:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Unit of template amount
+            title:  Template amount time unit
+            example:
+                id: UO:0000024
+                label: nanogram
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid)
+                name: Template amount time unit
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000002
+                        label:  physical quantity
+        library_generation_method:
+            type: string
+            enum:
+                - "PCR"
+                - "RT(RHP)+PCR"
+                - "RT(oligo-dT)+PCR"
+                - "RT(oligo-dT)+TS+PCR"
+                - "RT(oligo-dT)+TS(UMI)+PCR"
+                - "RT(specific)+PCR"
+                - "RT(specific)+TS+PCR"
+                - "RT(specific)+TS(UMI)+PCR"
+                - "RT(specific+UMI)+PCR"
+                - "RT(specific+UMI)+TS+PCR"
+                - "RT(specific)+TS"
+                - "other"
+            nullable: false
+            description: Generic type of library generation
+            title: Library generation method
+            example: RT(oligo-dT)+TS(UMI)+PCR
+            x-airr:
+                miairr: essential
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid)
+                name: Library generation method
+                format: controlled vocabulary
+        library_generation_protocol:
+            type: string
+            nullable: true
+            description: Description of processes applied to substrate to obtain a library that is ready for sequencing
+            title: Library generation protocol
+            example: cDNA was generated using
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid)
+                name: Library generation protocol
+        library_generation_kit_version:
+            type: string
+            nullable: true
+            description: When using a library generation protocol from a commercial provider, provide the protocol version number
+            title: Protocol IDs
+            example: v2.1 (2016-09-15)
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid)
+                name: Protocol IDs
+        pcr_target:
+            type: array
+            nullable: false
+            description: >
+                If a PCR step was performed that specifically targets the IG/TR loci, the target and primer locations
+                need to be provided here. This field holds an array of PCRTarget objects, so that multiplex PCR setups
+                amplifying multiple loci at the same time can be annotated using one record per locus. PCR setups not
+                targeting any specific locus must not annotate this field but select the appropriate
+                library_generation_method instead.
+            items:
+                $ref: '#/PCRTarget'
+            x-airr:
+                adc-query-support: true
+        complete_sequences:
+            type: string
+            enum:
+                - partial
+                - complete
+                - "complete+untemplated"
+                - mixed
+            nullable: false
+            description: >
+                To be considered `complete`, the procedure used for library construction MUST generate sequences that
+                1) include the first V gene codon that encodes the mature polypeptide chain (i.e. after the
+                leader sequence) and 2) include the last complete codon of the J gene (i.e. 1 bp 5' of the J->C
+                splice site) and 3) provide sequence information for all positions between 1) and 2). To be considered
+                `complete & untemplated`, the sections of the sequences defined in points 1) to 3) of the previous
+                sentence MUST be untemplated, i.e. MUST NOT overlap with the primers used in library preparation.
+                `mixed` should only be used if the procedure used for library construction will likely produce multiple
+                categories of sequences in the given experiment. It SHOULD NOT be used as a replacement of a NULL value.
+            title: Complete sequences
+            example: partial
+            x-airr:
+                miairr: essential
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid)
+                name: Complete sequences
+                format: controlled vocabulary
+        physical_linkage:
+            type: string
+            enum:
+                - none
+                - "hetero_head-head"
+                - "hetero_tail-head"
+                - "hetero_prelinked"
+            nullable: false
+            description: >
+                In case an experimental setup is used that physically links nucleic acids derived from distinct
+                `Rearrangements` before library preparation, this field describes the mode of that linkage. All
+                `hetero_*` terms indicate that in case of paired-read sequencing, the two reads should be expected
+                to map to distinct IG/TR loci. `*_head-head` refers to techniques that link the 5' ends of transcripts
+                in a single-cell context. `*_tail-head` refers to techniques that link the 3' end of one transcript to
+                the 5' end of another one in a single-cell context. This term does not provide any information whether
+                a continuous reading-frame between the two is generated. `*_prelinked` refers to constructs in which
+                the linkage was already present on the DNA level (e.g. scFv).
+            title: Physical linkage of different rearrangements
+            example: hetero_head-head
+            x-airr:
+                miairr: essential
+                adc-query-support: true
+                set: 3
+                subset: process (nucleic acid)
+                name: Physical linkage of different rearrangements
+                format: controlled vocabulary
+
+# 1-to-n relationship between a NucleicAcidProcessing and SequencingRun with resultant raw sequence file(s)
+SequencingRun:
+    type: object
+    required:
+        - sequencing_run_id
+        - total_reads_passing_qc_filter
+        - sequencing_platform
+        - sequencing_facility
+        - sequencing_run_date
+        - sequencing_kit
+    properties:
+        sequencing_run_id:
+            type: string
+            nullable: true
+            description: ID of sequencing run assigned by the sequencing facility
+            title: Batch number
+            example: 160101_M01234
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (sequencing)
+                name: Batch number
+        total_reads_passing_qc_filter:
+            type: integer
+            nullable: true
+            description: Number of usable reads for analysis
+            title: Total reads passing QC filter
+            example: 10365118
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (sequencing)
+                name: Total reads passing QC filter
+        sequencing_platform:
+            type: string
+            nullable: true
+            description: Designation of sequencing instrument used
+            title: Sequencing platform
+            example: Alumina LoSeq 1000
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (sequencing)
+                name: Sequencing platform
+        sequencing_facility:
+            type: string
+            nullable: true
+            description: Name and address of sequencing facility
+            title: Sequencing facility
+            example: Seqs-R-Us, Vancouver, BC, Canada
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (sequencing)
+                name: Sequencing facility
+        sequencing_run_date:
+            type: string
+            nullable: true
+            description: Date of sequencing run
+            title: Date of sequencing run
+            format: date
+            example: 2016-12-16
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (sequencing)
+                name: Date of sequencing run
+        sequencing_kit:
+            type: string
+            nullable: true
+            description: Name, manufacturer, order and lot numbers of sequencing kit
+            title: Sequencing kit
+            example: "FullSeq 600, Alumina, #M123456C0, 789G1HK"
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 3
+                subset: process (sequencing)
+                name: Sequencing kit
+        sequencing_files:
+            $ref: '#/SequencingData'
+            nullable: false
+            description: Set of sequencing files produced by the sequencing run
+            x-airr:
+                adc-query-support: true
+
+# Resultant raw sequencing files from a SequencingRun
+SequencingData:
+    type: object
+    required:
+        - sequencing_data_id
+        - file_type
+        - filename
+        - read_direction
+        - read_length
+        - paired_filename
+        - paired_read_direction
+        - paired_read_length
+    properties:
+        sequencing_data_id:
+            type: string
+            nullable: true
+            description: Persistent identifier of raw data stored in an archive (e.g. INSDC run ID). Data archive should be identified in the CURIE prefix.
+            title: Raw sequencing data persistent identifier
+            example: "SRA:SRR11610494"
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 4
+                subset: data (raw reads)
+                format: CURIE
+        file_type:
+            type: string
+            nullable: true
+            description: File format for the raw reads or sequences
+            title: Raw sequencing data file type
+            enum:
+                - fasta
+                - fastq
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 4
+                subset: data (raw reads)
+                name: Raw sequencing data file type
+                format: controlled vocabulary
+        filename:
+            type: string
+            nullable: true
+            description: File name for the raw reads or sequences. The first file in paired-read sequencing.
+            title: Raw sequencing data file name
+            example: MS10R-NMonson-C7JR9_S1_R1_001.fastq
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 4
+                subset: data (raw reads)
+                name: Raw sequencing data file name
+        read_direction:
+            type: string
+            nullable: true
+            description: Read direction for the raw reads or sequences. The first file in paired-read sequencing.
+            title: Read direction
+            example: forward
+            enum:
+                - forward
+                - reverse
+                - mixed
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 4
+                subset: data (raw reads)
+                name: Read direction
+                format: controlled vocabulary
+        read_length:
+            type: integer
+            nullable: true
+            description: Read length in bases for the first file in paired-read sequencing
+            title: Forward read length
+            example: 300
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 4
+                subset: data (raw reads)
+                name: Forward read length
+        paired_filename:
+            type: string
+            nullable: true
+            description: File name for the second file in paired-read sequencing
+            title: Paired raw sequencing data file name
+            example: MS10R-NMonson-C7JR9_S1_R2_001.fastq
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 4
+                subset: data (raw reads)
+                name: Paired raw sequencing data file name
+        paired_read_direction:
+            type: string
+            nullable: true
+            description: Read direction for the second file in paired-read sequencing
+            title: Paired read direction
+            example: reverse
+            enum:
+                - forward
+                - reverse
+                - mixed
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 4
+                subset: data (raw reads)
+                name: Paired read direction
+                format: controlled vocabulary
+        paired_read_length:
+            type: integer
+            nullable: true
+            description: Read length in bases for the second file in paired-read sequencing
+            title: Paired read length
+            example: 300
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 4
+                subset: data (raw reads)
+                name: Paired read length
+        index_filename:
+            type: string
+            nullable: true
+            description: File name for the index file
+            title: Sequencing index file name
+            example: MS10R-NMonson-C7JR9_S1_R3_001.fastq
+            x-airr:
+                adc-query-support: true
+        index_length:
+            type: integer
+            nullable: true
+            description: Read length in bases for the index file
+            title: Index read length
+            example: 8
+            x-airr:
+                adc-query-support: true
+
+# 1-to-n relationship between a repertoire and data processing
+#
+# Set of annotated rearrangement sequences produced by
+# data processing upon the raw sequence data for a repertoire.
+DataProcessing:
+    type: object
+    required:
+        - software_versions
+        - paired_reads_assembly
+        - quality_thresholds
+        - primer_match_cutoffs
+        - collapsing_method
+        - data_processing_protocols
+        - germline_database
+    properties:
+        data_processing_id:
+            type: string
+            nullable: true
+            description: Identifier for the data processing object.
+            title: Data processing ID
+            x-airr:
+                name: Data processing ID
+                adc-query-support: true
+                identifier: true
+        primary_annotation:
+            type: boolean
+            default: false
+            nullable: false
+            description: >
+                If true, indicates this is the primary or default data processing for
+                the repertoire and its rearrangements. If false, indicates this is a secondary
+                or additional data processing.
+            title: Primary annotation
+            x-airr:
+                adc-query-support: true
+                identifier: true
+        software_versions:
+            type: string
+            nullable: true
+            description: Version number and / or date, include company pipelines
+            title: Software tools and version numbers
+            example: IgBLAST 1.6
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 5
+                subset: process (computational)
+                name: Software tools and version numbers
+        paired_reads_assembly:
+            type: string
+            nullable: true
+            description: How paired end reads were assembled into a single receptor sequence
+            title: Paired read assembly
+            example: PandaSeq (minimal overlap 50, threshold 0.8)
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 5
+                subset: process (computational)
+                name: Paired read assembly
+        quality_thresholds:
+            type: string
+            nullable: true
+            description: How sequences were removed from (4) based on base quality scores
+            title: Quality thresholds
+            example: Average Phred score >=20
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 5
+                subset: process (computational)
+                name: Quality thresholds
+        primer_match_cutoffs:
+            type: string
+            nullable: true
+            description: How primers were identified in the sequences, were they removed/masked/etc?
+            title: Primer match cutoffs
+            example: Hamming distance <= 2
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 5
+                subset: process (computational)
+                name: Primer match cutoffs
+        collapsing_method:
+            type: string
+            nullable: true
+            description: The method used for combining multiple sequences from (4) into a single sequence in (5)
+            title: Collapsing method
+            example: MUSCLE 3.8.31
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 5
+                subset: process (computational)
+                name: Collapsing method
+        data_processing_protocols:
+            type: string
+            nullable: true
+            description: General description of how QC is performed
+            title: Data processing protocols
+            example: Data was processed using [...]
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 5
+                subset: process (computational)
+                name: Data processing protocols
+        data_processing_files:
+            type: array
+            items:
+                type: string
+            nullable: true
+            description: Array of file names for data produced by this data processing.
+            title: Processed data file names
+            example:
+                - 'ERR1278153_aa.txz'
+                - 'ERR1278153_ab.txz'
+                - 'ERR1278153_ac.txz'
+            x-airr:
+                adc-query-support: true
+                name: Processed data file names
+        germline_database:
+            type: string
+            nullable: true
+            description: Source of germline V(D)J genes with version number or date accessed.
+            title: V(D)J germline reference database
+            example: ENSEMBL, Homo sapiens build 90, 2017-10-01
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 5
+                subset: data (processed sequence)
+                name: V(D)J germline reference database
+        germline_set_ref:
+            type: string
+            nullable: true
+            description: Unique identifier of the germline set and version, in standardized form (Repo:Label:Version)
+            example: OGRDB:Human_IGH:2021.11
+            x-airr:
+                adc-query-support: true
+        analysis_provenance_id:
+            type: string
+            nullable: true
+            description: Identifier for machine-readable PROV model of analysis provenance
+            title: Analysis provenance ID
+            x-airr:
+                adc-query-support: true
+
+SampleProcessing:
+    allOf:
+        - type: object
+          properties:
+            sample_processing_id:
+                type: string
+                nullable: true
+                description: >
+                    Identifier for the sample processing object. This field should be unique within the repertoire.
+                    This field can be used to uniquely identify the combination of sample, cell processing,
+                    nucleic acid processing and sequencing run information for the repertoire.
+                title: Sample processing ID
+                x-airr:
+                    name: Sample processing ID
+                    adc-query-support: true
+                    identifier: true
+        - $ref: '#/Sample'
+        - $ref: '#/CellProcessing'
+        - $ref: '#/NucleicAcidProcessing'
+        - $ref: '#/SequencingRun'
+
+
+# The composite schema for the repertoire object
+#
+# This represents a sample repertoire as defined by the study
+# and experimentally observed by raw sequence data. A repertoire
+# can only be for one subject but may include multiple samples.
+Repertoire:
+    type: object
+    required:
+        - study
+        - subject
+        - sample
+        - data_processing
+    properties:
+        repertoire_id:
+            type: string
+            nullable: true
+            description: >
+                Identifier for the repertoire object. This identifier should be globally unique so that repertoires
+                from multiple studies can be combined together without conflict. The repertoire_id is used to link
+                other AIRR data to a Repertoire. Specifically, the Rearrangements Schema includes repertoire_id for
+                referencing the specific Repertoire for that Rearrangement.
+            title: Repertoire ID
+            x-airr:
+                adc-query-support: true
+                identifier: true
+        repertoire_name:
+            type: string
+            nullable: true
+            description: Short generic display name for the repertoire
+            title: Repertoire name
+            x-airr:
+                name: Repertoire name
+                adc-query-support: true
+        repertoire_description:
+            type: string
+            nullable: true
+            description: Generic repertoire description
+            title: Repertoire description
+            x-airr:
+                name: Repertoire description
+                adc-query-support: true
+        study:
+            $ref: '#/Study'
+            nullable: false
+            description: Study object
+            x-airr:
+                adc-query-support: true
+        subject:
+            $ref: '#/Subject'
+            nullable: false
+            description: Subject object
+            x-airr:
+                adc-query-support: true
+        sample:
+            type: array
+            nullable: false
+            description: List of Sample Processing objects
+            items:
+                $ref: '#/SampleProcessing'
+            x-airr:
+                adc-query-support: true
+        data_processing:
+            type: array
+            nullable: false
+            description: List of Data Processing objects
+            items:
+                $ref: '#/DataProcessing'
+            x-airr:
+                adc-query-support: true
+
+# A collection of repertoires for analysis purposes, includes optional time course
+RepertoireGroup:
+    type: object
+    required:
+        - repertoire_group_id
+        - repertoires
+    properties:
+        repertoire_group_id:
+            type: string
+            nullable: true
+            description: Identifier for this repertoire collection
+        repertoire_group_name:
+            type: string
+            nullable: true
+            description: Short display name for this repertoire collection
+        repertoire_group_description:
+            type: string
+            nullable: true
+            description: Repertoire collection description
+        repertoires:
+            type: array
+            nullable: true
+            description: >
+                List of repertoires in this collection with an associated description and time point designation
+            items:
+                type: object
+                properties:
+                    repertoire_id:
+                        type: string
+                        nullable: false
+                        description: Identifier to the repertoire
+                        x-airr:
+                            adc-query-support: true
+                    repertoire_description:
+                        type: string
+                        nullable: true
+                        description: Description of this repertoire within the group
+                        x-airr:
+                            adc-query-support: true
+                    time_point:
+                        $ref: '#/TimePoint'
+                        nullable: true
+                        description: Time point designation for this repertoire within the group
+                        x-airr:
+                            adc-query-support: true
+
+Alignment:
+    type: object
+    required:
+        - sequence_id
+        - segment
+        - call
+        - score
+        - cigar
+    properties:
+        sequence_id:
+            type: string
+            nullable: true
+            description: >
+                Unique query sequence identifier within the file. Most often this will be the input sequence
+                header or a substring thereof, but may also be a custom identifier defined by the tool in
+                cases where query sequences have been combined in some fashion prior to alignment.
+        segment:
+            type: string
+            nullable: true
+            description: >
+                The segment for this alignment. One of V, D, J or C.
+        rev_comp:
+            type: boolean
+            nullable: true
+            description: >
+                Alignment result is from the reverse complement of the query sequence.
+        call:
+            type: string
+            nullable: true
+            description: >
+                Gene assignment with allele.
+        score:
+            type: number
+            nullable: true
+            description: >
+                Alignment score.
+        identity:
+            type: number
+            nullable: true
+            description: >
+                Alignment fractional identity.
+        support:
+            type: number
+            nullable: true
+            description: >
+                Alignment E-value, p-value, likelihood, probability or other similar measure of
+                support for the gene assignment as defined by the alignment tool.
+        cigar:
+            type: string
+            nullable: true
+            description: >
+                Alignment CIGAR string.
+        sequence_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the segment in the query sequence (1-based closed interval).
+        sequence_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the segment in the query sequence (1-based closed interval).
+        germline_start:
+            type: integer
+            nullable: true
+            description: >
+                Alignment start position in the reference sequence (1-based closed interval).
+        germline_end:
+            type: integer
+            nullable: true
+            description: >
+                Alignment end position in the reference sequence (1-based closed interval).
+        rank:
+            type: integer
+            nullable: true
+            description: >
+                Alignment rank.
+        rearrangement_id:
+            type: string
+            nullable: true
+            description: >
+                Identifier for the Rearrangement object. May be identical to sequence_id,
+                but will usually be a universally unique record locator for database applications.
+            x-airr:
+                deprecated: true
+                deprecated-description: Field has been merged with sequence_id to avoid confusion.
+                deprecated-replaced-by:
+                    - sequence_id
+        data_processing_id:
+            type: string
+            nullable: true
+            description: >
+                Identifier to the data processing object in the repertoire metadata
+                for this rearrangement. If this field is empty than the primary data processing object is assumed.
+        germline_database:
+            type: string
+            nullable: true
+            description: Source of germline V(D)J genes with version number or date accessed.
+            example: ENSEMBL, Homo sapiens build 90, 2017-10-01
+            x-airr:
+                deprecated: true
+                deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
+                deprecated-replaced-by:
+                    - "DataProcessing:germline_database"
+
+
+# The extended rearrangement object
+Rearrangement:
+    type: object
+    required:
+        - sequence_id
+        - sequence
+        - rev_comp
+        - productive
+        - v_call
+        - d_call
+        - j_call
+        - sequence_alignment
+        - germline_alignment
+        - junction
+        - junction_aa
+        - v_cigar
+        - d_cigar
+        - j_cigar
+    properties:
+        sequence_id:
+            type: string
+            nullable: true
+            description: >
+                Unique query sequence identifier for the Rearrangement. Most often this will be the input sequence
+                header or a substring thereof, but may also be a custom identifier defined by the tool in
+                cases where query sequences have been combined in some fashion prior to alignment. When
+                downloaded from an AIRR Data Commons repository, this will usually be a universally unique
+                record locator for linking with other objects in the AIRR Data Model.
+            x-airr:
+                adc-query-support: true
+                identifier: true
+        sequence:
+            type: string
+            nullable: true
+            description: >
+                The query nucleotide sequence. Usually, this is the unmodified input sequence, which may be
+                reverse complemented if necessary. In some cases, this field may contain consensus sequences or
+                other types of collapsed input sequences if these steps are performed prior to alignment.
+        quality:
+            type: string
+            nullable: true
+            description: >
+                The Sanger/Phred quality scores for assessment of sequence quality.
+                Phred quality scores from 0 to 93 are encoded using ASCII 33 to 126 (Used by Illumina from v1.8.)
+        sequence_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the query nucleotide sequence.
+        rev_comp:
+            type: boolean
+            nullable: true
+            description: >
+                True if the alignment is on the opposite strand (reverse complemented) with respect to the
+                query sequence. If True then all output data, such as alignment coordinates and sequences,
+                are based on the reverse complement of 'sequence'.
+        productive:
+            type: boolean
+            nullable: true
+            description: >
+                True if the V(D)J sequence is predicted to be productive.
+            x-airr:
+                adc-query-support: true
+        vj_in_frame:
+            type: boolean
+            nullable: true
+            description: True if the V and J gene alignments are in-frame.
+        stop_codon:
+            type: boolean
+            nullable: true
+            description: True if the aligned sequence contains a stop codon.
+        complete_vdj:
+            type: boolean
+            nullable: true
+            description: >
+                True if the sequence alignment spans the entire V(D)J region. Meaning,
+                sequence_alignment includes both the first V gene codon that encodes the
+                mature polypeptide chain (i.e., after the leader sequence) and the last
+                complete codon of the J gene (i.e., before the J-C splice site).
+                This does not require an absence of deletions within the internal
+                FWR and CDR regions of the alignment.
+        locus:
+            type: string
+            enum:
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
+            nullable: true
+            description: >
+                Gene locus (chain type). Note that this field uses a controlled vocabulary that is meant to provide a
+                generic classification of the locus, not necessarily the correct designation according to a specific
+                nomenclature.
+            title: Gene locus
+            example: IGH
+            x-airr:
+                adc-query-support: true
+                name: Gene locus
+                format: controlled vocabulary
+        v_call:
+            type: string
+            nullable: true
+            description: >
+                V gene with allele. If referring to a known reference sequence in a database
+                the relevant gene/allele nomenclature should be followed (e.g., IGHV4-59*01 if using IMGT/GENE-DB).
+            title: V gene with allele
+            example: IGHV4-59*01
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 6
+                subset: data (processed sequence)
+                name: V gene with allele
+        d_call:
+            type: string
+            nullable: true
+            description: >
+                First or only D gene with allele. If referring to a known reference sequence in a database
+                the relevant gene/allele nomenclature should be followed (e.g., IGHD3-10*01 if using IMGT/GENE-DB).
+            title: D gene with allele
+            example: IGHD3-10*01
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 6
+                subset: data (processed sequence)
+                name: D gene with allele
+        d2_call:
+            type: string
+            nullable: true
+            description: >
+                Second D gene with allele. If referring to a known reference sequence in a database the relevant
+                gene/allele nomenclature should be followed (e.g., IGHD3-10*01 if using IMGT/GENE-DB).
+            example: IGHD3-10*01
+        j_call:
+            type: string
+            nullable: true
+            description: >
+                J gene with allele. If referring to a known reference sequence in a database the relevant
+                gene/allele nomenclature should be followed (e.g., IGHJ4*02 if using IMGT/GENE-DB).
+            title: J gene with allele
+            example: IGHJ4*02
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 6
+                subset: data (processed sequence)
+                name: J gene with allele
+        c_call:
+            type: string
+            nullable: true
+            description: >
+                Constant region gene with allele. If referring to a known reference sequence in a database the
+                relevant gene/allele nomenclature should be followed (e.g., IGHG1*01 if using IMGT/GENE-DB).
+            title: C region
+            example: IGHG1*01
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 6
+                subset: data (processed sequence)
+                name: C region
+        sequence_alignment:
+            type: string
+            nullable: true
+            description: >
+                Aligned portion of query sequence, including any indel corrections or numbering spacers,
+                such as IMGT-gaps. Typically, this will include only the V(D)J region, but that is not
+                a requirement.
+        quality_alignment:
+            type: string
+            nullable: true
+            description: >
+                Sanger/Phred quality scores for assessment of sequence_alignment quality.
+                Phred quality scores from 0 to 93 are encoded using ASCII 33 to 126 (Used by Illumina from v1.8.)
+        sequence_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the aligned query sequence.
+        germline_alignment:
+            type: string
+            nullable: true
+            description: >
+                Assembled, aligned, full-length inferred germline sequence spanning the same region
+                as the sequence_alignment field (typically the V(D)J region) and including the same set
+                of corrections and spacers (if any).
+        germline_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the assembled germline sequence.
+        junction:
+            type: string
+            nullable: true
+            description: >
+                Junction region nucleotide sequence, where the junction is defined as
+                the CDR3 plus the two flanking conserved codons.
+            title: IMGT-JUNCTION nucleotide sequence
+            example: TGTGCAAGAGCGGGAGTTTACGACGGATATACTATGGACTACTGG
+            x-airr:
+                miairr: important
+                set: 6
+                subset: data (processed sequence)
+                name: IMGT-JUNCTION nucleotide sequence
+        junction_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the junction.
+            title: IMGT-JUNCTION amino acid sequence
+            example: CARAGVYDGYTMDYW
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 6
+                subset: data (processed sequence)
+                name: IMGT-JUNCTION amino acid sequence
+        np1:
+            type: string
+            nullable: true
+            description: >
+                Nucleotide sequence of the combined N/P region between the V gene and
+                first D gene alignment or between the V gene and J gene alignments.
+        np1_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the np1 field.
+        np2:
+            type: string
+            nullable: true
+            description: >
+                Nucleotide sequence of the combined N/P region between either the first D gene and J gene
+                alignments or the first D gene and second D gene alignments.
+        np2_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the np2 field.
+        np3:
+            type: string
+            nullable: true
+            description: >
+                Nucleotide sequence of the combined N/P region between the second D gene
+                and J gene alignments.
+        np3_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the np3 field.
+        cdr1:
+            type: string
+            nullable: true
+            description: >
+                Nucleotide sequence of the aligned CDR1 region.
+        cdr1_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the cdr1 field.
+        cdr2:
+            type: string
+            nullable: true
+            description: >
+                Nucleotide sequence of the aligned CDR2 region.
+        cdr2_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the cdr2 field.
+        cdr3:
+            type: string
+            nullable: true
+            description: >
+                Nucleotide sequence of the aligned CDR3 region.
+        cdr3_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the cdr3 field.
+        fwr1:
+            type: string
+            nullable: true
+            description: >
+                Nucleotide sequence of the aligned FWR1 region.
+        fwr1_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the fwr1 field.
+        fwr2:
+            type: string
+            nullable: true
+            description: >
+                Nucleotide sequence of the aligned FWR2 region.
+        fwr2_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the fwr2 field.
+        fwr3:
+            type: string
+            nullable: true
+            description: >
+                Nucleotide sequence of the aligned FWR3 region.
+        fwr3_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the fwr3 field.
+        fwr4:
+            type: string
+            nullable: true
+            description: >
+                Nucleotide sequence of the aligned FWR4 region.
+        fwr4_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the fwr4 field.
+        v_score:
+            type: number
+            nullable: true
+            description: Alignment score for the V gene.
+        v_identity:
+            type: number
+            nullable: true
+            description: Fractional identity for the V gene alignment.
+        v_support:
+            type: number
+            nullable: true
+            description: >
+                V gene alignment E-value, p-value, likelihood, probability or other similar measure of
+                support for the V gene assignment as defined by the alignment tool.
+        v_cigar:
+            type: string
+            nullable: true
+            description: CIGAR string for the V gene alignment.
+        d_score:
+            type: number
+            nullable: true
+            description: Alignment score for the first or only D gene alignment.
+        d_identity:
+            type: number
+            nullable: true
+            description: Fractional identity for the first or only D gene alignment.
+        d_support:
+            type: number
+            nullable: true
+            description: >
+                D gene alignment E-value, p-value, likelihood, probability or other similar measure of
+                support for the first or only D gene as defined by the alignment tool.
+        d_cigar:
+            type: string
+            nullable: true
+            description: CIGAR string for the first or only D gene alignment.
+        d2_score:
+            type: number
+            nullable: true
+            description: Alignment score for the second D gene alignment.
+        d2_identity:
+            type: number
+            nullable: true
+            description: Fractional identity for the second D gene alignment.
+        d2_support:
+            type: number
+            nullable: true
+            description: >
+                D gene alignment E-value, p-value, likelihood, probability or other similar measure of
+                support for the second D gene as defined by the alignment tool.
+        d2_cigar:
+            type: string
+            nullable: true
+            description: CIGAR string for the second D gene alignment.
+        j_score:
+            type: number
+            nullable: true
+            description: Alignment score for the J gene alignment.
+        j_identity:
+            type: number
+            nullable: true
+            description: Fractional identity for the J gene alignment.
+        j_support:
+            type: number
+            nullable: true
+            description: >
+                J gene alignment E-value, p-value, likelihood, probability or other similar measure of
+                support for the J gene assignment as defined by the alignment tool.
+        j_cigar:
+            type: string
+            nullable: true
+            description: CIGAR string for the J gene alignment.
+        c_score:
+            type: number
+            nullable: true
+            description: Alignment score for the C gene alignment.
+        c_identity:
+            type: number
+            nullable: true
+            description: Fractional identity for the C gene alignment.
+        c_support:
+            type: number
+            nullable: true
+            description: >
+                C gene alignment E-value, p-value, likelihood, probability or other similar measure of
+                support for the C gene assignment as defined by the alignment tool.
+        c_cigar:
+            type: string
+            nullable: true
+            description: CIGAR string for the C gene alignment.
+        v_sequence_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the V gene in the query sequence (1-based closed interval).
+        v_sequence_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the V gene in the query sequence (1-based closed interval).
+        v_germline_start:
+            type: integer
+            nullable: true
+            description: >
+                Alignment start position in the V gene reference sequence (1-based closed interval).
+        v_germline_end:
+            type: integer
+            nullable: true
+            description: >
+                Alignment end position in the V gene reference sequence (1-based closed interval).
+        v_alignment_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the V gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        v_alignment_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the V gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        d_sequence_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the first or only D gene in the query sequence.
+                (1-based closed interval).
+        d_sequence_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the first or only D gene in the query sequence.
+                (1-based closed interval).
+        d_germline_start:
+            type: integer
+            nullable: true
+            description: >
+                Alignment start position in the D gene reference sequence for the first or only
+                D gene (1-based closed interval).
+        d_germline_end:
+            type: integer
+            nullable: true
+            description: >
+                Alignment end position in the D gene reference sequence for the first or only
+                D gene (1-based closed interval).
+        d_alignment_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the first or only D gene in both the sequence_alignment
+                and germline_alignment fields (1-based closed interval).
+        d_alignment_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the first or only D gene in both the sequence_alignment
+                and germline_alignment fields (1-based closed interval).
+        d2_sequence_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the second D gene in the query sequence (1-based closed interval).
+        d2_sequence_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the second D gene in the query sequence (1-based closed interval).
+        d2_germline_start:
+            type: integer
+            nullable: true
+            description: >
+                Alignment start position in the second D gene reference sequence (1-based closed interval).
+        d2_germline_end:
+            type: integer
+            nullable: true
+            description: >
+                Alignment end position in the second D gene reference sequence (1-based closed interval).
+        d2_alignment_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the second D gene alignment in both the sequence_alignment and
+                germline_alignment fields (1-based closed interval).
+        d2_alignment_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the second D gene alignment in both the sequence_alignment and
+                germline_alignment fields (1-based closed interval).
+        j_sequence_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the J gene in the query sequence (1-based closed interval).
+        j_sequence_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the J gene in the query sequence (1-based closed interval).
+        j_germline_start:
+            type: integer
+            nullable: true
+            description: >
+                Alignment start position in the J gene reference sequence (1-based closed interval).
+        j_germline_end:
+            type: integer
+            nullable: true
+            description: >
+                Alignment end position in the J gene reference sequence (1-based closed interval).
+        j_alignment_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the J gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        j_alignment_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the J gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        c_sequence_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the C gene in the query sequence (1-based closed interval).
+        c_sequence_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the C gene in the query sequence (1-based closed interval).
+        c_germline_start:
+            type: integer
+            nullable: true
+            description: >
+                Alignment start position in the C gene reference sequence (1-based closed interval).
+        c_germline_end:
+            type: integer
+            nullable: true
+            description: >
+                Alignment end position in the C gene reference sequence (1-based closed interval).
+        c_alignment_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the C gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        c_alignment_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the C gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        cdr1_start:
+            type: integer
+            nullable: true
+            description: CDR1 start position in the query sequence (1-based closed interval).
+        cdr1_end:
+            type: integer
+            nullable: true
+            description: CDR1 end position in the query sequence (1-based closed interval).
+        cdr2_start:
+            type: integer
+            nullable: true
+            description: CDR2 start position in the query sequence (1-based closed interval).
+        cdr2_end:
+            type: integer
+            nullable: true
+            description: CDR2 end position in the query sequence (1-based closed interval).
+        cdr3_start:
+            type: integer
+            nullable: true
+            description: CDR3 start position in the query sequence (1-based closed interval).
+        cdr3_end:
+            type: integer
+            nullable: true
+            description: CDR3 end position in the query sequence (1-based closed interval).
+        fwr1_start:
+            type: integer
+            nullable: true
+            description: FWR1 start position in the query sequence (1-based closed interval).
+        fwr1_end:
+            type: integer
+            nullable: true
+            description: FWR1 end position in the query sequence (1-based closed interval).
+        fwr2_start:
+            type: integer
+            nullable: true
+            description: FWR2 start position in the query sequence (1-based closed interval).
+        fwr2_end:
+            type: integer
+            nullable: true
+            description: FWR2 end position in the query sequence (1-based closed interval).
+        fwr3_start:
+            type: integer
+            nullable: true
+            description: FWR3 start position in the query sequence (1-based closed interval).
+        fwr3_end:
+            type: integer
+            nullable: true
+            description: FWR3 end position in the query sequence (1-based closed interval).
+        fwr4_start:
+            type: integer
+            nullable: true
+            description: FWR4 start position in the query sequence (1-based closed interval).
+        fwr4_end:
+            type: integer
+            nullable: true
+            description: FWR4 end position in the query sequence (1-based closed interval).
+        v_sequence_alignment:
+            type: string
+            nullable: true
+            description: >
+                Aligned portion of query sequence assigned to the V gene, including any
+                indel corrections or numbering spacers.
+        v_sequence_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the v_sequence_alignment field.
+        d_sequence_alignment:
+            type: string
+            nullable: true
+            description: >
+                Aligned portion of query sequence assigned to the first or only D gene, including any
+                indel corrections or numbering spacers.
+        d_sequence_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the d_sequence_alignment field.
+        d2_sequence_alignment:
+            type: string
+            nullable: true
+            description: >
+                Aligned portion of query sequence assigned to the second D gene, including any
+                indel corrections or numbering spacers.
+        d2_sequence_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the d2_sequence_alignment field.
+        j_sequence_alignment:
+            type: string
+            nullable: true
+            description: >
+                Aligned portion of query sequence assigned to the J gene, including any
+                indel corrections or numbering spacers.
+        j_sequence_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the j_sequence_alignment field.
+        c_sequence_alignment:
+            type: string
+            nullable: true
+            description: >
+                Aligned portion of query sequence assigned to the constant region, including
+                any indel corrections or numbering spacers.
+        c_sequence_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the c_sequence_alignment field.
+        v_germline_alignment:
+            type: string
+            nullable: true
+            description: >
+                Aligned V gene germline sequence spanning the same region
+                as the v_sequence_alignment field and including the same set
+                of corrections and spacers (if any).
+        v_germline_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the v_germline_alignment field.
+        d_germline_alignment:
+            type: string
+            nullable: true
+            description: >
+                Aligned D gene germline sequence spanning the same region
+                as the d_sequence_alignment field and including the same set
+                of corrections and spacers (if any).
+        d_germline_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the d_germline_alignment field.
+        d2_germline_alignment:
+            type: string
+            nullable: true
+            description: >
+                Aligned D gene germline sequence spanning the same region
+                as the d2_sequence_alignment field and including the same set
+                of corrections and spacers (if any).
+        d2_germline_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the d2_germline_alignment field.
+        j_germline_alignment:
+            type: string
+            nullable: true
+            description: >
+                Aligned J gene germline sequence spanning the same region
+                as the j_sequence_alignment field and including the same set
+                of corrections and spacers (if any).
+        j_germline_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the j_germline_alignment field.
+        c_germline_alignment:
+            type: string
+            nullable: true
+            description: >
+                Aligned constant region germline sequence spanning the same region
+                as the c_sequence_alignment field and including the same set
+                of corrections and spacers (if any).
+        c_germline_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the c_germline_aligment field.
+        junction_length:
+            type: integer
+            nullable: true
+            description: Number of nucleotides in the junction sequence.
+        junction_aa_length:
+            type: integer
+            nullable: true
+            description: Number of amino acids in the junction sequence.
+            x-airr:
+                adc-query-support: true
+        np1_length:
+            type: integer
+            nullable: true
+            description: >
+                Number of nucleotides between the V gene and first D gene alignments or
+                between the V gene and J gene alignments.
+        np2_length:
+            type: integer
+            nullable: true
+            description: >
+                Number of nucleotides between either the first D gene and J gene alignments
+                or the first D gene and second D gene alignments.
+        np3_length:
+            type: integer
+            nullable: true
+            description: >
+                Number of nucleotides between the second D gene and J gene alignments.
+        n1_length:
+            type: integer
+            nullable: true
+            description: Number of untemplated nucleotides 5' of the first or only D gene alignment.
+        n2_length:
+            type: integer
+            nullable: true
+            description: Number of untemplated nucleotides 3' of the first or only D gene alignment.
+        n3_length:
+            type: integer
+            nullable: true
+            description: Number of untemplated nucleotides 3' of the second D gene alignment.
+        p3v_length:
+            type: integer
+            nullable: true
+            description: Number of palindromic nucleotides 3' of the V gene alignment.
+        p5d_length:
+            type: integer
+            nullable: true
+            description: Number of palindromic nucleotides 5' of the first or only D gene alignment.
+        p3d_length:
+            type: integer
+            nullable: true
+            description: Number of palindromic nucleotides 3' of the first or only D gene alignment.
+        p5d2_length:
+            type: integer
+            nullable: true
+            description: Number of palindromic nucleotides 5' of the second D gene alignment.
+        p3d2_length:
+            type: integer
+            nullable: true
+            description: Number of palindromic nucleotides 3' of the second D gene alignment.
+        p5j_length:
+            type: integer
+            nullable: true
+            description: Number of palindromic nucleotides 5' of the J gene alignment.
+        v_frameshift:
+            type: boolean
+            nullable: true
+            description: >
+                True if the V gene in the query nucleotide sequence contains a translational
+                frameshift relative to the frame of the V gene reference sequence.
+        j_frameshift:
+            type: boolean
+            nullable: true
+            description: >
+                True if the J gene in the query nucleotide sequence contains a translational
+                frameshift relative to the frame of the J gene reference sequence.
+        d_frame:
+            type: integer
+            nullable: true
+            description: >
+                Numerical reading frame (1, 2, 3) of the first or only D gene in the query nucleotide sequence,
+                where frame 1 is relative to the first codon of D gene reference sequence.
+        d2_frame:
+            type: integer
+            nullable: true
+            description: >
+                Numerical reading frame (1, 2, 3) of the second D gene in the query nucleotide sequence,
+                where frame 1 is relative to the first codon of D gene reference sequence.
+        consensus_count:
+            type: integer
+            nullable: true
+            description: >
+                Number of reads contributing to the UMI consensus or contig assembly for this sequence.
+                For example, the sum of the number of reads for all UMIs that contribute to
+                the query sequence.
+        duplicate_count:
+            type: integer
+            nullable: true
+            description: >
+                Copy number or number of duplicate observations for the query sequence.
+                For example, the number of identical reads observed for this sequence.
+            title: Read count
+            example: 123
+            x-airr:
+                miairr: important
+                set: 6
+                subset: data (processed sequence)
+                name: Read count
+        umi_count:
+            type: integer
+            nullable: true
+            description: >
+                Number of distinct UMIs represented by this sequence.
+                For example, the total number of UMIs that contribute to
+                the contig assembly for the query sequence.
+        cell_id:
+            type: string
+            nullable: true
+            description: >
+                Identifier defining the cell of origin for the query sequence.
+            title: Cell index
+            example: W06_046_091
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                identifier: true
+                set: 6
+                subset: data (processed sequence)
+                name: Cell index
+        clone_id:
+            type: string
+            nullable: true
+            description: Clonal cluster assignment for the query sequence.
+            x-airr:
+                adc-query-support: true
+                identifier: true
+        repertoire_id:
+            type: string
+            nullable: true
+            description: Identifier to the associated repertoire in study metadata.
+            x-airr:
+                adc-query-support: true
+                identifier: true
+        sample_processing_id:
+            type: string
+            nullable: true
+            description: >
+                Identifier to the sample processing object in the repertoire metadata
+                for this rearrangement. If the repertoire has a single sample then
+                this field may be empty or missing. If the repertoire has multiple samples then
+                this field may be empty or missing if the sample cannot be differentiated or
+                the relationship is not maintained by the data processing.
+            x-airr:
+                adc-query-support: true
+                identifier: true
+        data_processing_id:
+            type: string
+            nullable: true
+            description: >
+                Identifier to the data processing object in the repertoire metadata
+                for this rearrangement. If this field is empty than the primary data processing object is assumed.
+            x-airr:
+                adc-query-support: true
+                identifier: true
+        rearrangement_id:
+            type: string
+            nullable: true
+            description: >
+                Identifier for the Rearrangement object. May be identical to sequence_id,
+                but will usually be a universally unique record locator for database applications.
+            x-airr:
+                deprecated: true
+                deprecated-description: Field has been merged with sequence_id to avoid confusion.
+                deprecated-replaced-by:
+                    - sequence_id
+        rearrangement_set_id:
+            type: string
+            nullable: true
+            description: >
+                Identifier for grouping Rearrangement objects.
+            x-airr:
+                deprecated: true
+                deprecated-description: Field has been replaced by other specialized identifiers.
+                deprecated-replaced-by:
+                    - repertoire_id
+                    - sample_processing_id
+                    - data_processing_id
+        germline_database:
+            type: string
+            nullable: true
+            description: Source of germline V(D)J genes with version number or date accessed.
+            example: ENSEMBL, Homo sapiens build 90, 2017-10-01
+            x-airr:
+                deprecated: true
+                deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
+                deprecated-replaced-by:
+                    - "DataProcessing:germline_database"
+
+# A unique inferred clone object that has been constructed within a single data processing
+# for a single repertoire and a subset of its sequences and/or rearrangements.
+Clone:
+    type: object
+    required:
+        - clone_id
+        - germline_alignment
+    properties:
+        clone_id:
+            type: string
+            nullable: true
+            description: Identifier for the clone.
+        repertoire_id:
+            type: string
+            nullable: true
+            description: Identifier to the associated repertoire in study metadata.
+            x-airr:
+                adc-query-support: true
+        data_processing_id:
+            type: string
+            nullable: true
+            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            x-airr:
+                adc-query-support: true
+        sequences:
+            type: array
+            items:
+                type: string
+            nullable: true
+            description: >
+                List sequence_id strings that act as keys to the Rearrangement records for members of the clone.
+        v_call:
+            type: string
+            nullable: true
+            description: >
+                V gene with allele of the inferred ancestral of the clone. For example, IGHV4-59*01.
+            example: IGHV4-59*01
+        d_call:
+            type: string
+            nullable: true
+            description: >
+                D gene with allele of the inferred ancestor of the clone. For example, IGHD3-10*01.
+            example: IGHD3-10*01
+        j_call:
+            type: string
+            nullable: true
+            description: >
+                J gene with allele of the inferred ancestor of the clone. For example, IGHJ4*02.
+            example: IGHJ4*02
+        junction:
+            type: string
+            nullable: true
+            description: >
+                Nucleotide sequence for the junction region of the inferred ancestor of the clone,
+                where the junction is defined as the CDR3 plus the two flanking conserved codons.
+        junction_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the junction.
+        junction_length:
+            type: integer
+            nullable: true
+            description: Number of nucleotides in the junction.
+        junction_aa_length:
+            type: integer
+            nullable: true
+            description: Number of amino acids in junction_aa.
+        germline_alignment:
+            type: string
+            nullable: true
+            description: >
+                Assembled, aligned, full-length inferred ancestor of the clone spanning the same region
+                as the sequence_alignment field of nodes (typically the V(D)J region) and including the
+                same set of corrections and spacers (if any).
+        germline_alignment_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of germline_alignment.
+        v_alignment_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position in the V gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        v_alignment_end:
+            type: integer
+            nullable: true
+            description: >
+                End position in the V gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        d_alignment_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the D gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        d_alignment_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the D gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        j_alignment_start:
+            type: integer
+            nullable: true
+            description: >
+                Start position of the J gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        j_alignment_end:
+            type: integer
+            nullable: true
+            description: >
+                End position of the J gene alignment in both the sequence_alignment and germline_alignment
+                fields (1-based closed interval).
+        junction_start:
+            type: integer
+            nullable: true
+            description: Junction region start position in the alignment (1-based closed interval).
+        junction_end:
+            type: integer
+            nullable: true
+            description: Junction region end position in the alignment (1-based closed interval).
+        umi_count:
+            type: integer
+            nullable: true
+            description: >
+                Number of distinct UMIs observed across all sequences (Rearrangement records) in this clone.
+        clone_count:
+            type: integer
+            nullable: true
+            description: >
+                Absolute count of the size (number of members) of this clone in the repertoire.
+                This could simply be the number of sequences (Rearrangement records) observed in this clone,
+                the number of distinct cell barcodes (unique cell_id values),
+                or a more sophisticated calculation appropriate to the experimental protocol.
+                Absolute count is provided versus a frequency so that downstream analysis tools can perform their own normalization.
+        seed_id:
+            type: string
+            nullable: true
+            description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
+
+# 1-to-n relationship for a clone to its trees.
+Tree:
+    type: object
+    required:
+        - tree_id
+        - clone_id
+        - newick
+    properties:
+        tree_id:
+            type: string
+            nullable: true
+            description: Identifier for the tree.
+        clone_id:
+            type: string
+            nullable: true
+            description: Identifier for the clone.
+        newick:
+            type: string
+            nullable: true
+            description: Newick string of the tree edges.
+        nodes:
+            type: object
+            nullable: true
+            description: Dictionary of nodes in the tree, keyed by sequence_id string
+            additionalProperties:
+                $ref: '#/Node'
+
+# 1-to-n relationship between a tree and its nodes
+Node:
+    type: object
+    required:
+        - sequence_id
+    properties:
+        sequence_id:
+            type: string
+            nullable: true
+            description: >
+                Identifier for this node that matches the identifier in the newick string and, where possible,
+                the sequence_id in the source repertoire.
+        sequence_alignment:
+            type: string
+            nullable: true
+            description: >
+                Nucleotide sequence of the node, aligned to the germline_alignment for this clone, including
+                including any indel corrections or spacers.
+        junction:
+            type: string
+            nullable: true
+            description: >
+                Junction region nucleotide sequence for the node, where the junction is defined as
+                the CDR3 plus the two flanking conserved codons.
+        junction_aa:
+            type: string
+            nullable: true
+            description: >
+                Amino acid translation of the junction.
+
+# The cell object acts as point of reference for all data that can be related
+# to an individual cell, either by direct observation or inference.
+Cell:
+    type: object
+    required:
+        - cell_id
+        - rearrangements
+        - repertoire_id
+        - virtual_pairing
+    properties:
+        cell_id:
+            type: string
+            nullable: false
+            description: >
+                Identifier defining the cell of origin for the query sequence.
+            title: Cell index
+            example: W06_046_091
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Cell index
+        rearrangements:
+            type: array
+            nullable: true
+            description: >
+                  Array of sequence identifiers defined for the Rearrangement object
+            title: Cell-associated rearrangements
+            items:
+                type: string
+            example: [id1, id2] #empty vs NULL?
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Cell-associated rearrangements
+        receptors:
+            type: array
+            nullable: true
+            description: >
+                  Array of receptor identifiers defined for the Receptor object
+            title: Cell-associated receptors
+            items:
+                type: string
+            example: [id1, id2] #empty vs NULL?
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Cell-associated receptors
+        repertoire_id:
+            type: string
+            nullable: true
+            description: Identifier to the associated repertoire in study metadata.
+            title: Parental repertoire of cell
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Parental repertoire of cell
+        data_processing_id:
+            type: string
+            nullable: true
+            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            title: Data processing for cell
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Data processing for cell
+        expression_study_method:
+            type: string
+            enum:
+                - "flow cytometry"
+                - "single-cell transcriptome"
+            nullable: true
+            description: >
+                  keyword describing the methodology used to assess expression. This values for this field MUST come from a controlled vocabulary
+            x-airr:
+                miairr: defined
+                adc-api-optional: true
+        expression_raw_doi:
+            type: string
+            nullable: true
+            description: >
+                  DOI of raw data set containing the current event
+            x-airr:
+                miairr: defined
+                adc-api-optional: true
+        expression_index:
+            type: string
+            nullable: true
+            description: >
+                  Index addressing the current event within the raw data set.
+            x-airr:
+                miairr: defined
+                adc-api-optional: true
+        virtual_pairing:
+            type: boolean
+            nullable: true
+            description: >
+                boolean to indicate if pairing was inferred.
+            title: Virtual pairing
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Virtual pairing
+
+# The CellExpression object acts as a container to hold a single expression level measurement from
+# an experiment. Expression data is associated with a cell_id and the related repertoire_id and 
+# data_processing_id as cell_id is not guaranteed to be unique outside the data processing for 
+# a single repertoire.
+CellExpression:
+    type: object
+    required:
+        - expression_id
+        - reperotire_id
+        - data_processing_id
+        - cell_id
+        - property
+        - value
+    properties:
+        expression_id:
+            type: string
+            description: >
+                Identifier of this expression property measurement.
+            title: Expression property measurement identifier
+            nullable: false
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Expression measurement identifier
+        cell_id:
+            type: string
+            description: >
+                Identifier of the cell to which this expression data is related.
+            title: Cell identifier
+            nullable: false
+            example: W06_046_091
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Cell identifier
+        repertoire_id:
+            type: string
+            description: Identifier for the associated repertoire in study metadata.
+            title: Parental repertoire of cell
+            nullable: true
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Parental repertoire of cell
+        data_processing_id:
+            type: string
+            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            title: Data processing for cell
+            nullable: true
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Data processing for cell
+        property:
+            $ref: '#/Ontology'
+            description: Name of the property observed, typically a gene or antibody idenifier (and its label) from a canonical resource such as Ensembl (e.g. ENSG00000275747, IGHV3-79) or Antibody Registry (ABREG:1236456, Purified anti-mouse/rat/human CD27 antibody).
+            title: Property information
+            nullable: true
+            example:
+                id: ENSG:ENSG00000275747
+                label: IGHV3-79
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                format: ontology
+                name: Property information
+        value:
+            type: number
+            description: Level at which the property was observed in the experiment (non-normalized).
+            title: Property value
+            nullable: true
+            example: 3
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Property value
+
+
+# The Receptor object hold information about a receptor and its reactivity.
+#
+Receptor:
+    type: object
+    required:
+        - receptor_id
+        - receptor_hash
+        - receptor_type
+        - receptor_variable_domain_1_aa
+        - receptor_variable_domain_1_locus
+        - receptor_variable_domain_2_aa
+        - receptor_variable_domain_2_locus
+    properties:
+        receptor_id:
+            type: string
+            nullable: false
+            description: ID of the current Receptor object, unique within the local repository.
+            title: Receptor ID
+            example: TCR-MM-012345
+            x-airr:
+                adc-query-support: true
+        receptor_hash:
+            type: string
+            nullable: false
+            description: >
+                The SHA256 hash of the receptor amino acid sequence, calculated on the concatenated
+                ``receptor_variable_domain_*_aa`` sequences and represented as base16-encoded string.
+            title: Receptor hash ID
+            example: aa1c4b77a6f4927611ab39f5267415beaa0ba07a952c233d803b07e52261f026
+            x-airr:
+                adc-query-support: true
+        receptor_type:
+            type: string
+            nullable: false
+            enum:
+                - Ig
+                - TCR
+            description: The top-level receptor type, either Immunoglobulin (Ig) or T Cell Receptor (TCR).
+            x-airr:
+                adc-api-optional: true
+        receptor_variable_domain_1_aa:
+            type: string
+            nullable: false
+            description: >
+                Complete amino acid sequence of the mature variable domain of the Ig heavy, TCR beta or TCR delta chain.
+                The mature variable domain is defined as encompassing all AA from and including first AA after the the
+                signal peptide to and including the last AA that is completely encoded by the J gene.
+            example: >
+                QVQLQQPGAELVKPGASVKLSCKASGYTFTSYWMHWVKQRPGRGLEWIGRIDPNSGGTKYNEKFKSKATLTVDKPSSTAYMQLSSLTSEDSAVYYCARYDYYGSSYFDYWGQGTTLTVSS
+            x-airr:
+                adc-api-optional: true
+        receptor_variable_domain_1_locus:
+            type: string
+            nullable: false
+            enum:
+                - IGH
+                - TRB
+                - TRD
+            description: Locus from which the variable domain in receptor_variable_domain_1_aa originates
+            example: IGH
+            x-airr:
+                adc-api-optional: true
+        receptor_variable_domain_2_aa:
+            type: string
+            nullable: false
+            description: >
+                Complete amino acid sequence of the mature variable domain of the Ig light, TCR alpha or TCR gamma chain.
+                The mature variable domain is defined as encompassing all AA from and including first AA after the the
+                signal peptide to and including the last AA that is completely encoded by the J gene.
+            example: >
+                QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL
+            x-airr:
+                adc-api-optional: true
+        receptor_variable_domain_2_locus:
+            type: string
+            nullable: false
+            enum:
+                - IGK
+                - IGL
+                - TRA
+                - TRG
+            description: Locus from which the variable domain in receptor_variable_domain_2_aa originates
+            example: IGL
+            x-airr:
+                adc-api-optional: true
+        receptor_ref:
+            type: array
+            nullable: true
+            description: Array of receptor identifiers defined for the Receptor object
+            title: Receptor cross-references
+            items:
+                type: string
+            example: ["IEDB_RECEPTOR:10"]
+            x-airr:
+                adc-query-support: true
+        reactivity_measurements:
+            type: array
+            nullable: true
+            description: Records of reactivity measurement
+            items:
+                type: object
+                properties:
+                    ligand_type:
+                        type: string
+                        nullable: false
+                        enum:
+                            - MHC:peptide
+                            - MHC:non-peptide
+                            - protein
+                            - peptide
+                            - non-peptidic
+                        description: Classification of ligand binding to receptor
+                        example: non-peptide
+                    antigen_type:
+                        type: string
+                        nullable: false
+                        enum:
+                            - protein
+                            - peptide
+                            - non-peptidic
+                        description: >
+                            The type of antigen before processing by the immune system.
+                        example: protein
+                    antigen:
+                        $ref: '#/Ontology'
+                        nullable: false
+                        description: >
+                            The substance against which the receptor was tested. This can be any substance that
+                            stimulates an adaptive immune response in the host, either through antibody production
+                            or by T cell activation after presentation via an MHC molecule.
+                        title: Antigen
+                        example:
+                            id: UNIPROT:P19597
+                            label: Circumsporozoite protein
+                        x-airr:
+                            adc-query-support: true
+                            format: ontology
+                    antigen_source_species:
+                        $ref: '#/Ontology'
+                        nullable: true
+                        description: The species from which the antigen was isolated
+                        title: Source species of antigen
+                        example:
+                            id: NCBITAXON:5843
+                            label: Plasmodium falciparum NF54
+                        x-airr:
+                            format: ontology
+                            ontology:
+                                draft: true
+                                top_node:
+                                    id: NCBITAXON:1
+                                    label: root
+                    peptide_start:
+                        type: integer
+                        nullable: true
+                        description: Start position of the peptide within the reference protein sequence
+                    peptide_end:
+                        type: integer
+                        nullable: true
+                        description: End position of the peptide within the reference protein sequence        
+                    mhc_class:
+                        type: string
+                        nullable: true
+                        enum:
+                            - MHC-I
+                            - MHC-II
+                            - MHC-nonclassical
+                        description: Class of MHC molecule, only present for MHC:x ligand types
+                        example: MHC-II
+                    mhc_gene_1:
+                        $ref: '#/Ontology'
+                        nullable: true
+                        description: The MHC gene to which the mhc_allele_1 belongs
+                        title: MHC gene 1
+                        example:
+                            id: MRO:0000055
+                            label: HLA-DRA
+                        x-airr:
+                            format: ontology
+                            ontology:
+                                draft: true
+                                top_node:
+                                    id: MRO:0000004
+                                    label: MHC gene
+                    mhc_allele_1:
+                        type: string
+                        nullable: true
+                        description: Allele designation of the MHC alpha chain
+                        example: HLA-DRA
+                    mhc_gene_2:
+                        $ref: '#/Ontology'
+                        nullable: true
+                        description: The MHC gene to which the mhc_allele_2 belongs
+                        title: MHC gene 2
+                        example:
+                            id: MRO:0000057
+                            label: HLA-DRB1
+                        x-airr:
+                            format: ontology
+                            ontology:
+                                draft: true
+                                top_node:
+                                    id: MRO:0000004
+                    mhc_allele_2:
+                        type: string
+                        nullable: true
+                        description: >
+                            Allele designation of the MHC class II beta chain or the invariant beta2-microglobin chain
+                        example: HLA-DRB1*04:01
+                    reactivity_method:
+                        type: string
+                        nullable: false
+                        enum:
+                            - SPR
+                            - ITC
+                            - ELISA
+                            - cytometry
+                            - biological activity
+                        description: The methodology used to assess expression (assay implemented in experiment)
+                    reactivity_readout:
+                        type: string
+                        nullable: false
+                        enum:
+                            - binding strength
+                            - cytokine release
+                            - dissociation constant KD
+                            - on rate
+                            - off rate
+                            - pathogen inhibition
+                        description: Reactivity measurement read-out
+                        example: cytokine release
+                    reactivity_value:
+                        type: number
+                        nullable: false
+                        description: The absolute (processed) value of the measurement
+                        example: 162.26
+                    reactivity_unit:
+                        type: string
+                        nullable: false
+                        description: The unit of the measurement
+                        example: pg/ml
