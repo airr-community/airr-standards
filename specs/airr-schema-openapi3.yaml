@@ -575,6 +575,8 @@ UnrearrangedSequence:
             type: string
             nullable: false
             description: unique identifier of this UnrearrangedSequence within the file
+            x-airr:
+                identifier: true
         sequence:
             type: string
             nullable: false
