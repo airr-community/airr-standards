@@ -16,7 +16,6 @@ Info:
 # Properties that are based upon an ontology use this
 # standard schema definition
 Ontology:
-    discriminator: AIRR
     type: object
     properties:
         id:
@@ -245,7 +244,6 @@ InformationProvider:
 # attributes are attached to an AIRR field with the x-airr property.
 
 Attributes:
-    discriminator: AIRR
     type: object
     properties:
         miairr:
@@ -336,7 +334,6 @@ Attributes:
 # the value should not be null.
 
 DataFile:
-    discriminator: AIRR
     type: object
     properties:
         Info:
@@ -396,7 +393,6 @@ DataFile:
 # AIRR Info object, should be similar to openapi
 # should we point to an openapi schema?
 InfoObject:
-    discriminator: AIRR
     type: object
     description: Provides information about data and API responses.
     required:
@@ -436,7 +432,6 @@ InfoObject:
 
 # A time point
 TimePoint:
-    discriminator: AIRR
     description: Time point at which an observation or other action was performed.
     type: object
     properties:
@@ -478,7 +473,6 @@ TimePoint:
 
 # An individual
 Acknowledgement:
-    discriminator: AIRR
     description: Individual whose contribution to this work should be acknowledged
     type: object
     required:
@@ -507,7 +501,6 @@ Acknowledgement:
 
 # Rearranged and genomic germline sequences
 RearrangedSequence:
-    discriminator: AIRR
     description: Details of a directly observed rearranged sequence or an inference from rearranged sequences contributing support for a gene or allele
     type: object
     required:
@@ -578,7 +571,6 @@ RearrangedSequence:
                 nullable: false
 
 UnrearrangedSequence:
-    discriminator: AIRR
     description: Details of an unrearranged sequence contributing support for a gene or allele
     type: object
     required:
@@ -638,7 +630,6 @@ UnrearrangedSequence:
 
 # V gene delineation
 SequenceDelineationV:
-    discriminator: AIRR
     description: Delineation of a V-gene in a particular system
     type: object
     required:
@@ -731,7 +722,6 @@ SequenceDelineationV:
 
 # Description of a putative or confirmed Ig receptor gene/allele
 AlleleDescription:
-    discriminator: AIRR
     description: Details of a putative or confirmed Ig receptor gene/allele inferred from one or more observations
     type: object
     required:
@@ -995,7 +985,6 @@ AlleleDescription:
 
 # Collection of gene descriptions into a germline set
 GermlineSet:
-    discriminator: AIRR
     description: Details of a 'germline set' bringing together multiple AlleleDescriptions from the same strain or species. All genes in a GermlineSet should be from a single locus.
     type: object
     required:
@@ -1128,7 +1117,6 @@ GermlineSet:
 # GenotypeSet lists the  Genotypes (describing different loci) inferred for this subject
 
 GenotypeSet:
-    discriminator: AIRR
     type: object
     required:
         - receptor_genotype_set_id
@@ -1152,7 +1140,6 @@ GenotypeSet:
 
 # Genotype of adaptive immune receptors
 Genotype:
-    discriminator: AIRR
     type: object
     required:
         - receptor_genotype_id
@@ -1263,7 +1250,6 @@ Genotype:
 
 # List of MHCGenotypes describing a subject's genotype
 MHCGenotypeSet:
-    discriminator: AIRR
     type: object
     required:
         - mhc_genotype_set_id
@@ -1285,7 +1271,6 @@ MHCGenotypeSet:
 
 # Genotype of major histocompatibility complex (MHC) class I, class II and non-classical loci
 MHCGenotype:
-    discriminator: AIRR
     type: object
     required:
         - mhc_genotype_id
@@ -1363,7 +1348,6 @@ MHCGenotype:
 
 # The overall study with a globally unique study_id
 Study:
-    discriminator: AIRR
     type: object
     required:
         - study_id
@@ -1589,7 +1573,6 @@ Study:
 # 1-to-n relationship between a study and its subjects
 # subject_id is unique within a study
 Subject:
-    discriminator: AIRR
     type: object
     required:
         - subject_id
@@ -1844,7 +1827,6 @@ Subject:
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
-    discriminator: AIRR
     type: object
     required:
         - study_group_description
@@ -1965,7 +1947,6 @@ Diagnosis:
 # 1-to-n relationship between a subject and its samples
 # sample_id is unique within a study
 Sample:
-    discriminator: AIRR
     type: object
     required:
         - sample_id
@@ -2107,7 +2088,6 @@ Sample:
 
 # 1-to-n relationship between a sample and processing of its cells
 CellProcessing:
-    discriminator: AIRR
     type: object
     required:
         - tissue_processing
@@ -2278,7 +2258,6 @@ CellProcessing:
 
 # object for PCR primer targets
 PCRTarget:
-    discriminator: AIRR
     type: object
     required:
         - pcr_target_locus
@@ -2338,7 +2317,6 @@ PCRTarget:
 # generally, a 1-to-1 relationship between a CellProcessing and processing of its nucleic acid
 # but may be 1-to-n for technical replicates.
 NucleicAcidProcessing:
-    discriminator: AIRR
     type: object
     required:
         - template_class
@@ -2530,7 +2508,6 @@ NucleicAcidProcessing:
 
 # 1-to-n relationship between a NucleicAcidProcessing and SequencingRun with resultant raw sequence file(s)
 SequencingRun:
-    discriminator: AIRR
     type: object
     required:
         - sequencing_run_id
@@ -2622,7 +2599,6 @@ SequencingRun:
 
 # Resultant raw sequencing files from a SequencingRun
 SequencingData:
-    discriminator: AIRR
     type: object
     required:
         - sequencing_data_id
@@ -2765,7 +2741,6 @@ SequencingData:
 # Set of annotated rearrangement sequences produced by
 # data processing upon the raw sequence data for a repertoire.
 DataProcessing:
-    discriminator: AIRR
     type: object
     required:
         - software_versions
@@ -2911,7 +2886,6 @@ DataProcessing:
                 adc-query-support: true
 
 SampleProcessing:
-    discriminator: AIRR
     allOf:
         - type: object
           properties:
@@ -2939,7 +2913,6 @@ SampleProcessing:
 # and experimentally observed by raw sequence data. A repertoire
 # can only be for one subject but may include multiple samples.
 Repertoire:
-    discriminator: AIRR
     type: object
     required:
         - study
@@ -3006,7 +2979,6 @@ Repertoire:
 
 # A collection of repertoires for analysis purposes, includes optional time course
 RepertoireGroup:
-    discriminator: AIRR
     type: object
     required:
         - repertoire_group_id
@@ -3049,7 +3021,6 @@ RepertoireGroup:
 
 
 Alignment:
-    discriminator: AIRR
     type: object
     required:
         - sequence_id
@@ -3141,7 +3112,6 @@ Alignment:
 
 # The extended rearrangement object
 Rearrangement:
-    discriminator: AIRR
     type: object
     required:
         - sequence_id
@@ -3948,7 +3918,6 @@ Rearrangement:
 # A unique inferred clone object that has been constructed within a single data processing
 # for a single repertoire and a subset of its sequences and/or rearrangements.
 Clone:
-    discriminator: AIRR
     type: object
     required:
         - clone_id
@@ -4069,7 +4038,6 @@ Clone:
 
 # 1-to-n relationship for a clone to its trees.
 Tree:
-    discriminator: AIRR
     type: object
     required:
         - tree_id
@@ -4093,7 +4061,6 @@ Tree:
 
 # 1-to-n relationship between a tree and its nodes
 Node:
-    discriminator: AIRR
     type: object
     required:
         - sequence_id
@@ -4121,7 +4088,6 @@ Node:
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
 Cell:
-    discriminator: AIRR
     type: object
     required:
         - cell_id
@@ -4227,7 +4193,6 @@ Cell:
 # data_processing_id as cell_id is not guaranteed to be unique outside the data processing for 
 # a single repertoire.
 CellExpression:
-    discriminator: AIRR
     type: object
     required:
         - expression_id
@@ -4304,7 +4269,6 @@ CellExpression:
 # The Receptor object hold information about a receptor and its reactivity.
 #
 Receptor:
-    discriminator: AIRR
     type: object
     required:
         - receptor_id
@@ -4408,7 +4372,6 @@ Receptor:
 
 
 ReceptorReactivity:
-    discriminator: AIRR
     type: object
     required:
         - ligand_type
