@@ -9,6 +9,9 @@ import yamlordereddictloader
 from collections import OrderedDict
 from pkg_resources import resource_stream
 
+with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
+    DEFAULT_SPEC = yaml.load(f, Loader=yamlordereddictloader.Loader)
+
 
 class ValidationError(Exception):
     """
@@ -58,8 +61,7 @@ class Schema:
             self.definition = definition
             spec = {'Info': []}
         else:
-            with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
-                spec = yaml.load(f, Loader=yamlordereddictloader.Loader)
+            spec = DEFAULT_SPEC
 
             try:
                 self.definition = spec[definition]
