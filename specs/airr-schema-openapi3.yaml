@@ -519,14 +519,14 @@ RearrangedSequence:
             description: nucleotide sequence
         derivation:
             type: string
-            nullable: false
+            nullable: true
             enum:
                 - DNA
                 - RNA
             description: The class of nucleic acid that was used as primary starting material
         observation_type:
             type: string
-            nullable: false
+            nullable: true
             description: The type of observation from which this sequence was drawn, e.g. direct sequencing, inference from repertoire
             enum:
                 - direct sequencing
