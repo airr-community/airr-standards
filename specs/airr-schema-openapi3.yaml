@@ -1327,7 +1327,7 @@ MHCGenotype:
             x-airr:
                 adc-query-support: true
 
-GenotypeSets:
+SubjectGenotype:
     discriminator:
         propertyName: AIRR
     type: object
@@ -1821,8 +1821,8 @@ Subject:
                 adc-query-support: true
         genotype:
             nullable: true
-            $ref: '#/GenotypeSets'
-            title: GenotypeSets
+            $ref: '#/SubjectGenotype'
+            title: SubjectGenotype
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:

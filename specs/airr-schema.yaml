@@ -1555,7 +1555,7 @@ Study:
                 adc-query-support: true
                 name: ADC Update Date
 
-GenotypeSets:
+SubjectGenotype:
     discriminator: AIRR
     type: object
     properties:
@@ -1812,8 +1812,8 @@ Subject:
                 nullable: false
                 adc-query-support: true
         genotype:
-            $ref: '#/GenotypeSets'
-            title: GenotypeSets
+            $ref: '#/SubjectGenotype'
+            title: SubjectGenotype
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
