@@ -70,6 +70,17 @@ airr.load_schema = async function() {
     return Promise.resolve(spec);
 };
 
+// return schemas in format appropriate for API doc
+airr.get_schemas = function() {
+    if (! airr.Schema['specification']) return null;
+
+    // make deep copy of schemas
+    let schemas = JSON.parse(JSON.stringify(airr.Schema['specification']));
+    // remove Info
+    delete schemas['Info'];
+    return schemas;
+}
+
 airr.get_schema = function(definition) {
     if (!airr.Schema) throw new Error('AIRR schema is not loaded.');
     return new airr.SchemaDefinition(definition);
