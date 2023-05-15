@@ -549,7 +549,7 @@ RearrangedSequence:
         observation_type:
             type: string
             x-airr:
-                miairr: important
+                miairr: essential
             description: The type of observation from which this sequence was drawn, e.g. direct sequencing, inference from repertoire
             enum:
                 - direct sequencing
@@ -866,7 +866,7 @@ AlleleDescription:
             type: string
             x-airr:
                 miairr: important
-            description: nucleotide sequence of the core region of the gene (V-, D-, J- or C-REGION)
+            description: nucleotide sequence of the core coding region, i.e. the coding region of a D-, J- or C- gene, or the coding region of a V-gene excluding the leader
             nullable: true
         aliases:
             type: array
@@ -922,7 +922,7 @@ AlleleDescription:
         species:
             $ref: '#/Ontology'
             x-airr:
-                miairr: important
+                miairr: essential
             description: Binomial designation of subject's species
             title: Organism
             example:
@@ -1184,7 +1184,7 @@ GermlineSet:
         species:
             $ref: '#/Ontology'
             x-airr:
-                miairr: important
+                miairr: essential
             description: Binomial designation of subject's species
             title: Organism
             example:
@@ -1442,7 +1442,7 @@ MHCGenotypeSet:
             items:
                 $ref: '#/MHCGenotype'
             nullable: true
-
+ 
 
 # Genotype of major histocompatibility complex (MHC) class I, class II and non-classical loci
 MHCGenotype:
@@ -1469,7 +1469,7 @@ MHCGenotype:
               - MHC-nonclassical
             example: MHC-I
             x-airr:
-                miairr: important
+                miairr: essential
                 adc-query-support: true
                 format: controlled vocabulary
             nullable: true
@@ -1477,40 +1477,7 @@ MHCGenotype:
             type: array
             description: List of MHC alleles of the indicated mhc_class identified in an individual
             items:
-                type: object
-                properties:
-                    allele_designation:
-                        type: string
-                        x-airr:
-                            miairr: important
-                        description: >
-                            The accepted designation of an allele, usually its gene symbol plus allele/sub-allele/etc
-                            identifiers, if provided by the mhc_typing method
-                        nullable: true
-                    gene:
-                        $ref: '#/Ontology'
-                        nullable: true
-                        description: The MHC gene to which the described allele belongs
-                        title: MHC gene
-                        example:
-                            id: MRO:0000046
-                            label: HLA-A
-                        x-airr:
-                            adc-query-support: false
-                            format: ontology
-                            ontology:
-                                draft: true
-                                top_node:
-                                    id: MRO:0000004
-                                    label: MHC gene
-                            miairr: important
-                        nullable: true
-                    reference_set_ref:
-                        type: string
-                        x-airr:
-                            miairr: important
-                        nullable: true
-                        description: Repository and list from which it was taken (issuer/name/version)
+                $ref: '#/MHCAllele'
             x-airr:
                 miairr: important
                 adc-query-support: true
@@ -1526,6 +1493,45 @@ MHCGenotype:
                 adc-query-support: true
                 miairr: important
             nullable: true
+
+
+# Allele of an MHC gene
+MHCAllele:
+    type: object
+    properties:
+        allele_designation:
+            type: string
+            x-airr:
+                miairr: important
+            description: >
+                The accepted designation of an allele, usually its gene symbol plus allele/sub-allele/etc
+                identifiers, if provided by the mhc_typing method
+            nullable: true
+        gene:
+            $ref: '#/Ontology'
+            nullable: true
+            description: The MHC gene to which the described allele belongs
+            title: MHC gene
+            example:
+                id: MRO:0000046
+                label: HLA-A
+            x-airr:
+                adc-query-support: false
+                format: ontology
+                ontology:
+                    draft: true
+                    top_node:
+                        id: MRO:0000004
+                        label: MHC gene
+                miairr: important
+            nullable: true
+        reference_set_ref:
+            type: string
+            x-airr:
+                miairr: important
+            nullable: true
+            description: Repository and list from which it was taken (issuer/name/version)
+
 
 #
 # Repertoire metadata schema
