@@ -406,347 +406,352 @@ Repertoire:
         analysis_provenance_id: 4625424004665971176-242ac11c-0001-012
 
 GermlineSet:
-  - germline_set_id: OGRDB:G00007
-    author: William Lees
-    lab_name: ''
+- acknowledgements: []
+  allele_descriptions:
+  - acknowledgements: []
+    aliases:
+    - watson_et_al:CAST_EiJ_IGHV5-3
+    allele_description_id: OGRDB:A00301
+    allele_description_ref: OGRDB:Mouse_IGH:IGHV-2DBF
+    allele_designation: null
+    chromosome: null
+    coding_sequence: GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA
+    curation: 'Imported to OGRDB with the following notes: watson_et_al: CAST_EiJ_IGHV5-3'
+    curational_tags: null
+    functional: true
+    gene_designation: null
+    gene_end: null
+    gene_start: null
+    inference_type: Rearranged only
     lab_address: Birkbeck College, University of London, Malet Street, London
-    acknowledgements: []
+    label: IGHV-2DBF
+    leader_1_end: null
+    leader_1_start: null
+    leader_2_end: null
+    leader_2_start: null
+    locus: IGH
+    maintainer: William Lees
+    paralogs: []
+    rearranged_support: []
+    release_date: 24-Nov-2021
+    release_description: First release
     release_version: 1
-    release_description: ''
-    release_date: '2021-11-24'
-    germline_set_name: CAST IGH
-    germline_set_ref: OGRDB:G00007.1
-    pub_ids: ''
+    sequence: GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA
+    sequence_type: V
     species:
       id: NCBITAXON:10090
       label: Mus musculus
     species_subgroup: CAST_EiJ
     species_subgroup_type: strain
+    status: active
+    subgroup_designation: null
+    unrearranged_support: []
+    utr_5_prime_end: null
+    utr_5_prime_start: null
+    v_gene_delineations:
+    - aligned_sequence: GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA
+      alignment:
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      - '6'
+      - '7'
+      - '8'
+      - '9'
+      - '10'
+      - '11'
+      - '12'
+      - '13'
+      - '14'
+      - '15'
+      - '16'
+      - '17'
+      - '18'
+      - '19'
+      - '20'
+      - '21'
+      - '22'
+      - '23'
+      - '24'
+      - '25'
+      - '26'
+      - '27'
+      - '28'
+      - '29'
+      - '30'
+      - '31'
+      - '32'
+      - '33'
+      - '34'
+      - '35'
+      - '36'
+      - '37'
+      - '38'
+      - '39'
+      - '40'
+      - '41'
+      - '42'
+      - '43'
+      - '44'
+      - '45'
+      - '46'
+      - '47'
+      - '48'
+      - '49'
+      - '50'
+      - '51'
+      - '52'
+      - '53'
+      - '54'
+      - '55'
+      - '56'
+      - '57'
+      - '58'
+      - '59'
+      - '60'
+      - '61'
+      - '62'
+      - '63'
+      - '64'
+      - '65'
+      - '66'
+      - '67'
+      - '68'
+      - '69'
+      - '70'
+      - '71'
+      - '72'
+      - '73'
+      - '74'
+      - '75'
+      - '76'
+      - '77'
+      - '78'
+      - '79'
+      - '80'
+      - '81'
+      - '82'
+      - '83'
+      - '84'
+      - '85'
+      - '86'
+      - '87'
+      - '88'
+      - '89'
+      - '90'
+      - '91'
+      - '92'
+      - '93'
+      - '94'
+      - '95'
+      - '96'
+      - '97'
+      - '98'
+      - '99'
+      - '100'
+      - '101'
+      - '102'
+      - '103'
+      - '104'
+      cdr1_end: 110
+      cdr1_start: 76
+      cdr2_end: 160
+      cdr2_start: 151
+      cdr3_start: 295
+      delineation_scheme: IMGT
+      fwr1_end: 75
+      fwr1_start: 1
+      fwr2_end: 150
+      fwr2_start: 111
+      fwr3_end: 294
+      fwr3_start: 161
+      sequence_delineation_id: '1'
+      unaligned_sequence: GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA
+    v_rs_end: null
+    v_rs_start: null
+  - acknowledgements: []
+    aliases:
+    - watson_et_al:CAST_EiJ_IGHV8-2
+    allele_description_id: OGRDB:A00314
+    allele_description_ref: OGRDB:Mouse_IGH:IGHV-2ETO
+    allele_designation: null
+    chromosome: null
+    coding_sequence: CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC
+    curation: 'Imported to OGRDB with the following notes: watson_et_al: CAST_EiJ_IGHV8-2'
+    curational_tags: null
+    functional: true
+    gene_designation: null
+    gene_end: null
+    gene_start: null
+    inference_type: Rearranged only
+    lab_address: Birkbeck College, University of London, Malet Street, London
+    label: IGHV-2ETO
+    leader_1_end: null
+    leader_1_start: null
+    leader_2_end: null
+    leader_2_start: null
     locus: IGH
-    allele_descriptions:
-      - allele_description_id: OGRDB:A00301
-        allele_description_ref: OGRDB:Mouse_IGH:IGHV-2DBF
-        maintainer: William Lees
-        acknowledgements: []
-        lab_address: Birkbeck College, University of London, Malet Street, London
-        release_version: 1
-        release_date: 24-Nov-2021
-        release_description: First release
-        label: IGHV-2DBF
-        sequence: GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGATGGTAGTGGCACCTACTATCTGGACTCCTTGAAGAGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA
-        coding_sequence: GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA
-        aliases:
-          - watson_et_al:CAST_EiJ_IGHV5-3
-        locus: IGH
-        chromosome:
-        sequence_type: V
-        functional: true
-        inference_type: "Rearranged only"
-        species:
-          id: NCBITAXON:10090
-          label: Mus musculus
-        species_subgroup: CAST_EiJ
-        species_subgroup_type: strain
-        status: active
-        gene_designation:
-        subgroup_designation:
-        allele_designation:
-        gene_start:
-        gene_end:
-        utr_5_prime_start:
-        utr_5_prime_end:
-        leader_1_start:
-        leader_1_end:
-        leader_2_start:
-        leader_2_end:
-        v_rs_start:
-        v_rs_end:
-        v_gene_delineations:
-          - sequence_delineation_id: '1'
-            delineation_scheme: IMGT
-            fwr1_start: 1
-            fwr1_end: 78
-            cdr1_start: 79
-            cdr1_end: 114
-            fwr2_start: 115
-            fwr2_end: 165
-            cdr2_start: 166
-            cdr2_end: 195
-            fwr3_start: 196
-            fwr3_end: 312
-            cdr3_start: 313
-            alignment:
-              - '1'
-              - '2'
-              - '3'
-              - '4'
-              - '5'
-              - '6'
-              - '7'
-              - '8'
-              - '9'
-              - '10'
-              - '11'
-              - '12'
-              - '13'
-              - '14'
-              - '15'
-              - '16'
-              - '17'
-              - '18'
-              - '19'
-              - '20'
-              - '21'
-              - '22'
-              - '23'
-              - '24'
-              - '25'
-              - '26'
-              - '27'
-              - '28'
-              - '29'
-              - '30'
-              - '31'
-              - '32'
-              - '33'
-              - '34'
-              - '35'
-              - '36'
-              - '37'
-              - '38'
-              - '39'
-              - '40'
-              - '41'
-              - '42'
-              - '43'
-              - '44'
-              - '45'
-              - '46'
-              - '47'
-              - '48'
-              - '49'
-              - '50'
-              - '51'
-              - '52'
-              - '53'
-              - '54'
-              - '55'
-              - '56'
-              - '57'
-              - '58'
-              - '59'
-              - '60'
-              - '61'
-              - '62'
-              - '63'
-              - '64'
-              - '65'
-              - '66'
-              - '67'
-              - '68'
-              - '69'
-              - '70'
-              - '71'
-              - '72'
-              - '73'
-              - '74'
-              - '75'
-              - '76'
-              - '77'
-              - '78'
-              - '79'
-              - '80'
-              - '81'
-              - '82'
-              - '83'
-              - '84'
-              - '85'
-              - '86'
-              - '87'
-              - '88'
-              - '89'
-              - '90'
-              - '91'
-              - '92'
-              - '93'
-              - '94'
-              - '95'
-              - '96'
-              - '97'
-              - '98'
-              - '99'
-              - '100'
-              - '101'
-              - '102'
-              - '103'
-              - '104'
-        unrearranged_support: []
-        rearranged_support: []
-        paralogs: []
-        curation: 'Imported to OGRDB with the following notes: watson_et_al: CAST_EiJ_IGHV5-3'
-        curational_tags:
-      - allele_description_id: OGRDB:A00314
-        allele_description_ref: OGRDB:Mouse_IGH:IGHV-2ETO
-        maintainer: William Lees
-        acknowledgements: []
-        lab_address: Birkbeck College, University of London, Malet Street, London
-        release_version: 1
-        release_date: 24-Nov-2021
-        release_description: First release
-        label: IGHV-2ETO
-        sequence: CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC
-        coding_sequence: CAAGTTACTCTAAAAGAGTCTGGCCCT...GGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGC......ACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGAT.........GATGATAAGTACTATAACCCATCCCTGAAG...AGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC
-        aliases:
-          - watson_et_al:CAST_EiJ_IGHV8-2
-        locus: IGH
-        chromosome:
-        sequence_type: V
-        functional: true
-        inference_type: "Rearranged only"
-        species:
-          id: NCBITAXON:10090
-          label: Mus musculus
-        species_subgroup: CAST_EiJ
-        species_subgroup_type: strain
-        status: active
-        gene_designation:
-        subgroup_designation:
-        allele_designation:
-        gene_start:
-        gene_end:
-        utr_5_prime_start:
-        utr_5_prime_end:
-        leader_1_start:
-        leader_1_end:
-        leader_2_start:
-        leader_2_end:
-        v_rs_start:
-        v_rs_end:
-        v_gene_delineations:
-          - sequence_delineation_id: '1'
-            delineation_scheme: IMGT
-            fwr1_start: 1
-            fwr1_end: 78
-            cdr1_start: 79
-            cdr1_end: 114
-            fwr2_start: 115
-            fwr2_end: 165
-            cdr2_start: 166
-            cdr2_end: 195
-            fwr3_start: 196
-            fwr3_end: 312
-            cdr3_start: 313
-            alignment:
-              - '1'
-              - '2'
-              - '3'
-              - '4'
-              - '5'
-              - '6'
-              - '7'
-              - '8'
-              - '9'
-              - '10'
-              - '11'
-              - '12'
-              - '13'
-              - '14'
-              - '15'
-              - '16'
-              - '17'
-              - '18'
-              - '19'
-              - '20'
-              - '21'
-              - '22'
-              - '23'
-              - '24'
-              - '25'
-              - '26'
-              - '27'
-              - '28'
-              - '29'
-              - '30'
-              - '31'
-              - '32'
-              - '33'
-              - '34'
-              - '35'
-              - '36'
-              - '37'
-              - '38'
-              - '39'
-              - '40'
-              - '41'
-              - '42'
-              - '43'
-              - '44'
-              - '45'
-              - '46'
-              - '47'
-              - '48'
-              - '49'
-              - '50'
-              - '51'
-              - '52'
-              - '53'
-              - '54'
-              - '55'
-              - '56'
-              - '57'
-              - '58'
-              - '59'
-              - '60'
-              - '61'
-              - '62'
-              - '63'
-              - '64'
-              - '65'
-              - '66'
-              - '67'
-              - '68'
-              - '69'
-              - '70'
-              - '71'
-              - '72'
-              - '73'
-              - '74'
-              - '75'
-              - '76'
-              - '77'
-              - '78'
-              - '79'
-              - '80'
-              - '81'
-              - '82'
-              - '83'
-              - '84'
-              - '85'
-              - '86'
-              - '87'
-              - '88'
-              - '89'
-              - '90'
-              - '91'
-              - '92'
-              - '93'
-              - '94'
-              - '95'
-              - '96'
-              - '97'
-              - '98'
-              - '99'
-              - '100'
-              - '101'
-              - '102'
-              - '103'
-              - '104'
-        unrearranged_support: []
-        rearranged_support: []
-        paralogs: []
-        curation: 'Imported to OGRDB with the following notes: watson_et_al: CAST_EiJ_IGHV8-2'
-        curational_tags:
-    curation:
+    maintainer: William Lees
+    paralogs: []
+    rearranged_support: []
+    release_date: 24-Nov-2021
+    release_description: First release
+    release_version: 1
+    sequence: CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC
+    sequence_type: V
+    species:
+      id: NCBITAXON:10090
+      label: Mus musculus
+    species_subgroup: CAST_EiJ
+    species_subgroup_type: strain
+    status: active
+    subgroup_designation: null
+    unrearranged_support: []
+    utr_5_prime_end: null
+    utr_5_prime_start: null
+    v_gene_delineations:
+    - aligned_sequence: GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA
+      alignment:
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      - '6'
+      - '7'
+      - '8'
+      - '9'
+      - '10'
+      - '11'
+      - '12'
+      - '13'
+      - '14'
+      - '15'
+      - '16'
+      - '17'
+      - '18'
+      - '19'
+      - '20'
+      - '21'
+      - '22'
+      - '23'
+      - '24'
+      - '25'
+      - '26'
+      - '27'
+      - '28'
+      - '29'
+      - '30'
+      - '31'
+      - '32'
+      - '33'
+      - '34'
+      - '35'
+      - '36'
+      - '37'
+      - '38'
+      - '39'
+      - '40'
+      - '41'
+      - '42'
+      - '43'
+      - '44'
+      - '45'
+      - '46'
+      - '47'
+      - '48'
+      - '49'
+      - '50'
+      - '51'
+      - '52'
+      - '53'
+      - '54'
+      - '55'
+      - '56'
+      - '57'
+      - '58'
+      - '59'
+      - '60'
+      - '61'
+      - '62'
+      - '63'
+      - '64'
+      - '65'
+      - '66'
+      - '67'
+      - '68'
+      - '69'
+      - '70'
+      - '71'
+      - '72'
+      - '73'
+      - '74'
+      - '75'
+      - '76'
+      - '77'
+      - '78'
+      - '79'
+      - '80'
+      - '81'
+      - '82'
+      - '83'
+      - '84'
+      - '85'
+      - '86'
+      - '87'
+      - '88'
+      - '89'
+      - '90'
+      - '91'
+      - '92'
+      - '93'
+      - '94'
+      - '95'
+      - '96'
+      - '97'
+      - '98'
+      - '99'
+      - '100'
+      - '101'
+      - '102'
+      - '103'
+      - '104'
+      cdr1_end: 110
+      cdr1_start: 76
+      cdr2_end: 160
+      cdr2_start: 151
+      cdr3_start: 295
+      delineation_scheme: IMGT
+      fwr1_end: 75
+      fwr1_start: 1
+      fwr2_end: 150
+      fwr2_start: 111
+      fwr3_end: 294
+      fwr3_start: 161
+      sequence_delineation_id: '1'
+      unaligned_sequence: GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA
+    v_rs_end: null
+    v_rs_start: null
+  author: William Lees
+  curation: null
+  germline_set_id: OGRDB:G00007
+  germline_set_name: CAST IGH
+  germline_set_ref: OGRDB:G00007.1
+  lab_address: Birkbeck College, University of London, Malet Street, London
+  lab_name: ''
+  locus: IGH
+  pub_ids: ''
+  release_date: '2021-11-24'
+  release_description: ''
+  release_version: 1
+  species:
+    id: NCBITAXON:10090
+    label: Mus musculus
+  species_subgroup: CAST_EiJ
+  species_subgroup_type: strain
+
 
 GenotypeSet:
   - receptor_genotype_set_id: '1'
