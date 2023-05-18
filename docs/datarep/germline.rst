@@ -3,6 +3,24 @@
 Germline Schema (Experimental)
 ==============================
 
+Changes in v1.4.2
+-----------------
+
+``AlleleDescription.allele_similarity_cluster_designation`` and ``AlleleDescription.allele_similarity_cluster_member_id``
+have been added. See the corresponding section below for details.
+
+The breaking changes below have been introduced in order to make ``AlleleDescription`` independent of any specific
+alignment scheme:
+
+``AlleleDescription.coding_sequence`` is no longer IMGT-aligned (in other words, it should not contain any gaps).
+
+``SequenceDelineationV.unaligned_sequence`` has been added. This should contain the same sequence as ``AlleleDescription.coding_sequence``.
+``SequenceDelineationV.aligned_sequence`` has been added. If the delineation specifies an alignment, the aligned sequence should be 
+provided here, otherwise the field should be null. 
+
+The specification of start and end co-ordinates have been changed. They should now be provided as co-ordinates into 
+``SequenceDelineationV.unaligned_sequence``.
+
 Motivation
 ----------
 
@@ -29,9 +47,8 @@ DNA. It is most likely that supporting sequences will be ``UnrearrangedSequences
 germline inference from a repertoire, the inferred germline sequence should be provided as a ``RearrangedSequence``, if the evidence 
 has been deposited in a repository.
 
-For V-genes, an IMGT-gapped sequence (i.e.,. a sequence delineated in accordance with the 
-`IMGT numbering scheme <http://www.imgt.org/IMGTindex/numbering.php>`_)  is provided in 
-``AlleleDescription``. Other delineations, such as  `Chothia <http://www.bioinf.org.uk/abs/info.html#chothianum>`_ and 
+For V-genes, sequence delineations (e.g.,. a sequence delineated in accordance with the 
+`IMGT numbering scheme <http://www.imgt.org/IMGTindex/numbering.php>`_),  `Chothia <http://www.bioinf.org.uk/abs/info.html#chothianum>`_ or 
 `Kabat <http://www.bioinf.org.uk/abs/info.html#kabatnum>`_, can be provided via linked ``SequenceDelineationV`` objects.
 A ``GermlineSet`` brings together multiple ``AlleleDescriptions`` from the same locus to form a curated set. The schema assumes that germline 
 sets will be published by multiple repositories. A germline set may be uniquely referenced by means of the ``germline_set_ref``, which
@@ -47,7 +64,17 @@ recently been discovered, or because the available evidence does not meet IUIS s
 that publishers of gene sets will provide mechanisms to issue these temporary labels, and to allow researchers to review change history of 
 ``AlleleDescriptions`` and ``GermlineSets``. To provide consistency across research groups, the  
 `Germline Database Working Group of the AIRR Community <https://www.antibodysociety.org/the-airr-community/airr-working-groups/germline_database/>`_ is 
-developing a `community-wide approach <https://github.com/williamdlees/IgLabel>`_ to the allocation of temporary labels.
+developing a `community-wide approach <https://doi.org/10.1016/j.immuno.2023.100025>`_ to the curation of germline sets using temporary labels.
+
+Allele Sequence Clusters
+------------------------
+
+ASCs are gene-like objects that can be used in bioinformatic
+analysis as a means of grouping sequences on the basis of their similarity, in the absence of a confirmed genomic mapping, or in cases where restricted 
+sequence read length has introduced ambiguity. The concept is outlined in `Peres et al., 2022 (in preprint) <https://www.biorxiv.org/content/10.1101/2022.12.26.521922v1>`_.
+The fields ``AlleleDescription.allele_similarity_cluster_designation`` and ``AlleleDescription.allele_similarity_cluster_member_id`` are provided
+to allow curators to designate the identifier of the ASC to which the sequence belongs, and its identifier within that cluster. The clustering algorithm or process
+is not mandated by the schema.
 
 Genotypes
 ---------
