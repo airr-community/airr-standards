@@ -17,6 +17,9 @@
   },
   "license": "CC BY 4.0",
   "main": "airr.js",
+  "browser": {
+    "./airr.js": "./airr-browser.js"
+  },
   "private": false,
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^10.1.0",
