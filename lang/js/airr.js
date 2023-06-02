@@ -18,7 +18,8 @@ var path = require('path');
 var fs = require('fs');
 const $RefParser = require("@apidevtools/json-schema-ref-parser");
 
-export var airr = {};
+var airr = {};
+module.exports = airr;
 
 airr.load_schema = async function() {
     // Load AIRR spec
@@ -35,9 +36,9 @@ airr.load_schema = async function() {
 };
 
 // schema functions
-const schema = require('./schema')(AIRRSchema);
+//const schema = require('./schema')(AIRRSchema);
 // i/o functions
-const io = require('./io');
+//const io = require('./io');
 
 /* TODO? UMD
 (function (root, factory) {

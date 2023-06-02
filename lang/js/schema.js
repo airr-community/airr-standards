@@ -49,22 +49,8 @@ class ValidationError extends Error {
 
 //var airr = {};
 module.exports = function(airr, schema) {
-    console.log('airr-js schema:', schema);
+    //console.log('airr-js schema:', JSON.stringify(schema, null, 2));
     airr.Schema = {"specification": schema};
-    //airr.Schema = schema;
-
-    // Load AIRR schema, returns a promise
-/*    airr.load_schema = async function() {
-        // Load AIRR spec
-        var airrFile = path.resolve(__dirname, './airr-schema-openapi3.yaml');
-        var doc = yaml.safeLoad(fs.readFileSync(airrFile));
-        if (!doc) Promise.reject(new Error('Could not load AIRR schema yaml file.'));
-
-        // dereference all $ref objects
-        var spec = await $RefParser.dereference(doc);
-        airr.Schema = {"specification": spec};
-        return Promise.resolve(spec);
-    }; */
 
     // return schemas in format appropriate for API doc
     airr.get_schemas = function() {
