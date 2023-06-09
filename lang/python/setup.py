@@ -14,13 +14,6 @@ with open('README.rst', 'r') as ip:
     long_description = ip.read()
 
 # Parse requirements
-# if os.environ.get('READTHEDOCS', None) == 'True':
-#     # Set empty install_requires to get install to work on readthedocs
-#     install_requires = []
-# else:
-#     with open('requirements.txt') as req:
-#         install_requires = req.read().splitlines()
-
 with open('requirements.txt') as req:
         install_requires = req.read().splitlines()
 
