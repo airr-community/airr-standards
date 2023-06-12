@@ -102,6 +102,7 @@
                             {
                                 "mhc_genotype_id": "unique",
                                 "mhc_class": "MHC-I",
+                                "mhc_genotyping_method": "pcr_low_resolution",
                                 "mhc_alleles": [
                                     {
                                         "allele_designation": "01:01",
