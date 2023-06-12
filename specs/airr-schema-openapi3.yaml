@@ -2219,7 +2219,7 @@ Sample:
             nullable: true
             description: Time point at which sample was taken, relative to `Collection time event`
             title: Sample collection time
-            example: "14"
+            example: 14
             x-airr:
                 miairr: important
                 adc-query-support: true
