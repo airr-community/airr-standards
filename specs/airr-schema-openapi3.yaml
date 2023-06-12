@@ -1561,6 +1561,20 @@ MHCAllele:
             description: Repository and list from which it was taken (issuer/name/version)
 
 
+SubjectGenotype:
+    discriminator:
+        propertyName: AIRR
+    type: object
+    properties:
+        receptor_genotype_set:
+            nullable: true
+            $ref: '#/GenotypeSet'
+            description: Immune receptor genotype set for this subject.
+        mhc_genotype_set:
+            nullable: true
+            $ref: '#/MHCGenotypeSet'
+            description: MHC genotype set for this subject.
+
 #
 # Repertoire metadata schema
 #
@@ -2038,18 +2052,9 @@ Subject:
             x-airr:
                 adc-query-support: true
         genotype:
-            type: object
             nullable: true
-            description: Genotype for this subject, if known
-            properties:
-                receptor_genotype_set:
-                    nullable: true
-                    $ref: '#/GenotypeSet'
-                    description: Immune receptor genotype set for this subject.
-                mhc_genotype_set:
-                    nullable: true
-                    $ref: '#/MHCGenotypeSet'
-                    description: MHC genotype set for this subject.
+            $ref: '#/SubjectGenotype'
+            title: SubjectGenotype
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
