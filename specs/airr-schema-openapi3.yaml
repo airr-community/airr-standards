@@ -4734,6 +4734,7 @@ Receptor:
             type: string
             nullable: false
             enum:
+                - IGI
                 - IGK
                 - IGL
                 - TRA
