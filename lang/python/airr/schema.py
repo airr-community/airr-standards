@@ -9,6 +9,9 @@ import yamlordereddictloader
 from collections import OrderedDict
 from pkg_resources import resource_stream
 
+with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
+    DEFAULT_SPEC = yaml.load(f, Loader=yamlordereddictloader.Loader)
+
 
 class ValidationError(Exception):
     """
@@ -58,8 +61,7 @@ class Schema:
             self.definition = definition
             spec = {'Info': []}
         else:
-            with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
-                spec = yaml.load(f, Loader=yamlordereddictloader.Loader)
+            spec = DEFAULT_SPEC
 
             try:
                 self.definition = spec[definition]
@@ -460,6 +462,16 @@ class Schema:
                         raise ValidationError('Field "%s" does not have number type: %s' % (full_field, obj[f]))
                 else:
                     raise ValidationError('Internal error: Field "%s" with type %s in schema not handled by validation. File a bug report.' % (full_field, field_type))
+
+                # check basic types enums
+                enums = spec.get('enum')
+
+                if enums is not None:
+                    field_value = obj[f]
+                    if field_value not in enums:
+                        raise ValidationError(
+                            'field "%s" has value "%s" not among possible enumeration values %s' % (full_field, field_value, enums)
+                        )
 
         return True
 
