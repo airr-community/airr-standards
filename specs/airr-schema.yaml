@@ -1001,8 +1001,6 @@ AlleleDescription:
                     - likely_truncated
                     - likely_full_length
             description: Controlled-vocabulary tags applied to this description
-            x-airr:
-                nullable: true
 
 # Collection of gene descriptions into a germline set
 GermlineSet:
@@ -1198,7 +1196,6 @@ Genotype:
                 miairr: important        
         undocumented_alleles:
             type: array
-            nullable: true
             description: List of alleles inferred to be present and not documented in an identified GermlineSet
             items:
                 $ref: '#/UndocumentedAllele'
@@ -1206,7 +1203,6 @@ Genotype:
                 adc-query-support: true
         deleted_genes:
             type: array
-            nullable: true
             description: Array of genes identified as being deleted in this genotype
             items:
                 $ref: '#/DeletedGene'
@@ -1221,7 +1217,6 @@ Genotype:
             title: Genotype acquisition process
             example: repertoire_sequencing
             x-airr:
-                nullable: true
                 adc-query-support: true
                 format: controlled vocabulary
 
