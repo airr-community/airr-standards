@@ -110,7 +110,7 @@ References
 Copyright & License
 ===================
 
-Copyright  2015 - 2022 by the AIRR Community and `contributors`_. This
+Copyright 2015 - 2023 by the AIRR Community and `contributors`_. This
 work is licensed under a `Creative Commons Attribution 4.0
 International License`_.
 
