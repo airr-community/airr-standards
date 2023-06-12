@@ -1337,11 +1337,12 @@ MHCGenotype:
                 miairr: important
         mhc_class:
             type: string
-            description: Class of MHC alleles described by the MHCGenotype
             enum:
               - MHC-I
               - MHC-II
               - MHC-nonclassical
+            description: Class of MHC alleles described by the MHCGenotype
+            example: MHC-I
             x-airr:
                 miairr: essential
                 adc-query-support: true
