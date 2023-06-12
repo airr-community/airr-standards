@@ -1183,6 +1183,8 @@ Genotype:
                 - TRB
                 - TRD
                 - TRG
+            description: Gene locus
+            example: IGH
             x-airr:
                 miairr: essential
                 adc-query-support: true
