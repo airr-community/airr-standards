@@ -1429,6 +1429,7 @@ Study:
             title: Study ID
             example: PRJNA001
             x-airr:
+                identifier: true
                 miairr: important
                 nullable: true
                 adc-query-support: true
@@ -1657,6 +1658,7 @@ Subject:
             title: Subject ID
             example: SUB856413
             x-airr:
+                identifier: true
                 miairr: important
                 nullable: true
                 adc-query-support: true
@@ -2026,6 +2028,7 @@ Sample:
             title: Biological sample ID
             example: SUP52415
             x-airr:
+                identifier: true
                 miairr: important
                 nullable: true
                 adc-query-support: true
@@ -2582,6 +2585,7 @@ SequencingRun:
             title: Batch number
             example: 160101_M01234
             x-airr:
+                identifier: true
                 miairr: important
                 nullable: true
                 adc-query-support: true
@@ -2675,6 +2679,7 @@ SequencingData:
             title: Raw sequencing data persistent identifier
             example: "SRA:SRR11610494"
             x-airr:
+                identifier: true
                 miairr: important
                 nullable: true
                 adc-query-support: true
@@ -2815,10 +2820,10 @@ DataProcessing:
             description: Identifier for the data processing object.
             title: Data processing ID
             x-airr:
+                identifier: true
                 nullable: true
                 name: Data processing ID
                 adc-query-support: true
-                identifier: true
         primary_annotation:
             type: boolean
             default: false
@@ -2956,10 +2961,10 @@ SampleProcessing:
                       nucleic acid processing and sequencing run information for the repertoire.
                   title: Sample processing ID
                   x-airr:
+                      identifier: true
                       nullable: true
                       name: Sample processing ID
                       adc-query-support: true
-                      identifier: true
         - $ref: '#/Sample'
         - $ref: '#/CellProcessing'
         - $ref: '#/NucleicAcidProcessing'
@@ -3046,6 +3051,8 @@ RepertoireGroup:
         repertoire_group_id:
             type: string
             description: Identifier for this repertoire collection
+            x-airr:
+                identifier: true
         repertoire_group_name:
             type: string
             description: Short display name for this repertoire collection
@@ -3094,6 +3101,8 @@ Alignment:
                 Unique query sequence identifier within the file. Most often this will be the input sequence
                 header or a substring thereof, but may also be a custom identifier defined by the tool in
                 cases where query sequences have been combined in some fashion prior to alignment.
+            x-airr:
+                identifier: true
         segment:
             type: string
             description: >
@@ -3985,6 +3994,8 @@ Clone:
         clone_id:
             type: string
             description: Identifier for the clone.
+            x-airr:
+                identifier: true
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
@@ -4106,6 +4117,8 @@ Tree:
         tree_id:
             type: string
             description: Identifier for the tree.
+            x-airr:
+                identifier: true
         clone_id:
             type: string
             description: Identifier for the clone.
@@ -4129,6 +4142,8 @@ Node:
             description: >
                 Identifier for this node that matches the identifier in the newick string and, where possible,
                 the sequence_id in the source repertoire.
+            x-airr:
+                identifier: true
         sequence_alignment:
             type: string
             description: >
@@ -4161,6 +4176,7 @@ Cell:
             title: Cell index
             example: W06_046_091
             x-airr:
+                identifier: true
                 miairr: defined
                 nullable: false
                 adc-query-support: true
@@ -4267,6 +4283,7 @@ CellExpression:
                 Identifier of this expression property measurement.
             title: Expression property measurement identifier
             x-airr:
+                identifier: true
                 miairr: defined
                 nullable: false
                 adc-query-support: true
@@ -4344,6 +4361,7 @@ Receptor:
             title: Receptor ID
             example: TCR-MM-012345
             x-airr:
+                identifier: true
                 nullable: false
                 adc-query-support: true
         receptor_hash:
