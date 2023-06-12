@@ -37,11 +37,11 @@ CURIEMap:
     CHEBI:
         type: ontology
         default:
-          map: OBO
-          provider: OLS
+            map: OBO
+            provider: OLS
         map:
-          OBO:
-            iri_prefix: "http://purl.obolibrary.org/obo/CHEBI_"
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/CHEBI_"
     CL:
         type: ontology
         default:
@@ -742,7 +742,7 @@ SequenceDelineationV:
         alignment_labels:
             type: array
             items:
-              type: string
+                type: string
             description: >
                 One string for each codon in the aligned_sequence indicating the label of that codon according to 
                 the numbering of the delineation scheme if it provides one.
@@ -854,7 +854,7 @@ AlleleDescription:
                 miairr: essential
         chromosome:
             type: integer
-            description: chromosome on which the gene is located 
+            description: chromosome on which the gene is located
         sequence_type:
             type: string
             enum:
@@ -1153,7 +1153,7 @@ GermlineSet:
         allele_descriptions:
             type: array
             items:
-              $ref: '#/AlleleDescription'
+                $ref: '#/AlleleDescription'
             description: list of allele_descriptions in the germline set
             x-airr:
                 miairr: important
@@ -1229,7 +1229,7 @@ Genotype:
             items:
                 $ref: '#/DocumentedAllele'
             x-airr:
-                miairr: important        
+                miairr: important
         undocumented_alleles:
             type: array
             description: List of alleles inferred to be present and not documented in an identified GermlineSet
@@ -1311,7 +1311,7 @@ UndocumentedAllele:
             description: >
                 Chromosomal phasing indicator. Alleles with the same value are inferred to be located on the 
                 same chromosome.
-            
+
 # Deleted Gene
 # It is regarded as 'deleted' in the sense that it was not identified during inference of the genotype
 
@@ -1378,9 +1378,9 @@ MHCGenotype:
         mhc_class:
             type: string
             enum:
-              - MHC-I
-              - MHC-II
-              - MHC-nonclassical
+                - MHC-I
+                - MHC-II
+                - MHC-nonclassical
             description: Class of MHC alleles described by the MHCGenotype
             example: MHC-I
             x-airr:
@@ -1634,10 +1634,10 @@ Study:
             description: Keywords describing properties of one or more data sets in a study
             title: Keywords for study
             example:
-              - contains_ig
-              - contains_schema_rearrangement
-              - contains_schema_clone
-              - contains_schema_cell
+                - contains_ig
+                - contains_schema_rearrangement
+                - contains_schema_clone
+                - contains_schema_cell
             x-airr:
                 miairr: important
                 nullable: true
@@ -2474,7 +2474,7 @@ NucleicAcidProcessing:
         template_amount_unit:
             $ref: '#/Ontology'
             description: Unit of template amount
-            title:  Template amount time unit
+            title: Template amount time unit
             example:
                 id: UO:0000024
                 label: nanogram
@@ -2490,7 +2490,7 @@ NucleicAcidProcessing:
                     draft: false
                     top_node:
                         id: UO:0000002
-                        label:  physical quantity
+                        label: physical quantity
         library_generation_method:
             type: string
             enum:
