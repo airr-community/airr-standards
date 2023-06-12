@@ -484,6 +484,7 @@ Acknowledgement:
             type: string
             description: unique identifier of this Acknowledgement within the file
             x-airr:
+                identifier: true
                 miairr: important
         name:
             type: string
@@ -4271,7 +4272,7 @@ CellExpression:
     type: object
     required:
         - expression_id
-        - reperotire_id
+        - repertoire_id
         - data_processing_id
         - cell_id
         - property
