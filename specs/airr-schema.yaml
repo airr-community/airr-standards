@@ -4,7 +4,7 @@
 Info:
     title: AIRR Schema
     description: Schema definitions for AIRR standards objects
-    version: "1.4"
+    version: 1.4
     contact:
         name: AIRR Community
         url: https://github.com/airr-community
@@ -870,20 +870,20 @@ AlleleDescription:
         species_subgroup_type:
             type: string
             enum:
-                - "breed"
-                - "strain"
-                - "inbred"
-                - "outbred"
-                - "locational"
+                - breed
+                - strain
+                - inbred
+                - outbred
+                - locational
             x-airr:
                 nullable: true
         status:
             type: string
             enum:
-                - "active"
-                - "draft"
-                - "retired"
-                - "withdrawn"
+                - active
+                - draft
+                - retired
+                - withdrawn
             description: Status of record, assumed active if the field is not present
             x-airr:
                 nullable: true
@@ -997,8 +997,8 @@ AlleleDescription:
             items:
                 type: string
                 enum:
-                    - "likely_truncated"
-                    - "likely_full_length"
+                    - likely_truncated
+                    - likely_full_length
             description: Controlled-vocabulary tags applied to this description
             x-airr:
                 nullable: true
@@ -1096,24 +1096,24 @@ GermlineSet:
         species_subgroup_type:
             type: string
             enum:
-                - "breed"
-                - "strain"
-                - "inbred"
-                - "outbred"
-                - "locational"
+                - breed
+                - strain
+                - inbred
+                - outbred
+                - locational
             x-airr:
                 nullable: true
         locus:
             type: string
             enum:
-                - "IGH"
-                - "IGI"
-                - "IGK"
-                - "IGL"
-                - "TRA"
-                - "TRB"
-                - "TRG"
-                - "TRD"
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRG
+                - TRD
             description: Gene locus
             x-airr:
                 miairr: essential
@@ -1214,8 +1214,8 @@ Genotype:
         inference_process:
             type: string
             enum:
-                - "genomic_sequencing"
-                - "repertoire_sequencing"
+                - genomic_sequencing
+                - repertoire_sequencing
             description: Information on how the genotype was acquired. Controlled vocabulary.
             title: Genotype acquisition process
             example: repertoire_sequencing
@@ -2326,20 +2326,20 @@ PCRTarget:
         pcr_target_locus:
             type: string
             enum:
-                - "IGH"
-                - "IGI"
-                - "IGK"
-                - "IGL"
-                - "TRA"
-                - "TRB"
-                - "TRD"
-                - "TRG"
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
             description: >
                 Designation of the target locus. Note that this field uses a controlled vocubulary that is meant to
                 provide a generic classification of the locus, not necessarily the correct designation according to
                 a specific nomenclature.
             title: Target locus for PCR
-            example: "IGK"
+            example: IGK
             x-airr:
                 miairr: important
                 nullable: true
@@ -2542,9 +2542,9 @@ NucleicAcidProcessing:
             type: string
             enum:
                 - none
-                - "hetero_head-head"
-                - "hetero_tail-head"
-                - "hetero_prelinked"
+                - hetero_head-head
+                - hetero_tail-head
+                - hetero_prelinked
             description: >
                 In case an experimental setup is used that physically links nucleic acids derived from distinct
                 `Rearrangements` before library preparation, this field describes the mode of that linkage. All
@@ -3244,20 +3244,20 @@ Rearrangement:
         locus:
             type: string
             enum:
-                - "IGH"
-                - "IGI"
-                - "IGK"
-                - "IGL"
-                - "TRA"
-                - "TRB"
-                - "TRD"
-                - "TRG"
+                - IGH
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRB
+                - TRD
+                - TRG
             description: >
                 Gene locus (chain type). Note that this field uses a controlled vocabulary that is meant to provide a
                 generic classification of the locus, not necessarily the correct designation according to a specific
                 nomenclature.
             title: Gene locus
-            example: "IGH"
+            example: IGH
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -4379,11 +4379,11 @@ Receptor:
         receptor_variable_domain_1_locus:
             type: string
             enum:
-                - "IGH"
-                - "TRB"
-                - "TRD"
+                - IGH
+                - TRB
+                - TRD
             description: Locus from which the variable domain in receptor_variable_domain_1_aa originates
-            example: "IGH"
+            example: IGH
             x-airr:
                 nullable: false
                 adc-api-optional: true
@@ -4401,13 +4401,13 @@ Receptor:
         receptor_variable_domain_2_locus:
             type: string
             enum:
-                - "IGI"
-                - "IGK"
-                - "IGL"
-                - "TRA"
-                - "TRG"
+                - IGI
+                - IGK
+                - IGL
+                - TRA
+                - TRG
             description: Locus from which the variable domain in receptor_variable_domain_2_aa originates
-            example: "IGL"
+            example: IGL
             x-airr:
                 nullable: false
                 adc-api-optional: true
