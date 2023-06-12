@@ -911,8 +911,8 @@ AlleleDescription:
                 - 3
             description: >
                 Codon position of the first nucleotide in the 'coding_sequence' field. Mandatory for J genes. 
-                Not used for V or D genes. ('1' means the sequence is in-frame, '2' means that the first bp is 
-                missing from the first codon, '3' means that the first 2 bp are missing).
+                Not used for V or D genes. '1' means the sequence is in-frame, '2' means that the first bp is 
+                missing from the first codon, and '3' means that the first 2 bp are missing.
             x-airr:
                 nullable: true
         gene_start:
