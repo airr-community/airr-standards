@@ -1178,6 +1178,7 @@ GermlineSet:
                 label: Homo sapiens
         species_subgroup:
             type: string
+            nullable: true
             description: Race, strain or other species subgroup to which this subject belongs
             example: BALB/c
         species_subgroup_type:
@@ -1194,6 +1195,7 @@ GermlineSet:
             nullable: true
             enum:
                 - IGH
+                - IGI
                 - IGK
                 - IGL
                 - TRA
@@ -1214,7 +1216,9 @@ GermlineSet:
         curation:
             type: string
             nullable: true
-            description: Curational notes on the GermlineSet. This can be used to give more extensive notes on the decisions taken than are provided in the release_description.
+            description: >
+                Curational notes on the GermlineSet. This can be used to give more extensive notes on the 
+                decisions taken than are provided in the release_description.
 
 #
 # Genotype schema
