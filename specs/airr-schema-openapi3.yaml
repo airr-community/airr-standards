@@ -39,11 +39,11 @@ CURIEMap:
     CHEBI:
         type: ontology
         default:
-          map: OBO
-          provider: OLS
+            map: OBO
+            provider: OLS
         map:
-          OBO:
-            iri_prefix: "http://purl.obolibrary.org/obo/CHEBI_"
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/CHEBI_"
     CL:
         type: ontology
         default:
@@ -342,13 +342,13 @@ DataFile:
             nullable: false
             description: List of repertoires
             items:
-              $ref: '#/Repertoire'
+                $ref: '#/Repertoire'
         RepertoireGroup:
             type: array
             nullable: false
             description: List of repertoire collections
             items:
-              $ref: '#/RepertoireGroup'
+                $ref: '#/RepertoireGroup'
         Rearrangement:
             type: array
             nullable: false
@@ -360,13 +360,13 @@ DataFile:
             nullable: false
             description: List of cells
             items:
-              $ref: '#/Cell'
+                $ref: '#/Cell'
         Clone:
             type: array
             nullable: false
             description: List of clones
             items:
-              $ref: '#/Clone'
+                $ref: '#/Clone'
         GermlineSet:
             type: array
             nullable: false
@@ -389,40 +389,40 @@ InfoObject:
         - title
         - version
     properties:
-      title:
-        type: string
-        nullable: false
-      version:
-        type: string
-        nullable: false
-      description:
-        type: string
-        nullable: true
-      contact:
-        type: object
-        nullable: true
-        properties:
-          name:
-            type: string
-            nullable: true
-          url:
-            type: string
-            nullable: true
-          email:
-            type: string
-            nullable: true
-      license:
-        type: object
-        nullable: true
-        required:
-            - name
-        properties:
-          name:
+        title:
             type: string
             nullable: false
-          url:
+        version:
+            type: string
+            nullable: false
+        description:
             type: string
             nullable: true
+        contact:
+            type: object
+            nullable: true
+            properties:
+                name:
+                    type: string
+                    nullable: true
+                url:
+                    type: string
+                    nullable: true
+                email:
+                    type: string
+                    nullable: true
+        license:
+            type: object
+            nullable: true
+            required:
+                - name
+            properties:
+                name:
+                    type: string
+                    nullable: false
+                url:
+                    type: string
+                    nullable: true
 
 # A time point
 TimePoint:
@@ -1245,7 +1245,7 @@ GermlineSet:
             type: array
             nullable: true
             items:
-              $ref: '#/AlleleDescription'
+                $ref: '#/AlleleDescription'
             description: list of allele_descriptions in the germline set
             x-airr:
                 miairr: important
@@ -1493,9 +1493,9 @@ MHCGenotype:
             type: string
             nullable: true
             enum:
-              - MHC-I
-              - MHC-II
-              - MHC-nonclassical
+                - MHC-I
+                - MHC-II
+                - MHC-nonclassical
             description: Class of MHC alleles described by the MHCGenotype
             example: MHC-I
             x-airr:
@@ -1756,10 +1756,10 @@ Study:
             description: Keywords describing properties of one or more data sets in a study
             title: Keywords for study
             example:
-              - contains_ig
-              - contains_schema_rearrangement
-              - contains_schema_clone
-              - contains_schema_cell
+                - contains_ig
+                - contains_schema_rearrangement
+                - contains_schema_clone
+                - contains_schema_cell
             x-airr:
                 miairr: important
                 adc-query-support: true
@@ -2601,7 +2601,7 @@ NucleicAcidProcessing:
             $ref: '#/Ontology'
             nullable: true
             description: Unit of template amount
-            title:  Template amount time unit
+            title: Template amount time unit
             example:
                 id: UO:0000024
                 label: nanogram
@@ -2616,7 +2616,7 @@ NucleicAcidProcessing:
                     draft: false
                     top_node:
                         id: UO:0000002
-                        label:  physical quantity
+                        label: physical quantity
         library_generation_method:
             type: string
             enum:
@@ -3120,18 +3120,18 @@ SampleProcessing:
     allOf:
         - type: object
           properties:
-            sample_processing_id:
-                type: string
-                nullable: true
-                description: >
-                    Identifier for the sample processing object. This field should be unique within the repertoire.
-                    This field can be used to uniquely identify the combination of sample, cell processing,
-                    nucleic acid processing and sequencing run information for the repertoire.
-                title: Sample processing ID
-                x-airr:
-                    name: Sample processing ID
-                    adc-query-support: true
-                    identifier: true
+              sample_processing_id:
+                  type: string
+                  nullable: true
+                  description: >
+                      Identifier for the sample processing object. This field should be unique within the repertoire.
+                      This field can be used to uniquely identify the combination of sample, cell processing,
+                      nucleic acid processing and sequencing run information for the repertoire.
+                  title: Sample processing ID
+                  x-airr:
+                      name: Sample processing ID
+                      adc-query-support: true
+                      identifier: true
         - $ref: '#/Sample'
         - $ref: '#/CellProcessing'
         - $ref: '#/NucleicAcidProcessing'
@@ -4543,7 +4543,7 @@ Cell:
             type: array
             nullable: true
             description: >
-                  Array of sequence identifiers defined for the Rearrangement object
+                Array of sequence identifiers defined for the Rearrangement object
             title: Cell-associated rearrangements
             items:
                 type: string
@@ -4556,7 +4556,7 @@ Cell:
             type: array
             nullable: true
             description: >
-                  Array of receptor identifiers defined for the Receptor object
+                Array of receptor identifiers defined for the Receptor object
             title: Cell-associated receptors
             items:
                 type: string
@@ -4599,7 +4599,7 @@ Cell:
             type: string
             nullable: true
             description: >
-                  DOI of raw data set containing the current event
+                DOI of raw data set containing the current event
             x-airr:
                 miairr: defined
                 adc-api-optional: true
@@ -4607,7 +4607,7 @@ Cell:
             type: string
             nullable: true
             description: >
-                  Index addressing the current event within the raw data set.
+                Index addressing the current event within the raw data set.
             x-airr:
                 miairr: defined
                 adc-api-optional: true
