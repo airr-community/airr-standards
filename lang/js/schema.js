@@ -240,7 +240,8 @@ module.exports = function(airr, schema) {
                     case 'array':
                         if (spec['items'] && spec['items']['type'] == 'object') {
                             let new_obj = {};
-                            obj[k] = [ _populate(spec['items'], new_obj) ];
+                            _populate(spec['items'], new_obj);
+                            obj[k] = [ new_obj ];
                         } else
                             obj[k] = _default(spec);
                         break;
