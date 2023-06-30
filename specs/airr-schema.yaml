@@ -4363,6 +4363,19 @@ CellExpression:
                 nullable: true
                 adc-query-support: true
                 name: Data processing for cell
+        property_type:
+            type: string
+            enum:
+                - "gene_expression"
+                - "protein_expression"
+                - "dextramer_expression"
+                - "hashtag_expression"
+            description: >
+                Keyword describing the type of property being measure by the value.
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-api-optional: true
         property:
             $ref: '#/Ontology'
             title: Property information
