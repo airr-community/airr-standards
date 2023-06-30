@@ -4367,7 +4367,7 @@ CellExpression:
             type: string
             enum:
                 - "gene_expression"
-                - "protein_expression"
+                - "surface_protein_expression"
                 - "dextramer_expression"
                 - "hashtag_expression"
             description: >
