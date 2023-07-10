@@ -4285,7 +4285,7 @@ Cell:
             x-airr:
                 miairr: defined
                 nullable: true
-                adc-api-optional: true
+                adc-query-support: true
         expression_raw_doi:
             type: string
             description: >
@@ -4293,7 +4293,7 @@ Cell:
             x-airr:
                 miairr: defined
                 nullable: true
-                adc-api-optional: true
+                adc-query-support: true
         expression_index:
             type: string
             description: >
@@ -4301,7 +4301,6 @@ Cell:
             x-airr:
                 miairr: defined
                 nullable: true
-                adc-api-optional: true
         virtual_pairing:
             type: boolean
             description: >
@@ -4434,7 +4433,7 @@ Receptor:
             description: The top-level receptor type, either Immunoglobulin (Ig) or T Cell Receptor (TCR).
             x-airr:
                 nullable: false
-                adc-api-optional: true
+                adc-query-support: true
         receptor_variable_domain_1_aa:
             type: string
             description: >
@@ -4445,7 +4444,7 @@ Receptor:
                 QVQLQQPGAELVKPGASVKLSCKASGYTFTSYWMHWVKQRPGRGLEWIGRIDPNSGGTKYNEKFKSKATLTVDKPSSTAYMQLSSLTSEDSAVYYCARYDYYGSSYFDYWGQGTTLTVSS
             x-airr:
                 nullable: false
-                adc-api-optional: true
+                adc-query-support: true
         receptor_variable_domain_1_locus:
             type: string
             enum:
@@ -4456,7 +4455,7 @@ Receptor:
             example: IGH
             x-airr:
                 nullable: false
-                adc-api-optional: true
+                adc-query-support: true
         receptor_variable_domain_2_aa:
             type: string
             description: >
@@ -4467,7 +4466,7 @@ Receptor:
                 QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL
             x-airr:
                 nullable: false
-                adc-api-optional: true
+                adc-query-support: true
         receptor_variable_domain_2_locus:
             type: string
             enum:
@@ -4480,7 +4479,7 @@ Receptor:
             example: IGL
             x-airr:
                 nullable: false
-                adc-api-optional: true
+                adc-query-support: true
         receptor_ref:
             type: array
             description: Array of receptor identifiers defined for the Receptor object
