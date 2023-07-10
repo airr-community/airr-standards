@@ -212,6 +212,9 @@ supported AIRR extension properties:
     * - ``adc-query-support``
       - True if an ADC API implementation must support queries on the field.
         If false, query support for the field in ADC API implementations is optional.
+    * - ``adc-api-optional``
+      - True if the field is specific to the ADC API and is not part of the AIRR specification proper.
+        These are typically "convenience" fields that make finding data easy or efficient (can be optimized by a repository).
     * - ``deprecated``
       - True if the field has been deprecated from the schema.
     * - ``deprecated-description``
