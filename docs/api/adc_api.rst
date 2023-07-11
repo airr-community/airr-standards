@@ -203,6 +203,13 @@ The response should indicate success.
 
   {"result":"success"}
 
+Note: In the above example, the repository name vdjserver.org is initiating a query against one of the repositories in
+the ADC, in this case VDJServer. In order to query all of the repositories in the ADC, it is necessary to query each repository 
+separately. An up to date list of repositories in the ADC is provided at the `AIRR Community ADC Registry github site
+<https://github.com/airr-community/adc-registry/blob/ADC/ADC-registry.tsv>`_. In the remainder of this document, we use 
+vdjserver.org as the repository name, but this can be replaced with any valid ADC repository name, resulting in the same
+query working for any repository in the ADC.
+
 **Service Info Example**
 
 The following is an example ``GET`` request to get information about the service.
