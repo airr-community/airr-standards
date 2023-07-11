@@ -24,6 +24,11 @@ community discussions at the AIRR 2016 and 2017 Community Meetings and
 were approved through a vote by the AIRR Community at the AIRR
 Community Meeting in December 2017.
 
+This has resulted in the creation of the AIRR Data Commons (ADC), a network
+of distributed AIRR Standards compliant repositories that can be queried by the
+ADC API described here. More information about the ADC and the component repositories
+in the ADC can be found on the :ref:`AIRR Data Commons page<DataCommons>`.
+
 .. __: https://github.com/airr-community/common-repo-wg/blob/v0.7.0/recommendations.md
 
 Overview
