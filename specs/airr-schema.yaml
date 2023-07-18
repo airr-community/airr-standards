@@ -4363,15 +4363,12 @@ CellExpression:
                 nullable: true
                 adc-query-support: true
                 name: Data processing for cell
-        property_type:
+        property_detection_method:
             type: string
-            enum:
-                - "gene_expression"
-                - "surface_protein_expression"
-                - "dextramer_expression"
-                - "hashtag_expression"
             description: >
-                Keyword describing the type of property being measure by the value.
+                Keyword describing the detection method used to measure the property value. The following keywords
+                are recommended if condsidered appropriate but custom methods can be specified: "gene_expression",
+                "surface_protein_expression", "antigen_specific_receptor_expression", "hastag_expression"
             x-airr:
                 miairr: defined
                 nullable: true
