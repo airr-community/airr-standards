@@ -4530,6 +4530,16 @@ Cell:
                 nullable: true
                 adc-query-support: true
                 name: Cell-associated receptors
+        reactivity_measurements:
+            type: array
+            description: >
+                Array of reactivity measurement identifiers for this Cell object
+            title: Reactivity measurements
+            items:
+                type: string
+            example: [id1, id2]
+            x-airr:
+                nullable: true
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
@@ -4782,9 +4792,12 @@ Receptor:
                 adc-query-support: true
         reactivity_measurements:
             type: array
-            description: Records of reactivity measurement
+            description: >
+                Array of reactivity measurement identifiers for this Receptor object
+            title: Reactivity measurements
             items:
-                $ref: '#/ReceptorReactivity'
+                type: string
+            example: [id1, id2]
             x-airr:
                 nullable: true
 
