@@ -1631,7 +1631,11 @@ Study:
                     - contains_schema_clone
                     - contains_schema_cell
                     - contains_schema_receptor
-            description: Keywords describing properties of one or more data sets in a study
+            description: >
+                Keywords describing properties of one or more data sets in a study. "contains_schema" keywords indicate that
+                the study contains data objects from the AIRR Schema of that type (Rearrangement, Clone, Cell, Receptor) while
+                the other keywords indicate that the study design considers the type of data indicated (e.g. it is possible to have
+                a study that "contains_paired_chain" but does not "contains_schema_cell"). 
             title: Keywords for study
             example:
                 - contains_ig
@@ -4281,7 +4285,7 @@ Cell:
             x-airr:
                 miairr: defined
                 nullable: true
-                adc-api-optional: true
+                adc-query-support: true
         expression_raw_doi:
             type: string
             description: >
@@ -4289,7 +4293,7 @@ Cell:
             x-airr:
                 miairr: defined
                 nullable: true
-                adc-api-optional: true
+                adc-query-support: true
         expression_index:
             type: string
             description: >
@@ -4297,7 +4301,6 @@ Cell:
             x-airr:
                 miairr: defined
                 nullable: true
-                adc-api-optional: true
         virtual_pairing:
             type: boolean
             description: >
@@ -4441,7 +4444,7 @@ Receptor:
             description: The top-level receptor type, either Immunoglobulin (Ig) or T Cell Receptor (TCR).
             x-airr:
                 nullable: false
-                adc-api-optional: true
+                adc-query-support: true
         receptor_variable_domain_1_aa:
             type: string
             description: >
@@ -4452,7 +4455,7 @@ Receptor:
                 QVQLQQPGAELVKPGASVKLSCKASGYTFTSYWMHWVKQRPGRGLEWIGRIDPNSGGTKYNEKFKSKATLTVDKPSSTAYMQLSSLTSEDSAVYYCARYDYYGSSYFDYWGQGTTLTVSS
             x-airr:
                 nullable: false
-                adc-api-optional: true
+                adc-query-support: true
         receptor_variable_domain_1_locus:
             type: string
             enum:
@@ -4463,7 +4466,7 @@ Receptor:
             example: IGH
             x-airr:
                 nullable: false
-                adc-api-optional: true
+                adc-query-support: true
         receptor_variable_domain_2_aa:
             type: string
             description: >
@@ -4474,7 +4477,7 @@ Receptor:
                 QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL
             x-airr:
                 nullable: false
-                adc-api-optional: true
+                adc-query-support: true
         receptor_variable_domain_2_locus:
             type: string
             enum:
@@ -4487,7 +4490,7 @@ Receptor:
             example: IGL
             x-airr:
                 nullable: false
-                adc-api-optional: true
+                adc-query-support: true
         receptor_ref:
             type: array
             description: Array of receptor identifiers defined for the Receptor object

@@ -4599,7 +4599,7 @@ Cell:
                 come from a controlled vocabulary.
             x-airr:
                 miairr: defined
-                adc-api-optional: true
+                adc-query-support: true
         expression_raw_doi:
             type: string
             nullable: true
@@ -4607,7 +4607,7 @@ Cell:
                 DOI of raw data set containing the current event
             x-airr:
                 miairr: defined
-                adc-api-optional: true
+                adc-query-support: true
         expression_index:
             type: string
             nullable: true
@@ -4615,7 +4615,6 @@ Cell:
                 Index addressing the current event within the raw data set.
             x-airr:
                 miairr: defined
-                adc-api-optional: true
         virtual_pairing:
             type: boolean
             nullable: true
@@ -4760,7 +4759,7 @@ Receptor:
                 - TCR
             description: The top-level receptor type, either Immunoglobulin (Ig) or T Cell Receptor (TCR).
             x-airr:
-                adc-api-optional: true
+                adc-query-support: true
         receptor_variable_domain_1_aa:
             type: string
             nullable: false
@@ -4771,7 +4770,7 @@ Receptor:
             example: >
                 QVQLQQPGAELVKPGASVKLSCKASGYTFTSYWMHWVKQRPGRGLEWIGRIDPNSGGTKYNEKFKSKATLTVDKPSSTAYMQLSSLTSEDSAVYYCARYDYYGSSYFDYWGQGTTLTVSS
             x-airr:
-                adc-api-optional: true
+                adc-query-support: true
         receptor_variable_domain_1_locus:
             type: string
             nullable: false
@@ -4782,7 +4781,7 @@ Receptor:
             description: Locus from which the variable domain in receptor_variable_domain_1_aa originates
             example: IGH
             x-airr:
-                adc-api-optional: true
+                adc-query-support: true
         receptor_variable_domain_2_aa:
             type: string
             nullable: false
@@ -4793,7 +4792,7 @@ Receptor:
             example: >
                 QAVVTQESALTTSPGETVTLTCRSSTGAVTTSNYANWVQEKPDHLFTGLIGGTNNRAPGVPARFSGSLIGDKAALTITGAQTEDEAIYFCALWYSNHWVFGGGTKLTVL
             x-airr:
-                adc-api-optional: true
+                adc-query-support: true
         receptor_variable_domain_2_locus:
             type: string
             nullable: false
@@ -4806,7 +4805,7 @@ Receptor:
             description: Locus from which the variable domain in receptor_variable_domain_2_aa originates
             example: IGL
             x-airr:
-                adc-api-optional: true
+                adc-query-support: true
         receptor_ref:
             type: array
             nullable: true

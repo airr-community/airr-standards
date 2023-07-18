@@ -24,6 +24,11 @@ community discussions at the AIRR 2016 and 2017 Community Meetings and
 were approved through a vote by the AIRR Community at the AIRR
 Community Meeting in December 2017.
 
+This has resulted in the creation of the AIRR Data Commons (ADC), a network
+of distributed AIRR Standards compliant repositories that can be queried by the
+ADC API described here. More information about the ADC and the component repositories
+in the ADC can be found on the :ref:`AIRR Data Commons page<DataCommons>`.
+
 .. __: https://github.com/airr-community/common-repo-wg/blob/v0.7.0/recommendations.md
 
 Overview
@@ -197,6 +202,13 @@ The response should indicate success.
 .. code-block:: json
 
   {"result":"success"}
+
+Note: In the above example, the repository name vdjserver.org is initiating a query against one of the repositories in
+the ADC, in this case VDJServer. In order to query all of the repositories in the ADC, it is necessary to query each repository 
+separately. An up to date list of repositories in the ADC is provided at the `AIRR Community ADC Registry github site
+<https://github.com/airr-community/adc-registry/blob/ADC/ADC-registry.tsv>`_. In the remainder of this document, we use 
+vdjserver.org as the repository name, but this can be replaced with any valid ADC repository name, resulting in the same
+query working for any repository in the ADC.
 
 **Service Info Example**
 

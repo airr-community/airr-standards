@@ -137,7 +137,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: V gene subgroup
             adc_v_gene:
               type: string
@@ -148,7 +148,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: V gene
             adc_d_subgroup:
               type: string
@@ -159,7 +159,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: D gene subgroup
             adc_d_gene:
               type: string
@@ -170,7 +170,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: D gene
             adc_j_subgroup:
               type: string
@@ -181,7 +181,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: J gene subgroup
             adc_j_gene:
               type: string
@@ -192,7 +192,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: J gene
             adc_c_subgroup:
               type: string
@@ -203,7 +203,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: C gene subgroup
             adc_c_gene:
               type: string
@@ -214,7 +214,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: C gene
             adc_annotation_cell_id:
               type: string
@@ -224,7 +224,7 @@ components:
               example: AAACCTGAGCACCGCT-1
               x-airr:
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: Tool Cell ID
               
     # list of rearrangement annotations
@@ -249,7 +249,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: V gene subgroup
             adc_v_gene:
               type: string
@@ -260,7 +260,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: V gene
             adc_d_subgroup:
               type: string
@@ -271,7 +271,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: D gene subgroup
             adc_d_gene:
               type: string
@@ -282,7 +282,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: D gene
             adc_j_subgroup:
               type: string
@@ -293,7 +293,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: J gene subgroup
             adc_j_gene:
               type: string
@@ -304,7 +304,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: J gene
             adc_c_subgroup:
               type: string
@@ -315,7 +315,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: C gene subgroup
             adc_c_gene:
               type: string
@@ -326,7 +326,7 @@ components:
               x-airr:
                 nullable: true
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: C gene
               
     # list of clone annotations
@@ -350,7 +350,7 @@ components:
               example: AAACCTGAGCACCGCT-1
               x-airr:
                 adc-api-optional: false
-                adc-query_support: true
+                adc-query-support: true
                 name: Tool Cell ID
 
     # list of cell annotations
