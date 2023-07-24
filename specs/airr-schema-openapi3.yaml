@@ -1767,7 +1767,11 @@ Study:
                     - contains_schema_cell
                     - contains_schema_receptor
             nullable: true
-            description: Keywords describing properties of one or more data sets in a study
+            description: >
+                Keywords describing properties of one or more data sets in a study. "contains_schema" keywords indicate that
+                the study contains data objects from the AIRR Schema of that type (Rearrangement, Clone, Cell, Receptor) while
+                the other keywords indicate that the study design considers the type of data indicated (e.g. it is possible to have
+                a study that "contains_paired_chain" but does not "contains_schema_cell").
             title: Keywords for study
             example:
                 - contains_ig
