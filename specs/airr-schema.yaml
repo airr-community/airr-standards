@@ -1188,7 +1188,7 @@ GenotypeSet:
             items:
                 $ref: '#/Genotype'
 
-# This enumerates the alleles and gene deletions inferred in a single subject. Included alleles may either be listed by reference to a GermlineSet, or 
+# This enumerates the alleles and gene deletions inferred in a single subject. Included alleles may either be listed by reference to a GermlineSet, or
 # listed as 'undocumented', in which case the inferred sequence is provided
 
 # Genotype of adaptive immune receptors
@@ -1635,7 +1635,7 @@ Study:
                 Keywords describing properties of one or more data sets in a study. "contains_schema" keywords indicate that
                 the study contains data objects from the AIRR Schema of that type (Rearrangement, Clone, Cell, Receptor) while
                 the other keywords indicate that the study design considers the type of data indicated (e.g. it is possible to have
-                a study that "contains_paired_chain" but does not "contains_schema_cell"). 
+                a study that "contains_paired_chain" but does not "contains_schema_cell").
             title: Keywords for study
             example:
                 - contains_ig
@@ -4313,8 +4313,8 @@ Cell:
                 name: Virtual pairing
 
 # The CellExpression object acts as a container to hold a single expression level measurement from
-# an experiment. Expression data is associated with a cell_id and the related repertoire_id and 
-# data_processing_id as cell_id is not guaranteed to be unique outside the data processing for 
+# an experiment. Expression data is associated with a cell_id and the related repertoire_id and
+# data_processing_id as cell_id is not guaranteed to be unique outside the data processing for
 # a single repertoire.
 CellExpression:
     type: object
