@@ -1044,7 +1044,6 @@ AlleleDescription:
                 enum:
                     - likely_truncated
                     - likely_full_length
-                    - null
             description: Controlled-vocabulary tags applied to this description
             x-airr:
                 nullable: true
