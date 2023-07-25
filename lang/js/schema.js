@@ -202,9 +202,8 @@ module.exports = function(airr, schema) {
 
         const validate = ajv.compile(this.definition)
         const valid = validate(object)
-        if (!valid) console.log(validate.errors)
-
-        return valid;
+        if (!valid) return validate.errors;
+        else return null;
     }
 
     airr.SchemaDefinition.prototype.template = function() {
