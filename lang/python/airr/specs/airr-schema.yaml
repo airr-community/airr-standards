@@ -4613,6 +4613,7 @@ ReceptorReactivity:
                     draft: true
                     top_node:
                         id: MRO:0000004
+                        label: MHC gene
         mhc_allele_2:
             type: string
             description: >
