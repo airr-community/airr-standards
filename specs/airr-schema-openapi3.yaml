@@ -1376,8 +1376,7 @@ Genotype:
 # It 'known' in the sense that it is documented in a reference set
 
 DocumentedAllele:
-    discriminator:
-        propertyName: AIRR
+    type: object
     required:
         - label
         - germline_set_ref
@@ -1407,8 +1406,6 @@ DocumentedAllele:
 # It is 'undocumented' in the sense that it was not found in reference sets consulted for the analysis
 
 UndocumentedAllele:
-    discriminator:
-        propertyName: AIRR
     required:
         - allele_name
         - sequence
@@ -1437,8 +1434,6 @@ UndocumentedAllele:
 # It is regarded as 'deleted' in the sense that it was not identified during inference of the genotype
 
 DeletedGene:
-    discriminator:
-        propertyName: AIRR
     required:
         - label
         - germline_set_ref
@@ -1576,8 +1571,6 @@ MHCAllele:
 
 
 SubjectGenotype:
-    discriminator:
-        propertyName: AIRR
     type: object
     properties:
         receptor_genotype_set:
