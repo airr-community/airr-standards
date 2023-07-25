@@ -535,19 +535,23 @@ RearrangedSequence:
             enum:
                 - DNA
                 - RNA
+                - null
             description: The class of nucleic acid that was used as primary starting material
             x-airr:
                 miairr: important
+                nullable: true
         observation_type:
             type: string
             enum:
                 - "direct sequencing"
                 - "inference from repertoire"
+                - null
             description: >
                 The type of observation from which this sequence was drawn, such as direct sequencing or 
                 inference from repertoire sequencing data.
             x-airr:
                 miairr: essential
+                nullable: true
         curation:
             type: string
             description: Curational notes on the sequence
@@ -637,6 +641,7 @@ UnrearrangedSequence:
             enum:
                 - "+"
                 - "-"
+                - null
             description: sense (+ or -)
             x-airr:
                 nullable: true
@@ -849,9 +854,11 @@ AlleleDescription:
                 - TRB
                 - TRG
                 - TRD
+                - null
             description: Gene locus
             x-airr:
                 miairr: essential
+                nullable: true
         chromosome:
             type: integer
             description: chromosome on which the gene is located
@@ -862,9 +869,11 @@ AlleleDescription:
                 - D
                 - J
                 - C
+                - null
             description: Sequence type (V, D, J, C)
             x-airr:
                 miairr: essential
+                nullable: true
         functional:
             type: boolean
             description: True if the gene is functional, false if it is a pseudogene
@@ -876,9 +885,11 @@ AlleleDescription:
                 - "Genomic and rearranged"
                 - "Genomic only"
                 - "Rearranged only"
+                - null
             description: Type of inference(s) from which this gene sequence was inferred
             x-airr:
                 miairr: important
+                nullable: true
         species:
             $ref: '#/Ontology'
             description: Binomial designation of subject's species
@@ -900,6 +911,7 @@ AlleleDescription:
                 - inbred
                 - outbred
                 - locational
+                - null
             x-airr:
                 nullable: true
         status:
@@ -909,6 +921,7 @@ AlleleDescription:
                 - draft
                 - retired
                 - withdrawn
+                - null
             description: Status of record, assumed active if the field is not present
             x-airr:
                 nullable: true
@@ -933,6 +946,7 @@ AlleleDescription:
                 - 1
                 - 2
                 - 3
+                - null
             description: >
                 Codon position of the first nucleotide in the 'coding_sequence' field. Mandatory for J genes. 
                 Not used for V or D genes. '1' means the sequence is in-frame, '2' means that the first bp is 
@@ -1030,7 +1044,10 @@ AlleleDescription:
                 enum:
                     - likely_truncated
                     - likely_full_length
+                    - null
             description: Controlled-vocabulary tags applied to this description
+            x-airr:
+                nullable: true
 
 # Collection of gene descriptions into a germline set
 GermlineSet:
@@ -1134,6 +1151,7 @@ GermlineSet:
                 - inbred
                 - outbred
                 - locational
+                - null
             x-airr:
                 nullable: true
         locus:
@@ -1147,9 +1165,11 @@ GermlineSet:
                 - TRB
                 - TRG
                 - TRD
+                - null
             description: Gene locus
             x-airr:
                 miairr: essential
+                nullable: true
         allele_descriptions:
             type: array
             items:
@@ -1217,12 +1237,14 @@ Genotype:
                 - TRB
                 - TRD
                 - TRG
+                - null
             description: Gene locus
             example: IGH
             x-airr:
                 miairr: essential
                 adc-query-support: true
                 format: controlled vocabulary
+                nullable: true
         documented_alleles:
             type: array
             description: List of alleles documented in reference set(s)
@@ -1249,12 +1271,14 @@ Genotype:
             enum:
                 - genomic_sequencing
                 - repertoire_sequencing
+                - null
             description: Information on how the genotype was acquired. Controlled vocabulary.
             title: Genotype acquisition process
             example: repertoire_sequencing
             x-airr:
                 adc-query-support: true
                 format: controlled vocabulary
+                nullable: true
 
 # Documented Allele
 # This describes a 'known' allele found in a genotype
@@ -1381,12 +1405,14 @@ MHCGenotype:
                 - MHC-I
                 - MHC-II
                 - MHC-nonclassical
+                - null
             description: Class of MHC alleles described by the MHCGenotype
             example: MHC-I
             x-airr:
                 miairr: essential
                 adc-query-support: true
                 format: controlled vocabulary
+                nullable: true
         mhc_alleles:
             type: array
             description: List of MHC alleles of the indicated mhc_class identified in an individual
@@ -1768,6 +1794,7 @@ Subject:
                 - intersex
                 - "not collected"
                 - "not applicable"
+                - null
             description: Biological sex of subject
             title: Sex
             example: female
@@ -2384,6 +2411,7 @@ PCRTarget:
                 - TRB
                 - TRD
                 - TRG
+                - null
             description: >
                 Designation of the target locus. Note that this field uses a controlled vocubulary that is meant to
                 provide a generic classification of the locus, not necessarily the correct designation according to
@@ -2742,6 +2770,7 @@ SequencingData:
             enum:
                 - fasta
                 - fastq
+                - null
             x-airr:
                 miairr: important
                 nullable: true
@@ -2771,6 +2800,7 @@ SequencingData:
                 - forward
                 - reverse
                 - mixed
+                - null
             x-airr:
                 miairr: important
                 nullable: true
@@ -2812,6 +2842,7 @@ SequencingData:
                 - forward
                 - reverse
                 - mixed
+                - null
             x-airr:
                 miairr: important
                 nullable: true
@@ -3310,6 +3341,7 @@ Rearrangement:
                 - TRB
                 - TRD
                 - TRG
+                - null
             description: >
                 Gene locus (chain type). Note that this field uses a controlled vocabulary that is meant to provide a
                 generic classification of the locus, not necessarily the correct designation according to a specific
@@ -4279,6 +4311,7 @@ Cell:
             enum:
                 - "flow cytometry"
                 - "single-cell transcriptome"
+                - null
             description: >
                 Keyword describing the methodology used to assess expression. This values for this field MUST 
                 come from a controlled vocabulary.
@@ -4578,6 +4611,7 @@ ReceptorReactivity:
                 - MHC-I
                 - MHC-II
                 - MHC-nonclassical
+                - null
             description: Class of MHC molecule, only present for MHC:x ligand types
             example: MHC-II
             x-airr:
