@@ -1261,6 +1261,7 @@ Genotype:
 # It 'known' in the sense that it is documented in a reference set
 
 DocumentedAllele:
+    type: object
     required:
         - label
         - germline_set_ref
