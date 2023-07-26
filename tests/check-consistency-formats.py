@@ -85,12 +85,12 @@ def check_miairr_essential(obj, is_v3):
                 if is_v3:
                     # for V3, default is nullable: false
                     if p.get('nullable'):
-                        print('{} object in V3 spec is inconsistent with miairr:essential and nullable:true'.format(obj), file=sys.stderr)
+                        print(prop, ' in {} object in V3 spec is inconsistent with miairr:essential and nullable:true'.format(obj), file=sys.stderr)
                         return True
                 else:
                     # for V2, default is nullable: true
                     if p['x-airr'].get('nullable') or p['x-airr'].get('nullable', 'missing') == 'missing':
-                        print('{} object in V2 spec is inconsistent with miairr:essential and nullable:true'.format(obj), file=sys.stderr)
+                        print(prop, 'in {} object in V2 spec is inconsistent with miairr:essential and nullable:true'.format(obj), file=sys.stderr)
                         return True
     return False
 
@@ -128,25 +128,25 @@ for obj in v2_spec:
 
     # nullable and miairr flags
     if v2_spec[obj].get('properties') is not None:
-        translate_nullable(v2_spec[obj])
         if check_miairr_essential(v2_spec[obj], False):
             found_miairr_inconsistency = True
+        translate_nullable(v2_spec[obj])
         # look for sub-object
         for prop in v2_spec[obj]['properties']:
             if v2_spec[obj]['properties'][prop].get('properties') is not None:
-                translate_nullable(v2_spec[obj]['properties'][prop])
                 if check_miairr_essential(v2_spec[obj]['properties'][prop], False):
                     found_miairr_inconsistency = True
+                translate_nullable(v2_spec[obj]['properties'][prop])
             # look for array of objects
             if v2_spec[obj]['properties'][prop].get('items') is not None:
                 if v2_spec[obj]['properties'][prop]['items'].get('properties') is not None:
-                    translate_nullable(v2_spec[obj]['properties'][prop]['items'])
                     if check_miairr_essential(v2_spec[obj]['properties'][prop]['items'], False):
                         found_miairr_inconsistency = True
+                    translate_nullable(v2_spec[obj]['properties'][prop]['items'])
     elif 'allOf' in v2_spec[obj]:
-        translate_nullable(v2_spec[obj]['allOf'][0])
         if check_miairr_essential(v2_spec[obj]['allOf'][0], False):
             found_miairr_inconsistency = True
+        translate_nullable(v2_spec[obj]['allOf'][0])
 
     # print(v2_spec[obj])
     # print(v3_spec[obj])
