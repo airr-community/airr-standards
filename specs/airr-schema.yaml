@@ -530,6 +530,7 @@ RearrangedSequence:
             description: nucleotide sequence
             x-airr:
                 miairr: essential
+                nullable: false
         derivation:
             type: string
             enum:
@@ -548,6 +549,7 @@ RearrangedSequence:
                 inference from repertoire sequencing data.
             x-airr:
                 miairr: essential
+                nullable: false
         curation:
             type: string
             description: Curational notes on the sequence
@@ -571,11 +573,13 @@ RearrangedSequence:
             description: Start co-ordinate of the sequence detailed in this record, within the sequence deposited
             x-airr:
                 miairr: essential
+                nullable: false
         sequence_end:
             type: integer
             description: End co-ordinate of the sequence detailed in this record, within the sequence deposited
             x-airr:
                 miairr: essential
+                nullable: false
 
 UnrearrangedSequence:
     description: Details of an unrearranged sequence contributing support for a gene or allele
@@ -602,6 +606,7 @@ UnrearrangedSequence:
                 Sequence of interest described in this record. Typically, this will include gene and promoter region.
             x-airr:
                 miairr: essential
+                nullable: false
         curation:
             type: string
             description: Curational notes on the sequence
@@ -826,6 +831,7 @@ AlleleDescription:
                 including where possible RSS, and 5' UTR and lead-in for V-gene sequences.
             x-airr:
                 miairr: essential
+                nullable: false
         coding_sequence:
             type: string
             description: >
@@ -852,6 +858,7 @@ AlleleDescription:
             description: Gene locus
             x-airr:
                 miairr: essential
+                nullable: false
         chromosome:
             type: integer
             description: chromosome on which the gene is located
@@ -865,6 +872,7 @@ AlleleDescription:
             description: Sequence type (V, D, J, C)
             x-airr:
                 miairr: essential
+                nullable: false
         functional:
             type: boolean
             description: True if the gene is functional, false if it is a pseudogene
@@ -888,6 +896,7 @@ AlleleDescription:
                 label: Homo sapiens
             x-airr:
                 miairr: essential
+                nullable: false
         species_subgroup:
             type: string
             description: Race, strain or other species subgroup to which this subject belongs
@@ -1122,6 +1131,7 @@ GermlineSet:
                 label: Homo sapiens
             x-airr:
                 miairr: essential
+                nullable: false
         species_subgroup:
             type: string
             description: Race, strain or other species subgroup to which this subject belongs
@@ -1150,6 +1160,7 @@ GermlineSet:
             description: Gene locus
             x-airr:
                 miairr: essential
+                nullable: false
         allele_descriptions:
             type: array
             items:
@@ -1221,6 +1232,7 @@ Genotype:
             example: IGH
             x-airr:
                 miairr: essential
+                nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
         documented_alleles:
@@ -1303,6 +1315,7 @@ UndocumentedAllele:
             type: string
             x-airr:
                 miairr: essential
+                nullable: false
             description: nt sequence of the allele, as provided by the inference pipeline
         phasing:
             type: integer
@@ -1324,6 +1337,7 @@ DeletedGene:
             type: string
             x-airr:
                 miairr: essential
+                nullable: false
             description: The accepted name for this gene, taken from the GermlineSet
         germline_set_ref:
             type: string
@@ -1383,6 +1397,7 @@ MHCGenotype:
             example: MHC-I
             x-airr:
                 miairr: essential
+                nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
         mhc_alleles:
