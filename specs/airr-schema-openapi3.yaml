@@ -525,7 +525,7 @@ RearrangedSequence:
                 miairr: important
         sequence:
             type: string
-            nullable: true
+            nullable: false
             x-airr:
                 miairr: essential
             description: nucleotide sequence
@@ -540,7 +540,7 @@ RearrangedSequence:
                 miairr: important
         observation_type:
             type: string
-            nullable: true
+            nullable: false
             enum:
                 - direct sequencing
                 - inference from repertoire
@@ -549,7 +549,6 @@ RearrangedSequence:
                 inference from repertoire sequencing data.
             x-airr:
                 miairr: essential
-
         curation:
             type: string
             nullable: true
@@ -574,13 +573,13 @@ RearrangedSequence:
             description: Version number of the sequence within the repository
         sequence_start:
             type: integer
-            nullable: true
+            nullable: false
             x-airr:
                 miairr: essential
             description: Start co-ordinate of the sequence detailed in this record, within the sequence deposited
         sequence_end:
             type: integer
-            nullable: true
+            nullable: false
             x-airr:
                 miairr: essential
             description: End co-ordinate of the sequence detailed in this record, within the sequence deposited
@@ -607,7 +606,7 @@ UnrearrangedSequence:
             description: unique identifier of this UnrearrangedSequence within the file
         sequence:
             type: string
-            nullable: true
+            nullable: false
             description: >
                 Sequence of interest described in this record. Typically, this will include gene and promoter region.
             x-airr:
@@ -863,7 +862,7 @@ AlleleDescription:
             example: IGHV1-69*01
         sequence:
             type: string
-            nullable: true
+            nullable: false
             x-airr:
                 miairr: essential
             description: >
@@ -885,7 +884,7 @@ AlleleDescription:
             description: Alternative names for this sequence
         locus:
             type: string
-            nullable: true
+            nullable: false
             enum:
                 - IGH
                 - IGI
@@ -904,7 +903,7 @@ AlleleDescription:
             description: chromosome on which the gene is located
         sequence_type:
             type: string
-            nullable: true
+            nullable: false
             enum:
                 - V
                 - D
@@ -931,7 +930,7 @@ AlleleDescription:
                 miairr: important
         species:
             $ref: '#/Ontology'
-            nullable: true
+            nullable: false
             description: Binomial designation of subject's species
             title: Organism
             example:
@@ -1204,7 +1203,7 @@ GermlineSet:
             example: "PMID:85642,PMID:12345"
         species:
             $ref: '#/Ontology'
-            nullable: true
+            nullable: false
             x-airr:
                 miairr: essential
             description: Binomial designation of subject's species
@@ -1228,7 +1227,7 @@ GermlineSet:
                 - locational
         locus:
             type: string
-            nullable: true
+            nullable: false
             enum:
                 - IGH
                 - IGI
@@ -1305,7 +1304,7 @@ Genotype:
                 repository hosting the schema, for example from the underlying ID of the database record.
         locus:
             type: string
-            nullable: true
+            nullable: false
             enum:
                 - IGH
                 - IGI
@@ -1406,7 +1405,7 @@ UndocumentedAllele:
                 miairr: important
         sequence:
             type: string
-            nullable: true
+            nullable: false
             description: nt sequence of the allele, as provided by the inference pipeline
             x-airr:
                 miairr: essential
@@ -1428,7 +1427,7 @@ DeletedGene:
     properties:
         label:
             type: string
-            nullable: true
+            nullable: false
             description: The accepted name for this gene, taken from the GermlineSet
             x-airr:
                 miairr: essential
@@ -1486,7 +1485,7 @@ MHCGenotype:
             description: A unique identifier for this MHCGenotype, assumed to be unique in the context of the study
         mhc_class:
             type: string
-            nullable: true
+            nullable: false
             enum:
                 - MHC-I
                 - MHC-II
