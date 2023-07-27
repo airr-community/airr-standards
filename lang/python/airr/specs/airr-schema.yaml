@@ -530,6 +530,7 @@ RearrangedSequence:
             description: nucleotide sequence
             x-airr:
                 miairr: essential
+                nullable: false
         derivation:
             type: string
             enum:
@@ -545,13 +546,12 @@ RearrangedSequence:
             enum:
                 - "direct sequencing"
                 - "inference from repertoire"
-                - null
             description: >
                 The type of observation from which this sequence was drawn, such as direct sequencing or 
                 inference from repertoire sequencing data.
             x-airr:
                 miairr: essential
-                nullable: true
+                nullable: false
         curation:
             type: string
             description: Curational notes on the sequence
@@ -575,11 +575,13 @@ RearrangedSequence:
             description: Start co-ordinate of the sequence detailed in this record, within the sequence deposited
             x-airr:
                 miairr: essential
+                nullable: false
         sequence_end:
             type: integer
             description: End co-ordinate of the sequence detailed in this record, within the sequence deposited
             x-airr:
                 miairr: essential
+                nullable: false
 
 UnrearrangedSequence:
     description: Details of an unrearranged sequence contributing support for a gene or allele
@@ -606,6 +608,7 @@ UnrearrangedSequence:
                 Sequence of interest described in this record. Typically, this will include gene and promoter region.
             x-airr:
                 miairr: essential
+                nullable: false
         curation:
             type: string
             description: Curational notes on the sequence
@@ -831,6 +834,7 @@ AlleleDescription:
                 including where possible RSS, and 5' UTR and lead-in for V-gene sequences.
             x-airr:
                 miairr: essential
+                nullable: false
         coding_sequence:
             type: string
             description: >
@@ -854,11 +858,10 @@ AlleleDescription:
                 - TRB
                 - TRG
                 - TRD
-                - null
             description: Gene locus
             x-airr:
                 miairr: essential
-                nullable: true
+                nullable: false
         chromosome:
             type: integer
             description: chromosome on which the gene is located
@@ -869,11 +872,10 @@ AlleleDescription:
                 - D
                 - J
                 - C
-                - null
             description: Sequence type (V, D, J, C)
             x-airr:
                 miairr: essential
-                nullable: true
+                nullable: false
         functional:
             type: boolean
             description: True if the gene is functional, false if it is a pseudogene
@@ -899,6 +901,7 @@ AlleleDescription:
                 label: Homo sapiens
             x-airr:
                 miairr: essential
+                nullable: false
         species_subgroup:
             type: string
             description: Race, strain or other species subgroup to which this subject belongs
@@ -1138,6 +1141,7 @@ GermlineSet:
                 label: Homo sapiens
             x-airr:
                 miairr: essential
+                nullable: false
         species_subgroup:
             type: string
             description: Race, strain or other species subgroup to which this subject belongs
@@ -1164,11 +1168,10 @@ GermlineSet:
                 - TRB
                 - TRG
                 - TRD
-                - null
             description: Gene locus
             x-airr:
                 miairr: essential
-                nullable: true
+                nullable: false
         allele_descriptions:
             type: array
             items:
@@ -1236,14 +1239,13 @@ Genotype:
                 - TRB
                 - TRD
                 - TRG
-                - null
             description: Gene locus
             example: IGH
             x-airr:
                 miairr: essential
+                nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
-                nullable: true
         documented_alleles:
             type: array
             description: List of alleles documented in reference set(s)
@@ -1284,7 +1286,7 @@ Genotype:
 # It 'known' in the sense that it is documented in a reference set
 
 DocumentedAllele:
-    discriminator: AIRR
+    type: object
     required:
         - label
         - germline_set_ref
@@ -1312,7 +1314,6 @@ DocumentedAllele:
 # It is 'undocumented' in the sense that it was not found in reference sets consulted for the analysis
 
 UndocumentedAllele:
-    discriminator: AIRR
     required:
         - allele_name
         - sequence
@@ -1327,6 +1328,7 @@ UndocumentedAllele:
             type: string
             x-airr:
                 miairr: essential
+                nullable: false
             description: nt sequence of the allele, as provided by the inference pipeline
         phasing:
             type: integer
@@ -1339,7 +1341,6 @@ UndocumentedAllele:
 # It is regarded as 'deleted' in the sense that it was not identified during inference of the genotype
 
 DeletedGene:
-    discriminator: AIRR
     required:
         - label
         - germline_set_ref
@@ -1349,6 +1350,7 @@ DeletedGene:
             type: string
             x-airr:
                 miairr: essential
+                nullable: false
             description: The accepted name for this gene, taken from the GermlineSet
         germline_set_ref:
             type: string
@@ -1404,14 +1406,13 @@ MHCGenotype:
                 - MHC-I
                 - MHC-II
                 - MHC-nonclassical
-                - null
             description: Class of MHC alleles described by the MHCGenotype
             example: MHC-I
             x-airr:
                 miairr: essential
+                nullable: false
                 adc-query-support: true
                 format: controlled vocabulary
-                nullable: true
         mhc_alleles:
             type: array
             description: List of MHC alleles of the indicated mhc_class identified in an individual
@@ -1699,7 +1700,6 @@ Study:
                 name: ADC Update Date
 
 SubjectGenotype:
-    discriminator: AIRR
     type: object
     properties:
         receptor_genotype_set:
@@ -4650,6 +4650,7 @@ ReceptorReactivity:
                     draft: true
                     top_node:
                         id: MRO:0000004
+                        label: MHC gene
         mhc_allele_2:
             type: string
             description: >
