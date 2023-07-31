@@ -1791,8 +1791,6 @@ Subject:
                 - pooled
                 - hermaphrodite
                 - intersex
-                - "not collected"
-                - "not applicable"
                 - null
             description: Biological sex of subject
             title: Sex

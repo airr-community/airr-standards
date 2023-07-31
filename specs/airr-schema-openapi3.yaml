@@ -1891,8 +1891,6 @@ Subject:
                 - pooled
                 - hermaphrodite
                 - intersex
-                - "not collected"
-                - "not applicable"
                 - null
             nullable: true
             description: Biological sex of subject
