@@ -535,6 +535,7 @@ RearrangedSequence:
             enum:
                 - DNA
                 - RNA
+                - null
             description: The class of nucleic acid that was used as primary starting material
             x-airr:
                 miairr: important
@@ -654,6 +655,7 @@ UnrearrangedSequence:
             enum:
                 - +
                 - "-"
+                - null
             description: sense (+ or -)
 
 # V gene delineation
@@ -925,6 +927,7 @@ AlleleDescription:
                 - Genomic and rearranged
                 - Genomic only
                 - Rearranged only
+                - null
             description: Type of inference(s) from which this gene sequence was inferred
             x-airr:
                 miairr: important
@@ -952,6 +955,7 @@ AlleleDescription:
                 - inbred
                 - outbred
                 - locational
+                - null
         status:
             type: string
             nullable: true
@@ -960,6 +964,7 @@ AlleleDescription:
                 - draft
                 - retired
                 - withdrawn
+                - null
             description: Status of record, assumed active if the field is not present
         subgroup_designation:
             type: string
@@ -988,6 +993,7 @@ AlleleDescription:
                 - 1
                 - 2
                 - 3
+                - null
             description: >
                 Codon position of the first nucleotide in the 'coding_sequence' field. Mandatory for J genes. 
                 Not used for V or D genes. '1' means the sequence is in-frame, '2' means that the first bp is 
@@ -1225,6 +1231,7 @@ GermlineSet:
                 - inbred
                 - outbred
                 - locational
+                - null
         locus:
             type: string
             nullable: false
@@ -1350,6 +1357,7 @@ Genotype:
             enum:
                 - genomic_sequencing
                 - repertoire_sequencing
+                - null
             description: Information on how the genotype was acquired. Controlled vocabulary.
             title: Genotype acquisition process
             example: repertoire_sequencing
@@ -1883,6 +1891,7 @@ Subject:
                 - pooled
                 - hermaphrodite
                 - intersex
+                - null
             nullable: true
             description: Biological sex of subject
             title: Sex
@@ -2501,6 +2510,7 @@ PCRTarget:
                 - TRB
                 - TRD
                 - TRG
+                - null
             nullable: true
             description: >
                 Designation of the target locus. Note that this field uses a controlled vocubulary that is meant to
@@ -2860,6 +2870,7 @@ SequencingData:
             enum:
                 - fasta
                 - fastq
+                - null
             x-airr:
                 miairr: important
                 adc-query-support: true
@@ -2889,6 +2900,7 @@ SequencingData:
                 - forward
                 - reverse
                 - mixed
+                - null
             x-airr:
                 miairr: important
                 adc-query-support: true
@@ -2930,6 +2942,7 @@ SequencingData:
                 - forward
                 - reverse
                 - mixed
+                - null
             x-airr:
                 miairr: important
                 adc-query-support: true
@@ -3455,6 +3468,7 @@ Rearrangement:
                 - TRB
                 - TRD
                 - TRG
+                - null
             nullable: true
             description: >
                 Gene locus (chain type). Note that this field uses a controlled vocabulary that is meant to provide a
@@ -4587,6 +4601,7 @@ Cell:
             enum:
                 - "flow cytometry"
                 - "single-cell transcriptome"
+                - null
             nullable: true
             description: >
                 Keyword describing the methodology used to assess expression. This values for this field MUST 
@@ -4883,6 +4898,7 @@ ReceptorReactivity:
                 - MHC-I
                 - MHC-II
                 - MHC-nonclassical
+                - null
             description: Class of MHC molecule, only present for MHC:x ligand types
             example: MHC-II
         mhc_gene_1:
