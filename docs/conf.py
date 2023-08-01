@@ -323,8 +323,12 @@ def parse_schema(spec, schema):
                     example = 'id: %s, label: %s' % (example['id'], example['label'])
                 elif xairr['format'] == 'controlled vocabulary':
                     if attr.get('enum', None) is not None:
+                        if None in attr['enum']:
+                            attr['enum'].remove(None)
                         data_format = 'Controlled vocabulary: %s' % ', '.join(attr['enum'])
                     elif attr.get('items', None) is not None:
+                        if None in attr['items']['enum']:
+                            attr['items']['enum'].remove(None)
                         data_format = 'Controlled vocabulary: %s' % ', '.join(attr['items']['enum'])
         else:
             nullable = True
