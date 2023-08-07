@@ -441,7 +441,7 @@ GermlineSet:
         chromosome:
         sequence_type: V
         functional: true
-        inference_type: Rearranged
+        inference_type: rearranged_only
         species:
           id: NCBITAXON:10090
           label: Mus musculus
@@ -602,7 +602,7 @@ GermlineSet:
         chromosome:
         sequence_type: V
         functional: true
-        inference_type: Rearranged
+        inference_type: rearranged_only
         species:
           id: NCBITAXON:10090
           label: Mus musculus
