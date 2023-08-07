@@ -456,7 +456,7 @@ GermlineSet:
     gene_designation: null
     gene_end: null
     gene_start: null
-    inference_type: Rearranged only
+    inference_type: rearranged_only
     lab_address: Birkbeck College, University of London, Malet Street, London
     label: IGHV-2DBF
     leader_1_end: null
@@ -619,7 +619,7 @@ GermlineSet:
     gene_designation: null
     gene_end: null
     gene_start: null
-    inference_type: Rearranged only
+    inference_type: rearranged_only
     lab_address: Birkbeck College, University of London, Malet Street, London
     label: IGHV-2ETO
     leader_1_end: null
