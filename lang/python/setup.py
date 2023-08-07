@@ -2,7 +2,6 @@
 AIRR community formats for adaptive immune receptor data.
 """
 import sys
-import os
 import versioneer
 
 try:
