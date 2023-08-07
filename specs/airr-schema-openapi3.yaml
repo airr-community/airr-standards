@@ -294,8 +294,8 @@ Attributes:
             description: Field format. If null then assume the full range of the field data type
             enum:
                 - ontology
-                - controlled vocabulary
-                - physical quantity
+                - controlled_vocabulary
+                - physical_quantity
                 - CURIE
         ontology:
             type: object
@@ -543,8 +543,8 @@ RearrangedSequence:
             type: string
             nullable: false
             enum:
-                - direct sequencing
-                - inference from repertoire
+                - direct_sequencing
+                - inference_from_repertoire
             description: >
                 The type of observation from which this sequence was drawn, such as direct sequencing or 
                 inference from repertoire sequencing data.
@@ -924,9 +924,9 @@ AlleleDescription:
             type: string
             nullable: true
             enum:
-                - Genomic and rearranged
-                - Genomic only
-                - Rearranged only
+                - genomic_and_rearranged
+                - genomic_only
+                - rearranged_only
                 - null
             description: Type of inference(s) from which this gene sequence was inferred
             x-airr:
@@ -4599,8 +4599,8 @@ Cell:
         expression_study_method:
             type: string
             enum:
-                - "flow cytometry"
-                - "single-cell transcriptome"
+                - flow_cytometry
+                - single-cell_transcriptome
                 - null
             nullable: true
             description: >
@@ -4837,8 +4837,8 @@ ReceptorReactivity:
             type: string
             nullable: false
             enum:
-                - MHC:peptide
-                - MHC:non-peptide
+                - "MHC:peptide"
+                - "MHC:non-peptide"
                 - protein
                 - peptide
                 - non-peptidic
@@ -4950,18 +4950,18 @@ ReceptorReactivity:
                 - ITC
                 - ELISA
                 - cytometry
-                - biological activity
+                - biological_activity
             description: The methodology used to assess expression (assay implemented in experiment)
         reactivity_readout:
             type: string
             nullable: false
             enum:
-                - binding strength
-                - cytokine release
-                - dissociation constant KD
-                - on rate
-                - off rate
-                - pathogen inhibition
+                - binding_strength
+                - cytokine_release
+                - dissociation_constant_kd
+                - on_rate
+                - off_rate
+                - pathogen_inhibition
             description: Reactivity measurement read-out
             example: cytokine release
         reactivity_value:
