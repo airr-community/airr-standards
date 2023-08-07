@@ -1325,7 +1325,7 @@ Genotype:
             example: IGH
             x-airr:
                 adc-query-support: true
-                format: controlled vocabulary
+                format: controlled_vocabulary
                 miairr: essential
         documented_alleles:
             type: array
@@ -1363,7 +1363,7 @@ Genotype:
             example: repertoire_sequencing
             x-airr:
                 adc-query-support: true
-                format: controlled vocabulary
+                format: controlled_vocabulary
 
 # Documented Allele
 # This describes a 'known' allele found in a genotype
@@ -1503,7 +1503,7 @@ MHCGenotype:
             x-airr:
                 miairr: essential
                 adc-query-support: true
-                format: controlled vocabulary
+                format: controlled_vocabulary
         mhc_alleles:
             type: array
             nullable: true
@@ -1784,7 +1784,7 @@ Study:
                 set: 1
                 subset: study
                 name: Keywords for study
-                format: controlled vocabulary
+                format: controlled_vocabulary
         adc_publish_date:
             type: string
             format: date-time
@@ -1902,7 +1902,7 @@ Subject:
                 set: 1
                 subset: subject
                 name: Sex
-                format: controlled vocabulary
+                format: controlled_vocabulary
         age_min:
             type: number
             nullable: true
@@ -2524,7 +2524,7 @@ PCRTarget:
                 set: 3
                 subset: process (nucleic acid [pcr])
                 name: Target locus for PCR
-                format: controlled vocabulary
+                format: controlled_vocabulary
         forward_pcr_primer_target_location:
             type: string
             nullable: true
