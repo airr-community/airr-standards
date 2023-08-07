@@ -2116,7 +2116,7 @@ Diagnosis:
                 set: 1
                 subset: diagnosis and intervention
                 name: Length of disease
-                format: physical quantity
+                format: physical_quantity
         disease_stage:
             type: string
             nullable: true
@@ -2581,7 +2581,7 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Target substrate
-                format: controlled vocabulary
+                format: controlled_vocabulary
         template_quality:
             type: string
             nullable: true
@@ -2651,7 +2651,7 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Library generation method
-                format: controlled vocabulary
+                format: controlled_vocabulary
         library_generation_protocol:
             type: string
             nullable: true
@@ -2714,7 +2714,7 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Complete sequences
-                format: controlled vocabulary
+                format: controlled_vocabulary
         physical_linkage:
             type: string
             enum:
@@ -2740,7 +2740,7 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Physical linkage of different rearrangements
-                format: controlled vocabulary
+                format: controlled_vocabulary
 
 # 1-to-n relationship between a NucleicAcidProcessing and SequencingRun with resultant raw sequence file(s)
 SequencingRun:
@@ -2877,7 +2877,7 @@ SequencingData:
                 set: 4
                 subset: data (raw reads)
                 name: Raw sequencing data file type
-                format: controlled vocabulary
+                format: controlled_vocabulary
         filename:
             type: string
             nullable: true
@@ -2907,7 +2907,7 @@ SequencingData:
                 set: 4
                 subset: data (raw reads)
                 name: Read direction
-                format: controlled vocabulary
+                format: controlled_vocabulary
         read_length:
             type: integer
             nullable: true
@@ -2949,7 +2949,7 @@ SequencingData:
                 set: 4
                 subset: data (raw reads)
                 name: Paired read direction
-                format: controlled vocabulary
+                format: controlled_vocabulary
         paired_read_length:
             type: integer
             nullable: true
@@ -3479,7 +3479,7 @@ Rearrangement:
             x-airr:
                 adc-query-support: true
                 name: Gene locus
-                format: controlled vocabulary
+                format: controlled_vocabulary
         v_call:
             type: string
             nullable: true

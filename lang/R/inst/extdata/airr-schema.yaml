@@ -1245,7 +1245,7 @@ Genotype:
                 miairr: essential
                 nullable: false
                 adc-query-support: true
-                format: controlled vocabulary
+                format: controlled_vocabulary
         documented_alleles:
             type: array
             description: List of alleles documented in reference set(s)
@@ -1278,7 +1278,7 @@ Genotype:
             example: repertoire_sequencing
             x-airr:
                 adc-query-support: true
-                format: controlled vocabulary
+                format: controlled_vocabulary
                 nullable: true
 
 # Documented Allele
@@ -1412,7 +1412,7 @@ MHCGenotype:
                 miairr: essential
                 nullable: false
                 adc-query-support: true
-                format: controlled vocabulary
+                format: controlled_vocabulary
         mhc_alleles:
             type: array
             description: List of MHC alleles of the indicated mhc_class identified in an individual
@@ -1675,7 +1675,7 @@ Study:
                 set: 1
                 subset: study
                 name: Keywords for study
-                format: controlled vocabulary
+                format: controlled_vocabulary
         adc_publish_date:
             type: string
             format: date-time
@@ -1802,7 +1802,7 @@ Subject:
                 set: 1
                 subset: subject
                 name: Sex
-                format: controlled vocabulary
+                format: controlled_vocabulary
         age_min:
             type: number
             description: Specific age or lower boundary of age range.
@@ -2014,7 +2014,7 @@ Diagnosis:
                 set: 1
                 subset: diagnosis and intervention
                 name: Length of disease
-                format: physical quantity
+                format: physical_quantity
         disease_stage:
             type: string
             description: Stage of disease at current intervention
@@ -2422,7 +2422,7 @@ PCRTarget:
                 set: 3
                 subset: process (nucleic acid [pcr])
                 name: Target locus for PCR
-                format: controlled vocabulary
+                format: controlled_vocabulary
         forward_pcr_primer_target_location:
             type: string
             description: Position of the most distal nucleotide templated by the forward primer or primer mix
@@ -2479,7 +2479,7 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Target substrate
-                format: controlled vocabulary
+                format: controlled_vocabulary
         template_quality:
             type: string
             description: Description and results of the quality control performed on the template material
@@ -2549,7 +2549,7 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Library generation method
-                format: controlled vocabulary
+                format: controlled_vocabulary
         library_generation_protocol:
             type: string
             description: Description of processes applied to substrate to obtain a library that is ready for sequencing
@@ -2612,7 +2612,7 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Complete sequences
-                format: controlled vocabulary
+                format: controlled_vocabulary
         physical_linkage:
             type: string
             enum:
@@ -2638,7 +2638,7 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Physical linkage of different rearrangements
-                format: controlled vocabulary
+                format: controlled_vocabulary
 
 # 1-to-n relationship between a NucleicAcidProcessing and SequencingRun with resultant raw sequence file(s)
 SequencingRun:
@@ -2775,7 +2775,7 @@ SequencingData:
                 set: 4
                 subset: data (raw reads)
                 name: Raw sequencing data file type
-                format: controlled vocabulary
+                format: controlled_vocabulary
         filename:
             type: string
             description: File name for the raw reads or sequences. The first file in paired-read sequencing.
@@ -2805,7 +2805,7 @@ SequencingData:
                 set: 4
                 subset: data (raw reads)
                 name: Read direction
-                format: controlled vocabulary
+                format: controlled_vocabulary
         read_length:
             type: integer
             description: Read length in bases for the first file in paired-read sequencing
@@ -2847,7 +2847,7 @@ SequencingData:
                 set: 4
                 subset: data (raw reads)
                 name: Paired read direction
-                format: controlled vocabulary
+                format: controlled_vocabulary
         paired_read_length:
             type: integer
             description: Read length in bases for the second file in paired-read sequencing
@@ -3349,7 +3349,7 @@ Rearrangement:
                 nullable: true
                 adc-query-support: true
                 name: Gene locus
-                format: controlled vocabulary
+                format: controlled_vocabulary
         v_call:
             type: string
             description: >
