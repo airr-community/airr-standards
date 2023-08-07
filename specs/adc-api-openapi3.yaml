@@ -134,8 +134,8 @@ components:
                 V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHV4).
               example: IGHV4
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: V gene subgroup
@@ -145,8 +145,8 @@ components:
                 V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHV4-59).
               example: IGHV4-59
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: V gene
@@ -156,8 +156,8 @@ components:
                 D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHD3).
               example: IGHD3
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: D gene subgroup
@@ -167,8 +167,8 @@ components:
                 D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHD3-10).
               example: IGHD3-10
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: D gene
@@ -178,8 +178,8 @@ components:
                 J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHJ4).
               example: IGHJ4
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: J gene subgroup
@@ -189,8 +189,8 @@ components:
                 J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHJ4).
               example: IGHJ4
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: J gene
@@ -200,8 +200,8 @@ components:
                 C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHG1).
               example: IGHG1
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: C gene subgroup
@@ -211,8 +211,8 @@ components:
                 C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHG1).
               example: IGHG1
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: C gene
@@ -246,8 +246,8 @@ components:
                 V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHV4).
               example: IGHV4
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: V gene subgroup
@@ -257,8 +257,8 @@ components:
                 V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHV4-59).
               example: IGHV4-59
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: V gene
@@ -268,8 +268,8 @@ components:
                 D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHD3).
               example: IGHD3
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: D gene subgroup
@@ -279,8 +279,8 @@ components:
                 D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHD3-10).
               example: IGHD3-10
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: D gene
@@ -290,8 +290,8 @@ components:
                 J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHJ4).
               example: IGHJ4
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: J gene subgroup
@@ -301,8 +301,8 @@ components:
                 J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHJ4).
               example: IGHJ4
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: J gene
@@ -312,8 +312,8 @@ components:
                 C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHG1).
               example: IGHG1
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: C gene subgroup
@@ -323,8 +323,8 @@ components:
                 C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
                 the relevant gene nomenclature should be followed (e.g., IGHG1).
               example: IGHG1
+              nullable: true
               x-airr:
-                nullable: true
                 adc-api-optional: false
                 adc-query-support: true
                 name: C gene
