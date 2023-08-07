@@ -65,11 +65,7 @@ class TestInferface(unittest.TestCase):
             with self.assertWarns(DeprecationWarning, msg='repertoire_template(): failed to issue DeprecationWarning'):
                 rep = airr.repertoire_template()
             airr.write_airr(self.output_blank, {'Repertoire': rep}, validate=False, debug=True)
-            # rep = airr.schema.RepertoireSchema.template()
-            # result = airr.schema.RepertoireSchema.validate_object(rep)
-            # self.assertTrue(result, 'repertoire_template(): repertoire template failed validation')
         except:
-            # self.assertTrue(False, 'repertoire_template(): repertoire template failed validation')
             pass
 
     # @unittest.skip('-> schema.template(): skipped\n')
@@ -78,7 +74,6 @@ class TestInferface(unittest.TestCase):
         try:
             data = airr.schema.RepertoireSchema.template()
             valid = airr.schema.RepertoireSchema.validate_object(data)
-            # airr.write_airr(self.output_blank, {'Repertoire': data}, validate=False, debug=True)
             self.assertTrue(valid, 'Schema.template("Repertoire"): repertoire template failed validation')
         except:
             self.assertTrue(False, 'Schema.template("Repertoire"): repertoire template failed validation')
