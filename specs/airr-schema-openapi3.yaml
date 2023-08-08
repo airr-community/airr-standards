@@ -4689,6 +4689,18 @@ CellExpression:
                 miairr: defined
                 adc-query-support: true
                 name: Data processing for cell
+        property_type:
+            type: string
+            description: >
+                Keyword describing the property type and detection method used to measure the property value. The following keywords
+                are recommended if condsidered appropriate but custom methods can be specified: "gene_expression_count",
+                "surface_protein_expression_count", "antigen_specific_receptor_expression_count".
+            nullable: true
+            title: Property type and detection method
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Property type and detection method
         property:
             $ref: '#/Ontology'
             nullable: true
