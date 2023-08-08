@@ -4402,6 +4402,7 @@ CellExpression:
                 Keyword describing the property type and detection method used to measure the property value. The following keywords
                 are recommended if condsidered appropriate but custom methods can be specified: "gene_expression_count",
                 "surface_protein_expression_count", "antigen_specific_receptor_expression_count".
+            title: Property type and detection method
             x-airr:
                 miairr: defined
                 nullable: true
