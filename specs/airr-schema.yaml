@@ -4406,7 +4406,7 @@ CellExpression:
                 miairr: defined
                 nullable: true
                 adc-query-support: true
-                name: Property detection method
+                name: Property type and detection method
         property:
             $ref: '#/Ontology'
             title: Property information
