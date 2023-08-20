@@ -2939,7 +2939,7 @@ DataProcessing:
                 name: Paired read assembly
         quality_thresholds:
             type: string
-            description: How sequences were removed from (4) based on base quality scores
+            description: How/if sequences were removed from (4) based on base quality scores
             title: Quality thresholds
             example: Average Phred score >=20
             x-airr:
