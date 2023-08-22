@@ -4813,6 +4813,15 @@ Cell:
                 miairr: defined
                 adc-query-support: true
                 name: Cell-associated receptors
+        reactivity_measurements:
+            type: array
+            nullable: true
+            description: >
+                Array of reactivity measurement identifiers for this Cell object
+            title: Reactivity measurements
+            items:
+                type: string
+            example: [id1, id2]
         repertoire_id:
             type: string
             nullable: true
@@ -4983,7 +4992,7 @@ Receptor:
         receptor_id:
             type: string
             nullable: false
-            description: ID of the current Receptor object, unique within the local repository.
+            description: ID of the current Receptor object, globally unique.
             title: Receptor ID
             example: TCR-MM-012345
             x-airr:
@@ -5067,14 +5076,18 @@ Receptor:
         reactivity_measurements:
             type: array
             nullable: true
-            description: Records of reactivity measurement
+            description: >
+                Array of reactivity measurement identifiers for this Receptor object
+            title: Reactivity measurements
             items:
-                $ref: '#/ReceptorReactivity'
+                type: string
+            example: [id1, id2]
 
 
 ReceptorReactivity:
     type: object
     required:
+        - receptor_reactivity_id
         - ligand_type
         - antigen_type
         - antigen
@@ -5083,6 +5096,14 @@ ReceptorReactivity:
         - reactivity_value
         - reactivity_unit
     properties:
+        receptor_reactivity_id:
+            type: string
+            nullable: false
+            description: ID of this ReceptorReactivity object, globally unique.
+            title: Receptor Reactivity ID
+            x-airr:
+                identifier: true
+                adc-query-support: true
         ligand_type:
             type: string
             nullable: false
@@ -5133,6 +5154,13 @@ ReceptorReactivity:
                     top_node:
                         id: NCBITAXON:1
                         label: root
+        peptide_aa_string:
+            type: string
+            nullable: true
+            description: AA string of the peptide
+            title: Peptide AA String
+            x-airr:
+                adc-query-support: true
         peptide_start:
             type: integer
             nullable: true
@@ -5201,6 +5229,7 @@ ReceptorReactivity:
                 - ELISA
                 - cytometry
                 - biological_activity
+                - MHC_peptide_multimer
             description: The methodology used to assess expression (assay implemented in experiment)
         reactivity_readout:
             type: string
@@ -5212,6 +5241,7 @@ ReceptorReactivity:
                 - on_rate
                 - off_rate
                 - pathogen_inhibition
+                - barcode_count
             description: Reactivity measurement read-out
             example: cytokine release
         reactivity_value:
