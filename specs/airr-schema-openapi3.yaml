@@ -4891,6 +4891,12 @@ ReceptorReactivity:
             type: integer
             nullable: true
             description: End position of the peptide within the reference protein sequence
+        peptide_sequence:
+            type: string
+            nullable: true
+            description: >
+              The actual peptide sequence against which the receptor reactivity was measured. This field should be
+              used as a convenience for antigens of antigen_type `protein` or `peptide`.
         mhc_class:
             type: string
             nullable: true
