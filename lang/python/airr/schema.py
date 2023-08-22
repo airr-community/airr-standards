@@ -5,6 +5,7 @@ AIRR Data Representation Schema
 # Imports
 import sys
 from collections import OrderedDict
+from typing import Union
 
 import yaml
 import yamlordereddictloader
@@ -43,7 +44,7 @@ class Schema:
     _to_bool_map.update({x: False for x in false_values + [0, False]})
     _from_bool_map = {k: 'T' if v else 'F' for k, v in _to_bool_map.items()}
 
-    def __init__(self, definition: str | dict):
+    def __init__(self, definition: Union[str, dict]):
         """
         Initialization
 
@@ -310,7 +311,7 @@ class Schema:
 
         return True
 
-    def validate_object(self, obj, missing=True, nonairr=True, context=None, check_required_fields=True):
+    def validate_object(self, obj, missing=True, nonairr=True, context=None, check_miairr_compliant=True):
         """
         Validate Repertoire object data against schema
 
@@ -319,7 +320,7 @@ class Schema:
           missing (bool): provides warnings for missing optional fields.
           nonairr (bool: provides warning for non-AIRR fields that cannot be validated.
           context (string): used by recursion to indicate place in object hierarchy
-          check_required_fields (bool): check if data complies with the MiAIRR required fields
+          check_miairr_compliant (bool): check if data complies with the MiAIRR required fields
 
         Returns:
           bool: True if a ValidationError exception is not raised.
@@ -366,12 +367,11 @@ class Schema:
                     is_missing_key = True
 
             # check MiAIRR keys exist
-            if xairr and xairr.get('miairr'):
-                if check_required_fields and is_missing_key:
+            if check_miairr_compliant and xairr and xairr.get('miairr') == "" and is_missing_key:
                     raise ValidationError('MiAIRR field "%s" is missing' % full_field)
 
             # check if required field
-            if check_required_fields and f in self.required and is_missing_key:
+            if check_miairr_compliant and f in self.required and is_missing_key:
                 raise ValidationError('Required field "%s" is missing' % full_field)
 
             # check if identifier field
@@ -384,9 +384,7 @@ class Schema:
                         raise ValidationError('Not-nullable identifier field "%s" is missing' % full_field)
 
             # check nullable requirements
-            if is_null:
-                if not check_required_fields:
-                    continue
+            if check_miairr_compliant and is_null:
                 if not xairr:
                     # default is true
                     continue
@@ -410,7 +408,7 @@ class Schema:
                         schema = AIRRSchema[schema_name]
                     else:
                         schema = Schema(schema_name)
-                    schema.validate_object(obj[f], missing, nonairr, full_field, check_required_fields)
+                    schema.validate_object(obj[f], missing, nonairr, full_field, check_miairr_compliant)
                 else:
                     raise ValidationError('Internal error: field "%s" in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'array':
@@ -422,7 +420,7 @@ class Schema:
                     if spec['items'].get('$ref') is not None:
                         schema_name = spec['items']['$ref'].split('/')[-1]
                         schema = Schema(schema_name)
-                        schema.validate_object(row, missing, nonairr, full_field, check_required_fields)
+                        schema.validate_object(row, missing, nonairr, full_field, check_miairr_compliant)
                     elif spec['items'].get('allOf') is not None:
                         for s in spec['items']['allOf']:
                             if s.get('$ref') is not None:
@@ -431,7 +429,7 @@ class Schema:
                                     schema = AIRRSchema[schema_name]
                                 else:
                                     schema = Schema(schema_name)
-                                schema.validate_object(row, missing, False, full_field, check_required_fields)
+                                schema.validate_object(row, missing, False, full_field, check_miairr_compliant)
                     elif spec['items'].get('enum') is not None:
                         if row not in spec['items']['enum']:
                             raise ValidationError('field "%s" has value "%s" not among possible enumeration values' % (full_field, row))
@@ -449,7 +447,7 @@ class Schema:
                             raise ValidationError('array field "%s" does not have number type: %s' % (full_field, row))
                     elif spec['items'].get('type') == 'object':
                         sub_schema = Schema({'properties': spec['items'].get('properties')})
-                        sub_schema.validate_object(row, missing, nonairr, context, check_required_fields)
+                        sub_schema.validate_object(row, missing, nonairr, context, check_miairr_compliant)
                     else:
                         raise ValidationError(
                             'Internal error: array field "%s" in schema not handled by validation. File a bug report.' % full_field)
@@ -501,7 +499,7 @@ class Schema:
         def _reference(ref):
             x = ref.split('/')[-1]
             schema = AIRRSchema.get(x, Schema(x))
-            return (schema.template())
+            return schema.template()
 
         # Get default value
         def _default(spec):
@@ -533,7 +531,7 @@ class Schema:
             else:
                 object[k] = None
 
-        return (object)
+        return object
 
 
 # Preloaded schema
