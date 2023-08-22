@@ -10,7 +10,7 @@ Version 1.5.0: August 31, 2023
 
 General Schema Changes:
 
-1. Fixed synchronization errors between the OpenAPI v2 and v2 versions of the
+1. Fixed synchronization errors between the OpenAPI v2 and v3 versions of the
    AIRR Schema (airr-schema.yaml and airr-schema-openapi3.yaml).
 2. Set the default value of ``x-airr.miarr`` attributes to ``defined``.
 3. Converted all ``x-airr.format`` attribute values to snake_case, which
@@ -40,7 +40,7 @@ Germline and Genotype Schema:
    ``allele_similarity_cluster_member_id`` fields to ``AlleleDescription``.
 6. Moved the nested objects ``DocumentedAllele``, ``UndocumentedAllele``, and
    ``DeletedGenes`` out of ``Genotype`` and defined them as top-level objects
-   references by the ``documented_alleles``, ``undocumented_alleles``,and
+   references by the ``documented_alleles``, ``undocumented_alleles``, and
    ``deleted_genes`` fields, respectively.
 7. Moved the nested object ``MHCAllele`` out of ``MHCGenotype`` and defined
    it as a top-level object referenced by the ``mhc_alleles`` field.
