@@ -1,16 +1,13 @@
 .. _ReceptorSchema:
 
-Receptor Schema (Experimental)
+Receptor Schema
 ==============================
-
-General
--------
 
 The purpose of the ``Receptor`` object is to represent reactivity data
 of actual *Receptors*, i.e., Ig or TCR, either directly or indirectly.
 To this end, the ``Receptor`` object has two main sections:
 
-1. The ``receptor_*`` properties: These properties describe the receptor
+1. ``receptor_*`` properties: These properties describe the receptor
    as an abstract and global concept, i.e., the actual Ig/TCR protein
    complex MAY or MAY NOT have been observed in the current study.
    However, the Rearrangements encoding the respective chains MUST
@@ -18,7 +15,7 @@ To this end, the ``Receptor`` object has two main sections:
    (see below). This allows data curators to provide potential
    reactivities of a potential receptor by referencing to its entry in
    an external database (e.g., IEDB).
-2. The ``reactivity_measurements`` array: This structure contains
+2. ``reactivity_measurement`` array: This structure contains
    one or more entries, describing reactivities of the receptor that
    have been observed in the current study.
 
@@ -75,11 +72,11 @@ Annotation guidelines
 
 Reactivity information SHOULD be provided if it was either directly
 recorded in the current study or is indirectly available in a public
-database, where it can be linked. If no information about the receptor,
+database, where it can be linked. If no more information about the receptor,
 besides the translated amino acid sequence of the associated chains is
 available, the respective object MAY still be created if the curator
 considers this information to be beneficial, e.g., if there is some
-evidence (surface expression, reaction to superantigens) that the
+evidence (surface expression, reaction to superantigens) showing the
 receptor is functional and present on the surface. In the absence of any
 such data, ``Receptor`` objects SHOULD NOT be created.
 
@@ -132,6 +129,62 @@ Receptor Fields
       - {{ field.Attributes }}
       - {{ field.Definition | trim }}
     {%- endfor %}
+
+
+Reactivity Measurement Fields
+-----------------------------
+
+A ``reactivity_measurement`` array records the experimental design and result
+for what a researcher measured or observed for the reactivity of target
+``Receptor``. Specifically, a receptor may have multiple reactivity
+measurement records, i.e. under a ``Receptor`` object there may be multiple
+measurement sets within the ``reactivity_measurement`` array. All properties
+within one measurement set are specific to a single reactivity measurement
+record so that target receptors could be acquired by searching for the
+appropriate ``reactivity_measurement`` fields. The specification of these
+fields are all optional, which defines that there are no requirements for
+column appearing in the TSV. Besides that, regarding the variety of structure
+interaction between epitope and receptors of the immune system (antibody, TCR
+and MHC), several fields are nullable by assigning an empty string as the
+value.
+
+:download:`Download as TSV <../_downloads/ReactivityMeasurement.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in ReactivityMeasurement_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+Within ``reactivity_measurement`` array, it is expected that
+``antigen_source_species``, ``peptide``, ``peptide_start`` and ``peptide_end``
+properties have an inseparable relationship with ``antigen_type``. They only
+present a valid value when ``antigen_type`` is **protein** or **peptide**,
+otherwise they are NULL value. In the former case, ``peptide`` should present
+the actual peptide sequence, and ``antigen`` field would require the reference
+protein sequence of the experiment-measured peptide, to which ``peptide``
+refers. In the meanwhile, ``peptide_start`` and ``peptide_end`` indicate the
+location of the actual tested peptide in reference sequence. There is a unique
+mapping between ``peptide`` and reference sequence acquired in ``antigen``
+field. For example, peptide "RNVDENANANSAVKN" and "PNANPNVDPNANPNV" were used
+to assess receptor reactivity, in measurement records they are all of same
+antigen, Circumsporozoite protein (NF54), yet located in different sections,
+the former one from 291 to 305 while the one latter from 105 to 119. The same
+issue can also be expected in ``mhc_*`` properties. These fields specifically
+presents for MHC:x ligand types, i.e. if ``ligand_type`` is **MHC:peptide**
+or **MHC:non-peptide**, ``mhc_*`` fields would capture the MHC class and
+molecule of epitope and list the alleles identified in an individual. If
+requiring ``reactivity_measurement`` for antibody/immunoglobulin, the
+``mhc_*`` fields shoule be NULL value.
 
 
 .. === References and Links ===
