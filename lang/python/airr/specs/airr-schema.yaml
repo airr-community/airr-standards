@@ -1432,6 +1432,7 @@ MHCGenotype:
                 miairr: important
                 adc-query-support: true
 
+
 # Allele of an MHC gene
 MHCAllele:
     type: object
