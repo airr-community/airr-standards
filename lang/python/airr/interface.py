@@ -224,7 +224,7 @@ def validate_rearrangement(filename, debug=False):
 
 #### AIRR Data Model ####
 
-def read_airr(filename, format=None, validate=False, model=True, debug=False, check_required_fields=True):
+def read_airr(filename, format=None, validate=False, model=True, debug=False, check_miairr_compliant=True):
     """
     Load an AIRR Data file
 
@@ -260,7 +260,7 @@ def read_airr(filename, format=None, validate=False, model=True, debug=False, ch
     if validate:
         if debug:  sys.stderr.write('Validating: %s\n' % filename)
         try:
-            valid = validate_airr(data, model=model, debug=debug, check_required_fields=check_required_fields)
+            valid = validate_airr(data, model=model, debug=debug, check_miairr_compliant=check_miairr_compliant)
         except ValidationError as e:
             if debug:  sys.stderr.write('%s failed validation\n' % filename)
             raise ValidationError(e)
@@ -269,7 +269,7 @@ def read_airr(filename, format=None, validate=False, model=True, debug=False, ch
     return data
 
 
-def validate_airr(data, model=True, debug=False, check_required_fields=True):
+def validate_airr(data, model=True, debug=False, check_miairr_compliant=True):
     """
     Validates an AIRR Data file
 
@@ -319,7 +319,7 @@ def validate_airr(data, model=True, debug=False, check_required_fields=True):
         # Validate each record in array
         for i, record in obj_iter:
             try:
-                schema.validate_object(record, check_miairr_compliant=check_required_fields)
+                schema.validate_object(record, check_miairr_compliant=check_miairr_compliant)
             except ValidationError as e:
                 valid = False
                 if debug:  sys.stderr.write('%s at array position %s with validation error: %s\n' % (k, i, e))
@@ -330,7 +330,7 @@ def validate_airr(data, model=True, debug=False, check_required_fields=True):
     return valid
 
 
-def write_airr(filename, data, format=None, info=None, validate=False, model=True, debug=False, check_required_fields=True):
+def write_airr(filename, data, format=None, info=None, validate=False, model=True, debug=False, check_miairr_compliant=True):
     """
     Write an AIRR Data file
 
@@ -358,7 +358,7 @@ def write_airr(filename, data, format=None, info=None, validate=False, model=Tru
     if validate:
         if debug:  sys.stderr.write('Validating: %s\n' % filename)
         try:
-            valid = validate_airr(data, model=model, debug=debug, check_required_fields=check_required_fields)
+            valid = validate_airr(data, model=model, debug=debug, check_miairr_compliant=check_miairr_compliant)
         except ValidationError as e:
             if debug:  sys.stderr.write(e)
             raise ValidationError(e)

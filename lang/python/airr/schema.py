@@ -449,8 +449,7 @@ class Schema:
                         sub_schema = Schema({'properties': spec['items'].get('properties')})
                         sub_schema.validate_object(row, missing, nonairr, context, check_miairr_compliant)
                     else:
-                        raise ValidationError(
-                            'Internal error: array field "%s" in schema not handled by validation. File a bug report.' % full_field)
+                        raise ValidationError('Internal error: array field "%s" in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'object':
                 # right now all arrays of objects use $ref
                 raise ValidationError('Internal error: field "%s" in schema not handled by validation. File a bug report.' % full_field)
@@ -469,9 +468,7 @@ class Schema:
                     if not isinstance(obj[f], float) and not isinstance(obj[f], int):
                         raise ValidationError('Field "%s" does not have number type: %s' % (full_field, obj[f]))
                 else:
-                    raise ValidationError(
-                        'Internal error: Field "%s" with type %s in schema not handled by validation. File a bug report.' % (
-                        full_field, field_type))
+                    raise ValidationError('Internal error: Field "%s" with type %s in schema not handled by validation. File a bug report.' % (full_field, field_type))
 
                 # check basic types enums
                 enums = spec.get('enum')
