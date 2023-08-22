@@ -1575,21 +1575,6 @@ SubjectGenotype:
             $ref: '#/MHCGenotypeSet'
             description: MHC genotype set for this subject.
 
-
-GenotypeSets:
-    discriminator:
-        propertyName: AIRR
-    type: object
-    properties:
-        receptor_genotype_set:
-            nullable: true
-            $ref: '#/GenotypeSet'
-            description: Immune receptor genotype set for this subject.
-        mhc_genotype_set:
-            nullable: true
-            $ref: '#/MHCGenotypeSet'
-            description: MHC genotype set for this subject.
-
 #
 # Repertoire metadata schema
 #

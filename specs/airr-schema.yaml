@@ -1954,27 +1954,8 @@ Subject:
                 nullable: false
                 adc-query-support: true
         genotype:
-<<<<<<< HEAD
-            $ref: '#/GenotypeSets'
-            title: GenotypeSets
-            description: Genotype for this subject, if known
-
-
-GenotypeSets:
-    discriminator: AIRR
-    type: object
-    properties:
-        receptor_genotype_set:
-            $ref: '#/GenotypeSet'
-            description: Immune receptor genotype set for this subject.
-        mhc_genotype_set:
-            $ref: '#/MHCGenotypeSet'
-            description: MHC genotype set for this subject.
-
-=======
             $ref: '#/SubjectGenotype'
             title: SubjectGenotype
->>>>>>> fb059255a89d08bc86e70a6411e6f713e7e12f29
 
 # 1-to-n relationship between a subject and its diagnoses
 Diagnosis:
