@@ -4631,6 +4631,13 @@ ReceptorReactivity:
             description: End position of the peptide within the reference protein sequence
             x-airr:
                 nullable: true
+        peptide_sequence:
+            type: string
+            description: >
+                The actual peptide sequence against which the receptor reactivity was measured. This field should be
+                used as a convenience for antigens of antigen_type `protein` or `peptide`.
+            x-airr:
+                nullable: true
         mhc_class:
             type: string
             enum:
