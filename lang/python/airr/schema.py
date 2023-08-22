@@ -384,7 +384,9 @@ class Schema:
                         raise ValidationError('Not-nullable identifier field "%s" is missing' % full_field)
 
             # check nullable requirements
-            if check_miairr_compliant and is_null:
+            if is_null:
+                if not check_miairr_compliant:
+                    continue
                 if not xairr:
                     # default is true
                     continue
