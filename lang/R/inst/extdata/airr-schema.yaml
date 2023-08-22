@@ -4879,6 +4879,7 @@ ReceptorReactivity:
             description: AA string of the peptide
             title: Peptide AA String
             x-airr:
+                nullable: true
                 adc-query-support: true
         peptide_start:
             type: integer
