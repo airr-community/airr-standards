@@ -4400,9 +4400,11 @@ CellExpression:
         property_type:
             type: string
             description: >
-                Keyword describing the property type and detection method used to measure the property value. 
-                The following keywords are recommended, but custom property types are also valid: "rna_umi",
-                "surface_protein_barcode", and "antigen_barcode".
+                Keyword describing the property type and detection method used to measure the property value.
+                The following keywords are recommended, but custom property types are also valid:
+                "mrna_expression_by_read_count",
+                "protein_expression_by_fluorescence_intensity", "antigen_bait_binding_by_fluorescence_intensity",
+                "protein_expression_by_dna_barcode_count" and "antigen_bait_binding_by_dna_barcode_count".
             title: Property type and detection method
             x-airr:
                 miairr: defined
