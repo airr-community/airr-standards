@@ -102,6 +102,7 @@
                             {
                                 "mhc_genotype_id": "unique",
                                 "mhc_class": "MHC-I",
+                                "mhc_genotyping_method": "pcr_low_resolution",
                                 "mhc_alleles": [
                                     {
                                         "allele_designation": "01:01",
@@ -503,6 +504,7 @@
         }
     ],
 
+
     "GermlineSet": [{
         "germline_set_id": "OGRDB:G00007",
         "author": "William Lees",
@@ -530,8 +532,8 @@
                 "release_date": "24-Nov-2021",
                 "release_description": "First release",
                 "label": "IGHV-2DBF",
-                "sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGATGGTAGTGGCACCTACTATCTGGACTCCTTGAAGAGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
-                "coding_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                "sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                "coding_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
                 "aliases": [
                     "watson_et_al:CAST_EiJ_IGHV5-3"
                 ],
@@ -539,7 +541,7 @@
                 "chromosome": null,
                 "sequence_type": "V",
                 "functional": true,
-                "inference_type": "Rearranged only",
+                "inference_type": "rearranged_only",
                 "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
                 "species_subgroup": "CAST_EiJ",
                 "species_subgroup_type": "strain",
@@ -561,17 +563,19 @@
                     {
                         "sequence_delineation_id": "1",
                         "delineation_scheme": "IMGT",
+                        "aligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                        "unaligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
                         "fwr1_start": 1,
-                        "fwr1_end": 78,
-                        "cdr1_start": 79,
-                        "cdr1_end": 114,
-                        "fwr2_start": 115,
-                        "fwr2_end": 165,
-                        "cdr2_start": 166,
-                        "cdr2_end": 195,
-                        "fwr3_start": 196,
-                        "fwr3_end": 312,
-                        "cdr3_start": 313,
+                        "fwr1_end": 75,
+                        "cdr1_start": 76,
+                        "cdr1_end": 110,
+                        "fwr2_start": 111,
+                        "fwr2_end": 150,
+                        "cdr2_start": 151,
+                        "cdr2_end": 160,
+                        "fwr3_start": 161,
+                        "fwr3_end": 294,
+                        "cdr3_start": 295,
                         "alignment": [
                             "1",
                             "2",
@@ -697,7 +701,7 @@
                 "release_description": "First release",
                 "label": "IGHV-2ETO",
                 "sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
-                "coding_sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCT...GGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGC......ACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGAT.........GATGATAAGTACTATAACCCATCCCTGAAG...AGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
+                "coding_sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
                 "aliases": [
                     "watson_et_al:CAST_EiJ_IGHV8-2"
                 ],
@@ -705,7 +709,7 @@
                 "chromosome": null,
                 "sequence_type": "V",
                 "functional": true,
-                "inference_type": "Rearranged only",
+                "inference_type": "rearranged_only",
                 "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
                 "species_subgroup": "CAST_EiJ",
                 "species_subgroup_type": "strain",
@@ -727,17 +731,19 @@
                     {
                         "sequence_delineation_id": "1",
                         "delineation_scheme": "IMGT",
+                        "aligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                        "unaligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
                         "fwr1_start": 1,
-                        "fwr1_end": 78,
-                        "cdr1_start": 79,
-                        "cdr1_end": 114,
-                        "fwr2_start": 115,
-                        "fwr2_end": 165,
-                        "cdr2_start": 166,
-                        "cdr2_end": 195,
-                        "fwr3_start": 196,
-                        "fwr3_end": 312,
-                        "cdr3_start": 313,
+                        "fwr1_end": 75,
+                        "cdr1_start": 76,
+                        "cdr1_end": 110,
+                        "fwr2_start": 111,
+                        "fwr2_end": 150,
+                        "cdr2_start": 151,
+                        "cdr2_end": 160,
+                        "fwr3_start": 161,
+                        "fwr3_end": 294,
+                        "cdr3_start": 295,
                         "alignment": [
                             "1",
                             "2",

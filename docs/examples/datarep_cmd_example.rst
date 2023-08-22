@@ -16,7 +16,7 @@ We've hosted a small set of example data from BioProject PRJNA338795
 (Vander Heiden et al, 2017. J Immunol.) containing both input and output of the
 example. It may be downloaded from:
 
-`Example Data <http://clip.med.yale.edu/immcantation/examples/airr_example_data.zip>`__
+`Example Data <https://clip.med.yale.edu/immcantation/examples/airr_example_data.zip>`__
 
 Walkthrough
 --------------------------------------------------------------------------------

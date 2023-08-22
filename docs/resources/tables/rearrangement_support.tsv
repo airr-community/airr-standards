@@ -4,6 +4,7 @@ Software	Version	Support	Reference
 `Alakazam <https://alakazam.readthedocs.io>`_	1.0.1	Input and output	"`Gupta & Vander Heiden et al. Bioinformatics, 2015. <https://doi.org/10.1093/bioinformatics/btv359>`_"
 `Cell Ranger <https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger>`_	4.0	Output	`10x Genomics, Inc. Pleasanton, CA USA. <https://www.10xgenomics.com>`_
 `Change-O <https://changeo.readthedocs.io>`_	0.4.2	"Input, output and conversion"	"`Gupta & Vander Heiden et al. Bioinformatics, 2015. <https://doi.org/10.1093/bioinformatics/btv359>`_"
+`compAIRR <https://https://immuneml.uio.no>`_	0.2.0	Input	"`Rognes et al. Bioinformatics, 2022. <https://doi.org/10.1093/bioinformatics/btac505>`_"
 `Decombinator <https://github.com/innate2adaptive/Decombinator>`_	4.0.1	Output	"`Oakes et al. Front Immunol, 2017. <https://doi.org/10.3389/fimmu.2017.01267>`_"
 `dowser <https://dowser.readthedocs.io>`_	0.1.0	Input	"`Hoehn et al. PLoS Comput Biol, 2022. <https://doi.org/10.1371/journal.pcbi.1009885>`_"
 `IMGT/HighV-QUEST <http://www.imgt.org/IMGT_vquest/input>`_	1.7.0	Output	"`Alamyar et al. Methods Mol Biol, 2012. <https://doi.org/10.1007/978-1-61779-842-9_32>`_"
@@ -11,6 +12,7 @@ Software	Version	Support	Reference
 `IgBLAST <https://www.ncbi.nlm.nih.gov/igblast>`_	1.11	Output	"`Ye et al. Nucleic Acids Res, 2013. <https://doi.org/10.1093/nar/gkt382>`_"
 `immunarch <https://github.com/immunomind/immunarch>`_	0.6.5	Input	`ImmunoMind Team. 2019 <http://doi.org/10.5281/zenodo.3367200>`_
 `ImmuneDB <http://immunedb.com>`_	0.24.0	Output	"`Rosenfeld et al. Front Immunol, 2018. <https://doi.org/10.3389/fimmu.2018.02107>`_"
+`immuneML <https://https://immuneml.uio.no>`_	2.0.0	Input	"`Pavlovic et al. Nat Mach Intell, 2021. <https://doi.org/10.1038/s42256-021-00413-z>`_"
 `immuneSIM <https://immuneSIM.readthedocs.io>`_	0.8.7	Output	"`Weber et al. Bioinformatics, 2020. <https://doi.org/10.1093/bioinformatics/btaa158>`_"
 `iReceptor <http://www.ireceptor.org>`_	3.0	"Input and output"	"`Corrie et al. Immunol Rev, 2018. <https://doi.org/10.1111/imr.12666>`_"
 `MiXCR <https://github.com/milaboratory/mixcr>`_	4.0	Output	"`Bolotin et al. Nat Methods, 2015. <https://doi.org/10.1038/nmeth.3364>`_"
