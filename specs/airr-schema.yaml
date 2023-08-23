@@ -331,24 +331,6 @@ Attributes:
                         label:
                             type: string
                             description: Ontology name for the top node term
-        extension:
-            type: object
-            description: >
-                Information required for MiAIRR Extensions (XTs), which specific fields that only apply under certain
-                conditions and are therefore not considered to be part of the MiAIRR core standard.
-            properties:
-                id:
-                    type: string
-                    description: Identifier of the extension
-                name:
-                    type: string
-                    description: Human-readable name of the MiAIRR extension
-                trigger_key:
-                    type: string
-                    description: AIRR Schema field that triggers the extension. This SHOULD be an enum/ontology field.
-                trigger_value:
-                    type: string
-                    description: Value in trigger_key that triggers the extension. This SHOULD be an enum/ontology field.
 
 
 # AIRR Data File
@@ -1928,11 +1910,6 @@ Subject:
                     top_node:
                         id: GAZ:00000448
                         value: geographic location
-                extension:
-                    id: MXT001
-                    name: Human Population Genetics XT
-                    trigger_key: Subject.organism.id
-                    trigger_value: 9606
         country_birth:
             $ref: '#/Ontology'
             description: Self-reported country of birth of the subject
@@ -1951,11 +1928,6 @@ Subject:
                     top_node:
                         id: GAZ:00000448
                         value: geographic location
-                extension:
-                    id: MXT001
-                    name: Human Population Genetics XT
-                    trigger_key: Subject.organism.id
-                    trigger_value: 9606
         ethnicity:
             type: string
             description: Ethnic group of subject (defined as cultural/language-based membership)
@@ -1968,11 +1940,6 @@ Subject:
                 set: 1
                 subset: subject
                 name: Ethnicity
-                extension:
-                    id: MXT001
-                    name: Human Population Genetics XT
-                    trigger_key: Subject.organism.id
-                    trigger_value: 9606
         race:
             type: string
             description: Racial group of subject (as defined by NIH)
@@ -1985,11 +1952,6 @@ Subject:
                 set: 1
                 subset: subject
                 name: Race
-                extension:
-                    id: MXT001
-                    name: Human Population Genetics XT
-                    trigger_key: Subject.organism.id
-                    trigger_value: 9606
         strain_name:
             type: string
             description: Non-human designation of the strain or breed of animal used
@@ -2307,11 +2269,6 @@ Sample:
                     top_node:
                         id: GAZ:00000448
                         value: geographic location
-                extension:
-                    id: MXT001
-                    name: Human Population Genetics XT
-                    trigger_key: Subject.organism.id
-                    trigger_value: 9606
         biomaterial_provider:
             type: string
             description: Name and address of the entity providing the sample
