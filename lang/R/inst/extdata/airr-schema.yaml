@@ -4614,13 +4614,6 @@ ReceptorReactivity:
                     top_node:
                         id: NCBITAXON:1
                         label: root
-        peptide_aa_string:
-            type: string
-            description: AA string of the peptide
-            title: Peptide AA String
-            x-airr:
-                nullable: true
-                adc-query-support: true
         peptide_start:
             type: integer
             description: Start position of the peptide within the reference protein sequence
@@ -4631,13 +4624,14 @@ ReceptorReactivity:
             description: End position of the peptide within the reference protein sequence
             x-airr:
                 nullable: true
-        peptide_sequence:
+        peptide_sequence_aa:
             type: string
             description: >
                 The actual peptide sequence against which the receptor reactivity was measured. This field should be
                 used as a convenience for antigens of antigen_type `protein` or `peptide`.
             x-airr:
                 nullable: true
+                adc-query-support: true
         mhc_class:
             type: string
             enum:
