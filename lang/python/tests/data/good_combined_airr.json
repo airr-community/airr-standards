@@ -38,7 +38,14 @@
                     "label": "year"
                 },
                 "age_event": null,
-                "ancestry_population": null,
+                "ancestry_population": {
+				    "id": null,
+					"label": null
+				},
+				"country_birth": {
+				    "id": null,
+					"label": null
+				},
                 "ethnicity": null,
                 "race": null,
                 "strain_name": null,
@@ -166,6 +173,10 @@
                         "label": null
                     },
                     "collection_time_point_reference": null,
+					"collection_country": {
+                        "id": null,
+                        "label": null
+                    },
                     "biomaterial_provider": null,
                     "cell_number": null,
                     "cells_per_reaction": null,
@@ -244,7 +255,14 @@
                     "label": "year"
                 },
                 "age_event": null,
-                "ancestry_population": null,
+                "ancestry_population": {
+				    "id": null,
+					"label": null
+				},
+				"country_birth": {
+				    "id": null,
+					"label": null
+				},
                 "ethnicity": null,
                 "race": null,
                 "strain_name": null,
@@ -314,6 +332,10 @@
                         "label": null
                     },
                     "collection_time_point_reference": null,
+					"collection_country": {
+                        "id": null,
+                        "label": null
+                    },
                     "biomaterial_provider": null,
                     "cell_number": null,
                     "cells_per_reaction": null,
@@ -392,7 +414,14 @@
                     "label": "year"
                 },
                 "age_event": null,
-                "ancestry_population": null,
+                "ancestry_population": {
+				    "id": null,
+					"label": null
+				},
+				"country_birth": {
+				    "id": null,
+					"label": null
+				},
                 "ethnicity": null,
                 "race": null,
                 "strain_name": null,
@@ -462,6 +491,10 @@
                         "label": null
                     },
                     "collection_time_point_reference": null,
+					"collection_country": {
+                        "id": null,
+                        "label": null
+                    },
                     "biomaterial_provider": null,
                     "cell_number": null,
                     "cells_per_reaction": null,
