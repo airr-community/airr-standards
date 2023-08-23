@@ -2249,22 +2249,20 @@ Sample:
                 subset: sample
                 name: Collection time event
         collection_country:
-            type: string
+            $ref: '#/Ontology'
             description: Country in which the sample was taken
+            title: Sample collection location
             example:
                 id: GAZ:00002939
                 value: Poland
             x-airr:
-                miairr: true
-                required: true
+                miairr: important
                 nullable: true
-                set: 1
-                subset: subject
-                name: Country of sample collection
+                set: 2
+                subset: sample
+                name: Sample collection location
                 ontology:
                     draft: true
-                    name: GAZ
-                    url: https://www.ebi.ac.uk/ols/ontologies/gaz
                     top_node:
                         id: GAZ:00000448
                         value: geographic location
