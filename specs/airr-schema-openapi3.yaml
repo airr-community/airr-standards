@@ -81,6 +81,14 @@ CURIEMap:
         map:
             ENSG:
                 iri_prefix: "https://www.ensembl.org/Multi/Search/Results?q="
+    GAZ:
+        type: ontology
+        default:
+            map: OBO
+            provider: OLS
+        map:
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/GAZ_"
     IEDB_RECEPTOR:
         type: identifier
         default:
@@ -210,6 +218,11 @@ InformationProvider:
                 ontology_id: DOID
             OLS:
                 ontology_id: doid
+        GAZ:
+            Ontobee:
+                ontology_id: GAZ
+            OLS:
+                ontology_id: gaz
         MRO:
             Ontobee:
                 ontology_id: MRO
@@ -1978,17 +1991,43 @@ Subject:
                     - age_max
                     - age_unit
         ancestry_population:
-            type: string
+            $ref: '#/Ontology'
             nullable: true
             description: Broad geographic origin of ancestry (continent)
             title: Ancestry population
-            example: list of continents, mixed or unknown
+            example:
+                id: GAZ:00000459
+                label: South America
             x-airr:
                 miairr: important
                 adc-query-support: true
                 set: 1
                 subset: subject
                 name: Ancestry population
+                format: ontology
+                ontology:
+                    draft: true
+                    top_node:
+                        id: GAZ:00000448
+                        value: geographic location
+        country_birth:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Self-reported country of birth of the subject
+            example:
+                id: GAZ:00002939
+                value: Poland
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Country of birth
+                ontology:
+                    draft: true
+                    top_node:
+                        id: GAZ:00000448
+                        value: geographic location
         ethnicity:
             type: string
             nullable: true
@@ -2311,6 +2350,26 @@ Sample:
                 set: 2
                 subset: sample
                 name: Collection time event
+        collection_country:
+            type: string
+            nullable: true
+            description: Country in which the sample was taken
+            example:
+                id: GAZ:00002939
+                value: Poland
+            x-airr:
+                miairr: true
+                required: true
+                set: 1
+                subset: subject
+                name: Country of sample collection
+                ontology:
+                    draft: true
+                    name: GAZ
+                    url: https://www.ebi.ac.uk/ols/ontologies/gaz
+                    top_node:
+                        id: GAZ:00000448
+                        value: geographic location
         biomaterial_provider:
             type: string
             nullable: true
