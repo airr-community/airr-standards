@@ -46,6 +46,11 @@ Repertoire:
         label: year
       age_event:
       ancestry_population:
+        id:
+        label:
+      country_birth:
+        id:
+        label:
       ethnicity:
       race:
       strain_name:
@@ -135,6 +140,9 @@ Repertoire:
           id:
           label:
         collection_time_point_reference:
+        collection_country:
+          id:
+          label:
         biomaterial_provider:
         cell_number:
         cells_per_reaction:
@@ -215,6 +223,11 @@ Repertoire:
         label: year
       age_event:
       ancestry_population:
+        id:
+        label:
+      country_birth:
+        id:
+        label:
       ethnicity:
       race:
       strain_name:
@@ -270,6 +283,9 @@ Repertoire:
           id:
           label:
         collection_time_point_reference:
+        collection_country:
+          id:
+          label:
         biomaterial_provider:
         cell_number:
         cells_per_reaction:
@@ -350,6 +366,11 @@ Repertoire:
         label: year
       age_event:
       ancestry_population:
+        id:
+        label:
+      country_birth:
+        id:
+        label:
       ethnicity:
       race:
       strain_name:
@@ -405,6 +426,9 @@ Repertoire:
           id:
           label:
         collection_time_point_reference:
+        collection_country:
+          id:
+          label:
         biomaterial_provider:
         cell_number:
         cells_per_reaction:
