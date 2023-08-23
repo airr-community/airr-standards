@@ -332,7 +332,6 @@ Attributes:
                             type: string
                             description: Ontology name for the top node term
 
-
 # AIRR Data File
 #
 # A JSON data file that holds Repertoire metadata, data processing
