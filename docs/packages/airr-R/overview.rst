@@ -1,6 +1,6 @@
 .. _ROverview:
 
-R Library
+AIRR R Reference Library
 =================================================================================
 
 ``airr`` is an R package for working with data formatted according to
