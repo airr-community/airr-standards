@@ -823,7 +823,10 @@ AlleleDescription:
                 miairr: important
         label:
             type: string
-            description: The accepted name for this gene or allele
+            description: >
+                The accepted name for this gene or allele following the relevant nomenclature.
+                The value in this field should correspond to values in acceptable name fields of other schemas, 
+                such as v_call, d_call, and j_call fields.
             example: IGHV1-69*01
             x-airr:
                 miairr: important
