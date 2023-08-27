@@ -4354,6 +4354,7 @@ CellExpression:
         - data_processing_id
         - cell_id
         - property
+        - property_type
         - value
     properties:
         expression_id:
@@ -4396,11 +4397,25 @@ CellExpression:
                 nullable: true
                 adc-query-support: true
                 name: Data processing for cell
+        property_type:
+            type: string
+            description: >
+                Keyword describing the property type and detection method used to measure the property value.
+                The following keywords are recommended, but custom property types are also valid:
+                "mrna_expression_by_read_count",
+                "protein_expression_by_fluorescence_intensity", "antigen_bait_binding_by_fluorescence_intensity",
+                "protein_expression_by_dna_barcode_count" and "antigen_bait_binding_by_dna_barcode_count".
+            title: Property type and detection method
+            x-airr:
+                miairr: defined
+                nullable: false
+                adc-query-support: true
+                name: Property type and detection method
         property:
             $ref: '#/Ontology'
             title: Property information
             description: >
-                Name of the property observed, typically a gene or antibody idenifier (and its label) from a 
+                Name of the property observed, typically a gene or antibody identifier (and label) from a 
                 canonical resource such as Ensembl (e.g. ENSG00000275747, IGHV3-79) or 
                 Antibody Registry (ABREG:1236456, Purified anti-mouse/rat/human CD27 antibody).
             example:
