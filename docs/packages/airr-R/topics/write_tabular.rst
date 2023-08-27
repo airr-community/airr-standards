@@ -62,7 +62,7 @@ Examples
 
    # Load data file
    df <- read_rearrangement(file)
-
+                                                                                                                                                                            
 
 .. code:: r
 
@@ -70,7 +70,7 @@ Examples
    # Write a Rearrangement data file
    outfile <- file.path(tempdir(), "output.tsv")
    write_tabular(df, outfile, schema=RearrangementSchema)
-
+                                                                                                                    
 
 See also
 ~~~~~~~~

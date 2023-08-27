@@ -51,7 +51,6 @@ Examples
    # Load data file
    df <- read_rearrangement(file)
 
-
 .. code:: r
 
 
