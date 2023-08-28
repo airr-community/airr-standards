@@ -3,12 +3,67 @@
 Schema Release Notes
 ================================================================================
 
-Version 1.4.2: TBD, 2023
+Version 1.5.0: August 31, 2023
 --------------------------------------------------------------------------------
 
-1. Added "IGI" to all locus enum fields.
+**Version 1.5 schema release.**
+
+General Schema Changes:
+
+1. Fixed synchronization errors between the OpenAPI v2 and v3 versions of the
+   AIRR Schema (airr-schema.yaml and airr-schema-openapi3.yaml).
+2. Set the default value of ``x-airr.miarr`` attributes to ``defined``.
+3. Converted all ``x-airr.format`` attribute values to snake_case, which
+   specifically impacts any instance of ``controlled vocabulary`` or
+   ``physical quantity``.
+4. Corrected numerous instances of missing `x-airr.miairr` and
+   `x-airr.identifier` attributes.
+5. Replaced ``x-airr.adc-api-optional`` attribute with
+   ``x-airr.adc-query-support`` in multiple fields.
+6. Added "IGI" as a valid value to the ``locus`` enum fields in multiple
+   schema.
+7. Added ``null`` as a valide value to all nullable enum fields.
+8. Removed ``discriminator: AIRR`` from all object definitions.
+
+Germline and Genotype Schema:
+
+1. Clarified the descriptions of multiple fields in the Germline and
+   Genotype schema.
 2. Modified ``x-airr: nullable`` and ``x-airr: identifier`` values on multiple
-   Germline schema.
+   fields in the Germline and Genotype schema.
+3. Removed the ``alignment`` field and added the ``unaligned_sequence``,
+   ``aligned_sequences``, and ``alignment_labels`` fields to the
+   ``SequenceDelineationV`` object.
+4. Converted the enum values in the ``inference_type`` field of
+   ``AlleleDescription`` to snake_case.
+5. Added the ``allele_similarity_cluster_designation`` and
+   ``allele_similarity_cluster_member_id`` fields to ``AlleleDescription``.
+6. Moved the nested objects ``DocumentedAllele``, ``UndocumentedAllele``, and
+   ``DeletedGenes`` out of ``Genotype`` and defined them as top-level objects
+   references by the ``documented_alleles``, ``undocumented_alleles``, and
+   ``deleted_genes`` fields, respectively.
+7. Moved the nested object ``MHCAllele`` out of ``MHCGenotype`` and defined
+   it as a top-level object referenced by the ``mhc_alleles`` field.
+
+Single-cell Schema:
+
+1. Added the ``property_type`` field to the ``CellExpression`` object.
+2. Moved the nested ``ReceptorReactivity`` object out of ``Receptor``
+   and defined it as a top-level object referenced by the
+   ``reactivity_measurements`` field.
+
+Subject Schema:
+
+1. Removed the nested references to ``GenotypeSet`` and ``MHCGenotypeSet``
+   in the ``genotype`` field and modified the definition to point to a
+   top-level ``SubjectGenotype`` object defining these references.
+
+DataProcessing Schema:
+
+1. Clarified the description of ``quality_thresholds`` to indicate that
+   quality filtering is not mandatory.
+
+
 
 Version 1.4.1: August 27, 2022
 --------------------------------------------------------------------------------
