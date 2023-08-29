@@ -1,4 +1,4 @@
-Version 1.5.0:  August 31, 2023
+Version 1.5.0:  August 29, 2023
 --------------------------------------------------------------------------------
 
 1. Updated schema set and examples to v1.5.
