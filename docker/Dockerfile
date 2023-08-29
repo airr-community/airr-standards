@@ -47,7 +47,7 @@ RUN mkdir /airr-standards
 COPY . /airr-standards
 
 # Install python package
-RUN cd /airr-standards/lang/python && python3 setup.py install
+RUN cd /airr-standards/lang/python && pip3 install .
 
 # nodejs package
 RUN cd /airr-standards/lang/js && npm install
@@ -55,4 +55,5 @@ RUN cd /airr-standards/lang/js && npm run eslint
 RUN cd /airr-standards/lang/js && npm run test
 
 # Generate the documentation
+RUN cd /airr-standards && pip3 install -r docs/requirements.txt
 RUN cd /airr-standards && sphinx-build -a -E -b html docs docs/_build/html

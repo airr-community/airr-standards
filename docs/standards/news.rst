@@ -3,6 +3,13 @@
 Schema Release Notes
 ================================================================================
 
+Version 1.4.2: TBD, 2023
+--------------------------------------------------------------------------------
+
+1. Added "IGI" to all locus enum fields.
+2. Modified ``x-airr: nullable`` and ``x-airr: identifier`` values on multiple
+   Germline schema.
+
 Version 1.4.1: August 27, 2022
 --------------------------------------------------------------------------------
 
