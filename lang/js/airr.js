@@ -21,6 +21,7 @@ const $RefParser = require("@apidevtools/json-schema-ref-parser");
 var airr = {};
 module.exports = airr;
 
+// load AIRR standards schema
 airr.load_schema = async function() {
     // Load AIRR spec
     var airrFile = path.resolve(__dirname, './airr-schema-openapi3.yaml');
@@ -35,29 +36,16 @@ airr.load_schema = async function() {
     return Promise.resolve(spec);
 };
 
-// schema functions
-//const schema = require('./schema')(AIRRSchema);
-// i/o functions
-//const io = require('./io');
+// load custom schema
+airr.load_custom_schema = async function(obj, filename) {
+    // Load schema file
+    //var airrFile = path.resolve(__dirname, filename);
+    var doc = yaml.safeLoad(fs.readFileSync(filename));
+    if (!doc) Promise.reject(new Error('Could not load custom schema yaml file.'));
 
-/* TODO? UMD
-(function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['b'], factory);
-    } else if (typeof module === 'object' && module.exports) {
-        // Node.
-        module.exports = factory(require('b'));
-    } else {
-        // Browser globals (root is window)
-        root.returnExports = factory(root.b);
-    }
-}(typeof self !== 'undefined' ? self : this, function (b) {
-    // Use b in some fashion.
+    // dereference all $ref objects
+    var spec = await $RefParser.dereference(doc);
+    var schema = require('./schema')(obj, spec);
 
-    // Just return a value to define the module export.
-    // This example returns an object, but the module
-    // can return a function as the exported value.
-    return {};
-})); */
-
+    return Promise.resolve(spec);
+};

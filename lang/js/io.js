@@ -15,6 +15,10 @@ var fs = require('fs');
 const zlib = require('zlib');
 var csv = require('csv-parser');
 
+function isPromise(promise) {
+    return !!promise && typeof promise.then === 'function'
+}
+
 //
 // Interface functions for file operations
 //
