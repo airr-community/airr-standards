@@ -31,11 +31,11 @@ var _from_bool_map = function(x) {
     return '';
 };
 
-function isPromise(promise) {  
+function isPromise(promise) {
     return !!promise && typeof promise.then === 'function'
 }
 
-class ValidationError extends Error {  
+class ValidationError extends Error {
   constructor (message) {
     super(message)
 
@@ -196,7 +196,7 @@ module.exports = function(airr, schema) {
     }
 
     airr.SchemaDefinition.prototype.validate_object = function(object) {
-        const ajv = new AJV();
+        const ajv = new AJV({allErrors: true});
         addFormats(ajv);
         ajv.addVocabulary(['x-airr', 'example']);
 
