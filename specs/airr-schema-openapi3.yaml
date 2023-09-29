@@ -4766,6 +4766,7 @@ Receptor:
                 - TCR
             description: The top-level receptor type, either Immunoglobulin (Ig) or T Cell Receptor (TCR).
             x-airr:
+                format: controlled_vocabulary
                 adc-query-support: true
         receptor_variable_domain_1_aa:
             type: string
@@ -4788,6 +4789,7 @@ Receptor:
             description: Locus from which the variable domain in receptor_variable_domain_1_aa originates
             example: IGH
             x-airr:
+                format: controlled_vocabulary
                 adc-query-support: true
         receptor_variable_domain_2_aa:
             type: string
@@ -4812,6 +4814,7 @@ Receptor:
             description: Locus from which the variable domain in receptor_variable_domain_2_aa originates
             example: IGL
             x-airr:
+                format: controlled_vocabulary
                 adc-query-support: true
         receptor_ref:
             type: array
@@ -4865,6 +4868,8 @@ ReceptorReactivity:
                 - non-peptidic
             description: Classification of ligand binding to receptor
             example: non-peptide
+            x-airr:
+                format: controlled_vocabulary
         antigen_type:
             type: string
             nullable: false
@@ -4875,6 +4880,8 @@ ReceptorReactivity:
             description: >
                 The type of antigen before processing by the immune system.
             example: protein
+            x-airr:
+                format: controlled_vocabulary
         antigen:
             $ref: '#/Ontology'
             nullable: false
@@ -4930,6 +4937,8 @@ ReceptorReactivity:
                 - null
             description: Class of MHC molecule, only present for MHC:x ligand types
             example: MHC-II
+            x-airr:
+                format: controlled_vocabulary
         mhc_gene_1:
             $ref: '#/Ontology'
             nullable: true
@@ -4982,6 +4991,8 @@ ReceptorReactivity:
                 - biological_activity
                 - MHC_peptide_multimer
             description: The methodology used to assess expression (assay implemented in experiment)
+            x-airr:
+                format: controlled_vocabulary
         reactivity_readout:
             type: string
             nullable: false
@@ -4995,6 +5006,8 @@ ReceptorReactivity:
                 - barcode_count
             description: Reactivity measurement read-out
             example: cytokine release
+            x-airr:
+                format: controlled_vocabulary
         reactivity_value:
             type: number
             nullable: false
