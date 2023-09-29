@@ -4472,6 +4472,7 @@ Receptor:
                 - TCR
             description: The top-level receptor type, either Immunoglobulin (Ig) or T Cell Receptor (TCR).
             x-airr:
+                format: controlled_vocabulary
                 nullable: false
                 adc-query-support: true
         receptor_variable_domain_1_aa:
@@ -4494,6 +4495,7 @@ Receptor:
             description: Locus from which the variable domain in receptor_variable_domain_1_aa originates
             example: IGH
             x-airr:
+                format: controlled_vocabulary
                 nullable: false
                 adc-query-support: true
         receptor_variable_domain_2_aa:
@@ -4518,6 +4520,7 @@ Receptor:
             description: Locus from which the variable domain in receptor_variable_domain_2_aa originates
             example: IGL
             x-airr:
+                format: controlled_vocabulary
                 nullable: false
                 adc-query-support: true
         receptor_ref:
@@ -4573,6 +4576,7 @@ ReceptorReactivity:
             description: Classification of ligand binding to receptor
             example: non-peptide
             x-airr:
+                format: controlled_vocabulary
                 nullable: false
         antigen_type:
             type: string
@@ -4584,6 +4588,7 @@ ReceptorReactivity:
                 The type of antigen before processing by the immune system.
             example: protein
             x-airr:
+                format: controlled_vocabulary
                 nullable: false
         antigen:
             $ref: '#/Ontology'
@@ -4642,6 +4647,7 @@ ReceptorReactivity:
             description: Class of MHC molecule, only present for MHC:x ligand types
             example: MHC-II
             x-airr:
+                format: controlled_vocabulary
                 nullable: true
         mhc_gene_1:
             $ref: '#/Ontology'
@@ -4697,6 +4703,7 @@ ReceptorReactivity:
                 - MHC_peptide_multimer
             description: The methodology used to assess expression (assay implemented in experiment)
             x-airr:
+                format: controlled_vocabulary
                 nullable: false
         reactivity_readout:
             type: string
@@ -4711,6 +4718,7 @@ ReceptorReactivity:
             description: Reactivity measurement read-out
             example: cytokine release
             x-airr:
+                format: controlled_vocabulary
                 nullable: false
         reactivity_value:
             type: number
