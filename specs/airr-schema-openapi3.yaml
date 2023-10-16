@@ -1870,7 +1870,7 @@ Subject:
                 adc-query-support: true
                 set: 1
                 subset: subject
-                name: Organism
+                name: Species
                 format: ontology
                 ontology:
                     draft: false
