@@ -3483,6 +3483,28 @@ Rearrangement:
                 adc-query-support: true
                 name: Gene locus
                 format: controlled_vocabulary
+        locus_species:
+            $ref: '#/Ontology'
+            nullable: true
+            description: >
+                Binomial designation of the species from which the locus originates. Typically, this value should be
+                identical to `organism`, if which case it SHOULD NOT be set explicitly. However, there are valid
+                experimental setups in which the two might differ, e.g. transgenic animal models. If set, this key
+                will overwrite the `organism` information for all lower layers of the schema.
+            title: Locus species
+            example:
+                id: NCBITAXON:9606
+                label: Homo sapiens
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Locus species
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
         v_call:
             type: string
             nullable: true
