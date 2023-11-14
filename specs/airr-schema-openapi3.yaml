@@ -2013,7 +2013,7 @@ Subject:
         location_birth:
             $ref: '#/Ontology'
             nullable: true
-            description: Self-reported location of birth of the subject
+            description: Self-reported location of birth of the subject, preferred granularity is country-level
             example:
                 id: GAZ:00002939
                 value: Poland
@@ -2353,7 +2353,7 @@ Sample:
         collection_location:
             $ref: '#/Ontology'
             nullable: true
-            description: Location where the sample was taken
+            description: Location where the sample was taken, preferred granularity is country-level
             title: Sample collection location
             example:
                 id: GAZ:00002939
