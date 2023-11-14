@@ -1909,9 +1909,9 @@ Subject:
                     top_node:
                         id: GAZ:00000448
                         value: geographic location
-        country_birth:
+        location_birth:
             $ref: '#/Ontology'
-            description: Self-reported country of birth of the subject
+            description: Self-reported location of birth of the subject
             example:
                 id: GAZ:00002939
                 value: Poland
@@ -2248,9 +2248,9 @@ Sample:
                 set: 2
                 subset: sample
                 name: Collection time event
-        collection_country:
+        collection_location:
             $ref: '#/Ontology'
-            description: Country in which the sample was taken
+            description: Location where the sample was taken
             title: Sample collection location
             example:
                 id: GAZ:00002939
