@@ -232,3 +232,24 @@ experiments SHOULD be annotated as follows:
       reliably determined.
    *  ``reverse_pcr_primer_target_location``: Locus and position
       according to the respective set of reverse primers.
+
+
+Geolocation information
+-----------------------
+
+For questions regarding population genetics, the information about the
+membership of a given individual in a (potentially) distinct population
+group is of high interest. However, no reasonably complete ontology
+exists for the concept of "ethnicity", which in addition is limited
+to humans (not to mention the challenge of assigning consistent values
+to this property). Therefore, the AIRR Schema uses annotation of the
+location of birth of an individual and the location where a given sample
+was taken as imperfect but at least operationalizable substitute.
+
+The respective properties ``Subject``.``location_birth`` and
+``Sample``.``collection_location`` are ontology controlled and expect
+values that are geographic locations. The provided value SHOULD
+allow to resolve at least the country-level information of the annotated
+location. Higher granularity SHOULD only be provided, if this does not
+exposed the data subject to the risk of being re-identified via based on
+or assisted by this information.
