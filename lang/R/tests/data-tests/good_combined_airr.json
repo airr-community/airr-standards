@@ -42,7 +42,7 @@
 				    "id": null,
 					"label": null
 				},
-				"country_birth": {
+				"location_birth": {
 				    "id": null,
 					"label": null
 				},
@@ -115,7 +115,7 @@
                         "label": null
                     },
                     "collection_time_point_reference": null,
-					"collection_country": {
+					"collection_location": {
                         "id": null,
                         "label": null
                     },
@@ -201,7 +201,7 @@
 				    "id": null,
 					"label": null
 				},
-				"country_birth": {
+				"location_birth": {
 				    "id": null,
 					"label": null
 				},
@@ -274,7 +274,7 @@
                         "label": null
                     },
                     "collection_time_point_reference": null,
-					"collection_country": {
+					"collection_location": {
                         "id": null,
                         "label": null
                     },
@@ -360,7 +360,7 @@
 				    "id": null,
 					"label": null
 				},
-				"country_birth": {
+				"location_birth": {
 				    "id": null,
 					"label": null
 				},
@@ -433,7 +433,7 @@
                         "label": null
                     },
                     "collection_time_point_reference": null,
-					"collection_country": {
+					"collection_location": {
                         "id": null,
                         "label": null
                     },

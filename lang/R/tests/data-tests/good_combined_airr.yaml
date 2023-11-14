@@ -48,7 +48,7 @@ Repertoire:
       ancestry_population:
         id:
         label:
-      country_birth:
+      location_birth:
         id:
         label:
       ethnicity:
@@ -106,7 +106,7 @@ Repertoire:
           id:
           label:
         collection_time_point_reference:
-        collection_country:
+        collection_location:
           id:
           label:
         biomaterial_provider:
@@ -191,7 +191,7 @@ Repertoire:
       ancestry_population:
         id:
         label:
-      country_birth:
+      location_birth:
         id:
         label:
       ethnicity:
@@ -249,7 +249,7 @@ Repertoire:
           id:
           label:
         collection_time_point_reference:
-        collection_country:
+        collection_location:
           id:
           label:
         biomaterial_provider:
@@ -334,7 +334,7 @@ Repertoire:
       ancestry_population:
         id:
         label:
-      country_birth:
+      location_birth:
         id:
         label:
       ethnicity:
@@ -392,7 +392,7 @@ Repertoire:
           id:
           label:
         collection_time_point_reference:
-        collection_country:
+        collection_location:
           id:
           label:
         biomaterial_provider:
