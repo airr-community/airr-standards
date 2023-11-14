@@ -38,7 +38,7 @@ Repertoire:
       ancestry_population:
         id: null
         label: null
-      country_birth:
+      location_birth:
         id: null
         label: null
       ethnicity: null
@@ -99,7 +99,7 @@ Repertoire:
           id: null
           label: null
         collection_time_point_reference: null
-        collection_country:
+        collection_location:
           id: null
           label: null
         biomaterial_provider: null
@@ -171,7 +171,7 @@ Repertoire:
       ancestry_population:
         id: null
         label: null
-      country_birth:
+      location_birth:
         id: null
         label: null
       ethnicity: null
@@ -232,7 +232,7 @@ Repertoire:
           id: null
           label: null
         collection_time_point_reference: null
-        collection_country:
+        collection_location:
           id: null
           label: null
         biomaterial_provider: null
@@ -304,7 +304,7 @@ Repertoire:
       ancestry_population:
         id: null
         label: null
-      country_birth:
+      location_birth:
         id: null
         label: null
       ethnicity: null
@@ -365,7 +365,7 @@ Repertoire:
           id: null
           label: null
         collection_time_point_reference: null
-        collection_country:
+        collection_location:
           id: null
           label: null
         biomaterial_provider: null
