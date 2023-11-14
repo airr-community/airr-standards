@@ -113,7 +113,6 @@ htmlhelp_basename = 'airr-standardsdoc'
 # PyData options
 # html_theme = "pydata_sphinx_theme"
 html_theme = "sphinx_book_theme"
-html_logo = "_static/AIRR_logo-only.png"
 
 # Bootstrap options
 # html_theme = 'bootstrap'
@@ -122,7 +121,12 @@ html_logo = "_static/AIRR_logo-only.png"
 # html_sidebars = {'**': ['globaltoc.html']}
 # html_sidebars = {'**': ['globaltoc.html', 'sourcelink.html', 'searchbox.html']}
 # html_sidebars = {'**': ['searchbox.html', 'globaltoc.html']}
-# html_theme_options = {
+html_theme_options = {
+#     # Logo options replacing top-level "html_logo" option to facilitate light/dark theme switch)
+    'logo': {
+        'image_light': '_static/AIRR-C-Logo_outlined_light.svg',
+        'image_dark': '_static/AIRR-C-Logo_outlined_dark.svg'
+    }
 #     # Navigation bar title. (Default: ``project`` value)
 #     'navbar_title': 'AIRR Community Standards',
 #
@@ -189,7 +193,7 @@ html_logo = "_static/AIRR_logo-only.png"
 #     # Choose Bootstrap version.
 #     # Values: "3" (default) or "2" (in quotes)
 #     'bootstrap_version': '2',
-# }
+}
 
 # -- Options for LaTeX output ---------------------------------------------
 
