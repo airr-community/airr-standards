@@ -2009,25 +2009,26 @@ Subject:
                     draft: true
                     top_node:
                         id: GAZ:00000448
-                        value: geographic location
+                        label: geographic location
         location_birth:
             $ref: '#/Ontology'
             nullable: true
             description: Self-reported location of birth of the subject, preferred granularity is country-level
             example:
                 id: GAZ:00002939
-                value: Poland
+                label: Poland
             x-airr:
                 miairr: important
                 adc-query-support: true
                 set: 1
                 subset: subject
-                name: Country of birth
+                name: Location of birth
+                format: ontology
                 ontology:
                     draft: true
                     top_node:
                         id: GAZ:00000448
-                        value: geographic location
+                        label: geographic location
         ethnicity:
             type: string
             nullable: true
@@ -2357,17 +2358,18 @@ Sample:
             title: Sample collection location
             example:
                 id: GAZ:00002939
-                value: Poland
+                label: Poland
             x-airr:
                 miairr: important
                 set: 2
                 subset: sample
                 name: Sample collection location
+                format: ontology
                 ontology:
                     draft: true
                     top_node:
                         id: GAZ:00000448
-                        value: geographic location
+                        label: geographic location
         biomaterial_provider:
             type: string
             nullable: true
