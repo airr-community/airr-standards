@@ -52,6 +52,11 @@ module.exports = function(airr, schema) {
     //console.log('airr-js schema:', JSON.stringify(schema, null, 2));
     airr.Schema = {"specification": schema};
 
+    airr.get_specification = function() {
+        if (!airr.Schema) throw new Error('AIRR schema is not loaded.');
+        return airr.Schema['specification'];
+    }
+
     // return schemas in format appropriate for API doc
     airr.get_schemas = function() {
         if (! airr.Schema['specification']) return null;
@@ -71,6 +76,16 @@ module.exports = function(airr, schema) {
     airr.get_info = function() {
         if (!airr.Schema) throw new Error('AIRR schema is not loaded.');
         return airr.Schema['specification']['Info'];
+    }
+
+    airr.get_curie_map = function() {
+        if (!airr.Schema) throw new Error('AIRR schema is not loaded.');
+        return airr.Schema['specification']['CURIEMap'];
+    }
+
+    airr.get_iri_providers = function() {
+        if (!airr.Schema) throw new Error('AIRR schema is not loaded.');
+        return airr.Schema['specification']['InformationProvider'];
     }
 
     airr.SchemaDefinition = function(definition) {
