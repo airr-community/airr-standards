@@ -4262,7 +4262,7 @@ Cell:
         rearrangements:
             type: array
             description: >
-                Array of sequence identifiers defined for the Rearrangement object
+                Array of sequence identifiers defined for the Rearrangement objects associated with this Cell
             title: Cell-associated rearrangements
             items:
                 type: string
@@ -4275,7 +4275,7 @@ Cell:
         receptors:
             type: array
             description: >
-                Array of receptor identifiers defined for the Receptor object
+                Array of receptor identifiers defined for the Receptor objects associated with this Cell
             title: Cell-associated receptors
             items:
                 type: string
@@ -4288,7 +4288,7 @@ Cell:
         reactivity_measurements:
             type: array
             description: >
-                Array of reactivity measurement identifiers for this Cell object
+                Array of reactivity measurement identifiers for the ReceptorReactivity objects associated with this Cell
             title: Reactivity measurements
             items:
                 type: string
@@ -4536,7 +4536,7 @@ Receptor:
         reactivity_measurements:
             type: array
             description: >
-                Array of reactivity measurement identifiers for this Receptor object
+                Array of reactivity measurement identifiers for the ReceptorReactivity objects associated with this Receptor
             title: Reactivity measurements
             items:
                 type: string
