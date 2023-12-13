@@ -4294,7 +4294,10 @@ Cell:
                 type: string
             example: [id1, id2]
             x-airr:
+                miairr: defined
                 nullable: true
+                adc-query-support: true
+                name: Cell-associated reactivity measurements
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
@@ -4543,7 +4546,7 @@ Receptor:
             example: [id1, id2]
             x-airr:
                 nullable: true
-
+                adc-query-support: true
 
 ReceptorReactivity:
     type: object
@@ -4578,6 +4581,7 @@ ReceptorReactivity:
             x-airr:
                 format: controlled_vocabulary
                 nullable: false
+                adc-query-support: true
         antigen_type:
             type: string
             enum:
@@ -4590,6 +4594,7 @@ ReceptorReactivity:
             x-airr:
                 format: controlled_vocabulary
                 nullable: false
+                adc-query-support: true
         antigen:
             $ref: '#/Ontology'
             description: >
@@ -4613,6 +4618,7 @@ ReceptorReactivity:
                 label: Plasmodium falciparum NF54
             x-airr:
                 nullable: true
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: true
@@ -4649,6 +4655,7 @@ ReceptorReactivity:
             x-airr:
                 format: controlled_vocabulary
                 nullable: true
+                adc-query-support: true
         mhc_gene_1:
             $ref: '#/Ontology'
             description: The MHC gene to which the mhc_allele_1 belongs
@@ -4658,6 +4665,7 @@ ReceptorReactivity:
                 label: HLA-DRA
             x-airr:
                 nullable: true
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: true
@@ -4670,6 +4678,7 @@ ReceptorReactivity:
             example: HLA-DRA
             x-airr:
                 nullable: true
+                adc-query-support: true
         mhc_gene_2:
             $ref: '#/Ontology'
             description: The MHC gene to which the mhc_allele_2 belongs
@@ -4679,6 +4688,7 @@ ReceptorReactivity:
                 label: HLA-DRB1
             x-airr:
                 nullable: true
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: true
@@ -4692,6 +4702,7 @@ ReceptorReactivity:
             example: HLA-DRB1*04:01
             x-airr:
                 nullable: true
+                adc-query-support: true
         reactivity_method:
             type: string
             enum:
@@ -4705,6 +4716,7 @@ ReceptorReactivity:
             x-airr:
                 format: controlled_vocabulary
                 nullable: false
+                adc-query-support: true
         reactivity_readout:
             type: string
             enum:
@@ -4720,15 +4732,18 @@ ReceptorReactivity:
             x-airr:
                 format: controlled_vocabulary
                 nullable: false
+                adc-query-support: true
         reactivity_value:
             type: number
             description: The absolute (processed) value of the measurement
             example: 162.26
             x-airr:
                 nullable: false
+                adc-query-support: true
         reactivity_unit:
             type: string
             description: The unit of the measurement
             example: pg/ml
             x-airr:
                 nullable: false
+                adc-query-support: true
