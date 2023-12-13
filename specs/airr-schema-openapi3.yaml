@@ -4923,14 +4923,10 @@ ReceptorReactivity:
             type: integer
             nullable: true
             description: Start position of the peptide within the reference protein sequence
-            x-airr:
-                adc-query-support: true
         peptide_end:
             type: integer
             nullable: true
             description: End position of the peptide within the reference protein sequence
-            x-airr:
-                adc-query-support: true
         peptide_sequence_aa:
             type: string
             nullable: true
