@@ -4822,6 +4822,10 @@ Cell:
             items:
                 type: string
             example: [id1, id2]
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Cell-associated reactivity measurements
         repertoire_id:
             type: string
             nullable: true
@@ -5085,7 +5089,8 @@ Receptor:
             items:
                 type: string
             example: [id1, id2]
-
+            x-airr:
+                adc-query-support: true
 
 ReceptorReactivity:
     type: object
@@ -5120,6 +5125,7 @@ ReceptorReactivity:
             example: non-peptide
             x-airr:
                 format: controlled_vocabulary
+                adc-query-support: true
         antigen_type:
             type: string
             nullable: false
@@ -5132,6 +5138,7 @@ ReceptorReactivity:
             example: protein
             x-airr:
                 format: controlled_vocabulary
+                adc-query-support: true
         antigen:
             $ref: '#/Ontology'
             nullable: false
@@ -5155,6 +5162,7 @@ ReceptorReactivity:
                 id: NCBITAXON:5843
                 label: Plasmodium falciparum NF54
             x-airr:
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: true
@@ -5165,10 +5173,14 @@ ReceptorReactivity:
             type: integer
             nullable: true
             description: Start position of the peptide within the reference protein sequence
+            x-airr:
+                adc-query-support: true
         peptide_end:
             type: integer
             nullable: true
             description: End position of the peptide within the reference protein sequence
+            x-airr:
+                adc-query-support: true
         peptide_sequence_aa:
             type: string
             nullable: true
@@ -5189,6 +5201,7 @@ ReceptorReactivity:
             example: MHC-II
             x-airr:
                 format: controlled_vocabulary
+                adc-query-support: true
         mhc_gene_1:
             $ref: '#/Ontology'
             nullable: true
@@ -5198,6 +5211,7 @@ ReceptorReactivity:
                 id: MRO:0000055
                 label: HLA-DRA
             x-airr:
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: true
@@ -5209,6 +5223,8 @@ ReceptorReactivity:
             nullable: true
             description: Allele designation of the MHC alpha chain
             example: HLA-DRA
+            x-airr:
+                adc-query-support: true
         mhc_gene_2:
             $ref: '#/Ontology'
             nullable: true
@@ -5218,6 +5234,7 @@ ReceptorReactivity:
                 id: MRO:0000057
                 label: HLA-DRB1
             x-airr:
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: true
@@ -5230,6 +5247,8 @@ ReceptorReactivity:
             description: >
                 Allele designation of the MHC class II beta chain or the invariant beta2-microglobin chain
             example: HLA-DRB1*04:01
+            x-airr:
+                adc-query-support: true
         reactivity_method:
             type: string
             nullable: false
@@ -5242,6 +5261,7 @@ ReceptorReactivity:
                 - MHC_peptide_multimer
             description: The methodology used to assess expression (assay implemented in experiment)
             x-airr:
+                adc-query-support: true
                 format: controlled_vocabulary
         reactivity_readout:
             type: string
@@ -5257,14 +5277,20 @@ ReceptorReactivity:
             description: Reactivity measurement read-out
             example: cytokine release
             x-airr:
+                adc-query-support: true
                 format: controlled_vocabulary
         reactivity_value:
             type: number
             nullable: false
             description: The absolute (processed) value of the measurement
             example: 162.26
+            x-airr:
+                adc-query-support: true
         reactivity_unit:
             type: string
             nullable: false
             description: The unit of the measurement
             example: pg/ml
+            x-airr:
+                adc-query-support: true
+                
