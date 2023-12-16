@@ -47,7 +47,7 @@ for spec_name in spec_files:
     # Check python package
     if jsondiff.diff(gold_spec, py_spec) != {}:
         print('{} spec is different from python version'.format(spec_name), file=sys.stderr)
-        print(jsondiff.diff(gold_spec, py_spec), file=sys.stderr)
+        print(jsondiff.diff(gold_spec, py_spec, syntax='explicit'), file=sys.stderr)
         sys.exit(1)
 
     # Check R package
@@ -77,12 +77,41 @@ def translate_nullable(obj):
         if p.get('nullable') is None:
             p['nullable'] = True
 
+def check_miairr_essential(obj, is_v3):
+    for prop in obj['properties']:
+        p = obj['properties'][prop]
+        if p.get('x-airr') is not None:
+            if p['x-airr'].get('miairr') == 'essential':
+                if is_v3:
+                    # for V3, default is nullable: false
+                    if p.get('nullable'):
+                        print(prop, ' in {} object in V3 spec is inconsistent with miairr:essential and nullable:true'.format(obj), file=sys.stderr)
+                        return True
+                else:
+                    # for V2, default is nullable: true
+                    if p['x-airr'].get('nullable') or p['x-airr'].get('nullable', 'missing') == 'missing':
+                        print(prop, 'in {} object in V2 spec is inconsistent with miairr:essential and nullable:true'.format(obj), file=sys.stderr)
+                        return True
+    return False
+
+found_miairr_inconsistency = False
+
 # Make V2 look like V3 then compare
 for obj in v2_spec:
-    #print(obj)
+    # print(obj)
+    # print(v2_spec[obj])
+    # print(v3_spec[obj])
 
-    # not a schema object
-    if obj == 'CURIEResolution':
+    # singleton object, not a schema
+    if obj == 'CURIEMap':
+        if jsondiff.diff(v2_spec[obj], v3_spec[obj]) != {}:
+            print('{} object in V2 spec is different from V3 spec'.format(obj), file=sys.stderr)
+            print(jsondiff.diff(v2_spec[obj], v3_spec[obj]), file=sys.stderr)
+            sys.exit(1)
+        continue
+
+    # singleton object, not a schema
+    if obj == 'InformationProvider':
         if jsondiff.diff(v2_spec[obj], v3_spec[obj]) != {}:
             print('{} object in V2 spec is different from V3 spec'.format(obj), file=sys.stderr)
             print(jsondiff.diff(v2_spec[obj], v3_spec[obj]), file=sys.stderr)
@@ -97,19 +126,59 @@ for obj in v2_spec:
     if v2_spec[obj].get('discriminator') is not None:
         v2_spec[obj]['discriminator'] = { "propertyName": v2_spec[obj]['discriminator'] }
 
-    # nullable flags
+    # nullable and miairr flags
     if v2_spec[obj].get('properties') is not None:
+        if check_miairr_essential(v2_spec[obj], False):
+            found_miairr_inconsistency = True
         translate_nullable(v2_spec[obj])
         # look for sub-object
         for prop in v2_spec[obj]['properties']:
             if v2_spec[obj]['properties'][prop].get('properties') is not None:
+                if check_miairr_essential(v2_spec[obj]['properties'][prop], False):
+                    found_miairr_inconsistency = True
                 translate_nullable(v2_spec[obj]['properties'][prop])
             # look for array of objects
             if v2_spec[obj]['properties'][prop].get('items') is not None:
                 if v2_spec[obj]['properties'][prop]['items'].get('properties') is not None:
+                    if check_miairr_essential(v2_spec[obj]['properties'][prop]['items'], False):
+                        found_miairr_inconsistency = True
                     translate_nullable(v2_spec[obj]['properties'][prop]['items'])
+    elif 'allOf' in v2_spec[obj]:
+        if check_miairr_essential(v2_spec[obj]['allOf'][0], False):
+            found_miairr_inconsistency = True
+        translate_nullable(v2_spec[obj]['allOf'][0])
 
+    # print(v2_spec[obj])
+    # print(v3_spec[obj])
     if jsondiff.diff(v2_spec[obj], v3_spec[obj]) != {}:
         print('{} object is different between V2 and V3 spec'.format(obj), file=sys.stderr)
         print(jsondiff.diff(v2_spec[obj], v3_spec[obj]), file=sys.stderr)
         sys.exit(1)
+
+# Make V3 look like V2 then compare
+for obj in v3_spec:
+    # nullable and miairr flags
+    if v3_spec[obj].get('properties') is not None:
+        #translate_nullable(v3_spec[obj])
+        if check_miairr_essential(v3_spec[obj], True):
+            found_miairr_inconsistency = True
+        # look for sub-object
+        for prop in v3_spec[obj]['properties']:
+            if v3_spec[obj]['properties'][prop].get('properties') is not None:
+                #translate_nullable(v3_spec[obj]['properties'][prop])
+                if check_miairr_essential(v3_spec[obj]['properties'][prop], True):
+                    found_miairr_inconsistency = True
+            # look for array of objects
+            if v3_spec[obj]['properties'][prop].get('items') is not None:
+                if v3_spec[obj]['properties'][prop]['items'].get('properties') is not None:
+                    #translate_nullable(v3_spec[obj]['properties'][prop]['items'])
+                    if check_miairr_essential(v3_spec[obj]['properties'][prop]['items'], True):
+                        found_miairr_inconsistency = True
+    elif 'allOf' in v3_spec[obj]:
+        #translate_nullable(v3_spec[obj]['allOf'][0])
+        if check_miairr_essential(v3_spec[obj]['allOf'][0], True):
+            found_miairr_inconsistency = True
+
+if found_miairr_inconsistency:
+    sys.exit(1)
+

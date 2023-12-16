@@ -18,12 +18,12 @@ General Policies
 ================
 
 The OntoVoc team revisited the criteria for ontologies used in the AIRR
-schema that it :ref:`defined in the 11/2018 sprint <ONTO_CRIT_11-2018>`.
+schema that it :ref:`defined in the 11/2018 sprint <ONTO_CRIT_2018>`.
 While they are still considered to be valid, the team felt that a more
 detailed guidance could be useful in the process of selecting ontologies
 for new fields. It therefore evaluated the `OBO Foundry Principles`_,
 which partially re-iterate some of the existing criteria (e.g.,
-:ref:`Openness <ONTO_CRIT_6>` and :ref:`Maintenance<ONTO_CRIT_5>`),
+:ref:`Openness <ONTO_CRIT_2018_6>` and :ref:`Maintenance<ONTO_CRIT_2018_5>`),
 but also provide additional recommendations, e.g., the presence of
 textual definitions, clear scope and a common format, which were
 considered to be valuable additions to the existing guidelines. The team

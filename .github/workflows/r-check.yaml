@@ -1,0 +1,52 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - '.github/**'
+      - 'lang/R/**'
+  pull_request:
+    branches: [main, master]
+    paths:
+      - '.github/**'
+      - 'lang/R/**'
+
+name: R package
+
+defaults:
+  run:
+    working-directory: lang/R
+
+jobs:
+  R-CMD-check:
+    runs-on: ubuntu-latest
+    container:
+      image: rocker/verse:latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          install.packages(c("remotes", "testthat", "roxygen2", "devtools", "rcmdcheck"))
+          remotes::install_deps(dependencies=TRUE, upgrade="never")
+          tinytex::tlmgr_install("amsmath")
+        shell: Rscript {0}
+
+      - name: Document
+        run: |
+          devtools::document()
+        shell: Rscript {0}
+
+      - name: Check
+        env:
+          _R_CHECK_CRAN_INCOMING_: false
+        run: |
+          options(crayon.enabled=TRUE)
+          rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran", "--run-donttest"), error_on="warning", check_dir="check")
+        shell: Rscript {0}
+
+      - name: Show testthat output
+        if: always()
+        run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
+        shell: bash

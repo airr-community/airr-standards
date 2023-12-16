@@ -163,6 +163,7 @@ require the following steps to be performed:
 - Generate the release on GitHub.
 - Verify that ReadTheDocs automatically builds the documentation site correctly.
 - Upload the python package to PyPI.
+- Push tagged image to Docker hub.
 
 Note, the order of these steps must be more or less as described above.  Some deviation is okay,
 but the following are essential:

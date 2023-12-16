@@ -4,7 +4,7 @@ Applications Supporting the Rearrangement Schema
 ================================================
 
 The following list of software tools and databases support the TSV format of
-v1.2 of the :ref:`AIRR Rearrangement schema <RearrangementSchema>`.
+v1.2 (or higher) of the :ref:`AIRR Rearrangement schema <RearrangementSchema>`.
 
 .. csv-table::
    :url: https://raw.githubusercontent.com/airr-community/airr-standards/master/docs/resources/tables/rearrangement_support.tsv

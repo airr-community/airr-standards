@@ -16,6 +16,8 @@ explanatory comment if your answer to a question is `no` or `not applicable`.
 
 Name of Tool:
 
+Brief description of Tool:
+
 Contact Name/Institution:
 
 Contact email:

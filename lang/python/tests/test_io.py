@@ -19,9 +19,9 @@ class TestRearrangementReader(unittest.TestCase):
         print('-------> %s()' % self.id())
 
         # Test data
-        self.data_good = os.path.join(data_path, 'good_data.tsv')
-        self.data_bad = os.path.join(data_path, 'bad_data.tsv')
-        self.data_extra = os.path.join(data_path, 'extra_data.tsv')
+        self.data_good = os.path.join(data_path, 'good_rearrangement.tsv')
+        self.data_bad = os.path.join(data_path, 'bad_rearrangement.tsv')
+        self.data_extra = os.path.join(data_path, 'extra_rearrangement.tsv')
 
         # Start timer
         self.start = time.time()
@@ -66,6 +66,7 @@ class TestRearrangementReader(unittest.TestCase):
         except Exception as inst:
             print(type(inst))
             raise inst
+
 
 if __name__ == '__main__':
     unittest.main()
