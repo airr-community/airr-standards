@@ -266,7 +266,9 @@ module.exports = function(airr, schema) {
         };
 
         var obj = {};
-        _populate(this, obj);
+        if (this.definition.allOf) {
+            for (const k in this.definition.allOf) _populate(this.definition['allOf'][k], obj);
+        } else _populate(this, obj);
         return (obj);
     }
 
