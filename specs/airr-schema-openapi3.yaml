@@ -4560,7 +4560,7 @@ Cell:
             title: Cell-associated rearrangements
             items:
                 type: string
-            example: [id1, id2] #empty vs NULL?
+            example: [id1, id2]
             x-airr:
                 miairr: defined
                 adc-query-support: true
@@ -4573,7 +4573,7 @@ Cell:
             title: Cell-associated receptors
             items:
                 type: string
-            example: [id1, id2] #empty vs NULL?
+            example: [id1, id2]
             x-airr:
                 miairr: defined
                 adc-query-support: true
@@ -4730,7 +4730,7 @@ CellExpression:
                 name: Property value
 
 
-# The Receptor object hold information about a receptor and its reactivity.
+# The Receptor object holds information about a receptor (immunoglobulin or TCR)
 #
 Receptor:
     type: object
@@ -4830,22 +4830,13 @@ Receptor:
             example: ["IEDB_RECEPTOR:10"]
             x-airr:
                 adc-query-support: true
-        reactivity_measurements:
-            type: array
-            nullable: true
-            description: >
-                Array of reactivity measurement identifiers for the ReceptorReactivity objects associated with this Receptor
-            title: Reactivity measurements
-            items:
-                type: string
-            example: [id1, id2]
-            x-airr:
-                adc-query-support: true
 
 ReceptorReactivity:
     type: object
     required:
         - receptor_reactivity_id
+        - receptor_hash
+        - study_id
         - ligand_type
         - antigen_type
         - antigen
@@ -4861,6 +4852,25 @@ ReceptorReactivity:
             title: Receptor Reactivity ID
             x-airr:
                 identifier: true
+                adc-query-support: true
+        receptor_hash:
+            type: string
+            nullable: false
+            description: >
+                The hash of the receptor that the record refers to, calculated as described for the Receptor.receptor_hash
+                property.
+            title: Receptor hash ID
+            example: aa1c4b77a6f4927611ab39f5267415beaa0ba07a952c233d803b07e52261f026
+            x-airr:
+                adc-query-support: true
+        study_id:
+            type: string
+            nullable: false
+            description: >
+                Identifier of the study in the context of which the reactivity measurement was conducted.
+            title: Study ID
+            example: PRJNA001
+            x-airr:
                 adc-query-support: true
         ligand_type:
             type: string
@@ -5039,4 +5049,3 @@ ReceptorReactivity:
             example: pg/ml
             x-airr:
                 adc-query-support: true
-                
