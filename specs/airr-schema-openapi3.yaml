@@ -5312,7 +5312,7 @@ CellReactivity:
             type: string
             nullable: false
             description: >
-                Identifier of the cell in the context of which the reactivity measurement was conducted.
+                Identifier of the Cell in the context of which the reactivity measurement was conducted.
             title: Cell ID
             x-airr:
                 adc-query-support: true
