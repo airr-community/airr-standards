@@ -4813,19 +4813,6 @@ Cell:
                 miairr: defined
                 adc-query-support: true
                 name: Cell-associated receptors
-        reactivity_measurements:
-            type: array
-            nullable: true
-            description: >
-                Array of reactivity measurement identifiers for the ReceptorReactivity objects associated with this Cell
-            title: Reactivity measurements
-            items:
-                type: string
-            example: [id1, id2]
-            x-airr:
-                miairr: defined
-                adc-query-support: true
-                name: Cell-associated reactivity measurements
         repertoire_id:
             type: string
             nullable: true
@@ -5120,6 +5107,213 @@ ReceptorReactivity:
                 Identifier of the study in the context of which the reactivity measurement was conducted.
             title: Study ID
             example: PRJNA001
+            x-airr:
+                adc-query-support: true
+        ligand_type:
+            type: string
+            nullable: false
+            enum:
+                - "MHC:peptide"
+                - "MHC:non-peptide"
+                - protein
+                - peptide
+                - non-peptidic
+            description: Classification of ligand binding to receptor
+            example: non-peptide
+            x-airr:
+                format: controlled_vocabulary
+                adc-query-support: true
+        antigen_type:
+            type: string
+            nullable: false
+            enum:
+                - protein
+                - peptide
+                - non-peptidic
+            description: >
+                The type of antigen before processing by the immune system.
+            example: protein
+            x-airr:
+                format: controlled_vocabulary
+                adc-query-support: true
+        antigen:
+            $ref: '#/Ontology'
+            nullable: false
+            description: >
+                The substance against which the receptor was tested. This can be any substance that
+                stimulates an adaptive immune response in the host, either through antibody production
+                or by T cell activation after presentation via an MHC molecule.
+            title: Antigen
+            example:
+                id: UNIPROT:P19597
+                label: Circumsporozoite protein
+            x-airr:
+                adc-query-support: true
+                format: ontology
+        antigen_source_species:
+            $ref: '#/Ontology'
+            nullable: true
+            description: The species from which the antigen was isolated
+            title: Source species of antigen
+            example:
+                id: NCBITAXON:5843
+                label: Plasmodium falciparum NF54
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: true
+                    top_node:
+                        id: NCBITAXON:1
+                        label: root
+        peptide_start:
+            type: integer
+            nullable: true
+            description: Start position of the peptide within the reference protein sequence
+        peptide_end:
+            type: integer
+            nullable: true
+            description: End position of the peptide within the reference protein sequence
+        peptide_sequence_aa:
+            type: string
+            nullable: true
+            description: >
+              The actual peptide sequence against which the receptor reactivity was measured. This field should be
+              used as a convenience for antigens of antigen_type `protein` or `peptide`.
+            x-airr:
+                adc-query-support: true
+        mhc_class:
+            type: string
+            nullable: true
+            enum:
+                - MHC-I
+                - MHC-II
+                - MHC-nonclassical
+                - null
+            description: Class of MHC molecule, only present for MHC:x ligand types
+            example: MHC-II
+            x-airr:
+                format: controlled_vocabulary
+                adc-query-support: true
+        mhc_gene_1:
+            $ref: '#/Ontology'
+            nullable: true
+            description: The MHC gene to which the mhc_allele_1 belongs
+            title: MHC gene 1
+            example:
+                id: MRO:0000055
+                label: HLA-DRA
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: true
+                    top_node:
+                        id: MRO:0000004
+                        label: MHC gene
+        mhc_allele_1:
+            type: string
+            nullable: true
+            description: Allele designation of the MHC alpha chain
+            example: HLA-DRA
+            x-airr:
+                adc-query-support: true
+        mhc_gene_2:
+            $ref: '#/Ontology'
+            nullable: true
+            description: The MHC gene to which the mhc_allele_2 belongs
+            title: MHC gene 2
+            example:
+                id: MRO:0000057
+                label: HLA-DRB1
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: true
+                    top_node:
+                        id: MRO:0000004
+                        label: MHC gene
+        mhc_allele_2:
+            type: string
+            nullable: true
+            description: >
+                Allele designation of the MHC class II beta chain or the invariant beta2-microglobin chain
+            example: HLA-DRB1*04:01
+            x-airr:
+                adc-query-support: true
+        reactivity_method:
+            type: string
+            nullable: false
+            enum:
+                - SPR
+                - ITC
+                - ELISA
+                - cytometry
+                - biological_activity
+                - MHC_peptide_multimer
+            description: The methodology used to assess expression (assay implemented in experiment)
+            x-airr:
+                adc-query-support: true
+                format: controlled_vocabulary
+        reactivity_readout:
+            type: string
+            nullable: false
+            enum:
+                - binding_strength
+                - cytokine_release
+                - dissociation_constant_kd
+                - on_rate
+                - off_rate
+                - pathogen_inhibition
+                - barcode_count
+            description: Reactivity measurement read-out
+            example: cytokine release
+            x-airr:
+                adc-query-support: true
+                format: controlled_vocabulary
+        reactivity_value:
+            type: number
+            nullable: false
+            description: The absolute (processed) value of the measurement
+            example: 162.26
+            x-airr:
+                adc-query-support: true
+        reactivity_unit:
+            type: string
+            nullable: false
+            description: The unit of the measurement
+            example: pg/ml
+            x-airr:
+                adc-query-support: true
+
+CellReactivity:
+    type: object
+    required:
+        - cell_reactivity_id
+        - cell_id
+        - ligand_type
+        - antigen_type
+        - antigen
+        - reactivity_method
+        - reactivity_readout
+        - reactivity_value
+        - reactivity_unit
+    properties:
+        cell_reactivity_id:
+            type: string
+            nullable: false
+            description: ID of this CellReactivity object, globally unique.
+            title: Cell Reactivity ID
+            x-airr:
+                identifier: true
+                adc-query-support: true
+        cell_id:
+            type: string
+            nullable: false
+            description: >
+                Identifier of the cell in the context of which the reactivity measurement was conducted.
+            title: Cell ID
             x-airr:
                 adc-query-support: true
         ligand_type:
