@@ -4296,7 +4296,7 @@ Cell:
                 name: Parental repertoire of cell
         data_processing_id:
             type: string
-            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            description: Identifier of the data processing object in the repertoire metadata for this cell.
             title: Data processing for cell
             x-airr:
                 miairr: defined
@@ -4389,7 +4389,7 @@ CellExpression:
                 name: Parental repertoire of cell
         data_processing_id:
             type: string
-            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            description: Identifier of the data processing object in the repertoire metadata for this cell.
             title: Data processing for cell
             x-airr:
                 miairr: defined
@@ -4778,6 +4778,24 @@ CellReactivity:
             x-airr:
                 nullable: false
                 adc-query-support: true
+        repertoire_id:
+            type: string
+            description: Identifier to the associated repertoire in study metadata.
+            title: Parental repertoire of cell reactivity data
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                name: Parental repertoire of cell reactivity data
+        data_processing_id:
+            type: string
+            description: Identifier of the data processing object in the repertoire metadata for this cell reactivity.
+            title: Data processing for cell reactivity
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                name: Data processing for cell reactivity
         ligand_type:
             type: string
             enum:
