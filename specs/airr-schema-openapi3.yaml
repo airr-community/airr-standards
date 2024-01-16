@@ -4825,7 +4825,7 @@ Cell:
         data_processing_id:
             type: string
             nullable: true
-            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            description: Identifier of the data processing object in the repertoire metadata for this cell.
             title: Data processing for cell
             x-airr:
                 miairr: defined
@@ -4918,7 +4918,7 @@ CellExpression:
                 name: Parental repertoire of cell
         data_processing_id:
             type: string
-            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            description: Identifier of the data processing object in the repertoire metadata for this cell.
             title: Data processing for cell
             nullable: true
             x-airr:
@@ -5316,6 +5316,24 @@ CellReactivity:
             title: Cell ID
             x-airr:
                 adc-query-support: true
+        repertoire_id:
+            type: string
+            description: Identifier for the associated repertoire in study metadata.
+            title: Parental repertoire of cell
+            nullable: true
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Parental repertoire of cell
+        data_processing_id:
+            type: string
+            description: Identifier of the data processing object in the repertoire metadata for this cell.
+            title: Data processing for cell
+            nullable: true
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Data processing for cell
         ligand_type:
             type: string
             nullable: false
