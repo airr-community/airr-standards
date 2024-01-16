@@ -5040,7 +5040,7 @@ CellReactivity:
                 adc-query-support: true
         repertoire_id:
             type: string
-            description: Identifier to the associated repertoire in study metadata.
+            description: Identifier for the associated repertoire in study metadata.
             title: Parental repertoire of cell reactivity data
             x-airr:
                 miairr: defined
@@ -5049,7 +5049,7 @@ CellReactivity:
                 name: Parental repertoire of cell reactivity data
         data_processing_id:
             type: string
-            description: Identifier of the data processing object in the repertoire metadata for this cell reactivity.
+            description: Identifier of the data processing object in the repertoire metadata for this cell.
             title: Data processing for cell reactivity
             x-airr:
                 miairr: defined
