@@ -4781,21 +4781,21 @@ CellReactivity:
         repertoire_id:
             type: string
             description: Identifier for the associated repertoire in study metadata.
-            title: Parental repertoire of cell reactivity data
+            title: Parental repertoire of cell
             x-airr:
                 miairr: defined
                 nullable: true
                 adc-query-support: true
-                name: Parental repertoire of cell reactivity data
+                name: Parental repertoire of cell
         data_processing_id:
             type: string
             description: Identifier of the data processing object in the repertoire metadata for this cell.
-            title: Data processing for cell reactivity
+            title: Data processing for cell
             x-airr:
                 miairr: defined
                 nullable: true
                 adc-query-support: true
-                name: Data processing for cell reactivity
+                name: Data processing for cell
         ligand_type:
             type: string
             enum:
