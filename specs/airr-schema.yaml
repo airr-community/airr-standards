@@ -1146,7 +1146,8 @@ GermlineSet:
                 miairr: important
         pub_ids:
             type: array
-                items: string
+            items:
+                type: string
             description: Publications describing the germline set
             example:
                 - "PMID:85642"
