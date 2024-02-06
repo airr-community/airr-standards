@@ -1154,9 +1154,12 @@ GermlineSet:
             x-airr:
                 miairr: important
         pub_ids:
-            type: string
+            type: array
+                items: string
             description: Publications describing the germline set
-            example: "PMID:85642,PMID:12345"
+            example:
+                - "PMID:85642"
+                - "PMID:12345"
         species:
             $ref: '#/Ontology'
             description: Binomial designation of subject's species
@@ -1657,12 +1660,17 @@ Study:
                 subset: study
                 name: Contact information (data deposition)
         pub_ids:
-            type: string
+            type: array
+            items:
+                type: string
             description: >
-                Publications describing the rationale and/or outcome of the study. Where ever possible, a persistent
-                identifier should be used such as a DOI or a Pubmed ID
+                Array of publications describing the rationale and/or outcome of the study as an array of CURIE objects such as 
+                a DOI or Pubmed ID. Where more than one publication is given, if there is a primary publication for the study it
+                should come first.
             title: Relevant publications
-            example: "PMID:85642"
+            example:
+                - "PMID:29144493"
+                - "DOI:10.1038/ni.3873"
             x-airr:
                 miairr: important
                 nullable: true
