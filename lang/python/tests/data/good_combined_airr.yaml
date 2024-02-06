@@ -26,7 +26,8 @@ Repertoire:
       lab_name: Mark M. Davis
       lab_address: Stanford University
       submitted_by: Florian Rubelt
-      pub_ids: PMID:27005435
+      pub_ids:
+        - PMID:27005435
       collected_by:
       grants:
       keywords_study:
@@ -203,7 +204,8 @@ Repertoire:
       lab_name: Mark M. Davis
       lab_address: Stanford University
       submitted_by: Florian Rubelt
-      pub_ids: PMID:27005435
+      pub_ids:
+        - PMID:27005435
       collected_by:
       grants:
       keywords_study:
@@ -346,7 +348,8 @@ Repertoire:
       lab_name: Mark M. Davis
       lab_address: Stanford University
       submitted_by: Florian Rubelt
-      pub_ids: PMID:27005435
+      pub_ids:
+        - PMID:27005435
       collected_by:
       grants:
       keywords_study:
@@ -800,7 +803,8 @@ GermlineSet:
   lab_address: Birkbeck College, University of London, Malet Street, London
   lab_name: ''
   locus: IGH
-  pub_ids: ''
+  pub_ids:
+    - ''
   release_date: '2021-11-24'
   release_description: ''
   release_version: 1
