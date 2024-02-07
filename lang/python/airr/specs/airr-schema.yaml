@@ -279,6 +279,15 @@ Attributes:
                 True if an ADC API implementation must support queries on the field.
                 If false, query support for the field in ADC API implementations is optional.
             default: false
+        adc-api-optional:
+            type: boolean
+            description: >
+                If false, repositories must implement these fields both for queries and query repsonse.
+                Only applies to fields in the ADC API spec that are extensions to the AIRR Standard,
+                targeted at "convenience query fields" that make queries against repositories more
+                efficient than if queries were limited to AIRR fields only.
+                If true, repositories can choose to support the field or not.
+            default: false
         nullable:
             type: boolean
             description: True if the field may have a null value.
