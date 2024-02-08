@@ -70,12 +70,14 @@
                     "label": "Homo sapiens"
                 },
                 "sex": "female",
-                "age_min": 27,
-                "age_max": 27,
-                "age_unit": {
-                    "id": "UO:0000036",
-                    "label": "year"
-                },
+                "age": {
+                    "min": 27,
+                    "max": 27,
+                    "unit": {
+                       "id": "UO:0000036",
+                       "label": "year"
+                    }
+        },
                 "age_event": null,
                 "ancestry_population": {
                     "id": null,
@@ -207,10 +209,6 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_relative_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "collection_time_point_reference": null,
                     "collection_location": {
                         "id": null,
@@ -224,10 +222,6 @@
                     "cell_processing_protocol": null,
                     "template_quality": null,
                     "template_amount": null,
-                    "template_amount_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "library_generation_method": "RT(oligo-dT)+PCR",
                     "library_generation_protocol": null,
                     "library_generation_kit_version": null,
@@ -326,11 +320,13 @@
                     "label": "Homo sapiens"
                 },
                 "sex": "female",
-                "age_min": 27,
-                "age_max": 27,
-                "age_unit": {
-                    "id": "UO:0000036",
-                    "label": "year"
+                "age": {
+                    "min": 27,
+                    "max": 27,
+                    "unit": {
+                       "id": "UO:0000036",
+                       "label": "year"
+                    }
                 },
                 "age_event": null,
                 "ancestry_population": {
@@ -405,10 +401,6 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_relative_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "collection_time_point_reference": null,
                     "collection_location": {
                         "id": null,
@@ -422,10 +414,6 @@
                     "cell_processing_protocol": null,
                     "template_quality": null,
                     "template_amount": null,
-                    "template_amount_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "library_generation_method": "RT(oligo-dT)+PCR",
                     "library_generation_protocol": null,
                     "library_generation_kit_version": null,
@@ -524,11 +512,13 @@
                     "label": "Homo sapiens"
                 },
                 "sex": "female",
-                "age_min": 27,
-                "age_max": 27,
-                "age_unit": {
-                    "id": "UO:0000036",
-                    "label": "year"
+                "age": {
+                    "min": 27,
+                    "max": 27,
+                    "unit": {
+                       "id": "UO:0000036",
+                       "label": "year"
+                    }
                 },
                 "age_event": null,
                 "ancestry_population": {
@@ -603,10 +593,6 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_relative_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "collection_time_point_reference": null,
                     "collection_location": {
                         "id": null,
@@ -620,10 +606,6 @@
                     "cell_processing_protocol": null,
                     "template_quality": null,
                     "template_amount": null,
-                    "template_amount_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "library_generation_method": "RT(oligo-dT)+PCR",
                     "library_generation_protocol": null,
                     "library_generation_kit_version": null,
