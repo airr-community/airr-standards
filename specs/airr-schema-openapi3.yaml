@@ -1978,7 +1978,7 @@ Subject:
                 set: 1
                 subset: subject
                 name: Sex
-                format: controlled vocabulary
+                format: controlled_vocabulary
         age:
             $ref: '#/TimeInterval'
             nullable: true
