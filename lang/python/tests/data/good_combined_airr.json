@@ -31,12 +31,14 @@
                     "label": "Homo sapiens"
                 },
                 "sex": "female",
-                "age_min": 27,
-                "age_max": 27,
-                "age_unit": {
-                    "id": "UO_0000036",
-                    "label": "year"
-                },
+                "age": {
+                    "min": 27,
+                    "max": 27,
+                    "unit": {
+                       "id": "UO_0000036",
+                       "label": "year"
+                    }
+		},
                 "age_event": null,
                 "ancestry_population": {
 				    "id": null,
@@ -168,10 +170,6 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_relative_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "collection_time_point_reference": null,
 					"collection_location": {
                         "id": null,
@@ -248,11 +246,13 @@
                     "label": "Homo sapiens"
                 },
                 "sex": "female",
-                "age_min": 27,
-                "age_max": 27,
-                "age_unit": {
-                    "id": "UO_0000036",
-                    "label": "year"
+                "age": {
+                    "min": 27,
+                    "max": 27,
+                    "unit": {
+                       "id": "UO_0000036",
+                       "label": "year"
+                    }
                 },
                 "age_event": null,
                 "ancestry_population": {
@@ -327,10 +327,6 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_relative_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "collection_time_point_reference": null,
 					"collection_location": {
                         "id": null,
@@ -407,11 +403,13 @@
                     "label": "Homo sapiens"
                 },
                 "sex": "female",
-                "age_min": 27,
-                "age_max": 27,
-                "age_unit": {
-                    "id": "UO_0000036",
-                    "label": "year"
+                "age": {
+                    "min": 27,
+                    "max": 27,
+                    "unit": {
+                       "id": "UO_0000036",
+                       "label": "year"
+                    }
                 },
                 "age_event": null,
                 "ancestry_population": {
@@ -486,10 +484,6 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_relative_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "collection_time_point_reference": null,
 					"collection_location": {
                         "id": null,
