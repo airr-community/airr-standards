@@ -183,10 +183,6 @@
                     "cell_processing_protocol": null,
                     "template_quality": null,
                     "template_amount": null,
-                    "template_amount_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "library_generation_method": "RT(oligo-dT)+PCR",
                     "library_generation_protocol": null,
                     "library_generation_kit_version": null,
@@ -340,10 +336,6 @@
                     "cell_processing_protocol": null,
                     "template_quality": null,
                     "template_amount": null,
-                    "template_amount_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "library_generation_method": "RT(oligo-dT)+PCR",
                     "library_generation_protocol": null,
                     "library_generation_kit_version": null,
@@ -497,10 +489,6 @@
                     "cell_processing_protocol": null,
                     "template_quality": null,
                     "template_amount": null,
-                    "template_amount_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "library_generation_method": "RT(oligo-dT)+PCR",
                     "library_generation_protocol": null,
                     "library_generation_kit_version": null,

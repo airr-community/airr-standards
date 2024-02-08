@@ -137,9 +137,6 @@ Repertoire:
         anatomic_site:
         disease_state_sample:
         collection_time_point_relative:
-        collection_time_point_relative_unit:
-          id:
-          label:
         collection_time_point_reference:
         collection_location:
           id:
@@ -278,10 +275,6 @@ Repertoire:
         anatomic_site:
         disease_state_sample:
         collection_time_point_relative:
-          value:
-          unit:
-            id:
-            label:
         collection_time_point_reference:
         collection_location:
           id:
@@ -420,9 +413,6 @@ Repertoire:
         anatomic_site:
         disease_state_sample:
         collection_time_point_relative:
-        collection_time_point_relative_unit:
-          id:
-          label:
         collection_time_point_reference:
         collection_location:
           id:
