@@ -479,8 +479,6 @@ TimePoint:
 
 # A time range or interval
 TimeInterval:
-    discriminator:
-        propertyName: AIRR
     description: Time range or interval for a measurement, observation or action.
     type: object
     properties:
@@ -516,8 +514,6 @@ TimeInterval:
 
 # A physical quantity
 PhysicalQuantity:
-    discriminator:
-        propertyName: AIRR
     description: A physical quantity from a measurement or observation.
     type: object
     properties:
