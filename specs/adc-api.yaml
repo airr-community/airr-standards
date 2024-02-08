@@ -102,7 +102,7 @@ definitions:
       - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Rearrangement'
       - type: object
         properties:
-          adc_v_subgroup:
+          v_subgroup:
             type: string
             description: >
               V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -113,7 +113,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: V gene subgroup
-          adc_v_gene:
+          v_gene:
             type: string
             description: >
               V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -124,7 +124,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: V gene
-          adc_d_subgroup:
+          d_subgroup:
             type: string
             description: >
               D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -135,7 +135,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: D gene subgroup
-          adc_d_gene:
+          d_gene:
             type: string
             description: >
               D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -146,7 +146,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: D gene
-          adc_j_subgroup:
+          j_subgroup:
             type: string
             description: >
               J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -157,7 +157,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: J gene subgroup
-          adc_j_gene:
+          j_gene:
             type: string
             description: >
               J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -168,7 +168,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: J gene
-          adc_c_subgroup:
+          c_subgroup:
             type: string
             description: >
               C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -179,7 +179,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: C gene subgroup
-          adc_c_gene:
+          c_gene:
             type: string
             description: >
               C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -190,7 +190,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: C gene
-          adc_annotation_cell_id:
+          annotation_cell_id:
             type: string
             description: >
               The Cell ID used by the annotation tool to annotate the Cell during data processing.
@@ -225,7 +225,7 @@ definitions:
       - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Clone'
       - type: object
         properties:
-          adc_v_subgroup:
+          v_subgroup:
             type: string
             description: >
               V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -236,7 +236,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: V gene subgroup
-          adc_v_gene:
+          v_gene:
             type: string
             description: >
               V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -247,7 +247,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: V gene
-          adc_d_subgroup:
+          d_subgroup:
             type: string
             description: >
               D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -258,7 +258,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: D gene subgroup
-          adc_d_gene:
+          d_gene:
             type: string
             description: >
               D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -269,7 +269,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: D gene
-          adc_j_subgroup:
+          j_subgroup:
             type: string
             description: >
               J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -280,7 +280,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: J gene subgroup
-          adc_j_gene:
+          j_gene:
             type: string
             description: >
               J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -291,7 +291,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: J gene
-          adc_c_subgroup:
+          c_subgroup:
             type: string
             description: >
               C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -302,7 +302,7 @@ definitions:
               adc-api-optional: false
               adc-query-support: true
               name: C gene subgroup
-          adc_c_gene:
+          c_gene:
             type: string
             description: >
               C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
@@ -347,7 +347,7 @@ definitions:
       - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Cell'
       - type: object
         properties:
-          adc_annotation_cell_id:
+          annotation_cell_id:
             type: string
             description: >
               The Cell ID used by the annotation tool to annotate the Cell during data processing.
