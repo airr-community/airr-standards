@@ -39,11 +39,12 @@ Repertoire:
         id: NCBITaxon_9606
         label: Homo sapiens
       sex: female
-      age_min: 27
-      age_max: 27
-      age_unit:
-        id: UO_0000036
-        label: year
+      age:
+        min: 27
+        max: 27
+        unit:
+          id: UO_0000036
+          label: year
       age_event:
       ancestry_population:
         id:
@@ -151,9 +152,6 @@ Repertoire:
         cell_processing_protocol:
         template_quality:
         template_amount:
-        template_amount_unit:
-          id:
-          label:
         library_generation_method: RT(oligo-dT)+PCR
         library_generation_protocol:
         library_generation_kit_version:
@@ -216,11 +214,12 @@ Repertoire:
         id: NCBITaxon_9606
         label: Homo sapiens
       sex: female
-      age_min: 27
-      age_max: 27
-      age_unit:
-        id: UO_0000036
-        label: year
+      age:
+        min: 27
+        max: 27
+        unit:
+          id: UO_0000036
+          label: year
       age_event:
       ancestry_population:
         id:
@@ -279,9 +278,10 @@ Repertoire:
         anatomic_site:
         disease_state_sample:
         collection_time_point_relative:
-        collection_time_point_relative_unit:
-          id:
-          label:
+          value:
+          unit:
+            id:
+            label:
         collection_time_point_reference:
         collection_location:
           id:
@@ -294,9 +294,6 @@ Repertoire:
         cell_processing_protocol:
         template_quality:
         template_amount:
-        template_amount_unit:
-          id:
-          label:
         library_generation_method: RT(oligo-dT)+PCR
         library_generation_protocol:
         library_generation_kit_version:
@@ -359,11 +356,12 @@ Repertoire:
         id: NCBITaxon_9606
         label: Homo sapiens
       sex: female
-      age_min: 27
-      age_max: 27
-      age_unit:
-        id: UO_0000036
-        label: year
+      age:
+        min: 27
+        max: 27
+        unit:
+          id: UO_0000036
+          label: year
       age_event:
       ancestry_population:
         id:
@@ -437,9 +435,6 @@ Repertoire:
         cell_processing_protocol:
         template_quality:
         template_amount:
-        template_amount_unit:
-          id:
-          label:
         library_generation_method: RT(oligo-dT)+PCR
         library_generation_protocol:
         library_generation_kit_version:
