@@ -2623,6 +2623,7 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Template amount
+                format: physical_quantity
         template_amount_unit:
             $ref: '#/Ontology'
             x-airr:
