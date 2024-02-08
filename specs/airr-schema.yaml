@@ -1796,9 +1796,7 @@ Subject:
         - synthetic
         - species
         - sex
-        - age_min
-        - age_max
-        - age_unit
+        - age
         - age_event
         - ancestry_population
         - ethnicity
