@@ -29,11 +29,12 @@ Repertoire:
         id: "NCBITaxon_9606"
         label: "Homo sapiens"
       sex: female
-      age_min: 27
-      age_max: 27
-      age_unit:
-        id: UO_0000036
-        label: year
+      age:
+        min: 27
+        max: 27
+        unit:
+          id: UO_0000036
+          label: year
       age_event: null
       ancestry_population:
         id: null
@@ -162,11 +163,12 @@ Repertoire:
         id: "NCBITaxon_9606"
         label: "Homo sapiens"
       sex: female
-      age_min: 27
-      age_max: 27
-      age_unit:
-        id: UO_0000036
-        label: year
+      age:
+        min: 27
+        max: 27
+        unit:
+          id: UO_0000036
+          label: year
       age_event: null
       ancestry_population:
         id: null
@@ -295,11 +297,12 @@ Repertoire:
         id: "NCBITaxon_9606"
         label: "Homo sapiens"
       sex: female
-      age_min: 27
-      age_max: 27
-      age_unit:
-        id: UO_0000036
-        label: year
+      age:
+        min: 27
+        max: 27
+        unit:
+          id: UO_0000036
+          label: year
       age_event: null
       ancestry_population:
         id: null
