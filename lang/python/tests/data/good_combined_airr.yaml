@@ -45,7 +45,7 @@ Repertoire:
         unit:
           id: UO_0000036
           label: year
-      age_event:
+      age_event: null
       ancestry_population:
         id:
         label:
