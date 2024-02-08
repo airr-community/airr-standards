@@ -140,26 +140,44 @@ Attributes:
                             description: Ontology name for the top node term
 
 
-# A data set manifest groups a set of 
+# A data set manifest groups a set of files that logically describe an AIRR data set
+# that spans a number of AIRR schema objects.
 
 DataSetManifest:
     discriminator: AIRR
     type: object
         properties:
-            repertoire_file:
+            dataset_name:
                 type: string
-            rearrangement_file:
+                description: A human readable name for the data set.
+            repository_url:
                 type: string
-            clone_file:
-                type: string
-            cell_file:
-                type: string
-            tree_file:
-                type: string
+                description: URL for the repository if the data set came from an ADC repository.
+            dataset:
+                type: array
+                description: An array that describes the type of data (and the relevant data files) in the data set.
+                items:
+                    type: object
+                    properties:
+                        data_type:
+                            type: string
+                            description:
+                                > A string that represents the type of the data that is being stored in the files.
+                                  If the data files store data from an AIRR Schema object, then the data_type should
+                                  be the schema object name (e.g. "Repertoire", "Rearrangement", "Clone", "Cell", "CellExpression",
+                                  "CellReactivity", "Receptor", etc.). If the type of files 
+                        data_files:
+                            type: array
+                            description: An array of file names that store the data of the specified data_type
+                            items:
+                                type: string
+
                 
 # AIRR Manifest specification.
 #     An AIRR Manifest contains metadata for a group of accompanying files that are part of a set or coherent unit. 
-#     A manifest consists of an AIRR Info Object as well as an array of single data set manifests
+#     A manifest consists of an AIRR Info Object as well as an array of single data set manifests. Each data set
+#     manifest consists of tags for types of AIRR Schema Objects and a set of files that hold data in the AIRR format
+#     appropriate for that AIRR schema object.
 
 Manifest:
     discriminator: AIRR
