@@ -39,12 +39,7 @@ Repertoire:
         id: NCBITaxon_9606
         label: Homo sapiens
       sex: female
-      age:
-        min: 27
-        max: 27
-        unit:
-          id: UO_0000036
-          label: year
+      age: null
       age_event: null
       ancestry_population:
         id:
