@@ -2377,7 +2377,7 @@ Sample:
                 set: 2
                 subset: sample
                 name: Sample collection time
-                format: physical quantity
+                format: physical_quantity
         collection_time_point_relative_unit:
             $ref: '#/Ontology'
             nullable: true
@@ -2718,7 +2718,7 @@ NucleicAcidProcessing:
                 set: 3
                 subset: process (nucleic acid)
                 name: Template amount
-                format: physical quantity
+                format: physical_quantity
         template_amount_unit:
             $ref: '#/Ontology'
             nullable: true
