@@ -311,6 +311,8 @@ Attributes:
                 - ontology
                 - controlled_vocabulary
                 - physical_quantity
+                - time_point
+                - time_interval
                 - CURIE
         ontology:
             type: object
@@ -1902,6 +1904,7 @@ Subject:
                 set: 1
                 subset: subject
                 name: Age
+                format: time_interval
         age_event:
             type: string
             description: >
@@ -2264,11 +2267,11 @@ Sample:
                 subset: sample
                 name: Disease state of sample
         collection_time_point_relative:
-            $ref: '#/PhysicalQuantity'
+            $ref: '#/TimePoint'
             description: Time point at which sample was taken, relative to `Collection time event`
             title: Sample collection time
             example:
-                quantity: 14
+                value: 14
                 unit:
                     id: UO:0000033
                     label: day
@@ -2279,6 +2282,7 @@ Sample:
                 set: 2
                 subset: sample
                 name: Sample collection time
+                format: time_point
         collection_time_point_relative_unit:
             $ref: '#/Ontology'
             x-airr:
