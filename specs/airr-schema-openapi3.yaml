@@ -350,9 +350,11 @@ Manifest:
     properties:
         dataset_name:
             type: string
+            nullable: false
             description: A human readable name for the data set.
         repository_url:
             type: string
+            nullable: false
             description: URL for the repository if the data set came from an ADC repository.
         dataset:
             type: array
@@ -362,6 +364,7 @@ Manifest:
                 properties:
                     data_type:
                         type: string
+                        nullable: false
                         description: >
                             A string that represents the type of the data that is being stored in the files.
                             If the data files store data from an AIRR Schema object, then the data_type should
@@ -374,6 +377,7 @@ Manifest:
                         description: An array of file names that store the data of the specified data_type
                         items:
                             type: string
+                            nullable: false
 
 
 # AIRR Data File
