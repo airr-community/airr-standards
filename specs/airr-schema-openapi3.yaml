@@ -374,6 +374,7 @@ Manifest:
                             extension (e.g. fasta, tsv, etc) can be used.
                     data_files:
                         type: array
+                        nullable: false
                         description: An array of file names that store the data of the specified data_type
                         items:
                             type: string
