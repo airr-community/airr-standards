@@ -2192,7 +2192,6 @@ Sample:
         - anatomic_site
         - disease_state_sample
         - collection_time_point_relative
-        - collection_time_point_reference
         - biomaterial_provider
     properties:
         sample_id:
@@ -2268,9 +2267,10 @@ Sample:
                 name: Disease state of sample
         collection_time_point_relative:
             $ref: '#/TimePoint'
-            description: Time point at which sample was taken, relative to `Collection time event`
+            description: Time point at which sample was taken, relative to `label` event
             title: Sample collection time
             example:
+                label: Primary vaccination
                 value: 14
                 unit:
                     id: UO:0000033
@@ -2294,15 +2294,12 @@ Sample:
         collection_time_point_reference:
             type: string
             description: Event in the study schedule to which `Sample collection time` relates to
-            title: Collection time event
-            example: Primary vaccination
             x-airr:
-                miairr: important
                 nullable: true
-                adc-query-support: true
-                set: 2
-                subset: sample
-                name: Collection time event
+                deprecated: true
+                deprecated-description: Field has been merged with collection_time_point_relative.
+                deprecated-replaced-by:
+                    - collection_time_point_relative
         collection_location:
             $ref: '#/Ontology'
             description: Location where the sample was taken, preferred granularity is country-level
