@@ -382,8 +382,6 @@ Manifest:
                         description: An array of file names that store the data of the specified data_type
                         items:
                             type: string
-                            x-airr:
-                                nullable: false
 
 
 # AIRR Data File
