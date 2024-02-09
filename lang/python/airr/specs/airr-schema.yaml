@@ -149,30 +149,30 @@ Manifest:
     discriminator: AIRR
     type: object
     properties:
-            dataset_name:
-                type: string
-                description: A human readable name for the data set.
-            repository_url:
-                type: string
-                description: URL for the repository if the data set came from an ADC repository.
-            dataset:
-                type: array
-                description: An array that describes the type of data (and the relevant data files) in the data set.
-                items:
-                    type: object
-                    properties:
-                        data_type:
+        dataset_name:
+            type: string
+            description: A human readable name for the data set.
+        repository_url:
+            type: string
+            description: URL for the repository if the data set came from an ADC repository.
+        dataset:
+            type: array
+            description: An array that describes the type of data (and the relevant data files) in the data set.
+            items:
+                type: object
+                properties:
+                    data_type:
+                        type: string
+                        description: >
+                            A string that represents the type of the data that is being stored in the files.
+                            If the data files store data from an AIRR Schema object, then the data_type should
+                            be the schema object name (e.g. "Repertoire", "Rearrangement", "Clone", "Cell", "CellExpression",
+                            "CellReactivity", "Receptor", etc.). If the type of files 
+                    data_files:
+                        type: array
+                        description: An array of file names that store the data of the specified data_type
+                        items:
                             type: string
-                            description:
-                                > A string that represents the type of the data that is being stored in the files.
-                                  If the data files store data from an AIRR Schema object, then the data_type should
-                                  be the schema object name (e.g. "Repertoire", "Rearrangement", "Clone", "Cell", "CellExpression",
-                                  "CellReactivity", "Receptor", etc.). If the type of files 
-                        data_files:
-                            type: array
-                            description: An array of file names that store the data of the specified data_type
-                            items:
-                                type: string
 
 
 # AIRR Data File
