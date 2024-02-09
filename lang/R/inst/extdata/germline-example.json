@@ -3,7 +3,7 @@
         "germline_set_id": "OGRDB:G00007",
         "acknowledgements": [
             {
-                "contributor_id": "1",
+                "contributor_id": "3",
                 "name": "William Lees",
                 "orcid_id": {
                     "id": "ORCID:0000-0001-9834-6840",
@@ -13,7 +13,7 @@
                     "id": "ROR:02mb95055",
                     "label": "Birkbeck, University of London"
                 },
-                "affiliation_department":"",
+                "affiliation_department": null,
                 "contributions": [
                     {
                         "role": "investigation",
@@ -43,9 +43,9 @@
             {
                 "allele_description_id": "OGRDB:A00301",
                 "allele_description_ref": "OGRDB:Mouse_IGH:IGHV-2DBF",
-                "acknowledgements":  [
+                "acknowledgements": [
                     {
-                        "contributor_id": "1",
+                        "contributor_id": "3",
                         "name": "William Lees",
                         "orcid_id": {
                             "id": "ORCID:0000-0001-9834-6840",
@@ -55,7 +55,7 @@
                             "id": "ROR:02mb95055",
                             "label": "Birkbeck, University of London"
                         },
-                        "affiliation_department":"",
+                        "affiliation_department": null,
                         "contributions": [
                             {
                                 "role": "investigation",
@@ -72,8 +72,8 @@
                 "release_date": "2021-11-24",
                 "release_description": "First release",
                 "label": "IGHV-2DBF",
-                "sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
-                "coding_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                "sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGATGGTAGTGGCACCTACTATCTGGACTCCTTGAAGAGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                "coding_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGATGGTAGTGGCACCTACTATCTGGACTCCTTGAAGAGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
                 "aliases": [
                     "watson_et_al:CAST_EiJ_IGHV5-3"
                 ],
@@ -106,8 +106,8 @@
                     {
                         "sequence_delineation_id": "1",
                         "delineation_scheme": "IMGT",
+                        "unaligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGATGGTAGTGGCACCTACTATCTGGACTCCTTGAAGAGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
                         "aligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
-                        "unaligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
                         "fwr1_start": 1,
                         "fwr1_end": 75,
                         "cdr1_start": 76,
@@ -236,9 +236,9 @@
             {
                 "allele_description_id": "OGRDB:A00314",
                 "allele_description_ref": "OGRDB:Mouse_IGH:IGHV-2ETO",
-                "acknowledgements":  [
+                "acknowledgements": [
                     {
-                        "contributor_id": "1",
+                        "contributor_id": "3",
                         "name": "William Lees",
                         "orcid_id": {
                             "id": "ORCID:0000-0001-9834-6840",
@@ -248,7 +248,7 @@
                             "id": "ROR:02mb95055",
                             "label": "Birkbeck, University of London"
                         },
-                        "affiliation_department":"",
+                        "affiliation_department": null,
                         "contributions": [
                             {
                                 "role": "investigation",
@@ -299,8 +299,8 @@
                     {
                         "sequence_delineation_id": "1",
                         "delineation_scheme": "IMGT",
-                        "aligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
-                        "unaligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                        "unaligned_sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
+                        "aligned_sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCTG...GGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGA............GCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGT......GGGATGATGATAAGTACTATAACCCATCCCTGA...AGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
                         "fwr1_start": 1,
                         "fwr1_end": 75,
                         "cdr1_start": 76,
@@ -429,7 +429,6 @@
         ],
         "curation": null
     }],
-
     "GenotypeSet": [{
         "receptor_genotype_set_id": "1",
         "genotype_class_list": [

@@ -209,7 +209,6 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_reference": null,
                     "collection_location": {
                         "id": null,
                         "label": null
@@ -401,7 +400,6 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_reference": null,
                     "collection_location": {
                         "id": null,
                         "label": null
@@ -593,7 +591,6 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_reference": null,
                     "collection_location": {
                         "id": null,
                         "label": null
