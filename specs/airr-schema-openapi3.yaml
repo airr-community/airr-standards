@@ -358,6 +358,7 @@ Manifest:
             description: URL for the repository if the data set came from an ADC repository.
         dataset:
             type: array
+            nullable: false
             description: An array that describes the type of data (and the relevant data files) in the data set.
             items:
                 type: object

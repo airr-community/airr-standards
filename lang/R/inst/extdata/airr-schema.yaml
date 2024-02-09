@@ -363,6 +363,8 @@ Manifest:
         dataset:
             type: array
             description: An array that describes the type of data (and the relevant data files) in the data set.
+            x-airr:
+                nullable: false
             items:
                 type: object
                 properties:
