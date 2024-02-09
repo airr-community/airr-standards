@@ -167,7 +167,9 @@ Manifest:
                             A string that represents the type of the data that is being stored in the files.
                             If the data files store data from an AIRR Schema object, then the data_type should
                             be the schema object name (e.g. "Repertoire", "Rearrangement", "Clone", "Cell", "CellExpression",
-                            "CellReactivity", "Receptor", etc.). If the type of files 
+                            "CellReactivity", "Receptor", etc.). If the type data is not an AIRR Schema object then
+                            relevant domain specific data type descriptions should be used if available, file format
+                            extension (e.g. fasta, tsv, etc) can be used
                     data_files:
                         type: array
                         description: An array of file names that store the data of the specified data_type
