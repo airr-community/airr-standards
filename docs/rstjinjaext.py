@@ -11,7 +11,6 @@ def rstjinja(app, docname, source):
     template = jinja2.Template(source[0])
     rendered = template.render(app.config.html_context)
     source[0] = rendered
-    print('foo')
     print(docname)
 
 

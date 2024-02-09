@@ -1,9 +1,49 @@
-Version 1.4.0:  In development
+Version 1.5.0:  August 29, 2023
 --------------------------------------------------------------------------------
+
+1. Updated schema set and examples to v1.5.
+2. Officially dropped support for Python 2.
+3. Added check for valid enum values to schema validation routines.
+4. Set enum values to first defined value during template generation routines.
+5. Removed mock dependency installation in ReadTheDocs environments from setup.
+6. Improved package import time.
+
+
+Version 1.4.1:  August 27, 2022
+--------------------------------------------------------------------------------
+
+General:
 
 1. Updated pandas requirement to 0.24.0 or higher.
 2. Added support for missing integer values (``NaN``) in ``load_rearrangement``
    by casting to the pandas ``Int64`` data type.
+3. Added gzip support to ``read_rearrangement``.
+4. Significant internal refactoring to improve schema generalizability,
+   harmonize behavior between the python and R libraries, and prepare for
+   AIRR Standards v2.0.
+5. Fixed a bug in the ``validate`` subcommand of ``airr-tools`` causing
+   validation errors to only be reporting for the first invalid file when
+   multiple files were specified on the command line.
+
+Data Model and Schema:
+
+1. Added support for arrays of objects in a single JSON or YAML file.
+2. Added support for the AIRR Data File and associated schema
+   (DataFile, Info). The Data File data format holds AIRR object of
+   multiple types and is backwards compatible with Repertoire metadata.
+3. Added support for the new germline and genotyping schema
+   (GermlineSet, GenotypeSet) and associated schema.
+4. Renamed ``schema.CachedSchema`` to ``schema.AIRRSchema``.
+5. Removed ``specs/blank.airr.yaml``.
+
+Deprecations:
+
+1. Deprecated ``load_repertoire``. Use ``read_airr`` instead.
+2. Deprecated ``write_repertoire``. Use ``write_airr`` instead.
+3. Deprecated ``validate_repertoire``. Use ``validate_airr`` instead.
+4. Deprecated ``repertoire_template``. Use ``schema.RepertoireSchema.template`` instead.
+5. Deprecated the commandline tool ``airr-tools validate repertoire``.
+   Use ``airr-tools validate airr`` instead.
 
 
 Version 1.3.1:  October 13, 2020

@@ -21,7 +21,7 @@ Repertoire:
       grants: null
       keywords_study: 
         - "contains_ig"
-        - "contains_tcr"
+        - "contains_tr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -35,7 +35,12 @@ Repertoire:
         id: UO_0000036
         label: year
       age_event: null
-      ancestry_population: null
+      ancestry_population:
+        id: null
+        label: null
+      location_birth:
+        id: null
+        label: null
       ethnicity: null
       race: null
       strain_name: null
@@ -77,6 +82,7 @@ Repertoire:
             reverse_pcr_primer_target_location: null
         sequencing_platform: "Illumina MiSeq"
         sequencing_files:
+          sequencing_data_id: SRR2905656
           file_type: fastq
           filename: SRR2905656_R1.fastq.gz
           read_direction: forward
@@ -91,6 +97,9 @@ Repertoire:
           id: null
           label: null
         collection_time_point_reference: null
+        collection_location:
+          id: null
+          label: null
         biomaterial_provider: null
         cell_number: null
         cells_per_reaction: null
@@ -143,7 +152,7 @@ Repertoire:
       grants: null
       keywords_study:
         - "contains_ig"
-        - "contains_tcr"
+        - "contains_tr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -157,7 +166,12 @@ Repertoire:
         id: UO_0000036
         label: year
       age_event: null
-      ancestry_population: null
+      ancestry_population:
+        id: null
+        label: null
+      location_birth:
+        id: null
+        label: null
       ethnicity: null
       race: null
       strain_name: null
@@ -199,6 +213,7 @@ Repertoire:
             reverse_pcr_primer_target_location: null
         sequencing_platform: "Illumina MiSeq"
         sequencing_files:
+          sequencing_data_id: SRR2905655
           file_type: fastq
           filename: SRR2905655_R1.fastq.gz
           read_direction: forward
@@ -213,6 +228,9 @@ Repertoire:
           id: null
           label: null
         collection_time_point_reference: null
+        collection_location:
+          id: null
+          label: null
         biomaterial_provider: null
         cell_number: null
         cells_per_reaction: null
@@ -265,7 +283,7 @@ Repertoire:
       grants: null
       keywords_study:
         - "contains_ig"
-        - "contains_tcr"
+        - "contains_tr"
     subject:
       subject_id: TW01A
       synthetic: false
@@ -279,7 +297,12 @@ Repertoire:
         id: UO_0000036
         label: year
       age_event: null
-      ancestry_population: null
+      ancestry_population:
+        id: null
+        label: null
+      location_birth:
+        id: null
+        label: null
       ethnicity: null
       race: null
       strain_name: null
@@ -321,6 +344,7 @@ Repertoire:
             reverse_pcr_primer_target_location: null
         sequencing_platform: "Illumina MiSeq"
         sequencing_files:
+          sequencing_data_id: SRR2905659
           file_type: fastq
           filename: SRR2905659_R1.fastq.gz
           read_direction: forward
@@ -335,6 +359,9 @@ Repertoire:
           id: null
           label: null
         collection_time_point_reference: null
+        collection_location:
+          id: null
+          label: null
         biomaterial_provider: null
         cell_number: null
         cells_per_reaction: null

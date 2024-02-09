@@ -1,34 +1,41 @@
 validate_airr
 -------------
 
-**Validate AIRR data**
+**Validate an AIRR Data Model nested list representation**
 
 Description
 ~~~~~~~~~~~
 
-``validate_airr`` validates compliance of the contents of a data.frame
-to the AIRR data standards.
+``validate_airr`` validates the fields in a named nested list
+representation of the AIRR Data Model. Typically, generating by reading
+of JSON or YAML formatted AIRR files.
 
 Usage
 ~~~~~
 
 ::
 
-   validate_airr(data, schema = RearrangementSchema)
+   validate_airr(data, model = TRUE, each = FALSE)
 
 Arguments
 ~~~~~~~~~
 
 data
-   data.frame to validate.
-schema
-   ``Schema`` object defining the data standard.
+   ``list`` containing records of an AIRR Data Model objected imported
+   from a YAML or JSON representation.
+model
+   if ``TRUE`` validate only AIRR DataFile defined objects. If ``FALSE``
+   attempt validation of all objects in ``data``.
+each
+   if ``TRUE`` return a logical vector with results for each object in
+   ``data`` instead of a single ``TRUE`` or ``FALSE`` value.
 
 Value
 ~~~~~
 
-Returns ``TRUE`` if the input ``data`` is compliant and ``FALSE`` if
-not.
+Returns ``TRUE`` if the input ``data`` is compliant with AIRR standards
+and ``FALSE`` if not. If ``each=TRUE`` is set, then a vector with
+results for each each object in ``data`` is returned instead.
 
 Examples
 ~~~~~~~~
@@ -36,15 +43,35 @@ Examples
 .. code:: r
 
    # Get path to the rearrangement-example file
-   file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
+   f1 <- system.file("extdata", "repertoire-example.yaml", package="airr")
+   f2 <- system.file("extdata", "germline-example.json", package="airr")
 
    # Load data file
-   df <- read_rearrangement(file)
+   repertoire <- read_airr(f1)
+   germline <- read_airr(f2)
 
-   # Validate a data.frame against the Rearrangement schema
-   validate_airr(df, schema=RearrangementSchema)
+   # Validate a single record
+   validate_airr(repertoire)
 
 ::
 
    [1] TRUE
 
+.. code:: r
+
+
+   # Return validation for individual objects
+   validate_airr(germline, each=TRUE)
+
+::
+
+   GenotypeSet GermlineSet 
+          TRUE        TRUE 
+
+See also
+~~~~~~~~
+
+See `Schema <Schema-class.html>`__ for the AIRR schema definitions. See
+`read_airr <read_airr.html>`__ for loading AIRR Data Models from a file.
+See `write_airr <write_airr.html>`__ for writing AIRR Data Models to a
+file.

@@ -41,12 +41,9 @@ AIRR Data Commons.
 AIRR Data Commons Repositories
 ---------------------------------------
 
-These data repositories all implement the AIRR Data Commons (ADC) API programmatic access to
-query and download AIRR-seq data. 
-
-+ :ref:`iReceptor Public Archive <iReceptor>`
-
-+ :ref:`VDJServer Community Data Portal <VDJServer>`
+The repositories that are part of the ADC are listed on the `AIRR Community ADC Registry github site 
+<https://github.com/airr-community/adc-registry/blob/ADC/ADC-registry.tsv>`_. In order
+to find data across all of the repositories in the ADC, it is necessary to query all of these repositories.
 
 Querying the AIRR Data Commons
 ---------------------------------------
@@ -56,6 +53,7 @@ following tools and platforms implement web based user interfaces that use the A
 in the AIRR Data Commons:
 
 + :ref:`iReceptor Gateway <iReceptor>`
++ :ref:`VDJServer Community Data Portal <VDJServer>`
 
 There are :ref:`query and analysis use cases <DataCommonsExample>` and
 :ref:`a set of example queries <DataCommonsQueries>` available for the

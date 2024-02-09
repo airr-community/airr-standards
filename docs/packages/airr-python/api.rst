@@ -21,16 +21,14 @@ Rearrangement Interface
 .. autofunction:: airr.validate_rearrangement
 
 
-Repertoire Interface
+AIRR Data Model Interface
 --------------------------------------------------------------------------------
 
-.. autofunction:: airr.load_repertoire
+.. autofunction:: airr.read_airr
 
-.. autofunction:: airr.write_repertoire
+.. autofunction:: airr.write_airr
 
-.. autofunction:: airr.validate_repertoire
-
-.. autofunction:: airr.repertoire_template
+.. autofunction:: airr.validate_airr
 
 
 Classes
@@ -49,8 +47,15 @@ Classes
 .. autoclass:: airr.schema.Schema
     :members:
 
+
 Schema
 --------------------------------------------------------------------------------
+
+.. autodata:: airr.schema.InfoSchema
+    :annotation: Schema object for the Info definition
+
+.. autodata:: airr.schema.DataFileSchema
+    :annotation: Schema object for the DataFile definition
 
 .. autodata:: airr.schema.AlignmentSchema
     :annotation: Schema object for the Alignment definition
@@ -61,3 +66,20 @@ Schema
 .. autodata:: airr.schema.RepertoireSchema
     :annotation: Schema object for the Repertoire definition
 
+.. autodata:: airr.schema.GermlineSetSchema
+    :annotation: Schema object for the Repertoire definition
+
+.. autodata:: airr.schema.GenotypeSetSchema
+    :annotation: Schema object for the Repertoire definition
+
+
+Deprecated
+--------------------------------------------------------------------------------
+
+.. autofunction:: airr.load_repertoire
+
+.. autofunction:: airr.write_repertoire
+
+.. autofunction:: airr.validate_repertoire
+
+.. autofunction:: airr.repertoire_template

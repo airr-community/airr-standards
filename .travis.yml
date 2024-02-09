@@ -1,3 +1,7 @@
+branches:
+  only:
+    - release-1.3
+
 matrix:
   include:
     - language: python
@@ -32,6 +36,7 @@ matrix:
       r:
         - release
       sudo: false
+      latex: false
       cache: packages
       addons:
         apt:
@@ -44,13 +49,14 @@ matrix:
         - devtools
         - roxygen2
         - testthat
+        - knitr
+        - rmarkdown
+        - readr
+        - stringi
+        - yaml
+        - jsonlite
       before_install:
+        - wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
         - cd lang/R
-        - R -e 'install.packages(c("devtools", "roxygen2", "testthat"))'
-      install:
-        - R -e 'devtools::install_deps(dep=T)'
       before_script:
         - R -e 'devtools::document()'
-      script:
-        - R CMD build .
-        - R CMD check *tar.gz --as-cran --run-donttest

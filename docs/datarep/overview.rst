@@ -85,6 +85,22 @@ Here are the primary schema objects of the AIRR Data Model:
       - Composite object that combines the schema objects ``Study``, ``Subject``, ``Diagnosis``, ``Sample``, ``CellProcessing``, ``NucleicAcidProcessing``, ``SequencingRun``, and ``DataProcessing``. Each ``Repertoire`` has a unique identifier ``repertoire_id`` for linking with other data files, e.g. ``Rearrangements``. ``Repertoires`` have their own schema and file format described :ref:`here <RepertoireSchema>`.
     * - ``Rearrangments``
       - Annotated sequences describing adaptive immune receptor chains. ``Rearrangements`` have their own schema and file format described :ref:`here <RearrangementSchema>`.
+    * - ``Clones``
+      - Information about inferred clones from a study. ``Clones`` have their own schema and file format described :ref:`here <CloneSchema>`.
+    * - ``Cells``
+      - Information about an observed Cell in a study. ``Cells`` have their own schema and file format described :ref:`here <CellSchema>`.
+    * - ``CellExpression properties``
+      - Information about expression properties observed for a specific cell. ``CellExpression`` properties have their own schema and file format described :ref:`here <CellExpressionSchema>`.
+    * - ``Receptor``
+      - Information about adaptive immune receptors (i.e., Ig and TCR) that are
+        linked to observed Cells in a study. ``Receptors`` have their own schema
+        and file format described :ref:`here <ReceptorSchema>`.
+    * - ``GermlineSet``
+      - Lists the receptor germline sequences that have been identified for a single locus within a particular species or sub-species, together with supporting evidence and additional metadata to assist with sequence annotation. Brings togteher the subsidiary objects ``AlleleDescription``, ``SequenceDelineationV``, ``RearrangedSequence``, ``UnrearrangedSequence``, ``Acknowledgement``.
+    * - ``GenotypeSet``
+      - Lists the receptor germline sequences that have been identified within a single subject, including both those that are listed within ``GermlineSets`` and those that have not been so listed. References the subsidiary object ``Genotype``, which covers a single locus.
+ 
+  
 
 Relationship between Schema Objects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -124,9 +140,9 @@ primary schema objects.
 
 + ``Repertoire`` 1-to-1 with ``Subject``. A repertoire is for a single subject, though a subject may have other repertoires defined.
 
-+ ``Sample`` 1-to-1 with ``CellProcessing``, ``NucleicAcidProcessing``, and ``SequencingRun``. A sample is associated with a single chain of sample processing from initial collection, through cell and nucleic acid processing, to sequencing.
++ ``SampleProcessing`` 1-to-1 with ``Sample``, ``CellProcessing``, ``NucleicAcidProcessing``, and ``SequencingRun``. A sample processing is a single chain from initial collection, through cell and nucleic acid processing, to sequencing.
 
-+ ``Repertoire`` 1-to-n with ``Sample``. Generally a repertoire has a single sample, but sometimes studies perform technical replicates or re-sequencing to generate additional data, and these studies will have multiple samples, which are to be combined and analyzed together as part of the same repertoire.
++ ``Repertoire`` 1-to-n with ``SampleProcessing``. Generally a repertoire has a single sample processing, but sometimes studies perform technical replicates or re-sequencing to generate additional data, and these studies will have multiple sample processings, which are to be combined and analyzed together as part of the same repertoire.
 
 + ``Repertoire`` 1-to-n with ``DataProcessing``. A repertoire can be analyzed multiple times. More details about multiple data processing is provided below.
 
@@ -141,17 +157,17 @@ the MiAIRR information, it complicates data entry and write access to
 the information because updates need to be propagated to all of the
 duplicate records. Therefore, ``Repertoire`` was designed to be easily
 transformed into a normalized form, representing the full hierarchy of
-the objects, by utilizing the `study_id`, `subject_id`, and
-`sample_id` fields to uniquely identify the ``Study``, ``Subject`` and
-``Sample`` objects across multiple repertoires. The exception is that
+the objects, by utilizing the ``study_id``, ``subject_id``, ``sample_id``, and
+``sample_processing_id`` fields to uniquely identify the ``Study``, ``Subject``, ``Sample``, and
+``SampleProcessing`` objects across multiple repertoires. The exception is that
 ``CellProcessing`` and ``NucleicAcidProcessing`` do not have their own
-unique identifiers, so they are included within ``Sample``.
+unique identifiers, so they are included within ``SampleProcessing``.
 
 
 AIRR extension properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The OpenAPI V2 specification provides the ability to define extension
+The OpenAPI V2 and V3 specification provides the ability to define extension
 properties on schema objects. These are additional properties on
 the schema definition directly, not to be confused with additional
 properties on the data. These extension properties allow those schema
@@ -175,7 +191,8 @@ supported AIRR extension properties:
         assigned to it.
     * - ``nullable``
       - Assumes ``miairr``. False if the annotated property must not be
-        ``NULL`` by the MiAIRR standard, otherwise True or null.
+        ``NULL`` by the MiAIRR standard, otherwise True or null. This extension
+        is not valid for OpenAPI V3 as the ``nullable`` builtin property should be used.
     * - ``set``
       - Assumes ``miairr``. The MiAIRR set for the annotated property.
     * - ``subset``
@@ -189,6 +206,21 @@ supported AIRR extension properties:
       - If ``format=ontology`` then this provides additional information
         about the ontology including draft status, name, URL and top
         node term.
+    * - ``identifier``
+      - True if the field is an identifier required to link metadata and/or individual
+        sequence records across objects in the complete AIRR Data Model and ADC API.
+    * - ``adc-query-support``
+      - True if an ADC API implementation must support queries on the field.
+        If false, query support for the field in ADC API implementations is optional.
+    * - ``adc-api-optional``
+      - True if the field is specific to the ADC API and is not part of the AIRR specification proper.
+        These are typically "convenience" fields that make finding data easy or efficient (can be optimized by a repository).
+    * - ``deprecated``
+      - True if the field has been deprecated from the schema.
+    * - ``deprecated-description``
+      - Information regarding the deprecation of the field.
+    * - ``deprecated-replaced-by``
+      - The deprecated field is replaced by this list of fields.
 
 
 Schema Definitions
@@ -203,3 +235,7 @@ Schema Definitions
    Alignment Schema (Experimental) <alignments>
    Clone and Lineage Tree Schema (Experimental) <clone>
    Cell Schema (Experimental) <cell>
+   Cell Expression Schema (Experimental) <cellexpression>
+   Germline Schema (Experimental) <germline>
+   Receptor Schema (Experimental) <receptor>
+

@@ -2,7 +2,7 @@ swagger: '2.0'
 
 info:
   title: AIRR Data Commons API
-  version: 1.1.0
+  version: 1.2.0
   contact:
     name: AIRR Community
     url: 'http://www.airr-community.org/'
@@ -73,7 +73,7 @@ definitions:
   repertoire_list:
     type: array
     items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Repertoire'
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Repertoire'
 
   # list of facets
   facet_list:
@@ -94,12 +94,118 @@ definitions:
         $ref: '#/definitions/repertoire_list'
       Facet:
         $ref: '#/definitions/facet_list'
-          
+
+  # list of rearrangement extension fields
+  rearrangement_extension:
+    description: The extended Rearrangement object with additional query fields for the ADC.
+    allOf:
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Rearrangement'
+      - type: object
+        properties:
+          v_subgroup:
+            type: string
+            description: >
+              V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHV4).
+            example: IGHV4
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: V gene subgroup
+          v_gene:
+            type: string
+            description: >
+              V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHV4-59).
+            example: IGHV4-59
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: V gene
+          d_subgroup:
+            type: string
+            description: >
+              D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHD3).
+            example: IGHD3
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: D gene subgroup
+          d_gene:
+            type: string
+            description: >
+              D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHD3-10).
+            example: IGHD3-10
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: D gene
+          j_subgroup:
+            type: string
+            description: >
+              J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHJ4).
+            example: IGHJ4
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: J gene subgroup
+          j_gene:
+            type: string
+            description: >
+              J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHJ4).
+            example: IGHJ4
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: J gene
+          c_subgroup:
+            type: string
+            description: >
+              C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHG1).
+            example: IGHG1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: C gene subgroup
+          c_gene:
+            type: string
+            description: >
+              C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHG1).
+            example: IGHG1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: C gene
+          annotation_cell_id:
+            type: string
+            description: >
+              The Cell ID used by the annotation tool to annotate the Cell during data processing.
+            example: AAACCTGAGCACCGCT-1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: Tool Cell ID
+
   # list of rearrangement annotations
   rearrangement_list:
     type: array
     items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Rearrangement'
+      $ref: '#/definitions/rearrangement_extension'
 
   # The response object /rearrangement endpoint
   rearrangement_response:
@@ -112,11 +218,107 @@ definitions:
       Facet:
         $ref: '#/definitions/facet_list'
 
+  # list of clone extension fields
+  clone_extension:
+    description: The extended Clone object with additional query fields for the ADC.
+    allOf:
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Clone'
+      - type: object
+        properties:
+          v_subgroup:
+            type: string
+            description: >
+              V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHV4).
+            example: IGHV4
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: V gene subgroup
+          v_gene:
+            type: string
+            description: >
+              V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHV4-59).
+            example: IGHV4-59
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: V gene
+          d_subgroup:
+            type: string
+            description: >
+              D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHD3).
+            example: IGHD3
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: D gene subgroup
+          d_gene:
+            type: string
+            description: >
+              D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHD3-10).
+            example: IGHD3-10
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: D gene
+          j_subgroup:
+            type: string
+            description: >
+              J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHJ4).
+            example: IGHJ4
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: J gene subgroup
+          j_gene:
+            type: string
+            description: >
+              J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHJ4).
+            example: IGHJ4
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: J gene
+          c_subgroup:
+            type: string
+            description: >
+              C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHG1).
+            example: IGHG1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: C gene subgroup
+          c_gene:
+            type: string
+            description: >
+              C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+              the relevant gene nomenclature should be followed (e.g., IGHG1).
+            example: IGHG1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: C gene
+              
   # list of clone annotations
   clone_list:
     type: array
     items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Clone'
+      $ref: '#/definitions/clone_extension'
 
   # The response object /clone/{clone_id} endpoint
   clone_id_response:
@@ -138,11 +340,29 @@ definitions:
       Facet:
         $ref: '#/definitions/facet_list'
 
+  # list of cell extension fields
+  cell_extension:
+    description: The extended Cell object with additional query fields for the ADC.
+    allOf:
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Cell'
+      - type: object
+        properties:
+          annotation_cell_id:
+            type: string
+            description: >
+              The Cell ID used by the annotation tool to annotate the Cell during data processing.
+            example: AAACCTGAGCACCGCT-1
+            x-airr:
+              nullable: true
+              adc-api-optional: false
+              adc-query-support: true
+              name: Tool Cell ID
+
   # list of cell annotations
   cell_list:
     type: array
     items:
-      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/master/specs/airr-schema.yaml#/Cell'
+      $ref: '#/definitions/cell_extension'
 
   # The response object /cell/{cell_id} endpoint
   cell_id_response:
@@ -161,6 +381,64 @@ definitions:
         $ref: '#/definitions/info_object'
       Cell:
         $ref: '#/definitions/cell_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
+
+  # list of gene expression features
+  expression_list:
+    type: array
+    items:
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/CellExpression'
+
+  # The response object /expression/{expression_id} endpoint
+  expression_id_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      CellExpression:
+        $ref: '#/definitions/expression_list'
+  
+  # The response object for the /expression endpoint
+  expression_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      CellExpression:
+        $ref: '#/definitions/expression_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
+
+  # list of receptor extension fields
+  receptor_extension:
+    description: The extended Receptor object with additional query fields for the ADC.
+    allOf:
+      - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/Receptor'
+
+  # list of receptor annotations
+  receptor_list:
+    type: array
+    items:
+      $ref: '#/definitions/receptor_extension'
+
+  # The response object /receptor/{receptor_id} endpoint
+  receptor_id_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Receptor:
+        $ref: '#/definitions/receptor_list'
+
+  # The response object /receptor endpoint
+  receptor_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      Receptor:
+        $ref: '#/definitions/receptor_list'
       Facet:
         $ref: '#/definitions/facet_list'
 
@@ -574,6 +852,182 @@ paths:
             A successful call returns an array of cell annotation data.
           schema:
             $ref: '#/definitions/cell_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /expression/{expression_id}:
+    x-swagger-router-controller: expression
+    get:
+      description: >
+        Returns an expression property based upon its identifier.
+      tags:
+        - expression
+      consumes:
+        - application/x-www-form-urlencoded
+        - application/json
+        - application/octet-stream
+      produces:
+        - application/json
+      parameters:
+        - name: expression_id
+          in: path
+          description: ID of expression property to return
+          required: true
+          type: string
+      operationId: getExpression
+      responses:
+        '200':
+          description: >
+            A successful call returns the expression property data.
+          schema:
+            $ref: '#/definitions/expression_id_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /expression:
+    x-swagger-router-controller: expression
+    post:
+      description: >
+        This query service returns gene expression data.
+      tags:
+        - expression
+      parameters:
+        - in: body
+          name: data
+          schema:
+            type: object
+            properties:
+              filters:
+                type: object
+              format:
+                type: string
+                default: json
+                enum:
+                  - json
+                  - tsv
+              fields:
+                type: array
+                items:
+                  type: string
+              size:
+                type: integer
+              from:
+                type: integer
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
+              facets:
+                type: string
+      operationId: queryExpression
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of gene expression  data.
+          schema:
+            $ref: '#/definitions/expression_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /receptor/{receptor_id}:
+    x-swagger-router-controller: receptor
+    get:
+      description: >
+        Returns a receptor based upon its identifier.
+      tags:
+        - receptors
+      consumes:
+        - application/x-www-form-urlencoded
+        - application/json
+        - application/octet-stream
+      produces:
+        - application/json
+      parameters:
+        - name: receptor_id
+          in: path
+          description: ID of receptor to return
+          required: true
+          type: string
+      operationId: getReceptor
+      responses:
+        '200':
+          description: >
+            A successful call returns the receptor data.
+          schema:
+            $ref: '#/definitions/receptor_id_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /receptor:
+    x-swagger-router-controller: receptor
+    post:
+      description: >
+        This query service returns receptor data.
+      tags:
+        - receptors
+      parameters:
+        - in: body
+          name: data
+          schema:
+            type: object
+            properties:
+              filters:
+                type: object
+              format:
+                type: string
+                default: json
+                enum:
+                  - json
+                  - tsv
+              fields:
+                type: array
+                items:
+                  type: string
+              size:
+                type: integer
+              from:
+                type: integer
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
+              facets:
+                type: string
+      operationId: queryReceptors
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of receptor data.
+          schema:
+            $ref: '#/definitions/receptor_response'
         '400':
           description: Invalid request
           schema:

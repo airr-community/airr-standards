@@ -1,0 +1,42 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - '.github/**'
+      - 'lang/python/**'
+  pull_request:
+    branches: [main, master]
+    paths:
+      - '.github/**'
+      - 'lang/python/**'
+
+name: Python package
+
+defaults:
+  run:
+    working-directory: lang/python
+
+jobs:
+  python-unittest:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ '3.8' ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install jsondiff
+      - name: Install package
+        run: |
+          python setup.py install
+      - name: Unit tests
+        run: |
+          python -m unittest discover
