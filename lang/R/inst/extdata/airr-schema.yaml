@@ -148,7 +148,7 @@ Attributes:
 Manifest:
     discriminator: AIRR
     type: object
-        properties:
+    properties:
             dataset_name:
                 type: string
                 description: A human readable name for the data set.
