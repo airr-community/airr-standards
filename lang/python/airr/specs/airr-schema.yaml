@@ -353,9 +353,13 @@ Manifest:
         dataset_name:
             type: string
             description: A human readable name for the data set.
+            x-airr:
+                nullable: false
         repository_url:
             type: string
             description: URL for the repository if the data set came from an ADC repository.
+            x-airr:
+                nullable: false
         dataset:
             type: array
             description: An array that describes the type of data (and the relevant data files) in the data set.
@@ -371,11 +375,15 @@ Manifest:
                             "CellReactivity", "Receptor", etc.). If the type data is not an AIRR Schema object then
                             relevant domain specific data type descriptions should be used if available, file format
                             extension (e.g. fasta, tsv, etc) can be used
+                        x-airr:
+                            nullable: false
                     data_files:
                         type: array
                         description: An array of file names that store the data of the specified data_type
                         items:
                             type: string
+                            x-airr:
+                                nullable: false
 
 
 # AIRR Data File
