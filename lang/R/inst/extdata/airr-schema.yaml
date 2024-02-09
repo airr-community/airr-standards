@@ -348,7 +348,6 @@ Attributes:
 #     appropriate for that AIRR schema object.
 
 Manifest:
-    discriminator: AIRR
     type: object
     properties:
         dataset_name:
