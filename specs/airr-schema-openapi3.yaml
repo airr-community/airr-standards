@@ -445,11 +445,10 @@ DataFile:
               $ref: '#/GenotypeSet'
         Manifest:
             type: array
+            nullable: false
             description: List of data set manifests
             items:
               $ref: '#/Manifest'
-            x-airr:
-                nullable: false
 
 # AIRR Info object, should be similar to openapi
 # should we point to an openapi schema?
