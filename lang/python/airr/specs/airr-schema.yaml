@@ -376,7 +376,7 @@ Manifest:
                             be the schema object name (e.g. "Repertoire", "Rearrangement", "Clone", "Cell", "CellExpression",
                             "CellReactivity", "Receptor", etc.). If the type data is not an AIRR Schema object then
                             relevant domain specific data type descriptions should be used if available, file format
-                            extension (e.g. fasta, tsv, etc) can be used
+                            extension (e.g. fasta, tsv, etc) can be used.
                         x-airr:
                             nullable: false
                     data_files:
