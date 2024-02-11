@@ -3196,7 +3196,7 @@ Repertoire:
                 nullable: false
                 adc-query-support: true
 
-# A collection of repertoires for analysis purposes, includes optional time course
+# A group of repertoires for analysis purposes, includes optional time course
 RepertoireGroup:
     type: object
     required:
