@@ -9,7 +9,7 @@
         "release_date": "2021-11-24",
         "germline_set_name": "CAST IGH",
         "germline_set_ref": "OGRDB:G00007.1",
-        "pub_ids": "",
+        "pub_ids": [""],
         "species_typo": ["Mouse"],
         "species_subgroup": "CAST_EiJ",
         "species_subgroup_type": "strain",

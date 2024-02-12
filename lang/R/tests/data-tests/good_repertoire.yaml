@@ -16,7 +16,7 @@ Repertoire:
       lab_name: "Mark M. Davis"
       lab_address: "Stanford University"
       submitted_by: "Florian Rubelt"
-      pub_ids: "PMID:27005435"
+      pub_ids: ["PMID:27005435"]
       collected_by: null
       grants: null
       keywords_study: 
@@ -147,7 +147,7 @@ Repertoire:
       lab_name: "Mark M. Davis"
       lab_address: "Stanford University"
       submitted_by: "Florian Rubelt"
-      pub_ids: "PMID:27005435"
+      pub_ids: ["PMID:27005435"]
       collected_by: null
       grants: null
       keywords_study:
@@ -278,7 +278,7 @@ Repertoire:
       lab_name: "Mark M. Davis"
       lab_address: "Stanford University"
       submitted_by: "Florian Rubelt"
-      pub_ids: "PMID:27005435"
+      pub_ids: ["PMID:27005435"]
       collected_by: null
       grants: null
       keywords_study:

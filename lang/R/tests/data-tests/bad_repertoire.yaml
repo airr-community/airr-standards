@@ -11,7 +11,7 @@ Repertoire:
       lab_name: "Mark M. Davis"
       lab_address: "Stanford University"
       submitted_by: "Florian Rubelt"
-      pub_ids: "PMID:27005435"
+      pub_ids: ["PMID:27005435"]
     subject:
       subject_id: TW01A
       synthetic: false
@@ -59,7 +59,7 @@ Repertoire:
       lab_name: "Mark M. Davis"
       lab_address: "Stanford University"
       submitted_by: "Florian Rubelt"
-      pub_ids: "PMID:27005435"
+      pub_ids: ["PMID:27005435"]
     subject:
       subject_id: TW01A
       synthetic: false
@@ -107,7 +107,7 @@ Repertoire:
       lab_name: "Mark M. Davis"
       lab_address: "Stanford University"
       submitted_by: "Florian Rubelt"
-      pub_ids: "PMID:27005435"
+      pub_ids: ["PMID:27005435"]
     subject:
       subject_id: TW01A
       synthetic: false
