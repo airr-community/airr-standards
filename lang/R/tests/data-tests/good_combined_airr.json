@@ -15,7 +15,7 @@
                 "lab_name": "Mark M. Davis",
                 "lab_address": "Stanford University",
                 "submitted_by": "Florian Rubelt",
-                "pub_ids": "PMID:27005435",
+                "pub_ids": ["PMID:27005435"],
                 "collected_by": null,
                 "grants": null,
                 "keywords_study": [
@@ -174,7 +174,7 @@
                 "lab_name": "Mark M. Davis",
                 "lab_address": "Stanford University",
                 "submitted_by": "Florian Rubelt",
-                "pub_ids": "PMID:27005435",
+                "pub_ids": ["PMID:27005435"],
                 "collected_by": null,
                 "grants": null,
                 "keywords_study": [
@@ -333,7 +333,7 @@
                 "lab_name": "Mark M. Davis",
                 "lab_address": "Stanford University",
                 "submitted_by": "Florian Rubelt",
-                "pub_ids": "PMID:27005435",
+                "pub_ids": ["PMID:27005435"],
                 "collected_by": null,
                 "grants": null,
                 "keywords_study": [
@@ -490,7 +490,7 @@
         "release_date": "2021-11-24",
         "germline_set_name": "CAST IGH",
         "germline_set_ref": "OGRDB:G00007.1",
-        "pub_ids": "",
+        "pub_ids": [""],
         "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
         "species_subgroup": "CAST_EiJ",
         "species_subgroup_type": "strain",

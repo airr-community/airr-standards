@@ -26,7 +26,7 @@ Repertoire:
       lab_name: Mark M. Davis
       lab_address: Stanford University
       submitted_by: Florian Rubelt
-      pub_ids: PMID:27005435
+      pub_ids: ["PMID:27005435"]
       collected_by:
       grants:
       keywords_study:
@@ -169,7 +169,7 @@ Repertoire:
       lab_name: Mark M. Davis
       lab_address: Stanford University
       submitted_by: Florian Rubelt
-      pub_ids: PMID:27005435
+      pub_ids: ["PMID:27005435"]
       collected_by:
       grants:
       keywords_study:
@@ -312,7 +312,7 @@ Repertoire:
       lab_name: Mark M. Davis
       lab_address: Stanford University
       submitted_by: Florian Rubelt
-      pub_ids: PMID:27005435
+      pub_ids: ["PMID:27005435"]
       collected_by:
       grants:
       keywords_study:
@@ -440,7 +440,7 @@ GermlineSet:
     release_date: '2021-11-24'
     germline_set_name: CAST IGH
     germline_set_ref: OGRDB:G00007.1
-    pub_ids: ''
+    pub_ids: ['']
     species:
       id: NCBITAXON:10090
       label: Mus musculus
