@@ -1233,9 +1233,7 @@ GermlineSet:
                 type: string
             nullable: true
             description: Publications describing the germline set
-            example:
-                - "PMID:85642"
-                - "PMID:12345"
+            example: ["PMID:35720344"]
         species:
             $ref: '#/Ontology'
             nullable: false
@@ -1779,9 +1777,7 @@ Study:
                 a DOI or Pubmed ID. Where more than one publication is given, if there is a primary publication for the study it
                 should come first.
             title: Relevant publications
-            example: 
-                - "PMID:29144493"
-                - "DOI:10.1038/ni.3873"
+            example: ["PMID:29144493", "DOI:10.1038/ni.3873"]
             x-airr:
                 miairr: important
                 adc-query-support: true
