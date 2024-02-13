@@ -4,11 +4,9 @@ AIRR Data Representation Schema
 
 # Imports
 import sys
-from collections import OrderedDict
-from typing import Union
-
 import yaml
 import yamlordereddictloader
+from collections import OrderedDict
 from pkg_resources import resource_stream
 
 with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
@@ -44,7 +42,7 @@ class Schema:
     _to_bool_map.update({x: False for x in false_values + [0, False]})
     _from_bool_map = {k: 'T' if v else 'F' for k, v in _to_bool_map.items()}
 
-    def __init__(self, definition: Union[str, dict]):
+    def __init__(self, definition):
         """
         Initialization
 
@@ -59,7 +57,7 @@ class Schema:
             raise KeyError('Info is an invalid schema definition name')
 
         # Load object definition
-        if isinstance(definition, dict):  # on-the-fly definition of a nested object
+        if isinstance(definition, dict):       # on-the-fly definition of a nested object
             self.definition = definition
             spec = {'Info': []}
         else:
@@ -492,13 +490,13 @@ class Schema:
           collections.OrderedDict: dictionary with all schema properties set as None or an empty list.
         """
         # Set defaults for each data type
-        type_default = {'boolean': False, 'integer': 0, 'number': 0.0, 'string': '', 'array': []}
+        type_default = {'boolean': False, 'integer': 0, 'number': 0.0, 'string': '', 'array':[]}
 
         # Fetch schema template definition for a $ref string
         def _reference(ref):
             x = ref.split('/')[-1]
             schema = AIRRSchema.get(x, Schema(x))
-            return schema.template()
+            return(schema.template())
 
         # Get default value
         def _default(spec):
@@ -530,7 +528,7 @@ class Schema:
             else:
                 object[k] = None
 
-        return object
+        return(object)
 
 
 # Preloaded schema
