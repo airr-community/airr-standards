@@ -17,6 +17,7 @@ var yaml = require('js-yaml');
 var path = require('path');
 var fs = require('fs');
 const $RefParser = require("@apidevtools/json-schema-ref-parser");
+const merge = require('allof-merge');
 
 var airr = {};
 module.exports = airr;
@@ -30,6 +31,12 @@ airr.load_schema = async function() {
 
     // dereference all $ref objects
     var spec = await $RefParser.dereference(doc);
+    // merge allOfs
+    for (let obj in spec) {
+        if (spec[obj]['type'] || spec[obj]['allOf']) {
+            spec[obj] = merge.merge(spec[obj]);
+        }
+    }
     var schema = require('./schema')(airr, spec);
     var io = require('./io')(airr);
 
@@ -45,6 +52,12 @@ airr.load_custom_schema = async function(obj, filename) {
 
     // dereference all $ref objects
     var spec = await $RefParser.dereference(doc);
+    // merge allOfs
+    for (let obj in spec) {
+        if (spec[obj]['type'] || spec[obj]['allOf']) {
+            spec[obj] = merge.merge(spec[obj]);
+        }
+    }
     var schema = require('./schema')(obj, spec);
 
     return Promise.resolve(spec);

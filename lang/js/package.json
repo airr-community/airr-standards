@@ -25,6 +25,7 @@
     "@apidevtools/json-schema-ref-parser": "^10.1.0",
     "ajv": "^8.12.0",
     "ajv-formats": "^2.1.1",
+    "allof-merge": "^0.6.5",
     "csv-parser": "^2.3.2",
     "js-yaml": "^3.10.0"
   },
