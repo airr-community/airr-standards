@@ -336,19 +336,15 @@ class Schema:
         # first warn about non-AIRR fields
         if nonairr:
             for f in obj:
-                if context is None:
-                    full_field = f
-                else:
-                    full_field = context + '.' + f
+                if context is None: full_field = f
+                else: full_field = context + '.' + f
                 if self.properties.get(f) is None:
                     sys.stderr.write('Warning: Object has non-AIRR field that cannot be validated (' + full_field + ').\n')
 
         # now walk through schema and check types
         for f in self.properties:
-            if context is None:
-                full_field = f
-            else:
-                full_field = context + '.' + f
+            if context is None: full_field = f
+            else: full_field = context + '.' + f
             spec = self.spec(f)
             xairr = spec.get('x-airr')
 
@@ -399,7 +395,6 @@ class Schema:
 
             # check types
             field_type = self.type(f)
-
             if field_type is None:
                 # for referenced object, recursively call validate with object and schema
                 if spec.get('$ref') is not None:

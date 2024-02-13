@@ -238,6 +238,7 @@ def read_airr(filename, format=None, validate=False, model=True, debug=False, ch
                   If False, attempt validation of all top-level objects.
                   Ignored if validate=False.
       debug (bool): debug flag. If True print debugging information to standard error.
+      check_miairr_compliant (bool): whether to check for MiAIRR compliance if validating the data.
 
     Returns:
       dict: dictionary of AIRR Data objects.
@@ -345,6 +346,7 @@ def write_airr(filename, data, format=None, info=None, validate=False, model=Tru
       model (bool): If True only validate and write objects defined in the AIRR DataFile schema.
                   If False, attempt validation and write of all top-level objects
       debug (bool): debug flag. If True print debugging information to standard error.
+      check_miairr_compliant (bool): whether to check for MiAIRR compliance if validating the data.
 
     Returns:
       bool: True if the file is written without error.
