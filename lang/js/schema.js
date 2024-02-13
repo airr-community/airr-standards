@@ -213,7 +213,7 @@ module.exports = function(airr, schema) {
     airr.SchemaDefinition.prototype.validate_object = function(object) {
         const ajv = new AJV({allErrors: true});
         addFormats(ajv);
-        ajv.addVocabulary(['x-airr', 'example']);
+        ajv.addVocabulary(['x-airr', 'example', 'discriminator']);
 
         const validate = ajv.compile(this.definition)
         const valid = validate(object)
