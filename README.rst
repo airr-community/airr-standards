@@ -96,6 +96,10 @@ References
 .. [Lees_2020] Lees W *et al*. OGRDB: a reference database of inferred
    immune receptor genes. Nucleic Acids Res 48:D964 (2020) 
    `[PMID:31566225]`_ `[DOI:10.1093/nar/gkz822]`_
+.. [Lees_2023] Lees W *et al*. AIRR Community curation and standardised
+   representation for immunoglobulin and T cell receptor germline sets.
+   Immunoinformatics 10:100025 (2023) `[PMID:37388275]`_
+   `[DOI:10.1016/j.immuno.2023.100025]`_
 .. [Rubelt_2017] Rubelt F *et al*. AIRR Community Recommendations for
    Sharing Immune Repertoire Sequencing Data. Nat Immunol 18:1274
    (2017) `[PMID:29144493]`_ `[DOI:10.1038/ni.3873]`_
@@ -110,7 +114,7 @@ References
 Copyright & License
 ===================
 
-Copyright 2015 - 2023 by the AIRR Community and `contributors`_. This
+Copyright 2015 - 2024 by the AIRR Community and `contributors`_. This
 work is licensed under a `Creative Commons Attribution 4.0
 International License`_.
 
@@ -122,12 +126,14 @@ International License`_.
 .. _`[PMID:30323809]`: https://www.ncbi.nlm.nih.gov/pubmed/30323809
 .. _`[PMID:31566225]`: https://www.ncbi.nlm.nih.gov/pubmed/31566225
 .. _`[PMID:33693395]`: https://www.ncbi.nlm.nih.gov/pubmed/33693395
+.. _`[PMID:37388275]`: https://pubmed.ncbi.nlm.nih.gov/37388275
 .. _`[DOI:10.1038/ni.3873]`: https://doi.org/10.1038/ni.3873
 .. _`[DOI:10.3389/fdata.2020.00022]`: https://doi.org/10.3389/fdata.2020.00022
 .. _`[DOI:10.3389/fimmu.2017.01418]`: https://doi.org/10.3389/fimmu.2017.01418
 .. _`[DOI:10.3389/fimmu.2018.02206]`: https://doi.org/10.3389/fimmu.2018.02206
 .. _`[DOI:10.5281/zenodo.1185414]`: https://doi.org/10.5281/zenodo.1185414
 .. _`[DOI:10.1093/nar/gkz822]`: https://doi.org/10.1093/nar/gkz822
+.. _`[DOI:10.1016/j.immuno.2023.100025]`: https://doi.org/10.1016/j.immuno.2023.100025
 
 .. _`Adaptive Immune Receptor Repertoire (AIRR) Community`: https://www.antibodysociety.org/the-airr-community/
 .. _`AIRR Data Commons`: https://docs.airr-community.org/en/stable/api/adc.html

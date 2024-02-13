@@ -79,6 +79,14 @@ CURIEMap:
         map:
             ENSG:
                 iri_prefix: "https://www.ensembl.org/Multi/Search/Results?q="
+    GAZ:
+        type: ontology
+        default:
+            map: OBO
+            provider: OLS
+        map:
+            OBO:
+                iri_prefix: "http://purl.obolibrary.org/obo/GAZ_"
     IEDB_RECEPTOR:
         type: identifier
         default:
@@ -208,6 +216,11 @@ InformationProvider:
                 ontology_id: DOID
             OLS:
                 ontology_id: doid
+        GAZ:
+            Ontobee:
+                ontology_id: GAZ
+            OLS:
+                ontology_id: gaz
         MRO:
             Ontobee:
                 ontology_id: MRO
@@ -265,6 +278,15 @@ Attributes:
             description: >
                 True if an ADC API implementation must support queries on the field.
                 If false, query support for the field in ADC API implementations is optional.
+            default: false
+        adc-api-optional:
+            type: boolean
+            description: >
+                If false, repositories must implement these fields both for queries and query repsonse.
+                Only applies to fields in the ADC API spec that are extensions to the AIRR Standard,
+                targeted at "convenience query fields" that make queries against repositories more
+                efficient than if queries were limited to AIRR fields only.
+                If true, repositories can choose to support the field or not.
             default: false
         nullable:
             type: boolean
@@ -823,7 +845,10 @@ AlleleDescription:
                 miairr: important
         label:
             type: string
-            description: The accepted name for this gene or allele
+            description: >
+                The accepted name for this gene or allele following the relevant nomenclature.
+                The value in this field should correspond to values in acceptable name fields of other schemas, 
+                such as v_call, d_call, and j_call fields.
             example: IGHV1-69*01
             x-airr:
                 miairr: important
@@ -1657,6 +1682,8 @@ Study:
                     - contains_schema_clone
                     - contains_schema_cell
                     - contains_schema_receptor
+                    - contains_schema_cellexpression
+                    - contains_schema_receptorreactivity
             description: >
                 Keywords describing properties of one or more data sets in a study. "contains_schema" keywords indicate that
                 the study contains data objects from the AIRR Schema of that type (Rearrangement, Clone, Cell, Receptor) while
@@ -1768,7 +1795,7 @@ Subject:
                 adc-query-support: true
                 set: 1
                 subset: subject
-                name: Organism
+                name: Species
                 format: ontology
                 ontology:
                     draft: false
@@ -1874,10 +1901,12 @@ Subject:
                     - age_max
                     - age_unit
         ancestry_population:
-            type: string
+            $ref: '#/Ontology'
             description: Broad geographic origin of ancestry (continent)
             title: Ancestry population
-            example: list of continents, mixed or unknown
+            example:
+                id: GAZ:00000459
+                label: South America
             x-airr:
                 miairr: important
                 nullable: true
@@ -1885,6 +1914,31 @@ Subject:
                 set: 1
                 subset: subject
                 name: Ancestry population
+                format: ontology
+                ontology:
+                    draft: true
+                    top_node:
+                        id: GAZ:00000448
+                        label: geographic location
+        location_birth:
+            $ref: '#/Ontology'
+            description: Self-reported location of birth of the subject, preferred granularity is country-level
+            example:
+                id: GAZ:00002939
+                label: Poland
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 1
+                subset: subject
+                name: Location of birth
+                format: ontology
+                ontology:
+                    draft: true
+                    top_node:
+                        id: GAZ:00000448
+                        label: geographic location
         ethnicity:
             type: string
             description: Ethnic group of subject (defined as cultural/language-based membership)
@@ -2206,6 +2260,25 @@ Sample:
                 set: 2
                 subset: sample
                 name: Collection time event
+        collection_location:
+            $ref: '#/Ontology'
+            description: Location where the sample was taken, preferred granularity is country-level
+            title: Sample collection location
+            example:
+                id: GAZ:00002939
+                label: Poland
+            x-airr:
+                miairr: important
+                nullable: true
+                set: 2
+                subset: sample
+                name: Sample collection location
+                format: ontology
+                ontology:
+                    draft: true
+                    top_node:
+                        id: GAZ:00000448
+                        label: geographic location
         biomaterial_provider:
             type: string
             description: Name and address of the entity providing the sample
@@ -3350,6 +3423,28 @@ Rearrangement:
                 adc-query-support: true
                 name: Gene locus
                 format: controlled_vocabulary
+        locus_species:
+            $ref: '#/Ontology'
+            description: >
+                Binomial designation of the species from which the locus originates. Typically, this value should be
+                identical to `organism`, if which case it SHOULD NOT be set explicitly. However, there are valid
+                experimental setups in which the two might differ, e.g. transgenic animal models. If set, this key
+                will overwrite the `organism` information for all lower layers of the schema.
+            title: Locus species
+            example:
+                id: NCBITAXON:9606
+                label: Homo sapiens
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                name: Locus species
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
         v_call:
             type: string
             description: >
@@ -4354,6 +4449,7 @@ CellExpression:
         - data_processing_id
         - cell_id
         - property
+        - property_type
         - value
     properties:
         expression_id:
@@ -4396,11 +4492,25 @@ CellExpression:
                 nullable: true
                 adc-query-support: true
                 name: Data processing for cell
+        property_type:
+            type: string
+            description: >
+                Keyword describing the property type and detection method used to measure the property value.
+                The following keywords are recommended, but custom property types are also valid:
+                "mrna_expression_by_read_count",
+                "protein_expression_by_fluorescence_intensity", "antigen_bait_binding_by_fluorescence_intensity",
+                "protein_expression_by_dna_barcode_count" and "antigen_bait_binding_by_dna_barcode_count".
+            title: Property type and detection method
+            x-airr:
+                miairr: defined
+                nullable: false
+                adc-query-support: true
+                name: Property type and detection method
         property:
             $ref: '#/Ontology'
             title: Property information
             description: >
-                Name of the property observed, typically a gene or antibody idenifier (and its label) from a 
+                Name of the property observed, typically a gene or antibody identifier (and label) from a 
                 canonical resource such as Ensembl (e.g. ENSG00000275747, IGHV3-79) or 
                 Antibody Registry (ABREG:1236456, Purified anti-mouse/rat/human CD27 antibody).
             example:

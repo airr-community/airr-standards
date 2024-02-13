@@ -1,3 +1,14 @@
+Version 1.5.0:  August 29, 2023
+--------------------------------------------------------------------------------
+
+1. Updated schema set and examples to v1.5.
+2. Officially dropped support for Python 2.
+3. Added check for valid enum values to schema validation routines.
+4. Set enum values to first defined value during template generation routines.
+5. Removed mock dependency installation in ReadTheDocs environments from setup.
+6. Improved package import time.
+
+
 Version 1.4.1:  August 27, 2022
 --------------------------------------------------------------------------------
 
