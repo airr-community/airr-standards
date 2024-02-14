@@ -64,7 +64,7 @@ Table of Content
 
 .. toctree::
    :maxdepth: 1
-   
+
    adc_api_endpoints
    adc_api_requests
    adc_api_limits

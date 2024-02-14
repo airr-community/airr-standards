@@ -120,7 +120,7 @@ repository and the size of a single repertoire or rearrangement object
 that is returned. As a result a repository might choose to set a
 maximum query size.
 
-Size limits can be retrieved from the ``info`` endpoint. These limits are 
+Size limits can be retrieved from the ``info`` endpoint. These limits are
 repository wide (the same for all endpoints). If the data
 repository does not provide a limit, then no limit is assumed.
 
@@ -132,6 +132,6 @@ repository does not provide a limit, then no limit is assumed.
     * - Field
       - Description
     * - ``max_size``
-      - The maximum value for the ``size`` query parameter. Attempting to retrieve data from a repository beyond this maximum should trigger an error response. The error response should include information about why the query failed and what the maximum size limit is. 
+      - The maximum value for the ``size`` query parameter. Attempting to retrieve data from a repository beyond this maximum should trigger an error response. The error response should include information about why the query failed and what the maximum size limit is.
     * - ``max_query_size``
       - The maximum size (in bytes) of the JSON query object. Atempting to send a query to a repository larger than this size should trigger an error.
