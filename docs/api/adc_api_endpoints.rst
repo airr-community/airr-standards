@@ -1,5 +1,5 @@
 .. _DataCommonsAPIEndpoints:
-   
+
 API Endpoints
 -------------
 
@@ -68,7 +68,7 @@ following table:
     * - ``/v1/clone``
       - Query clones
       - ``POST``
-      - Upon success, returns a list of ``Clones`` in JSON format according to the :ref:`Clone schema <CloneSchema>`. 
+      - Upon success, returns a list of ``Clones`` in JSON format according to the :ref:`Clone schema <CloneSchema>`.
     * - ``/v1/cell/{cell_id}``
       - Retrieve a Cell given its ``cell_id``
       - ``GET``
@@ -76,7 +76,7 @@ following table:
     * - ``/v1/cell``
       - Query cells
       - ``POST``
-      - Upon success, returns a list of ``Cells`` in JSON format according to the :ref:`Cell schema <CellSchema>`. 
+      - Upon success, returns a list of ``Cells`` in JSON format according to the :ref:`Cell schema <CellSchema>`.
     * - ``/v1/expression/{expression_id}``
       - Retrieve a Expression Property given its ``expression_id``
       - ``GET``
@@ -84,7 +84,7 @@ following table:
     * - ``/v1/expression``
       - Query Cell Expression properties
       - ``POST``
-      - Upon success, returns a list of ``Expression Properties`` in JSON format according to the :ref:`CellExperssion schema <CellExpressionSchema>`. 
+      - Upon success, returns a list of ``Expression Properties`` in JSON format according to the :ref:`CellExperssion schema <CellExpressionSchema>`.
     * - ``/v1/receptor/{receptor_id}``
       - Retrieve a Receptor given its ``receptor_id``
       - ``GET``
@@ -92,7 +92,7 @@ following table:
     * - ``/v1/receptor``
       - Query Receptor properties
       - ``POST``
-      - Upon success, returns a list of ``Receptors`` in JSON format according to the :ref:`Receptor schema <ReceptorSchema>`. 
+      - Upon success, returns a list of ``Receptors`` in JSON format according to the :ref:`Receptor schema <ReceptorSchema>`.
     * - ``/v1/reactivity/{cell_reactivity_id}``
       - Retrieve a CellReactivity given its ``cell_reactivity_id``
       - ``GET``
@@ -100,7 +100,7 @@ following table:
     * - ``/v1/reactivity``
       - Query CellReactivity properties
       - ``POST``
-      - Upon success, returns a list of ``CellReactivity`` objects in JSON format according to the :ref:`CellReactivity schema <CellReactivitySchema>`. 
+      - Upon success, returns a list of ``CellReactivity`` objects in JSON format according to the :ref:`CellReactivity schema <CellReactivitySchema>`.
 
 **Repertoire Endpoint**
 
@@ -440,7 +440,7 @@ Where clone_id is the ID of a clone object in the repository. The response will 
             "url": "http://www.ireceptor.org",
             "email": "support@ireceptor.org"
         }
-      }, 
+      },
       "Clone":
       [
         {
@@ -473,7 +473,7 @@ requested to be returned. The resultant data is provided in JSON format.
 .. code-block:: bash
 
   curl -d '{"filters":{"op":"=","content":{"field":"junction_aa","value":"CARAHCSWGSSRFGAFDMW"}},"size":1}' -H 'content-type: application/json' http://covid19-1.ireceptor.org/airr/v1/clone
-  
+
 This query searches the repository for clones that have a specific ``junction_aa`` field with a value of ``CARAHCSWGSSRFGAFDMW`` and requests only a
 single object in the response (``"size":1``). The response would be similar to that provided by the single clone query given above.
 
@@ -544,7 +544,7 @@ requested to be returned. The resultant data is provided in JSON format.
 .. code-block:: bash
 
   curl -d '{"filters":{"op":"=","content":{"field":"repertoire_id","value":"PRJCA002413-ERS1-CELL"}},"size":1}' -H 'content-type: application/json' http://covid19-1.ireceptor.org/airr/v1/cell
-  
+
 This query searches the repository for cells that have a specific ``repertoire_id`` field with a value of ``PRJCA002413-ERS1-CELL`` and requests only a
 single object in the response (``"size":1``). The response would be similar to that provided by the single cell query given above.
 

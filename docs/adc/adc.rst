@@ -1,7 +1,7 @@
 .. _DataCommons:
 
 AIRR Data Commons
-=============================
+=================
 
 The use of high-throughput sequencing for profiling B-cell and T-cell
 receptors has resulted in a rapid increase in data generation. It is
@@ -27,7 +27,7 @@ with the latest set of Recommendations ratified at the AIRR Community meeting in
 
 In May 2020, the AIRR Community released the first verion of the AIRR Data Commons
 Application Programming Interface (ADC API), a specification for programmatic access to
-query and download AIRR-seq data from repositories that adhere to the AIRR Standards. We define 
+query and download AIRR-seq data from repositories that adhere to the AIRR Standards. We define
 the AIRR Data Commons as consisting of the set of repositories that:
 
 - adhere to the CRWG recommendations for promoting, sharing, and use of AIRR-seq data, and
@@ -39,14 +39,14 @@ AIRR Data Commons.
 .. __: https://github.com/airr-community/common-repo-wg/blob/master/recommendations.md
 
 AIRR Data Commons Repositories
----------------------------------------
+------------------------------
 
-The repositories that are part of the ADC are listed on the `AIRR Community ADC Registry github site 
+The repositories that are part of the ADC are listed on the `AIRR Community ADC Registry github site
 <https://github.com/airr-community/adc-registry/blob/ADC/ADC-registry.tsv>`_. In order
 to find data across all of the repositories in the ADC, it is necessary to query all of these repositories.
 
 Querying the AIRR Data Commons
----------------------------------------
+------------------------------
 
 Each of the repositories above can be queried directly using the :ref:`ADC API <DataCommonsAPI>`. In addition, the
 following tools and platforms implement web based user interfaces that use the ADC API to query repositories

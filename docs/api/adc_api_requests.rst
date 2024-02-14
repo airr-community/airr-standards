@@ -345,7 +345,7 @@ of more than 10 years but from a different diagnoses. This is a correct response
 
 In order to achieve the desired outcome, it is necessary to search for one of the conditions (e.g. ``disease_diagnosis = pancreatic ductal adenocarcinom``),
 compile a list of ``repertoire_ids`` that meet that condition, and then search for the second condition (e.g. ``disease_length > 10``)
-across those ``repertoire_ids``. 
+across those ``repertoire_ids``.
 
 *Examples*
 
@@ -582,7 +582,7 @@ subjects each with two IGH repertoires.
     ]
   }
 
-  
+
 Queries on Nested Information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
