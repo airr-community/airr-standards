@@ -253,21 +253,11 @@ The following operators are support by the ADC API.
       - n/a
       - field is missing or is null
       - {"op":"is missing","content":{"field":"sample.tissue"}}
-    * - is
-      - field
-      - n/a
-      - identical to "is missing" operator, provided for GDC compatibility
-      - {"op":"is","content":{"field":"sample.tissue"}}
     * - is not missing
       - field
       - n/a
       - field is not missing and is not null
       - {"op":"is not missing","content":{"field":"sample.tissue"}}
-    * - not
-      - field
-      - n/a
-      - identical to "is not missing" operator, provided for GDC compatibility
-      - {"op":"not","content":{"field":"sample.tissue"}}
     * - in
       - field, multiple values in a list
       - array of string, number, or integer
