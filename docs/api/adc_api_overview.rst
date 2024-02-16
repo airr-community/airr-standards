@@ -49,6 +49,13 @@ to be followed.
    requests.
 *  If an API endpoint returns a field, then the content of that field
    in the JSON and TSV response must be equivalent.
+*  For those fields that contain Amino Acid or Nucleotide strings, the case for the
+   characters (upper or lower case) is not stated in the specification. Repository
+   implementations should expect upper or lower case queries for these fields. Repositories
+   may want to enforce internal characteristics for these fields (e.g. AA are always upper case,
+   nt are always lower case) to facilitate efficient storage and searching. Because case is not
+   stated, repositories can return amino acid and nucleotide sequences using the case utilized
+   internally.
 *  Relevant HTTP error codes should be returned on error conditions. HTTP 408
    (timeout) should be used if the API does not complete an operation because of an
    internal time limit, and HTTP 413 (Content too large) should be returned when either
