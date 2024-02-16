@@ -582,6 +582,9 @@ subjects each with two IGH repertoires.
     ]
   }
 
+Note: ADC API facet requests differ from those in the GDC API on which the ADC API is based. In the ADC
+API it is allowed to request a facet count on a field that is being filtered, whereas in the GDC API
+filters on the facet'ed field are ignored (see `Genomic Data Commons (GDC) API Facets`_ restriction #2).
 
 Queries on Nested Information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -623,3 +626,5 @@ to exhibit "local" behavior, as is easier to implement on the
 client-side, where it would require joining the the result sets of the
 queries for each of the properties individually.
 
+
+.. _`Genomic Data Commons (GDC) API Facets`: https://docs.gdc.cancer.gov/API/Users_Guide/Search_and_Retrieval/#facets
