@@ -539,6 +539,14 @@ paths:
           description: Invalid request
           schema:
             $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          schema:
+            $ref: '#/definitions/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          schema:
+            $ref: '#/definitions/error_response'
         '500':
           description: Server error
           schema:
@@ -591,6 +599,14 @@ paths:
           description: Invalid request
           schema:
             $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          schema:
+            $ref: '#/definitions/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          schema:
+            $ref: '#/definitions/error_response'
         '500':
           description: Server error
           schema:
@@ -624,6 +640,14 @@ paths:
             $ref: '#/definitions/rearrangement_response'
         '400':
           description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          schema:
+            $ref: '#/definitions/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           schema:
             $ref: '#/definitions/error_response'
         '500':
@@ -679,6 +703,14 @@ paths:
           description: Invalid request
           schema:
             $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          schema:
+            $ref: '#/definitions/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          schema:
+            $ref: '#/definitions/error_response'
         '500':
           description: Server error
           schema:
@@ -712,6 +744,14 @@ paths:
             $ref: '#/definitions/clone_id_response'
         '400':
           description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          schema:
+            $ref: '#/definitions/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           schema:
             $ref: '#/definitions/error_response'
         '500':
@@ -767,6 +807,14 @@ paths:
           description: Invalid request
           schema:
             $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          schema:
+            $ref: '#/definitions/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          schema:
+            $ref: '#/definitions/error_response'
         '500':
           description: Server error
           schema:
@@ -801,6 +849,14 @@ paths:
             $ref: '#/definitions/cell_id_response'
         '400':
           description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          schema:
+            $ref: '#/definitions/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           schema:
             $ref: '#/definitions/error_response'
         '500':
@@ -856,6 +912,14 @@ paths:
           description: Invalid request
           schema:
             $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          schema:
+            $ref: '#/definitions/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          schema:
+            $ref: '#/definitions/error_response'
         '500':
           description: Server error
           schema:
@@ -889,6 +953,14 @@ paths:
             $ref: '#/definitions/expression_id_response'
         '400':
           description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          schema:
+            $ref: '#/definitions/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           schema:
             $ref: '#/definitions/error_response'
         '500':
@@ -944,6 +1016,14 @@ paths:
           description: Invalid request
           schema:
             $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          schema:
+            $ref: '#/definitions/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          schema:
+            $ref: '#/definitions/error_response'
         '500':
           description: Server error
           schema:
@@ -977,6 +1057,14 @@ paths:
             $ref: '#/definitions/receptor_id_response'
         '400':
           description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          schema:
+            $ref: '#/definitions/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           schema:
             $ref: '#/definitions/error_response'
         '500':
@@ -1030,6 +1118,14 @@ paths:
             $ref: '#/definitions/receptor_response'
         '400':
           description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          schema:
+            $ref: '#/definitions/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           schema:
             $ref: '#/definitions/error_response'
         '500':
