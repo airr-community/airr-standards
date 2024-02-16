@@ -555,6 +555,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
         '500':
           description: Server error
           content:
@@ -584,6 +596,18 @@ paths:
                 $ref: '#/components/schemas/repertoire_response'
         '400':
           description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           content:
             application/json:
               schema:
@@ -623,6 +647,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
         '500':
           description: Server error
           content:
@@ -652,6 +688,18 @@ paths:
                 $ref: '#/components/schemas/rearrangement_response'
         '400':
           description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           content:
             application/json:
               schema:
@@ -691,6 +739,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
         '500':
           description: Server error
           content:
@@ -720,6 +780,18 @@ paths:
                 $ref: '#/components/schemas/clone_response'
         '400':
           description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           content:
             application/json:
               schema:
@@ -761,6 +833,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
         '500':
           description: Server error
           content:
@@ -790,6 +874,18 @@ paths:
                 $ref: '#/components/schemas/cell_response'
         '400':
           description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           content:
             application/json:
               schema:
@@ -830,6 +926,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
         '500':
           description: Server error
           content:
@@ -859,6 +967,18 @@ paths:
                 $ref: '#/components/schemas/expression_response'
         '400':
           description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           content:
             application/json:
               schema:
@@ -898,6 +1018,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
         '500':
           description: Server error
           content:
@@ -927,6 +1059,18 @@ paths:
                 $ref: '#/components/schemas/receptor_response'
         '400':
           description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           content:
             application/json:
               schema:
