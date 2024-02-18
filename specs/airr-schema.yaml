@@ -371,7 +371,8 @@ DataFile:
                 nullable: false
         RepertoireGroup:
             type: array
-            description: List of repertoire collections
+            description: List of repertoire groups
+            
             items:
                 $ref: '#/RepertoireGroup'
             x-airr:
@@ -3191,7 +3192,8 @@ Repertoire:
                 nullable: false
                 adc-query-support: true
 
-# A group of repertoires for analysis purposes, includes optional time course
+# An ordered group of repertoires for analysis purposes, includes optional time course
+# Can be treated as a set if all repertoire_group_id are unique
 RepertoireGroup:
     type: object
     required:
@@ -3200,19 +3202,19 @@ RepertoireGroup:
     properties:
         repertoire_group_id:
             type: string
-            description: Identifier for this repertoire collection
+            description: Identifier for this repertoire group
             x-airr:
                 identifier: true
         repertoire_group_name:
             type: string
-            description: Short display name for this repertoire collection
+            description: Short display name for this repertoire group
         repertoire_group_description:
             type: string
-            description: Repertoire collection description
+            description: Repertoire group description
         repertoires:
             type: array
             description: >
-                List of repertoires in this collection with an associated description and time point designation
+                List of repertoires in this group with an associated description and time point designation
             items:
                 type: object
                 properties:
