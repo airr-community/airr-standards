@@ -416,6 +416,32 @@ definitions:
       Facet:
         $ref: '#/definitions/facet_list'
 
+  # list of reactivity annotations
+  reactivity_list:
+    type: array
+    items:
+      $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema.yaml#/CellReactivity'
+
+  # The response object /reactivity/{reactivity_id} endpoint
+  reactivity_id_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      CellReactivity:
+        $ref: '#/definitions/reactivity_list'
+
+  # The response object /reactivity endpoint
+  reactivity_response:
+    type: object
+    properties:
+      Info:
+        $ref: '#/definitions/info_object'
+      CellReactivity:
+        $ref: '#/definitions/reactivity_list'
+      Facet:
+        $ref: '#/definitions/facet_list'
+
   # list of receptor extension fields
   receptor_extension:
     description: The extended Receptor object with additional query fields for the ADC.
@@ -1028,6 +1054,94 @@ paths:
             $ref: '#/definitions/error_response'
         '413':
           description: Content too large, max_size or max_query_size exceeded
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /reactivity/{reactivity_id}:
+    x-swagger-router-controller: reactivity
+    get:
+      description: >
+        Returns an reactivity property based upon its identifier.
+      tags:
+        - reactivity
+      consumes:
+        - application/x-www-form-urlencoded
+        - application/json
+        - application/octet-stream
+      produces:
+        - application/json
+      parameters:
+        - name: reactivity_id
+          in: path
+          description: ID of reactivity property to return
+          required: true
+          type: string
+      operationId: getReactivity
+      responses:
+        '200':
+          description: >
+            A successful call returns the reactivity property data.
+          schema:
+            $ref: '#/definitions/reactivity_id_response'
+        '400':
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/error_response'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/error_response'
+
+  /reactivity:
+    x-swagger-router-controller: reactivity
+    post:
+      description: >
+        This query service returns cell reactivity data.
+      tags:
+        - reactivity
+      parameters:
+        - in: body
+          name: data
+          schema:
+            type: object
+            properties:
+              filters:
+                type: object
+              format:
+                type: string
+                default: json
+                enum:
+                  - json
+                  - tsv
+              fields:
+                type: array
+                items:
+                  type: string
+              size:
+                type: integer
+              from:
+                type: integer
+              include_fields:
+                type: string
+                enum:
+                  - miairr
+                  - airr-core
+                  - airr-schema
+              facets:
+                type: string
+      operationId: queryReactivity
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of cell reactivity data.
+          schema:
+            $ref: '#/definitions/reactivity_response'
+        '400':
+          description: Invalid request
           schema:
             $ref: '#/definitions/error_response'
         '500':

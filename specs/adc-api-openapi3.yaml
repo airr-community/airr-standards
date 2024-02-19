@@ -371,6 +371,12 @@ components:
       items:
         $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema-openapi3.yaml#/CellExpression'
 
+    # list of cell reactivity features
+    reactivity_list:
+      type: array
+      items:
+        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/v1.4.1/specs/airr-schema-openapi3.yaml#/CellReactivity'
+
     # list of receptor extension fields
     receptor_extension:
       description: The extended Receptor object with additional query fields for the ADC.
@@ -462,6 +468,26 @@ components:
           $ref: '#/components/schemas/info_object'
         CellExpression:
           $ref: '#/components/schemas/expression_list'
+        Facet:
+          $ref: '#/components/schemas/facet_list'
+
+    # The response object /reactivity/{reactivity_id} endpoint
+    reactivity_id_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        CellReactivity:
+          $ref: '#/components/schemas/reactivity_list'
+
+    # The response object for the /reactivity endpoint
+    reactivity_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        CellReactivity:
+          $ref: '#/components/schemas/reactivity_list'
         Facet:
           $ref: '#/components/schemas/facet_list'
 
@@ -985,6 +1011,75 @@ paths:
                 $ref: '#/components/schemas/error_response'
         '413':
           description: Content too large, max_size or max_query_size exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /reactivity/{reactivity_id}:
+    x-swagger-router-controller: reactivity
+    get:
+      description: >
+        Returns an reactivity property based upon its identifier.
+      tags:
+        - reactivity
+      parameters:
+        - name: reactivity_id
+          in: path
+          description: ID of reactivity property to return
+          required: true
+          schema:
+            type: string
+      operationId: get_reactivity
+      responses:
+        '200':
+          description: >
+            A successful call returns the reactivity property data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reactivity_id_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+  
+  /reactivity:
+    post:
+      description: >
+        This query service returns gene reactivity data.
+      operationId: query_reactivity
+      tags:
+        - reactivity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/query_object'
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of gene reactivity data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reactivity_response'
+        '400':
+          description: Invalid request
           content:
             application/json:
               schema:
