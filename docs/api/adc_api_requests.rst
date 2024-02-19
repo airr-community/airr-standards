@@ -604,7 +604,7 @@ Given the example diagnosis structure:
 A query of ``disease_diagnosis = pancreatic ductal adenocarcinom`` and ``disease_length > 10``
 will result in the above Subject being returned, even though the subject has not had pancreatic
 ductal adenocarcinom for more than 10 years. This is because each of the predicates in the query
-are true given the above subject. That is the subject has a `disease_diagnosis = pancreatic ductal adenocarcinom``
+are true given the above subject. That is the subject has a ``disease_diagnosis = pancreatic ductal adenocarcinom``
 and a ``disease_length > 10``. It is currently not possible to perform the above query using the current
 implementation of the ADC API.
 
