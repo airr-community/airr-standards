@@ -284,10 +284,6 @@ The following operators are support by the ADC API.
       - logical OR
       - {"op":"or","content":[ |br| {"op":"<","content":{"field":"sample.cell_number","value":1000}}, |br| {"op":"is missing","content":{"field":"sample.tissue"}}, |br| {"op":"exclude","content":{"field":"subject.organism.id","value":["9606","10090"]}} |br| ]}
 
-Note that the ``not`` operator is different from a logical NOT
-operator, and the logical NOT is not needed as the other operators
-provide negation.
-
 The ``field`` operand specifies a fully qualified property name in the AIRR
 Data Model. Fully qualified AIRR properties are either a JSON/YAML base type (``string``, ``number``,
 ``integer``, or ``boolean``) or an array of one of these base types (some AIRR fields are arrays
