@@ -4581,7 +4581,7 @@ CellReactivity:
                 - protein
                 - peptide
                 - non-peptidic
-            description: Classification of ligand binding to receptor
+            description: Classification of ligand binding to the cell
             example: non-peptide
             x-airr:
                 format: controlled_vocabulary
@@ -4680,7 +4680,7 @@ CellReactivity:
         mhc_allele_1:
             type: string
             description: Allele designation of the MHC alpha chain
-            example: HLA-DRA
+            example: HLA-DRA*01:01
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -4711,11 +4711,7 @@ CellReactivity:
         reactivity_method:
             type: string
             enum:
-                - SPR
-                - ITC
-                - ELISA
-                - cytometry
-                - biological_activity
+                - native_protein
                 - MHC_peptide_multimer
             description: The methodology used to assess expression (assay implemented in experiment)
             x-airr:
@@ -4725,15 +4721,10 @@ CellReactivity:
         reactivity_readout:
             type: string
             enum:
-                - binding_strength
-                - cytokine_release
-                - dissociation_constant_kd
-                - on_rate
-                - off_rate
-                - pathogen_inhibition
+                - fluorescence_intensity
                 - barcode_count
             description: Reactivity measurement read-out
-            example: cytokine release
+            example: barcode_count
             x-airr:
                 format: controlled_vocabulary
                 nullable: false
@@ -4741,14 +4732,14 @@ CellReactivity:
         reactivity_value:
             type: number
             description: The absolute (processed) value of the measurement
-            example: 162.26
+            example: 162
             x-airr:
                 nullable: false
                 adc-query-support: true
         reactivity_unit:
             type: string
             description: The unit of the measurement
-            example: pg/ml
+            example: read count
             x-airr:
                 nullable: false
                 adc-query-support: true
