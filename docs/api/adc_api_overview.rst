@@ -70,10 +70,14 @@ repository queries on fields that have the adc_query_support attribute set are c
 
 In order to maximize scientific reproducibility and data provenance, it is recommended that 
 data stewards/data curators avoid releasing partially loaded data into the AIRR Data Commons. 
-When loading a study it is recommended that the entire study be loaded and then made accessible
-in the ADC, rather than having the repository accessible in the ADC while the data is being loaded.
-Data loading over time can lead to confusion to consumers of the data in the ADC, as queries will 
-return different results as data is loaded.
+When loading a study it is recommended that all data from a specific AIRR Schema object
+(e.g. Rearrangement, Clone, Cell) be loaded and then made accessible
+in the ADC as a single package, rather than having the repository accessible in the ADC
+while the data is being loaded.
+Piecemeal data loading of data for a specific schema object (e.g. Rearrangement) for a
+study in a production repository will result in queries returning different results as
+searches are made over time. This can lead to consumers of the data receiving confusing results,
+makes for complicated data provenance, and hampers scientific reporducibility. 
 
 Authentication
 ~~~~~~~~~~~~~~
