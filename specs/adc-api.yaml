@@ -1091,6 +1091,18 @@ paths:
           description: Invalid request
           schema:
             $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
         '500':
           description: Server error
           schema:
@@ -1144,6 +1156,18 @@ paths:
           description: Invalid request
           schema:
             $ref: '#/definitions/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
         '500':
           description: Server error
           schema:
