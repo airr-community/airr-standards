@@ -253,21 +253,11 @@ The following operators are support by the ADC API.
       - n/a
       - field is missing or is null
       - {"op":"is missing","content":{"field":"sample.tissue"}}
-    * - is
-      - field
-      - n/a
-      - identical to "is missing" operator, provided for GDC compatibility
-      - {"op":"is","content":{"field":"sample.tissue"}}
     * - is not missing
       - field
       - n/a
       - field is not missing and is not null
       - {"op":"is not missing","content":{"field":"sample.tissue"}}
-    * - not
-      - field
-      - n/a
-      - identical to "is not missing" operator, provided for GDC compatibility
-      - {"op":"not","content":{"field":"sample.tissue"}}
     * - in
       - field, multiple values in a list
       - array of string, number, or integer
@@ -294,10 +284,6 @@ The following operators are support by the ADC API.
       - logical OR
       - {"op":"or","content":[ |br| {"op":"<","content":{"field":"sample.cell_number","value":1000}}, |br| {"op":"is missing","content":{"field":"sample.tissue"}}, |br| {"op":"exclude","content":{"field":"subject.organism.id","value":["9606","10090"]}} |br| ]}
 
-Note that the ``not`` operator is different from a logical NOT
-operator, and the logical NOT is not needed as the other operators
-provide negation.
-
 The ``field`` operand specifies a fully qualified property name in the AIRR
 Data Model. Fully qualified AIRR properties are either a JSON/YAML base type (``string``, ``number``,
 ``integer``, or ``boolean``) or an array of one of these base types (some AIRR fields are arrays
@@ -307,45 +293,6 @@ The Fields section below describes the available queryable fields.
 The ``value`` operand specifies one or more values when evaluating the
 operator for the ``field`` operand.
 
-*Queries Against Arrays*
-
-A number of fields in the AIRR Data Model are arrays, such as
-``study.keywords_study`` which is an array of strings or
-``subject.diagnosis`` which is an array of ``Diagnosis`` objects. A
-query operator on an array field will apply that operator to each
-entry in the array to decide if the query filter is satisfied. The
-behavior is different for various operators. For operators such as
-``=`` and ``in``, the filter behaves like the Boolean ``OR`` over the
-array entries, that is if **any** array entry evaluates to true then
-the query filter is satisfied. For operators such as ``!=`` and
-``exclude``, the filter behaves like the Boolean ``AND`` over the
-array entries, that is **all** array entries must evaluate to true for
-the query filter to be satisfied.
-
-For complex queries over arrays, it is necessary to compose complex queries into
-more than one query. For example consider the following subject:
-
-.. code-block:: bash
-
-  * Subject
-    * diagnosis
-      (Diagnosis record 1)
-        * disease_diagnosis: "rheumatoid arthritis"
-        * disease_length: "20 years"
-      (Diagnosis record 2)
-        * disease_diagnosis: "pancreatic ductal adenocarcinoma"
-        * disease_length: "6 months"
-
-
-If the end result that is required it to find all disease diagnoses of "pancreatic ductal adenocarcinoma"
-that have a disease length of over 10 years, searching for ``disease_diagnosis = pancreatic ductal adenocarcinom`` and ``disease_length > 10``
-will result in the above Subject being returned, even though the subject has not had pancreatic ductal adenocarcinom for more than 10 years.
-This is because there is a diagnosis of pancreatic ductal adenocarcinom and a disease length
-of more than 10 years but from a different diagnoses. This is a correct response to the query, but does not return the desired outcome.
-
-In order to achieve the desired outcome, it is necessary to search for one of the conditions (e.g. ``disease_diagnosis = pancreatic ductal adenocarcinom``),
-compile a list of ``repertoire_ids`` that meet that condition, and then search for the second condition (e.g. ``disease_length > 10``)
-across those ``repertoire_ids``.
 
 *Examples*
 
@@ -582,9 +529,12 @@ subjects each with two IGH repertoires.
     ]
   }
 
+Note: ADC API facet requests differ from those in the GDC API on which the ADC API is based. In the ADC
+API it is allowed to request a facet count on a field that is being filtered, whereas in the GDC API
+filters on the facet'ed field are ignored (see `Genomic Data Commons (GDC) API Facets`_ restriction #2).
 
-Queries on Nested Information
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Queries on Nested Information (Arrays)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As stated above, in general API response data will be have been
 flattened by the query handler. However, there are several instances in
@@ -592,7 +542,7 @@ which properties within the top-level entities are arrays of objects,
 which cannot be flattened because all the information will be expected
 to present in the response. Therefore, in these cases, the data that is
 queried and potentially returned will be nested. In addition, while the
-array of object is obvious from the AIRR Schema, they array component
+array of object is obvious from the AIRR Schema, the array component (index)
 does **not** appear in the hierarchical property names used by the API.
 Note that this does not create any collisions as the schema allows the
 existence of multiple properties with the same designation.
@@ -623,3 +573,56 @@ to exhibit "local" behavior, as is easier to implement on the
 client-side, where it would require joining the the result sets of the
 queries for each of the properties individually.
 
+*An example query against arrays*
+
+A number of fields in the AIRR Data Model are arrays, such as
+``study.keywords_study`` which is an array of strings or
+``subject.diagnosis`` which is an array of ``Diagnosis`` objects. A
+query operator on an array field will apply that operator to each
+entry in the array to decide if the query filter is satisfied. The
+behavior is different for various operators. For operators such as
+``=`` and ``in``, the filter behaves like the Boolean ``OR`` over the
+array entries, that is if **any** array entry evaluates to true then
+the query filter is satisfied. For operators such as ``!=`` and
+``exclude``, the filter behaves like the Boolean ``AND`` over the
+array entries, that is **all** array entries must evaluate to true for
+the query filter to be satisfied.
+
+Given the example diagnosis structure:
+
+.. code-block:: bash
+
+  * Subject
+    * diagnosis
+      (Diagnosis record 1)
+        * disease_diagnosis: "rheumatoid arthritis"
+        * disease_length: "20 years"
+      (Diagnosis record 2)
+        * disease_diagnosis: "pancreatic ductal adenocarcinoma"
+        * disease_length: "6 months"
+
+A query of ``disease_diagnosis = pancreatic ductal adenocarcinom`` and ``disease_length > 10``
+will result in the above Subject being returned, even though the subject has not had pancreatic
+ductal adenocarcinom for more than 10 years. This is because each of the predicates in the query
+are true given the above subject. That is the subject has a ``disease_diagnosis = pancreatic ductal adenocarcinom``
+and a ``disease_length > 10``. It is currently not possible to perform the above query using the current
+implementation of the ADC API.
+
+This query would only result in the desired outcome if and only if there was
+one disease record for the subject as given below.
+
+.. code-block:: bash
+
+  * Subject
+    * diagnosis
+      (Diagnosis record 1)
+        * disease_diagnosis: "pancreatic ductal adenocarcinoma"
+        * disease_length: "20 years"
+
+If there is more than one diagnosis, it is necessary to search for one of the criteria 
+(e.g. ``disease_diagnosis = pancreatic ductal adenocarcinom``), download the resulting data, and determine
+if the other criteria is true for that disease record for that subject.
+
+A planned extension to solve this issue is being devloped.
+
+.. _`Genomic Data Commons (GDC) API Facets`: https://docs.gdc.cancer.gov/API/Users_Guide/Search_and_Retrieval/#facets

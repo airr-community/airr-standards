@@ -49,13 +49,41 @@ to be followed.
    requests.
 *  If an API endpoint returns a field, then the content of that field
    in the JSON and TSV response must be equivalent.
+*  For those fields that contain Amino Acid or Nucleotide strings, the case for the
+   characters (upper or lower case) is not stated in the specification. Repository
+   implementations should expect upper or lower case queries for these fields. Repositories
+   may want to enforce internal characteristics for these fields (e.g. AA are always upper case,
+   nt are always lower case) to facilitate efficient storage and searching. Because case is not
+   stated, repositories can return amino acid and nucleotide sequences using the case utilized
+   internally.
+*  Relevant HTTP error codes should be returned on error conditions. HTTP 408
+   (timeout) should be used if the API does not complete an operation because of an
+   internal time limit, and HTTP 413 (Content too large) should be returned when either
+   max_size or max_query_size are exceeded.
 
+Repository operation principles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Research groups that are running repositories as part of the AIRR Data Commons should,
+to the best of their ability, ensure that their repository uptime is maintained and that
+repository queries on fields that have the adc_query_support attribute set are completed in a timely manner.
+
+In order to maximize scientific reproducibility and data provenance, it is recommended that 
+data stewards/data curators avoid releasing partially loaded data into the AIRR Data Commons. 
+When loading a study it is recommended that all data from a specific AIRR Schema object
+(e.g. Rearrangement, Clone, Cell) be loaded and then made accessible
+in the ADC as a single package, rather than having the repository accessible in the ADC
+while the data is being loaded.
+Piecemeal data loading of data for a specific schema object (e.g. Rearrangement) for a
+study in a production repository will result in queries returning different results as
+searches are made over time. This can lead to consumers of the data receiving confusing results,
+makes for complicated data provenance, and hampers scientific reporducibility. 
 
 Authentication
 ~~~~~~~~~~~~~~
 
 The ADC API currently does not define an authentication method. Future
-versions of the API will provide an authentication method so data
+versions of the API may provide an authentication method so data
 repositories can support query and download of controlled-access data.
 
 
