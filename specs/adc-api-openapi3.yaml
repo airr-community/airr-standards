@@ -1051,13 +1051,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
         '500':
           description: Server error
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_response'
-  
+
   /reactivity:
     post:
       description: >
@@ -1080,6 +1092,18 @@ paths:
                 $ref: '#/components/schemas/reactivity_response'
         '400':
           description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '408':
+          description: Operation timed out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '413':
+          description: Content too large, max_size or max_query_size exceeded
           content:
             application/json:
               schema:
