@@ -4556,7 +4556,7 @@ Cell:
             type: array
             nullable: true
             description: >
-                Array of sequence identifiers defined for the Rearrangement objects associated with this Cell
+                Array of sequence identifiers defined for the Rearrangement objects associated with this cell
             title: Cell-associated rearrangements
             items:
                 type: string
@@ -4569,7 +4569,7 @@ Cell:
             type: array
             nullable: true
             description: >
-                Array of receptor identifiers defined for the Receptor objects associated with this Cell
+                Array of receptor identifiers defined for the Receptor objects associated with this cell
             title: Cell-associated receptors
             items:
                 type: string
