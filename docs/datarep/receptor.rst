@@ -91,8 +91,8 @@ current AIRR Schema as an individual ``Cell`` object can link to more
 than two rearrangemts and to more than a single ``Receptor``. In the
 case of two potential receptors, both MAY be created as objects, if the
 general annotation rules are met for each of them. Note that the
-annotation of **cell**-based reactivity information is handled by the
-``CellReactivity`` record (see further information there)
+annotation of cell-based reactivity information is handled by the
+:ref:`CellReactivitySchema` object.
 
 
 Representation of bi-specific antibodies
@@ -127,61 +127,6 @@ Receptor Fields
       - {{ field.Definition | trim }}
     {%- endfor %}
 
-
-Reactivity Measurement Fields
------------------------------
-
-A ``reactivity_measurement`` array records the experimental design and result
-for what a researcher measured or observed for the reactivity of target
-``Receptor``. Specifically, a receptor may have multiple reactivity
-measurement records, i.e. under a ``Receptor`` object there may be multiple
-measurement sets within the ``reactivity_measurement`` array. All properties
-within one measurement set are specific to a single reactivity measurement
-record so that target receptors could be acquired by searching for the
-appropriate ``reactivity_measurement`` fields. The specification of these
-fields are all optional, which defines that there are no requirements for
-column appearing in the TSV. Besides that, regarding the variety of structure
-interaction between epitope and receptors of the immune system (antibody, TCR
-and MHC), several fields are nullable by assigning an empty string as the
-value.
-
-:download:`Download as TSV <../_downloads/ReactivityMeasurement.tsv>`
-
-.. list-table::
-    :widths: 20, 15, 15, 50
-    :header-rows: 1
-
-    * - Name
-      - Type
-      - Attributes
-      - Definition
-    {%- for field in ReactivityMeasurement_schema %}
-    * - ``{{ field.Name }}``
-      - {{ field.Type }}
-      - {{ field.Attributes }}
-      - {{ field.Definition | trim }}
-    {%- endfor %}
-
-Within ``reactivity_measurement`` array, it is expected that
-``antigen_source_species``, ``peptide``, ``peptide_start`` and ``peptide_end``
-properties have an inseparable relationship with ``antigen_type``. They only
-present a valid value when ``antigen_type`` is **protein** or **peptide**,
-otherwise they are NULL value. In the former case, ``peptide`` should present
-the actual peptide sequence, and ``antigen`` field would require the reference
-protein sequence of the experiment-measured peptide, to which ``peptide``
-refers. In the meanwhile, ``peptide_start`` and ``peptide_end`` indicate the
-location of the actual tested peptide in reference sequence. There is a unique
-mapping between ``peptide`` and reference sequence acquired in ``antigen``
-field. For example, peptide "RNVDENANANSAVKN" and "PNANPNVDPNANPNV" were used
-to assess receptor reactivity, in measurement records they are all of same
-antigen, Circumsporozoite protein (NF54), yet located in different sections,
-the former one from 291 to 305 while the one latter from 105 to 119. The same
-issue can also be expected in ``mhc_*`` properties. These fields specifically
-presents for MHC:x ligand types, i.e. if ``ligand_type`` is **MHC:peptide**
-or **MHC:non-peptide**, ``mhc_*`` fields would capture the MHC class and
-molecule of epitope and list the alleles identified in an individual. If
-requiring ``reactivity_measurement`` for antibody/immunoglobulin, the
-``mhc_*`` fields shoule be NULL value.
 
 
 .. === References and Links ===
