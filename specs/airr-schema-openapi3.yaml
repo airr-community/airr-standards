@@ -1667,10 +1667,7 @@ Study:
         - study_type
         - inclusion_exclusion_criteria
         - grants
-        - collected_by
-        - lab_name
-        - lab_address
-        - submitted_by
+        - contributors
         - pub_ids
         - keywords_study
     properties:

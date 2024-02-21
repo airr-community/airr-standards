@@ -11,28 +11,50 @@ Repertoire:
         id: null
         label: null
       study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
-      study_contact: "Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X"
       inclusion_exclusion_criteria: null
-      lab_name: "Mark M. Davis"
-      lab_address: "Stanford University"
-      submitted_by: "Florian Rubelt"
+      contributors:
+        - contributor_id: "1"
+          name: "Florian Rubelt"
+          orcid_id:
+            id: null
+            label: null
+          affiliation:
+            id: "ROR:00f54p054"
+            label: "Stanford University"
+          affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
+          contributions:
+            - role: "investigation"
+              degree: null
+            - role: "data curation"
+              degree: null
+        - contributor_id: "2"
+          name: "Mark M. Davis"
+          orcid_id:
+            id: "ORCID:0000-0001-6868-657X"
+            label: "Mark Davis"
+          affiliation:
+            id: "ROR:00f54p054"
+            label: "Stanford University"
+          affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
+          contributions:
+            - role: "supervision"
+              degree: null
       pub_ids: ["PMID:27005435"]
-      collected_by: null
       grants: null
-      keywords_study: 
+      keywords_study:
         - "contains_ig"
         - "contains_tr"
     subject:
       subject_id: TW01A
       synthetic: false
       species:
-        id: "NCBITaxon_9606"
+        id: "NCBITAXON:9606"
         label: "Homo sapiens"
-      sex: F
+      sex: female
       age_min: 27
       age_max: 27
       age_unit:
-        id: UO_0000036
+        id: UO:0000036
         label: year
       age_event: null
       ancestry_population:
@@ -63,15 +85,15 @@ Repertoire:
         sample_processing_id: null
         sample_type: "peripheral venous puncture"
         tissue:
-          id: "UBERON_0000178"
+          id: "UBERON:0000178"
           label: "blood"
         tissue_processing: "Ficoll gradient"
         cell_subset:
-          id: "CL_0000788"
+          id: "CL:0000788"
           label: "naive B cell"
         cell_phenotype: "expression of CD20 and the absence of CD27"
         cell_species:
-          id: "NCBITaxon_9606"
+          id: "NCBITAXON:9606"
           label: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
@@ -82,7 +104,7 @@ Repertoire:
             reverse_pcr_primer_target_location: null
         sequencing_platform: "Illumina MiSeq"
         sequencing_files:
-          sequencing_data_id: SRR2905656
+          sequencing_data_id: SRA:SRR2905656
           file_type: fastq
           filename: SRR2905656_R1.fastq.gz
           read_direction: forward
@@ -90,6 +112,8 @@ Repertoire:
           paired_filename: SRR2905656_R2.fastq.gz
           paired_read_direction: reverse
           paired_read_length: 300
+          index_filename: SRR2905656_R3.fastq.gz
+          index_length: 8
         anatomic_site: null
         disease_state_sample: null
         collection_time_point_relative: null
@@ -142,13 +166,35 @@ Repertoire:
         id: null
         label: null
       study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
-      study_contact: "Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X"
       inclusion_exclusion_criteria: null
-      lab_name: "Mark M. Davis"
-      lab_address: "Stanford University"
-      submitted_by: "Florian Rubelt"
+      contributors:
+        - contributor_id: "1"
+          name: "Florian Rubelt"
+          orcid_id:
+            id: null
+            label: null
+          affiliation:
+            id: "ROR:00f54p054"
+            label: "Stanford University"
+          affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
+          contributions:
+            - role: "investigation"
+              degree: null
+            - role: "data curation"
+              degree: null
+        - contributor_id: "2"
+          name: "Mark M. Davis"
+          orcid_id:
+            id: "ORCID:0000-0001-6868-657X"
+            label: "Mark Davis"
+          affiliation:
+            id: "ROR:00f54p054"
+            label: "Stanford University"
+          affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
+          contributions:
+            - role: "supervision"
+              degree: null
       pub_ids: ["PMID:27005435"]
-      collected_by: null
       grants: null
       keywords_study:
         - "contains_ig"
@@ -157,13 +203,13 @@ Repertoire:
       subject_id: TW01A
       synthetic: false
       species:
-        id: "NCBITaxon_9606"
+        id: "NCBITAXON:9606"
         label: "Homo sapiens"
-      sex: F
+      sex: female
       age_min: 27
       age_max: 27
       age_unit:
-        id: UO_0000036
+        id: UO:0000036
         label: year
       age_event: null
       ancestry_population:
@@ -194,15 +240,15 @@ Repertoire:
         sample_processing_id: null
         sample_type: "peripheral venous puncture"
         tissue:
-          id: "UBERON_0000178"
+          id: "UBERON:0000178"
           label: "blood"
         tissue_processing: "Ficoll gradient"
         cell_subset:
-          id: "CL_0000787"
+          id: "CL:0000787"
           label: "memory B cell"
         cell_phenotype: "expression of CD20 and CD27"
         cell_species:
-          id: "NCBITaxon_9606"
+          id: "NCBITAXON:9606"
           label: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
@@ -213,7 +259,7 @@ Repertoire:
             reverse_pcr_primer_target_location: null
         sequencing_platform: "Illumina MiSeq"
         sequencing_files:
-          sequencing_data_id: SRR2905655
+          sequencing_data_id: SRA:SRR2905655
           file_type: fastq
           filename: SRR2905655_R1.fastq.gz
           read_direction: forward
@@ -221,6 +267,8 @@ Repertoire:
           paired_filename: SRR2905655_R2.fastq.gz
           paired_read_direction: reverse
           paired_read_length: 300
+          index_filename: SRR2905655_R3.fastq.gz
+          index_length: 8
         anatomic_site: null
         disease_state_sample: null
         collection_time_point_relative: null
@@ -273,13 +321,35 @@ Repertoire:
         id: null
         label: null
       study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
-      study_contact: "Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X"
       inclusion_exclusion_criteria: null
-      lab_name: "Mark M. Davis"
-      lab_address: "Stanford University"
-      submitted_by: "Florian Rubelt"
+      contributors:
+        - contributor_id: "1"
+          name: "Florian Rubelt"
+          orcid_id:
+            id: null
+            label: null
+          affiliation:
+            id: "ROR:00f54p054"
+            label: "Stanford University"
+          affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
+          contributions:
+            - role: "investigation"
+              degree: null
+            - role: "data curation"
+              degree: null
+        - contributor_id: "2"
+          name: "Mark M. Davis"
+          orcid_id:
+            id: "ORCID:0000-0001-6868-657X"
+            label: "Mark Davis"
+          affiliation:
+            id: "ROR:00f54p054"
+            label: "Stanford University"
+          affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
+          contributions:
+            - role: "supervision"
+              degree: null
       pub_ids: ["PMID:27005435"]
-      collected_by: null
       grants: null
       keywords_study:
         - "contains_ig"
@@ -288,13 +358,13 @@ Repertoire:
       subject_id: TW01A
       synthetic: false
       species:
-        id: "NCBITaxon_9606"
+        id: "NCBITAXON:9606"
         label: "Homo sapiens"
-      sex: F
+      sex: female
       age_min: 27
       age_max: 27
       age_unit:
-        id: UO_0000036
+        id: UO:0000036
         label: year
       age_event: null
       ancestry_population:
@@ -325,15 +395,15 @@ Repertoire:
         sample_processing_id: null
         sample_type: "peripheral venous puncture"
         tissue:
-          id: "UBERON_0000178"
+          id: "UBERON:0000178"
           label: "blood"
         tissue_processing: "Ficoll gradient"
         cell_subset:
-          id: "CL_0000895"
+          id: "CL:0000895"
           label: "naive thymus-derived CD4-positive, alpha-beta T cell"
         cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
         cell_species:
-          id: "NCBITaxon_9606"
+          id: "NCBITAXON:9606"
           label: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
@@ -344,7 +414,7 @@ Repertoire:
             reverse_pcr_primer_target_location: null
         sequencing_platform: "Illumina MiSeq"
         sequencing_files:
-          sequencing_data_id: SRR2905659
+          sequencing_data_id: SRA:SRR2905659
           file_type: fastq
           filename: SRR2905659_R1.fastq.gz
           read_direction: forward
@@ -352,6 +422,8 @@ Repertoire:
           paired_filename: SRR2905659_R2.fastq.gz
           paired_read_direction: reverse
           paired_read_length: 300
+          index_filename: SRR2905659_R3.fastq.gz
+          index_length: 8
         anatomic_site: null
         disease_state_sample: null
         collection_time_point_relative: null
