@@ -497,11 +497,11 @@ Contributor:
     properties:
         contributor_id:
             type: string
-            description: unique identifier of this contributor within the file
+            nullable: true
+            description: Unique identifier of this contributor within the file
             x-airr:
                 identifier: true
                 miairr: important
-            nullable: true
         name:
             type: string
             nullable: false
@@ -886,8 +886,7 @@ AlleleDescription:
     type: object
     required:
         - allele_description_id
-        - maintainer
-        - lab_address
+        - acknowledgements
         - release_version
         - release_date
         - release_description
@@ -915,24 +914,16 @@ AlleleDescription:
                 miairr: important
             description: Unique reference to the allele description, in standardized form (Repo:Label:Version)
             example: OGRDB:Human_IGH:IGHV1-69*01.001
-        maintainer:
-            type: string
-            nullable: true
-            x-airr:
-                miairr: defined
-            description: Maintainer of this sequence record
         acknowledgements:
             type: array
             nullable: true
-            description: List of individuals whose contribution to the gene description should be acknowledged
+            description: >
+                List of individuals whose contribution to the gene description should be acknowledged. Note that these
+                are not necessarily identical with the authors on an associated manuscript or other scholarly
+                communication. Further note that typically at least the three CRediT contributor roles "supervision",
+                "investigation" and "data curation" should be assigned. The current maintainer should be listed first.
             items:
                 $ref: '#/Contributor'
-        lab_address:
-            type: string
-            nullable: true
-            x-airr:
-                miairr: defined
-            description: Institution and full address of corresponding author
         release_version:
             type: integer
             nullable: true
@@ -1225,9 +1216,7 @@ GermlineSet:
         All genes in a GermlineSet should be from a single locus.
     required:
         - germline_set_id
-        - author
-        - lab_name
-        - lab_address
+        - acknowledgements
         - release_version
         - release_description
         - release_date
@@ -1246,28 +1235,14 @@ GermlineSet:
             x-airr:
                 identifier: true
                 miairr: important
-        author:
-            type: string
-            nullable: true
-            x-airr:
-                miairr: important
-            description: Corresponding author
-        lab_name:
-            type: string
-            nullable: true
-            x-airr:
-                miairr: important
-            description: Department of corresponding author
-        lab_address:
-            type: string
-            nullable: true
-            x-airr:
-                miairr: important
-            description: Institutional address of corresponding author
         acknowledgements:
             type: array
             nullable: true
-            description: List of individuals whose contribution to the germline set should be acknowledged
+            description: >
+                List of individuals whose contribution to the germline set should be acknowledged. Note that these are
+                not necessarily identical with the authors on an associated manuscript or other scholarly communication.
+                Further note that typically at least the three CRediT contributor roles "supervision", "investigation"
+                and "data curation" should be assigned. The coresponding author should be listed last.
             items:
                 $ref: '#/Contributor'
         release_version:
@@ -1783,10 +1758,10 @@ Study:
             type: array
             nullable: false
             description: >
-                List of individuals who contributed to the study. Note that these are not necessarily identical with the
-                authors on an associated manuscript or other scholarly communication. Further note that at least the
-                following three CRediT contributor roles "supervision", "investigation" and "data curation" should be
-                assigned.
+                List of individuals who contributed to the study. Note that these are not necessarily identical with
+                the authors on an associated manuscript or other scholarly communication. Further note that typically
+                at least the three CRediT contributor roles "supervision", "investigation" and "data curation" should
+                be assigned. The coresponding author should be listed last.
             title: Contributors
             items:
                 $ref: '#/Contributor'
@@ -1796,6 +1771,69 @@ Study:
                 set: 1
                 subset: study
                 name: Contributors
+        study_contact:
+            type: string
+            nullable: true
+            description: >
+                Full contact information of the contact persons for this study This should include an e-mail address
+                and a persistent identifier such as an ORCID ID.
+            x-airr:
+                deprecated: true
+                deprecated-description: >
+                    Acknowledgements and contact information was re-organized into the contributors property, which
+                    is an array of Contributor objects.
+                deprecated-replaced-by:
+                    - contributors
+        collected_by:
+            type: string
+            nullable: true
+            description: >
+                Full contact information of the data collector, i.e. the person who is legally responsible for data
+                collection and release. This should include an e-mail address and a persistent identifier such as an
+                ORCID ID.
+            x-airr:
+                deprecated: true
+                deprecated-description: >
+                    Acknowledgements and contact information was re-organized into the contributors property, which
+                    is an array of Contributor objects.
+                deprecated-replaced-by:
+                    - contributors
+        lab_name:
+            type: string
+            nullable: true
+            description: Department of data collector
+            x-airr:
+                deprecated: true
+                deprecated-description: >
+                    Acknowledgements and contact information was re-organized into the contributors property, which
+                    is an array of Contributor objects.
+                deprecated-replaced-by:
+                    - contributors
+        lab_address:
+            type: string
+            nullable: true
+            description: Institution and institutional address of data collector
+            x-airr:
+                deprecated: true
+                deprecated-description: >
+                    Acknowledgements and contact information was re-organized into the contributors property, which
+                    is an array of Contributor objects.
+                deprecated-replaced-by:
+                    - contributors
+        submitted_by:
+            type: string
+            nullable: true
+            description: >
+                Full contact information of the data depositor, i.e., the person submitting the data to a repository.
+                This should include an e-mail address and a persistent identifier such as an ORCID ID. This is
+                supposed to be a short-lived and technical role until the submission is relased.
+            x-airr:
+                deprecated: true
+                deprecated-description: >
+                    Acknowledgements and contact information was re-organized into the contributors property, which
+                    is an array of Contributor objects.
+                deprecated-replaced-by:
+                    - contributors
         pub_ids:
             type: array
             items:
