@@ -62,6 +62,12 @@ definitions:
                 type: integer
               last_update:
                 type: string
+              extensions:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - async_api
           api:
             description: Provides information about the ADC API implemented by this repository service.
             $ref: '#/definitions/info_object'
