@@ -60,6 +60,8 @@ to be followed.
    (timeout) should be used if the API does not complete an operation because of an
    internal time limit, and HTTP 413 (Content too large) should be returned when either
    max_size or max_query_size are exceeded.
+*  Extensions beyond the standard API, e.g., support for the Async API, should be specified
+   with the `extensions` property in the `/info` endpoint.
 
 Repository operation principles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

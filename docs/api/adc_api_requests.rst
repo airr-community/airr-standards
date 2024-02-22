@@ -110,7 +110,8 @@ of the queries sent to the repository.
         }
       },
       "max_size": 1000,
-      "max_query_size": 2097152
+      "max_query_size": 2097152,
+      "extensions": ["async_api"]
     }
 
 **Query Repertoire Example**
