@@ -73,6 +73,12 @@ components:
                   type: integer
                 last_update:
                   type: string
+                extensions:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - async_api
             api:
               $ref: '#/components/schemas/info_object'
             schema:
