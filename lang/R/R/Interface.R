@@ -645,7 +645,7 @@ validate_airr <- function(data, model=TRUE, each=FALSE) {
 validate_entry <- function(entry, schema) {
     schema_name <- schema@definition
     valid <- TRUE
-    
+
     # Check all required fields exist
     missing_fields <- setdiff(schema@required, names(entry))
     
@@ -664,8 +664,15 @@ validate_entry <- function(entry, schema) {
         # in this case the type on the 1st level is NULL
         if (is.na(schema[f][["type"]]) || is.null(schema[f][["type"]])) {
             if (!is.null(reference_schemes)) {
-                v <- validate_entry(entry[[f]], schema=reference_schemes)
-                if (!v) { valid <- FALSE }
+                # check whether an ontology is a list, before recursing into it.
+                if (reference_schemes@definition == "Ontology" & class(entry[[f]]) != "list") {
+                    valid <- FALSE
+                    warning(paste("Warning: Property", paste(schema_name, ".", f, sep=""),
+                                "should be an ontology but is of class", class(entry[[f]]), "\n"))
+                } else {
+                    v <- validate_entry(entry[[f]], schema=reference_schemes)
+                    if (!v) { valid <- FALSE }
+                }
             }
         # entry of array type with a list of on or several reference schemes
         } else if (schema[f][["type"]] == "array" & !is.null(reference_schemes)) {
