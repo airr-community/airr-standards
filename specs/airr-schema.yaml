@@ -372,7 +372,6 @@ DataFile:
         RepertoireGroup:
             type: array
             description: List of repertoire groups
-            
             items:
                 $ref: '#/RepertoireGroup'
             x-airr:
