@@ -91,6 +91,8 @@ Here are the primary schema objects of the AIRR Data Model:
       - Information about an observed Cell in a study. ``Cells`` have their own schema and file format described :ref:`here <CellSchema>`.
     * - ``CellExpression properties``
       - Information about expression properties observed for a specific cell. ``CellExpression`` properties have their own schema and file format described :ref:`here <CellExpressionSchema>`.
+    * - ``CellReactivity properties``
+      - Information about reactivity properties observed between a specific cell and an Receptor/Epitope. ``CellReactivity`` properties have their own schema and file format described :ref:`here <CellReactivitySchema>`.
     * - ``Receptor``
       - Information about adaptive immune receptors (i.e., Ig and TCR) that are
         linked to observed Cells in a study. ``Receptors`` have their own schema
