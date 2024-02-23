@@ -466,14 +466,14 @@ TimePoint:
                 adc-query-support: true
         value:
             type: number
-            nullable: true
+            nullable: false
             description: Value of the time point
             example: -5.0
             x-airr:
                 adc-query-support: true
         unit:
             $ref: '#/Ontology'
-            nullable: true
+            nullable: false
             description: Unit of the time point
             title: Unit of immunization schedule
             example:
@@ -495,21 +495,21 @@ TimeInterval:
     properties:
         min:
             type: number
-            nullable: true
+            nullable: false
             description: Lower/minimum value of the time interval
             example: 5.0
             x-airr:
                 adc-query-support: true
         max:
             type: number
-            nullable: true
+            nullable: false
             description: Upper/maximum value of the time interval
             example: 10.0
             x-airr:
                 adc-query-support: true
         unit:
             $ref: '#/Ontology'
-            nullable: true
+            nullable: false
             description: Unit of the time interval
             example:
                 id: UO:0000033
@@ -530,14 +530,14 @@ PhysicalQuantity:
     properties:
         quantity:
             type: number
-            nullable: true
+            nullable: false
             description: Physical quantity
             example: -5.0
             x-airr:
                 adc-query-support: true
         unit:
             $ref: '#/Ontology'
-            nullable: true
+            nullable: false
             description: Unit of physical quantity
             example:
                 id: UO:0000024

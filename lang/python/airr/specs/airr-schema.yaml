@@ -464,14 +464,13 @@ TimePoint:
             description: Informative label for the time point
             example: Pre-operative sampling of cancer tissue
             x-airr:
-                nullable: true
                 adc-query-support: true
         value:
             type: number
             description: Value of the time point
             example: -5.0
             x-airr:
-                nullable: true
+                nullable: false
                 adc-query-support: true
         unit:
             $ref: '#/Ontology'
@@ -481,7 +480,7 @@ TimePoint:
                 id: UO:0000033
                 label: day
             x-airr:
-                nullable: true
+                nullable: false
                 adc-query-support: true
                 format: ontology
                 ontology:
@@ -504,14 +503,14 @@ TimeInterval:
             example: 5.0
             x-airr:
                 adc-query-support: true
-                nullable: true
+                nullable: false
         max:
             type: number
             description: Upper/maximum value of the time interval
             example: 10.0
             x-airr:
                 adc-query-support: true
-                nullable: true
+                nullable: false
         unit:
             $ref: '#/Ontology'
             description: Unit of the time interval
@@ -520,7 +519,7 @@ TimeInterval:
                 label: day
             x-airr:
                 adc-query-support: true
-                nullable: true
+                nullable: false
                 format: ontology
                 ontology:
                     draft: false
@@ -539,7 +538,7 @@ PhysicalQuantity:
             example: -5.0
             x-airr:
                 adc-query-support: true
-                nullable: true
+                nullable: false
         unit:
             $ref: '#/Ontology'
             description: Unit of physical quantity
@@ -547,7 +546,7 @@ PhysicalQuantity:
                 id: UO:0000024
                 label: nanogram
             x-airr:
-                nullable: true
+                nullable: false
                 format: ontology
                 ontology:
                     draft: false
