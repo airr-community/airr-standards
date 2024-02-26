@@ -5084,8 +5084,11 @@ CellReactivity:
         cell_reactivity_id:
             type: string
             nullable: false
-            description: ID of this CellReactivity object, globally unique.
-            title: Cell Reactivity ID
+            description: >
+                Identifier for the CellReactivity object. This identifier must be unique within 
+                a given study, but it is recommended that it be a universally unique record locator
+                to enable database applications.
+            title: CellReactivity ID
             x-airr:
                 identifier: true
                 adc-query-support: true
