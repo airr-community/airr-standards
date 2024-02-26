@@ -95,6 +95,7 @@
                 "diagnosis": [
                     {
                         "study_group_description": null,
+                        "diagnosis_timepoint": null,
                         "disease_diagnosis": {
                             "id": null,
                             "label": null
@@ -344,6 +345,7 @@
                 "diagnosis": [
                     {
                         "study_group_description": null,
+                        "diagnosis_timepoint": null,
                         "disease_diagnosis": {
                             "id": null,
                             "label": null
@@ -535,6 +537,7 @@
                 "diagnosis": [
                     {
                         "study_group_description": null,
+                        "diagnosis_timepoint": null,
                         "disease_diagnosis": {
                             "id": null,
                             "label": null
