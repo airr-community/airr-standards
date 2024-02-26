@@ -554,6 +554,34 @@ PhysicalQuantity:
                         id: UO:0000002
                         label: physical quantity
 
+# A time quantity
+TimeQuantity:
+    description: A time quantity 
+    type: object
+    properties:
+        quantity:
+            type: number
+            description: time quantity
+            example: 30.0
+            x-airr:
+                adc-query-support: true
+                nullable: false
+        unit:
+            $ref: '#/Ontology'
+            description: Unit of time
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                nullable: false
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
+
 
 
 # Contributor record to describe invididuals and their contribution to a data set
@@ -2191,7 +2219,7 @@ Diagnosis:
                         id: DOID:4
                         label: disease
         disease_length:
-            $ref: '#/PhysicalQuantity'
+            $ref: '#/TimeQuantity'
             description: Time duration between initial diagnosis and current intervention
             title: Length of disease
             example:
