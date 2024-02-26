@@ -518,32 +518,6 @@ Acknowledgement:
             type: string
             description: Individual's ORCID identifier
 
-
-#
-# Event schema
-#
-Event:
-    description: Object to capture events that happen to subjects
-    type: object
-    required:
-        - type
-    properties:
-        event_id:
-          type: string
-          description: Unique identifier for this event
-        event_type:
-            type: string
-            enum:
-              - Diagnosis
-              - Intervention
-              - Exposure
-              - Sampling
-              - Enrollment
-              - Age
-        event_time_point:
-          $ref: '#/TimePoint'
-          description: Time point when the event occured
-
 #
 # Germline gene schema
 #
@@ -2062,9 +2036,6 @@ Diagnosis:
                 set: 1
                 subset: diagnosis and intervention
                 name: Study group description
-        diagnosis_event:
-            $ref: '#/Event'
-            description: Description of the event when the daiagnosis was performed
         disease_diagnosis:
             $ref: '#/Ontology'
             description: Diagnosis of subject
@@ -2245,9 +2216,50 @@ Sample:
                 set: 2
                 subset: sample
                 name: Disease state of sample
-        collection_event:
-            $ref: '#/Event'
-            description: Description of when the sample collection was taken
+        collection_time_point_relative:
+            type: number
+            description: Time point at which sample was taken, relative to `Collection time event`
+            title: Sample collection time
+            example: 14
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Sample collection time
+        collection_time_point_relative_unit:
+            $ref: '#/Ontology'
+            description: Unit of Sample collection time
+            title: Sample collection time unit
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Sample collection time unit
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
+        collection_time_point_reference:
+            type: string
+            description: Event in the study schedule to which `Sample collection time` relates to
+            title: Collection time event
+            example: Primary vaccination
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 2
+                subset: sample
+                name: Collection time event
         collection_location:
             $ref: '#/Ontology'
             description: Location where the sample was taken, preferred granularity is country-level
