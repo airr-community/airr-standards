@@ -4250,9 +4250,10 @@ Cell:
         cell_id:
             type: string
             description: >
-                Identifier defining the cell of origin for the query sequence.
+                Identifier for the CellExpression object. This identifier must be unique within 
+                a given study, but it is recommended that it be a universally unique record locator
+                to enable database applications.
             title: Cell index
-            example: W06_046_091
             x-airr:
                 identifier: true
                 miairr: defined
@@ -4359,7 +4360,9 @@ CellExpression:
         expression_id:
             type: string
             description: >
-                Identifier of this expression property measurement.
+                Identifier for the CellExpression object. This identifier must be unique within 
+                a given study, but it is recommended that it be a universally unique record locator
+                to enable database applications.
             title: Expression property measurement identifier
             x-airr:
                 identifier: true
@@ -4438,7 +4441,10 @@ Receptor:
     properties:
         receptor_id:
             type: string
-            description: ID of the current Receptor object, globally unique.
+            description: >
+                Identifier for the Receptor object. This identifier must be unique within 
+                a given study, but it is recommended that it be a universally unique record locator
+                to enable database applications.
             title: Receptor ID
             example: TCR-MM-012345
             x-airr:
