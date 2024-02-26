@@ -58,6 +58,7 @@ Repertoire:
       link_type: twin
       diagnosis:
         - study_group_description:
+          diagnosis_timepoint:
           disease_diagnosis:
             id:
             label:
@@ -235,6 +236,7 @@ Repertoire:
       link_type: twin
       diagnosis:
         - study_group_description:
+          diagnosis_timepoint:
           disease_diagnosis:
             id:
             label:
@@ -378,6 +380,7 @@ Repertoire:
       link_type: twin
       diagnosis:
         - study_group_description:
+          diagnosis_timepoint:
           disease_diagnosis:
             id:
             label:
