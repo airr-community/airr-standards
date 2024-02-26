@@ -368,7 +368,7 @@ DataFile:
         RepertoireGroup:
             type: array
             nullable: false
-            description: List of repertoire collections
+            description: List of repertoire groups
             items:
                 $ref: '#/RepertoireGroup'
         Rearrangement:
@@ -486,34 +486,111 @@ TimePoint:
 # General objects
 #
 
-# An individual
-Acknowledgement:
+# Contributor record to describe invididuals and their contribution to a data set
+#
+Contributor:
     description: Individual whose contribution to this work should be acknowledged
     type: object
     required:
-        - acknowledgement_id
+        - contributor_id
         - name
-        - institution_name
     properties:
-        acknowledgement_id:
+        contributor_id:
             type: string
-            description: unique identifier of this Acknowledgement within the file
+            nullable: true
+            description: Unique identifier of this contributor within the file
             x-airr:
                 identifier: true
                 miairr: important
-            nullable: true
         name:
             type: string
-            nullable: true
-            description: Full name of individual
-        institution_name:
-            type: string
-            nullable: true
-            description: Individual's department and institution name
+            nullable: false
+            description: Full name of contributor
         orcid_id:
+            $ref: '#/Ontology'
+            nullable: true
+            description: >
+                ORCID identifier of the contributor. Note that if present, the label of the ORCID record should take
+                precedence over the name reported in the `name` property.
+            title: ORCID iD
+            example:
+                id: ORCID:0000-0002-1825-0097
+                label: Josiah Carberry
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: null
+                        label: null
+        affiliation:
+            $ref: '#/Ontology'
+            nullable: true
+            description: >
+                ROR of the contributor's primary affiliation. Note that ROR are only minted for institutions, not
+                from individuals institutes, divisions or departments.
+            title: ROR
+            example:
+                id: ROR:05h7xva58
+                label: Wesleyan University
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: null
+                        label: null
+        affiliation_department:
             type: string
             nullable: true
-            description: Individual's ORCID identifier
+            description: >
+                Additional information regarding the contributor's primary affiliation. Can be used to specify
+                individual institutes, divisions or departments.
+            example: Department for Psychoceramics
+        contributions:
+            type: array
+            nullable: true
+            description: List of all roles the contributor had in a project
+            items:
+                $ref: '#/ContributorContribution'
+
+ContributorContribution:
+    type: object
+    required:
+        - role
+    properties:
+        role:
+            type: string
+            nullable: false
+            description: Role according to CRediT taxonomy
+            enum:
+                - conceptualization
+                - data curation
+                - formal analysis
+                - funding acquisition
+                - investigation
+                - methodology
+                - project administration
+                - resources
+                - software
+                - supervision
+                - validation
+                - visualization
+                - writing - original draft
+                - writing - review & editing
+        degree:
+            type: string
+            nullable: true
+            description: >
+                Optional specification of the degree of contribution, should be used if multiple individuals serve
+                the same role.
+            enum:
+                - lead
+                - equal
+                - supporting
+
 
 #
 # Germline gene schema
@@ -809,8 +886,7 @@ AlleleDescription:
     type: object
     required:
         - allele_description_id
-        - maintainer
-        - lab_address
+        - acknowledgements
         - release_version
         - release_date
         - release_description
@@ -838,24 +914,16 @@ AlleleDescription:
                 miairr: important
             description: Unique reference to the allele description, in standardized form (Repo:Label:Version)
             example: OGRDB:Human_IGH:IGHV1-69*01.001
-        maintainer:
-            type: string
-            nullable: true
-            x-airr:
-                miairr: defined
-            description: Maintainer of this sequence record
         acknowledgements:
             type: array
             nullable: true
-            description: List of individuals whose contribution to the gene description should be acknowledged
+            description: >
+                List of individuals whose contribution to the gene description should be acknowledged. Note that these
+                are not necessarily identical with the authors on an associated manuscript or other scholarly
+                communication. Further note that typically at least the three CRediT contributor roles "supervision",
+                "investigation" and "data curation" should be assigned. The current maintainer should be listed first.
             items:
-                $ref: '#/Acknowledgement'
-        lab_address:
-            type: string
-            nullable: true
-            x-airr:
-                miairr: defined
-            description: Institution and full address of corresponding author
+                $ref: '#/Contributor'
         release_version:
             type: integer
             nullable: true
@@ -1148,9 +1216,7 @@ GermlineSet:
         All genes in a GermlineSet should be from a single locus.
     required:
         - germline_set_id
-        - author
-        - lab_name
-        - lab_address
+        - acknowledgements
         - release_version
         - release_description
         - release_date
@@ -1169,30 +1235,16 @@ GermlineSet:
             x-airr:
                 identifier: true
                 miairr: important
-        author:
-            type: string
-            nullable: true
-            x-airr:
-                miairr: important
-            description: Corresponding author
-        lab_name:
-            type: string
-            nullable: true
-            x-airr:
-                miairr: important
-            description: Department of corresponding author
-        lab_address:
-            type: string
-            nullable: true
-            x-airr:
-                miairr: important
-            description: Institutional address of corresponding author
         acknowledgements:
             type: array
             nullable: true
-            description: List of individuals whose contribution to the germline set should be acknowledged
+            description: >
+                List of individuals whose contribution to the germline set should be acknowledged. Note that these are
+                not necessarily identical with the authors on an associated manuscript or other scholarly communication.
+                Further note that typically at least the three CRediT contributor roles "supervision", "investigation"
+                and "data curation" should be assigned. The coresponding author should be listed last.
             items:
-                $ref: '#/Acknowledgement'
+                $ref: '#/Contributor'
         release_version:
             type: number
             nullable: true
@@ -1615,10 +1667,7 @@ Study:
         - study_type
         - inclusion_exclusion_criteria
         - grants
-        - collected_by
-        - lab_name
-        - lab_address
-        - submitted_by
+        - contributors
         - pub_ids
         - keywords_study
     properties:
@@ -1702,17 +1751,36 @@ Study:
                 set: 1
                 subset: study
                 name: Grant funding agency
+        contributors:
+            type: array
+            nullable: false
+            description: >
+                List of individuals who contributed to the study. Note that these are not necessarily identical with
+                the authors on an associated manuscript or other scholarly communication. Further note that typically
+                at least the three CRediT contributor roles "supervision", "investigation" and "data curation" should
+                be assigned. The coresponding author should be listed last.
+            title: Contributors
+            items:
+                $ref: '#/Contributor'
+            x-airr:
+                miairr: essential
+                adc-query-support: true
+                set: 1
+                subset: study
+                name: Contributors
         study_contact:
             type: string
             nullable: true
             description: >
                 Full contact information of the contact persons for this study This should include an e-mail address
                 and a persistent identifier such as an ORCID ID.
-            title: Contact information (study)
-            example: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
             x-airr:
-                adc-query-support: true
-                name: Contact information (study)
+                deprecated: true
+                deprecated-description: >
+                    Acknowledgements and contact information was re-organized into the contributors property, which
+                    is an array of Contributor objects.
+                deprecated-replaced-by:
+                    - contributors
         collected_by:
             type: string
             nullable: true
@@ -1720,38 +1788,35 @@ Study:
                 Full contact information of the data collector, i.e. the person who is legally responsible for data
                 collection and release. This should include an e-mail address and a persistent identifier such as an
                 ORCID ID.
-            title: Contact information (data collection)
-            example: Dr. P. Stibbons, p.stibbons@unseenu.edu, https://orcid.org/0000-0002-1825-0097
             x-airr:
-                miairr: important
-                adc-query-support: true
-                set: 1
-                subset: study
-                name: Contact information (data collection)
+                deprecated: true
+                deprecated-description: >
+                    Acknowledgements and contact information was re-organized into the contributors property, which
+                    is an array of Contributor objects.
+                deprecated-replaced-by:
+                    - contributors
         lab_name:
             type: string
             nullable: true
             description: Department of data collector
-            title: Lab name
-            example: Department for Planar Immunology
             x-airr:
-                miairr: important
-                adc-query-support: true
-                set: 1
-                subset: study
-                name: Lab name
+                deprecated: true
+                deprecated-description: >
+                    Acknowledgements and contact information was re-organized into the contributors property, which
+                    is an array of Contributor objects.
+                deprecated-replaced-by:
+                    - contributors
         lab_address:
             type: string
             nullable: true
             description: Institution and institutional address of data collector
-            title: Lab address
-            example: School of Medicine, Unseen University, Ankh-Morpork, Disk World
             x-airr:
-                miairr: important
-                adc-query-support: true
-                set: 1
-                subset: study
-                name: Lab address
+                deprecated: true
+                deprecated-description: >
+                    Acknowledgements and contact information was re-organized into the contributors property, which
+                    is an array of Contributor objects.
+                deprecated-replaced-by:
+                    - contributors
         submitted_by:
             type: string
             nullable: true
@@ -1759,14 +1824,13 @@ Study:
                 Full contact information of the data depositor, i.e., the person submitting the data to a repository.
                 This should include an e-mail address and a persistent identifier such as an ORCID ID. This is
                 supposed to be a short-lived and technical role until the submission is relased.
-            title: Contact information (data deposition)
-            example: Adrian Turnipseed, a.turnipseed@unseenu.edu, https://orcid.org/0000-0002-1825-0097
             x-airr:
-                miairr: important
-                adc-query-support: true
-                set: 1
-                subset: study
-                name: Contact information (data deposition)
+                deprecated: true
+                deprecated-description: >
+                    Acknowledgements and contact information was re-organized into the contributors property, which
+                    is an array of Contributor objects.
+                deprecated-replaced-by:
+                    - contributors
         pub_ids:
             type: array
             items:
@@ -3298,7 +3362,8 @@ Repertoire:
             x-airr:
                 adc-query-support: true
 
-# A collection of repertoires for analysis purposes, includes optional time course
+# An ordered group of repertoires for analysis purposes, includes optional time course
+# Can be treated as a set if all repertoire_group_id are unique
 RepertoireGroup:
     type: object
     required:
@@ -3308,22 +3373,22 @@ RepertoireGroup:
         repertoire_group_id:
             type: string
             nullable: true
-            description: Identifier for this repertoire collection
+            description: Identifier for this repertoire group
             x-airr:
                 identifier: true
         repertoire_group_name:
             type: string
             nullable: true
-            description: Short display name for this repertoire collection
+            description: Short display name for this repertoire group
         repertoire_group_description:
             type: string
             nullable: true
-            description: Repertoire collection description
+            description: Repertoire group description
         repertoires:
             type: array
             nullable: true
             description: >
-                List of repertoires in this collection with an associated description and time point designation
+                List of repertoires in this group with an associated description and time point designation
             items:
                 type: object
                 properties:
