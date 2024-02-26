@@ -7,8 +7,8 @@ help:
 	@echo "Helper commands for AIRR Standards repository"
 	@echo ""
 	@echo "make gen-v2       -- Generate OpenAPI V2 spec from the V3 spec"
-	@echo "make docs         -- Build documentation"
-	@echo "make lang-copy    -- Copy spec files to language directories"
+	@echo "make build-docs   -- Build documentation"
+	@echo "make spec-copy    -- Copy spec files to language directories"
 	@echo "make data-copy    -- Copy test data files to language directories"
 	@echo "make checks       -- Run consistency checks on spec files"
 	@echo "make tests        -- Run all language test suites"
@@ -20,7 +20,10 @@ help:
 gen-v2:
 	@echo "Not implemented"
 
-lang-copy:
+build-docs:
+	sphinx-build -a -E -b html docs docs/_build/html
+
+spec-copy:
 	@echo "Copying specs to language directories"
 	cp specs/airr-schema.yaml lang/python/airr/specs
 	cp specs/airr-schema-openapi3.yaml lang/python/airr/specs
@@ -30,7 +33,9 @@ lang-copy:
 #	cp specs/airr-schema-openapi3.yaml lang/js/
 
 data-copy:
-	@echo "Not implemented"
+	@echo "Copying test data to language directories"
+	cp tests/data/* lang/python/tests/data
+	cp tests/data/* lang/R/tests/data-tests
 
 checks:
 	@echo "Running consistency checks on spec files"
