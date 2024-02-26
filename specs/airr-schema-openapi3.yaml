@@ -4544,7 +4544,7 @@ Cell:
             type: string
             nullable: false
             description: >
-                Identifier for the CellExpression object. This identifier must be unique within 
+                Identifier for the Cell object. This identifier must be unique within 
                 a given study, but it is recommended that it be a universally unique record locator
                 to enable database applications.
             title: Cell index
