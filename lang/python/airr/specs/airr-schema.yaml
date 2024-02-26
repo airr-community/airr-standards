@@ -561,7 +561,7 @@ TimeQuantity:
     properties:
         quantity:
             type: number
-            description: time quantity
+            description: Time quantity
             example: 30.0
             x-airr:
                 adc-query-support: true
