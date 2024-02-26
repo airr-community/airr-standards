@@ -2200,6 +2200,24 @@ Diagnosis:
                 set: 1
                 subset: diagnosis and intervention
                 name: Study group description
+        diagnosis_timepoint:
+            $ref: '#/TimePoint'
+            description: Time point for the diagnosis
+            title: Diagnosis timepoint
+            example:
+                label: Study enrollment
+                value: 60
+                unit:
+                    id: UO:0000033
+                    label: day
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 1
+                subset: diagnosis and intervention
+                name: Diagnosis timepoint
+                format: time_point
         disease_diagnosis:
             $ref: '#/Ontology'
             description: Diagnosis of subject
