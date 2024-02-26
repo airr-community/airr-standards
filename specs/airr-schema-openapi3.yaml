@@ -4873,8 +4873,7 @@ Cell:
 
 # The CellExpression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
-# data_processing_id as cell_id is not guaranteed to be unique outside the data processing for
-# a single repertoire.
+# data_processing_id.
 CellExpression:
     type: object
     required:
