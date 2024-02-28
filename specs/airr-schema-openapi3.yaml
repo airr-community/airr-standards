@@ -543,6 +543,7 @@ PhysicalQuantity:
                 id: UO:0000024
                 label: nanogram
             x-airr:
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: false

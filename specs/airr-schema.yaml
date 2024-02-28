@@ -519,8 +519,8 @@ TimeInterval:
                 id: UO:0000033
                 label: day
             x-airr:
-                adc-query-support: true
                 nullable: false
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: false
@@ -548,6 +548,7 @@ PhysicalQuantity:
                 label: nanogram
             x-airr:
                 nullable: false
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: false
