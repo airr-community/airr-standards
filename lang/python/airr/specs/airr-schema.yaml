@@ -454,6 +454,10 @@ InfoObject:
                 url:
                     type: string
 
+#
+# General objects
+#
+
 # A time point
 TimePoint:
     description: Time point at which an observation or other action was performed.
@@ -488,9 +492,6 @@ TimePoint:
                     top_node:
                         id: UO:0000003
                         label: time unit
-#
-# General objects
-#
 
 # A time range or interval
 TimeInterval:
@@ -518,8 +519,8 @@ TimeInterval:
                 id: UO:0000033
                 label: day
             x-airr:
-                adc-query-support: true
                 nullable: false
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: false
@@ -547,6 +548,7 @@ PhysicalQuantity:
                 label: nanogram
             x-airr:
                 nullable: false
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: false
