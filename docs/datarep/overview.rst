@@ -83,6 +83,8 @@ Here are the primary schema objects of the AIRR Data Model:
       - Information about the data processing to transform the raw sequencing data into ``Rearrangements``.
     * - ``Repertoire``
       - Composite object that combines the schema objects ``Study``, ``Subject``, ``Diagnosis``, ``Sample``, ``CellProcessing``, ``NucleicAcidProcessing``, ``SequencingRun``, and ``DataProcessing``. Each ``Repertoire`` has a unique identifier ``repertoire_id`` for linking with other data files, e.g. ``Rearrangements``. ``Repertoires`` have their own schema and file format described :ref:`here <RepertoireSchema>`.
+    * - ``RepertoireGroup``
+      - Composite object that combines multiple ``Repertoires`` for further analysis. ``RepertoireGroups`` have their own schema and file format described :ref:`here <RepertoireGroupSchema>`.
     * - ``Rearrangments``
       - Annotated sequences describing adaptive immune receptor chains. ``Rearrangements`` have their own schema and file format described :ref:`here <RearrangementSchema>`.
     * - ``Clones``
@@ -163,6 +165,9 @@ the objects, by utilizing the ``study_id``, ``subject_id``, ``sample_id``, and
 ``CellProcessing`` and ``NucleicAcidProcessing`` do not have their own
 unique identifiers, so they are included within ``SampleProcessing``.
 
+As a ``Repertoire`` is limited to a single sample, many analyses will
+involve multiple ``Repertoires``, which may be combined into a
+``RepertoireGroup``.
 
 AIRR extension properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -231,6 +236,7 @@ Schema Definitions
 
    Requirement levels of fields <airr_schema_requirement_levels>
    Repertoire Schema <metadata>
+   RepertoireGroup Schema <metadata>
    Rearrangement Schema <rearrangements>
    Alignment Schema (Experimental) <alignments>
    Clone and Lineage Tree Schema (Experimental) <clone>
