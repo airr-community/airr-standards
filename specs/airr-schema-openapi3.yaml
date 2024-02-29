@@ -3293,7 +3293,7 @@ Repertoire:
             x-airr:
                 adc-query-support: true
 
-# An ordered group of repertoires for analysis purposes, includes optional time course
+# An ordered group of repertoires for analysis purposes, includeing optional time course
 # Can be treated as a set if all repertoire_group_id are unique
 RepertoireGroup:
     type: object
