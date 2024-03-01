@@ -532,7 +532,7 @@ GermlineSet:
     release_description: ""
     release_date: "2021-11-24"
     germline_set_name: CAST IGH
-    germline_set_ref: OGRDB:G00007.1
+    germline_set_ref: OGRDB_GERMLINESET:G00003-1
     pub_ids: [""]
     species:
       id: NCBITAXON:10090

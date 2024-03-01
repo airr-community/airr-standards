@@ -123,6 +123,13 @@ CURIEMap:
         map:
             OBO:
                 iri_prefix: "http://purl.obolibrary.org/obo/NCIT_"
+    OGRDB_GERMLINESET:
+        type: identifier
+        default:
+            map: OGRDB_GERMLINESET
+        map:
+            OGRDB_GERMLINESET:
+                iri_prefix: "https://ogrdb.airr-community.org/api/germline/set?"
     ORCID:
         type: catalog
         default:
@@ -188,6 +195,10 @@ InformationProvider:
             request:
                 url: "http://www.ontobee.org/ontology/rdf/{ontology_id}?iri={iri}"
                 response: application/rdf+xml
+        OGRDB_GERMLINESET:
+            request:
+                url: "{iri}"
+                response: text/html
         ORCID:
             request:
                 url: "https://pub.orcid.org/v2.1/{local_id}"
@@ -1370,10 +1381,11 @@ GermlineSet:
         germline_set_ref:
             type: string
             nullable: true
+            description: Unique identifier of the germline set and version, in CURIE format
+            example: OGRDB_GERMLINESET:G00003-1
             x-airr:
                 miairr: important
-            description: Unique identifier of the germline set and version, in standardized form (Repo:Label:Version)
-            example: OGRDB:Human_IGH:2021.11
+                format: CURIE
         pub_ids:
             type: array
             items:
@@ -1558,10 +1570,11 @@ DocumentedAllele:
         germline_set_ref:
             type: string
             nullable: true
+            description: GermlineSet from which it was taken, referenced in CURIE format
+            example: OGRDB_GERMLINESET:G00003-1
             x-airr:
                 miairr: important
-            description: GermlineSet from which it was taken, referenced in standardized form (Repo:Label:Version)
-            example: OGRDB:Human_IGH:2021.11
+                format: CURIE
         phasing:
             type: integer
             nullable: true
@@ -1616,9 +1629,11 @@ DeletedGene:
         germline_set_ref:
             type: string
             nullable: true
-            description: GermlineSet from which it was taken (issuer/name/version)
+            description: GermlineSet from which it was taken, referenced in CURIE format
+            example: OGRDB_GERMLINESET:G00003-1
             x-airr:
                 miairr: important
+                format: CURIE
         phasing:
             type: integer
             nullable: true
@@ -3328,10 +3343,11 @@ DataProcessing:
         germline_set_ref:
             type: string
             nullable: true
-            description: Unique identifier of the germline set and version, in standardized form (Repo:Label:Version)
-            example: OGRDB:Human_IGH:2021.11
+            description: Unique identifier of the germline set and version, in CURIE format
+            example: OGRDB_GERMLINESET:G00003-1
             x-airr:
                 adc-query-support: true
+                format: CURIE
         analysis_provenance_id:
             type: string
             nullable: true
