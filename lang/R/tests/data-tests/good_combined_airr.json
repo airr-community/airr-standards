@@ -10,13 +10,52 @@
                     "label": null
                 },
                 "study_description": "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level.",
-                "study_contact": "Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X",
                 "inclusion_exclusion_criteria": null,
-                "lab_name": "Mark M. Davis",
-                "lab_address": "Stanford University",
-                "submitted_by": "Florian Rubelt",
-                "pub_ids": "PMID:27005435",
-                "collected_by": null,
+                "contributors": [
+                    {
+                        "contributor_id": "1",
+                        "name": "Florian Rubelt",
+                        "orcid_id": {
+                            "id": null,
+                            "label": null
+                        },
+                        "affiliation": {
+                            "id": "ROR:00f54p054",
+                            "label": "Stanford University"
+                         },
+                        "affiliation_department": "Department of Microbiology and Immunology, Stanford University School of Medicine",
+                        "contributions": [
+                            {
+                                "role": "investigation",
+                                "degree": null
+                            },
+                            {
+                                "role": "data curation",
+                                "degree": null
+                            }
+                        ]
+                    },
+                    {
+                        "contributor_id": "2",
+                        "name": "Mark M. Davis",
+                        "orcid_id": {
+                            "id": "ORCID:0000-0001-6868-657X",
+                            "label": "Mark Davis"
+                        },
+                        "affiliation": {
+                            "id": "ROR:00f54p054",
+                            "label": "Stanford University"
+                         },
+                        "affiliation_department": "Department of Microbiology and Immunology, Stanford University School of Medicine",
+                        "contributions": [
+                            {
+                                "role": "supervision",
+                                "degree": null
+                            }
+                        ]
+                    }
+                ],
+                "pub_ids": ["PMID:27005435"],
                 "grants": null,
                 "keywords_study": [
                     "contains_ig",
@@ -27,25 +66,27 @@
                 "subject_id": "TW01A",
                 "synthetic": false,
                 "species": {
-                    "id": "NCBITaxon_9606",
+                    "id": "NCBITAXON:9606",
                     "label": "Homo sapiens"
                 },
-                "sex": "F",
-                "age_min": 27,
-                "age_max": 27,
-                "age_unit": {
-                    "id": "UO_0000036",
-                    "label": "year"
-                },
+                "sex": "female",
+                "age": {
+                    "min": 27,
+                    "max": 27,
+                    "unit": {
+                       "id": "UO:0000036",
+                       "label": "year"
+                    }
+        },
                 "age_event": null,
                 "ancestry_population": {
-				    "id": null,
-					"label": null
-				},
-				"location_birth": {
-				    "id": null,
-					"label": null
-				},
+                    "id": null,
+                    "label": null
+                },
+                "location_birth": {
+                    "id": null,
+                    "label": null
+                },
                 "ethnicity": null,
                 "race": null,
                 "strain_name": null,
@@ -54,6 +95,14 @@
                 "diagnosis": [
                     {
                         "study_group_description": null,
+                        "diagnosis_timepoint": {
+			     "label": "Study enrollment",
+                             "value": 60,
+                             "unit": {
+                               "id": "UO:0000033",
+                               "label": "day"
+			     }
+			},
                         "disease_diagnosis": {
                             "id": null,
                             "label": null
@@ -65,7 +114,65 @@
                         "intervention": null,
                         "medical_history": null
                     }
-                ]
+                ],
+                "genotype": {
+                    "receptor_genotype_set": {
+                        "receptor_genotype_set_id": "1",
+                        "genotype_class_list": [
+                            {
+                                "receptor_genotype_id": "1",
+                                "locus": "IGH",
+                                "documented_alleles": [
+                                    {
+                                        "label": "IGHV1-69*01",
+                                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                                        "phasing": 1
+                                    },
+                                    {
+                                        "label": "IGHV1-69*02",
+                                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                                        "phasing": 2
+                                    }
+                                ],
+                                "undocumented_alleles": [
+                                    {
+                                        "allele_name": "IGHD3-1*01_S1234",
+                                        "sequence": "agtagtagtagt",
+                                        "phasing": 1
+                                    }
+                                ],
+                                "deleted_genes": [
+                                    {
+                                        "label": "IGHV3-30-3",
+                                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                                        "phasing": 1
+                                    }
+                                ],
+                                "inference_process": "repertoire_sequencing"
+                            }
+                        ]
+                    },
+                    "mhc_genotype_set": {
+                        "mhc_genotype_set_id": "01847298-d0c2-11ee-bc66",
+                        "mhc_genotype_list": [
+                            {
+                                "mhc_genotype_id": "00be1c2e-d0c2-11ee-bfe7",
+                                "mhc_class": "MHC-I",
+                                "mhc_genotyping_method": "pcr_low_resolution",
+                                "mhc_alleles": [
+                                    {
+                                        "allele_designation": "01:01",
+                                        "gene": {
+                                            "id": "MRO-0000046",
+                                            "label": "HLA-A"
+                                        },
+                                        "reference_set_ref": null
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
             },
             "sample": [
                 {
@@ -73,17 +180,17 @@
                     "sample_processing_id": null,
                     "sample_type": "peripheral venous puncture",
                     "tissue": {
-                        "id": "UBERON_0000178",
+                        "id": "UBERON:0000178",
                         "label": "blood"
                     },
                     "tissue_processing": "Ficoll gradient",
                     "cell_subset": {
-                        "id": "CL_0000788",
+                        "id": "CL:0000788",
                         "label": "naive B cell"
                     },
                     "cell_phenotype": "expression of CD20 and the absence of CD27",
                     "cell_species": {
-                        "id": "NCBITaxon_9606",
+                        "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"
                     },
                     "single_cell": false,
@@ -110,12 +217,7 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_relative_unit": {
-                        "id": null,
-                        "label": null
-                    },
-                    "collection_time_point_reference": null,
-					"collection_location": {
+                    "collection_location": {
                         "id": null,
                         "label": null
                     },
@@ -127,10 +229,6 @@
                     "cell_processing_protocol": null,
                     "template_quality": null,
                     "template_amount": null,
-                    "template_amount_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "library_generation_method": "RT(oligo-dT)+PCR",
                     "library_generation_protocol": null,
                     "library_generation_kit_version": null,
@@ -169,13 +267,52 @@
                     "label": null
                 },
                 "study_description": "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level.",
-                "study_contact": "Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X",
                 "inclusion_exclusion_criteria": null,
-                "lab_name": "Mark M. Davis",
-                "lab_address": "Stanford University",
-                "submitted_by": "Florian Rubelt",
-                "pub_ids": "PMID:27005435",
-                "collected_by": null,
+                "contributors": [
+                    {
+                        "contributor_id": "1",
+                        "name": "Florian Rubelt",
+                        "orcid_id": {
+                            "id": null,
+                            "label": null
+                        },
+                        "affiliation": {
+                            "id": "ROR:00f54p054",
+                            "label": "Stanford University"
+                         },
+                        "affiliation_department": "Department of Microbiology and Immunology, Stanford University School of Medicine",
+                        "contributions": [
+                            {
+                                "role": "investigation",
+                                "degree": null
+                            },
+                            {
+                                "role": "data curation",
+                                "degree": null
+                            }
+                        ]
+                    },
+                    {
+                        "contributor_id": "2",
+                        "name": "Mark M. Davis",
+                        "orcid_id": {
+                            "id": "ORCID:0000-0001-6868-657X",
+                            "label": "Mark Davis"
+                        },
+                        "affiliation": {
+                            "id": "ROR:00f54p054",
+                            "label": "Stanford University"
+                         },
+                        "affiliation_department": "Department of Microbiology and Immunology, Stanford University School of Medicine",
+                        "contributions": [
+                            {
+                                "role": "supervision",
+                                "degree": null
+                            }
+                        ]
+                    }
+                ],
+                "pub_ids": ["PMID:27005435"],
                 "grants": null,
                 "keywords_study": [
                     "contains_ig",
@@ -186,25 +323,27 @@
                 "subject_id": "TW01A",
                 "synthetic": false,
                 "species": {
-                    "id": "NCBITaxon_9606",
+                    "id": "NCBITAXON:9606",
                     "label": "Homo sapiens"
                 },
-                "sex": "F",
-                "age_min": 27,
-                "age_max": 27,
-                "age_unit": {
-                    "id": "UO_0000036",
-                    "label": "year"
+                "sex": "female",
+                "age": {
+                    "min": 27,
+                    "max": 27,
+                    "unit": {
+                       "id": "UO:0000036",
+                       "label": "year"
+                    }
                 },
                 "age_event": null,
                 "ancestry_population": {
-				    "id": null,
-					"label": null
-				},
-				"location_birth": {
-				    "id": null,
-					"label": null
-				},
+                    "id": null,
+                    "label": null
+                },
+                "location_birth": {
+                    "id": null,
+                    "label": null
+                },
                 "ethnicity": null,
                 "race": null,
                 "strain_name": null,
@@ -213,6 +352,14 @@
                 "diagnosis": [
                     {
                         "study_group_description": null,
+                        "diagnosis_timepoint": {
+			     "label": "Study enrollment",
+                             "value": 60,
+                             "unit": {
+                               "id": "UO:0000033",
+                               "label": "day"
+			     }
+			},
                         "disease_diagnosis": {
                             "id": null,
                             "label": null
@@ -232,17 +379,17 @@
                     "sample_processing_id": null,
                     "sample_type": "peripheral venous puncture",
                     "tissue": {
-                        "id": "UBERON_0000178",
+                        "id": "UBERON:0000178",
                         "label": "blood"
                     },
                     "tissue_processing": "Ficoll gradient",
                     "cell_subset": {
-                        "id": "CL_0000787",
+                        "id": "CL:0000787",
                         "label": "memory B cell"
                     },
                     "cell_phenotype": "expression of CD20 and CD27",
                     "cell_species": {
-                        "id": "NCBITaxon_9606",
+                        "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"
                     },
                     "single_cell": false,
@@ -269,12 +416,7 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_relative_unit": {
-                        "id": null,
-                        "label": null
-                    },
-                    "collection_time_point_reference": null,
-					"collection_location": {
+                    "collection_location": {
                         "id": null,
                         "label": null
                     },
@@ -286,10 +428,6 @@
                     "cell_processing_protocol": null,
                     "template_quality": null,
                     "template_amount": null,
-                    "template_amount_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "library_generation_method": "RT(oligo-dT)+PCR",
                     "library_generation_protocol": null,
                     "library_generation_kit_version": null,
@@ -328,13 +466,52 @@
                     "label": null
                 },
                 "study_description": "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level.",
-                "study_contact": "Mark M. Davis,  mmdavis@stanford.edu, ORCID:0000-0001-6868-657X",
                 "inclusion_exclusion_criteria": null,
-                "lab_name": "Mark M. Davis",
-                "lab_address": "Stanford University",
-                "submitted_by": "Florian Rubelt",
-                "pub_ids": "PMID:27005435",
-                "collected_by": null,
+                "contributors": [
+                    {
+                        "contributor_id": "1",
+                        "name": "Florian Rubelt",
+                        "orcid_id": {
+                            "id": null,
+                            "label": null
+                        },
+                        "affiliation": {
+                            "id": "ROR:00f54p054",
+                            "label": "Stanford University"
+                         },
+                        "affiliation_department": "Department of Microbiology and Immunology, Stanford University School of Medicine",
+                        "contributions": [
+                            {
+                                "role": "investigation",
+                                "degree": null
+                            },
+                            {
+                                "role": "data curation",
+                                "degree": null
+                            }
+                        ]
+                    },
+                    {
+                        "contributor_id": "2",
+                        "name": "Mark M. Davis",
+                        "orcid_id": {
+                            "id": "ORCID:0000-0001-6868-657X",
+                            "label": "Mark Davis"
+                        },
+                        "affiliation": {
+                            "id": "ROR:00f54p054",
+                            "label": "Stanford University"
+                         },
+                        "affiliation_department": "Department of Microbiology and Immunology, Stanford University School of Medicine",
+                        "contributions": [
+                            {
+                                "role": "supervision",
+                                "degree": null
+                            }
+                        ]
+                    }
+                ],
+                "pub_ids": ["PMID:27005435"],
                 "grants": null,
                 "keywords_study": [
                     "contains_ig",
@@ -345,25 +522,27 @@
                 "subject_id": "TW01A",
                 "synthetic": false,
                 "species": {
-                    "id": "NCBITaxon_9606",
+                    "id": "NCBITAXON:9606",
                     "label": "Homo sapiens"
                 },
-                "sex": "F",
-                "age_min": 27,
-                "age_max": 27,
-                "age_unit": {
-                    "id": "UO_0000036",
-                    "label": "year"
+                "sex": "female",
+                "age": {
+                    "min": 27,
+                    "max": 27,
+                    "unit": {
+                       "id": "UO:0000036",
+                       "label": "year"
+                    }
                 },
                 "age_event": null,
                 "ancestry_population": {
-				    "id": null,
-					"label": null
-				},
-				"location_birth": {
-				    "id": null,
-					"label": null
-				},
+                    "id": null,
+                    "label": null
+                },
+                "location_birth": {
+                    "id": null,
+                    "label": null
+                },
                 "ethnicity": null,
                 "race": null,
                 "strain_name": null,
@@ -372,6 +551,14 @@
                 "diagnosis": [
                     {
                         "study_group_description": null,
+                        "diagnosis_timepoint": {
+			     "label": "Study enrollment",
+                             "value": 60,
+                             "unit": {
+                               "id": "UO:0000033",
+                               "label": "day"
+			     }
+			},
                         "disease_diagnosis": {
                             "id": null,
                             "label": null
@@ -391,17 +578,17 @@
                     "sample_processing_id": null,
                     "sample_type": "peripheral venous puncture",
                     "tissue": {
-                        "id": "UBERON_0000178",
+                        "id": "UBERON:0000178",
                         "label": "blood"
                     },
                     "tissue_processing": "Ficoll gradient",
                     "cell_subset": {
-                        "id": "CL_0000895",
+                        "id": "CL:0000895",
                         "label": "naive thymus-derived CD4-positive, alpha-beta T cell"
                     },
                     "cell_phenotype": "expression of CD8 and absence of CD4 and CD45RO",
                     "cell_species": {
-                        "id": "NCBITaxon_9606",
+                        "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"
                     },
                     "single_cell": false,
@@ -428,12 +615,7 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_relative_unit": {
-                        "id": null,
-                        "label": null
-                    },
-                    "collection_time_point_reference": null,
-					"collection_location": {
+                    "collection_location": {
                         "id": null,
                         "label": null
                     },
@@ -445,10 +627,6 @@
                     "cell_processing_protocol": null,
                     "template_quality": null,
                     "template_amount": null,
-                    "template_amount_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "library_generation_method": "RT(oligo-dT)+PCR",
                     "library_generation_protocol": null,
                     "library_generation_kit_version": null,
@@ -479,19 +657,44 @@
         }
     ],
 
+
     "GermlineSet": [{
         "germline_set_id": "OGRDB:G00007",
-        "author": "William Lees",
-        "lab_name": "",
-        "lab_address": "Birkbeck College, University of London, Malet Street, London",
-        "acknowledgements": [],
+        "acknowledgements": [
+            {
+                "contributor_id": "3",
+                "name": "William Lees",
+                "orcid_id": {
+                    "id": "ORCID:0000-0001-9834-6840",
+                    "label": "William Lees"
+                },
+                "affiliation": {
+                    "id": "ROR:02mb95055",
+                    "label": "Birkbeck, University of London"
+                },
+                "affiliation_department": null,
+                "contributions": [
+                    {
+                        "role": "investigation",
+                        "degree": null
+                    },
+                    {
+                        "role": "data curation",
+                        "degree": null
+                    }
+                ]
+            }
+        ],
         "release_version": 1,
         "release_description": "",
         "release_date": "2021-11-24",
         "germline_set_name": "CAST IGH",
         "germline_set_ref": "OGRDB:G00007.1",
-        "pub_ids": "",
-        "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
+        "pub_ids": [""],
+        "species": {
+            "id": "NCBITAXON:10090",
+            "label": "Mus musculus"
+        },
         "species_subgroup": "CAST_EiJ",
         "species_subgroup_type": "strain",
         "locus": "IGH",
@@ -499,15 +702,37 @@
             {
                 "allele_description_id": "OGRDB:A00301",
                 "allele_description_ref": "OGRDB:Mouse_IGH:IGHV-2DBF",
-                "maintainer": "William Lees",
-                "acknowledgements": [],
-                "lab_address": "Birkbeck College, University of London, Malet Street, London",
+                "acknowledgements": [
+                    {
+                        "contributor_id": "3",
+                        "name": "William Lees",
+                        "orcid_id": {
+                            "id": "ORCID:0000-0001-9834-6840",
+                            "label": "William Lees"
+                        },
+                        "affiliation": {
+                            "id": "ROR:02mb95055",
+                            "label": "Birkbeck, University of London"
+                        },
+                        "affiliation_department": null,
+                        "contributions": [
+                            {
+                                "role": "investigation",
+                                "degree": null
+                            },
+                            {
+                                "role": "data curation",
+                                "degree": null
+                            }
+                        ]
+                    }
+                ],
                 "release_version": 1,
-                "release_date": "24-Nov-2021",
+                "release_date": "2021-11-24",
                 "release_description": "First release",
                 "label": "IGHV-2DBF",
                 "sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGATGGTAGTGGCACCTACTATCTGGACTCCTTGAAGAGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
-                "coding_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                "coding_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGATGGTAGTGGCACCTACTATCTGGACTCCTTGAAGAGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
                 "aliases": [
                     "watson_et_al:CAST_EiJ_IGHV5-3"
                 ],
@@ -516,7 +741,10 @@
                 "sequence_type": "V",
                 "functional": true,
                 "inference_type": "rearranged_only",
-                "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
+                "species": {
+                    "id": "NCBITAXON:10090",
+                    "label": "Mus musculus"
+                },
                 "species_subgroup": "CAST_EiJ",
                 "species_subgroup_type": "strain",
                 "status": "active",
@@ -537,18 +765,20 @@
                     {
                         "sequence_delineation_id": "1",
                         "delineation_scheme": "IMGT",
+                        "unaligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGATGGTAGTGGCACCTACTATCTGGACTCCTTGAAGAGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                        "aligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
                         "fwr1_start": 1,
-                        "fwr1_end": 78,
-                        "cdr1_start": 79,
-                        "cdr1_end": 114,
-                        "fwr2_start": 115,
-                        "fwr2_end": 165,
-                        "cdr2_start": 166,
-                        "cdr2_end": 195,
-                        "fwr3_start": 196,
-                        "fwr3_end": 312,
-                        "cdr3_start": 313,
-                        "alignment": [
+                        "fwr1_end": 75,
+                        "cdr1_start": 76,
+                        "cdr1_end": 110,
+                        "fwr2_start": 111,
+                        "fwr2_end": 150,
+                        "cdr2_start": 151,
+                        "cdr2_end": 160,
+                        "fwr3_start": 161,
+                        "fwr3_end": 294,
+                        "cdr3_start": 295,
+                        "alignment_labels": [
                             "1",
                             "2",
                             "3",
@@ -665,15 +895,37 @@
             {
                 "allele_description_id": "OGRDB:A00314",
                 "allele_description_ref": "OGRDB:Mouse_IGH:IGHV-2ETO",
-                "maintainer": "William Lees",
-                "acknowledgements": [],
-                "lab_address": "Birkbeck College, University of London, Malet Street, London",
+                "acknowledgements": [
+                    {
+                        "contributor_id": "3",
+                        "name": "William Lees",
+                        "orcid_id": {
+                            "id": "ORCID:0000-0001-9834-6840",
+                            "label": "William Lees"
+                        },
+                        "affiliation": {
+                            "id": "ROR:02mb95055",
+                            "label": "Birkbeck, University of London"
+                        },
+                        "affiliation_department": null,
+                        "contributions": [
+                            {
+                                "role": "investigation",
+                                "degree": null
+                            },
+                            {
+                                "role": "data curation",
+                                "degree": null
+                            }
+                        ]
+                    }
+                ],
                 "release_version": 1,
-                "release_date": "24-Nov-2021",
+                "release_date": "2021-11-24",
                 "release_description": "First release",
                 "label": "IGHV-2ETO",
                 "sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
-                "coding_sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCT...GGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGC......ACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGAT.........GATGATAAGTACTATAACCCATCCCTGAAG...AGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
+                "coding_sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
                 "aliases": [
                     "watson_et_al:CAST_EiJ_IGHV8-2"
                 ],
@@ -682,7 +934,10 @@
                 "sequence_type": "V",
                 "functional": true,
                 "inference_type": "rearranged_only",
-                "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
+                "species": {
+                    "id": "NCBITAXON:10090",
+                    "label": "Mus musculus"
+                },
                 "species_subgroup": "CAST_EiJ",
                 "species_subgroup_type": "strain",
                 "status": "active",
@@ -703,18 +958,20 @@
                     {
                         "sequence_delineation_id": "1",
                         "delineation_scheme": "IMGT",
+                        "unaligned_sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
+                        "aligned_sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCTG...GGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGA............GCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGT......GGGATGATGATAAGTACTATAACCCATCCCTGA...AGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
                         "fwr1_start": 1,
-                        "fwr1_end": 78,
-                        "cdr1_start": 79,
-                        "cdr1_end": 114,
-                        "fwr2_start": 115,
-                        "fwr2_end": 165,
-                        "cdr2_start": 166,
-                        "cdr2_end": 195,
-                        "fwr3_start": 196,
-                        "fwr3_end": 312,
-                        "cdr3_start": 313,
-                        "alignment": [
+                        "fwr1_end": 75,
+                        "cdr1_start": 76,
+                        "cdr1_end": 110,
+                        "fwr2_start": 111,
+                        "fwr2_end": 150,
+                        "cdr2_start": 151,
+                        "cdr2_end": 160,
+                        "fwr3_start": 161,
+                        "fwr3_end": 294,
+                        "cdr3_start": 295,
+                        "alignment_labels": [
                             "1",
                             "2",
                             "3",
@@ -831,7 +1088,6 @@
         ],
         "curation": null
     }],
-
     "GenotypeSet": [{
         "receptor_genotype_set_id": "1",
         "genotype_class_list": [
