@@ -81,6 +81,12 @@ Repertoire:
       link_type: twin
       diagnosis:
         - study_group_description:
+          diagnosis_timepoint:
+            label: Study enrollment
+            value: 60
+            unit:
+              id: UO:0000033
+              label: day
           disease_diagnosis:
             id:
             label:
@@ -274,6 +280,12 @@ Repertoire:
       link_type: twin
       diagnosis:
         - study_group_description:
+          diagnosis_timepoint:
+            label: Study enrollment
+            value: 60
+            unit:
+              id: UO:0000033
+              label: day
           disease_diagnosis:
             id:
             label:
@@ -433,6 +445,12 @@ Repertoire:
       link_type: twin
       diagnosis:
         - study_group_description:
+          diagnosis_timepoint:
+            label: Study enrollment
+            value: 60
+            unit:
+              id: UO:0000033
+              label: day
           disease_diagnosis:
             id:
             label:
