@@ -342,11 +342,14 @@ Attributes:
                             description: Ontology name for the top node term
 # FileObject
 FileObject:
-    type: object:
+    type: object
     properties:
         file_type:
             type: string
             description: The file format for the file (e.g. json, tsv)
+        compression:
+            type: string
+            description: The type of compression (if any) used for the file.
         filename:
             type: string
             description: The name of the file
