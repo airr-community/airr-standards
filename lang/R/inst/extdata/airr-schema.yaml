@@ -340,52 +340,105 @@ Attributes:
                         label:
                             type: string
                             description: Ontology name for the top node term
+# FileObject
+FileObject:
+    type: object
+    properties:
+        file_type:
+            type: string
+            description: The file format for the file (e.g. json, tsv)
+        compression:
+            type: string
+            description: The type of compression (if any) used for the file.
+        filename:
+            type: string
+            description: The name of the file
 
+# AIRR DataSet specification
+#     An AIRR DataSet consists of tags for types of AIRR Schema Objects and a set of files that hold data in the AIRR format
+#     appropriate for that AIRR schema object.
 
+DataSet:
+    type: object
+    properties:
+        name:
+            type: string
+            description: A human readable name for the data set.
+        description:
+            type: string
+            description: A description of the data set.
+        repository_url:
+            type: string
+            description: The URL of the repository from which the data set came from (if the data came from a repository)
+        files:
+            type: object
+            description: >
+                An set of files based on data type, where the key for each object denotes the type of data and the 
+                accompanying array of files (and related file metadata) contain the data of that type. All top level
+                AIRR objects (e.g. Repertoire, Rearrangement, Clone, Cell, Expression, Reactivity, Receptor, RepertoireGroup)
+                are allowed. Custom data types are also permitted, so the manifest can include data that is outside of the
+                AIRR specification.
+            properties:
+                Repertoire:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                Rearrangement:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                Clone:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'                
+                Cell:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                Expression:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                Reactivity:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                Receptor:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                ReperotireGroup:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                ADCQuery:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+
+                        
 # AIRR Manifest specification.
 #     An AIRR Manifest contains metadata for a group of accompanying files that are part of a set or coherent unit. 
-#     A manifest consists of tags for types of AIRR Schema Objects and a set of files that hold data in the AIRR format
-#     appropriate for that AIRR schema object.
 
 Manifest:
     type: object
     properties:
-        dataset_name:
+        name:
             type: string
-            description: A human readable name for the data set.
+            description: A human readable name for the data manifest.
             x-airr:
                 nullable: false
-        repository_url:
+        description:
             type: string
-            description: URL for the repository if the data set came from an ADC repository.
-            x-airr:
-                nullable: false
-        dataset:
+            descritption: A description of the purpose for this data manifest
+        created_at:
+            type: string
+            description: Time/data stamp when the dat manifest was created.
+        data_sets:
             type: array
-            description: An array that describes the type of data (and the relevant data files) in the data set.
-            x-airr:
-                nullable: false
             items:
-                type: object
-                properties:
-                    data_type:
-                        type: string
-                        description: >
-                            A string that represents the type of the data that is being stored in the files.
-                            If the data files store data from an AIRR Schema object, then the data_type should
-                            be the schema object name (e.g. "Repertoire", "Rearrangement", "Clone", "Cell", "CellExpression",
-                            "CellReactivity", "Receptor", etc.). If the type data is not an AIRR Schema object then
-                            relevant domain specific data type descriptions should be used if available, file format
-                            extension (e.g. fasta, tsv, etc) can be used.
-                        x-airr:
-                            nullable: false
-                    data_files:
-                        type: array
-                        description: An array of file names that store the data of the specified data_type
-                        items:
-                            type: string
-                        x-airr:
-                            nullable: false
+                $ref: '#/DataSet'
+
 
 
 # AIRR Data File
