@@ -399,6 +399,14 @@ DataSet:
                     type: array
                     items:
                         $ref: '#/FileObject'
+                Reactivity:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                Receptor:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
                 ReperotireGroup:
                     type: array
                     items:
@@ -407,6 +415,7 @@ DataSet:
                     type: array
                     items:
                         $ref: '#/FileObject'
+
                         
 # AIRR Manifest specification.
 #     An AIRR Manifest contains metadata for a group of accompanying files that are part of a set or coherent unit. 
