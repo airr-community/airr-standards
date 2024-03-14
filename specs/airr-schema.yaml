@@ -372,6 +372,12 @@ DataSet:
             description: The URL of the repository from which the data set came from (if the data came from a repository)
         files:
             type: object
+            description: >
+                An set of files based on data type, where the key for each object denotes the type of data and the 
+                accompanying array of files (and related file metadata) contain the data of that type. All top level
+                AIRR objects (e.g. Repertoire, Rearrangement, Clone, Cell, Expression, Reactivity, Receptor, RepertoireGroup)
+                are allowed. Custom data types are also permitted, so the manifest can include data that is outside of the
+                AIRR specification.
             properties:
                 Repertoire:
                     type: array
