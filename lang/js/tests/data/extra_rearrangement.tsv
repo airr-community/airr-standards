@@ -1,0 +1,2 @@
+sequence_id	sequence	rev_comp	productive	v_call	d_call	j_call	sequence_alignment	germline_alignment	junction	junction	junction_aa	v_cigar	d_cigar	j_cigar
+1	2	F	F	5	6	7	8	9	10	11	12	13	14	15	not_in_header	not_in
