@@ -384,6 +384,7 @@ DataSet:
                 AIRR objects (e.g. Repertoire, Rearrangement, Clone, Cell, Expression, Reactivity, Receptor, RepertoireGroup)
                 are allowed. Custom data types are also permitted, so the manifest can include data that is outside of the
                 AIRR specification.
+            nullable: true
             properties:
                 Repertoire:
                     type: array
