@@ -1,27 +1,71 @@
 {
     "GermlineSet": [{
         "germline_set_id": "OGRDB:G00007",
-        "author": "William Lees",
-        "lab_name": "",
-        "lab_address": "Birkbeck College, University of London, Malet Street, London",
+        "acknowledgements": [
+            {
+                "contributor_id": "1",
+                "name": "William Lees",
+                "orcid_id": {
+                    "id": "ORCID:0000-0001-9834-6840",
+                    "label": "William Lees"
+                },
+                "affiliation": {
+                    "id": "ROR:02mb95055",
+                    "label": "Birkbeck, University of London"
+                },
+                "affiliation_department":"",
+                "contributions": [
+                    {
+                        "role": "investigation",
+                        "degree": null
+                    },
+                    {
+                        "role": "data curation",
+                        "degree": null
+                    }
+                ]
+            }
+        ],
         "release_version": 1,
         "release_description": "",
         "release_date": "2021-11-24",
         "germline_set_name": "CAST IGH",
         "germline_set_ref": "OGRDB:G00007.1",
-        "pub_ids": "",
-        "species_typo": ["Mouse"],
+        "pub_ids": [""],
+        "species": "Mouse",
         "species_subgroup": "CAST_EiJ",
         "species_subgroup_type": "strain",
-        "locus": 1,
+        "locus": "IGH",
         "allele_descriptions": [
             {
                 "allele_description_id": "OGRDB:A00301",
-                "maintainer": "William Lees",
-                "acknowledgements": [],
-                "lab_address": "Birkbeck College, University of London, Malet Street, London",
+                "acknowledgements": [
+                    {
+                        "contributor_id": "1",
+                        "name": "William Lees",
+                        "orcid_id": {
+                            "id": "ORCID:0000-0001-9834-6840",
+                            "label": "William Lees"
+                        },
+                        "affiliation": {
+                            "id": "ROR:02mb95055",
+                            "label": "Birkbeck, University of London"
+                        },
+                        "affiliation_department":"",
+                        "contributions": [
+                            {
+                                "role": "investigation",
+                                "degree": null
+                            },
+                            {
+                                "role": "data curation",
+                                "degree": null
+                            }
+                        ]
+                    }
+                ],
                 "release_version": 1,
-                "release_date": "24-Nov-2021",
+                "release_date": "2021-11-24",
                 "release_description": "First release",
                 "label": "IGHV-2DBF",
                 "sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGATGGTAGTGGCACCTACTATCTGGACTCCTTGAAGAGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
@@ -29,11 +73,11 @@
                 "aliases": [
                     "watson_et_al:CAST_EiJ_IGHV5-3"
                 ],
-                "locus": 1,
+                "locus": "IGH",
                 "chromosome": null,
                 "sequence_type": "V",
                 "functional": true,
-                "inference_type": "Rearranged",
+                "inference_type": "rearranged_only",
                 "species": "Mouse",
                 "species_subgroup": "CAST_EiJ",
                 "species_subgroup_type": "strain",
@@ -66,7 +110,7 @@
                         "fwr3_start": 196,
                         "fwr3_end": 312,
                         "cdr3_start": 313,
-                        "alignment": [
+                        "alignment_labels": [
                             "1",
                             "2",
                             "3",
@@ -177,16 +221,38 @@
                 "unrearranged_support": [],
                 "rearranged_support": [],
                 "paralogs": [],
-                "notes": "Imported to OGRDB with the following notes:\r\nwatson_et_al: CAST_EiJ_IGHV5-3",
+                "notes": "Imported to OGRDB with the following notes: watson_et_al: CAST_EiJ_IGHV5-3",
                 "curational_tags": null
             },
             {
                 "allele_description_id": "OGRDB:A00314",
-                "maintainer": "William Lees",
-                "acknowledgements": [],
-                "lab_address": "Birkbeck College, University of London, Malet Street, London",
+                "acknowledgements": [
+                    {
+                        "contributor_id": "1",
+                        "name": "William Lees",
+                        "orcid_id": {
+                            "id": "ORCID:0000-0001-9834-6840",
+                            "label": "William Lees"
+                        },
+                        "affiliation": {
+                            "id": "ROR:02mb95055",
+                            "label": "Birkbeck, University of London"
+                        },
+                        "affiliation_department":"",
+                        "contributions": [
+                            {
+                                "role": "investigation",
+                                "degree": null
+                            },
+                            {
+                                "role": "data curation",
+                                "degree": null
+                            }
+                        ]
+                    }
+                ],
                 "release_version": 1,
-                "release_date": "24-Nov-2021",
+                "release_date": "2021-11-24",
                 "release_description": "First release",
                 "label": "IGHV-2ETO",
                 "sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
@@ -198,7 +264,7 @@
                 "chromosome": null,
                 "sequence_type": "V",
                 "functional": true,
-                "inference_type": "Rearranged",
+                "inference_type": "rearranged_only",
                 "species": "Mouse",
                 "species_subgroup": "CAST_EiJ",
                 "species_subgroup_type": "strain",
@@ -231,7 +297,7 @@
                         "fwr3_start": 196,
                         "fwr3_end": 312,
                         "cdr3_start": 313,
-                        "alignment": [
+                        "alignment_labels": [
                             "1",
                             "2",
                             "3",
@@ -342,7 +408,7 @@
                 "unrearranged_support": [],
                 "rearranged_support": [],
                 "paralogs": [],
-                "notes": "Imported to OGRDB with the following notes:\r\nwatson_et_al: CAST_EiJ_IGHV8-2",
+                "notes": "Imported to OGRDB with the following notes: watson_et_al: CAST_EiJ_IGHV8-2",
                 "curational_tags": null
             }
         ],

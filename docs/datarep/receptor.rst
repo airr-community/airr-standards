@@ -1,26 +1,17 @@
 .. _ReceptorSchema:
 
-Receptor Schema (Experimental)
-==============================
+Receptor Schema
+===============
 
-General
--------
-
-The purpose of the ``Receptor`` object is to represent reactivity data
-of actual *Receptors*, i.e., Ig or TCR, either directly or indirectly.
-To this end, the ``Receptor`` object has two main sections:
-
-1. The ``receptor_*`` properties: These properties describe the receptor
-   as an abstract and global concept, i.e., the actual Ig/TCR protein
-   complex MAY or MAY NOT have been observed in the current study.
-   However, the Rearrangements encoding the respective chains MUST
-   be present in the studies as well as the information linking them
-   (see below). This allows data curators to provide potential
-   reactivities of a potential receptor by referencing to its entry in
-   an external database (e.g., IEDB).
-2. The ``reactivity_measurements`` array: This structure contains
-   one or more entries, describing reactivities of the receptor that
-   have been observed in the current study.
+The purpose of the ``Receptor`` object is to provide an structure for
+information referring to actual *Receptors*, i.e., Ig or TCR, both for
+outgoing and incoming links. To this end, the ``Receptor`` object
+describes the receptor as an abstract and global concept, i.e., the
+actual Ig/TCR protein complex, which MAY or MAY NOT have been observed
+in the current study. However, the rearrangements encoding the
+respective chains MUST be present in the study as well as the
+information linking them (see below). In addition the object allow
+references to entries in external database (e.g., IEDB).
 
 The ``Receptor`` object explicitly requires full sequence information
 of the two associated variable domains. This is considered to be an
@@ -73,15 +64,20 @@ be unclear, but is necessary to determine a receptors reactivity.
 Annotation guidelines
 ---------------------
 
-Reactivity information SHOULD be provided if it was either directly
-recorded in the current study or is indirectly available in a public
-database, where it can be linked. If no information about the receptor,
-besides the translated amino acid sequence of the associated chains is
-available, the respective object MAY still be created if the curator
-considers this information to be beneficial, e.g., if there is some
-evidence (surface expression, reaction to superantigens) that the
-receptor is functional and present on the surface. In the absence of any
-such data, ``Receptor`` objects SHOULD NOT be created.
+References to information describing the same receptor located in other
+databases (i.e., outgoing links) SHOULD be provided as as CURIEs in the
+``receptor_ref`` property. Entries in this array MUST refer to objects
+that a conceptually similar to the *Receptor* concept used by the AIRR
+Schema. Linkage to potentially existing reactivity information needs
+is expected to happen in the external database, not in the ``Receptor``
+record.
+
+``Receptor`` objects SHOULD be created even in the absence of additional
+external information, as this will enhance the discoverability of
+AIRR-seq experiments in which a receptor might have been present. This
+especially applies to experiments that provide further evidence (e.g.,
+surface expression, reaction to superantigens) showing that a receptor
+is functional and present on the surface.
 
 
 Note on cells expressing more than a single receptor
@@ -93,12 +89,10 @@ never complete and its efficiency is rather low for loci like TRA.
 Such dual-expressing cells can technically be accommodated in the
 current AIRR Schema as an individual ``Cell`` object can link to more
 than two rearrangemts and to more than a single ``Receptor``. In the
-case of two potential receptors, both MAY be created as an objects, if
-the general annotation rules are met (i.e., the direct or indirect
-presence of reactivity information) for each of them. Note that the 
-annotation of **cell**-based reactivity information is currently not
-supported for dual-expressing cells, in this case additional information
-confirming the reactivity of one of the receptors would be required. 
+case of two potential receptors, both MAY be created as objects, if the
+general annotation rules are met for each of them. Note that the
+annotation of cell-based reactivity information is handled by the
+:ref:`CellReactivitySchema` object.
 
 
 Representation of bi-specific antibodies
@@ -132,6 +126,7 @@ Receptor Fields
       - {{ field.Attributes }}
       - {{ field.Definition | trim }}
     {%- endfor %}
+
 
 
 .. === References and Links ===
