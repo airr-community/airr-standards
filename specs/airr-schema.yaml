@@ -344,15 +344,21 @@ Attributes:
 FileObject:
     type: object
     properties:
-        file_type:
+        format:
             type: string
-            description: The file format for the file (e.g. json, tsv)
+            description: The file format for the file (e.g. json, tsv).
         compression:
             type: string
             description: The type of compression (if any) used for the file.
         filename:
             type: string
             description: The name of the file
+        checksum:
+            type: string
+            description: MD5 checksum of the file.
+        version:
+            type: string
+            description: Version stamp for the file (if any).
 
 # AIRR DataSet specification
 #     An AIRR DataSet consists of tags for types of AIRR Schema Objects and a set of files that hold data in the AIRR format
@@ -402,7 +408,7 @@ DataSet:
                     type: array
                     items:
                         $ref: '#/FileObject'
-                ReperotireGroup:
+                RepertoireGroup:
                     type: array
                     items:
                         $ref: '#/FileObject'
@@ -425,7 +431,7 @@ Manifest:
                 nullable: false
         description:
             type: string
-            descritption: A description of the purpose for this data manifest
+            description: A description of the purpose for this data manifest
         created_at:
             type: string
             description: Time/data stamp when the dat manifest was created.
