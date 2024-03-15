@@ -347,12 +347,15 @@ FileObject:
         file_type:
             type: string
             description: The file format for the file (e.g. json, tsv)
+            nullable: true
         compression:
             type: string
             description: The type of compression (if any) used for the file.
+            nullable: true
         filename:
             type: string
             description: The name of the file
+            nullable: true
 
 # AIRR DataSet specification
 #     An AIRR DataSet consists of tags for types of AIRR Schema Objects and a set of files that hold data in the AIRR format
@@ -426,8 +429,6 @@ Manifest:
         name:
             type: string
             description: A human readable name for the data manifest.
-            x-airr:
-                nullable: false
         description:
             type: string
             descritption: A description of the purpose for this data manifest
