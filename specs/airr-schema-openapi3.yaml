@@ -437,7 +437,7 @@ Manifest:
         name:
             type: string
             description: A human readable name for the data manifest.
-            nullable: true
+            nullable: false
         description:
             type: string
             descritption: A description of the purpose for this data manifest
