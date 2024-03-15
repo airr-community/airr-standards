@@ -367,12 +367,15 @@ DataSet:
         name:
             type: string
             description: A human readable name for the data set.
+            nullable: true
         description:
             type: string
             description: A description of the data set.
+            nullable: true
         repository_url:
             type: string
             description: The URL of the repository from which the data set came from (if the data came from a repository)
+            nullable: true
         files:
             type: object
             description: >
@@ -381,43 +384,53 @@ DataSet:
                 AIRR objects (e.g. Repertoire, Rearrangement, Clone, Cell, Expression, Reactivity, Receptor, RepertoireGroup)
                 are allowed. Custom data types are also permitted, so the manifest can include data that is outside of the
                 AIRR specification.
+            nullable: true
             properties:
                 Repertoire:
                     type: array
                     items:
                         $ref: '#/FileObject'
+                    nullable: true
                 Rearrangement:
                     type: array
                     items:
                         $ref: '#/FileObject'
+                    nullable: true
                 Clone:
                     type: array
                     items:
                         $ref: '#/FileObject'
+                    nullable: true
                 Cell:
                     type: array
                     items:
                         $ref: '#/FileObject'
+                    nullable: true
                 Expression:
                     type: array
                     items:
                         $ref: '#/FileObject'
+                    nullable: true
                 Reactivity:
                     type: array
                     items:
                         $ref: '#/FileObject'
+                    nullable: true
                 Receptor:
                     type: array
                     items:
                         $ref: '#/FileObject'
+                    nullable: true
                 ReperotireGroup:
                     type: array
                     items:
                         $ref: '#/FileObject'
+                    nullable: true
                 ADCQuery:
                     type: array
                     items:
                         $ref: '#/FileObject'
+                    nullable: true
 
 
 # AIRR Manifest specification.
@@ -429,16 +442,20 @@ Manifest:
         name:
             type: string
             description: A human readable name for the data manifest.
+            nullable: true
         description:
             type: string
             descritption: A description of the purpose for this data manifest
+            nullable: true
         created_at:
             type: string
             description: Time/data stamp when the dat manifest was created.
+            nullable: true
         data_sets:
             type: array
             items:
                 $ref: '#/DataSet'
+            nullable: true
 
 
 # AIRR Data File
