@@ -3329,6 +3329,27 @@ Repertoire:
                 nullable: true
                 name: Repertoire description
                 adc-query-support: true
+        repertoire_type:
+            type: string
+            enum:
+                - physical
+                - simulated
+                - inferred
+                - null
+            description: >
+                Repertoire type (source). Most often the type should be "physical," meaning it corresponds to
+                an actual physical sample that was sequenced. Other allowed values are "simulated," i.e. the
+                Rearrangements were generated in silico and there is no linked Subject/Sample metadata, and
+                "inferred" for Rearrangements that are phylogenetically reconstructed from observed sequences.
+                Inferred Repertoires should point to the same Subject/Sample metadata as the corresponding
+                physical Repertoires.
+            title: Repertoire type
+            example: physical
+            x-airr:
+                nullable: true
+                name: Repertoire type
+                format: controlled_vocabulary
+                adc-query-support: true
         study:
             $ref: '#/Study'
             description: Study object
@@ -4293,6 +4314,12 @@ Rearrangement:
                 nullable: true
                 adc-query-support: true
                 identifier: true
+        inferred:
+            type: boolean
+            description: >
+                Used to indicate that this Rearrangement was phylogenetically inferred, rather than directly
+                directly observed. Inferred Rearrangements should be assigned to a Repertoire with 
+                repertoire_type=inferred. Assumed false if null.
         rearrangement_id:
             type: string
             description: >
@@ -4605,6 +4632,12 @@ Cell:
                 nullable: true
                 adc-query-support: true
                 name: Virtual pairing
+        inferred:
+            type: boolean
+            description: >
+                Used to indicate that this Cell was phylogenetically inferred, rather than directly
+                observed. Inferred Cells should be assigned to a Repertoire with 
+                repertoire_type=inferred. Assumed false if null.
 
 # The CellExpression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
