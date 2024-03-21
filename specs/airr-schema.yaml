@@ -4357,111 +4357,57 @@ Clone:
     type: object
     required:
         - clone_id
-        - germline_alignment
+        - repertoire_group_id
+        - level
+        - members
     properties:
         clone_id:
             type: string
             description: Identifier for the clone.
             x-airr:
                 identifier: true
-        repertoire_id:
+        repertoire_group_id:
             type: string
-            description: Identifier to the associated repertoire in study metadata.
+            description: Identifier of the repertoire_group that clone is derived from.
             x-airr:
                 nullable: true
                 adc-query-support: true
+        level:
+            type: string
+            enum:
+                - Rearrangement
+                - Cell
+                - null
+            description: Is this a single-chain clone or a cell-based clone?
+            x-airr:
+                nullable: true
         data_processing_id:
             type: string
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
                 nullable: true
                 adc-query-support: true
-        sequences:
+        members:
             type: array
             items:
                 type: string
             description: >
-                List sequence_id strings that act as keys to the Rearrangement records for members of the clone.
-        v_call:
+                List sequence_id or cell_id strings that act as keys to the Rearrangement 
+                (respectively, Cell) records for members of the clone.
+        inferred_ancestor:
             type: string
             description: >
-                V gene with allele of the inferred ancestral of the clone. For example, IGHV4-59*01.
-            example: IGHV4-59*01
-        d_call:
-            type: string
+                Sequence_id or cell_id string that acts as a key to the inferred naive 
+                Rearrangement (respectively, Cell) record for this clone.
+        inferred_members:
+            type: array
+            items:
+                type: string
             description: >
-                D gene with allele of the inferred ancestor of the clone. For example, IGHD3-10*01.
-            example: IGHD3-10*01
-        j_call:
-            type: string
-            description: >
-                J gene with allele of the inferred ancestor of the clone. For example, IGHJ4*02.
-            example: IGHJ4*02
-        junction:
-            type: string
-            description: >
-                Nucleotide sequence for the junction region of the inferred ancestor of the clone,
-                where the junction is defined as the CDR3 plus the two flanking conserved codons.
-        junction_aa:
-            type: string
-            description: >
-                Amino acid translation of the junction.
-        junction_length:
-            type: integer
-            description: Number of nucleotides in the junction.
-        junction_aa_length:
-            type: integer
-            description: Number of amino acids in junction_aa.
-        germline_alignment:
-            type: string
-            description: >
-                Assembled, aligned, full-length inferred ancestor of the clone spanning the same region
-                as the sequence_alignment field of nodes (typically the V(D)J region) and including the
-                same set of corrections and spacers (if any).
-        germline_alignment_aa:
-            type: string
-            description: >
-                Amino acid translation of germline_alignment.
-        v_alignment_start:
-            type: integer
-            description: >
-                Start position in the V gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        v_alignment_end:
-            type: integer
-            description: >
-                End position in the V gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        d_alignment_start:
-            type: integer
-            description: >
-                Start position of the D gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        d_alignment_end:
-            type: integer
-            description: >
-                End position of the D gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        j_alignment_start:
-            type: integer
-            description: >
-                Start position of the J gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        j_alignment_end:
-            type: integer
-            description: >
-                End position of the J gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        junction_start:
-            type: integer
-            description: Junction region start position in the alignment (1-based closed interval).
-        junction_end:
-            type: integer
-            description: Junction region end position in the alignment (1-based closed interval).
-        umi_count:
-            type: integer
-            description: >
-                Number of distinct UMIs observed across all sequences (Rearrangement records) in this clone.
+                List sequence_id or cell_id strings that act as keys to the inferred 
+                Rearrangement (respectively, Cell) records that represent unobserved
+                intermediate ancestors of this clone. Inferred members should be included
+                as internal node labels in the tree string.
         clone_count:
             type: integer
             description: >
@@ -4472,60 +4418,10 @@ Clone:
                 Absolute count is provided versus a frequency so that downstream analysis tools can perform their own normalization.
         seed_id:
             type: string
-            description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
-
-# 1-to-n relationship for a clone to its trees.
-Tree:
-    type: object
-    required:
-        - tree_id
-        - clone_id
-        - newick
-    properties:
-        tree_id:
+            description: sequence_id or cell_id of the seed sequence/cell. Empty string (or null) if there is no seed sequence.
+        tree:
             type: string
-            description: Identifier for the tree.
-            x-airr:
-                identifier: true
-        clone_id:
-            type: string
-            description: Identifier for the clone.
-        newick:
-            type: string
-            description: Newick string of the tree edges.
-        nodes:
-            type: object
-            description: Dictionary of nodes in the tree, keyed by sequence_id string
-            additionalProperties:
-                $ref: '#/Node'
-
-# 1-to-n relationship between a tree and its nodes
-Node:
-    type: object
-    required:
-        - sequence_id
-    properties:
-        sequence_id:
-            type: string
-            description: >
-                Identifier for this node that matches the identifier in the newick string and, where possible,
-                the sequence_id in the source repertoire.
-            x-airr:
-                identifier: true
-        sequence_alignment:
-            type: string
-            description: >
-                Nucleotide sequence of the node, aligned to the germline_alignment for this clone, including
-                including any indel corrections or spacers.
-        junction:
-            type: string
-            description: >
-                Junction region nucleotide sequence for the node, where the junction is defined as
-                the CDR3 plus the two flanking conserved codons.
-        junction_aa:
-            type: string
-            description: >
-                Amino acid translation of the junction.
+            description: Newick string describing the tree.
 
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
