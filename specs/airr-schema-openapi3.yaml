@@ -344,9 +344,9 @@ Attributes:
 FileObject:
     type: object
     properties:
-        file_type:
+        format:
             type: string
-            description: The file format for the file (e.g. json, tsv)
+            description: The file format for the file (e.g. json, tsv).
             nullable: true
         compression:
             type: string
@@ -355,6 +355,14 @@ FileObject:
         filename:
             type: string
             description: The name of the file
+            nullable: true
+        checksum:
+            type: string
+            description: MD5 checksum of the file.
+            nullable: true
+        version:
+            type: string
+            description: Version stamp for the file (if any).
             nullable: true
 
 # AIRR DataSet specification
