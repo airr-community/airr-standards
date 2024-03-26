@@ -458,7 +458,7 @@ Manifest:
             nullable: false
         description:
             type: string
-            descritption: A description of the purpose for this data manifest
+            description: A description of the purpose for this data manifest
             nullable: true
         created_at:
             type: string
