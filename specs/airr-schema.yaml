@@ -349,7 +349,7 @@ FileObject:
             description: The file format for the file (e.g. json, tsv).
         compression:
             type: string
-            description: The type of compression (if any) used for the file.
+            description: The type of compression (if any) used for the file (e.g. zip, gz, bz2).
         filename:
             type: string
             description: The name of the file
@@ -405,6 +405,14 @@ DataSet:
                     items:
                         $ref: '#/FileObject'
                 Receptor:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                GermlineSet:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                GenotypeSet:
                     type: array
                     items:
                         $ref: '#/FileObject'

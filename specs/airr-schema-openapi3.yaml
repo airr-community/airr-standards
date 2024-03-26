@@ -350,7 +350,7 @@ FileObject:
             nullable: true
         compression:
             type: string
-            description: The type of compression (if any) used for the file.
+            description: The type of compression (if any) used for the file (e.g. zip, gz, bz2).
             nullable: true
         filename:
             type: string
@@ -412,6 +412,16 @@ DataSet:
                         $ref: '#/FileObject'
                     nullable: true
                 Receptor:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                GermlineSet:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                GenotypeSet:
                     type: array
                     items:
                         $ref: '#/FileObject'
