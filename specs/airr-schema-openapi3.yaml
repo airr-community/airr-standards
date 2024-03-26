@@ -434,7 +434,7 @@ DataSet:
                     items:
                         $ref: '#/FileObject'
                     nullable: true
-                ReperotireGroup:
+                RepertoireGroup:
                     type: array
                     items:
                         $ref: '#/FileObject'
