@@ -546,7 +546,7 @@ AIRRSchema = {
     'SequencingData': Schema('SequencingData'),
     'DataProcessing': Schema('DataProcessing'),
     'GermlineSet': Schema('GermlineSet'),
-    'Acknowledgement': Schema('Acknowledgement'),
+    'Contributor': Schema('Contributor'),
     'RearrangedSequence': Schema('RearrangedSequence'),
     'UnrearrangedSequence': Schema('UnrearrangedSequence'),
     'SequenceDelineationV': Schema('SequenceDelineationV'),

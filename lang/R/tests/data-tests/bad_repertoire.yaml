@@ -8,21 +8,39 @@ Repertoire:
       study_id: PRJNA300878
       study_title: "Homo sapiens B and T cell repertoire - MZ twins"
       study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
-      lab_name: "Mark M. Davis"
-      lab_address: "Stanford University"
-      submitted_by: "Florian Rubelt"
-      pub_ids: "PMID:27005435"
+      contributors:
+        - contributor_id: "1"
+          name: "Florian Rubelt"
+          affiliation:
+            id: "ROR:00f54p054"
+            label: "Stanford University"
+          affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
+          contributions:
+            - role: "investigation"
+            - role: "data curation"
+        - contributor_id: "2"
+          name: "Mark M. Davis"
+          orcid_id:
+            id: "ORCID:0000-0001-6868-657X"
+            label: "Mark Davis"
+          affiliation:
+            id: "ROR:00f54p054"
+            label: "Stanford University"
+          affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
+          contributions:
+            - role: "supervision"
+      pub_ids: ["PMID:27005435"]
     subject:
       subject_id: TW01A
       synthetic: false
       species:
-        id: "NCBITaxon_9606"
+        id: "NCBITAXON:9606"
         value: "Homo sapiens"
-      sex: F
+      sex: female
       age_min: 27
       age_max: 27
       age_unit:
-        id: UO_0000036
+        id: UO:0000036
         value: year
       linked_subjects: TW01B
       link_type: twin
@@ -32,7 +50,7 @@ Repertoire:
         cell_subset: "Naive B cell"
         cell_phenotype: "expression of CD20 and the absence of CD27"
         cell_species:
-          id: "NCBITaxon_9606"
+          id: "NCBITAXON:9606"
           value: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
@@ -56,21 +74,39 @@ Repertoire:
       study_id: PRJNA300878
       study_title: "Homo sapiens B and T cell repertoire - MZ twins"
       study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
-      lab_name: "Mark M. Davis"
-      lab_address: "Stanford University"
-      submitted_by: "Florian Rubelt"
-      pub_ids: "PMID:27005435"
+      contributors:
+        - contributor_id: "1"
+          name: "Florian Rubelt"
+          affiliation:
+            id: "ROR:00f54p054"
+            label: "Stanford University"
+          affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
+          contributions:
+            - role: "investigation"
+            - role: "data curation"
+        - contributor_id: "2"
+          name: "Mark M. Davis"
+          orcid_id:
+            id: "ORCID:0000-0001-6868-657X"
+            label: "Mark Davis"
+          affiliation:
+            id: "ROR:00f54p054"
+            label: "Stanford University"
+          affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
+          contributions:
+            - role: "supervision"
+      pub_ids: ["PMID:27005435"]
     subject:
       subject_id: TW01A
       synthetic: false
       species:
-        id: "NCBITaxon_9606"
+        id: "NCBITAXON:9606"
         value: "Homo sapiens"
-      sex: F
+      sex: female
       age_min: 27
       age_max: 27
       age_unit:
-        id: UO_0000036
+        id: UO:0000036
         value: year
       linked_subjects: TW01B
       link_type: twin
@@ -80,7 +116,7 @@ Repertoire:
         cell_subset: "Memory B cell"
         cell_phenotype: "expression of CD20 and CD27"
         cell_species:
-          id: "NCBITaxon_9606"
+          id: "NCBITAXON:9606"
           value: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
@@ -104,21 +140,39 @@ Repertoire:
       study_id: PRJNA300878
       study_title: "Homo sapiens B and T cell repertoire - MZ twins"
       study_description: "The adaptive immune system's capability to protect the body requires a highly diverse lymphocyte antigen receptor repertoire. However, the influence of individual genetic and epigenetic differences on these repertoires is not typically measured. By leveraging the unique characteristics of B, CD4+ T, and CD8+ T lymphocyte subsets isolated from monozygotic twins, we have quantified the impact of heritable factors on both the V(D)J recombination process and thymic selection in the case of T cell receptors, and show that the repertoires of both naive and antigen experienced cells are subject to biases resulting from differences in recombination. We show that biases in V(D)J usage, as well as biased N/P additions, contribute to significant variation in the CDR3 region. Moreover, we show that the relative usage of V and J gene segments is chromosomally biased, with approximately 1.5 times as many rearrangements originating from a single chromosome. These data refine our understanding of the heritable mechanisms affecting the repertoire, and show that biases are evident on a chromosome-wide level."
-      lab_name: "Mark M. Davis"
-      lab_address: "Stanford University"
-      submitted_by: "Florian Rubelt"
-      pub_ids: "PMID:27005435"
+      contributors:
+        - contributor_id: "1"
+          name: "Florian Rubelt"
+          affiliation:
+            id: "ROR:00f54p054"
+            label: "Stanford University"
+          affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
+          contributions:
+            - role: "investigation"
+            - role: "data curation"
+        - contributor_id: "2"
+          name: "Mark M. Davis"
+          orcid_id:
+            id: "ORCID:0000-0001-6868-657X"
+            label: "Mark Davis"
+          affiliation:
+            id: "ROR:00f54p054"
+            label: "Stanford University"
+          affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
+          contributions:
+            - role: "supervision"
+      pub_ids: ["PMID:27005435"]
     subject:
       subject_id: TW01A
       synthetic: false
       species:
-        id: "NCBITaxon_9606"
+        id: "NCBITAXON:9606"
         value: "Homo sapiens"
-      sex: F
+      sex: female
       age_min: 27
       age_max: 27
       age_unit:
-        id: UO_0000036
+        id: UO:0000036
         value: year
       linked_subjects: TW01B
       link_type: twin
@@ -128,7 +182,7 @@ Repertoire:
         cell_subset: "Naive CD4+ T cell"
         cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
         cell_species:
-          id: "NCBITaxon_9606"
+          id: "NCBITAXON:9606"
           value: "Homo sapiens"
         single_cell: false
         cell_isolation: FACS
