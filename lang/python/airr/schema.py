@@ -309,7 +309,7 @@ class Schema:
 
         return True
 
-    def validate_object(self, obj, missing=True, nonairr=True, context=None):
+    def validate_object(self, obj, missing=True, nonairr=True, context=None, check_nullable=True):
         """
         Validate Repertoire object data against schema
 
@@ -318,6 +318,7 @@ class Schema:
           missing (bool): provides warnings for missing optional fields.
           nonairr (bool: provides warning for non-AIRR fields that cannot be validated.
           context (string): used by recursion to indicate place in object hierarchy
+          check_nullable (bool): check if data complies with the required fields as determined by the nullable flag.
 
         Returns:
           bool: True if a ValidationError exception is not raised.
@@ -360,12 +361,11 @@ class Schema:
                     is_missing_key = True
 
             # check MiAIRR keys exist
-            if xairr and xairr.get('miairr'):
-                if is_missing_key:
+            if check_nullable and xairr and xairr.get('miairr') == "" and is_missing_key:
                     raise ValidationError('MiAIRR field "%s" is missing' % full_field)
 
             # check if required field
-            if f in self.required and is_missing_key:
+            if check_nullable and f in self.required and is_missing_key:
                 raise ValidationError('Required field "%s" is missing' % full_field)
 
             # check if identifier field
@@ -379,6 +379,8 @@ class Schema:
 
             # check nullable requirements
             if is_null:
+                if not check_nullable:
+                    continue
                 if not xairr:
                     # default is true
                     continue
@@ -401,7 +403,7 @@ class Schema:
                         schema = AIRRSchema[schema_name]
                     else:
                         schema = Schema(schema_name)
-                    schema.validate_object(obj[f], missing, nonairr, full_field)
+                    schema.validate_object(obj[f], missing, nonairr, full_field, check_nullable)
                 else:
                     raise ValidationError('Internal error: field "%s" in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'array':
@@ -413,7 +415,7 @@ class Schema:
                     if spec['items'].get('$ref') is not None:
                         schema_name = spec['items']['$ref'].split('/')[-1]
                         schema = Schema(schema_name)
-                        schema.validate_object(row, missing, nonairr, full_field)
+                        schema.validate_object(row, missing, nonairr, full_field, check_nullable)
                     elif spec['items'].get('allOf') is not None:
                         for s in spec['items']['allOf']:
                             if s.get('$ref') is not None:
@@ -422,7 +424,7 @@ class Schema:
                                     schema = AIRRSchema[schema_name]
                                 else:
                                     schema = Schema(schema_name)
-                                schema.validate_object(row, missing, False, full_field)
+                                schema.validate_object(row, missing, False, full_field, check_nullable)
                     elif spec['items'].get('enum') is not None:
                         if row not in spec['items']['enum']:
                             raise ValidationError('field "%s" has value "%s" not among possible enumeration values' % (full_field, row))
@@ -440,7 +442,7 @@ class Schema:
                             raise ValidationError('array field "%s" does not have number type: %s' % (full_field, row))
                     elif spec['items'].get('type') == 'object':
                         sub_schema = Schema({'properties': spec['items'].get('properties')})
-                        sub_schema.validate_object(row, missing, nonairr, context)
+                        sub_schema.validate_object(row, missing, nonairr, context, check_nullable)
                     else:
                         raise ValidationError('Internal error: array field "%s" in schema not handled by validation. File a bug report.' % full_field)
             elif field_type == 'object':
