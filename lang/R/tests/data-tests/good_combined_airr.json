@@ -589,7 +589,7 @@
                         "label": "naive thymus-derived CD4-positive, alpha-beta T cell"
                     },
                     "cell_phenotype": "expression of CD8 and absence of CD4 and CD45RO",
-                    "cell_label": "naive CD4+ aB T cell",
+                    "cell_label": "naive CD4 aB T cell",
                     "cell_species": {
                         "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"
