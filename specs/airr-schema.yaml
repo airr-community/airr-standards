@@ -2526,6 +2526,20 @@ CellProcessing:
                 set: 3
                 subset: process (cell)
                 name: Cell subset phenotype
+        cell_label:
+            type: string
+            description: >
+                Free text cell type annotation. Primarily used for annotating cell types that are not 
+                provided in the Cell Ontology.
+            title: Cell annotation
+            example: age-associated B cell
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Cell annotation
         cell_species:
             $ref: '#/Ontology'
             description: >
@@ -4561,7 +4575,7 @@ Cell:
                 id: CL:0000972
                 label: class switched memory B cell
             x-airr:
-                miairr: defined
+                miairr: important
                 nullable: true
                 adc-query-support: true
                 name: Cell subset
