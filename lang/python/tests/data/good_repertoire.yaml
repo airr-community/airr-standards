@@ -99,6 +99,7 @@ Repertoire:
           id: "CL:0000788"
           label: "naive B cell"
         cell_phenotype: "expression of CD20 and the absence of CD27"
+        cell_label: "naive B cell"
         cell_species:
           id: "NCBITAXON:9606"
           label: "Homo sapiens"
@@ -254,6 +255,7 @@ Repertoire:
           id: "CL:0000787"
           label: "memory B cell"
         cell_phenotype: "expression of CD20 and CD27"
+        cell_label: "memory B cell"
         cell_species:
           id: "NCBITAXON:9606"
           label: "Homo sapiens"
@@ -409,6 +411,7 @@ Repertoire:
           id: "CL:0000895"
           label: "naive thymus-derived CD4-positive, alpha-beta T cell"
         cell_phenotype: "expression of CD8 and absence of CD4 and CD45RO"
+        cell_label: "naive CD4+ aB T cell"
         cell_species:
           id: "NCBITAXON:9606"
           label: "Homo sapiens"
