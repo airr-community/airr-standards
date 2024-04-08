@@ -99,6 +99,7 @@ Repertoire:
           id: "CL:0000788"
           label: "naive B cell"
         cell_phenotype: "expression of CD20 and the absence of CD27"
+        cell_label: "naive B cell"
         cell_species:
           id: "NCBITAXON:9606"
           label: "Homo sapiens"
