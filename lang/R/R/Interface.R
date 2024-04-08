@@ -53,7 +53,7 @@ read_tabular <- function(file, schema, base=c("1", "0"), aux_types=NULL,...) {
 
     # Read file
     data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None"), ...))
-
+    
     # Validate file
     valid_data <- validate_tabular(data, schema=schema)
     
