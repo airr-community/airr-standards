@@ -2516,7 +2516,8 @@ CellProcessing:
                         label: lymphocyte
         cell_phenotype:
             type: string
-            description: List of cellular markers and their expression levels used to isolate the cell population
+            description: >
+                List of cellular markers and their expression levels used to isolate the cell population.
             title: Cell subset phenotype
             example: CD19+ CD38+ CD27+ IgM- IgD-
             x-airr:
@@ -4587,7 +4588,8 @@ Cell:
                         label: lymphocyte
         cell_phenotype:
             type: string
-            description: List of cellular markers and their expression levels used to isolate the cell population.
+            description: >
+                List of cellular markers and their expression levels used to isolate the cell population.
             title: Cell subset phenotype
             example: CD19+ CD38+ CD27+ IgM- IgD-
             x-airr:
