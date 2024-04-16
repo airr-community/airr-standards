@@ -4403,6 +4403,12 @@ Rearrangement:
                 nullable: true
                 adc-query-support: true
                 identifier: true
+        reactivity_id:
+            type: string
+            description: Unique identifier of reactivity record associated with this Rearrangement.
+            x-airr:
+                nullable: true
+                identifier: true
         sample_processing_id:
             type: string
             description: >
@@ -4571,7 +4577,7 @@ Clone:
             description: >
                 Absolute count of the size (number of members) of this clone in the repertoire.
                 This could simply be the number of sequences (Rearrangement records) observed in this clone,
-                the number of distinct cell barcodes (unique cell_id values),
+                the number of distinct cell barcodes (unique  values),
                 or a more sophisticated calculation appropriate to the experimental protocol.
                 Absolute count is provided versus a frequency so that downstream analysis tools can perform their own normalization.
         seed_id:
@@ -4969,7 +4975,7 @@ Reactivity:
                 Identifier of the Cell in the context of which the reactivity measurement was conducted.
             title: Cell ID
             x-airr:
-                nullable: false
+                nullable: true
                 adc-query-support: true
         repertoire_id:
             type: string
@@ -5129,7 +5135,12 @@ Reactivity:
             enum:
                 - native_protein
                 - MHC_peptide_multimer
-            description: The methodology used to assess expression (assay implemented in experiment)
+                - annotated
+                - inferred
+            description: >
+                The methodology used to assess/classify reactivity. This should be either the assay utlizied in the experiment,
+                delineated as "annotated" if annotated from an external source (e.g. IEDB), or inferred if imputed using
+                a computational method.
             x-airr:
                 format: controlled_vocabulary
                 nullable: false
@@ -5139,7 +5150,10 @@ Reactivity:
             enum:
                 - fluorescence_intensity
                 - barcode_count
-            description: Reactivity measurement read-out
+                - confidence
+            description: >
+                Reactivity measurement read-out. For physical assays, this should describe what was measured. For inferred
+                and annotated methods this should indicate a confidence/quality level for the inference/annotation.
             example: barcode_count
             x-airr:
                 format: controlled_vocabulary
@@ -5158,4 +5172,14 @@ Reactivity:
             example: read count
             x-airr:
                 nullable: false
+                adc-query-support: true
+        reactivity_ref:
+            type: array
+            description: Array of cross references to external receptor/reactivity records 
+            title: Receptor/reactivity cross-references
+            items:
+                type: string
+            example: ["IEDB_RECEPTOR:10"]
+            x-airr:
+                nullable: true
                 adc-query-support: true
