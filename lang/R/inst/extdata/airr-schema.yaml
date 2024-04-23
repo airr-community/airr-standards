@@ -2632,7 +2632,8 @@ CellProcessing:
                         label: lymphocyte
         cell_phenotype:
             type: string
-            description: List of cellular markers and their expression levels used to isolate the cell population
+            description: >
+                List of cellular markers and their expression levels used to isolate the cell population.
             title: Cell subset phenotype
             example: CD19+ CD38+ CD27+ IgM- IgD-
             x-airr:
@@ -2642,6 +2643,20 @@ CellProcessing:
                 set: 3
                 subset: process (cell)
                 name: Cell subset phenotype
+        cell_label:
+            type: string
+            description: >
+                Free text cell type annotation. Primarily used for annotating cell types that are not 
+                provided in the Cell Ontology.
+            title: Cell annotation
+            example: age-associated B cell
+            x-airr:
+                miairr: defined
+                nullable: true
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Cell annotation
         cell_species:
             $ref: '#/Ontology'
             description: >
@@ -4622,7 +4637,6 @@ Cell:
     type: object
     required:
         - cell_id
-        - rearrangements
         - repertoire_id
         - virtual_pairing
     properties:
@@ -4639,32 +4653,6 @@ Cell:
                 nullable: false
                 adc-query-support: true
                 name: Cell index
-        rearrangements:
-            type: array
-            description: >
-                Array of sequence identifiers defined for the Rearrangement objects associated with this cell
-            title: Cell-associated rearrangements
-            items:
-                type: string
-            example: [id1, id2]
-            x-airr:
-                miairr: defined
-                nullable: true
-                adc-query-support: true
-                name: Cell-associated rearrangements
-        receptors:
-            type: array
-            description: >
-                Array of receptor identifiers defined for the Receptor objects associated with this cell
-            title: Cell-associated receptors
-            items:
-                type: string
-            example: [id1, id2]
-            x-airr:
-                miairr: defined
-                nullable: true
-                adc-query-support: true
-                name: Cell-associated receptors
         repertoire_id:
             type: string
             description: Identifier to the associated repertoire in study metadata.
@@ -4683,34 +4671,60 @@ Cell:
                 nullable: true
                 adc-query-support: true
                 name: Data processing for cell
-        expression_study_method:
-            type: string
-            enum:
-                - flow_cytometry
-                - single-cell_transcriptome
-                - null
+        receptors:
+            type: array
             description: >
-                Keyword describing the methodology used to assess expression. This values for this field MUST 
-                come from a controlled vocabulary.
+                Array of receptor identifiers defined for the Receptor objects associated with this cell
+            title: Cell-associated receptors
+            items:
+                type: string
+            example: [id1, id2]
             x-airr:
                 miairr: defined
                 nullable: true
                 adc-query-support: true
-        expression_raw_doi:
+                name: Cell-associated receptors
+        cell_subset:
+            $ref: '#/Ontology'
+            description: Commonly-used designation of isolated cell population.
+            title: Cell subset
+            example:
+                id: CL:0000972
+                label: class switched memory B cell
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                name: Cell subset
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: CL:0000542
+                        label: lymphocyte
+        cell_phenotype:
             type: string
             description: >
-                DOI of raw data set containing the current event
+                List of cellular markers and their expression levels used to isolate the cell population.
+            title: Cell subset phenotype
+            example: CD19+ CD38+ CD27+ IgM- IgD-
             x-airr:
                 miairr: defined
                 nullable: true
                 adc-query-support: true
-        expression_index:
+                name: Cell subset phenotype
+        cell_label:
             type: string
             description: >
-                Index addressing the current event within the raw data set.
+                Free text cell type annotation. Primarily used for annotating cell types that are not 
+                provided in the Cell Ontology.
+            title: Cell annotation
+            example: age-associated B cell
             x-airr:
                 miairr: defined
                 nullable: true
+                adc-query-support: true
+                name: Cell annotation
         virtual_pairing:
             type: boolean
             description: >
@@ -4722,10 +4736,10 @@ Cell:
                 adc-query-support: true
                 name: Virtual pairing
 
-# The CellExpression object acts as a container to hold a single expression level measurement from
+# The Expression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
-# data_processing_id 
-CellExpression:
+# data_processing_id
+Expression:
     type: object
     required:
         - expression_id
@@ -4739,7 +4753,7 @@ CellExpression:
         expression_id:
             type: string
             description: >
-                Identifier for the CellExpression object. This identifier must be unique within 
+                Identifier for the Expression object. This identifier must be unique within 
                 a given study, but it is recommended that it be a universally unique record locator
                 to enable database applications.
             title: Expression property measurement identifier
@@ -4923,12 +4937,12 @@ Receptor:
                 nullable: true
                 adc-query-support: true
 
-# The CellReactivity object holds information about the reactivity exhibited by a given Cell
+# The Reactivity object holds information about the reactivity exhibited by a given Cell
 #
-CellReactivity:
+Reactivity:
     type: object
     required:
-        - cell_reactivity_id
+        - reactivity_id
         - cell_id
         - ligand_type
         - antigen_type
@@ -4938,13 +4952,13 @@ CellReactivity:
         - reactivity_value
         - reactivity_unit
     properties:
-        cell_reactivity_id:
+        reactivity_id:
             type: string
             description: >
-                Identifier for the CellReactivity object. This identifier must be unique within 
+                Identifier for the Reactivity object. This identifier must be unique within 
                 a given study, but it is recommended that it be a universally unique record locator
                 to enable database applications.
-            title: CellReactivity ID
+            title: Reactivity ID
             x-airr:
                 identifier: true
                 nullable: false
