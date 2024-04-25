@@ -228,7 +228,7 @@ module.exports = function(airr, schema) {
         var _default = function(spec) {
             if (spec['default']) return spec['default'];
             if (spec['nullable']) return null;
-            //if (spec['enum']) return spec['enum'][0];
+            if (spec['enum']) return spec['enum'][0];
             return type_default[spec['type']];
         };
 
