@@ -1,8 +1,8 @@
-.. image:: https://github.com/airr-community/airr-standards/actions/workflows/schema-test.yaml/badge.svg?branch=master
+.. image:: https://github.com/airr-community/airr-standards/actions/workflows/schema-test.yaml/badge.svg?branch=release-1.5
    :target: https://github.com/airr-community/airr-standards/actions/workflows/schema-test.yaml
-.. image:: https://github.com/airr-community/airr-standards/actions/workflows/py-unittest.yaml/badge.svg?branch=master
+.. image:: https://github.com/airr-community/airr-standards/actions/workflows/py-unittest.yaml/badge.svg?branch=release-1.5
    :target: https://github.com/airr-community/airr-standards/actions/workflows/py-unittest.yaml
-.. image:: https://github.com/airr-community/airr-standards/actions/workflows/r-check.yaml/badge.svg?branch=master
+.. image:: https://github.com/airr-community/airr-standards/actions/workflows/r-check.yaml/badge.svg?branch=release-1.5
    :target: https://github.com/airr-community/airr-standards/actions/workflows/r-check.yaml
 
 =============================
