@@ -2,12 +2,12 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, release-1.5]
     paths:
       - '.github/**'
       - 'lang/python/**'
   pull_request:
-    branches: [main, master]
+    branches: [main, master, release-1.5]
     paths:
       - '.github/**'
       - 'lang/python/**'
