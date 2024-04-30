@@ -1,0 +1,46 @@
+{
+  "name": "airr-js",
+  "version": "1.4.1",
+  "description": "AIRR Community Data Representation Standard reference library for antibody and TCR sequencing data.",
+  "author": [
+    {
+      "name": "AIRR Community",
+      "email": "info@airr-community.org"
+    }
+  ],
+  "website": {
+    "url": "http://docs.airr-community.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/airr-community/airr-standards"
+  },
+  "license": "CC-BY-4.0",
+  "main": "airr.js",
+  "browser": {
+    "./airr.js": "./airr-browser.js"
+  },
+  "private": false,
+  "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^10.1.0",
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
+    "allof-merge": "^0.6.5",
+    "csv-parser": "^2.3.2",
+    "js-yaml": "^3.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "jest": "^29.5.0",
+    "jest-cli": "^29.5.0"
+  },
+  "scripts": {
+    "eslint": "eslint",
+    "test": "jest",
+    "prepare": "node ./deref.js"
+  },
+  "engines": {
+    "node": ">=12.18.3",
+    "npm": ">=6.14.6"
+  }
+}
