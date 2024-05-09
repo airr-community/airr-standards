@@ -4314,7 +4314,7 @@ Rearrangement:
                 nullable: true
                 adc-query-support: true
                 identifier: true
-        repertoire_type:
+        rearrangement_type:
             type: string
             enum:
                 - observed
