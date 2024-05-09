@@ -3332,12 +3332,12 @@ Repertoire:
         repertoire_type:
             type: string
             enum:
-                - physical
+                - observed
                 - simulated
                 - inferred
                 - null
             description: >
-                Repertoire type (source). Most often the type should be "physical," meaning it corresponds to
+                Repertoire type (source). Most often the type should be "observed," meaning it corresponds to
                 an actual physical sample that was sequenced. Other allowed values are "simulated," i.e. the
                 Rearrangements were generated in silico and there is no linked Subject/Sample metadata, and
                 "inferred" for Rearrangements that are phylogenetically reconstructed from observed sequences.
@@ -4314,12 +4314,19 @@ Rearrangement:
                 nullable: true
                 adc-query-support: true
                 identifier: true
-        inferred:
-            type: boolean
+        repertoire_type:
+            type: string
+            enum:
+                - observed
+                - simulated
+                - inferred
+                - null
             description: >
-                Used to indicate that this Rearrangement was phylogenetically inferred, rather than directly
-                directly observed. Inferred Rearrangements should be assigned to a Repertoire with 
-                repertoire_type=inferred. Assumed false if null.
+                Rearrangement type (source). Most often the type should be "observed," meaning it corresponds to
+                an actual physical sample that was sequenced. Other allowed values are "simulated," i.e. the
+                Rearrangements were generated in silico and there is no linked Subject/Sample metadata, and
+                "inferred" for Rearrangements that are phylogenetically reconstructed from observed sequences.
+                Inferred Rearrangements should be assigned to a Repertoire with repertoire_type=inferred.
         rearrangement_id:
             type: string
             description: >
@@ -4352,14 +4359,13 @@ Rearrangement:
                     - "DataProcessing:germline_database"
 
 # A unique inferred clone object that has been constructed within a single data processing
-# for a single repertoire and a subset of its sequences and/or rearrangements.
+# for a single RepertoireGroup and a subset of its rearrangements and/or cells.
 Clone:
     type: object
     required:
         - clone_id
         - repertoire_group_id
-        - level
-        - members
+        - nodes
     properties:
         clone_id:
             type: string
@@ -4372,11 +4378,12 @@ Clone:
             x-airr:
                 nullable: true
                 adc-query-support: true
-        level:
+        clone_class:
             type: string
             enum:
                 - Rearrangement
                 - Cell
+                - mixed
                 - null
             description: Is this a single-chain clone or a cell-based clone?
             x-airr:
@@ -4387,27 +4394,16 @@ Clone:
             x-airr:
                 nullable: true
                 adc-query-support: true
-        members:
+        nodes:
             type: array
             items:
                 type: string
-            description: >
-                List sequence_id or cell_id strings that act as keys to the Rearrangement 
-                (respectively, Cell) records for members of the clone.
+            description: List of node_id strings that act as keys to the Node records for members of this clone. 
         inferred_ancestor:
             type: string
             description: >
                 Sequence_id or cell_id string that acts as a key to the inferred naive 
                 Rearrangement (respectively, Cell) record for this clone.
-        inferred_members:
-            type: array
-            items:
-                type: string
-            description: >
-                List sequence_id or cell_id strings that act as keys to the inferred 
-                Rearrangement (respectively, Cell) records that represent unobserved
-                intermediate ancestors of this clone. Inferred members should be included
-                as internal node labels in the tree string.
         clone_count:
             type: integer
             description: >
@@ -4422,6 +4418,69 @@ Clone:
         tree:
             type: string
             description: Newick string describing the tree.
+
+# A node acts as reference object to link members of a clone to their original reperotires.
+Node:
+    type: object
+    required:
+        - node_id
+        - repertoire_group_id
+        - repertoire_id
+    properties:
+        node_id:
+            type: string
+            description: Identifier for the node.
+            x-airr:
+                identifier: true
+        repertoire_group_id:
+            type: string
+            description: Identifier of the repertoire_group that node is derived from.
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        repertoire_id:
+            type: string
+            description: Identifier of the repertoire that cell or rearrangement contained by this node.
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        cell_id:
+            type: string
+            description: >
+                Identifier of the cell contained by this node.
+                NOTE: Mutually exclusive with Node.sequence_id
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        sequence_id:
+            type: string
+            description: >
+                Identifier of the rearrangement contained by this node.
+                NOTE: Mutually exclusive with Node.cell_id
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        node_type:
+            type: string
+            enum:
+                - observed
+                - inferred
+                - null
+            description: >
+                Node type (source). "Observed for rearrangements/cells that were observed in the source data
+                or "inferred" for unobserved intermediates that were phylogenetically inferred.
+            x-airr:
+                nullable: true
+        node_class:
+            type: string
+            enum:
+                - Rearrangement
+                - Cell
+                - null
+            description: Does this node contain a rearrangement of a cell?
+            x-airr:
+                nullable: true
+
 
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
@@ -4528,12 +4587,19 @@ Cell:
                 nullable: true
                 adc-query-support: true
                 name: Virtual pairing
-        inferred:
-            type: boolean
+        cell_type:
+            type: string
+            enum:
+                - observed
+                - simulated
+                - inferred
+                - null
             description: >
-                Used to indicate that this Cell was phylogenetically inferred, rather than directly
-                observed. Inferred Cells should be assigned to a Repertoire with 
-                repertoire_type=inferred. Assumed false if null.
+                Cell type (source). Most often the type should be "observed," meaning it corresponds to
+                an actual physical sample that was sequenced. Other allowed values are "simulated," i.e. the
+                Cells were generated in silico and there is no linked Subject/Sample metadata, and
+                "inferred" for Cells that are phylogenetically reconstructed from observed sequences.
+                Inferred Cells should be assigned to a Repertoire with repertoire_type=inferred.
 
 # The CellExpression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
