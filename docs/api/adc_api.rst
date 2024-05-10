@@ -957,6 +957,7 @@ applicable to the query endpoints, i.e. the HTTP ``POST`` endpoints.
       - null
       - Provide aggregate count information for the specified fields
 
+.. _APIFiltering:
 **Filters Query Parameter**
 
 The ``filters`` parameter enables passing complex query criteria to
