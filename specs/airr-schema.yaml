@@ -3191,7 +3191,7 @@ Repertoire:
                 nullable: false
                 adc-query-support: true
 
-# An ordered group of repertoires for analysis purposes, includes optional time course
+# A group of repertoires for analysis purposes, includes optional time course
 # Can be treated as a set if all repertoire_group_id are unique
 RepertoireGroup:
     type: object
@@ -3210,6 +3210,8 @@ RepertoireGroup:
         repertoire_group_description:
             type: string
             description: Repertoire group description
+        filters:
+            type: object
         repertoires:
             type: array
             description: >
@@ -3235,6 +3237,8 @@ RepertoireGroup:
                         x-airr:
                             nullable: true
                             adc-query-support: true
+                    filters:
+                        type: object
 
 
 Alignment:
