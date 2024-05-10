@@ -151,7 +151,10 @@ ability to access all of the associated MiAIRR metadata. The
 ``RepertoireGroup`` also describes the selection criteria for
 the indcluded repertoires and how they have been filtered.
 ``RepertoireGroups`` can be associated with the same study as
-the underlying ``Repertoires`` or a new one, as appropiate.
+the underlying ``Repertoires`` or a new one, as appropriate.
+
+Filtering of component ``Repertoires`` can be indicated by building
+a query equivalent to one that would be used in the :ref:`ADC API <APIFiltering>`.
 
 File Format Specification
 -----------------------------
