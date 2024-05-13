@@ -210,13 +210,14 @@ module.exports = function(airr, schema) {
         return false;
     }
 
-    airr.SchemaDefinition.prototype.validate_object = function(object) {
+    airr.SchemaDefinition.prototype.validate_object = function(object, vocabulary) {
         const ajv = new AJV({allErrors: true});
         addFormats(ajv);
         ajv.addVocabulary(['x-airr', 'example', 'discriminator']);
+        if (vocabulary) ajv.addVocabulary(vocabulary);
 
-        const validate = ajv.compile(this.definition)
-        const valid = validate(object)
+        const validate = ajv.compile(this.definition);
+        const valid = validate(object);
         if (!valid) return validate.errors;
         else return null;
     }
