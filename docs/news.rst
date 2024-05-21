@@ -4,9 +4,8 @@ Release Notes
 
 .. include:: standards/news.rst
 
-Python Library Release Notes
-=================================
-
-.. include:: ../lang/python/NEWS.rst
+.. include:: packages/airr-python/news.rst
 
 .. include:: packages/airr-R/news.rst
+
+.. include:: packages/airr-js/news.rst
