@@ -103,7 +103,15 @@ module.exports = function(airr, schema) {
         if (! this.info)
             throw new Error('Info object cannot be found in the specifications');
 
-        this.properties = this.definition['properties']
+        this.properties = {};
+        this.deprecated = {};
+        for (let prop in this.definition['properties']) {
+            let spec = this.definition['properties'][prop];
+            if ((spec['x-airr']) && (spec['x-airr']['deprecated']))
+                this.properties[prop] = spec;
+            else
+                this.properties[prop] = spec;
+        }
         this.required = this.definition['required']
         if (! this.required) this.required = [];
 
