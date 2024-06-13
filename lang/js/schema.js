@@ -108,14 +108,12 @@ module.exports = function(airr, schema) {
         for (let prop in this.definition['properties']) {
             let spec = this.definition['properties'][prop];
             if ((spec['x-airr']) && (spec['x-airr']['deprecated']))
-                this.properties[prop] = spec;
+                this.deprecated[prop] = spec;
             else
                 this.properties[prop] = spec;
         }
         this.required = this.definition['required']
         if (! this.required) this.required = [];
-
-        //this.optional = [f for f in self.properties if f not in self.required]
 
         return this;
     }
@@ -143,6 +141,7 @@ module.exports = function(airr, schema) {
 
     airr.SchemaDefinition.prototype.to_bool = function(value, validate) {
         if (value == null) return null;
+        if (value == undefined) return null;
 
         var bool_value = _to_bool_map(value);
         if (validate && (bool_value == null))
@@ -161,6 +160,7 @@ module.exports = function(airr, schema) {
 
     airr.SchemaDefinition.prototype.to_int = function(value, validate) {
         if (value == null) return null;
+        if (value == undefined) return null;
         if (value == '') return null;
 
         var int_value = parseInt(value);
@@ -175,6 +175,7 @@ module.exports = function(airr, schema) {
 
     airr.SchemaDefinition.prototype.to_float = function(value, validate) {
         if (value == null) return null;
+        if (value == undefined) return null;
         if (value == '') return null;
 
         var float_value = parseFloat(value);
@@ -202,8 +203,39 @@ module.exports = function(airr, schema) {
         case 'number':
             field_value = this.to_float(field_value);
             break;
+        case 'string':
+            if (field_value == '') field_value = null;
+            if (field_value == undefined) field_value = null;
+            break;
         }
         return field_value;
+    };
+
+    airr.SchemaDefinition.prototype.resolve_curie = function(field, curie_value) {
+        if (!field) return null
+        if (curie_value == null) return null;
+        if (curie_value == '') return null;
+        var spec = this.spec(field);
+        if (!spec) return null;
+        if (!spec['x-airr']) return null;
+        if (!spec['x-airr']['ontology']) return null;
+
+        var cmap = airr.get_curie_map();
+        var iprov = airr.get_iri_providers();
+        var f = curie_value.split(':');
+        if (cmap[f[0]]) {
+            var p = cmap[f[0]]['default']['provider'];
+            var m = cmap[f[0]]['default']['map'];
+            if (p && m) {
+                var ontology = iprov['parameter'][f[0]][p]['ontology_id'];
+                var iri = cmap[f[0]]['map'][m]['iri_prefix'] + f[1];
+                var ols_api = iprov['provider']['OLS']['request']['url'];
+                ols_api = ols_api.replace('{ontology_id}', ontology);
+                ols_api = ols_api.replace('{iri}', iri);
+                return ols_api;
+            }
+        }
+        return null;
     };
 
     //
