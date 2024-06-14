@@ -26,6 +26,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Check test data matches the global test data files
+        run: diff -rc tests/data-tests ../../tests/data
+        shell: bash
+
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "testthat", "roxygen2", "devtools", "rcmdcheck"))
