@@ -313,6 +313,51 @@ module.exports = function(airr, schema) {
         return (obj);
     }
 
+    //
+    // Utility functions for supporting ADC queries
+    //
+
+    // Given a field in the query point syntax
+    // traverse the schema and return the field definition
+    airr.specForQueryField = function(schema, field) {
+        //console.log(JSON.stringify(schema, null, 2));
+        var content_properties = null;
+        if (field != undefined) {
+            var props = schema;
+
+            // traverse down the object schema hierarchy to find field definition
+            let objs = field.split('.');
+            for (let i = 0; i < objs.length; ++i) {
+                let p = objs[i];
+                if (props.type == 'array') {
+                    if (props.items.type == 'object') {
+                        props = props.items.properties[p];
+                    } else if (props.items['allOf'] != undefined) {
+                        var new_props = undefined;
+                        for (let j = 0; j < props.items['allOf'].length; ++j) {
+                            if (props.items['allOf'][j].properties != undefined)
+                                if (props.items['allOf'][j].properties[p] != undefined) {
+                                    new_props = props.items['allOf'][j].properties[p];
+                                    break;
+                                }
+                        }
+                        props = new_props;
+                    }
+                } else if (props.type == 'object') {
+                    props = props.properties[p];
+                } else props = undefined;
+                if (props == undefined) break;
+            }
+
+            // field definition must have type
+            if (props != undefined) {
+                if (props['type'] != undefined) {
+                    content_properties = props;
+                }
+            }
+        }
+        return content_properties;
+    }
 
     // Given a field, check if included in field set
     // Field sets include:
@@ -394,7 +439,7 @@ module.exports = function(airr, schema) {
                 break;
             default:
                 // unhandled schema structure
-                console.error('VDJServer ADC API INFO: Unhandled schema structure: ' + full_field);
+                console.error('airr-js internal error (airr.collectFields): Unhandled schema structure: ' + full_field);
                 break;
             }
         }
@@ -442,7 +487,7 @@ module.exports = function(airr, schema) {
                     obj = obj[path[p]];
                 } else if (obj[path[p]] != undefined) obj = obj[path[p]];
                 else if (p == path.length - 1) obj[path[p]] = null;
-                else console.error('VDJServer ADC API ERROR: Internal error (addFields) do not know how to handle path element: ' + p);
+                else console.error('airr-js internal error (airr.addFields): Unhandled path element: ' + p);
             }
         }
     };
