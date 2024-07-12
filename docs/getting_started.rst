@@ -44,9 +44,6 @@ Software tools and libraries
 Tutorials, examples and workflows
 ---------------------------------
 
-.. toctree::
-   :maxdepth: 1
-
-   examples/datarep_cmd_example
-   examples/api_analysis_example
-   examples/api_queries
+* `DataRep Command Example <examples/datarep_cmd_example>`_
+* `API Analysis Example <examples/api_analysis_example>`_
+* `API Queries <examples/api_queries>`_
