@@ -20,11 +20,13 @@
 # -- Imports ----------------------------------------------------------------
 
 import csv
+import datetime
 import os
 import sys
+from unittest.mock import MagicMock
+
 import yaml
 import yamlordereddictloader
-from unittest.mock import MagicMock
 
 # -- Python environment ----------------------------------------------------
 
@@ -89,7 +91,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'AIRR Standards'
-copyright = '2015-2023, AIRR Community'
+copyright = f'2015-{datetime.datetime.now().year}, AIRR Community'
 author = 'AIRR Community'
 
 # The name of the Pygments (syntax highlighting) style to use.
