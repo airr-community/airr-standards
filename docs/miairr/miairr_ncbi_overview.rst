@@ -17,9 +17,6 @@ MiAIRR-to-NCBI Implementation
 Introduction
 ============
 
-The MiAIRR standard
--------------------
-
 The MiAIRR standard (minimal information about adaptive immune receptor
 repertoires) is a minimal reporting standard for experiments using
 sequencing-based technologies to study adaptive immune receptors (e.g. T cell
