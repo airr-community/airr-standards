@@ -4,9 +4,6 @@
 Introduction to MiAIRR
 ======================
 
-Summary
-=======
-
 An early objective of the Adaptive Immune Receptor Repertoire (AIRR) Community
 was the development of metadata standards for AIRR sequencing dataset
 submissions. This effort was led by the `AIRR Community Minimal Standards
