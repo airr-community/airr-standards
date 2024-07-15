@@ -4,7 +4,7 @@
 MiAIRR Data Elements
 ======================
 
-The AIRR Community has agreed to six
+The AIRR Community has adopted six
 high-level data sets that will guide the publication, curation and
 sharing of AIRR-Seq data and metadata: Study and subject, sample
 collection, sample processing and sequencing, raw sequences, processing
