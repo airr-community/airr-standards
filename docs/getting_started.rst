@@ -2,7 +2,7 @@
 Getting Started
 =======================
 
-This website provides information and resources regarding
+This document provides information and resources regarding
 the AIRR Community Standards for the diverse community of immunology
 researchers, bioinformaticians, and software developers.
 
