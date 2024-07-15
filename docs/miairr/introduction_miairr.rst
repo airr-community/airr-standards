@@ -14,7 +14,7 @@ published in 2017 [Rubelt_2017]_. These data sets guide the publication,
 curation, and sharing of AIRR-Seq data and metadata: Study and subject, sample
 collection, sample processing and sequencing, raw sequences, processing of
 sequence data, and processed AIRR sequences. The detailed data elements within
-these sets are defined :ref:`here <MiAIRR_Elements>`
+these sets are defined in the section :ref:`MiAIRR Data Elements <MiAIRR_Elements>`
 (:download:`Download as TSV <../_downloads/AIRR_Minimal_Standard_Data_Elements.tsv>`).
 
 .. _`AIRR Community Minimal Standards Working Group`:
