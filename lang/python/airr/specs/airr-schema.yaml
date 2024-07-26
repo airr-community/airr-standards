@@ -1808,6 +1808,7 @@ Subject:
                 format: controlled_vocabulary
         age_min:
             type: number
+            minimum: 0
             description: Specific age or lower boundary of age range.
             title: Age minimum
             example: 60
@@ -1820,6 +1821,7 @@ Subject:
                 name: Age minimum
         age_max:
             type: number
+            minimum: 0
             description: >
                 Upper boundary of age range or equal to age_min for specific age.
                 This field should only be null if age_min is null.
@@ -2318,6 +2320,7 @@ CellProcessing:
                 name: Single-cell sort
         cell_number:
             type: integer
+            minimum: 0
             description: Total number of cells that went into the experiment
             title: Number of cells in experiment
             example: 1000000
@@ -2330,6 +2333,7 @@ CellProcessing:
                 name: Number of cells in experiment
         cells_per_reaction:
             type: integer
+            minimum: 0
             description: Number of cells for each biological replicate
             title: Number of cells per sequencing reaction
             example: 50000
@@ -2497,6 +2501,7 @@ NucleicAcidProcessing:
                 name: Target substrate quality
         template_amount:
             type: number
+            minimum: 0
             description: Amount of template that went into the process
             title: Template amount
             example: 1000
