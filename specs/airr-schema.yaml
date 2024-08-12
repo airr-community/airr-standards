@@ -2279,11 +2279,28 @@ Subject:
                 set: 1
                 subset: subject
                 name: Relation type
-        study_group_description:
+        study_group:
             type: string
             description: Designation of study arm to which the subject is assigned to
+            title: Study group
+            enum:
+                - Case
+                - Control
+                - Control (Healthy)
+            example: Case
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 1
+                subset: Subject
+                name: Study group
+                format: controlled_vocabulary
+        study_group_description:
+            type: string
+            description: Description of study arm to which the subject is assigned to
             title: Study group description
-            example: control
+            example: Healthy control (no T1D diagnosis at enrollment)
             x-airr:
                 miairr: important
                 nullable: true
@@ -2291,6 +2308,7 @@ Subject:
                 set: 1
                 subset: Subject
                 name: Study group description
+                
         diagnosis:
             type: array
             description: Diagnosis information for subject
