@@ -2279,6 +2279,18 @@ Subject:
                 set: 1
                 subset: subject
                 name: Relation type
+        study_group_description:
+            type: string
+            description: Designation of study arm to which the subject is assigned to
+            title: Study group description
+            example: control
+            x-airr:
+                miairr: important
+                nullable: true
+                adc-query-support: true
+                set: 1
+                subset: Subject
+                name: Study group description
         diagnosis:
             type: array
             description: Diagnosis information for subject
@@ -2304,18 +2316,18 @@ Diagnosis:
         - intervention
         - medical_history
     properties:
-        study_group_description:
+        diagnosis_description:
             type: string
-            description: Designation of study arm to which the subject is assigned to
-            title: Study group description
-            example: control
+            description: Description of the diagnosis event
+            title: Diagnosis description
+            example: Capture of T1D status at subject enrollment
             x-airr:
                 miairr: important
                 nullable: true
                 adc-query-support: true
                 set: 1
                 subset: diagnosis and intervention
-                name: Study group description
+                name: Diagnosis description
         diagnosis_timepoint:
             $ref: '#/TimePoint'
             description: Time point for the diagnosis
