@@ -2674,6 +2674,7 @@ SequencingRun:
                 name: Batch number
         total_reads_passing_qc_filter:
             type: integer
+            minimum: 0
             description: Number of usable reads for analysis
             title: Total reads passing QC filter
             example: 10365118
@@ -2816,6 +2817,7 @@ SequencingData:
                 format: controlled_vocabulary
         read_length:
             type: integer
+            minimum: 0
             description: Read length in bases for the first file in paired-read sequencing
             title: Forward read length
             example: 300
@@ -2858,6 +2860,7 @@ SequencingData:
                 format: controlled_vocabulary
         paired_read_length:
             type: integer
+            minimum: 0
             description: Read length in bases for the second file in paired-read sequencing
             title: Paired read length
             example: 300
@@ -2878,6 +2881,7 @@ SequencingData:
                 adc-query-support: true
         index_length:
             type: integer
+            minimum: 0
             description: Read length in bases for the index file
             title: Index read length
             example: 8
