@@ -5175,11 +5175,11 @@ Reactivity:
                 adc-query-support: true
         reactivity_ref:
             type: array
-            description: Array of cross references to external receptor/reactivity records 
-            title: Receptor/reactivity cross-references
+            description: Array of cross references to external epitope reactivity records 
+            title: Epitope reactivity cross-references
             items:
                 type: string
-            example: ["IEDB_RECEPTOR:10"]
+            example: ["IEDB_EPITOPE:58560"]
             x-airr:
                 nullable: true
                 adc-query-support: true
