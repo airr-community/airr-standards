@@ -5135,31 +5135,24 @@ Reactivity:
                 adc-query-support: true
         reactivity_method:
             type: string
-            enum:
-                - native_protein
-                - MHC_peptide_multimer
-                - annotated
-                - inferred
             description: >
                 The methodology used to assess/classify reactivity. This should be either the assay utlizied in the experiment,
                 delineated as "annotated" if annotated from an external source (e.g. IEDB), or inferred if imputed using
-                a computational method.
+                a computational method. In future versions we anticipate this field being an enumerated type, and it is strongly
+                recommended that users utilize one of the following keywords in this field if appropriate:
+                native_protein, MHC_peptide_multimer, annotated, inferred.
             x-airr:
-                format: controlled_vocabulary
                 nullable: false
                 adc-query-support: true
         reactivity_readout:
             type: string
-            enum:
-                - fluorescence_intensity
-                - barcode_count
-                - confidence
             description: >
                 Reactivity measurement read-out. For physical assays, this should describe what was measured. For inferred
-                and annotated methods this should indicate a confidence/quality level for the inference/annotation.
+                and annotated methods this should indicate a confidence/quality level for the inference/annotation. In future
+                versions we anticipate this field being an enumerated type, and it is strongly recommended that users utilize
+                one of the following keywords in this field if appropriate: fluorescence_intensity, barcode_count, confidence.
             example: barcode_count
             x-airr:
-                format: controlled_vocabulary
                 nullable: false
                 adc-query-support: true
         reactivity_value:
