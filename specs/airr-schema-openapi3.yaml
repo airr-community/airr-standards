@@ -4669,6 +4669,12 @@ Rearrangement:
             x-airr:
                 adc-query-support: true
                 identifier: true
+        reactivity_id:
+            type: string
+            description: Unique identifier of reactivity record associated with this Rearrangement.
+            x-airr:
+                nullable: true
+                identifier: true
         repertoire_id:
             type: string
             nullable: true
