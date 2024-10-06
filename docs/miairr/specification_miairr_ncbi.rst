@@ -3,8 +3,8 @@ MiAIRR-to-NCBI Specification
 ============================
 
 
-Outline of INSDC reporting procedure
-====================================
+Outline of GenBank/ENA submission reporting procedures
+======================================================
 
 **TODO: Outline the reporting procedure for data sets 1-4**
 
