@@ -131,6 +131,8 @@ these documents, as it is hosted by CERN and supports versioned DOIs
 (termed "concept" DOI). Users SHOULD use the existing ``AIRR`` tag_
 when submitting documents to increase the visiblity of their study.
 
+The DOI is added to the INSDC record header, see :ref:`INSDC_record_header`.
+
 .. _Zenodo: https://zenodo.org
 .. _tag: https://zenodo.org/communities/airr
 
@@ -146,6 +148,7 @@ the corresponding designations of ENA [ENA_MANUAL]_ are provided in
 parenthesis [11]_.
 
 
+.. _INSDC_record_header:
 Record header
 ~~~~~~~~~~~~~
 
