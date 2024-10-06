@@ -31,10 +31,12 @@ reporting procedures:
    be deposited in a general-purpose INSDC repository, using the record
    structure described below.
 
-INSDC records were originally designed to hold individual Sanger
-sequences. Therefore each record will contain a header with information
-largely identical between all records in an AIRR sequencing study.
-Records can be concatenated for uploading.
+The International Nucleotide Sequence Database Collaboration (INSDC) 
+records, used by repositories such as GenBank and ENA, were originally 
+designed to hold individual Sanger sequences. Therefore, each record 
+will contain a header with information largely identical between all 
+records in an AIRR sequencing study. Records can be concatenated for 
+uploading.
 
 The INSDC feature table (FT) [INSDC_FT]_ is a sequence annotation
 standard used within the INSDC records and assigns information to
