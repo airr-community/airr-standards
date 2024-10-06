@@ -121,6 +121,8 @@ Mapping of data sets 1-4 to BioProject/BioSample/SRA
 **TODO: Include item-by-item mapping** [NCBI_NBK47528]_
 
 
+.. _mapping_data_set_5:
+
 Mapping of data set 5 to a user-defined repository
 --------------------------------------------------
 
@@ -136,6 +138,8 @@ The DOI is added to the INSDC record header, see :ref:`INSDC_record_header`.
 .. _Zenodo: https://zenodo.org
 .. _tag: https://zenodo.org/communities/airr
 
+
+.. _mapping_data_set_6:
 
 Mapping of data set 6 to INSDC
 ------------------------------
