@@ -36,9 +36,9 @@ repositories consists of five sequential steps:
 3. Submit raw sequencing data to `NCBI SRA`_ using the `AIRR-SRA data
    templates`_.
 4. Generate a DOI for the protocol describing how raw sequencing data
-   were processed using `Zenodo`_.
+   were processed using `Zenodo`_. See :ref:`mapping_data_set_5`.
 5. Submit processed sequencing data with sequence-level annotations to
-   `GenBank`_ using AIRR feature tags.
+   `GenBank`_ using AIRR feature tags. See :ref:`mapping_data_set_6`.
 
 .. _`NCBI BioProject`: https://submit.ncbi.nlm.nih.gov/subs/bioproject/ 
 .. _`NCBI BioSample repository`: https://submit.ncbi.nlm.nih.gov/subs/biosample/

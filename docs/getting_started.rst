@@ -2,7 +2,7 @@
 Getting Started
 =======================
 
-This website provides information and resources regarding
+This document provides information and resources regarding
 the AIRR Community Standards for the diverse community of immunology
 researchers, bioinformaticians, and software developers.
 
@@ -44,9 +44,6 @@ Software tools and libraries
 Tutorials, examples and workflows
 ---------------------------------
 
-.. toctree::
-   :maxdepth: 1
-
-   examples/datarep_cmd_example
-   examples/api_analysis_example
-   examples/api_queries
+* `DataRep Command Example <examples/datarep_cmd_example>`_
+* `API Analysis Example <examples/api_analysis_example>`_
+* `API Queries <examples/api_queries>`_
