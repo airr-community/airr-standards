@@ -92,11 +92,17 @@ CURIEMap:
     IEDB_RECEPTOR:
         type: identifier
         default:
-            map: IEDB
-            provider: IEDB
+            map: IEDB_RECEPTOR
         map:
-            IEDB:
+            IEDB_RECEPTOR:
                 iri_prefix: "https://www.iedb.org/receptor/"
+    IEDB_EPITOPE:
+        type: identifier
+        default:
+            map: IEDB_EPITOPE
+        map:
+            IEDB_EPITOPE:
+                iri_prefix: "https://www.iedb.org/epitope/"
     MRO:
         type: ontology
         default:
@@ -176,10 +182,6 @@ InformationProvider:
             request:
                 url: "{iri}"
                 response: text/html
-        IEDB:
-            request:
-                url: "https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}"
-                response: application/json
         OLS:
             request:
                 url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
@@ -4672,9 +4674,18 @@ Rearrangement:
         reactivity_id:
             type: string
             nullable: true
-            description: Unique identifier of reactivity record associated with this Rearrangement.
+            description: >
+                Comma separated list of unique identifiers for Reactivity objects associated with this Rearrangement.
+                Order and length of reactivity_id and reactivity_ref are independent.
             x-airr:
                 identifier: true
+        reactivity_ref:
+            type: string
+            nullable: true
+            description: >
+                Comma separated list of CURIE identifiers of external reactivity records (e.g. IEDB_RECEPTOR:182992, https://www.iedb.org/receptor/182992) 
+                associated with this Rearrangement. Order and length of reactivity_id and reactivity_ref are independent.
+            example: "IEDB_RECEPTOR:182992, IEDB_RECEPTOR:36336"
         repertoire_id:
             type: string
             nullable: true
@@ -5336,7 +5347,7 @@ Reactivity:
                 or by T cell activation after presentation via an MHC molecule.
             title: Antigen
             example:
-                id: UniProt:P01308
+                id: UNIPROT:P01308
                 label: Insulin
             x-airr:
                 adc-query-support: true
