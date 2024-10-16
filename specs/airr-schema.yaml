@@ -4405,10 +4405,20 @@ Rearrangement:
                 identifier: true
         reactivity_id:
             type: string
-            description: Unique identifier of reactivity record associated with this Rearrangement.
+            description: >
+                Comma separated list of unique identifiers for Reactivity objects associated with this Rearrangement.
+                Order and length of reactivity_id and reactivity_ref are independent.
             x-airr:
                 nullable: true
                 identifier: true
+        reactivity_ref:
+            type: string
+            description: >
+                Comma separated list of CURIE identifiers of external reactivity records (e.g. IEDB_RECEPTOR:182992, https://www.iedb.org/receptor/182992) 
+                associated with this Rearrangement. Order and length of reactivity_id and reactivity_ref are independent.
+            example: "IEDB_RECEPTOR:182992, IEDB_RECEPTOR:36336"
+            x-airr:
+                nullable: true
         sample_processing_id:
             type: string
             description: >
