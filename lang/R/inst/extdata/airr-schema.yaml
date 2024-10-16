@@ -5042,7 +5042,7 @@ Reactivity:
                 or by T cell activation after presentation via an MHC molecule.
             title: Antigen
             example:
-                id: UniProt:P01308
+                id: UNIPROT:P01308
                 label: Insulin
             x-airr:
                 nullable: false
