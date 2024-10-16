@@ -140,8 +140,64 @@ module.exports = function(airr) {
         return airr.read_airr(filename, true);
     }
 
-    airr.write_airr = function(file) {
-        return null;
+    airr.write_airr = function(filename, data, format=null, info=null, validate=false, model=true, debug=false, check_nullable=true) {
+        // data parameter should be an object
+        if (typeof data != 'object') {
+            let msg = 'Data parameter is not an object.';
+            if (debug) console.error(msg)
+            throw new Error(msg);
+        }
+
+        var DataFileSchema = new airr.SchemaDefinition('DataFile');
+
+        // Validate if requested
+        if (validate) {
+            if (debug) console.log('Validating:', filename);
+            try {
+                let schema = new airr.SchemaDefinition('DataFile');
+                schema.validate_object(data);
+            } catch (err) {
+                if (debug) console.error(filename, 'failed validation.');
+                throw new ValidationError(err);
+            }
+        }
+
+        // output object
+        var md = {}
+        md['Info'] = info
+        if (!info) {
+            md['Info'] = DataFileSchema.info.copy()
+            md['Info']['title'] = 'AIRR Data File'
+            md['Info']['description'] = 'AIRR Data File written by AIRR Standards JavaScript Library'
+        }
+
+        // Loop through each entry and add them to the output object
+        for (let k in data) {
+            if (k == 'Info') continue;
+            if (k == 'DataFile') continue;
+            if (!data[k]) continue;
+            if (model && !DataFileSchema.properties[k]) {
+                if (debug) console.error('Skipping non-DataFile object:', k);
+                continue
+            }
+            md[k] = data[k];
+        }
+
+        // Determine file type from extension and use appropriate format
+        var ext = filename.split('.').pop().toLowerCase();
+        if (ext == 'yaml' || ext == 'yml') {
+            const yamlString = yaml.dump(data);
+            fs.writeFileSync(filename, yamlString);
+        } else if (ext == 'json') {
+            const jsonData = JSON.stringify(data, null, 2);
+            fs.writeFileSync(filename, jsonData);
+        } else {
+            let msg = 'Unknown file type:' + ext + '. Supported file extensions are "yaml", "yml" or "json"';
+            if (debug) console.error(msg);
+            throw new Error(msg);
+        }
+
+        return true;
     }
 
     return airr;

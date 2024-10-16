@@ -9,6 +9,7 @@
 
 var path = require('path');
 var airr = require("../airr")
+var jsonDiff = require('json-diff');
 
 // Paths
 var data_path = path.resolve(__dirname, 'data');
@@ -27,7 +28,8 @@ var combined_json = path.resolve(data_path, 'good_combined_airr.json')
 
 // Output data
 //var output_rep = os.path.join(data_path, 'output_rep.json')
-//var output_good = os.path.join(data_path, 'output_data.json')
+var output_good = path.resolve(data_path, 'output_data.json')
+var output_good_yaml = path.resolve(data_path, 'output_data.yaml')
 //var output_blank = os.path.join(data_path, 'output_blank.json')
 
 test('load schema', async () => {
@@ -43,4 +45,28 @@ test('load good airr yaml', () => {
 test('load good rearrangement tsv', () => {
   const data = airr.load_rearrangement(rearrangement_good, true);
   expect(data).not.toBeNull();
+});
+
+test('write good AIRR DataFile', () => {
+    const repertoire_data = airr.read_airr(rep_good, validate=true, debug=true);
+    expect(repertoire_data).not.toBeNull();
+    const germline_data = airr.read_airr(germline_good, validate=true, debug=true);
+    expect(germline_data).not.toBeNull();
+    const genotype_data = airr.read_airr(genotype_good, validate=true, debug=true);
+    expect(genotype_data).not.toBeNull();
+
+    // combine together and write
+    let obj = {}
+    obj['Repertoire'] = repertoire_data['Repertoire'];
+    obj['GermlineSet'] = germline_data['GermlineSet'];
+    obj['GenotypeSet'] = genotype_data['GenotypeSet'];
+    airr.write_airr(output_good, obj, validate=true, debug=true);
+
+    // verify we can read it
+    let data = airr.read_airr(output_good, validate=true, debug=true);
+
+    // is the data identical?
+    delete data['Info'];
+    let d = jsonDiff.diff(obj, data);
+    expect(d).toBeUndefined();
 });
