@@ -111,6 +111,10 @@ module.exports = function(airr) {
             var writable = fs.createWriteStream(filename);
             if (is_gz) writable.pipe(zlib.createGunzip());
 
+            writable.on('finish', function() {
+                return resolve();
+            });
+
             // write header
             writable.write(field_names.join('\t'));
             writable.write('\n');
@@ -134,7 +138,7 @@ module.exports = function(airr) {
             }
 
             writable.end();
-            return resolve();
+//            return resolve();
         });
     }
 
