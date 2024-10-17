@@ -9,14 +9,14 @@ on:
   pull_request:
     branches: [ "master" ]
 
-defaults:
-  run:
-    working-directory: lang/js
-
 jobs:
   build:
 
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: lang/js
 
     strategy:
       matrix:
@@ -29,6 +29,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
+#        cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
