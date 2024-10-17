@@ -94,7 +94,7 @@ test('derive good AIRR Rearrangement TSV', async () => {
 test('validate good rearrangement tsv', async () => {
     let isValid = true;
     const data = await airr.validate_rearrangement(rearrangement_good, true)
-        .catch(function(error) { console.error(error); isValid = false; });
+        .catch(function(error) { isValid = false; });
     expect(data).not.toBeNull();
     expect(isValid).toBe(true);
 });
@@ -102,7 +102,7 @@ test('validate good rearrangement tsv', async () => {
 test('validate bad rearrangement tsv', async () => {
     let isValid = true;
     const data = await airr.validate_rearrangement(rearrangement_bad, true)
-        .catch(function(error) { console.error(error); isValid = false; });
+        .catch(function(error) { isValid = false; });
     expect(isValid).toBe(false);
 });
 
