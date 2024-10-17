@@ -41,7 +41,7 @@ def read_rearrangement(filename, validate=False, debug=False):
       airr.io.RearrangementReader: iterable reader class.
     """
     if filename.endswith(".gz"):
-        handle = gzip.open(filename, 'r')
+        handle = gzip.open(filename, 'rt')
     else:
         handle = open(filename, 'r')
         
@@ -76,7 +76,10 @@ def derive_rearrangement(out_filename, in_filename, fields=None, debug=False):
     Returns:
       airr.io.RearrangementWriter: open writer class.
     """
-    reader = RearrangementReader(open(in_filename, 'r'))
+    if in_filename.endswith(".gz"):
+        reader = RearrangementReader(gzip.open(in_filename, 'rt'))
+    else:
+        reader = RearrangementReader(open(in_filename, 'r'))
     in_fields = list(reader.fields)
     if fields is not None:
         in_fields.extend([f for f in fields if f not in in_fields])
