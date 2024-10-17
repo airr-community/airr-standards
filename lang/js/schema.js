@@ -243,7 +243,14 @@ module.exports = function(airr, schema) {
     //
 
     airr.SchemaDefinition.prototype.validate_header = function(header) {
-        return false;
+        var missing_fields = [];
+
+        // Check required fields
+        for (let f in this.required) {
+            if (!header.includes(this.required[f])) return missing_fields.push(this.required[f]);
+        }
+        if (missing_fields.length == 0) return null;
+        else return missing_fields;
     }
 
     airr.SchemaDefinition.prototype.validate_row = function(row) {

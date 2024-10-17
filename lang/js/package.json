@@ -1,6 +1,6 @@
 {
   "name": "airr-js",
-  "version": "1.4.1",
+  "version": "1.5.1",
   "description": "AIRR Community Data Representation Standard reference library for antibody and TCR sequencing data.",
   "author": [
     {
@@ -27,7 +27,8 @@
     "ajv-formats": "^2.1.1",
     "allof-merge": "^0.6.5",
     "csv-parser": "^2.3.2",
-    "js-yaml": "^3.10.0"
+    "js-yaml": "^3.10.0",
+    "json-diff": "^1.0.6"
   },
   "devDependencies": {
     "eslint": "^7.9.0",

@@ -42,6 +42,9 @@ like webpack to provide an alternative entry point, and browser code can import 
 
     import { airr } from 'airr-js';
 
+The read and write functions for AIRR Rearrangement TSV files support gzip compressed
+data. File names that end with ``.gz`` extension will automatically be uncompressed
+when reading or automatically compressed when writing.
 
 Create Blank Template Schema Objects (browser, nodejs)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -105,10 +108,11 @@ there is no streaming interface::
 Reading AIRR Rearrangement TSV files (nodejs)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``airr-js`` package contains functions to read and write AIRR Rearrangement
+The ``airr-js`` package contains functions to read AIRR Rearrangement
 TSV files as either a stream or the complete file. The streaming interface requires
 two callback functions to be provided; one for the header and another for each
-row as it is read::
+row as it is read. The callback functions can be synchronous or they can
+return a Promise::
 
     var airr = require('airr-js');
     await airr.load_schema();
@@ -125,4 +129,34 @@ row as it is read::
 Writing AIRR Rearrangement TSV files (nodejs)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To be implemented. These write functions will been implemented in a patch release.
+The ``airr-js`` package contains functions to write AIRR Rearrangement
+TSV files as either a stream or the complete file. The streaming interface requires
+a callback function which provides the data for each row or returns ``null`` to indicate
+no more data. The callback function can be synchronous or it can return a Promise::
+
+    var airr = require('airr-js');
+    await airr.load_schema();
+
+    // read some data
+    var data = await airr.load_rearrangement('input.airr.tsv');
+
+    // write file completely
+    var data = await airr.load_rearrangement(data, 'output.airr.tsv');
+
+    // for streaming, need a callback function to provide the row data
+    var idx = 0;
+    var row_callback = function(fields) {
+        if (idx >= data.length) return null;
+        else return data[idx++];
+    };
+    // write the file
+    await airr.create_rearrangement('output.airr.tsv', row_callback)
+
+    // callback function which returns a promise
+    var row_callback = function(fields) {
+        return new Promise(function(resolve, reject) {
+            // acquire some data asynchronously, e.g. from a database
+            row = await read_from_database();
+            return resolve(row);
+        });
+    };
