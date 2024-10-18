@@ -17,13 +17,21 @@ basename = lambda f: os.path.splitext(os.path.basename(f))[0]
 spec_files = {basename(f): f for f in glob('specs/airr-schema.yaml')}
 v3spec_files = {basename(f): f for f in glob('specs/airr-schema-openapi3.yaml')}
 py_files = {basename(f): f for f in glob('lang/python/airr/specs/airr-schema.yaml')}
+py_v3_files = {basename(f): f for f in glob('lang/python/airr/specs/airr-schema-openapi3.yaml')}
 r_files = {basename(f): f for f in glob('lang/R/inst/extdata/airr-schema.yaml')}
+r_v3_files = {basename(f): f for f in glob('lang/R/inst/extdata/airr-schema-openapi3.yaml')}
 
 # Check python package specs
 if set(spec_files.keys()) != set(py_files.keys()):
     for spec in set(spec_files.keys()) - set(py_files.keys()):
         print('{} missing from python package'.format(spec), file=sys.stderr)
     for spec in set(py_files.keys()) - set(spec_files.keys()):
+        print('{} found in python package but missing from specs/'.format(spec), file=sys.stderr)
+    sys.exit(1)
+if set(v3spec_files.keys()) != set(py_v3_files.keys()):
+    for spec in set(v3spec_files.keys()) - set(py_v3_files.keys()):
+        print('{} missing from python package'.format(spec), file=sys.stderr)
+    for spec in set(py_v3_files.keys()) - set(v3spec_files.keys()):
         print('{} found in python package but missing from specs/'.format(spec), file=sys.stderr)
     sys.exit(1)
 
@@ -34,7 +42,36 @@ if set(spec_files.keys()) != set(r_files.keys()):
     for spec in set(r_files.keys()) - set(spec_files.keys()):
         print('{} found in R package but missing from specs/'.format(spec), file=sys.stderr)
     sys.exit(1)
+if set(v3spec_files.keys()) != set(r_v3_files.keys()):
+    for spec in set(v3spec_files.keys()) - set(r_v3_files.keys()):
+        print('{} missing from R package'.format(spec), file=sys.stderr)
+    for spec in set(r_v3_files.keys()) - set(v3spec_files.keys()):
+        print('{} found in R package but missing from specs/'.format(spec), file=sys.stderr)
+    sys.exit(1)
 
+# V3 spec against lang
+for spec_name in v3spec_files:
+    # check equality of specs
+    with open(v3spec_files[spec_name], 'r') as ip:
+        gold_spec = yaml.safe_load(ip)
+    with open(py_v3_files[spec_name], 'r') as ip:
+        py_spec = yaml.safe_load(ip)
+    with open(r_v3_files[spec_name], 'r') as ip:
+        r_spec = yaml.safe_load(ip)
+
+    # Check python package
+    if jsondiff.diff(gold_spec, py_spec) != {}:
+        print('{} openapi v3 spec is different from python version'.format(spec_name), file=sys.stderr)
+        print(jsondiff.diff(gold_spec, py_spec, syntax='explicit'), file=sys.stderr)
+        sys.exit(1)
+
+    # Check R package
+    if jsondiff.diff(gold_spec, r_spec) != {}:
+        print('{} openapi v3 spec is different from R version'.format(spec_name), file=sys.stderr)
+        print(jsondiff.diff(gold_spec, r_spec), file=sys.stderr)
+        sys.exit(1)
+
+# V2 spec against lang
 for spec_name in spec_files:
     # check equality of specs
     with open(spec_files[spec_name], 'r') as ip:
@@ -46,13 +83,13 @@ for spec_name in spec_files:
 
     # Check python package
     if jsondiff.diff(gold_spec, py_spec) != {}:
-        print('{} spec is different from python version'.format(spec_name), file=sys.stderr)
+        print('{} openapi v2 spec is different from python version'.format(spec_name), file=sys.stderr)
         print(jsondiff.diff(gold_spec, py_spec, syntax='explicit'), file=sys.stderr)
         sys.exit(1)
 
     # Check R package
     if jsondiff.diff(gold_spec, r_spec) != {}:
-        print('{} spec is different from R version'.format(spec_name), file=sys.stderr)
+        print('{} openapi v2 spec is different from R version'.format(spec_name), file=sys.stderr)
         print(jsondiff.diff(gold_spec, r_spec), file=sys.stderr)
         sys.exit(1)
 
