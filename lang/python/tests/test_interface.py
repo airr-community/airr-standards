@@ -23,6 +23,7 @@ class TestInferface(unittest.TestCase):
 
         # Test data
         self.rearrangement_good = os.path.join(data_path, 'good_rearrangement.tsv')
+        self.rearrangement_good_gz = os.path.join(data_path, 'good_rearrangement.tsv.gz')
         self.rearrangement_bad = os.path.join(data_path, 'bad_rearrangement.tsv')
         self.rep_good = os.path.join(data_path, 'good_repertoire.yaml')
         self.rep_bad = os.path.join(data_path, 'bad_repertoire.yaml')
@@ -58,6 +59,24 @@ class TestInferface(unittest.TestCase):
         # Bad data
         result = airr.load_rearrangement(self.rearrangement_bad)
         self.assertTupleEqual(result.shape, self.shape_bad, 'load(): bad data failed')
+
+    # @unittest.skip('-> read_rearrangement(): skipped\n')
+    def test_read_rearrangement(self):
+        # Good data
+        result = []
+        reader = airr.read_rearrangement(self.rearrangement_good)
+        for row in reader:
+            result.append(row)
+        reader.close()
+        self.assertTrue(len(result) == self.shape_good[0], 'read_rearrangement(): good data failed')
+
+        # Good data, gzip
+        result = []
+        reader = airr.read_rearrangement(self.rearrangement_good_gz)
+        for row in reader:
+            result.append(row)
+        reader.close()
+        self.assertTrue(len(result) == self.shape_good[0], 'read_rearrangement(): good data (gzip) failed')
 
     # @unittest.skip('-> repertoire_template(): skipped\n')
     def test_repertoire_template(self):
