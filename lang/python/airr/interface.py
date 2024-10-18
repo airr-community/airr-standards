@@ -41,7 +41,7 @@ def read_rearrangement(filename, validate=False, debug=False):
       airr.io.RearrangementReader: iterable reader class.
     """
     if filename.endswith(".gz"):
-        handle = gzip.open(filename, 'r')
+        handle = gzip.open(filename, 'rt')
     else:
         handle = open(filename, 'r')
         
