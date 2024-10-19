@@ -1,17 +1,41 @@
 {
     "GermlineSet": [{
         "germline_set_id": "OGRDB:G00007",
-        "author": "William Lees",
-        "lab_name": "",
-        "lab_address": "Birkbeck College, University of London, Malet Street, London",
-        "acknowledgements": [],
+        "acknowledgements": [
+            {
+                "contributor_id": "1",
+                "name": "William Lees",
+                "orcid_id": {
+                    "id": "ORCID:0000-0001-9834-6840",
+                    "label": "William Lees"
+                },
+                "affiliation": {
+                    "id": "ROR:02mb95055",
+                    "label": "Birkbeck, University of London"
+                },
+                "affiliation_department":"",
+                "contributions": [
+                    {
+                        "role": "investigation",
+                        "degree": null
+                    },
+                    {
+                        "role": "data curation",
+                        "degree": null
+                    }
+                ]
+            }
+        ],
         "release_version": 1,
         "release_description": "",
         "release_date": "2021-11-24",
         "germline_set_name": "CAST IGH",
         "germline_set_ref": "OGRDB:G00007.1",
-        "pub_ids": "",
-        "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
+        "pub_ids": [""],
+        "species": {
+            "id": "NCBITAXON:10090",
+            "label": "Mus musculus"
+        },
         "species_subgroup": "CAST_EiJ",
         "species_subgroup_type": "strain",
         "locus": "IGH",
@@ -19,15 +43,37 @@
             {
                 "allele_description_id": "OGRDB:A00301",
                 "allele_description_ref": "OGRDB:Mouse_IGH:IGHV-2DBF",
-                "maintainer": "William Lees",
-                "acknowledgements": [],
-                "lab_address": "Birkbeck College, University of London, Malet Street, London",
+                "acknowledgements":  [
+                    {
+                        "contributor_id": "1",
+                        "name": "William Lees",
+                        "orcid_id": {
+                            "id": "ORCID:0000-0001-9834-6840",
+                            "label": "William Lees"
+                        },
+                        "affiliation": {
+                            "id": "ROR:02mb95055",
+                            "label": "Birkbeck, University of London"
+                        },
+                        "affiliation_department":"",
+                        "contributions": [
+                            {
+                                "role": "investigation",
+                                "degree": null
+                            },
+                            {
+                                "role": "data curation",
+                                "degree": null
+                            }
+                        ]
+                    }
+                ],
                 "release_version": 1,
-                "release_date": "24-Nov-2021",
+                "release_date": "2021-11-24",
                 "release_description": "First release",
                 "label": "IGHV-2DBF",
-                "sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGATGGTAGTGGCACCTACTATCTGGACTCCTTGAAGAGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
-                "coding_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                "sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                "coding_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
                 "aliases": [
                     "watson_et_al:CAST_EiJ_IGHV5-3"
                 ],
@@ -35,8 +81,11 @@
                 "chromosome": null,
                 "sequence_type": "V",
                 "functional": true,
-                "inference_type": "Rearranged only",
-                "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
+                "inference_type": "rearranged_only",
+                "species": {
+                    "id": "NCBITAXON:10090",
+                    "label": "Mus musculus"
+                },
                 "species_subgroup": "CAST_EiJ",
                 "species_subgroup_type": "strain",
                 "status": "active",
@@ -57,18 +106,20 @@
                     {
                         "sequence_delineation_id": "1",
                         "delineation_scheme": "IMGT",
+                        "aligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                        "unaligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
                         "fwr1_start": 1,
-                        "fwr1_end": 78,
-                        "cdr1_start": 79,
-                        "cdr1_end": 114,
-                        "fwr2_start": 115,
-                        "fwr2_end": 165,
-                        "cdr2_start": 166,
-                        "cdr2_end": 195,
-                        "fwr3_start": 196,
-                        "fwr3_end": 312,
-                        "cdr3_start": 313,
-                        "alignment": [
+                        "fwr1_end": 75,
+                        "cdr1_start": 76,
+                        "cdr1_end": 110,
+                        "fwr2_start": 111,
+                        "fwr2_end": 150,
+                        "cdr2_start": 151,
+                        "cdr2_end": 160,
+                        "fwr3_start": 161,
+                        "fwr3_end": 294,
+                        "cdr3_start": 295,
+                        "alignment_labels": [
                             "1",
                             "2",
                             "3",
@@ -185,15 +236,37 @@
             {
                 "allele_description_id": "OGRDB:A00314",
                 "allele_description_ref": "OGRDB:Mouse_IGH:IGHV-2ETO",
-                "maintainer": "William Lees",
-                "acknowledgements": [],
-                "lab_address": "Birkbeck College, University of London, Malet Street, London",
+                "acknowledgements":  [
+                    {
+                        "contributor_id": "1",
+                        "name": "William Lees",
+                        "orcid_id": {
+                            "id": "ORCID:0000-0001-9834-6840",
+                            "label": "William Lees"
+                        },
+                        "affiliation": {
+                            "id": "ROR:02mb95055",
+                            "label": "Birkbeck, University of London"
+                        },
+                        "affiliation_department":"",
+                        "contributions": [
+                            {
+                                "role": "investigation",
+                                "degree": null
+                            },
+                            {
+                                "role": "data curation",
+                                "degree": null
+                            }
+                        ]
+                    }
+                ],
                 "release_version": 1,
-                "release_date": "24-Nov-2021",
+                "release_date": "2021-11-24",
                 "release_description": "First release",
                 "label": "IGHV-2ETO",
                 "sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
-                "coding_sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCT...GGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGC......ACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGAT.........GATGATAAGTACTATAACCCATCCCTGAAG...AGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
+                "coding_sequence": "CAAGTTACTCTAAAAGAGTCTGGCCCTGGGATATTGAAGCCCTCACAGACCCTCAGTCTGACTTGTTCTTTCTCTGGGTTTTCACTGAGCACTACTAATATGGGTGTAGGCTGGATTCGTCAGCCTTCAGGGAAGGGTCTGGAGTGGCTGGCACACATTTGGTGGGATGATGATAAGTACTATAACCCATCCCTGAAGAGCCGGCTAACAATCTCCAAGGATACCTCCAGAAACCAGGTATTCCTCAAGATCACCAGTGTGGACACTGCAGATACTGCCACTTACTACTGTGCTC",
                 "aliases": [
                     "watson_et_al:CAST_EiJ_IGHV8-2"
                 ],
@@ -201,8 +274,11 @@
                 "chromosome": null,
                 "sequence_type": "V",
                 "functional": true,
-                "inference_type": "Rearranged only",
-                "species": { "id": "NCBITAXON:10090", "label": "Mus musculus" },
+                "inference_type": "rearranged_only",
+                "species": {
+                    "id": "NCBITAXON:10090",
+                    "label": "Mus musculus"
+                },
                 "species_subgroup": "CAST_EiJ",
                 "species_subgroup_type": "strain",
                 "status": "active",
@@ -223,18 +299,20 @@
                     {
                         "sequence_delineation_id": "1",
                         "delineation_scheme": "IMGT",
+                        "aligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGA...GGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTC............AGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
+                        "unaligned_sequence": "GAAGTGAAGCTGGTGGAGTCTGAGGGAGGCTTAGTGCAGCCTGGAAGTTCCATGAAACTCTCCTGCACAGCCTCTGGATTCACTTTCAGTGACTATTACATGGCTTGGGTCCGCCAGGTTCCAGAAAAGGGTCTAGAATGGGTTGCAAACATTAATTATGAT......GGTAGTGGCACCTACTATCTGGACTCCTTGAAG...AGCCGTTTCATCATCTCGAGAGACAATGCAAAGAACATTCTATACCTGCAAATGAGCAGTCTGAAGTCTGAGGACACAGCCACGTATTACTGTGCAA",
                         "fwr1_start": 1,
-                        "fwr1_end": 78,
-                        "cdr1_start": 79,
-                        "cdr1_end": 114,
-                        "fwr2_start": 115,
-                        "fwr2_end": 165,
-                        "cdr2_start": 166,
-                        "cdr2_end": 195,
-                        "fwr3_start": 196,
-                        "fwr3_end": 312,
-                        "cdr3_start": 313,
-                        "alignment": [
+                        "fwr1_end": 75,
+                        "cdr1_start": 76,
+                        "cdr1_end": 110,
+                        "fwr2_start": 111,
+                        "fwr2_end": 150,
+                        "cdr2_start": 151,
+                        "cdr2_end": 160,
+                        "fwr3_start": 161,
+                        "fwr3_end": 294,
+                        "cdr3_start": 295,
+                        "alignment_labels": [
                             "1",
                             "2",
                             "3",

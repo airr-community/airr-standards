@@ -61,11 +61,12 @@ Repertoire:
         id: NCBITAXON:9606
         label: Homo sapiens
       sex: female
-      age_min: 27
-      age_max: 27
-      age_unit:
-        id: UO:0000036
-        label: year
+      age:
+        min: 27
+        max: 27
+        unit:
+          id: UO:0000036
+          label: year
       age_event:
       ancestry_population:
         id:
@@ -80,6 +81,12 @@ Repertoire:
       link_type: twin
       diagnosis:
         - study_group_description:
+          diagnosis_timepoint:
+            label: Study enrollment
+            value: 60
+            unit:
+              id: UO:0000033
+              label: day
           disease_diagnosis:
             id:
             label:
@@ -135,6 +142,7 @@ Repertoire:
           id: CL:0000788
           label: naive B cell
         cell_phenotype: expression of CD20 and the absence of CD27
+        cell_label: naive B cell
         cell_species:
           id: NCBITAXON:9606
           label: Homo sapiens
@@ -158,10 +166,6 @@ Repertoire:
         anatomic_site:
         disease_state_sample:
         collection_time_point_relative:
-        collection_time_point_relative_unit:
-          id:
-          label:
-        collection_time_point_reference:
         collection_location:
           id:
           label:
@@ -173,9 +177,6 @@ Repertoire:
         cell_processing_protocol:
         template_quality:
         template_amount:
-        template_amount_unit:
-          id:
-          label:
         library_generation_method: RT(oligo-dT)+PCR
         library_generation_protocol:
         library_generation_kit_version:
@@ -260,11 +261,12 @@ Repertoire:
         id: NCBITAXON:9606
         label: Homo sapiens
       sex: female
-      age_min: 27
-      age_max: 27
-      age_unit:
-        id: UO:0000036
-        label: year
+      age:
+        min: 27
+        max: 27
+        unit:
+          id: UO:0000036
+          label: year
       age_event:
       ancestry_population:
         id:
@@ -279,6 +281,12 @@ Repertoire:
       link_type: twin
       diagnosis:
         - study_group_description:
+          diagnosis_timepoint:
+            label: Study enrollment
+            value: 60
+            unit:
+              id: UO:0000033
+              label: day
           disease_diagnosis:
             id:
             label:
@@ -300,6 +308,7 @@ Repertoire:
           id: CL:0000787
           label: memory B cell
         cell_phenotype: expression of CD20 and CD27
+        cell_label: memory B cell
         cell_species:
           id: NCBITAXON:9606
           label: Homo sapiens
@@ -323,10 +332,6 @@ Repertoire:
         anatomic_site:
         disease_state_sample:
         collection_time_point_relative:
-        collection_time_point_relative_unit:
-          id:
-          label:
-        collection_time_point_reference:
         collection_location:
           id:
           label:
@@ -338,9 +343,6 @@ Repertoire:
         cell_processing_protocol:
         template_quality:
         template_amount:
-        template_amount_unit:
-          id:
-          label:
         library_generation_method: RT(oligo-dT)+PCR
         library_generation_protocol:
         library_generation_kit_version:
@@ -425,11 +427,12 @@ Repertoire:
         id: NCBITAXON:9606
         label: Homo sapiens
       sex: female
-      age_min: 27
-      age_max: 27
-      age_unit:
-        id: UO:0000036
-        label: year
+      age:
+        min: 27
+        max: 27
+        unit:
+          id: UO:0000036
+          label: year
       age_event:
       ancestry_population:
         id:
@@ -444,6 +447,12 @@ Repertoire:
       link_type: twin
       diagnosis:
         - study_group_description:
+          diagnosis_timepoint:
+            label: Study enrollment
+            value: 60
+            unit:
+              id: UO:0000033
+              label: day
           disease_diagnosis:
             id:
             label:
@@ -465,6 +474,7 @@ Repertoire:
           id: CL:0000895
           label: naive thymus-derived CD4-positive, alpha-beta T cell
         cell_phenotype: expression of CD8 and absence of CD4 and CD45RO
+        cell_label: naive CD4 aB T cell
         cell_species:
           id: NCBITAXON:9606
           label: Homo sapiens
@@ -488,10 +498,6 @@ Repertoire:
         anatomic_site:
         disease_state_sample:
         collection_time_point_relative:
-        collection_time_point_relative_unit:
-          id:
-          label:
-        collection_time_point_reference:
         collection_location:
           id:
           label:
@@ -503,9 +509,6 @@ Repertoire:
         cell_processing_protocol:
         template_quality:
         template_amount:
-        template_amount_unit:
-          id:
-          label:
         library_generation_method: RT(oligo-dT)+PCR
         library_generation_protocol:
         library_generation_kit_version:

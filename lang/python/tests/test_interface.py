@@ -58,7 +58,8 @@ class TestInferface(unittest.TestCase):
 
         # Bad data
         result = airr.load_rearrangement(self.rearrangement_bad)
-        self.assertTupleEqual(result.shape, self.shape_bad, 'load(): bad data failed')
+        self.assertFalse(result, 'load(): bad data failed')
+        #self.assertTupleEqual(result.shape, self.shape_bad, 'load(): bad data failed')
 
     # @unittest.skip('-> read_rearrangement(): skipped\n')
     def test_read_rearrangement(self):

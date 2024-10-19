@@ -383,7 +383,7 @@ Repertoire:
       link_type: twin
       diagnosis:
         - study_group_description: null
-          diagnosis_timepoint:
+          diagnosis_timepoint: 
             label: Study enrollment
             value: 60
             unit:
