@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
 LABEL maintainer="AIRR Community"
 
@@ -8,6 +8,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
     python3-pip \
     python3-sphinx \
     python3-scipy \
+    python3-venv \
     libyaml-dev \
     r-base \
     r-base-dev \
@@ -20,6 +21,12 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
     libharfbuzz-dev libfribidi-dev \
     libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev \
     nano
+
+# Create a virtual environment
+RUN python3 -m venv /airr-venv
+
+# Activate the virtual environment
+ENV PATH="/airr-venv/bin:$PATH"
 
 RUN pip3 install \
     pandas \
