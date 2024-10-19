@@ -318,6 +318,8 @@ Attributes:
                 - ontology
                 - controlled_vocabulary
                 - physical_quantity
+                - time_point
+                - time_interval
                 - CURIE
         ontology:
             type: object
@@ -338,6 +340,138 @@ Attributes:
                         label:
                             type: string
                             description: Ontology name for the top node term
+
+
+# FileObject
+FileObject:
+    type: object
+    properties:
+        format:
+            type: string
+            description: The file format for the file (e.g. json, tsv).
+            nullable: true
+        compression:
+            type: string
+            description: The type of compression (if any) used for the file (e.g. zip, gz, bz2).
+            nullable: true
+        filename:
+            type: string
+            description: The name of the file
+            nullable: true
+        checksum:
+            type: string
+            description: MD5 checksum of the file.
+            nullable: true
+        version:
+            type: string
+            description: Version stamp for the file (if any).
+            nullable: true
+
+# AIRR DataSet specification
+#     An AIRR DataSet consists of tags for types of AIRR Schema Objects and a set of files that hold data in the AIRR format
+#     appropriate for that AIRR schema object.
+
+DataSet:
+    type: object
+    properties:
+        name:
+            type: string
+            description: A human readable name for the data set.
+            nullable: true
+        description:
+            type: string
+            description: A description of the data set.
+            nullable: true
+        repository_url:
+            type: string
+            description: The URL of the repository from which the data set came from (if the data came from a repository)
+            nullable: true
+        files:
+            type: object
+            description: A set of files based on data type, where the key for each object denotes the type of data and the accompanying array of files (and related file metadata) contain the data of that type. All top level AIRR objects (e.g. Repertoire, Rearrangement, Clone, Cell, Expression, Reactivity, Receptor, RepertoireGroup) are allowed. Custom data types are also permitted, so the manifest can include data that is outside of the AIRR specification.
+            nullable: true
+            properties:
+                Repertoire:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                Rearrangement:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                Clone:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                Cell:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                Expression:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                Reactivity:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                Receptor:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                GermlineSet:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                GenotypeSet:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                RepertoireGroup:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                ADCQuery:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+
+
+# AIRR Manifest specification.
+#     An AIRR Manifest contains metadata for a group of accompanying files that are part of a set or coherent unit.
+
+Manifest:
+    type: object
+    properties:
+        name:
+            type: string
+            description: A human readable name for the data manifest.
+            nullable: false
+        description:
+            type: string
+            description: A description of the purpose for this data manifest
+            nullable: true
+        created_at:
+            type: string
+            description: Time/data stamp when the dat manifest was created.
+            nullable: true
+        data_sets:
+            type: array
+            items:
+                $ref: '#/DataSet'
+            nullable: true
+
 
 # AIRR Data File
 #
@@ -400,7 +534,13 @@ DataFile:
             nullable: false
             description: List of genotype sets
             items:
-                $ref: '#/GenotypeSet'
+              $ref: '#/GenotypeSet'
+        Manifest:
+            type: array
+            nullable: false
+            description: List of data set manifests
+            items:
+              $ref: '#/Manifest'
 
 # AIRR Info object, should be similar to openapi
 # should we point to an openapi schema?
@@ -446,6 +586,10 @@ InfoObject:
                     type: string
                     nullable: true
 
+#
+# General objects
+#
+
 # A time point
 TimePoint:
     description: Time point at which an observation or other action was performed.
@@ -460,14 +604,14 @@ TimePoint:
                 adc-query-support: true
         value:
             type: number
-            nullable: true
+            nullable: false
             description: Value of the time point
             example: -5.0
             x-airr:
                 adc-query-support: true
         unit:
             $ref: '#/Ontology'
-            nullable: true
+            nullable: false
             description: Unit of the time point
             title: Unit of immunization schedule
             example:
@@ -482,9 +626,98 @@ TimePoint:
                         id: UO:0000003
                         label: time unit
 
-#
-# General objects
-#
+# A time range or interval
+TimeInterval:
+    description: Time range or interval for a measurement, observation or action.
+    type: object
+    properties:
+        min:
+            type: number
+            nullable: false
+            description: Lower/minimum value of the time interval
+            example: 5.0
+            x-airr:
+                adc-query-support: true
+        max:
+            type: number
+            nullable: false
+            description: Upper/maximum value of the time interval
+            example: 10.0
+            x-airr:
+                adc-query-support: true
+        unit:
+            $ref: '#/Ontology'
+            nullable: false
+            description: Unit of the time interval
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
+
+# A physical quantity
+PhysicalQuantity:
+    description: A physical quantity from a measurement or observation.
+    type: object
+    properties:
+        quantity:
+            type: number
+            nullable: false
+            description: Physical quantity
+            example: -5.0
+            x-airr:
+                adc-query-support: true
+        unit:
+            $ref: '#/Ontology'
+            nullable: false
+            description: Unit of physical quantity
+            example:
+                id: UO:0000024
+                label: nanogram
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000002
+                        label: physical quantity
+
+
+# A time quantity
+TimeQuantity:
+    description: A time quantity
+    type: object
+    properties:
+        quantity:
+            type: number
+            nullable: false
+            description: Time quantity
+            example: 30.0
+            x-airr:
+                adc-query-support: true
+        unit:
+            $ref: '#/Ontology'
+            nullable: false
+            description: Unit of time
+            example:
+                id: UO:0000033
+                label: day
+            x-airr:
+                adc-query-support: true
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: UO:0000003
+                        label: time unit
+
 
 # Contributor record to describe invididuals and their contribution to a data set
 #
@@ -1913,9 +2146,7 @@ Subject:
         - synthetic
         - species
         - sex
-        - age_min
-        - age_max
-        - age_unit
+        - age
         - age_event
         - ancestry_population
         - ethnicity
@@ -1999,52 +2230,30 @@ Subject:
                 subset: subject
                 name: Sex
                 format: controlled_vocabulary
-        age_min:
-            type: number
-            nullable: true
-            description: Specific age or lower boundary of age range.
-            title: Age minimum
-            example: 60
-            x-airr:
-                miairr: important
-                adc-query-support: true
-                set: 1
-                subset: subject
-                name: Age minimum
-        age_max:
-            type: number
+        age:
+            $ref: '#/TimeInterval'
             nullable: true
             description: >
-                Upper boundary of age range or equal to age_min for specific age.
-                This field should only be null if age_min is null.
-            title: Age maximum
-            example: 80
+                Age of subject expressed as a time interval. If singular time point then
+                min == max in the time interval.
+            examples:
+                - min: 50
+                  max: 50
+                  unit:
+                      id: UO:0000036
+                      label: year
+                - min: 5
+                  max: 10
+                  unit:
+                      id: UO:0000034
+                      label: week
             x-airr:
                 miairr: important
                 adc-query-support: true
                 set: 1
                 subset: subject
-                name: Age maximum
-        age_unit:
-            $ref: '#/Ontology'
-            nullable: true
-            description: Unit of age range
-            title: Age unit
-            example:
-                id: UO:0000036
-                label: year
-            x-airr:
-                miairr: important
-                adc-query-support: true
-                set: 1
-                subset: subject
-                name: Age unit
-                format: ontology
-                ontology:
-                    draft: false
-                    top_node:
-                        id: UO:0000003
-                        label: time unit
+                name: Age
+                format: time_interval
         age_event:
             type: string
             nullable: true
@@ -2060,16 +2269,30 @@ Subject:
                 set: 1
                 subset: subject
                 name: Age event
-        age:
-            type: string
+        age_min:
+            type: number
             nullable: true
             x-airr:
                 deprecated: true
-                deprecated-description: Split into two fields to specify as an age range.
+                deprecated-description: Combined into single age field.
                 deprecated-replaced-by:
-                    - age_min
-                    - age_max
-                    - age_unit
+                    - age
+        age_max:
+            type: number
+            nullable: true
+            x-airr:
+                deprecated: true
+                deprecated-description: Combined into single age field.
+                deprecated-replaced-by:
+                    - age
+        age_unit:
+            $ref: '#/Ontology'
+            nullable: true
+            x-airr:
+                deprecated: true
+                deprecated-description: Combined into single age field.
+                deprecated-replaced-by:
+                    - age
         ancestry_population:
             $ref: '#/Ontology'
             nullable: true
@@ -2207,6 +2430,25 @@ Diagnosis:
                 set: 1
                 subset: diagnosis and intervention
                 name: Study group description
+        diagnosis_timepoint:
+            $ref: '#/TimePoint'
+            nullable: true
+            description: Time point for the diagnosis
+            title: Diagnosis timepoint
+            example:
+                label: Study enrollment
+                value: 60
+                unit:
+                    id: UO:0000033
+                    label: day
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                set: 1
+                subset: diagnosis and intervention
+                name: Diagnosis timepoint
+                format: time_point
+
         disease_diagnosis:
             $ref: '#/Ontology'
             nullable: true
@@ -2228,11 +2470,15 @@ Diagnosis:
                         id: DOID:4
                         label: disease
         disease_length:
-            type: string
+            $ref: '#/TimeQuantity'
             nullable: true
             description: Time duration between initial diagnosis and current intervention
             title: Length of disease
-            example: 23 months
+            example:
+                quantity: 23
+                unit:
+                    id: UO:0000035
+                    label: month
             x-airr:
                 miairr: important
                 adc-query-support: true
@@ -2312,8 +2558,6 @@ Sample:
         - anatomic_site
         - disease_state_sample
         - collection_time_point_relative
-        - collection_time_point_relative_unit
-        - collection_time_point_reference
         - biomaterial_provider
     properties:
         sample_id:
@@ -2388,49 +2632,40 @@ Sample:
                 subset: sample
                 name: Disease state of sample
         collection_time_point_relative:
-            type: number
+            $ref: '#/TimePoint'
             nullable: true
-            description: Time point at which sample was taken, relative to `Collection time event`
+            description: Time point at which sample was taken, relative to `label` event
             title: Sample collection time
-            example: 14
+            example:
+                label: Primary vaccination
+                value: 14
+                unit:
+                    id: UO:0000033
+                    label: day
             x-airr:
                 miairr: important
                 adc-query-support: true
                 set: 2
                 subset: sample
                 name: Sample collection time
+                format: time_point
         collection_time_point_relative_unit:
             $ref: '#/Ontology'
             nullable: true
-            description: Unit of Sample collection time
-            title: Sample collection time unit
-            example:
-                id: UO:0000033
-                label: day
             x-airr:
-                miairr: important
-                adc-query-support: true
-                set: 2
-                subset: sample
-                name: Sample collection time unit
-                format: ontology
-                ontology:
-                    draft: false
-                    top_node:
-                        id: UO:0000003
-                        label: time unit
+                deprecated: true
+                deprecated-description: Field has been merged with collection_time_point_relative.
+                deprecated-replaced-by:
+                    - collection_time_point_relative
         collection_time_point_reference:
             type: string
             nullable: true
             description: Event in the study schedule to which `Sample collection time` relates to
-            title: Collection time event
-            example: Primary vaccination
             x-airr:
-                miairr: important
-                adc-query-support: true
-                set: 2
-                subset: sample
-                name: Collection time event
+                deprecated: true
+                deprecated-description: Field has been merged with collection_time_point_relative.
+                deprecated-replaced-by:
+                    - collection_time_point_relative
         collection_location:
             $ref: '#/Ontology'
             nullable: true
@@ -2513,7 +2748,8 @@ CellProcessing:
         cell_phenotype:
             type: string
             nullable: true
-            description: List of cellular markers and their expression levels used to isolate the cell population
+            description: >
+                List of cellular markers and their expression levels used to isolate the cell population.
             title: Cell subset phenotype
             example: CD19+ CD38+ CD27+ IgM- IgD-
             x-airr:
@@ -2522,6 +2758,20 @@ CellProcessing:
                 set: 3
                 subset: process (cell)
                 name: Cell subset phenotype
+        cell_label:
+            type: string
+            nullable: true
+            description: >
+                Free text cell type annotation. Primarily used for annotating cell types that are not 
+                provided in the Cell Ontology.
+            title: Cell annotation
+            example: age-associated B cell
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Cell annotation
         cell_species:
             $ref: '#/Ontology'
             nullable: true
@@ -2700,7 +2950,6 @@ NucleicAcidProcessing:
         - template_class
         - template_quality
         - template_amount
-        - template_amount_unit
         - library_generation_method
         - library_generation_protocol
         - library_generation_kit_version
@@ -2737,37 +2986,30 @@ NucleicAcidProcessing:
                 subset: process (nucleic acid)
                 name: Target substrate quality
         template_amount:
-            type: number
+            $ref: '#/PhysicalQuantity'
             nullable: true
             description: Amount of template that went into the process
             title: Template amount
-            example: 1000
+            example:
+                quantity: 1000
+                unit:
+                    id: UO:0000024
+                    label: nanogram
             x-airr:
                 miairr: important
                 adc-query-support: true
                 set: 3
                 subset: process (nucleic acid)
                 name: Template amount
+                format: physical_quantity
         template_amount_unit:
             $ref: '#/Ontology'
             nullable: true
-            description: Unit of template amount
-            title: Template amount time unit
-            example:
-                id: UO:0000024
-                label: nanogram
             x-airr:
-                miairr: important
-                adc-query-support: true
-                set: 3
-                subset: process (nucleic acid)
-                name: Template amount time unit
-                format: ontology
-                ontology:
-                    draft: false
-                    top_node:
-                        id: UO:0000002
-                        label: physical quantity
+                deprecated: true
+                deprecated-description: Field has been merged with template_amount.
+                deprecated-replaced-by:
+                    - template_amount
         library_generation_method:
             type: string
             enum:
@@ -4701,7 +4943,6 @@ Cell:
     type: object
     required:
         - cell_id
-        - rearrangements
         - repertoire_id
         - virtual_pairing
     properties:
@@ -4709,40 +4950,15 @@ Cell:
             type: string
             nullable: false
             description: >
-                Identifier defining the cell of origin for the query sequence.
+                Identifier for the Cell object. This identifier must be unique within 
+                a given study, but it is recommended that it be a universally unique record locator
+                to enable database applications.
             title: Cell index
-            example: W06_046_091
             x-airr:
                 identifier: true
                 miairr: defined
                 adc-query-support: true
                 name: Cell index
-        rearrangements:
-            type: array
-            nullable: true
-            description: >
-                Array of sequence identifiers defined for the Rearrangement object
-            title: Cell-associated rearrangements
-            items:
-                type: string
-            example: [id1, id2] #empty vs NULL?
-            x-airr:
-                miairr: defined
-                adc-query-support: true
-                name: Cell-associated rearrangements
-        receptors:
-            type: array
-            nullable: true
-            description: >
-                Array of receptor identifiers defined for the Receptor object
-            title: Cell-associated receptors
-            items:
-                type: string
-            example: [id1, id2] #empty vs NULL?
-            x-airr:
-                miairr: defined
-                adc-query-support: true
-                name: Cell-associated receptors
         repertoire_id:
             type: string
             nullable: true
@@ -4755,40 +4971,66 @@ Cell:
         data_processing_id:
             type: string
             nullable: true
-            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            description: Identifier of the data processing object in the repertoire metadata for this cell.
             title: Data processing for cell
             x-airr:
                 miairr: defined
                 adc-query-support: true
                 name: Data processing for cell
-        expression_study_method:
-            type: string
-            enum:
-                - flow_cytometry
-                - single-cell_transcriptome
-                - null
+        receptors:
+            type: array
             nullable: true
             description: >
-                Keyword describing the methodology used to assess expression. This values for this field MUST 
-                come from a controlled vocabulary.
+                Array of receptor identifiers defined for the Receptor objects associated with this cell
+            title: Cell-associated receptors
+            items:
+                type: string
+            example: [id1, id2]
             x-airr:
                 miairr: defined
                 adc-query-support: true
-        expression_raw_doi:
+                name: Cell-associated receptors
+        cell_subset:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Commonly-used designation of isolated cell population.
+            title: Cell subset
+            example:
+                id: CL:0000972
+                label: class switched memory B cell
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                name: Cell subset
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: CL:0000542
+                        label: lymphocyte
+        cell_phenotype:
             type: string
             nullable: true
             description: >
-                DOI of raw data set containing the current event
+                List of cellular markers and their expression levels used to isolate the cell population.
+            title: Cell subset phenotype
+            example: CD19+ CD38+ CD27+ IgM- IgD-
             x-airr:
                 miairr: defined
                 adc-query-support: true
-        expression_index:
+                name: Cell subset phenotype
+        cell_label:
             type: string
             nullable: true
             description: >
-                Index addressing the current event within the raw data set.
+                Free text cell type annotation. Primarily used for annotating cell types that are not 
+                provided in the Cell Ontology.
+            title: Cell annotation
+            example: age-associated B cell
             x-airr:
                 miairr: defined
+                adc-query-support: true
+                name: Cell annotation
         virtual_pairing:
             type: boolean
             nullable: true
@@ -4800,11 +5042,10 @@ Cell:
                 adc-query-support: true
                 name: Virtual pairing
 
-# The CellExpression object acts as a container to hold a single expression level measurement from
+# The Expression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
-# data_processing_id as cell_id is not guaranteed to be unique outside the data processing for
-# a single repertoire.
-CellExpression:
+# data_processing_id.
+Expression:
     type: object
     required:
         - expression_id
@@ -4818,7 +5059,9 @@ CellExpression:
         expression_id:
             type: string
             description: >
-                Identifier of this expression property measurement.
+                Identifier for the Expression object. This identifier must be unique within 
+                a given study, but it is recommended that it be a universally unique record locator
+                to enable database applications.
             title: Expression property measurement identifier
             nullable: false
             x-airr:
@@ -4848,7 +5091,7 @@ CellExpression:
                 name: Parental repertoire of cell
         data_processing_id:
             type: string
-            description: Identifier of the data processing object in the repertoire metadata for this clone.
+            description: Identifier of the data processing object in the repertoire metadata for this cell.
             title: Data processing for cell
             nullable: true
             x-airr:
@@ -4897,7 +5140,7 @@ CellExpression:
                 name: Property value
 
 
-# The Receptor object hold information about a receptor and its reactivity.
+# The Receptor object holds information about a receptor (immunoglobulin or TCR)
 #
 Receptor:
     type: object
@@ -4913,7 +5156,10 @@ Receptor:
         receptor_id:
             type: string
             nullable: false
-            description: ID of the current Receptor object, unique within the local repository.
+            description: >
+                Identifier for the Receptor object. This identifier must be unique within 
+                a given study, but it is recommended that it be a universally unique record locator
+                to enable database applications.
             title: Receptor ID
             example: TCR-MM-012345
             x-airr:
@@ -4937,6 +5183,7 @@ Receptor:
                 - TCR
             description: The top-level receptor type, either Immunoglobulin (Ig) or T Cell Receptor (TCR).
             x-airr:
+                format: controlled_vocabulary
                 adc-query-support: true
         receptor_variable_domain_1_aa:
             type: string
@@ -4959,6 +5206,7 @@ Receptor:
             description: Locus from which the variable domain in receptor_variable_domain_1_aa originates
             example: IGH
             x-airr:
+                format: controlled_vocabulary
                 adc-query-support: true
         receptor_variable_domain_2_aa:
             type: string
@@ -4983,6 +5231,7 @@ Receptor:
             description: Locus from which the variable domain in receptor_variable_domain_2_aa originates
             example: IGL
             x-airr:
+                format: controlled_vocabulary
                 adc-query-support: true
         receptor_ref:
             type: array
@@ -4994,17 +5243,12 @@ Receptor:
             example: ["IEDB_RECEPTOR:10"]
             x-airr:
                 adc-query-support: true
-        reactivity_measurements:
-            type: array
-            nullable: true
-            description: Records of reactivity measurement
-            items:
-                $ref: '#/ReceptorReactivity'
 
-
-ReceptorReactivity:
+Reactivity:
     type: object
     required:
+        - reactivity_id
+        - cell_id
         - ligand_type
         - antigen_type
         - antigen
@@ -5013,6 +5257,43 @@ ReceptorReactivity:
         - reactivity_value
         - reactivity_unit
     properties:
+        reactivity_id:
+            type: string
+            nullable: false
+            description: >
+                Identifier for the Reactivity object. This identifier must be unique within 
+                a given study, but it is recommended that it be a universally unique record locator
+                to enable database applications.
+            title: Reactivity ID
+            x-airr:
+                identifier: true
+                adc-query-support: true
+        cell_id:
+            type: string
+            nullable: false
+            description: >
+                Identifier of the Cell in the context of which the reactivity measurement was conducted.
+            title: Cell ID
+            x-airr:
+                adc-query-support: true
+        repertoire_id:
+            type: string
+            description: Identifier for the associated repertoire in study metadata.
+            title: Parental repertoire of cell
+            nullable: true
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Parental repertoire of cell
+        data_processing_id:
+            type: string
+            description: Identifier of the data processing object in the repertoire metadata for this cell.
+            title: Data processing for cell
+            nullable: true
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                name: Data processing for cell
         ligand_type:
             type: string
             nullable: false
@@ -5022,8 +5303,11 @@ ReceptorReactivity:
                 - protein
                 - peptide
                 - non-peptidic
-            description: Classification of ligand binding to receptor
+            description: Classification of ligand binding to the cell
             example: non-peptide
+            x-airr:
+                format: controlled_vocabulary
+                adc-query-support: true
         antigen_type:
             type: string
             nullable: false
@@ -5034,6 +5318,9 @@ ReceptorReactivity:
             description: >
                 The type of antigen before processing by the immune system.
             example: protein
+            x-airr:
+                format: controlled_vocabulary
+                adc-query-support: true
         antigen:
             $ref: '#/Ontology'
             nullable: false
@@ -5057,6 +5344,7 @@ ReceptorReactivity:
                 id: NCBITAXON:5843
                 label: Plasmodium falciparum NF54
             x-airr:
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: true
@@ -5071,6 +5359,14 @@ ReceptorReactivity:
             type: integer
             nullable: true
             description: End position of the peptide within the reference protein sequence
+        peptide_sequence_aa:
+            type: string
+            nullable: true
+            description: >
+              The actual peptide sequence against which the receptor reactivity was measured. This field should be
+              used as a convenience for antigens of antigen_type `protein` or `peptide`.
+            x-airr:
+                adc-query-support: true
         mhc_class:
             type: string
             nullable: true
@@ -5081,6 +5377,9 @@ ReceptorReactivity:
                 - null
             description: Class of MHC molecule, only present for MHC:x ligand types
             example: MHC-II
+            x-airr:
+                format: controlled_vocabulary
+                adc-query-support: true
         mhc_gene_1:
             $ref: '#/Ontology'
             nullable: true
@@ -5090,6 +5389,7 @@ ReceptorReactivity:
                 id: MRO:0000055
                 label: HLA-DRA
             x-airr:
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: true
@@ -5100,7 +5400,9 @@ ReceptorReactivity:
             type: string
             nullable: true
             description: Allele designation of the MHC alpha chain
-            example: HLA-DRA
+            example: HLA-DRA*01:01
+            x-airr:
+                adc-query-support: true
         mhc_gene_2:
             $ref: '#/Ontology'
             nullable: true
@@ -5110,6 +5412,7 @@ ReceptorReactivity:
                 id: MRO:0000057
                 label: HLA-DRB1
             x-airr:
+                adc-query-support: true
                 format: ontology
                 ontology:
                     draft: true
@@ -5122,35 +5425,40 @@ ReceptorReactivity:
             description: >
                 Allele designation of the MHC class II beta chain or the invariant beta2-microglobin chain
             example: HLA-DRB1*04:01
+            x-airr:
+                adc-query-support: true
         reactivity_method:
             type: string
             nullable: false
             enum:
-                - SPR
-                - ITC
-                - ELISA
-                - cytometry
-                - biological_activity
+                - native_protein
+                - MHC_peptide_multimer
             description: The methodology used to assess expression (assay implemented in experiment)
+            x-airr:
+                adc-query-support: true
+                format: controlled_vocabulary
         reactivity_readout:
             type: string
             nullable: false
             enum:
-                - binding_strength
-                - cytokine_release
-                - dissociation_constant_kd
-                - on_rate
-                - off_rate
-                - pathogen_inhibition
+                - fluorescence_intensity
+                - barcode_count
             description: Reactivity measurement read-out
-            example: cytokine release
+            example: barcode_count
+            x-airr:
+                adc-query-support: true
+                format: controlled_vocabulary
         reactivity_value:
             type: number
             nullable: false
             description: The absolute (processed) value of the measurement
-            example: 162.26
+            example: 162
+            x-airr:
+                adc-query-support: true
         reactivity_unit:
             type: string
             nullable: false
             description: The unit of the measurement
-            example: pg/ml
+            example: read count
+            x-airr:
+                adc-query-support: true

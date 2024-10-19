@@ -212,9 +212,25 @@ software. For all cases, you will want a local copy of the github repository.
 
   git clone https://github.com/airr-community/airr-standards.git
 
+A Makefile is provided to simplify tasks such as copying spec files to the lang
+directories, copying test data, running tests and checks, and building documentation.
+The default make target will display a help info for all targets.
+
+.. code-block:: bash
+
+  make
+
+If your local environment does not have the appropriate software, you can build
+and use the docker container. You will need python3, R and npm to run tests for
+all languages.
+
 If you will be working in a docker container, you can pull down the airr-standards
-image, which has all of the prerequisites installed, or you can use your own image.
-The airr-standards image provides a python3 environment.
+image from docker hub, which has all of the prerequisites installed,
+or you can build your own image. Note: automated builds are not performed on docker
+hub so the ``latest`` tag is often out of date. It is generally safe to build
+your own container from your local source.
+The airr-standards image installs the reference library for all languages and
+builds the documentation.
 
 .. code-block:: bash
 

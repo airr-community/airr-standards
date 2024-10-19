@@ -70,12 +70,14 @@
                     "label": "Homo sapiens"
                 },
                 "sex": "female",
-                "age_min": 27,
-                "age_max": 27,
-                "age_unit": {
-                    "id": "UO:0000036",
-                    "label": "year"
-                },
+                "age": {
+                    "min": 27,
+                    "max": 27,
+                    "unit": {
+                       "id": "UO:0000036",
+                       "label": "year"
+                    }
+        },
                 "age_event": null,
                 "ancestry_population": {
                     "id": null,
@@ -93,6 +95,14 @@
                 "diagnosis": [
                     {
                         "study_group_description": null,
+                        "diagnosis_timepoint": {
+			     "label": "Study enrollment",
+                             "value": 60,
+                             "unit": {
+                               "id": "UO:0000033",
+                               "label": "day"
+			     }
+			},
                         "disease_diagnosis": {
                             "id": null,
                             "label": null
@@ -179,6 +189,7 @@
                         "label": "naive B cell"
                     },
                     "cell_phenotype": "expression of CD20 and the absence of CD27",
+                    "cell_label": "naive B cell",
                     "cell_species": {
                         "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"
@@ -207,11 +218,6 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_relative_unit": {
-                        "id": null,
-                        "label": null
-                    },
-                    "collection_time_point_reference": null,
                     "collection_location": {
                         "id": null,
                         "label": null
@@ -224,10 +230,6 @@
                     "cell_processing_protocol": null,
                     "template_quality": null,
                     "template_amount": null,
-                    "template_amount_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "library_generation_method": "RT(oligo-dT)+PCR",
                     "library_generation_protocol": null,
                     "library_generation_kit_version": null,
@@ -326,11 +328,13 @@
                     "label": "Homo sapiens"
                 },
                 "sex": "female",
-                "age_min": 27,
-                "age_max": 27,
-                "age_unit": {
-                    "id": "UO:0000036",
-                    "label": "year"
+                "age": {
+                    "min": 27,
+                    "max": 27,
+                    "unit": {
+                       "id": "UO:0000036",
+                       "label": "year"
+                    }
                 },
                 "age_event": null,
                 "ancestry_population": {
@@ -349,6 +353,14 @@
                 "diagnosis": [
                     {
                         "study_group_description": null,
+                        "diagnosis_timepoint": {
+			     "label": "Study enrollment",
+                             "value": 60,
+                             "unit": {
+                               "id": "UO:0000033",
+                               "label": "day"
+			     }
+			},
                         "disease_diagnosis": {
                             "id": null,
                             "label": null
@@ -377,6 +389,7 @@
                         "label": "memory B cell"
                     },
                     "cell_phenotype": "expression of CD20 and CD27",
+                    "cell_label": "memory B cell",
                     "cell_species": {
                         "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"
@@ -405,11 +418,6 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_relative_unit": {
-                        "id": null,
-                        "label": null
-                    },
-                    "collection_time_point_reference": null,
                     "collection_location": {
                         "id": null,
                         "label": null
@@ -422,10 +430,6 @@
                     "cell_processing_protocol": null,
                     "template_quality": null,
                     "template_amount": null,
-                    "template_amount_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "library_generation_method": "RT(oligo-dT)+PCR",
                     "library_generation_protocol": null,
                     "library_generation_kit_version": null,
@@ -524,11 +528,13 @@
                     "label": "Homo sapiens"
                 },
                 "sex": "female",
-                "age_min": 27,
-                "age_max": 27,
-                "age_unit": {
-                    "id": "UO:0000036",
-                    "label": "year"
+                "age": {
+                    "min": 27,
+                    "max": 27,
+                    "unit": {
+                       "id": "UO:0000036",
+                       "label": "year"
+                    }
                 },
                 "age_event": null,
                 "ancestry_population": {
@@ -547,6 +553,14 @@
                 "diagnosis": [
                     {
                         "study_group_description": null,
+                        "diagnosis_timepoint": {
+			     "label": "Study enrollment",
+                             "value": 60,
+                             "unit": {
+                               "id": "UO:0000033",
+                               "label": "day"
+			     }
+			},
                         "disease_diagnosis": {
                             "id": null,
                             "label": null
@@ -575,6 +589,7 @@
                         "label": "naive thymus-derived CD4-positive, alpha-beta T cell"
                     },
                     "cell_phenotype": "expression of CD8 and absence of CD4 and CD45RO",
+                    "cell_label": "naive CD4 aB T cell",
                     "cell_species": {
                         "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"
@@ -603,11 +618,6 @@
                     "anatomic_site": null,
                     "disease_state_sample": null,
                     "collection_time_point_relative": null,
-                    "collection_time_point_relative_unit": {
-                        "id": null,
-                        "label": null
-                    },
-                    "collection_time_point_reference": null,
                     "collection_location": {
                         "id": null,
                         "label": null
@@ -620,10 +630,6 @@
                     "cell_processing_protocol": null,
                     "template_quality": null,
                     "template_amount": null,
-                    "template_amount_unit": {
-                        "id": null,
-                        "label": null
-                    },
                     "library_generation_method": "RT(oligo-dT)+PCR",
                     "library_generation_protocol": null,
                     "library_generation_kit_version": null,
