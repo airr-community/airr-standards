@@ -246,8 +246,8 @@ to this property). Therefore, the AIRR Schema uses annotation of the
 location of birth of an individual and the location where a given sample
 was taken as imperfect but at least operationalizable substitute.
 
-The respective properties ``Subject``.``location_birth`` and
-``Sample``.``collection_location`` are ontology controlled and expect
+The respective properties ``Subject.location_birth`` and
+``Sample.collection_location`` are ontology controlled and expect
 values that are geographic locations. The provided value SHOULD
 allow to resolve at least the country-level information of the annotated
 location. Higher granularity SHOULD only be provided, if this does not
