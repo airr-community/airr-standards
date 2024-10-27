@@ -175,7 +175,7 @@ experiments using PBMCs:
       tissue:
          label:"venous blood"
          id:"UBERON:0013756"
-      tissue_processing"Ficoll gradient"
+      tissue_processing:"Ficoll gradient"
       cell_subset:NULL
       cell_phenotype:NULL
 
