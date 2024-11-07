@@ -1677,7 +1677,6 @@ DeletedGene:
                 Chromosomal phasing indicator. Alleles with the same value are inferred to be located on the 
                 same chromosome.
 
-
 # List of MHCGenotypes describing a subject's genotype
 MHCGenotypeSet:
     type: object
@@ -4766,7 +4765,7 @@ Cell:
 
 # The Expression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
-# data_processing_id 
+# data_processing_id
 Expression:
     type: object
     required:
