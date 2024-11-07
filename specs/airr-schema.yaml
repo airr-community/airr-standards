@@ -90,11 +90,19 @@ CURIEMap:
     IEDB_RECEPTOR:
         type: identifier
         default:
-            map: IEDB
-            provider: IEDB
+            map: IEDB_RECEPTOR
+            provider: IEDB_RECEPTOR
         map:
-            IEDB:
+            IEDB_RECEPTOR:
                 iri_prefix: "https://www.iedb.org/receptor/"
+    IEDB_EPITOPE:
+        type: identifier
+        default:
+            map: IEDB_EPITOPE
+            provider: IEDB_EPITOPE
+        map:
+            IEDB_EPITOPE:
+                iri_prefix: "https://www.iedb.org/epitope/"
     MRO:
         type: ontology
         default:
@@ -174,9 +182,15 @@ InformationProvider:
             request:
                 url: "{iri}"
                 response: text/html
-        IEDB:
+        IEDB_RECEPTOR:
             request:
-                url: "https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}"
+                url: 
+                    - 'https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}'
+                    - 'https://query-api.iedb.org/bcr_search?receptor_group_id=eq.{local_id}'
+                response: application/json
+        IEDB_EPITOPE:
+            request:
+                url: "https://query-api.iedb.org/epitope_search?structure_id=eq.{local_id}"
                 response: application/json
         OLS:
             request:
@@ -4402,6 +4416,22 @@ Rearrangement:
                 nullable: true
                 adc-query-support: true
                 identifier: true
+        reactivity_id:
+            type: string
+            description: >
+                Comma separated list of unique identifiers for Reactivity objects associated with this Rearrangement.
+                Order and length of reactivity_id and reactivity_ref are independent.
+            x-airr:
+                nullable: true
+                identifier: true
+        reactivity_ref:
+            type: string
+            description: >
+                Comma separated list of CURIE identifiers of external reactivity records (e.g. IEDB_RECEPTOR:182992, https://www.iedb.org/receptor/182992) 
+                associated with this Rearrangement. Order and length of reactivity_id and reactivity_ref are independent.
+            example: "IEDB_RECEPTOR:182992, IEDB_RECEPTOR:36336"
+            x-airr:
+                nullable: true
         sample_processing_id:
             type: string
             description: >
@@ -4968,7 +4998,7 @@ Reactivity:
                 Identifier of the Cell in the context of which the reactivity measurement was conducted.
             title: Cell ID
             x-airr:
-                nullable: false
+                nullable: true
                 adc-query-support: true
         repertoire_id:
             type: string
@@ -4997,7 +5027,7 @@ Reactivity:
                 - peptide
                 - non-peptidic
             description: Classification of ligand binding to the cell
-            example: non-peptide
+            example: "MHC:peptide"
             x-airr:
                 format: controlled_vocabulary
                 nullable: false
@@ -5023,8 +5053,8 @@ Reactivity:
                 or by T cell activation after presentation via an MHC molecule.
             title: Antigen
             example:
-                id: UNIPROT:P19597
-                label: Circumsporozoite protein
+                id: UNIPROT:P01308
+                label: Insulin
             x-airr:
                 nullable: false
                 adc-query-support: true
@@ -5034,8 +5064,8 @@ Reactivity:
             description: The species from which the antigen was isolated
             title: Source species of antigen
             example:
-                id: NCBITAXON:5843
-                label: Plasmodium falciparum NF54
+                id: NCBITAXON:9606
+                label: Homo sapiens
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -5048,11 +5078,13 @@ Reactivity:
         peptide_start:
             type: integer
             description: Start position of the peptide within the reference protein sequence
+            example: 87
             x-airr:
                 nullable: true
         peptide_end:
             type: integer
             description: End position of the peptide within the reference protein sequence
+            example: 101
             x-airr:
                 nullable: true
         peptide_sequence_aa:
@@ -5060,6 +5092,7 @@ Reactivity:
             description: >
                 The actual peptide sequence against which the receptor reactivity was measured. This field should be
                 used as a convenience for antigens of antigen_type `protein` or `peptide`.
+            example: QKRGIVEQCCTSICS
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -5125,23 +5158,24 @@ Reactivity:
                 adc-query-support: true
         reactivity_method:
             type: string
-            enum:
-                - native_protein
-                - MHC_peptide_multimer
-            description: The methodology used to assess expression (assay implemented in experiment)
+            description: >
+                The methodology used to assess/classify reactivity. This should be either the assay utlizied in the experiment,
+                delineated as "annotated" if annotated from an external source (e.g. IEDB), or inferred if imputed using
+                a computational method. In future versions we anticipate this field being an enumerated type, and it is strongly
+                recommended that users utilize one of the following keywords in this field if appropriate:
+                native_protein, MHC_peptide_multimer, annotated, inferred.
             x-airr:
-                format: controlled_vocabulary
                 nullable: false
                 adc-query-support: true
         reactivity_readout:
             type: string
-            enum:
-                - fluorescence_intensity
-                - barcode_count
-            description: Reactivity measurement read-out
+            description: >
+                Reactivity measurement read-out. For physical assays, this should describe what was measured. For inferred
+                and annotated methods this should indicate a confidence/quality level for the inference/annotation. In future
+                versions we anticipate this field being an enumerated type, and it is strongly recommended that users utilize
+                one of the following keywords in this field if appropriate: fluorescence_intensity, barcode_count, confidence.
             example: barcode_count
             x-airr:
-                format: controlled_vocabulary
                 nullable: false
                 adc-query-support: true
         reactivity_value:
@@ -5157,4 +5191,14 @@ Reactivity:
             example: read count
             x-airr:
                 nullable: false
+                adc-query-support: true
+        reactivity_ref:
+            type: array
+            description: Array of cross references to external epitope reactivity records 
+            title: Epitope reactivity cross-references
+            items:
+                type: string
+            example: ["IEDB_EPITOPE:1616345"]
+            x-airr:
+                nullable: true
                 adc-query-support: true
