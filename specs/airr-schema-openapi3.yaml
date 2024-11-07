@@ -182,6 +182,15 @@ InformationProvider:
             request:
                 url: "{iri}"
                 response: text/html
+        IEDB_RECEPTOR:
+            request:
+                url: "https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}"
+                url: "https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}"
+                response: application/json
+        IEDB_EPITOPE:
+            request:
+                url: "https://query-api.iedb.org/epitope_search?structure_id=eq.{local_id}"
+                response: application/json
         OLS:
             request:
                 url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
