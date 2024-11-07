@@ -93,6 +93,7 @@ CURIEMap:
         type: identifier
         default:
             map: IEDB_RECEPTOR
+            provider: IEDB_RECEPTOR
         map:
             IEDB_RECEPTOR:
                 iri_prefix: "https://www.iedb.org/receptor/"
@@ -100,6 +101,7 @@ CURIEMap:
         type: identifier
         default:
             map: IEDB_EPITOPE
+            provider: IEDB_EPITOPE
         map:
             IEDB_EPITOPE:
                 iri_prefix: "https://www.iedb.org/epitope/"
