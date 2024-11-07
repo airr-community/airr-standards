@@ -184,8 +184,9 @@ InformationProvider:
                 response: text/html
         IEDB_RECEPTOR:
             request:
-                url: "https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}"
-                url: "https://query-api.iedb.org/bcr_search?receptor_group_id=eq.{local_id}"
+                url: 
+                    - "https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}"
+                    - "https://query-api.iedb.org/bcr_search?receptor_group_id=eq.{local_id}"
                 response: application/json
         IEDB_EPITOPE:
             request:
