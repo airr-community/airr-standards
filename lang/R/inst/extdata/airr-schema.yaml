@@ -185,6 +185,7 @@ InformationProvider:
         IEDB_RECEPTOR:
             request:
                 url: "https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}"
+                url: "https://query-api.iedb.org/bcr_search?receptor_group_id=eq.{local_id}"
                 response: application/json
         IEDB_EPITOPE:
             request:
@@ -4765,7 +4766,7 @@ Cell:
 
 # The Expression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
-# data_processing_id 
+# data_processing_id
 Expression:
     type: object
     required:
