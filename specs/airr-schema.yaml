@@ -1109,7 +1109,7 @@ GermlineSet:
             items:
                 $ref: '#/Acknowledgement'
         release_version:
-            type: number
+            type: integer
             description: Version number of this record, allocated automatically
             x-airr:
                 miairr: important

@@ -1178,7 +1178,7 @@ GermlineSet:
             items:
                 $ref: '#/Acknowledgement'
         release_version:
-            type: number
+            type: integer
             nullable: true
             x-airr:
                 miairr: important
