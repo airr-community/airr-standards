@@ -944,6 +944,12 @@ AlleleDescription:
                 label: Homo sapiens
             x-airr:
                 miairr: essential
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
         species_subgroup:
             type: string
             nullable: true
@@ -1172,7 +1178,7 @@ GermlineSet:
             items:
                 $ref: '#/Acknowledgement'
         release_version:
-            type: number
+            type: integer
             nullable: true
             x-airr:
                 miairr: important
@@ -1213,13 +1219,19 @@ GermlineSet:
         species:
             $ref: '#/Ontology'
             nullable: false
-            x-airr:
-                miairr: essential
             description: Binomial designation of subject's species
             title: Organism
             example:
                 id: NCBITAXON:9606
                 label: Homo sapiens
+            x-airr:
+                miairr: essential
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
         species_subgroup:
             type: string
             nullable: true
@@ -3233,6 +3245,28 @@ Repertoire:
                 adc-query-support: true
 
 # A collection of repertoires for analysis purposes, includes optional time course
+RepertoireGroupDetail:
+    type: object
+    properties:
+        repertoire_id:
+            type: string
+            nullable: false
+            description: Identifier to the repertoire
+            x-airr:
+                adc-query-support: true
+        repertoire_description:
+            type: string
+            nullable: true
+            description: Description of this repertoire within the group
+            x-airr:
+                adc-query-support: true
+        time_point:
+            $ref: '#/TimePoint'
+            nullable: true
+            description: Time point designation for this repertoire within the group
+            x-airr:
+                adc-query-support: true
+
 RepertoireGroup:
     type: object
     required:
@@ -3259,26 +3293,7 @@ RepertoireGroup:
             description: >
                 List of repertoires in this collection with an associated description and time point designation
             items:
-                type: object
-                properties:
-                    repertoire_id:
-                        type: string
-                        nullable: false
-                        description: Identifier to the repertoire
-                        x-airr:
-                            adc-query-support: true
-                    repertoire_description:
-                        type: string
-                        nullable: true
-                        description: Description of this repertoire within the group
-                        x-airr:
-                            adc-query-support: true
-                    time_point:
-                        $ref: '#/TimePoint'
-                        nullable: true
-                        description: Time point designation for this repertoire within the group
-                        x-airr:
-                            adc-query-support: true
+                $ref: '#/RepertoireGroupDetail'
 
 Alignment:
     type: object
