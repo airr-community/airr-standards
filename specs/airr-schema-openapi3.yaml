@@ -1499,7 +1499,7 @@ GermlineSet:
             items:
                 $ref: '#/Contributor'
         release_version:
-            type: number
+            type: integer
             nullable: true
             x-airr:
                 miairr: important
