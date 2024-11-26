@@ -905,6 +905,12 @@ AlleleDescription:
             x-airr:
                 miairr: essential
                 nullable: false
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
         species_subgroup:
             type: string
             description: Race, strain or other species subgroup to which this subject belongs
@@ -1145,6 +1151,12 @@ GermlineSet:
             x-airr:
                 miairr: essential
                 nullable: false
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
         species_subgroup:
             type: string
             description: Race, strain or other species subgroup to which this subject belongs
