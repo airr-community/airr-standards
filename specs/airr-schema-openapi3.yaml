@@ -429,21 +429,21 @@ TimePoint:
     description: Time point at which an observation or other action was performed.
     type: object
     properties:
-        label:
+        time_point_label:
             type: string
             nullable: true
             description: Informative label for the time point
             example: Pre-operative sampling of cancer tissue
             x-airr:
                 adc-query-support: true
-        value:
+        time_point_value:
             type: number
             nullable: true
             description: Value of the time point
             example: -5.0
             x-airr:
                 adc-query-support: true
-        unit:
+        time_point_unit:
             $ref: '#/Ontology'
             nullable: true
             description: Unit of the time point
@@ -480,7 +480,7 @@ Acknowledgement:
                 identifier: true
                 miairr: important
             nullable: true
-        name:
+        individual_full_name:
             type: string
             nullable: true
             description: Full name of individual
@@ -4747,7 +4747,7 @@ CellExpression:
                 adc-query-support: true
                 format: ontology
                 name: Property information
-        value:
+        property_value:
             type: number
             description: Level at which the property was observed in the experiment (non-normalized).
             title: Property value
