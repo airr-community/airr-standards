@@ -49,11 +49,23 @@ read_tabular <- function(file, schema, base=c("1", "0"), aux_types=NULL,...) {
         cast <- c(cast, aux_cols)
     }
 
-    types <- do.call(readr::cols, cast)
+    # temporarily treat logical columns as character, to avoid silent NA conversion
+    logical_cols <- names(cast[cast == "l"])
+    cast_sub_logical <- cast
+    cast_sub_logical[logical_cols] <- parsers["character"]
+    types_sub_logical <- do.call(readr::cols, cast_sub_logical)
 
     # Read file
-    data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None"), ...))
+    data <- suppressMessages(readr::read_tsv(file, col_types=types_sub_logical, na=c("", "NA", "None"), ...))
     
+    # Attempt to set type of logical columns
+    allowed_logical_characters <- c('T', 'TRUE', 'True', 'true', 'F', 'FALSE', 'False', 'false', NA)
+    for (c in logical_cols) {
+      if (all(data[[c]] %in% allowed_logical_characters)) {
+        data[[c]] <- as.logical(data[[c]])
+      }
+    }
+
     # Validate file
     valid_data <- validate_tabular(data, schema=schema)
     
@@ -531,9 +543,9 @@ validate_tabular <- function(data, schema) {
     logical_fields <- intersect(colnames(data), logical_fields)
     if (length(logical_fields) > 0 ) {
         for (log_field in logical_fields) {
-            not_logical <- data[[log_field]] %in% c(TRUE, FALSE, NA) == FALSE
+            not_logical <- data[[log_field]] %in% c(TRUE, FALSE, NA, "TRUE", "True", "true", "T", "FALSE", "False", "false", "F") == FALSE
             if (any(not_logical)) {
-                warning(paste("Warning:",log_field,"is not logical for row(s):",
+                warning(paste("Warning:", log_field, "is not logical for row(s):",
                               paste(which(not_logical), collapse = ", ")))            
             } else {
                 NULL
