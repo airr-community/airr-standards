@@ -429,21 +429,21 @@ TimePoint:
     description: Time point at which an observation or other action was performed.
     type: object
     properties:
-        label:
+        time_point_label:
             type: string
             nullable: true
             description: Informative label for the time point
             example: Pre-operative sampling of cancer tissue
             x-airr:
                 adc-query-support: true
-        value:
+        time_point_value:
             type: number
             nullable: true
             description: Value of the time point
             example: -5.0
             x-airr:
                 adc-query-support: true
-        unit:
+        time_point_unit:
             $ref: '#/Ontology'
             nullable: true
             description: Unit of the time point
@@ -480,7 +480,7 @@ Acknowledgement:
                 identifier: true
                 miairr: important
             nullable: true
-        name:
+        individual_full_name:
             type: string
             nullable: true
             description: Full name of individual
@@ -944,6 +944,12 @@ AlleleDescription:
                 label: Homo sapiens
             x-airr:
                 miairr: essential
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
         species_subgroup:
             type: string
             nullable: true
@@ -1172,7 +1178,7 @@ GermlineSet:
             items:
                 $ref: '#/Acknowledgement'
         release_version:
-            type: number
+            type: integer
             nullable: true
             x-airr:
                 miairr: important
@@ -1213,13 +1219,19 @@ GermlineSet:
         species:
             $ref: '#/Ontology'
             nullable: false
-            x-airr:
-                miairr: essential
             description: Binomial designation of subject's species
             title: Organism
             example:
                 id: NCBITAXON:9606
                 label: Homo sapiens
+            x-airr:
+                miairr: essential
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
         species_subgroup:
             type: string
             nullable: true
@@ -3233,6 +3245,28 @@ Repertoire:
                 adc-query-support: true
 
 # A collection of repertoires for analysis purposes, includes optional time course
+RepertoireFilter:
+    type: object
+    properties:
+        repertoire_id:
+            type: string
+            nullable: false
+            description: Identifier to the repertoire
+            x-airr:
+                adc-query-support: true
+        repertoire_description:
+            type: string
+            nullable: true
+            description: Description of this repertoire within the group
+            x-airr:
+                adc-query-support: true
+        time_point:
+            $ref: '#/TimePoint'
+            nullable: true
+            description: Time point designation for this repertoire within the group
+            x-airr:
+                adc-query-support: true
+
 RepertoireGroup:
     type: object
     required:
@@ -3259,26 +3293,7 @@ RepertoireGroup:
             description: >
                 List of repertoires in this collection with an associated description and time point designation
             items:
-                type: object
-                properties:
-                    repertoire_id:
-                        type: string
-                        nullable: false
-                        description: Identifier to the repertoire
-                        x-airr:
-                            adc-query-support: true
-                    repertoire_description:
-                        type: string
-                        nullable: true
-                        description: Description of this repertoire within the group
-                        x-airr:
-                            adc-query-support: true
-                    time_point:
-                        $ref: '#/TimePoint'
-                        nullable: true
-                        description: Time point designation for this repertoire within the group
-                        x-airr:
-                            adc-query-support: true
+                $ref: '#/RepertoireFilter'
 
 Alignment:
     type: object
@@ -4732,7 +4747,7 @@ CellExpression:
                 adc-query-support: true
                 format: ontology
                 name: Property information
-        value:
+        property_value:
             type: number
             description: Level at which the property was observed in the experiment (non-normalized).
             title: Property value
