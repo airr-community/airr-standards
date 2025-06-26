@@ -435,21 +435,21 @@ TimePoint:
     description: Time point at which an observation or other action was performed.
     type: object
     properties:
-        label:
+        time_point_label:
             type: string
             description: Informative label for the time point
             example: Pre-operative sampling of cancer tissue
             x-airr:
                 nullable: true
                 adc-query-support: true
-        value:
+        time_point_value:
             type: number
             description: Value of the time point
             example: -5.0
             x-airr:
                 nullable: true
                 adc-query-support: true
-        unit:
+        time_point_unit:
             $ref: '#/Ontology'
             description: Unit of the time point
             title: Unit of immunization schedule
