@@ -3245,7 +3245,7 @@ Repertoire:
                 adc-query-support: true
 
 # A collection of repertoires for analysis purposes, includes optional time course
-RepertoireGroupDetail:
+RepertoireFilter:
     type: object
     properties:
         repertoire_id:
@@ -3293,7 +3293,7 @@ RepertoireGroup:
             description: >
                 List of repertoires in this collection with an associated description and time point designation
             items:
-                $ref: '#/RepertoireGroupDetail'
+                $ref: '#/RepertoireFilter'
 
 Alignment:
     type: object
