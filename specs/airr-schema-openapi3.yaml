@@ -3642,6 +3642,7 @@ RepertoireFilter:
             x-airr:
                 adc-query-support: true
         filter:
+            nullable: true
             type: object
 
 RepertoireGroup:
