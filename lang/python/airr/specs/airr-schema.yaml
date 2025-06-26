@@ -407,7 +407,7 @@ DataSet:
                 Clone:
                     type: array
                     items:
-                        $ref: '#/FileObject'                
+                        $ref: '#/FileObject'
                 Cell:
                     type: array
                     items:
