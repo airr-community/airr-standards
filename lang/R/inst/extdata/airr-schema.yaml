@@ -4453,7 +4453,7 @@ CellExpression:
                 adc-query-support: true
                 format: ontology
                 name: Property information
-        value:
+        property_value:
             type: number
             description: Level at which the property was observed in the experiment (non-normalized).
             title: Property value
