@@ -40,6 +40,17 @@ if os.environ.get('READTHEDOCS', None) == 'True':
     mock_modules = ['numpy', 'pandas']
     sys.modules.update((mod_name, Mock()) for mod_name in mock_modules)
 
+# -- Canonical URL --------------------------------------------------------
+
+# Define the canonical URL if you are using a custom domain on Read the Docs
+html_baseurl = os.environ.get('READTHEDOCS_CANONICAL_URL', '')
+
+# Tell Jinja2 templates the build is running on Read the Docs
+if os.environ.get('READTHEDOCS', '') == 'True':
+    if 'html_context' not in globals():
+        html_context = {}
+    html_context['READTHEDOCS'] = True
+
 # -- General configuration ------------------------------------------------
 
 # Setup
