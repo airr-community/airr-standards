@@ -30,7 +30,7 @@
         "release_description": "",
         "release_date": "2021-11-24",
         "germline_set_name": "CAST IGH",
-        "germline_set_ref": "OGRDB_GERMLINESET:G00003-1",
+        "germline_set_ref": "OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9",
         "pub_ids": [""],
         "species": {
             "id": "NCBITAXON:10090",

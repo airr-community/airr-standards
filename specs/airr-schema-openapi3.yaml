@@ -105,6 +105,13 @@ CURIEMap:
         map:
             IEDB_EPITOPE:
                 iri_prefix: "https://www.iedb.org/epitope/"
+    IMGT_GERMLINESET:
+        type: identifier
+        default:
+            map: IMGT_GERMLINESET
+        map:
+            IMGT_GERMLINESET:
+                iri_prefix: "https://www.imgt.org/download/V-QUEST/archives/"
     MRO:
         type: ontology
         default:
@@ -137,7 +144,7 @@ CURIEMap:
             map: OGRDB_GERMLINESET
         map:
             OGRDB_GERMLINESET:
-                iri_prefix: "https://ogrdb.airr-community.org/api/germline/set?"
+                iri_prefix: "https://ogrdb.airr-community.org/api_v2/"
     ORCID:
         type: catalog
         default:
@@ -201,6 +208,10 @@ InformationProvider:
             request:
                 url: "https://query-api.iedb.org/epitope_search?structure_id=eq.{local_id}"
                 response: application/json
+        IMGT_GERMLINESET:
+            request:
+                url: "{iri}"
+                response: application/zip
         OLS:
             request:
                 url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
@@ -212,7 +223,7 @@ InformationProvider:
         OGRDB_GERMLINESET:
             request:
                 url: "{iri}"
-                response: text/html
+                response: application/json
         ORCID:
             request:
                 url: "https://pub.orcid.org/v2.1/{local_id}"
@@ -1534,7 +1545,7 @@ GermlineSet:
             type: string
             nullable: true
             description: Unique identifier of the germline set and version, in CURIE format
-            example: OGRDB_GERMLINESET:G00003-1
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 miairr: important
                 format: CURIE
@@ -1723,7 +1734,7 @@ DocumentedAllele:
             type: string
             nullable: true
             description: GermlineSet from which it was taken, referenced in CURIE format
-            example: OGRDB_GERMLINESET:G00003-1
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 miairr: important
                 format: CURIE
@@ -1782,7 +1793,7 @@ DeletedGene:
             type: string
             nullable: true
             description: GermlineSet from which it was taken, referenced in CURIE format
-            example: OGRDB_GERMLINESET:G00003-1
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 miairr: important
                 format: CURIE
@@ -3530,7 +3541,7 @@ DataProcessing:
             type: string
             nullable: true
             description: Unique identifier of the germline set and version, in CURIE format
-            example: OGRDB_GERMLINESET:G00003-1
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 adc-query-support: true
                 format: CURIE

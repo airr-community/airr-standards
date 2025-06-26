@@ -104,10 +104,10 @@ Repertoire:
               locus: IGH
               documented_alleles:
                 - label: IGHV1-69*01
-                  germline_set_ref: IMGT:Homo sapiens:2022.1.31
+                  germline_set_ref: IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip
                   phasing: 1
                 - label: IGHV1-69*02
-                  germline_set_ref: IMGT:Homo sapiens:2022.1.31
+                  germline_set_ref: IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip
                   phasing: 2
               undocumented_alleles:
                 - allele_name: IGHD3-1*01_S1234
@@ -115,7 +115,7 @@ Repertoire:
                   phasing: 1
               deleted_genes:
                 - label: IGHV3-30-3
-                  germline_set_ref: IMGT:Homo sapiens:2022.1.31
+                  germline_set_ref: IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip
                   phasing: 1
               inference_process: repertoire_sequencing
         mhc_genotype_set:
@@ -553,7 +553,7 @@ GermlineSet:
     release_description: ""
     release_date: "2021-11-24"
     germline_set_name: CAST IGH
-    germline_set_ref: OGRDB_GERMLINESET:G00003-1
+    germline_set_ref: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
     pub_ids: [""]
     species:
       id: NCBITAXON:10090
@@ -921,10 +921,10 @@ GenotypeSet:
         locus: IGH
         documented_alleles:
           - label: IGHV1-69*01
-            germline_set_ref: IMGT:Homo sapiens:2022.1.31
+            germline_set_ref: IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip
             phasing: 1
           - label: IGHV1-69*02
-            germline_set_ref: IMGT:Homo sapiens:2022.1.31
+            germline_set_ref: IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip
             phasing: 2
         undocumented_alleles:
           - allele_name: IGHD3-1*01_S1234
@@ -932,6 +932,6 @@ GenotypeSet:
             phasing: 1
         deleted_genes:
           - label: IGHV3-30-3
-            germline_set_ref: IMGT:Homo sapiens:2022.1.31
+            germline_set_ref: IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip
             phasing: 1
         inference_process: repertoire_sequencing
