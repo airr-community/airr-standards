@@ -486,7 +486,7 @@ Acknowledgement:
             x-airr:
                 identifier: true
                 miairr: important
-        name:
+        individual_full_name:
             type: string
             description: Full name of individual
         institution_name:
