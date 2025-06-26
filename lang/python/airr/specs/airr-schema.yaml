@@ -3191,8 +3191,32 @@ Repertoire:
                 nullable: false
                 adc-query-support: true
 
-# An ordered group of repertoires for analysis purposes, includes optional time course
+# A group of repertoires for analysis purposes, includes optional time course
 # Can be treated as a set if all repertoire_group_id are unique
+RepertoireFilter:
+    type: object
+    properties:
+        repertoire_id:
+            type: string
+            description: Identifier to the repertoire
+            x-airr:
+                nullable: false
+                adc-query-support: true
+        repertoire_description:
+            type: string
+            description: Description of this repertoire within the group
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        time_point:
+            $ref: '#/TimePoint'
+            description: Time point designation for this repertoire within the group
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        filter:
+            type: object
+
 RepertoireGroup:
     type: object
     required:
@@ -3210,31 +3234,14 @@ RepertoireGroup:
         repertoire_group_description:
             type: string
             description: Repertoire group description
+        filters:
+            type: object
         repertoires:
             type: array
             description: >
-                List of repertoires in this group with an associated description and time point designation
+                List of repertoires in this collection with an associated description and time point designation
             items:
-                type: object
-                properties:
-                    repertoire_id:
-                        type: string
-                        description: Identifier to the repertoire
-                        x-airr:
-                            nullable: false
-                            adc-query-support: true
-                    repertoire_description:
-                        type: string
-                        description: Description of this repertoire within the group
-                        x-airr:
-                            nullable: true
-                            adc-query-support: true
-                    time_point:
-                        $ref: '#/TimePoint'
-                        description: Time point designation for this repertoire within the group
-                        x-airr:
-                            nullable: true
-                            adc-query-support: true
+                $ref: '#/RepertoireFilter'
 
 
 Alignment:
