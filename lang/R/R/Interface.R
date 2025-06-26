@@ -53,7 +53,7 @@ read_tabular <- function(file, schema, base=c("1", "0"), aux_types=NULL,...) {
 
     # Read file
     data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None"), ...))
-
+    
     # Validate file
     valid_data <- validate_tabular(data, schema=schema)
     
@@ -531,7 +531,7 @@ validate_tabular <- function(data, schema) {
     logical_fields <- intersect(colnames(data), logical_fields)
     if (length(logical_fields) > 0 ) {
         for (log_field in logical_fields) {
-            not_logical <- data[[log_field]] %in% c(TRUE, FALSE) == FALSE
+            not_logical <- data[[log_field]] %in% c(TRUE, FALSE, NA) == FALSE
             if (any(not_logical)) {
                 warning(paste("Warning:",log_field,"is not logical for row(s):",
                               paste(which(not_logical), collapse = ", ")))            

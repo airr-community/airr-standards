@@ -41,7 +41,7 @@ def read_rearrangement(filename, validate=False, debug=False):
       airr.io.RearrangementReader: iterable reader class.
     """
     if filename.endswith(".gz"):
-        handle = gzip.open(filename, 'r')
+        handle = gzip.open(filename, 'rt')
     else:
         handle = open(filename, 'r')
         
@@ -100,9 +100,14 @@ def load_rearrangement(filename, validate=False, debug=False):
     # TODO: test pandas.DataFrame.read_csv with converters argument as an alterative
     schema = RearrangementSchema
 
-    df = pd.read_csv(filename, sep='\t', header=0, index_col=None,
-                     dtype=schema.pandas_types(), true_values=schema.true_values,
-                     false_values=schema.false_values)
+    try:
+        df = pd.read_csv(filename, sep='\t', header=0, index_col=None,
+                         dtype=schema.pandas_types(), true_values=schema.true_values,
+                         false_values=schema.false_values)
+    except Exception as e:
+        sys.stderr.write('Error occurred while loading AIRR rearrangement file: %s\n' % e)
+        return None
+
     # added to use RearrangementReader without modifying it:
     buffer = StringIO()  # create an empty buffer
     df.to_csv(buffer, sep='\t', index=False)  # fill buffer
@@ -224,7 +229,7 @@ def validate_rearrangement(filename, debug=False):
 
 #### AIRR Data Model ####
 
-def read_airr(filename, format=None, validate=False, model=True, debug=False):
+def read_airr(filename, format=None, validate=False, model=True, debug=False, check_nullable=True):
     """
     Load an AIRR Data file
 
@@ -238,6 +243,7 @@ def read_airr(filename, format=None, validate=False, model=True, debug=False):
                   If False, attempt validation of all top-level objects.
                   Ignored if validate=False.
       debug (bool): debug flag. If True print debugging information to standard error.
+      check_nullable (bool): whether to check for nullable fields if validating the data.
 
     Returns:
       dict: dictionary of AIRR Data objects.
@@ -260,7 +266,7 @@ def read_airr(filename, format=None, validate=False, model=True, debug=False):
     if validate:
         if debug:  sys.stderr.write('Validating: %s\n' % filename)
         try:
-            valid = validate_airr(data, model=model, debug=debug)
+            valid = validate_airr(data, model=model, debug=debug, check_nullable=check_nullable)
         except ValidationError as e:
             if debug:  sys.stderr.write('%s failed validation\n' % filename)
             raise ValidationError(e)
@@ -269,7 +275,7 @@ def read_airr(filename, format=None, validate=False, model=True, debug=False):
     return data
 
 
-def validate_airr(data, model=True, debug=False):
+def validate_airr(data, model=True, debug=False, check_nullable=True):
     """
     Validates an AIRR Data file
 
@@ -319,7 +325,7 @@ def validate_airr(data, model=True, debug=False):
         # Validate each record in array
         for i, record in obj_iter:
             try:
-                schema.validate_object(record)
+                schema.validate_object(record, check_nullable=check_nullable)
             except ValidationError as e:
                 valid = False
                 if debug:  sys.stderr.write('%s at array position %s with validation error: %s\n' % (k, i, e))
@@ -330,7 +336,7 @@ def validate_airr(data, model=True, debug=False):
     return valid
 
 
-def write_airr(filename, data, format=None, info=None, validate=False, model=True, debug=False):
+def write_airr(filename, data, format=None, info=None, validate=False, model=True, debug=False, check_nullable=True):
     """
     Write an AIRR Data file
 
@@ -345,6 +351,7 @@ def write_airr(filename, data, format=None, info=None, validate=False, model=Tru
       model (bool): If True only validate and write objects defined in the AIRR DataFile schema.
                   If False, attempt validation and write of all top-level objects
       debug (bool): debug flag. If True print debugging information to standard error.
+      check_nullable (bool): whether to check for nullable fields if validating the data.
 
     Returns:
       bool: True if the file is written without error.
@@ -358,7 +365,7 @@ def write_airr(filename, data, format=None, info=None, validate=False, model=Tru
     if validate:
         if debug:  sys.stderr.write('Validating: %s\n' % filename)
         try:
-            valid = validate_airr(data, model=model, debug=debug)
+            valid = validate_airr(data, model=model, debug=debug, check_nullable=check_nullable)
         except ValidationError as e:
             if debug:  sys.stderr.write(e)
             raise ValidationError(e)

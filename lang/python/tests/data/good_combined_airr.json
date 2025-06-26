@@ -95,6 +95,14 @@
                 "diagnosis": [
                     {
                         "study_group_description": null,
+                        "diagnosis_timepoint": {
+			     "label": "Study enrollment",
+                             "value": 60,
+                             "unit": {
+                               "id": "UO:0000033",
+                               "label": "day"
+			     }
+			},
                         "disease_diagnosis": {
                             "id": null,
                             "label": null
@@ -181,6 +189,7 @@
                         "label": "naive B cell"
                     },
                     "cell_phenotype": "expression of CD20 and the absence of CD27",
+                    "cell_label": "naive B cell",
                     "cell_species": {
                         "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"
@@ -344,6 +353,14 @@
                 "diagnosis": [
                     {
                         "study_group_description": null,
+                        "diagnosis_timepoint": {
+			     "label": "Study enrollment",
+                             "value": 60,
+                             "unit": {
+                               "id": "UO:0000033",
+                               "label": "day"
+			     }
+			},
                         "disease_diagnosis": {
                             "id": null,
                             "label": null
@@ -372,6 +389,7 @@
                         "label": "memory B cell"
                     },
                     "cell_phenotype": "expression of CD20 and CD27",
+                    "cell_label": "memory B cell",
                     "cell_species": {
                         "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"
@@ -535,6 +553,14 @@
                 "diagnosis": [
                     {
                         "study_group_description": null,
+                        "diagnosis_timepoint": {
+			     "label": "Study enrollment",
+                             "value": 60,
+                             "unit": {
+                               "id": "UO:0000033",
+                               "label": "day"
+			     }
+			},
                         "disease_diagnosis": {
                             "id": null,
                             "label": null
@@ -563,6 +589,7 @@
                         "label": "naive thymus-derived CD4-positive, alpha-beta T cell"
                     },
                     "cell_phenotype": "expression of CD8 and absence of CD4 and CD45RO",
+                    "cell_label": "naive CD4 aB T cell",
                     "cell_species": {
                         "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"

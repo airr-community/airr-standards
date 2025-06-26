@@ -29,13 +29,18 @@ good_combined_json <- file.path(parent_path, "data-tests", "good_combined_airr.j
 good_combined_names <- c("Repertoire", "GermlineSet", "GenotypeSet")
 
 # Expected warnings for bad_rearrangement_file
+# expected_w <- c(
+#     "Warning: File is missing AIRR mandatory field(s): sequence",
+#     "Warning: sequence_id(s) are not unique: IVKNQEJ01AJ44V, IVKNQEJ01AJ44V",
+#     "Warning: sequence_id is empty for row(s): 7",
+#     "Warning: productive is not logical for row(s): 1"
+# )
 expected_w <- c(
     "Warning: File is missing AIRR mandatory field(s): sequence",
     "Warning: sequence_id(s) are not unique: IVKNQEJ01AJ44V, IVKNQEJ01AJ44V",
-    "Warning: sequence_id is empty for row(s): 7",
-    "Warning: rev_comp is not logical for row(s): 4",
-    "Warning: productive is not logical for row(s): 1"
+    "Warning: sequence_id is empty for row(s): 7"
 )
+
 
 
 #### Rearrangement ####
