@@ -2,7 +2,7 @@ openapi: '3.0.0'
 
 info:
   title: AIRR Data Commons API Extension for Asynchronous Queries
-  version: 1.0.0
+  version: 1.1.0
   contact:
     name: AIRR Community
     url: 'http://www.airr-community.org/'
@@ -248,39 +248,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/error_response'
 
-  /repertoire:
-    post:
-      description: >
-        Asynchronous query service on repertoires.
-      operationId: async_repertoire
-      tags:
-        - async
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/query_object'
-      responses:
-        '200':
-          description: |
-            A successful call initiates the asynchronous query request and returns its identifier and status.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/query_status_response'
-        '400':
-          description: Invalid request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error_response'
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error_response'
-
   /rearrangement:
     post:
       description: >
@@ -314,35 +281,3 @@ paths:
               schema:
                 $ref: '#/components/schemas/error_response'
 
-  /clone:
-    post:
-      description: >
-        Asynchronous query service on clones.
-      operationId: async_clone
-      tags:
-        - async
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/query_object'
-      responses:
-        '200':
-          description: |
-            A successful call initiates the asynchronous query request and returns its identifier and status.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/query_status_response'
-        '400':
-          description: Invalid request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error_response'
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error_response'

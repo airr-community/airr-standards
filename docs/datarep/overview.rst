@@ -242,6 +242,7 @@ Schema Definitions
    Clone and Lineage Tree Schema (Experimental) <clone>
    Cell Schema (Experimental) <cell>
    Cell Expression Schema (Experimental) <cellexpression>
+   Cell Reactivity Schema (Experimental) <cellreactivity>
    Germline Schema (Experimental) <germline>
-   Receptor Schema (Experimental) <receptor>
+   Receptor Schema <receptor>
 

@@ -69,7 +69,8 @@ setMethod("$",
 # Function to extract entries from individual fields
 extract_field_content <- function(properties, field) {
     
-    types <- c("string"="character", "boolean"="logical", "integer"="integer", "number"="numeric", "array"="array", "object"="object")
+    types <- c("string"="character", "boolean"="logical", "integer"="integer", 
+               "number"="numeric", "array"="array", "object"="object")
     
     # if there is a simple reference to another AIRR schema elements, call the reference entries
     # example: disease_diagnosis entry in Diagnosis schema 
@@ -312,7 +313,7 @@ AIRRSchema <- list("Info"=load_schema("InfoObject"),
                    "SequencingData"=load_schema("SequencingData"),
                    "DataProcessing"=load_schema("DataProcessing"),
                    "GermlineSet"=load_schema("GermlineSet"),
-                   "Acknowledgement"=load_schema("Acknowledgement"),
+                   "Contributor"=load_schema("Contributor"),
                    "RearrangedSequence"=load_schema("RearrangedSequence"),
                    "UnrearrangedSequence"=load_schema("UnrearrangedSequence"),
                    "SequenceDelineationV"=load_schema("SequenceDelineationV"),
