@@ -131,9 +131,9 @@ wrong. Differences can occur in many ways, as with errors in the
 experimental protocol, or data processing might have incorrectly
 processed the raw sequencing data leading to invalid annotations.
 
-.. _RepertoireGroupSchema:
+.. _RepertoireFilterSchema:
 
-RepertoireGroup Schema
+RepertoireFilter Schema
 =============================
 
 As a ``Repertoire`` correponds to a discrete biological unit, it
@@ -143,18 +143,19 @@ individuals with and without a particular diagnosis or tracking
 repertoire evolution across a time series. Conversely, a
 researcher may sometimes be interested in only a specific subset
 of a ``Repertoire`` such as "productive rearrangements for IGHV4".
-All of these cases can be represented using a ``RepertoireGroup``.
+All of these cases can be represented using an array of
+``RepertoireFilter``s and contained in a ``RepertoireGroup``.
 
-A ``RepertoireGroup`` incorporates its underlying ``Repertoires``
-by reference to their ``repertoire_ids`` and thus retains the
+A ``RepertoireFilter`` incorporates its underlying ``Repertoires``
+by reference to their ``repertoire_id``s and thus retains the
 ability to access all of the associated MiAIRR metadata. The
-``RepertoireGroup`` also describes the selection criteria for
-the indcluded repertoires and how they have been filtered.
-``RepertoireGroups`` can be associated with the same study as
-the underlying ``Repertoires`` or a new one, as appropriate.
+``RepertoireFilter`` also describes the selection criteria for
+the included repertoires and how they have been filtered by 
+building a query equivalent to one that would be used in the 
+:ref:`ADC API <APIFiltering>`.
 
-Filtering of component ``Repertoires`` can be indicated by building
-a query equivalent to one that would be used in the :ref:`ADC API <APIFiltering>`.
+``RepertoireGroup``s can be associated with the same study as
+the underlying ``Repertoire``s or a new one, as appropriate.
 
 File Format Specification
 -----------------------------
@@ -200,12 +201,12 @@ Repertoire Fields
       - {{ field.Definition | trim }}
     {%- endfor %}
 
-.. _RepertoireGroup Fields:
+.. _RepertoireFilter Fields:
 
-RepertoireGroup Fields
+RepertoireFilter Fields
 ------------------------------
 
-:download:`Download as TSV <../_downloads/RepertoireGroup.tsv>`
+:download:`Download as TSV <../_downloads/RepertoireFilter.tsv>`
 
 .. list-table::
     :widths: 20, 15, 15, 50
@@ -215,7 +216,7 @@ RepertoireGroup Fields
       - Type
       - Attributes
       - Definition
-    {%- for field in RepertoireGroup_schema %}
+    {%- for field in RepertoireFilter_schema %}
     * - ``{{ field.Name }}``
       - {{ field.Type }}
       - {{ field.Attributes }}
