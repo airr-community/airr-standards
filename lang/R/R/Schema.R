@@ -106,9 +106,13 @@ extract_field_content <- function(properties, field) {
         # as a workaround we create a helper Schema without required entries
         required_helper <- character(0)
         info_helper <- list(0)
-        optional_helper <- names(properties[[field]][["properties"]])
-        properties_helper <- properties[[field]][["properties"]]
-        
+        optional_helper <- character()
+        properties_helper <- list()
+        if (!is.null(properties[[field]][["properties"]])) {
+            optional_helper <- names(properties[[field]][["properties"]])
+            properties_helper <- properties[[field]][["properties"]]
+        }
+
         for (f in optional_helper) {
             # if there is a reference to another AIRR schema elements, call the reference entries
             properties_helper <- extract_field_content(properties_helper, f)
