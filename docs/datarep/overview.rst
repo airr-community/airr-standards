@@ -84,7 +84,9 @@ Here are the primary schema objects of the AIRR Data Model:
     * - ``Repertoire``
       - Composite object that combines the schema objects ``Study``, ``Subject``, ``Diagnosis``, ``Sample``, ``CellProcessing``, ``NucleicAcidProcessing``, ``SequencingRun``, and ``DataProcessing``. Each ``Repertoire`` has a unique identifier ``repertoire_id`` for linking with other data files, e.g. ``Rearrangements``. ``Repertoires`` have their own schema and file format described :ref:`here <RepertoireSchema>`.
     * - ``RepertoireGroup``
-      - Composite object that combines multiple ``Repertoires`` for further analysis. ``RepertoireGroups`` have their own schema and file format described :ref:`here <RepertoireGroupSchema>`.
+      - Composite object that combines multiple ``Repertoire``s (as ``RepertoireFilter``s) for further analysis. 
+    * - ``RepertoireFilter``
+      - Object with a pointer to an original ``Repertoire`` with descriptions of how it was filtered for inclusion in a ``RepertoireGroup`` and optional additional metadata such as time point. ``RepertoireFilter``s have their own schema and file format described :ref:`here <RepertoireFilterSchema>`.
     * - ``Rearrangments``
       - Annotated sequences describing adaptive immune receptor chains. ``Rearrangements`` have their own schema and file format described :ref:`here <RearrangementSchema>`.
     * - ``Clones``
