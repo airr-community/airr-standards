@@ -4732,20 +4732,18 @@ CellExpression:
                 adc-query-support: true
                 name: Property type and detection method
         property:
-            $ref: '#/Ontology'
+            type: string
             nullable: true
             title: Property information
             description: >
                 Name of the property observed, typically a gene or antibody identifier (and label) from a 
                 canonical resource such as Ensembl (e.g. ENSG00000275747, IGHV3-79) or 
                 Antibody Registry (ABREG:1236456, Purified anti-mouse/rat/human CD27 antibody).
-            example:
-                id: ENSG:ENSG00000275747
-                label: IGHV3-79
+            example: ENSG:ENSG00000275747
             x-airr:
                 miairr: defined
                 adc-query-support: true
-                format: ontology
+                format: CURIE
                 name: Property information
         property_value:
             type: number
@@ -4897,19 +4895,17 @@ ReceptorReactivity:
                 The type of antigen before processing by the immune system.
             example: protein
         antigen:
-            $ref: '#/Ontology'
+            type: string
             nullable: false
             description: >
                 The substance against which the receptor was tested. This can be any substance that
                 stimulates an adaptive immune response in the host, either through antibody production
                 or by T cell activation after presentation via an MHC molecule.
             title: Antigen
-            example:
-                id: UNIPROT:P19597
-                label: Circumsporozoite protein
+            example: UNIPROT:P19597
             x-airr:
                 adc-query-support: true
-                format: ontology
+                format: CURIE
         antigen_source_species:
             $ref: '#/Ontology'
             nullable: true
