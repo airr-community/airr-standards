@@ -399,6 +399,13 @@ DataFile:
                 $ref: '#/Clone'
             x-airr:
                 nullable: false
+        Node:
+            type: array
+            description: List of nodes
+            items:
+                $ref: '#/Node'
+            x-airr:
+                nullable: false
         GermlineSet:
             type: array
             description: List of germline sets
