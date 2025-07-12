@@ -10,7 +10,7 @@ from collections import OrderedDict
 import importlib.resources
 
 # For Python 3.9+
-with importlib.resources.files(__name__).joinpath('specs/airr-schema.yaml').open('rb') as f:
+with importlib.resources.files('airr').joinpath('specs/airr-schema.yaml').open('rb') as f:
     DEFAULT_SPEC = yaml.load(f, Loader=yamlordereddictloader.Loader)
 
 class ValidationError(Exception):
