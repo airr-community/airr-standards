@@ -60,4 +60,5 @@ r-tests:
 
 js-tests:
 	@echo "Running Javascript test suite"
-	cd lang/js; npm test
+	cd lang/js; rm -rf node_modules; rm -rf coverage
+	cd lang/js; npm install; npm run eslint; npm run test
