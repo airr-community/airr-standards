@@ -11,7 +11,9 @@ help:
 	@echo "make data-copy       -- Copy test data files to language directories"
 	@echo ""
 	@echo "make docker-latest   -- Build docker image with latest tag"
+	@echo "  Example: docker run -v \$$PWD:/work -it airrc/airr-standards bash"
 	@echo ""
+	@echo "  (environment setup required and/or run in docker)"
 	@echo "make checks          -- Run consistency checks on spec files"
 	@echo "make tests           -- Run all language test suites"
 	@echo "make python-tests    -- Run Python test suite"
@@ -58,4 +60,5 @@ r-tests:
 
 js-tests:
 	@echo "Running Javascript test suite"
-	cd lang/js; npm test
+	cd lang/js; rm -rf node_modules; rm -rf coverage
+	cd lang/js; npm install; npm run eslint; npm run test
