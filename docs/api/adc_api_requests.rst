@@ -40,6 +40,17 @@ The sets that can be requested are summarized in the table below.
    "airr-core",   "Y","Y","Y","N"
    "airr-schema", "Y","Y","Y","Y"
 
+The sets included in ``include_fields`` are:
+
++ ``miairr``, for only the MiAIRR fields.
+
++ ``airr-core``, for the AIRR required and identifier fields. This is
+  expected to be the most common option as it provides all MiAIRR
+  fields, additional required fields useful for analysis, and all
+  identifier fields for linking objects in the AIRR Data Model.
+
++ ``airr-schema``, for all AIRR fields in the AIRR Schema.
+
 **Service Status Example**
 
 The following is an example ``GET`` request to check that the service
