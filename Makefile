@@ -1,5 +1,8 @@
 # helper commands for keeping the language directories in sync
 
+# Get schema version
+AIRR_SCHEMA_VERSION=v$(shell python3 -c 'import yaml; x=yaml.safe_load(open("specs/airr-schema-openapi3.yaml","r")); print(x["Info"]["version"])')
+
 # note: "help" MUST be the first target in the file, so
 # when the user types "make" they get help info by default
 help:
@@ -11,7 +14,10 @@ help:
 	@echo "make data-copy       -- Copy test data files to language directories"
 	@echo ""
 	@echo "make docker-latest   -- Build docker image with latest tag"
-	@echo "  Example: docker run -v \$$PWD:/work -it airrc/airr-standards bash"
+	@echo "make docker-$(AIRR_SCHEMA_VERSION)    -- Build docker image with schema version: $(AIRR_SCHEMA_VERSION)"
+	@echo ""
+	@echo "  Example: docker run -v \$$PWD:/work -it airrc/airr-standards:latest bash"
+	@echo "  Example: docker run -v \$$PWD:/work -it airrc/airr-standards:$(AIRR_SCHEMA_VERSION) bash"
 	@echo ""
 	@echo "  (environment setup required and/or run in docker)"
 	@echo "make checks          -- Run consistency checks on spec files"
@@ -29,6 +35,10 @@ build-docs:
 docker-latest:
 	@echo "Building latest docker image"
 	docker build -f docker/Dockerfile -t airrc/airr-standards:latest .
+
+docker-$(AIRR_SCHEMA_VERSION):
+	@echo "Building $(AIRR_SCHEMA_VERSION) docker image"
+	docker build -f docker/Dockerfile -t airrc/airr-standards:$(AIRR_SCHEMA_VERSION) .
 
 spec-copy:
 	@echo "Copying specs to language directories"
