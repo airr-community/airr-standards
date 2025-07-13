@@ -79,7 +79,7 @@ while the data is being loaded.
 Piecemeal data loading of data for a specific schema object (e.g. Rearrangement) for a
 study in a production repository will result in queries returning different results as
 searches are made over time. This can lead to consumers of the data receiving confusing results,
-makes for complicated data provenance, and hampers scientific reporducibility. 
+makes for complicated data provenance, and hampers scientific reproducibility. 
 
 Authentication
 ~~~~~~~~~~~~~~
