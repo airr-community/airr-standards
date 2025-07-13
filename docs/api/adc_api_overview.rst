@@ -44,7 +44,7 @@ to be followed.
 *  All API endpoints should return JSON encodings as an API response.
 *  For some API endpoints it is possible to request TSV files, and
    those endpoints that support TSV files are documented in the
-   :ref:`<DataCommonsAPIEndpoints>` section.
+   :ref:`API Endpoints<DataCommonsAPIEndpoints>` section.
 *  Endpoints that are not documented as supporting TSV can reject TSV
    requests.
 *  If an API endpoint returns a field, then the content of that field
