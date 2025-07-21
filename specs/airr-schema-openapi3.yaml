@@ -631,21 +631,21 @@ TimePoint:
     description: Time point at which an observation or other action was performed.
     type: object
     properties:
-        time_point_label:
+        time_label:
             type: string
             nullable: true
             description: Informative label for the time point
             example: Pre-operative sampling of cancer tissue
             x-airr:
                 adc-query-support: true
-        time_point_value:
+        time_value:
             type: number
             nullable: false
             description: Value of the time point
             example: -5.0
             x-airr:
                 adc-query-support: true
-        time_point_unit:
+        time_unit:
             $ref: '#/Ontology'
             nullable: false
             description: Unit of the time point
@@ -667,21 +667,21 @@ TimeInterval:
     description: Time range or interval for a measurement, observation or action.
     type: object
     properties:
-        time_interval_min:
+        time_min:
             type: number
             nullable: false
             description: Lower/minimum value of the time interval
             example: 5.0
             x-airr:
                 adc-query-support: true
-        time_interval_max:
+        time_max:
             type: number
             nullable: false
             description: Upper/maximum value of the time interval
             example: 10.0
             x-airr:
                 adc-query-support: true
-        time_interval_unit:
+        time_unit:
             $ref: '#/Ontology'
             nullable: false
             description: Unit of the time interval
