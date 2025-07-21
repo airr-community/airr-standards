@@ -650,21 +650,21 @@ TimeInterval:
     description: Time range or interval for a measurement, observation or action.
     type: object
     properties:
-        time_point_min:
+        time_interval_min:
             type: number
             description: Lower/minimum value of the time interval
             example: 5.0
             x-airr:
                 adc-query-support: true
                 nullable: false
-        time_point_max:
+        time_interval_max:
             type: number
             description: Upper/maximum value of the time interval
             example: 10.0
             x-airr:
                 adc-query-support: true
                 nullable: false
-        time_point_unit:
+        time_interval_unit:
             $ref: '#/Ontology'
             description: Unit of the time interval
             example:
