@@ -5,15 +5,9 @@
             {
                 "contributor_id": "1",
                 "name": "William Lees",
-                "orcid_id": {
-                    "id": "ORCID:0000-0001-9834-6840",
-                    "label": "William Lees"
-                },
-                "affiliation": {
-                    "id": "ROR:02mb95055",
-                    "label": "Birkbeck, University of London"
-                },
-                "affiliation_department":"",
+                "orcid_id": "ORCID:0000-0001-9834-6840",
+                "affiliation": "ROR:02mb95055",
+                "affiliation_department": "Birkbeck, University of London",
                 "contributions": [
                     {
                         "role": "investigation",
@@ -47,15 +41,9 @@
                     {
                         "contributor_id": "1",
                         "name": "William Lees",
-                        "orcid_id": {
-                            "id": "ORCID:0000-0001-9834-6840",
-                            "label": "William Lees"
-                        },
-                        "affiliation": {
-                            "id": "ROR:02mb95055",
-                            "label": "Birkbeck, University of London"
-                        },
-                        "affiliation_department":"",
+                        "orcid_id": "ORCID:0000-0001-9834-6840",
+                        "affiliation": "ROR:02mb95055",
+                        "affiliation_department": "Birkbeck, University of London",
                         "contributions": [
                             {
                                 "role": "investigation",
@@ -240,15 +228,9 @@
                     {
                         "contributor_id": "1",
                         "name": "William Lees",
-                        "orcid_id": {
-                            "id": "ORCID:0000-0001-9834-6840",
-                            "label": "William Lees"
-                        },
-                        "affiliation": {
-                            "id": "ROR:02mb95055",
-                            "label": "Birkbeck, University of London"
-                        },
-                        "affiliation_department":"",
+                        "orcid_id": "ORCID:0000-0001-9834-6840",
+                        "affiliation": "ROR:02mb95055",
+                        "affiliation_department": "Birkbeck, University of London",
                         "contributions": [
                             {
                                 "role": "investigation",
