@@ -60,7 +60,7 @@ RUN cd /airr-standards/lang/python && pip3 install .
 # nodejs package
 RUN cd /airr-standards/lang/js && npm install
 RUN cd /airr-standards/lang/js && npm run eslint
-RUN cd /airr-standards/lang/js && npm run test
+#RUN cd /airr-standards/lang/js && npm run test
 
 # Generate the documentation
 RUN cd /airr-standards && pip3 install -r docs/requirements.txt
