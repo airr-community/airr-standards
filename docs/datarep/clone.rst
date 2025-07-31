@@ -7,7 +7,9 @@ A ``Clone`` object groups a set of ``Rearrangements`` or ``Cells`` that are
 inferred to be related by common descent from a single naive ancestor. The
 member ``Rearrangements`` and ``Cells`` are referenced from ``Clone`` as an
 array of ``Nodes`` and can include inferred ancestors that were not directly
-observed. All members of a ``Clone`` must be from a single ``RepertoireGroup``.
+observed. All members of a ``Clone`` must be from either a single 
+``RepertoireGroup`` or from a single ``Repertoire`` if a ``RepertoireGroup``
+was not created.
 
 A ``Node`` links members of a ``Clone`` to their original metadata and 
 annotations.
@@ -30,9 +32,9 @@ File Structure
 
 + The file should correspond to a list of ``Node`` objects, using ``Node`` as the key to the list.
 
-+ Each ``Clone`` object should contain a top-level key/value pair for ``clone_id`` that uniquely identifies the clone and a top-level key/value pair for ``repertoire_group_id`` that identifies the source of the clones members.
++ Each ``Clone`` object should contain a top-level key/value pair for ``clone_id`` that uniquely identifies the clone and a top-level key/value pair for *either* ``repertoire_group_id`` *or* ``repertoire_id`` that identifies the source of the clone's members.
 
-+ Each ``Node`` object should contain top-level key/value pairs for ``node_id`` (uniquely identifies the node), ``repertoire_group_id`` (identifies the source repertoire group), and ``repertoire_id`` (identifies the specific repertoire within the repertoire group.
++ Each ``Node`` object should contain top-level key/value pairs for ``node_id`` (uniquely identifies the node) and ``repertoire_id`` (identifies the source repertoire).
 
 + Some fields require the use of a particular ontology or controlled vocabulary.
 
