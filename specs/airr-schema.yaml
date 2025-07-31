@@ -4372,6 +4372,7 @@ Clone:
     required:
         - clone_id
         - repertoire_group_id
+        - repertoire_id
         - nodes
     properties:
         clone_id:
@@ -4381,7 +4382,19 @@ Clone:
                 identifier: true
         repertoire_group_id:
             type: string
-            description: Identifier of the repertoire_group that clone is derived from.
+            description: >
+                Identifier of the RepertoireGroup that this Clone is derived from.
+                If the Clone is derived from a single Repertoire, repertoire_id
+                may be used instead.
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        repertoire_id:
+            type: string
+            description: >
+                Identifier of the Repertoire that this Clone is derived from. Should
+                only be used if Clones are calculated from a single Repertoire without
+                defining a RepertoireGroup. Otherwise use repertoire_group_id instead.
             x-airr:
                 nullable: true
                 adc-query-support: true
@@ -4406,11 +4419,15 @@ Clone:
             items:
                 type: string
             description: List of node_id strings that act as keys to the Node records for members of this clone. 
+            x-airr:
+                nullable: true
         inferred_ancestor:
             type: string
             description: >
-                Sequence_id or cell_id string that acts as a key to the inferred naive 
-                Rearrangement (respectively, Cell) record for this clone.
+                Node_id string that acts as a key to the Node record for the 
+                inferred naive Rearrangement or Cell for this clone.
+            x-airr:
+                nullable: true
         clone_count:
             type: integer
             description: >
@@ -4419,19 +4436,24 @@ Clone:
                 the number of distinct cell barcodes (unique cell_id values),
                 or a more sophisticated calculation appropriate to the experimental protocol.
                 Absolute count is provided versus a frequency so that downstream analysis tools can perform their own normalization.
+            x-airr:
+                nullable: true
         seed_id:
             type: string
             description: sequence_id or cell_id of the seed sequence/cell. Empty string (or null) if there is no seed sequence.
+            x-airr:
+                nullable: true
         tree:
             type: string
             description: Newick string describing the tree.
+            x-airr:
+                nullable: true
 
 # A node acts as reference object to link members of a clone to their original reperotires.
 Node:
     type: object
     required:
         - node_id
-        - repertoire_group_id
         - repertoire_id
     properties:
         node_id:
@@ -4439,12 +4461,6 @@ Node:
             description: Identifier for the node.
             x-airr:
                 identifier: true
-        repertoire_group_id:
-            type: string
-            description: Identifier of the repertoire_group that node is derived from.
-            x-airr:
-                nullable: true
-                adc-query-support: true
         repertoire_id:
             type: string
             description: Identifier of the repertoire that cell or rearrangement contained by this node.
@@ -4472,10 +4488,12 @@ Node:
             enum:
                 - observed
                 - inferred
+                - simultaeted
                 - null
             description: >
-                Node type (source). "Observed for rearrangements/cells that were observed in the source data
-                or "inferred" for unobserved intermediates that were phylogenetically inferred.
+                Node type (source). "Observed" for rearrangements/cells that were observed in the source data,
+                "inferred" for unobserved intermediates that were phylogenetically inferred, or "simulated" for
+                simulated rearrangements/cells.
             x-airr:
                 nullable: true
         node_class:
