@@ -232,7 +232,6 @@ Schema Definitions
    Requirement levels of fields <airr_schema_requirement_levels>
    Repertoire Schema <metadata>
    Rearrangement Schema <rearrangements>
-   Alignment Schema (Experimental) <alignments>
    Clone and Lineage Tree Schema (Experimental) <clone>
    Cell Schema (Experimental) <cell>
    Cell Expression Schema (Experimental) <cellexpression>

@@ -19,10 +19,6 @@ Usage
 
    write_rearrangement(data, file, base = c("1", "0"), ...)
 
-::
-
-   write_alignment(data, file, base = c("1", "0"), ...)
-
 Arguments
 ~~~~~~~~~
 
@@ -48,9 +44,6 @@ Details
 
 ``write_rearrangement`` writes a ``data.frame`` containing AIRR
 Rearrangement data to TSV.
-
-``write_alignment`` writes a ``data.frame`` containing AIRR Alignment
-data to TSV.
 
 Examples
 ~~~~~~~~
