@@ -4837,7 +4837,7 @@ Clone:
         - repertoire_group_id
         - repertoire_id
         - nodes
-        properties:
+    properties:
         clone_id:
             type: string
             nullable: true
