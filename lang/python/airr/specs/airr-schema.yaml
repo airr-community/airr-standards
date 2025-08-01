@@ -4653,6 +4653,7 @@ Node:
             type: string
             description: Identifier for the node.
             x-airr:
+                nullable: false
                 identifier: true
         repertoire_id:
             type: string

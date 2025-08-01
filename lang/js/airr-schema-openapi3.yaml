@@ -4923,6 +4923,7 @@ Node:
         node_id:
             type: string
             description: Identifier for the node.
+            nullable: false
             x-airr:
                 identifier: true
         repertoire_id:
