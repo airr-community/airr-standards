@@ -4521,6 +4521,11 @@ Rearrangement:
                 Rearrangements were generated in silico and there is no linked Subject/Sample metadata, and
                 "inferred" for Rearrangements that are phylogenetically reconstructed from observed sequences.
                 Inferred Rearrangements should be assigned to a Repertoire with repertoire_type=inferred.
+            x-airr:
+                nullable: true
+                name: Rearrangement type
+                format: controlled_vocabulary
+                adc-query-support: true
         rearrangement_id:
             type: string
             description: >
@@ -4683,6 +4688,7 @@ Node:
                 simulated rearrangements/cells.
             x-airr:
                 nullable: true
+                format: controlled_vocabulary
         node_class:
             type: string
             enum:
@@ -4692,6 +4698,7 @@ Node:
             description: Does this node contain a rearrangement of a cell?
             x-airr:
                 nullable: true
+                format: controlled_vocabulary
 
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
@@ -4810,6 +4817,10 @@ Cell:
                 Cells were generated in silico and there is no linked Subject/Sample metadata, and
                 "inferred" for Cells that are phylogenetically reconstructed from observed sequences.
                 Inferred Cells should be assigned to a Repertoire with repertoire_type=inferred.
+            x-airr:
+                nullable: true
+                format: controlled_vocabulary
+                adc-query-support: true
 
 # The Expression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
