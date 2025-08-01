@@ -4571,6 +4571,7 @@ Clone:
             type: string
             description: Identifier for the clone.
             x-airr:
+                nullable: false
                 identifier: true
         repertoire_group_id:
             type: string
