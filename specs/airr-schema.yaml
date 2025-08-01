@@ -4488,7 +4488,7 @@ Node:
             enum:
                 - observed
                 - inferred
-                - simultaeted
+                - simulated
                 - null
             description: >
                 Node type (source). "Observed" for rearrangements/cells that were observed in the source data,
