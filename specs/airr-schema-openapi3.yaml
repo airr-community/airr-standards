@@ -3624,6 +3624,7 @@ Repertoire:
                 adc-query-support: true
         repertoire_type:
             type: string
+            nullable: true
             enum:
                 - observed
                 - simulated
@@ -3639,7 +3640,6 @@ Repertoire:
             title: Repertoire type
             example: physical
             x-airr:
-                nullable: true
                 name: Repertoire type
                 format: controlled_vocabulary
                 adc-query-support: true
@@ -4782,6 +4782,7 @@ Rearrangement:
                 identifier: true
         rearrangement_type:
             type: string
+            nullable: true
             enum:
                 - observed
                 - simulated
@@ -4793,6 +4794,10 @@ Rearrangement:
                 Rearrangements were generated in silico and there is no linked Subject/Sample metadata, and
                 "inferred" for Rearrangements that are phylogenetically reconstructed from observed sequences.
                 Inferred Rearrangements should be assigned to a Repertoire with repertoire_type=inferred.
+            x-airr:
+                name: Rearrangement type
+                format: controlled_vocabulary
+                adc-query-support: true
         rearrangement_id:
             type: string
             nullable: true
@@ -4844,72 +4849,66 @@ Clone:
                 identifier: true
         repertoire_group_id:
             type: string
+            nullable: true
             description: >
                 Identifier of the RepertoireGroup that this Clone is derived from.
                 If the Clone is derived from a single Repertoire, repertoire_id
                 may be used instead.
             x-airr:
-                nullable: true
                 adc-query-support: true
         repertoire_id:
             type: string
+            nullable: true
             description: >
                 Identifier of the Repertoire that this Clone is derived from. Should
                 only be used if Clones are calculated from a single Repertoire without
                 defining a RepertoireGroup. Otherwise use repertoire_group_id instead.
             x-airr:
-                nullable: true
                 adc-query-support: true
         clone_class:
             type: string
+            nullable: true
             enum:
                 - Rearrangement
                 - Cell
                 - mixed
                 - null
             description: Is this a single-chain clone or a cell-based clone?
-            x-airr:
-                nullable: true
         data_processing_id:
             type: string
+            nullable: true
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
-                nullable: true
                 adc-query-support: true
         nodes:
             type: array
+            nullable: true
             items:
                 type: string
             description: List of node_id strings that act as keys to the Node records for members of this clone. 
-            x-airr:
-                nullable: true
         inferred_ancestor:
             type: string
+            nullable: true
             description: >
                 Node_id string that acts as a key to the Node record for the 
                 inferred naive Rearrangement or Cell for this clone.
-            x-airr:
-                nullable: true
         clone_count:
             type: integer
+            nullable: true
             description: >
                 Absolute count of the size (number of members) of this clone in the repertoire.
                 This could simply be the number of sequences (Rearrangement records) observed in this clone,
                 the number of distinct cell barcodes (unique cell_id values),
                 or a more sophisticated calculation appropriate to the experimental protocol.
                 Absolute count is provided versus a frequency so that downstream analysis tools can perform their own normalization.
-            x-airr:
-                nullable: true
         seed_id:
             type: string
+            nullable: true
             description: sequence_id or cell_id of the seed sequence/cell. Empty string (or null) if there is no seed sequence.
-            x-airr:
-                nullable: true
         tree:
             type: string
+            nullable: true
             description: Newick string describing the tree.
-            x-airr:
-                nullable: true
 
 # A node acts as reference object to link members of a clone to their original repertoires.
 Node:
@@ -4925,28 +4924,29 @@ Node:
                 identifier: true
         repertoire_id:
             type: string
+            nullable: true
             description: Identifier of the repertoire that cell or rearrangement contained by this node.
             x-airr:
-                nullable: true
                 adc-query-support: true
         cell_id:
             type: string
+            nullable: true
             description: >
                 Identifier of the cell contained by this node.
                 NOTE: Mutually exclusive with Node.sequence_id
             x-airr:
-                nullable: true
                 adc-query-support: true
         sequence_id:
             type: string
+            nullable: true
             description: >
                 Identifier of the rearrangement contained by this node.
                 NOTE: Mutually exclusive with Node.cell_id
             x-airr:
-                nullable: true
                 adc-query-support: true
         node_type:
             type: string
+            nullable: true
             enum:
                 - observed
                 - inferred
@@ -4957,16 +4957,17 @@ Node:
                 "inferred" for unobserved intermediates that were phylogenetically inferred, or "simulated" for
                 simulated rearrangements/cells.
             x-airr:
-                nullable: true
+                format: controlled_vocabulary
         node_class:
             type: string
+            nullable: true
             enum:
                 - Rearrangement
                 - Cell
                 - null
             description: Does this node contain a rearrangement of a cell?
             x-airr:
-                nullable: true
+                format: controlled_vocabulary
 
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
@@ -5085,6 +5086,9 @@ Cell:
                 Cells were generated in silico and there is no linked Subject/Sample metadata, and
                 "inferred" for Cells that are phylogenetically reconstructed from observed sequences.
                 Inferred Cells should be assigned to a Repertoire with repertoire_type=inferred.
+            x-airr:
+                format: controlled_vocabulary
+                adc-query-support: true
 
 # The Expression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
