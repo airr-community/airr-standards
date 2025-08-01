@@ -4845,6 +4845,7 @@ Clone:
         clone_id:
             type: string
             description: Identifier for the clone.
+            nullable: false
             x-airr:
                 identifier: true
         repertoire_group_id:
