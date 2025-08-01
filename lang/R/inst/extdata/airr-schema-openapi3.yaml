@@ -561,11 +561,10 @@ DataFile:
                 $ref: '#/Clone'
         Node:
             type: array
+            nullable: false
             description: List of nodes
             items:
                 $ref: '#/Node'
-            x-airr:
-                nullable: false
         GermlineSet:
             type: array
             nullable: false
