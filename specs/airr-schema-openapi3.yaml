@@ -4840,7 +4840,6 @@ Clone:
     properties:
         clone_id:
             type: string
-            nullable: true
             description: Identifier for the clone.
             x-airr:
                 identifier: true
@@ -4855,12 +4854,12 @@ Clone:
                 adc-query-support: true
         repertoire_id:
             type: string
-            nullable: true
             description: >
                 Identifier of the Repertoire that this Clone is derived from. Should
                 only be used if Clones are calculated from a single Repertoire without
                 defining a RepertoireGroup. Otherwise use repertoire_group_id instead.
             x-airr:
+                nullable: true
                 adc-query-support: true
         clone_class:
             type: string
@@ -4874,15 +4873,14 @@ Clone:
                 nullable: true
         data_processing_id:
             type: string
-            nullable: true
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
+                nullable: true
                 adc-query-support: true
         nodes:
             type: array
             items:
                 type: string
-            nullable: true
             description: List of node_id strings that act as keys to the Node records for members of this clone. 
             x-airr:
                 nullable: true
@@ -4895,7 +4893,6 @@ Clone:
                 nullable: true
         clone_count:
             type: integer
-            nullable: true
             description: >
                 Absolute count of the size (number of members) of this clone in the repertoire.
                 This could simply be the number of sequences (Rearrangement records) observed in this clone,
@@ -4906,7 +4903,6 @@ Clone:
                 nullable: true
         seed_id:
             type: string
-            nullable: true
             description: sequence_id or cell_id of the seed sequence/cell. Empty string (or null) if there is no seed sequence.
             x-airr:
                 nullable: true
