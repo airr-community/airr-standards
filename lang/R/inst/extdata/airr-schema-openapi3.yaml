@@ -4840,7 +4840,6 @@ Clone:
     properties:
         clone_id:
             type: string
-            nullable: true
             description: Identifier for the clone.
             x-airr:
                 identifier: true
@@ -4855,7 +4854,6 @@ Clone:
                 adc-query-support: true
         repertoire_id:
             type: string
-            nullable: true
             description: >
                 Identifier of the Repertoire that this Clone is derived from. Should
                 only be used if Clones are calculated from a single Repertoire without
@@ -4875,9 +4873,9 @@ Clone:
                 nullable: true
         data_processing_id:
             type: string
-            nullable: true
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
+                nullable: true
                 adc-query-support: true
         nodes:
             type: array
