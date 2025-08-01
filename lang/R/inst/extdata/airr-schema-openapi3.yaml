@@ -4795,7 +4795,7 @@ Rearrangement:
                 "inferred" for Rearrangements that are phylogenetically reconstructed from observed sequences.
                 Inferred Rearrangements should be assigned to a Repertoire with repertoire_type=inferred.
             x-airr:
-                name: Repertoire type
+                name: Rearrangement type
                 format: controlled_vocabulary
                 adc-query-support: true
         rearrangement_id:
