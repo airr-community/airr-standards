@@ -5075,6 +5075,7 @@ Cell:
                 name: Virtual pairing
         cell_type:
             type: string
+            nullable: true
             enum:
                 - observed
                 - simulated
