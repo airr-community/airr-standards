@@ -559,6 +559,13 @@ DataFile:
             description: List of clones
             items:
                 $ref: '#/Clone'
+        Node:
+            type: array
+            description: List of nodes
+            items:
+                $ref: '#/Node'
+            x-airr:
+                nullable: false
         GermlineSet:
             type: array
             nullable: false
@@ -3616,6 +3623,27 @@ Repertoire:
             x-airr:
                 name: Repertoire description
                 adc-query-support: true
+        repertoire_type:
+            type: string
+            enum:
+                - observed
+                - simulated
+                - inferred
+                - null
+            description: >
+                Repertoire type (source). Most often the type should be "observed," meaning it corresponds to
+                an actual physical sample that was sequenced. Other allowed values are "simulated," i.e. the
+                Rearrangements were generated in silico and there is no linked Subject/Sample metadata, and
+                "inferred" for Rearrangements that are phylogenetically reconstructed from observed sequences.
+                Inferred Repertoires should point to the same Subject/Sample metadata as the corresponding
+                physical Repertoires.
+            title: Repertoire type
+            example: physical
+            x-airr:
+                nullable: true
+                name: Repertoire type
+                format: controlled_vocabulary
+                adc-query-support: true
         study:
             $ref: '#/Study'
             nullable: false
@@ -4753,6 +4781,19 @@ Rearrangement:
             x-airr:
                 adc-query-support: true
                 identifier: true
+        rearrangement_type:
+            type: string
+            enum:
+                - observed
+                - simulated
+                - inferred
+                - null
+            description: >
+                Rearrangement type (source). Most often the type should be "observed," meaning it corresponds to
+                an actual physical sample that was sequenced. Other allowed values are "simulated," i.e. the
+                Rearrangements were generated in silico and there is no linked Subject/Sample metadata, and
+                "inferred" for Rearrangements that are phylogenetically reconstructed from observed sequences.
+                Inferred Rearrangements should be assigned to a Repertoire with repertoire_type=inferred.
         rearrangement_id:
             type: string
             nullable: true
@@ -4788,12 +4829,14 @@ Rearrangement:
                     - "DataProcessing:germline_database"
 
 # A unique inferred clone object that has been constructed within a single data processing
-# for a single repertoire and a subset of its sequences and/or rearrangements.
+# for a single RepertoireGroup and a subset of its rearrangements and/or cells.
 Clone:
     type: object
     required:
         - clone_id
-        - germline_alignment
+        - repertoire_group_id
+        - repertoire_id
+        - nodes
     properties:
         clone_id:
             type: string
@@ -4801,197 +4844,132 @@ Clone:
             description: Identifier for the clone.
             x-airr:
                 identifier: true
-        repertoire_id:
+        repertoire_group_id:
+            type: string
+            description: >
+                Identifier of the RepertoireGroup that this Clone is derived from.
+                If the Clone is derived from a single Repertoire, repertoire_id
+                may be used instead.
+            x-airr:
+                nullable: true
+                adc-query-support: true
+       repertoire_id:
             type: string
             nullable: true
-            description: Identifier to the associated repertoire in study metadata.
+            description: >
+                Identifier of the Repertoire that this Clone is derived from. Should
+                only be used if Clones are calculated from a single Repertoire without
+                defining a RepertoireGroup. Otherwise use repertoire_group_id instead.
             x-airr:
+                nullable: true
                 adc-query-support: true
+        clone_class:
+            type: string
+            enum:
+                - Rearrangement
+                - Cell
+                - mixed
+                - null
+            description: Is this a single-chain clone or a cell-based clone?
+            x-airr:
+                nullable: true
         data_processing_id:
             type: string
             nullable: true
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
                 adc-query-support: true
-        sequences:
+        nodes:
             type: array
             items:
                 type: string
-            nullable: true
-            description: >
-                List sequence_id strings that act as keys to the Rearrangement records for members of the clone.
-        v_call:
+            description: List of node_id strings that act as keys to the Node records for members of this clone. 
+            x-airr:
+                nullable: true
+        inferred_ancestor:
             type: string
-            nullable: true
             description: >
-                V gene with allele of the inferred ancestral of the clone. For example, IGHV4-59*01.
-            example: IGHV4-59*01
-        d_call:
-            type: string
-            nullable: true
-            description: >
-                D gene with allele of the inferred ancestor of the clone. For example, IGHD3-10*01.
-            example: IGHD3-10*01
-        j_call:
-            type: string
-            nullable: true
-            description: >
-                J gene with allele of the inferred ancestor of the clone. For example, IGHJ4*02.
-            example: IGHJ4*02
-        junction:
-            type: string
-            nullable: true
-            description: >
-                Nucleotide sequence for the junction region of the inferred ancestor of the clone,
-                where the junction is defined as the CDR3 plus the two flanking conserved codons.
-        junction_aa:
-            type: string
-            nullable: true
-            description: >
-                Amino acid translation of the junction.
-        junction_length:
-            type: integer
-            nullable: true
-            description: Number of nucleotides in the junction.
-        junction_aa_length:
-            type: integer
-            nullable: true
-            description: Number of amino acids in junction_aa.
-        germline_alignment:
-            type: string
-            nullable: true
-            description: >
-                Assembled, aligned, full-length inferred ancestor of the clone spanning the same region
-                as the sequence_alignment field of nodes (typically the V(D)J region) and including the
-                same set of corrections and spacers (if any).
-        germline_alignment_aa:
-            type: string
-            nullable: true
-            description: >
-                Amino acid translation of germline_alignment.
-        v_alignment_start:
-            type: integer
-            nullable: true
-            description: >
-                Start position in the V gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        v_alignment_end:
-            type: integer
-            nullable: true
-            description: >
-                End position in the V gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        d_alignment_start:
-            type: integer
-            nullable: true
-            description: >
-                Start position of the D gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        d_alignment_end:
-            type: integer
-            nullable: true
-            description: >
-                End position of the D gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        j_alignment_start:
-            type: integer
-            nullable: true
-            description: >
-                Start position of the J gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        j_alignment_end:
-            type: integer
-            nullable: true
-            description: >
-                End position of the J gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        junction_start:
-            type: integer
-            nullable: true
-            description: Junction region start position in the alignment (1-based closed interval).
-        junction_end:
-            type: integer
-            nullable: true
-            description: Junction region end position in the alignment (1-based closed interval).
-        umi_count:
-            type: integer
-            nullable: true
-            description: >
-                Number of distinct UMIs observed across all sequences (Rearrangement records) in this clone.
+                Node_id string that acts as a key to the Node record for the 
+                inferred naive Rearrangement or Cell for this clone.
+            x-airr:
+                nullable: true
         clone_count:
             type: integer
-            nullable: true
             description: >
                 Absolute count of the size (number of members) of this clone in the repertoire.
                 This could simply be the number of sequences (Rearrangement records) observed in this clone,
                 the number of distinct cell barcodes (unique cell_id values),
                 or a more sophisticated calculation appropriate to the experimental protocol.
                 Absolute count is provided versus a frequency so that downstream analysis tools can perform their own normalization.
+            x-airr:
+                nullable: true
         seed_id:
             type: string
-            nullable: true
-            description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
-
-# 1-to-n relationship for a clone to its trees.
-Tree:
-    type: object
-    required:
-        - tree_id
-        - clone_id
-        - newick
-    properties:
-        tree_id:
-            type: string
-            nullable: true
-            description: Identifier for the tree.
+            description: sequence_id or cell_id of the seed sequence/cell. Empty string (or null) if there is no seed sequence.
             x-airr:
-                identifier: true
-        clone_id:
+                nullable: true
+        tree:
             type: string
-            nullable: true
-            description: Identifier for the clone.
-        newick:
-            type: string
-            nullable: true
-            description: Newick string of the tree edges.
-        nodes:
-            type: object
-            nullable: true
-            description: Dictionary of nodes in the tree, keyed by sequence_id string
-            additionalProperties:
-                $ref: '#/Node'
+            description: Newick string describing the tree.
+            x-airr:
+                nullable: true
 
-# 1-to-n relationship between a tree and its nodes
+# A node acts as reference object to link members of a clone to their original repertoires.
 Node:
     type: object
     required:
-        - sequence_id
+        - node_id
+        - repertoire_id
     properties:
-        sequence_id:
+        node_id:
             type: string
-            nullable: true
-            description: >
-                Identifier for this node that matches the identifier in the newick string and, where possible,
-                the sequence_id in the source repertoire.
+            description: Identifier for the node.
             x-airr:
                 identifier: true
-        sequence_alignment:
+        repertoire_id:
             type: string
-            nullable: true
-            description: >
-                Nucleotide sequence of the node, aligned to the germline_alignment for this clone, including
-                including any indel corrections or spacers.
-        junction:
+            description: Identifier of the repertoire that cell or rearrangement contained by this node.
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        cell_id:
             type: string
-            nullable: true
             description: >
-                Junction region nucleotide sequence for the node, where the junction is defined as
-                the CDR3 plus the two flanking conserved codons.
-        junction_aa:
+                Identifier of the cell contained by this node.
+                NOTE: Mutually exclusive with Node.sequence_id
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        sequence_id:
             type: string
-            nullable: true
             description: >
-                Amino acid translation of the junction.
+                Identifier of the rearrangement contained by this node.
+                NOTE: Mutually exclusive with Node.cell_id
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        node_type:
+            type: string
+            enum:
+                - observed
+                - inferred
+                - simulated
+                - null
+            description: >
+                Node type (source). "Observed" for rearrangements/cells that were observed in the source data,
+                "inferred" for unobserved intermediates that were phylogenetically inferred, or "simulated" for
+                simulated rearrangements/cells.
+            x-airr:
+                nullable: true
+        node_class:
+            type: string
+            enum:
+                - Rearrangement
+                - Cell
+                - null
+            description: Does this node contain a rearrangement of a cell?
+            x-airr:
+                nullable: true
 
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
@@ -5097,6 +5075,19 @@ Cell:
                 miairr: defined
                 adc-query-support: true
                 name: Virtual pairing
+        cell_type:
+            type: string
+            enum:
+                - observed
+                - simulated
+                - inferred
+                - null
+            description: >
+                Cell type (source). Most often the type should be "observed," meaning it corresponds to
+                an actual physical sample that was sequenced. Other allowed values are "simulated," i.e. the
+                Cells were generated in silico and there is no linked Subject/Sample metadata, and
+                "inferred" for Cells that are phylogenetically reconstructed from observed sequences.
+                Inferred Cells should be assigned to a Repertoire with repertoire_type=inferred.
 
 # The Expression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
