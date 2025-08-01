@@ -4,7 +4,7 @@
 Info:
     title: AIRR Schema
     description: Schema definitions for AIRR standards objects
-    version: 1.4
+    version: 2.0
     contact:
         name: AIRR Community
         url: https://github.com/airr-community
@@ -92,11 +92,26 @@ CURIEMap:
     IEDB_RECEPTOR:
         type: identifier
         default:
-            map: IEDB
-            provider: IEDB
+            map: IEDB_RECEPTOR
+            provider: IEDB_RECEPTOR
         map:
-            IEDB:
+            IEDB_RECEPTOR:
                 iri_prefix: "https://www.iedb.org/receptor/"
+    IEDB_EPITOPE:
+        type: identifier
+        default:
+            map: IEDB_EPITOPE
+            provider: IEDB_EPITOPE
+        map:
+            IEDB_EPITOPE:
+                iri_prefix: "https://www.iedb.org/epitope/"
+    IMGT_GERMLINESET:
+        type: identifier
+        default:
+            map: IMGT_GERMLINESET
+        map:
+            IMGT_GERMLINESET:
+                iri_prefix: "https://www.imgt.org/download/V-QUEST/archives/"
     MRO:
         type: ontology
         default:
@@ -123,6 +138,13 @@ CURIEMap:
         map:
             OBO:
                 iri_prefix: "http://purl.obolibrary.org/obo/NCIT_"
+    OGRDB_GERMLINESET:
+        type: identifier
+        default:
+            map: OGRDB_GERMLINESET
+        map:
+            OGRDB_GERMLINESET:
+                iri_prefix: "https://ogrdb.airr-community.org/api_v2/"
     ORCID:
         type: catalog
         default:
@@ -176,10 +198,20 @@ InformationProvider:
             request:
                 url: "{iri}"
                 response: text/html
-        IEDB:
+        IEDB_RECEPTOR:
             request:
-                url: "https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}"
+                url:
+                    - 'https://query-api.iedb.org/tcr_search?receptor_group_id=eq.{local_id}'
+                    - 'https://query-api.iedb.org/bcr_search?receptor_group_id=eq.{local_id}'
                 response: application/json
+        IEDB_EPITOPE:
+            request:
+                url: "https://query-api.iedb.org/epitope_search?structure_id=eq.{local_id}"
+                response: application/json
+        IMGT_GERMLINESET:
+            request:
+                url: "{iri}"
+                response: application/zip
         OLS:
             request:
                 url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
@@ -188,6 +220,10 @@ InformationProvider:
             request:
                 url: "http://www.ontobee.org/ontology/rdf/{ontology_id}?iri={iri}"
                 response: application/rdf+xml
+        OGRDB_GERMLINESET:
+            request:
+                url: "{iri}"
+                response: application/json
         ORCID:
             request:
                 url: "https://pub.orcid.org/v2.1/{local_id}"
@@ -341,6 +377,138 @@ Attributes:
                             type: string
                             description: Ontology name for the top node term
 
+
+# FileObject
+FileObject:
+    type: object
+    properties:
+        format:
+            type: string
+            description: The file format for the file (e.g. json, tsv).
+            nullable: true
+        compression:
+            type: string
+            description: The type of compression (if any) used for the file (e.g. zip, gz, bz2).
+            nullable: true
+        filename:
+            type: string
+            description: The name of the file
+            nullable: true
+        checksum:
+            type: string
+            description: MD5 checksum of the file.
+            nullable: true
+        version:
+            type: string
+            description: Version stamp for the file (if any).
+            nullable: true
+
+# AIRR DataSet specification
+#     An AIRR DataSet consists of tags for types of AIRR Schema Objects and a set of files that hold data in the AIRR format
+#     appropriate for that AIRR schema object.
+
+DataSet:
+    type: object
+    properties:
+        name:
+            type: string
+            description: A human readable name for the data set.
+            nullable: true
+        description:
+            type: string
+            description: A description of the data set.
+            nullable: true
+        repository_url:
+            type: string
+            description: The URL of the repository from which the data set came from (if the data came from a repository)
+            nullable: true
+        files:
+            type: object
+            description: A set of files based on data type, where the key for each object denotes the type of data and the accompanying array of files (and related file metadata) contain the data of that type. All top level AIRR objects (e.g. Repertoire, Rearrangement, Clone, Cell, Expression, Reactivity, Receptor, RepertoireGroup) are allowed. Custom data types are also permitted, so the manifest can include data that is outside of the AIRR specification.
+            nullable: true
+            properties:
+                Repertoire:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                Rearrangement:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                Clone:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                Cell:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                Expression:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                Reactivity:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                Receptor:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                GermlineSet:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                GenotypeSet:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                RepertoireGroup:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+                ADCQuery:
+                    type: array
+                    items:
+                        $ref: '#/FileObject'
+                    nullable: true
+
+
+# AIRR Manifest specification.
+#     An AIRR Manifest contains metadata for a group of accompanying files that are part of a set or coherent unit.
+
+Manifest:
+    type: object
+    properties:
+        name:
+            type: string
+            description: A human readable name for the data manifest.
+            nullable: false
+        description:
+            type: string
+            description: A description of the purpose for this data manifest
+            nullable: true
+        created_at:
+            type: string
+            description: Time/data stamp when the dat manifest was created.
+            nullable: true
+        data_sets:
+            type: array
+            items:
+                $ref: '#/DataSet'
+            nullable: true
+
+
 # AIRR Data File
 #
 # A JSON data file that holds Repertoire metadata, data processing
@@ -409,7 +577,13 @@ DataFile:
             nullable: false
             description: List of genotype sets
             items:
-                $ref: '#/GenotypeSet'
+              $ref: '#/GenotypeSet'
+        Manifest:
+            type: array
+            nullable: false
+            description: List of data set manifests
+            items:
+              $ref: '#/Manifest'
 
 # AIRR Info object, should be similar to openapi
 # should we point to an openapi schema?
@@ -1377,10 +1551,11 @@ GermlineSet:
         germline_set_ref:
             type: string
             nullable: true
+            description: Unique identifier of the germline set and version, in CURIE format
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 miairr: important
-            description: Unique identifier of the germline set and version, in standardized form (Repo:Label:Version)
-            example: OGRDB:Human_IGH:2021.11
+                format: CURIE
         pub_ids:
             type: array
             items:
@@ -1565,10 +1740,11 @@ DocumentedAllele:
         germline_set_ref:
             type: string
             nullable: true
+            description: GermlineSet from which it was taken, referenced in CURIE format
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 miairr: important
-            description: GermlineSet from which it was taken, referenced in standardized form (Repo:Label:Version)
-            example: OGRDB:Human_IGH:2021.11
+                format: CURIE
         phasing:
             type: integer
             nullable: true
@@ -1623,9 +1799,11 @@ DeletedGene:
         germline_set_ref:
             type: string
             nullable: true
-            description: GermlineSet from which it was taken (issuer/name/version)
+            description: GermlineSet from which it was taken, referenced in CURIE format
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 miairr: important
+                format: CURIE
         phasing:
             type: integer
             nullable: true
@@ -2617,7 +2795,8 @@ CellProcessing:
         cell_phenotype:
             type: string
             nullable: true
-            description: List of cellular markers and their expression levels used to isolate the cell population
+            description: >
+                List of cellular markers and their expression levels used to isolate the cell population.
             title: Cell subset phenotype
             example: CD19+ CD38+ CD27+ IgM- IgD-
             x-airr:
@@ -2626,6 +2805,20 @@ CellProcessing:
                 set: 3
                 subset: process (cell)
                 name: Cell subset phenotype
+        cell_label:
+            type: string
+            nullable: true
+            description: >
+                Free text cell type annotation. Primarily used for annotating cell types that are not 
+                provided in the Cell Ontology.
+            title: Cell annotation
+            example: age-associated B cell
+            x-airr:
+                miairr: defined
+                adc-query-support: true
+                set: 3
+                subset: process (cell)
+                name: Cell annotation
         cell_species:
             $ref: '#/Ontology'
             nullable: true
@@ -3354,10 +3547,11 @@ DataProcessing:
         germline_set_ref:
             type: string
             nullable: true
-            description: Unique identifier of the germline set and version, in standardized form (Repo:Label:Version)
-            example: OGRDB:Human_IGH:2021.11
+            description: Unique identifier of the germline set and version, in CURIE format
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 adc-query-support: true
+                format: CURIE
         analysis_provenance_id:
             type: string
             nullable: true
@@ -4544,6 +4738,21 @@ Rearrangement:
             x-airr:
                 adc-query-support: true
                 identifier: true
+        reactivity_id:
+            type: string
+            nullable: true
+            description: >
+                Comma separated list of unique identifiers for Reactivity objects associated with this Rearrangement.
+                Order and length of reactivity_id and reactivity_ref are independent.
+            x-airr:
+                identifier: true
+        reactivity_ref:
+            type: string
+            nullable: true
+            description: >
+                Comma separated list of CURIE identifiers of external reactivity records (e.g. IEDB_RECEPTOR:182992, https://www.iedb.org/receptor/182992) 
+                associated with this Rearrangement. Order and length of reactivity_id and reactivity_ref are independent.
+            example: "IEDB_RECEPTOR:182992, IEDB_RECEPTOR:36336"
         repertoire_id:
             type: string
             nullable: true
@@ -4770,7 +4979,6 @@ Cell:
     type: object
     required:
         - cell_id
-        - rearrangements
         - repertoire_id
         - virtual_pairing
     properties:
@@ -4787,32 +4995,6 @@ Cell:
                 miairr: defined
                 adc-query-support: true
                 name: Cell index
-        rearrangements:
-            type: array
-            nullable: true
-            description: >
-                Array of sequence identifiers defined for the Rearrangement objects associated with this cell
-            title: Cell-associated rearrangements
-            items:
-                type: string
-            example: [id1, id2]
-            x-airr:
-                miairr: defined
-                adc-query-support: true
-                name: Cell-associated rearrangements
-        receptors:
-            type: array
-            nullable: true
-            description: >
-                Array of receptor identifiers defined for the Receptor objects associated with this cell
-            title: Cell-associated receptors
-            items:
-                type: string
-            example: [id1, id2]
-            x-airr:
-                miairr: defined
-                adc-query-support: true
-                name: Cell-associated receptors
         repertoire_id:
             type: string
             nullable: true
@@ -4831,34 +5013,60 @@ Cell:
                 miairr: defined
                 adc-query-support: true
                 name: Data processing for cell
-        expression_study_method:
-            type: string
-            enum:
-                - flow_cytometry
-                - single-cell_transcriptome
-                - null
+        receptors:
+            type: array
             nullable: true
             description: >
-                Keyword describing the methodology used to assess expression. This values for this field MUST 
-                come from a controlled vocabulary.
+                Array of receptor identifiers defined for the Receptor objects associated with this cell
+            title: Cell-associated receptors
+            items:
+                type: string
+            example: [id1, id2]
             x-airr:
                 miairr: defined
                 adc-query-support: true
-        expression_raw_doi:
+                name: Cell-associated receptors
+        cell_subset:
+            $ref: '#/Ontology'
+            nullable: true
+            description: Commonly-used designation of isolated cell population.
+            title: Cell subset
+            example:
+                id: CL:0000972
+                label: class switched memory B cell
+            x-airr:
+                miairr: important
+                adc-query-support: true
+                name: Cell subset
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: CL:0000542
+                        label: lymphocyte
+        cell_phenotype:
             type: string
             nullable: true
             description: >
-                DOI of raw data set containing the current event
+                List of cellular markers and their expression levels used to isolate the cell population.
+            title: Cell subset phenotype
+            example: CD19+ CD38+ CD27+ IgM- IgD-
             x-airr:
                 miairr: defined
                 adc-query-support: true
-        expression_index:
+                name: Cell subset phenotype
+        cell_label:
             type: string
             nullable: true
             description: >
-                Index addressing the current event within the raw data set.
+                Free text cell type annotation. Primarily used for annotating cell types that are not 
+                provided in the Cell Ontology.
+            title: Cell annotation
+            example: age-associated B cell
             x-airr:
                 miairr: defined
+                adc-query-support: true
+                name: Cell annotation
         virtual_pairing:
             type: boolean
             nullable: true
@@ -4883,10 +5091,10 @@ Cell:
                 "inferred" for Cells that are phylogenetically reconstructed from observed sequences.
                 Inferred Cells should be assigned to a Repertoire with repertoire_type=inferred.
 
-# The CellExpression object acts as a container to hold a single expression level measurement from
+# The Expression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
 # data_processing_id.
-CellExpression:
+Expression:
     type: object
     required:
         - expression_id
@@ -4900,7 +5108,7 @@ CellExpression:
         expression_id:
             type: string
             description: >
-                Identifier for the CellExpression object. This identifier must be unique within 
+                Identifier for the Expression object. This identifier must be unique within 
                 a given study, but it is recommended that it be a universally unique record locator
                 to enable database applications.
             title: Expression property measurement identifier
@@ -5085,10 +5293,10 @@ Receptor:
             x-airr:
                 adc-query-support: true
 
-CellReactivity:
+Reactivity:
     type: object
     required:
-        - cell_reactivity_id
+        - reactivity_id
         - cell_id
         - ligand_type
         - antigen_type
@@ -5098,20 +5306,20 @@ CellReactivity:
         - reactivity_value
         - reactivity_unit
     properties:
-        cell_reactivity_id:
+        reactivity_id:
             type: string
             nullable: false
             description: >
-                Identifier for the CellReactivity object. This identifier must be unique within 
+                Identifier for the Reactivity object. This identifier must be unique within 
                 a given study, but it is recommended that it be a universally unique record locator
                 to enable database applications.
-            title: CellReactivity ID
+            title: Reactivity ID
             x-airr:
                 identifier: true
                 adc-query-support: true
         cell_id:
             type: string
-            nullable: false
+            nullable: true
             description: >
                 Identifier of the Cell in the context of which the reactivity measurement was conducted.
             title: Cell ID
@@ -5145,7 +5353,7 @@ CellReactivity:
                 - peptide
                 - non-peptidic
             description: Classification of ligand binding to the cell
-            example: non-peptide
+            example: "MHC:peptide"
             x-airr:
                 format: controlled_vocabulary
                 adc-query-support: true
@@ -5171,8 +5379,8 @@ CellReactivity:
                 or by T cell activation after presentation via an MHC molecule.
             title: Antigen
             example:
-                id: UNIPROT:P19597
-                label: Circumsporozoite protein
+                id: UNIPROT:P01308
+                label: Insulin
             x-airr:
                 adc-query-support: true
                 format: ontology
@@ -5182,8 +5390,8 @@ CellReactivity:
             description: The species from which the antigen was isolated
             title: Source species of antigen
             example:
-                id: NCBITAXON:5843
-                label: Plasmodium falciparum NF54
+                id: NCBITAXON:9606
+                label: Homo sapiens
             x-airr:
                 adc-query-support: true
                 format: ontology
@@ -5195,14 +5403,17 @@ CellReactivity:
         peptide_start:
             type: integer
             nullable: true
+            example: 87
             description: Start position of the peptide within the reference protein sequence
         peptide_end:
             type: integer
             nullable: true
+            example: 101
             description: End position of the peptide within the reference protein sequence
         peptide_sequence_aa:
             type: string
             nullable: true
+            example: QKRGIVEQCCTSICS
             description: >
               The actual peptide sequence against which the receptor reactivity was measured. This field should be
               used as a convenience for antigens of antigen_type `protein` or `peptide`.
@@ -5271,24 +5482,25 @@ CellReactivity:
         reactivity_method:
             type: string
             nullable: false
-            enum:
-                - native_protein
-                - MHC_peptide_multimer
-            description: The methodology used to assess expression (assay implemented in experiment)
+            description: >
+                The methodology used to assess/classify reactivity. This should be either the assay utlizied in the experiment,
+                delineated as "annotated" if annotated from an external source (e.g. IEDB), or inferred if imputed using
+                a computational method. In future versions we anticipate this field being an enumerated type, and it is strongly
+                recommended that users utilize one of the following keywords in this field if appropriate:
+                native_protein, MHC_peptide_multimer, annotated, inferred.
             x-airr:
                 adc-query-support: true
-                format: controlled_vocabulary
         reactivity_readout:
             type: string
             nullable: false
-            enum:
-                - fluorescence_intensity
-                - barcode_count
-            description: Reactivity measurement read-out
+            description: >
+                Reactivity measurement read-out. For physical assays, this should describe what was measured. For inferred
+                and annotated methods this should indicate a confidence/quality level for the inference/annotation. In future
+                versions we anticipate this field being an enumerated type, and it is strongly recommended that users utilize
+                one of the following keywords in this field if appropriate: fluorescence_intensity, barcode_count, confidence.
             example: barcode_count
             x-airr:
                 adc-query-support: true
-                format: controlled_vocabulary
         reactivity_value:
             type: number
             nullable: false
@@ -5301,5 +5513,15 @@ CellReactivity:
             nullable: false
             description: The unit of the measurement
             example: read count
+            x-airr:
+                adc-query-support: true
+        reactivity_ref:
+            type: array
+            nullable: true
+            description: Array of cross references to external epitope reactivity records 
+            title: Epitope reactivity cross-references
+            items:
+                type: string
+            example: ["IEDB_EPITOPE:1616345"]
             x-airr:
                 adc-query-support: true

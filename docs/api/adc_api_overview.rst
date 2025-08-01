@@ -88,6 +88,14 @@ The ADC API currently does not define an authentication method. Future
 versions of the API may provide an authentication method so data
 repositories can support query and download of controlled-access data.
 
+Extensions
+~~~~~~~~~~~~~~
+
+Implementation of the ADC API is sufficient for most repositories. However, repositories
+may also implement extension APIs that provide additional capability and functionality.
+
+*  Asynchronous API.
+*  Statistics API (for future consideration).
 
 Table of Content
 ----------------
@@ -99,6 +107,7 @@ Table of Content
    adc_api_requests
    adc_api_limits
    adc_api_reference
+   adc_api_async
 
 
 .. == External links ==

@@ -125,12 +125,12 @@
                                 "documented_alleles": [
                                     {
                                         "label": "IGHV1-69*01",
-                                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                                        "germline_set_ref": "IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip",
                                         "phasing": 1
                                     },
                                     {
                                         "label": "IGHV1-69*02",
-                                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                                        "germline_set_ref": "IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip",
                                         "phasing": 2
                                     }
                                 ],
@@ -144,7 +144,7 @@
                                 "deleted_genes": [
                                     {
                                         "label": "IGHV3-30-3",
-                                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                                        "germline_set_ref": "IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip",
                                         "phasing": 1
                                     }
                                 ],
@@ -189,6 +189,7 @@
                         "label": "naive B cell"
                     },
                     "cell_phenotype": "expression of CD20 and the absence of CD27",
+                    "cell_label": "naive B cell",
                     "cell_species": {
                         "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"
@@ -388,6 +389,7 @@
                         "label": "memory B cell"
                     },
                     "cell_phenotype": "expression of CD20 and CD27",
+                    "cell_label": "memory B cell",
                     "cell_species": {
                         "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"
@@ -587,6 +589,7 @@
                         "label": "naive thymus-derived CD4-positive, alpha-beta T cell"
                     },
                     "cell_phenotype": "expression of CD8 and absence of CD4 and CD45RO",
+                    "cell_label": "naive CD4 aB T cell",
                     "cell_species": {
                         "id": "NCBITAXON:9606",
                         "label": "Homo sapiens"
@@ -689,7 +692,7 @@
         "release_description": "",
         "release_date": "2021-11-24",
         "germline_set_name": "CAST IGH",
-        "germline_set_ref": "OGRDB:G00007.1",
+        "germline_set_ref": "OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9",
         "pub_ids": [""],
         "species": {
             "id": "NCBITAXON:10090",
@@ -1097,12 +1100,12 @@
                 "documented_alleles": [
                     {
                         "label": "IGHV1-69*01",
-                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                        "germline_set_ref": "IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip",
                         "phasing": 1
                     },
                     {
                         "label": "IGHV1-69*02",
-                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                        "germline_set_ref": "IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip",
                         "phasing": 2
                     }
                 ],
@@ -1116,7 +1119,7 @@
                 "deleted_genes": [
                     {
                         "label": "IGHV3-30-3",
-                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                        "germline_set_ref": "IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip",
                         "phasing": 1
                     }
                 ],

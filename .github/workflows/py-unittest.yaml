@@ -23,9 +23,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ '3.8' ]
+        python-version: [ '3.9' ]
     steps:
       - uses: actions/checkout@v2
+
+      - name: Check test data matches the global test data files
+        run: diff -rc tests/data ../../tests/data
+        shell: bash
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
