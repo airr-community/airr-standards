@@ -3618,8 +3618,8 @@ Repertoire:
             x-airr:
                 adc-query-support: true
 
-# An ordered group of repertoires for analysis purposes, includeing optional time course
-# Can be treated as a set if all repertoire_group_id are unique
+# A RepertoireFilter references the underlying Repertoires to be included in a RepertoireGroup
+# and describes if/how the Rearrangements/Cells within the original Repertoire have been filtered 
 RepertoireFilter:
     type: object
     properties:
@@ -3644,7 +3644,12 @@ RepertoireFilter:
         filter:
             nullable: true
             type: object
+            description: >
+                A JSON object describing how this Repertoire was filtered
+                using the same structure as an ADC API query
 
+# A RepertoireGroup combines multiple Repertoires for analysis purposes
+# without needing to duplicate the underlying (meta)data
 RepertoireGroup:
     type: object
     required:
