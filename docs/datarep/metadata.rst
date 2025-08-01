@@ -144,18 +144,18 @@ repertoire evolution across a time series. Conversely, a
 researcher may sometimes be interested in only a specific subset
 of a ``Repertoire`` such as "productive rearrangements for IGHV4".
 All of these cases can be represented using an array of
-``RepertoireFilter``s and contained in a ``RepertoireGroup``.
+``RepertoireFilters`` and contained in a ``RepertoireGroup``.
 
 A ``RepertoireFilter`` incorporates its underlying ``Repertoires``
-by reference to their ``repertoire_id``s and thus retains the
+by reference to their ``repertoire_ids`` and thus retains the
 ability to access all of the associated MiAIRR metadata. The
 ``RepertoireFilter`` also describes the selection criteria for
 the included repertoires and how they have been filtered by 
 building a query equivalent to one that would be used in the 
 :ref:`ADC API <APIFiltering>`.
 
-``RepertoireGroup``s can be associated with the same study as
-the underlying ``Repertoire``s or a new one, as appropriate.
+``RepertoireGroups`` can be associated with the same study as
+the underlying ``Repertoires`` or a new one, as appropriate.
 
 File Format Specification
 -----------------------------
