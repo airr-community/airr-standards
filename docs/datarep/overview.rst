@@ -46,7 +46,7 @@ sets.
 
 + Data Processing
 
-+ Processed Sequences with Annotations
++ Processed AIRR Sequences with Annotations
 
 However beyond these sets, MiAIRR does not define any structure, data
 model or relationship between the data elements. This provides

@@ -49,6 +49,10 @@ The ``Receptor`` objects has two properties that serve as identifiers:
           )
       )
 
+`receptor_variable_domain_1_aa` is the complete amino acid sequence of 
+the mature variable domain of the Ig heavy, TCR beta or TCR delta chain. 
+`receptor_variable_domain_2_aa` is the complete amino acid sequence of 
+the mature variable domain of the Ig light, TCR alpha or TCR gamma chain.
 
 Relations to other AIRR Schema objects
 --------------------------------------
