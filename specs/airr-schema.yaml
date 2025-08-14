@@ -4,7 +4,7 @@
 Info:
     title: AIRR Schema
     description: Schema definitions for AIRR standards objects
-    version: 1.4
+    version: 2.0
     contact:
         name: AIRR Community
         url: https://github.com/airr-community
@@ -103,6 +103,13 @@ CURIEMap:
         map:
             IEDB_EPITOPE:
                 iri_prefix: "https://www.iedb.org/epitope/"
+    IMGT_GERMLINESET:
+        type: identifier
+        default:
+            map: IMGT_GERMLINESET
+        map:
+            IMGT_GERMLINESET:
+                iri_prefix: "https://www.imgt.org/download/V-QUEST/archives/"
     MRO:
         type: ontology
         default:
@@ -129,6 +136,13 @@ CURIEMap:
         map:
             OBO:
                 iri_prefix: "http://purl.obolibrary.org/obo/NCIT_"
+    OGRDB_GERMLINESET:
+        type: identifier
+        default:
+            map: OGRDB_GERMLINESET
+        map:
+            OGRDB_GERMLINESET:
+                iri_prefix: "https://ogrdb.airr-community.org/api_v2/"
     ORCID:
         type: catalog
         default:
@@ -192,6 +206,10 @@ InformationProvider:
             request:
                 url: "https://query-api.iedb.org/epitope_search?structure_id=eq.{local_id}"
                 response: application/json
+        IMGT_GERMLINESET:
+            request:
+                url: "{iri}"
+                response: application/zip
         OLS:
             request:
                 url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
@@ -200,6 +218,10 @@ InformationProvider:
             request:
                 url: "http://www.ontobee.org/ontology/rdf/{ontology_id}?iri={iri}"
                 response: application/rdf+xml
+        OGRDB_GERMLINESET:
+            request:
+                url: "{iri}"
+                response: application/json
         ORCID:
             request:
                 url: "https://pub.orcid.org/v2.1/{local_id}"
@@ -1437,10 +1459,11 @@ GermlineSet:
                 miairr: important
         germline_set_ref:
             type: string
-            description: Unique identifier of the germline set and version, in standardized form (Repo:Label:Version)
-            example: OGRDB:Human_IGH:2021.11
+            description: Unique identifier of the germline set and version, in CURIE format
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 miairr: important
+                format: CURIE
         pub_ids:
             type: array
             items:
@@ -1613,10 +1636,11 @@ DocumentedAllele:
             description: The accepted name for this allele, taken from the GermlineSet
         germline_set_ref:
             type: string
+            description: GermlineSet from which it was taken, referenced in CURIE format 
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 miairr: important
-            description: GermlineSet from which it was taken, referenced in standardized form (Repo:Label:Version)
-            example: OGRDB:Human_IGH:2021.11
+                format: CURIE
         phasing:
             type: integer
             nullable: true
@@ -1669,9 +1693,11 @@ DeletedGene:
             description: The accepted name for this gene, taken from the GermlineSet
         germline_set_ref:
             type: string
+            description: GermlineSet from which it was taken, referenced in CURIE format 
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 miairr: important
-            description: GermlineSet from which it was taken (issuer/name/version)
+                format: CURIE
         phasing:
             type: integer
             nullable: true
@@ -3397,11 +3423,12 @@ DataProcessing:
                 name: V(D)J germline reference database
         germline_set_ref:
             type: string
-            description: Unique identifier of the germline set and version, in standardized form (Repo:Label:Version)
-            example: OGRDB:Human_IGH:2021.11
+            description: Unique identifier of the germline set and version, in CURIE format
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 nullable: true
                 adc-query-support: true
+                format: CURIE
         analysis_provenance_id:
             type: string
             description: Identifier for machine-readable PROV model of analysis provenance
@@ -3558,98 +3585,6 @@ RepertoireGroup:
                 List of repertoires in this group with an associated description and time point designation
             items:
                 $ref: '#/RepertoireFilter'
-
-
-Alignment:
-    type: object
-    required:
-        - sequence_id
-        - segment
-        - call
-        - score
-        - cigar
-    properties:
-        sequence_id:
-            type: string
-            description: >
-                Unique query sequence identifier within the file. Most often this will be the input sequence
-                header or a substring thereof, but may also be a custom identifier defined by the tool in
-                cases where query sequences have been combined in some fashion prior to alignment.
-            x-airr:
-                identifier: true
-        segment:
-            type: string
-            description: >
-                The segment for this alignment. One of V, D, J or C.
-        rev_comp:
-            type: boolean
-            description: >
-                Alignment result is from the reverse complement of the query sequence.
-        call:
-            type: string
-            description: >
-                Gene assignment with allele.
-        score:
-            type: number
-            description: >
-                Alignment score.
-        identity:
-            type: number
-            description: >
-                Alignment fractional identity.
-        support:
-            type: number
-            description: >
-                Alignment E-value, p-value, likelihood, probability or other similar measure of
-                support for the gene assignment as defined by the alignment tool.
-        cigar:
-            type: string
-            description: >
-                Alignment CIGAR string.
-        sequence_start:
-            type: integer
-            description: >
-                Start position of the segment in the query sequence (1-based closed interval).
-        sequence_end:
-            type: integer
-            description: >
-                End position of the segment in the query sequence (1-based closed interval).
-        germline_start:
-            type: integer
-            description: >
-                Alignment start position in the reference sequence (1-based closed interval).
-        germline_end:
-            type: integer
-            description: >
-                Alignment end position in the reference sequence (1-based closed interval).
-        rank:
-            type: integer
-            description: >
-                Alignment rank.
-        rearrangement_id:
-            type: string
-            description: >
-                Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a universally unique record locator for database applications.
-            x-airr:
-                deprecated: true
-                deprecated-description: Field has been merged with sequence_id to avoid confusion.
-                deprecated-replaced-by:
-                    - sequence_id
-        data_processing_id:
-            type: string
-            description: >
-                Identifier to the data processing object in the repertoire metadata
-                for this rearrangement. If this field is empty than the primary data processing object is assumed.
-        germline_database:
-            type: string
-            description: Source of germline V(D)J genes with version number or date accessed.
-            example: ENSEMBL, Homo sapiens build 90, 2017-10-01
-            x-airr:
-                deprecated: true
-                deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
-                deprecated-replaced-by:
-                    - "DataProcessing:germline_database"
 
 
 # The extended rearrangement object

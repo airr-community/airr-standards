@@ -8,18 +8,18 @@
                 "documented_alleles": [
                     {
                         "label": "IGHV1-69*01",
-                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                        "germline_set_ref": "IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip",
                         "phasing": 1
                     },
                     {
                         "label": "IGHV1-69*02",
-                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                        "germline_set_ref": "IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip",
                         "phasing": 2
                     },
                     {
                         "label": "IGHV1-69*02",
                         "name": "1234",
-                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                        "germline_set_ref": "IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip",
                         "phasing": 2
                     }
                 ],
@@ -33,7 +33,7 @@
                 "deleted_genes": [
                     {
                         "label": "IGHV3-30-3",
-                        "germline_set_ref": "IMGT:Homo sapiens:2022.1.31",
+                        "germline_set_ref": "IMGT_GERMLINESET:IMGT_vquest_release202213-1.zip",
                         "phasing": "1"
                     }
                 ],

@@ -57,9 +57,6 @@ Schema
 .. autodata:: airr.schema.DataFileSchema
     :annotation: Schema object for the DataFile definition
 
-.. autodata:: airr.schema.AlignmentSchema
-    :annotation: Schema object for the Alignment definition
-
 .. autodata:: airr.schema.RearrangementSchema
     :annotation: Schema object for the Rearrangement definition
 

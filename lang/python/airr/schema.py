@@ -7,11 +7,11 @@ import sys
 import yaml
 import yamlordereddictloader
 from collections import OrderedDict
-from pkg_resources import resource_stream
+import importlib.resources
 
-with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
+# For Python 3.9+
+with importlib.resources.files('airr').joinpath('specs/airr-schema.yaml').open('rb') as f:
     DEFAULT_SPEC = yaml.load(f, Loader=yamlordereddictloader.Loader)
-
 
 class ValidationError(Exception):
     """
@@ -530,7 +530,6 @@ class Schema:
 AIRRSchema = {
     'Info': Schema('InfoObject'),
     'DataFile': Schema('DataFile'),
-    'Alignment': Schema('Alignment'),
     'Rearrangement': Schema('Rearrangement'),
     'Repertoire': Schema('Repertoire'),
     'RepertoireGroup': Schema('RepertoireGroup'),
@@ -559,7 +558,6 @@ AIRRSchema = {
 
 InfoSchema = AIRRSchema['Info']
 DataFileSchema = AIRRSchema['DataFile']
-AlignmentSchema = AIRRSchema['Alignment']
 RearrangementSchema = AIRRSchema['Rearrangement']
 RepertoireSchema = AIRRSchema['Repertoire']
 GermlineSetSchema = AIRRSchema['GermlineSet']

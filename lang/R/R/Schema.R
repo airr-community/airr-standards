@@ -151,7 +151,6 @@ extract_field_content <- function(properties, field) {
 #' Valid definitions include:
 #' \itemize{
 #'   \item   \code{"Rearrangement"}
-#'   \item   \code{"Alignment"}
 #'   \item   \code{"Repertoire"}
 #'   \item   \code{"Study"}
 #'   \item   \code{"Subject"}
@@ -271,11 +270,6 @@ InfoSchema <- load_schema("InfoObject")
 #' @export
 DataFileSchema <- load_schema("DataFile")
 
-#' @details   \code{AlignmentSchema}: AIRR Alignment \code{Schema}.
-#' @rdname    Schema-class
-#' @export
-AlignmentSchema <- load_schema("Alignment")
-
 #' @details   \code{RearrangementSchema}: AIRR Rearrangement \code{Schema}.
 #' @rdname    Schema-class
 #' @export
@@ -302,7 +296,6 @@ GenotypeSetSchema <- load_schema("GenotypeSet")
 #' @export
 AIRRSchema <- list("Info"=load_schema("InfoObject"),
                    "DataFile"=load_schema("DataFile"),
-                   "Alignment"=load_schema("Alignment"),
                    "Rearrangement"=load_schema("Rearrangement"),
                    "Repertoire"=load_schema("Repertoire"),
                    "Ontology"=load_schema("Ontology"),
