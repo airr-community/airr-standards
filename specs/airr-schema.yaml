@@ -429,7 +429,7 @@ DataSet:
                 Clone:
                     type: array
                     items:
-                        $ref: '#/FileObject'                
+                        $ref: '#/FileObject'
                 Cell:
                     type: array
                     items:
@@ -3529,8 +3529,39 @@ Repertoire:
                 nullable: false
                 adc-query-support: true
 
-# An ordered group of repertoires for analysis purposes, includes optional time course
-# Can be treated as a set if all repertoire_group_id are unique
+# A RepertoireFilter references the underlying Repertoires to be included in a RepertoireGroup
+# and describes if/how the Rearrangements/Cells within the original Repertoire have been filtered 
+RepertoireFilter:
+    type: object
+    properties:
+        repertoire_id:
+            type: string
+            description: Identifier to the repertoire
+            x-airr:
+                nullable: false
+                adc-query-support: true
+        repertoire_description:
+            type: string
+            description: Description of this repertoire within the group
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        time_point:
+            $ref: '#/TimePoint'
+            description: Time point designation for this repertoire within the group
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        filter:
+            type: object
+            x-airr:
+                nullable: true
+            description: >
+                A JSON object describing how this Repertoire was filtered
+                using the same structure as an ADC API query
+
+# A RepertoireGroup combines multiple Repertoires for analysis purposes
+# without needing to duplicate the underlying (meta)data
 RepertoireGroup:
     type: object
     required:
@@ -3553,26 +3584,7 @@ RepertoireGroup:
             description: >
                 List of repertoires in this group with an associated description and time point designation
             items:
-                type: object
-                properties:
-                    repertoire_id:
-                        type: string
-                        description: Identifier to the repertoire
-                        x-airr:
-                            nullable: false
-                            adc-query-support: true
-                    repertoire_description:
-                        type: string
-                        description: Description of this repertoire within the group
-                        x-airr:
-                            nullable: true
-                            adc-query-support: true
-                    time_point:
-                        $ref: '#/TimePoint'
-                        description: Time point designation for this repertoire within the group
-                        x-airr:
-                            nullable: true
-                            adc-query-support: true
+                $ref: '#/RepertoireFilter'
 
 
 # The extended rearrangement object

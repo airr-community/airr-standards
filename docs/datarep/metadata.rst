@@ -24,37 +24,18 @@ files, data processing metadata, and a set of ``Rearrangements``. A
 composite object, which can be easily accessed by computer programs
 for data entry, analysis and visualization.
 
-A ``Repertoire`` is specific to a single subject otherwise it can
-consist of any number of samples (which can be processed in different
-ways), any number of raw sequence files, and any number of
-rearrangements. It can also consist of any number of data processing
-metadata objects that describe the processing of raw sequence files
-into ``Rearrangements``.
+A ``Repertoire`` is specific to a single subject and, ideally, to a 
+specific sample, with any number of raw sequence files, and any number
+of rearrangements. It can also consist of any number of data 
+processing metadata objects that describe the processing of raw 
+sequence files into ``Rearrangements``.
 
 Typically, a ``Repertoire`` corresponds to the biological concept of
-the immune repertoire for that single subject which the researcher
-experimentally measures and computationally analyzes. However,
-researchers can have different interpretations about what constitutes
-the biological immune repertoire; therefore, the ``Repertoire`` schema
-attempts to be flexible and broadly useful for all AIRR-seq studies.
-
-Another researcher can take the same raw sequencing data and
-associated metadata and create their own ``Repertoire`` that is
-different from the original researcher's. A common example is to
-define a repertoire that is a subset such as "productive
-rearrangements for IGHV4" whereas the original researcher defined a
-more generic "B cell repertoire". This new ``Repertoire`` would have
-much of the same metadata as the original ``Repertoire``, except
-associated with a different study, and with additional information in
-the data processing metadata that describes how the rearrangements
-were filtered down to just the "productive rearrangements for
-IGHV4". Likewise, another researcher may get access to the original
-biosample material and perform their own sample processing and
-sequencing, which also would be a new ``Repertoire``. That new
-``Repertoire`` could combine samples from the original researcher's
-``Repertoire`` with the new sample data as a large dataset for the
-subject.
-
+the immune repertoire which the researcher experimentally measures 
+and computationally analyzes. However, researchers can have different 
+interpretations about what constitutes the biological immune repertoire;
+therefore, the ``Repertoire`` schema attempts to be flexible and broadly
+useful for all AIRR-seq studies.
 
 Multiple Data Processing on a Repertoire
 --------------------------------------------------------------------------------
@@ -162,6 +143,32 @@ wrong. Differences can occur in many ways, as with errors in the
 experimental protocol, or data processing might have incorrectly
 processed the raw sequencing data leading to invalid annotations.
 
+.. _RepertoireFilterSchema:
+
+RepertoireFilter Schema
+=============================
+
+As a ``Repertoire`` correponds to a discrete biological unit, it
+will often be the case that an experiment or analysis will span 
+multiple ``Repertoires``. Common examples include comparing
+individuals with and without a particular diagnosis or tracking
+repertoire evolution across a time series. Conversely, a
+researcher may sometimes be interested in only a specific subset
+of a ``Repertoire`` such as "productive rearrangements for IGHV4".
+All of these cases can be represented using an array of
+``RepertoireFilters`` and contained in a ``RepertoireGroup``.
+
+A ``RepertoireFilter`` incorporates its underlying ``Repertoires``
+by reference to their ``repertoire_ids`` and thus retains the
+ability to access all of the associated MiAIRR metadata. The
+``RepertoireFilter`` also describes the selection criteria for
+the included repertoires and how they have been filtered by 
+building a query equivalent to one that would be used in the 
+:ref:`ADC API <APIFiltering>`.
+
+``RepertoireGroups`` can be associated with the same study as
+the underlying ``Repertoires`` or a new one, as appropriate.
+
 File Format Specification
 -----------------------------
 
@@ -201,6 +208,28 @@ Repertoire Fields
       - Attributes
       - Definition
     {%- for field in Repertoire_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _RepertoireFilter Fields:
+
+RepertoireFilter Fields
+------------------------------
+
+:download:`Download as TSV <../_downloads/RepertoireFilter.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in RepertoireFilter_schema %}
     * - ``{{ field.Name }}``
       - {{ field.Type }}
       - {{ field.Attributes }}
