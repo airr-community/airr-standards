@@ -78,20 +78,6 @@ read_rearrangement <- function(file, base=c("1", "0"), ...) {
   read_tabular(file, base=base, schema=RearrangementSchema, ...)
 }
 
-#' @details
-#' \code{read_alignment} reads an AIRR TSV containing Alignment data.
-#' 
-#' @rdname read_tabular
-#' @export
-read_alignment <- function(file, base=c("1", "0"), ...) {
-  msg <- paste("read_alignment is deprecated and will be removed in a future release.",
-               "Use read_tabular with the argument schema=AlignmentSchema instead.",
-               "See help(\"Deprecated\")", 
-               sep="\n")
-  .Deprecated(msg=msg)
-  read_tabular(file, base=base, schema=AlignmentSchema, ...)
-}
-
 
 #### Read YAML/JSON ####
 
@@ -325,20 +311,6 @@ write_rearrangement <- function(data, file, base=c("1", "0"), ...) {
     write_tabular(data, file, base=base, schema=RearrangementSchema, ...)
 }
 
-
-#' @details
-#' \code{write_alignment} writes a \code{data.frame} containing AIRR Alignment data to TSV.
-#' 
-#' @rdname write_tabular
-#' @export
-write_alignment <- function(data, file, base=c("1", "0"), ...) {
-    msg <- paste("write_alignment is deprecated and will be removed in a future release.",
-                 "Use write_tabular with the argument schema=AlignmentSchema instead.",
-                 "See help(\"Deprecated\")", 
-                 sep="\n")
-    .Deprecated(msg=msg)
-    write_tabular(data, file, base=base, schema=AlignmentSchema, ...)
-}
 
 #### Write YAML/JSON ####
 
