@@ -1,5 +1,17 @@
 .. _RepertoireSchema:
 
+Overview
+=============================
+
+This document describes the AIRR Data Representations. It begins with an 
+overview of the structure and semantics of the ``Repertoire`` schema, 
+including best practices for documenting data processing, principles for 
+linking related data, and definitions of key concepts such as 
+``Repertoire`` and ``Rearrangement``. This is followed by a specification 
+of the file format and a detailed description of individual ``Repertoire`` 
+fields.
+
+
 Repertoire Schema
 =============================
 
@@ -179,10 +191,11 @@ File Structure
 
 + The structure is the same regardless of whether the data is stored in a file or a data repository. For example, The :ref:`ADC API <DataCommonsAPI>` will return a properly structured JSON object that can be saved to a file and used directly without modification.
 
-.. _Repertoire Fields:
+Schema Field Definitions
+------------------------------
 
 Repertoire Fields
-------------------------------
+~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/Repertoire.tsv>`
 
@@ -226,7 +239,7 @@ RepertoireFilter Fields
 .. _StudyFields:
 
 Study Fields
-------------------------------
+~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/Study.tsv>`
 
@@ -248,7 +261,7 @@ Study Fields
 .. _SubjectFields:
 
 Subject Fields
-------------------------------
+~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/Subject.tsv>`
 
@@ -270,7 +283,7 @@ Subject Fields
 .. _DiagnosisFields:
 
 Diagnosis Fields
-------------------------------
+~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/Diagnosis.tsv>`
 
@@ -292,7 +305,7 @@ Diagnosis Fields
 .. _SampleFields:
 
 Sample Fields
-------------------------------
+~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/Sample.tsv>`
 
@@ -314,7 +327,7 @@ Sample Fields
 .. _CellProcessingFields:
 
 Tissue and Cell Processing Fields
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/CellProcessing.tsv>`
 
@@ -336,7 +349,7 @@ Tissue and Cell Processing Fields
 .. _NucleicAcidProcessingFields:
 
 Nucleic Acid Processing Fields
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/NucleicAcidProcessing.tsv>`
 
@@ -358,7 +371,7 @@ Nucleic Acid Processing Fields
 .. _PCRTargetFields:
 
 PCR Target Locus Fields
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/PCRTarget.tsv>`
 
@@ -380,7 +393,7 @@ PCR Target Locus Fields
 .. _RawSequenceDataFields:
 
 Raw Sequence Data Fields
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/RawSequenceData.tsv>`
 
@@ -402,7 +415,7 @@ Raw Sequence Data Fields
 .. _SequencingRunFields:
 
 Sequencing Run Fields
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/SequencingRun.tsv>`
 
@@ -424,7 +437,7 @@ Sequencing Run Fields
 .. _DataProcessingFields:
 
 Data Processing Fields
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/DataProcessing.tsv>`
 

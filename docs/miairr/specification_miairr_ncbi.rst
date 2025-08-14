@@ -3,8 +3,8 @@ MiAIRR-to-NCBI Specification
 ============================
 
 
-Outline of INSDC reporting procedure
-====================================
+Outline of GenBank/ENA submission reporting procedures
+======================================================
 
 **TODO: Outline the reporting procedure for data sets 1-4**
 
@@ -31,10 +31,12 @@ reporting procedures:
    be deposited in a general-purpose INSDC repository, using the record
    structure described below.
 
-INSDC records were originally designed to hold individual Sanger
-sequences. Therefore each record will contain a header with information
-largely identical between all records in an AIRR sequencing study.
-Records can be concatenated for uploading.
+The International Nucleotide Sequence Database Collaboration (INSDC) 
+records, used by repositories such as GenBank and ENA, were originally 
+designed to hold individual Sanger sequences. Therefore, each record 
+will contain a header with information largely identical between all 
+records in an AIRR sequencing study. Records can be concatenated for 
+uploading.
 
 The INSDC feature table (FT) [INSDC_FT]_ is a sequence annotation
 standard used within the INSDC records and assigns information to
@@ -96,7 +98,7 @@ depicted in Table_2_.
 +---------------------------------------+                   +
 | 1 / subject                           |                   |
 +---------------------------------------+                   +
-| 1 / diagnosis & treatment             |                   |
+| 1 / diagnosis & intervention          |                   |
 +---------------------------------------+-------------------+
 | 2 / sample                            | BioSample         |
 +---------------------------------------+                   +
@@ -121,6 +123,8 @@ Mapping of data sets 1-4 to BioProject/BioSample/SRA
 **TODO: Include item-by-item mapping** [NCBI_NBK47528]_
 
 
+.. _mapping_data_set_5:
+
 Mapping of data set 5 to a user-defined repository
 --------------------------------------------------
 
@@ -131,9 +135,13 @@ these documents, as it is hosted by CERN and supports versioned DOIs
 (termed "concept" DOI). Users SHOULD use the existing ``AIRR`` tag_
 when submitting documents to increase the visiblity of their study.
 
+The DOI is added to the INSDC record header, see :ref:`INSDC_record_header`.
+
 .. _Zenodo: https://zenodo.org
 .. _tag: https://zenodo.org/communities/airr
 
+
+.. _mapping_data_set_6:
 
 Mapping of data set 6 to INSDC
 ------------------------------
@@ -146,6 +154,7 @@ the corresponding designations of ENA [ENA_MANUAL]_ are provided in
 parenthesis [11]_.
 
 
+.. _INSDC_record_header:
 Record header
 ~~~~~~~~~~~~~
 
