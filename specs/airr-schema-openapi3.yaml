@@ -877,7 +877,7 @@ RearrangedSequence:
         - derivation
         - observation_type
         - repository_name
-        - repository_id
+        - repository_ref
         - deposited_version
         - seq_start
         - seq_end
@@ -926,19 +926,19 @@ RearrangedSequence:
             type: string
             nullable: true
             x-airr:
-                miairr: defined
+                miairr: important
             description: Name of the repository in which the sequence has been deposited
         repository_ref:
             type: string
             nullable: true
             x-airr:
-                miairr: defined
+                miairr: important
             description: Queryable id or accession number of the sequence published by the repository
         deposited_version:
             type: string
             nullable: true
             x-airr:
-                miairr: defined
+                miairr: important
             description: Version number of the sequence within the repository
         sequence_start:
             type: integer
@@ -960,7 +960,7 @@ UnrearrangedSequence:
         - sequence_id
         - sequence
         - repository_name
-        - assembly_id
+        - repository_ref
         - gff_seqid
         - gff_start
         - gff_end
@@ -988,13 +988,13 @@ UnrearrangedSequence:
             type: string
             nullable: true
             x-airr:
-                miairr: defined
+                miairr: important
             description: Name of the repository in which the assembly or contig is deposited
         repository_ref:
             type: string
             nullable: true
             x-airr:
-                miairr: defined
+                miairr: important
             description: Queryable id or accession number of the sequence published by the repository
         patch_no:
             type: string
