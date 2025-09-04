@@ -22,6 +22,7 @@ good_germline_set_file <- file.path(parent_path, "data-tests", "good_germline_se
 bad_germline_set_file <- file.path(parent_path, "data-tests", "bad_germline_set.json")
 good_genotype_set_file <- file.path(parent_path, "data-tests", "good_genotype_set.json")
 bad_genotype_set_file <- file.path(parent_path, "data-tests", "bad_genotype_set.json")
+bad_germline_set_array_file <- file.path(parent_path, "data-tests", "bad_germline_set_arraytype.json")
 
 # Combined test files
 good_combined_yaml <- file.path(parent_path, "data-tests", "good_combined_airr.yaml")
@@ -234,7 +235,17 @@ context("GermlineSet I/O - bad data")
 
 test_that("validate_airr with bad data returns an error", {
   bad_data <- read_airr(bad_germline_set_file, validate=F)
-  expect_false(expect_warning(validate_airr(bad_data)))
+  expect_warning(validate_airr(bad_data))
+})
+
+context("GermlineSet I/O - bad data because of array type and wrong enum")
+
+test_that("validate_airr with bad data returns an error", {
+  bad_data <- read_airr(bad_germline_set_array_file, validate=F)
+  w <- capture_warnings(validate_airr(bad_data))
+  expect_match(w, "pub_ids", all=FALSE)
+  expect_match(w, "curational_tags", all=FALSE)
+  expect_match(w, "locus", all=FALSE)
 })
 
 #### GenotypeSet ####
@@ -250,7 +261,7 @@ context("GenotypeSet I/O - bad data")
 
 test_that("validate_airr with bad data returns an error", {
   bad_data <- read_airr(bad_genotype_set_file, validate=F)
-  expect_false(expect_warning(validate_airr(bad_data)))
+  expect_warning(validate_airr(bad_data))
 })
 
 #### Combined Data ####
