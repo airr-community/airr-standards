@@ -4610,8 +4610,8 @@ Clone:
         nodes:
             type: array
             items:
-                type: string
-            description: List of node_id strings that act as keys to the Node records for members of this clone. 
+                $ref: '#/Node'
+            description: List of Nodes that are members of this clone. 
             x-airr:
                 nullable: true
         inferred_ancestor:
