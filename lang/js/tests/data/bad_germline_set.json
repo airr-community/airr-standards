@@ -30,8 +30,8 @@
         "release_description": "",
         "release_date": "2021-11-24",
         "germline_set_name": "CAST IGH",
-        "germline_set_ref": "OGRDB:G00007.1",
-        "pub_ids": [""],
+        "germline_set_ref": "OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9",
+        "pub_ids": [3,4],
         "species": "Mouse",
         "species_subgroup": "CAST_EiJ",
         "species_subgroup_type": "strain",
@@ -73,7 +73,7 @@
                 "aliases": [
                     "watson_et_al:CAST_EiJ_IGHV5-3"
                 ],
-                "locus": "IGH",
+                "locus": "notallowed",
                 "chromosome": null,
                 "sequence_type": "V",
                 "functional": true,
@@ -222,7 +222,10 @@
                 "rearranged_support": [],
                 "paralogs": [],
                 "notes": "Imported to OGRDB with the following notes: watson_et_al: CAST_EiJ_IGHV5-3",
-                "curational_tags": null
+                "curational_tags": [
+                    "notallowed",
+                    "alsoNotAllowed"
+                ]
             },
             {
                 "allele_description_id": "OGRDB:A00314",

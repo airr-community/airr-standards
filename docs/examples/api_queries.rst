@@ -12,14 +12,14 @@ using the `OpenAPI V2.0 Specification`_. This document describes the
 query examples with associated JSON definitions that can be submitted
 to an AIRR repository.
 
-There are two main query endpoints in the API: /repertoire for
-querying MiAIRR-compliant study metadata and /rearrangement for
+There are two main query endpoints in the API: `/repertoire` for
+querying MiAIRR-compliant study metadata and `/rearrangement` for
 querying rearrangement annotations. Most scientific queries will
 involve both endpoints. The basic workflow involves first
-querying /repertoire to get the list of repertoires that meet the
+querying `/repertoire` to get the list of repertoires that meet the
 search criteria on study, subject, and sample metadata. Secondly, the
 identifiers from the repertoires in the first query are passed to
-the /rearrangement endpoint along with any search criteria on the
+the `/rearrangement` endpoint along with any search criteria on the
 rearrangement annotations. The resultant rearrangements can be
 downloaded as JSON or in the :ref:`AIRR TSV format <RearrangementSchema>`.
 
@@ -33,7 +33,7 @@ Query Example
 What human full length TCR-beta sequences have junction amino acid sequence: “CASSYIKLN”?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- The :download:`JSON query definition <queries/query1_repertoire.json>` for /repertoire endpoint. The ontology
+- The :download:`JSON query definition <queries/query1_repertoire.json>` for `/repertoire` endpoint. The ontology
   identifier ``9606`` requests human and ``TRB`` is the locus of interest.
 
 .. literalinclude:: queries/query1_repertoire.json
@@ -45,7 +45,7 @@ What human full length TCR-beta sequences have junction amino acid sequence: “
 .. literalinclude:: queries/query1-1_repertoire.json
   :language: JSON
 
-- The :download:`JSON query definition <queries/query1_rearrangement.json>` for /rearrangement endpoint.
+- The :download:`JSON query definition <queries/query1_rearrangement.json>` for `/rearrangement` endpoint.
   The repertoire identifiers (``repertoire_id``) in the query are just examples, you would replace them with the actual identifiers
   returned from the above repertoire query. The query performs an exact match of the junction amino acid sequence.
 

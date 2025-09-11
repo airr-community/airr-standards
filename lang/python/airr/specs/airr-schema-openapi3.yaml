@@ -4,7 +4,7 @@
 Info:
     title: AIRR Schema
     description: Schema definitions for AIRR standards objects
-    version: 1.4
+    version: 2.0
     contact:
         name: AIRR Community
         url: https://github.com/airr-community
@@ -105,6 +105,13 @@ CURIEMap:
         map:
             IEDB_EPITOPE:
                 iri_prefix: "https://www.iedb.org/epitope/"
+    IMGT_GERMLINESET:
+        type: identifier
+        default:
+            map: IMGT_GERMLINESET
+        map:
+            IMGT_GERMLINESET:
+                iri_prefix: "https://www.imgt.org/download/V-QUEST/archives/"
     MRO:
         type: ontology
         default:
@@ -131,6 +138,13 @@ CURIEMap:
         map:
             OBO:
                 iri_prefix: "http://purl.obolibrary.org/obo/NCIT_"
+    OGRDB_GERMLINESET:
+        type: identifier
+        default:
+            map: OGRDB_GERMLINESET
+        map:
+            OGRDB_GERMLINESET:
+                iri_prefix: "https://ogrdb.airr-community.org/api_v2/"
     ORCID:
         type: catalog
         default:
@@ -194,6 +208,10 @@ InformationProvider:
             request:
                 url: "https://query-api.iedb.org/epitope_search?structure_id=eq.{local_id}"
                 response: application/json
+        IMGT_GERMLINESET:
+            request:
+                url: "{iri}"
+                response: application/zip
         OLS:
             request:
                 url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
@@ -202,6 +220,10 @@ InformationProvider:
             request:
                 url: "http://www.ontobee.org/ontology/rdf/{ontology_id}?iri={iri}"
                 response: application/rdf+xml
+        OGRDB_GERMLINESET:
+            request:
+                url: "{iri}"
+                response: application/json
         ORCID:
             request:
                 url: "https://pub.orcid.org/v2.1/{local_id}"
@@ -537,6 +559,12 @@ DataFile:
             description: List of clones
             items:
                 $ref: '#/Clone'
+        Node:
+            type: array
+            nullable: false
+            description: List of nodes
+            items:
+                $ref: '#/Node'
         GermlineSet:
             type: array
             nullable: false
@@ -1522,10 +1550,11 @@ GermlineSet:
         germline_set_ref:
             type: string
             nullable: true
+            description: Unique identifier of the germline set and version, in CURIE format
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 miairr: important
-            description: Unique identifier of the germline set and version, in standardized form (Repo:Label:Version)
-            example: OGRDB:Human_IGH:2021.11
+                format: CURIE
         pub_ids:
             type: array
             items:
@@ -1710,10 +1739,11 @@ DocumentedAllele:
         germline_set_ref:
             type: string
             nullable: true
+            description: GermlineSet from which it was taken, referenced in CURIE format
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 miairr: important
-            description: GermlineSet from which it was taken, referenced in standardized form (Repo:Label:Version)
-            example: OGRDB:Human_IGH:2021.11
+                format: CURIE
         phasing:
             type: integer
             nullable: true
@@ -1768,9 +1798,11 @@ DeletedGene:
         germline_set_ref:
             type: string
             nullable: true
-            description: GermlineSet from which it was taken (issuer/name/version)
+            description: GermlineSet from which it was taken, referenced in CURIE format
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 miairr: important
+                format: CURIE
         phasing:
             type: integer
             nullable: true
@@ -3514,10 +3546,11 @@ DataProcessing:
         germline_set_ref:
             type: string
             nullable: true
-            description: Unique identifier of the germline set and version, in standardized form (Repo:Label:Version)
-            example: OGRDB:Human_IGH:2021.11
+            description: Unique identifier of the germline set and version, in CURIE format
+            example: OGRDB_GERMLINESET:germline/set/9606.IGH_VDJ/9
             x-airr:
                 adc-query-support: true
+                format: CURIE
         analysis_provenance_id:
             type: string
             nullable: true
@@ -3589,6 +3622,27 @@ Repertoire:
             x-airr:
                 name: Repertoire description
                 adc-query-support: true
+        repertoire_type:
+            type: string
+            nullable: true
+            enum:
+                - observed
+                - simulated
+                - inferred
+                - null
+            description: >
+                Repertoire type (source). Most often the type should be "observed," meaning it corresponds to
+                an actual physical sample that was sequenced. Other allowed values are "simulated," i.e. the
+                Rearrangements were generated in silico and there is no linked Subject/Sample metadata, and
+                "inferred" for Rearrangements that are phylogenetically reconstructed from observed sequences.
+                Inferred Repertoires should point to the same Subject/Sample metadata as the corresponding
+                physical Repertoires.
+            title: Repertoire type
+            example: physical
+            x-airr:
+                name: Repertoire type
+                format: controlled_vocabulary
+                adc-query-support: true
         study:
             $ref: '#/Study'
             nullable: false
@@ -3618,8 +3672,38 @@ Repertoire:
             x-airr:
                 adc-query-support: true
 
-# An ordered group of repertoires for analysis purposes, includes optional time course
-# Can be treated as a set if all repertoire_group_id are unique
+# A RepertoireFilter references the underlying Repertoires to be included in a RepertoireGroup
+# and describes if/how the Rearrangements/Cells within the original Repertoire have been filtered 
+RepertoireFilter:
+    type: object
+    properties:
+        repertoire_id:
+            type: string
+            nullable: false
+            description: Identifier to the repertoire
+            x-airr:
+                adc-query-support: true
+        repertoire_description:
+            type: string
+            nullable: true
+            description: Description of this repertoire within the group
+            x-airr:
+                adc-query-support: true
+        time_point:
+            $ref: '#/TimePoint'
+            nullable: true
+            description: Time point designation for this repertoire within the group
+            x-airr:
+                adc-query-support: true
+        filter:
+            nullable: true
+            type: object
+            description: >
+                A JSON object describing how this Repertoire was filtered
+                using the same structure as an ADC API query
+
+# A RepertoireGroup combines multiple Repertoires for analysis purposes
+# without needing to duplicate the underlying (meta)data
 RepertoireGroup:
     type: object
     required:
@@ -3646,134 +3730,7 @@ RepertoireGroup:
             description: >
                 List of repertoires in this group with an associated description and time point designation
             items:
-                type: object
-                properties:
-                    repertoire_id:
-                        type: string
-                        nullable: false
-                        description: Identifier to the repertoire
-                        x-airr:
-                            adc-query-support: true
-                    repertoire_description:
-                        type: string
-                        nullable: true
-                        description: Description of this repertoire within the group
-                        x-airr:
-                            adc-query-support: true
-                    time_point:
-                        $ref: '#/TimePoint'
-                        nullable: true
-                        description: Time point designation for this repertoire within the group
-                        x-airr:
-                            adc-query-support: true
-
-Alignment:
-    type: object
-    required:
-        - sequence_id
-        - segment
-        - call
-        - score
-        - cigar
-    properties:
-        sequence_id:
-            type: string
-            nullable: true
-            description: >
-                Unique query sequence identifier within the file. Most often this will be the input sequence
-                header or a substring thereof, but may also be a custom identifier defined by the tool in
-                cases where query sequences have been combined in some fashion prior to alignment.
-            x-airr:
-                identifier: true
-        segment:
-            type: string
-            nullable: true
-            description: >
-                The segment for this alignment. One of V, D, J or C.
-        rev_comp:
-            type: boolean
-            nullable: true
-            description: >
-                Alignment result is from the reverse complement of the query sequence.
-        call:
-            type: string
-            nullable: true
-            description: >
-                Gene assignment with allele.
-        score:
-            type: number
-            nullable: true
-            description: >
-                Alignment score.
-        identity:
-            type: number
-            nullable: true
-            description: >
-                Alignment fractional identity.
-        support:
-            type: number
-            nullable: true
-            description: >
-                Alignment E-value, p-value, likelihood, probability or other similar measure of
-                support for the gene assignment as defined by the alignment tool.
-        cigar:
-            type: string
-            nullable: true
-            description: >
-                Alignment CIGAR string.
-        sequence_start:
-            type: integer
-            nullable: true
-            description: >
-                Start position of the segment in the query sequence (1-based closed interval).
-        sequence_end:
-            type: integer
-            nullable: true
-            description: >
-                End position of the segment in the query sequence (1-based closed interval).
-        germline_start:
-            type: integer
-            nullable: true
-            description: >
-                Alignment start position in the reference sequence (1-based closed interval).
-        germline_end:
-            type: integer
-            nullable: true
-            description: >
-                Alignment end position in the reference sequence (1-based closed interval).
-        rank:
-            type: integer
-            nullable: true
-            description: >
-                Alignment rank.
-        rearrangement_id:
-            type: string
-            nullable: true
-            description: >
-                Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a universally unique record locator for database applications.
-            x-airr:
-                deprecated: true
-                deprecated-description: Field has been merged with sequence_id to avoid confusion.
-                deprecated-replaced-by:
-                    - sequence_id
-        data_processing_id:
-            type: string
-            nullable: true
-            description: >
-                Identifier to the data processing object in the repertoire metadata
-                for this rearrangement. If this field is empty than the primary data processing object is assumed.
-        germline_database:
-            type: string
-            nullable: true
-            description: Source of germline V(D)J genes with version number or date accessed.
-            example: ENSEMBL, Homo sapiens build 90, 2017-10-01
-            x-airr:
-                deprecated: true
-                deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
-                deprecated-replaced-by:
-                    - "DataProcessing:germline_database"
-
+                $ref: '#/RepertoireFilter'
 
 # The extended rearrangement object
 Rearrangement:
@@ -4726,6 +4683,24 @@ Rearrangement:
             x-airr:
                 adc-query-support: true
                 identifier: true
+        rearrangement_type:
+            type: string
+            nullable: true
+            enum:
+                - observed
+                - simulated
+                - inferred
+                - null
+            description: >
+                Rearrangement type (source). Most often the type should be "observed," meaning it corresponds to
+                an actual physical sample that was sequenced. Other allowed values are "simulated," i.e. the
+                Rearrangements were generated in silico and there is no linked Subject/Sample metadata, and
+                "inferred" for Rearrangements that are phylogenetically reconstructed from observed sequences.
+                Inferred Rearrangements should be assigned to a Repertoire with repertoire_type=inferred.
+            x-airr:
+                name: Rearrangement type
+                format: controlled_vocabulary
+                adc-query-support: true
         rearrangement_id:
             type: string
             nullable: true
@@ -4761,136 +4736,66 @@ Rearrangement:
                     - "DataProcessing:germline_database"
 
 # A unique inferred clone object that has been constructed within a single data processing
-# for a single repertoire and a subset of its sequences and/or rearrangements.
+# for a single RepertoireGroup and a subset of its rearrangements and/or cells.
 Clone:
     type: object
     required:
         - clone_id
-        - germline_alignment
+        - repertoire_group_id
+        - repertoire_id
+        - nodes
     properties:
         clone_id:
             type: string
-            nullable: true
             description: Identifier for the clone.
+            nullable: false
             x-airr:
                 identifier: true
+        repertoire_group_id:
+            type: string
+            nullable: true
+            description: >
+                Identifier of the RepertoireGroup that this Clone is derived from.
+                If the Clone is derived from a single Repertoire, repertoire_id
+                may be used instead.
+            x-airr:
+                adc-query-support: true
         repertoire_id:
             type: string
             nullable: true
-            description: Identifier to the associated repertoire in study metadata.
+            description: >
+                Identifier of the Repertoire that this Clone is derived from. Should
+                only be used if Clones are calculated from a single Repertoire without
+                defining a RepertoireGroup. Otherwise use repertoire_group_id instead.
             x-airr:
                 adc-query-support: true
+        clone_class:
+            type: string
+            nullable: true
+            enum:
+                - Rearrangement
+                - Cell
+                - mixed
+                - null
+            description: Is this a single-chain clone or a cell-based clone?
         data_processing_id:
             type: string
             nullable: true
             description: Identifier of the data processing object in the repertoire metadata for this clone.
             x-airr:
                 adc-query-support: true
-        sequences:
+        nodes:
             type: array
+            nullable: true
             items:
-                type: string
-            nullable: true
-            description: >
-                List sequence_id strings that act as keys to the Rearrangement records for members of the clone.
-        v_call:
+                $ref: '#/Node'
+            description: List of Nodes that are members of this clone. 
+        inferred_ancestor:
             type: string
             nullable: true
             description: >
-                V gene with allele of the inferred ancestral of the clone. For example, IGHV4-59*01.
-            example: IGHV4-59*01
-        d_call:
-            type: string
-            nullable: true
-            description: >
-                D gene with allele of the inferred ancestor of the clone. For example, IGHD3-10*01.
-            example: IGHD3-10*01
-        j_call:
-            type: string
-            nullable: true
-            description: >
-                J gene with allele of the inferred ancestor of the clone. For example, IGHJ4*02.
-            example: IGHJ4*02
-        junction:
-            type: string
-            nullable: true
-            description: >
-                Nucleotide sequence for the junction region of the inferred ancestor of the clone,
-                where the junction is defined as the CDR3 plus the two flanking conserved codons.
-        junction_aa:
-            type: string
-            nullable: true
-            description: >
-                Amino acid translation of the junction.
-        junction_length:
-            type: integer
-            nullable: true
-            description: Number of nucleotides in the junction.
-        junction_aa_length:
-            type: integer
-            nullable: true
-            description: Number of amino acids in junction_aa.
-        germline_alignment:
-            type: string
-            nullable: true
-            description: >
-                Assembled, aligned, full-length inferred ancestor of the clone spanning the same region
-                as the sequence_alignment field of nodes (typically the V(D)J region) and including the
-                same set of corrections and spacers (if any).
-        germline_alignment_aa:
-            type: string
-            nullable: true
-            description: >
-                Amino acid translation of germline_alignment.
-        v_alignment_start:
-            type: integer
-            nullable: true
-            description: >
-                Start position in the V gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        v_alignment_end:
-            type: integer
-            nullable: true
-            description: >
-                End position in the V gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        d_alignment_start:
-            type: integer
-            nullable: true
-            description: >
-                Start position of the D gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        d_alignment_end:
-            type: integer
-            nullable: true
-            description: >
-                End position of the D gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        j_alignment_start:
-            type: integer
-            nullable: true
-            description: >
-                Start position of the J gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        j_alignment_end:
-            type: integer
-            nullable: true
-            description: >
-                End position of the J gene alignment in both the sequence_alignment and germline_alignment
-                fields (1-based closed interval).
-        junction_start:
-            type: integer
-            nullable: true
-            description: Junction region start position in the alignment (1-based closed interval).
-        junction_end:
-            type: integer
-            nullable: true
-            description: Junction region end position in the alignment (1-based closed interval).
-        umi_count:
-            type: integer
-            nullable: true
-            description: >
-                Number of distinct UMIs observed across all sequences (Rearrangement records) in this clone.
+                Node_id string that acts as a key to the Node record for the 
+                inferred naive Rearrangement or Cell for this clone.
         clone_count:
             type: integer
             nullable: true
@@ -4903,68 +4808,71 @@ Clone:
         seed_id:
             type: string
             nullable: true
-            description: sequence_id of the seed sequence. Empty string (or null) if there is no seed sequence.
+            description: sequence_id or cell_id of the seed sequence/cell. Empty string (or null) if there is no seed sequence.
+        tree:
+            type: string
+            nullable: true
+            description: Newick string describing the tree.
 
-# 1-to-n relationship for a clone to its trees.
-Tree:
-    type: object
-    required:
-        - tree_id
-        - clone_id
-        - newick
-    properties:
-        tree_id:
-            type: string
-            nullable: true
-            description: Identifier for the tree.
-            x-airr:
-                identifier: true
-        clone_id:
-            type: string
-            nullable: true
-            description: Identifier for the clone.
-        newick:
-            type: string
-            nullable: true
-            description: Newick string of the tree edges.
-        nodes:
-            type: object
-            nullable: true
-            description: Dictionary of nodes in the tree, keyed by sequence_id string
-            additionalProperties:
-                $ref: '#/Node'
-
-# 1-to-n relationship between a tree and its nodes
+# A node acts as reference object to link members of a clone to their original repertoires.
 Node:
     type: object
     required:
-        - sequence_id
+        - node_id
+        - repertoire_id
     properties:
+        node_id:
+            type: string
+            description: Identifier for the node.
+            nullable: false
+            x-airr:
+                identifier: true
+        repertoire_id:
+            type: string
+            nullable: true
+            description: Identifier of the repertoire that cell or rearrangement contained by this node.
+            x-airr:
+                adc-query-support: true
+        cell_id:
+            type: string
+            nullable: true
+            description: >
+                Identifier of the cell contained by this node.
+                NOTE: Mutually exclusive with Node.sequence_id
+            x-airr:
+                adc-query-support: true
         sequence_id:
             type: string
             nullable: true
             description: >
-                Identifier for this node that matches the identifier in the newick string and, where possible,
-                the sequence_id in the source repertoire.
+                Identifier of the rearrangement contained by this node.
+                NOTE: Mutually exclusive with Node.cell_id
             x-airr:
-                identifier: true
-        sequence_alignment:
+                adc-query-support: true
+        node_type:
             type: string
             nullable: true
+            enum:
+                - observed
+                - inferred
+                - simulated
+                - null
             description: >
-                Nucleotide sequence of the node, aligned to the germline_alignment for this clone, including
-                including any indel corrections or spacers.
-        junction:
+                Node type (source). "Observed" for rearrangements/cells that were observed in the source data,
+                "inferred" for unobserved intermediates that were phylogenetically inferred, or "simulated" for
+                simulated rearrangements/cells.
+            x-airr:
+                format: controlled_vocabulary
+        node_class:
             type: string
             nullable: true
-            description: >
-                Junction region nucleotide sequence for the node, where the junction is defined as
-                the CDR3 plus the two flanking conserved codons.
-        junction_aa:
-            type: string
-            nullable: true
-            description: >
-                Amino acid translation of the junction.
+            enum:
+                - Rearrangement
+                - Cell
+                - null
+            description: Does this node contain a rearrangement of a cell?
+            x-airr:
+                format: controlled_vocabulary
 
 # The cell object acts as point of reference for all data that can be related
 # to an individual cell, either by direct observation or inference.
@@ -5070,6 +4978,23 @@ Cell:
                 miairr: defined
                 adc-query-support: true
                 name: Virtual pairing
+        cell_type:
+            type: string
+            nullable: true
+            enum:
+                - observed
+                - simulated
+                - inferred
+                - null
+            description: >
+                Cell type (source). Most often the type should be "observed," meaning it corresponds to
+                an actual physical sample that was sequenced. Other allowed values are "simulated," i.e. the
+                Cells were generated in silico and there is no linked Subject/Sample metadata, and
+                "inferred" for Cells that are phylogenetically reconstructed from observed sequences.
+                Inferred Cells should be assigned to a Repertoire with repertoire_type=inferred.
+            x-airr:
+                format: controlled_vocabulary
+                adc-query-support: true
 
 # The Expression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
