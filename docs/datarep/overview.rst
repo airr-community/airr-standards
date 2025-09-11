@@ -90,7 +90,7 @@ Here are the primary schema objects of the AIRR Data Model:
     * - ``Rearrangments``
       - Annotated sequences describing adaptive immune receptor chains. ``Rearrangements`` have their own schema and file format described :ref:`here <RearrangementSchema>`.
     * - ``Clones``
-      - Information about inferred clones from a study. ``Clones`` have their own schema and file format described :ref:`here <CloneSchema>`.
+      - Information about inferred clones/lineages from a study. ``Clones`` have their own schema and file format described :ref:`here <CloneSchema>`.
     * - ``Cells``
       - Information about an observed Cell in a study. ``Cells`` have their own schema and file format described :ref:`here <CellSchema>`.
     * - ``CellExpression properties``
@@ -240,7 +240,8 @@ Schema Definitions
    Repertoire Schema <metadata>
    RepertoireGroup Schema <metadata>
    Rearrangement Schema <rearrangements>
-   Clone and Lineage Tree Schema (Experimental) <clone>
+   Alignment Schema (Experimental) <alignments>
+   Clone Schema <clone>
    Cell Schema (Experimental) <cell>
    Cell Expression Schema (Experimental) <cellexpression>
    Cell Reactivity Schema (Experimental) <cellreactivity>
