@@ -263,7 +263,6 @@ context("Clone I/O - good data")
 
 test_that("read_airr loads a Clone", {
     clone_1 <- read_airr(good_clone_file)
-    print(clone_1)
     expect_true(is.list(clone_1))
 })
 
