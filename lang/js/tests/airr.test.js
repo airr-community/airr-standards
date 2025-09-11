@@ -25,6 +25,8 @@ var genotype_good = path.resolve(data_path, 'good_genotype_set.json')
 var genotype_bad = path.resolve(data_path, 'bad_genotype_set.json')
 var combined_yaml = path.resolve(data_path, 'good_combined_airr.yaml')
 var combined_json = path.resolve(data_path, 'good_combined_airr.json')
+var clone_good = path.resolve(data_path, 'good_clone.yaml')
+var clone_bad = path.resolve(data_path, 'bad_clone.yaml')
 
 // Output data
 var output_rearrangement_good = path.resolve(data_path, 'output_good_rearrangement.tsv')
@@ -121,6 +123,8 @@ test('write good AIRR DataFile', () => {
     expect(germline_data).not.toBeNull();
     const genotype_data = airr.read_airr(genotype_good, validate=true, debug=true);
     expect(genotype_data).not.toBeNull();
+    const clone_data = airr.read_airr(clone_good, validate=true, debug=true);
+    expect(clone_data).not.toBeNull();
 
     // combine together and write
     let obj = {}
