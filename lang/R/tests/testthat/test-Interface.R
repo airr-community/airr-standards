@@ -23,6 +23,10 @@ bad_germline_set_file <- file.path(parent_path, "data-tests", "bad_germline_set.
 good_genotype_set_file <- file.path(parent_path, "data-tests", "good_genotype_set.json")
 bad_genotype_set_file <- file.path(parent_path, "data-tests", "bad_genotype_set.json")
 
+# Clone test files
+good_clone_file <- file.path(parent_path, "data-tests", "good_clone.tsv")
+bad_clone_file <- file.path(parent_path, "data-tests", "bad_clone.tsv")
+
 # Combined test files
 good_combined_yaml <- file.path(parent_path, "data-tests", "good_combined_airr.yaml")
 good_combined_json <- file.path(parent_path, "data-tests", "good_combined_airr.json")
@@ -252,6 +256,21 @@ test_that("validate_airr with bad data returns an error", {
   bad_data <- read_airr(bad_genotype_set_file, validate=F)
   expect_false(expect_warning(validate_airr(bad_data)))
 })
+
+#### Clone ####
+
+context("Clone I/O - good data")
+
+test_that("read_clone loads a data.frame", {
+    tbl_1 <- read_clone(good_clone_file)
+    expect_true(is.data.frame(tbl_1))
+})
+
+test_that("read_clone with bad data returns an error", {
+    bad_data <- read_airr(bad_clone_file, validate=F)
+    expect_warning(read_clone(bad_clone_file))
+})
+
 
 #### Combined Data ####
 
