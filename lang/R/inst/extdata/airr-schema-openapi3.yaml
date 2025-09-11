@@ -4789,7 +4789,7 @@ Clone:
             nullable: true
             items:
                 $ref: '#/Node'
-            description: List of Nodes that act as keys to the Node records for members of this clone. 
+            description: List of Nodes that are members of this clone. 
         inferred_ancestor:
             type: string
             nullable: true
