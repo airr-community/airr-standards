@@ -238,7 +238,11 @@ context("GermlineSet I/O - bad data")
 
 test_that("validate_airr with bad data returns an error", {
   bad_data <- read_airr(bad_germline_set_file, validate=F)
-  expect_false(expect_warning(validate_airr(bad_data)))
+  w <- capture_warnings(validate_airr(bad_data))
+  expect_true(length(w) == 6)
+  expect_match(w, "pub_ids", all=FALSE)
+  expect_match(w, "curational_tags", all=FALSE)
+  expect_match(w, "locus", all=FALSE)
 })
 
 #### GenotypeSet ####
@@ -254,7 +258,7 @@ context("GenotypeSet I/O - bad data")
 
 test_that("validate_airr with bad data returns an error", {
   bad_data <- read_airr(bad_genotype_set_file, validate=F)
-  expect_false(expect_warning(validate_airr(bad_data)))
+  expect_warning(validate_airr(bad_data))
 })
 
 #### Clone ####

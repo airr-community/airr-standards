@@ -871,7 +871,7 @@ RearrangedSequence:
         - derivation
         - observation_type
         - repository_name
-        - repository_id
+        - repository_ref
         - deposited_version
         - seq_start
         - seq_end
@@ -918,17 +918,17 @@ RearrangedSequence:
             type: string
             description: Name of the repository in which the sequence has been deposited
             x-airr:
-                miairr: defined
+                miairr: important
         repository_ref:
             type: string
             description: Queryable id or accession number of the sequence published by the repository
             x-airr:
-                miairr: defined
+                miairr: important
         deposited_version:
             type: string
             description: Version number of the sequence within the repository
             x-airr:
-                miairr: defined
+                miairr: important
         sequence_start:
             type: integer
             description: Start co-ordinate of the sequence detailed in this record, within the sequence deposited
@@ -949,7 +949,7 @@ UnrearrangedSequence:
         - sequence_id
         - sequence
         - repository_name
-        - assembly_id
+        - repository_ref
         - gff_seqid
         - gff_start
         - gff_end
@@ -975,12 +975,12 @@ UnrearrangedSequence:
             type: string
             description: Name of the repository in which the assembly or contig is deposited
             x-airr:
-                miairr: defined
+                miairr: important
         repository_ref:
             type: string
             description: Queryable id or accession number of the sequence published by the repository
             x-airr:
-                miairr: defined
+                miairr: important
         patch_no:
             type: string
             description: Genome assembly patch number in which this gene was determined
@@ -4530,7 +4530,7 @@ Clone:
             type: array
             items:
                 $ref: '#/Node'
-            description: List Nodes that are members of this clone. 
+            description: List of Nodes that are members of this clone. 
             x-airr:
                 nullable: true
         inferred_ancestor:
