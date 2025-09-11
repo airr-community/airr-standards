@@ -4530,7 +4530,7 @@ Clone:
             type: array
             items:
                 $ref: '#/Node'
-            description: List Nodes that are members of this clone. 
+            description: List of Nodes that are members of this clone. 
             x-airr:
                 nullable: true
         inferred_ancestor:
