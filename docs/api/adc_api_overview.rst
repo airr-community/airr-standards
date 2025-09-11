@@ -44,7 +44,7 @@ to be followed.
 *  All API endpoints should return JSON encodings as an API response.
 *  For some API endpoints it is possible to request TSV files, and
    those endpoints that support TSV files are documented in the
-   :ref:`<DataCommonsAPIEndpoints>` section.
+   :ref:`API Endpoints<DataCommonsAPIEndpoints>` section.
 *  Endpoints that are not documented as supporting TSV can reject TSV
    requests.
 *  If an API endpoint returns a field, then the content of that field
@@ -79,7 +79,7 @@ while the data is being loaded.
 Piecemeal data loading of data for a specific schema object (e.g. Rearrangement) for a
 study in a production repository will result in queries returning different results as
 searches are made over time. This can lead to consumers of the data receiving confusing results,
-makes for complicated data provenance, and hampers scientific reporducibility. 
+makes for complicated data provenance, and hampers scientific reproducibility. 
 
 Authentication
 ~~~~~~~~~~~~~~

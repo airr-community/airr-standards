@@ -429,7 +429,7 @@ DataSet:
                 Clone:
                     type: array
                     items:
-                        $ref: '#/FileObject'                
+                        $ref: '#/FileObject'
                 Cell:
                     type: array
                     items:
@@ -3557,8 +3557,39 @@ Repertoire:
                 nullable: false
                 adc-query-support: true
 
-# An ordered group of repertoires for analysis purposes, includes optional time course
-# Can be treated as a set if all repertoire_group_id are unique
+# A RepertoireFilter references the underlying Repertoires to be included in a RepertoireGroup
+# and describes if/how the Rearrangements/Cells within the original Repertoire have been filtered 
+RepertoireFilter:
+    type: object
+    properties:
+        repertoire_id:
+            type: string
+            description: Identifier to the repertoire
+            x-airr:
+                nullable: false
+                adc-query-support: true
+        repertoire_description:
+            type: string
+            description: Description of this repertoire within the group
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        time_point:
+            $ref: '#/TimePoint'
+            description: Time point designation for this repertoire within the group
+            x-airr:
+                nullable: true
+                adc-query-support: true
+        filter:
+            type: object
+            x-airr:
+                nullable: true
+            description: >
+                A JSON object describing how this Repertoire was filtered
+                using the same structure as an ADC API query
+
+# A RepertoireGroup combines multiple Repertoires for analysis purposes
+# without needing to duplicate the underlying (meta)data
 RepertoireGroup:
     type: object
     required:
@@ -3581,119 +3612,7 @@ RepertoireGroup:
             description: >
                 List of repertoires in this group with an associated description and time point designation
             items:
-                type: object
-                properties:
-                    repertoire_id:
-                        type: string
-                        description: Identifier to the repertoire
-                        x-airr:
-                            nullable: false
-                            adc-query-support: true
-                    repertoire_description:
-                        type: string
-                        description: Description of this repertoire within the group
-                        x-airr:
-                            nullable: true
-                            adc-query-support: true
-                    time_point:
-                        $ref: '#/TimePoint'
-                        description: Time point designation for this repertoire within the group
-                        x-airr:
-                            nullable: true
-                            adc-query-support: true
-
-
-Alignment:
-    type: object
-    required:
-        - sequence_id
-        - segment
-        - call
-        - score
-        - cigar
-    properties:
-        sequence_id:
-            type: string
-            description: >
-                Unique query sequence identifier within the file. Most often this will be the input sequence
-                header or a substring thereof, but may also be a custom identifier defined by the tool in
-                cases where query sequences have been combined in some fashion prior to alignment.
-            x-airr:
-                identifier: true
-        segment:
-            type: string
-            description: >
-                The segment for this alignment. One of V, D, J or C.
-        rev_comp:
-            type: boolean
-            description: >
-                Alignment result is from the reverse complement of the query sequence.
-        call:
-            type: string
-            description: >
-                Gene assignment with allele.
-        score:
-            type: number
-            description: >
-                Alignment score.
-        identity:
-            type: number
-            description: >
-                Alignment fractional identity.
-        support:
-            type: number
-            description: >
-                Alignment E-value, p-value, likelihood, probability or other similar measure of
-                support for the gene assignment as defined by the alignment tool.
-        cigar:
-            type: string
-            description: >
-                Alignment CIGAR string.
-        sequence_start:
-            type: integer
-            description: >
-                Start position of the segment in the query sequence (1-based closed interval).
-        sequence_end:
-            type: integer
-            description: >
-                End position of the segment in the query sequence (1-based closed interval).
-        germline_start:
-            type: integer
-            description: >
-                Alignment start position in the reference sequence (1-based closed interval).
-        germline_end:
-            type: integer
-            description: >
-                Alignment end position in the reference sequence (1-based closed interval).
-        rank:
-            type: integer
-            description: >
-                Alignment rank.
-        rearrangement_id:
-            type: string
-            description: >
-                Identifier for the Rearrangement object. May be identical to sequence_id,
-                but will usually be a universally unique record locator for database applications.
-            x-airr:
-                deprecated: true
-                deprecated-description: Field has been merged with sequence_id to avoid confusion.
-                deprecated-replaced-by:
-                    - sequence_id
-        data_processing_id:
-            type: string
-            description: >
-                Identifier to the data processing object in the repertoire metadata
-                for this rearrangement. If this field is empty than the primary data processing object is assumed.
-        germline_database:
-            type: string
-            description: Source of germline V(D)J genes with version number or date accessed.
-            example: ENSEMBL, Homo sapiens build 90, 2017-10-01
-            x-airr:
-                deprecated: true
-                deprecated-description: Field was moved up to the DataProcessing level to avoid data duplication.
-                deprecated-replaced-by:
-                    - "DataProcessing:germline_database"
-
+                $ref: '#/RepertoireFilter'
 
 # The extended rearrangement object
 Rearrangement:

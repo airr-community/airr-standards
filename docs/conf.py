@@ -20,11 +20,13 @@
 # -- Imports ----------------------------------------------------------------
 
 import csv
+import datetime
 import os
 import sys
+from unittest.mock import MagicMock
+
 import yaml
 import yamlordereddictloader
-from unittest.mock import MagicMock
 
 # -- Python environment ----------------------------------------------------
 
@@ -69,7 +71,8 @@ rst_prolog ='''
 needs_sphinx = '1.6'
 
 # Sphinx extension modules
-extensions = ['sphinx.ext.autodoc',
+extensions = ['sphinx.ext.linkcheck',
+              'sphinx.ext.autodoc',
               'sphinx.ext.napoleon',
               'sphinxcontrib.autoprogram',
               'rstjinjaext']
@@ -89,7 +92,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'AIRR Standards'
-copyright = '2015-2023, AIRR Community'
+copyright = f'2015-{datetime.datetime.now().year}, AIRR Community'
 author = 'AIRR Community'
 
 # The name of the Pygments (syntax highlighting) style to use.
@@ -425,7 +428,7 @@ html_context['MiAIRR_schema'] = miairr_schema
 fields = ['Name', 'Type', 'Attributes', 'Definition']
 tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
           'PCRTarget', 'SequencingRun', 'SequencingData', 'DataProcessing',
-          'Rearrangement', 'Alignment', 'Clone', 'Node', 'Cell', 'CellExpression',
+          'Rearrangement', 'Clone', 'Tree', 'Node', 'Cell', 'Expression',
           'RearrangedSequence', 'UnrearrangedSequence', 'SequenceDelineationV', 'AlleleDescription', 'GermlineSet',
           'GenotypeSet', 'Genotype', 'MHCGenotypeSet', 'MHCGenotype', 'Receptor']
 for spec in tables:

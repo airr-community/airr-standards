@@ -20,10 +20,6 @@ Usage
 
    read_rearrangement(file, base = c("1", "0"), ...)
 
-::
-
-   read_alignment(file, base = c("1", "0"), ...)
-
 Arguments
 ~~~~~~~~~
 
@@ -56,8 +52,6 @@ Details
 ~~~~~~~
 
 ``read_rearrangement`` reads an AIRR TSV containing Rearrangement data.
-
-``read_alignment`` reads an AIRR TSV containing Alignment data.
 
 Examples
 ~~~~~~~~
