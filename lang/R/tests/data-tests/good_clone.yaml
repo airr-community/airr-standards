@@ -1,12 +1,12 @@
 Clone:
-  - clone_id: my_test_clone
-    repertoire_id: some_repertoire
-    repertoire_group_id: null
-    clone_class: rearrangement
-    nodes:
+  clone_id: my_test_clone
+  repertoire_id: some_repertoire
+  repertoire_group_id: null
+  clone_class: rearrangement
+  nodes:
     - node_id: A
       repertoire_id: some_repertoire
-      sequence_id: 00001
+      sequence_id: "00001"
       node_type: observed
       node_class: rearrangement
     - node_id: B
@@ -14,4 +14,3 @@ Clone:
       sequence_id: ancestor2
       node_type: inferred
       node_class: rearrangement
-

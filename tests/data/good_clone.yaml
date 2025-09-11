@@ -6,7 +6,7 @@ Clone:
   nodes:
     - node_id: A
       repertoire_id: some_repertoire
-      sequence_id: 00001
+      sequence_id: "00001"
       node_type: observed
       node_class: rearrangement
     - node_id: B
@@ -14,4 +14,3 @@ Clone:
       sequence_id: ancestor2
       node_type: inferred
       node_class: rearrangement
-
