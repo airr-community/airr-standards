@@ -240,7 +240,8 @@ Schema Definitions
    Repertoire Schema <metadata>
    RepertoireGroup Schema <metadata>
    Rearrangement Schema <rearrangements>
-   Clone and Lineage Tree Schema (Experimental) <clone>
+   Alignment Schema (Experimental) <alignments>
+   Clone Schema <clone>
    Cell Schema (Experimental) <cell>
    Cell Expression Schema (Experimental) <cellexpression>
    Cell Reactivity Schema (Experimental) <cellreactivity>
