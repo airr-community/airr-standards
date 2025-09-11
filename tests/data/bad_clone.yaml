@@ -3,13 +3,13 @@ Clone:
     clone_class: rearrangement
     clone_count: "a few"
     nodes:
-    - node_id: A
-      repertoire_id: some_repertoire
-      sequence_id: 00001
-      node_type: awesome
-      node_class: rearrangement
-    - node_id: B
-      repertoire_id: some_repertoire
-      sequence_id: ancestor2
-      node_type: inferred
-      node_class: economy
+      - node_id: A
+        repertoire_id: some_repertoire
+        sequence_id: 00001
+        node_type: awesome
+        node_class: rearrangement
+      - node_id: B
+        repertoire_id: some_repertoire
+        sequence_id: ancestor2
+        node_type: inferred
+        node_class: economy
