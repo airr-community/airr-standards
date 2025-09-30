@@ -3614,6 +3614,7 @@ RepertoireGroup:
             items:
                 $ref: '#/RepertoireFilter'
 
+
 # The extended rearrangement object
 Rearrangement:
     type: object
@@ -4561,7 +4562,7 @@ Clone:
             x-airr:
                 nullable: true
 
-# A node acts as reference object to link members of a clone to their original repertoires.
+# A node acts as reference object to link members of a clone to their original reperotires.
 Node:
     type: object
     required:
