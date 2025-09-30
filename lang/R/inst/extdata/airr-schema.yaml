@@ -4562,7 +4562,7 @@ Clone:
             x-airr:
                 nullable: true
 
-# A node acts as reference object to link members of a clone to their original reperotires.
+# A node acts as reference object to link members of a clone to their original repertoires.
 Node:
     type: object
     required:
