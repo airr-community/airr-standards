@@ -5423,7 +5423,7 @@ Reactivity:
         reactivity_ref:
             type: array
             nullable: true
-            description: Array of cross references to external epitope reactivity records 
+            description: Array of cross references to external epitope reactivity records
             title: Epitope reactivity cross-references
             items:
                 type: string
