@@ -3614,6 +3614,7 @@ RepertoireGroup:
             items:
                 $ref: '#/RepertoireFilter'
 
+
 # The extended rearrangement object
 Rearrangement:
     type: object

@@ -4760,7 +4760,7 @@ Clone:
                 may be used instead.
             x-airr:
                 adc-query-support: true
-       repertoire_id:
+        repertoire_id:
             type: string
             nullable: true
             description: >
@@ -4790,8 +4790,6 @@ Clone:
             items:
                 $ref: '#/Node'
             description: List of Nodes that are members of this clone. 
-            x-airr:
-                nullable: true
         inferred_ancestor:
             type: string
             nullable: true

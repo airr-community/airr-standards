@@ -4996,7 +4996,6 @@ Cell:
                 format: controlled_vocabulary
                 adc-query-support: true
 
-
 # The Expression object acts as a container to hold a single expression level measurement from
 # an experiment. Expression data is associated with a cell_id and the related repertoire_id and
 # data_processing_id.
@@ -5424,7 +5423,7 @@ Reactivity:
         reactivity_ref:
             type: array
             nullable: true
-            description: Array of cross references to external epitope reactivity records 
+            description: Array of cross references to external epitope reactivity records
             title: Epitope reactivity cross-references
             items:
                 type: string
