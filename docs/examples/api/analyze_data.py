@@ -57,7 +57,7 @@ subsets = {
     }
 
 # Load the repertoire metadata
-data = airr.load_repertoire('repertoires.airr.json')
+data = airr.read_airr('repertoires.airr.json')
 repertoires = { obj['repertoire_id'] : obj for obj in data['Repertoire'] }
 
 # Iterate through the rearrangement data and tabulate the counts
