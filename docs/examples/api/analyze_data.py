@@ -50,10 +50,10 @@ import numpy as np
 
 # We have 4 T cell subsets
 subsets = {
-    'CL_0000895': [0 for number in range(0,50)],
-    'CL_0000900': [0 for number in range(0,50)],
-    'CL_0000897': [0 for number in range(0,50)],
-    'CL_0000909': [0 for number in range(0,50)]
+    'CL:0000895': [0 for number in range(0,50)],
+    'CL:0000900': [0 for number in range(0,50)],
+    'CL:0000897': [0 for number in range(0,50)],
+    'CL:0000909': [0 for number in range(0,50)]
     }
 
 # Load the repertoire metadata
@@ -88,10 +88,10 @@ x = np.arange(len(labels))  # the label locations
 width = 0.2  # the width of the bars
 
 fig, ax = plt.subplots()
-rects1 = ax.bar(x - width, subsets['CL_0000895'][10:20], width/2, label='Naive CD4+ T cell')
-rects2 = ax.bar(x - width/2, subsets['CL_0000900'][10:20], width/2, label='Naive CD8+ T cell')
-rects3 = ax.bar(x, subsets['CL_0000897'][10:20], width/2, label='Memory CD4+ T cell')
-rects4 = ax.bar(x + width/2, subsets['CL_0000909'][10:20], width/2, label='Memory CD8+ T cell')
+rects1 = ax.bar(x - width, subsets['CL:0000895'][10:20], width/2, label='Naive CD4+ T cell')
+rects2 = ax.bar(x - width/2, subsets['CL:0000900'][10:20], width/2, label='Naive CD8+ T cell')
+rects3 = ax.bar(x, subsets['CL:0000897'][10:20], width/2, label='Memory CD4+ T cell')
+rects4 = ax.bar(x + width/2, subsets['CL:0000909'][10:20], width/2, label='Memory CD8+ T cell')
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
 ax.set_ylabel('Relative Counts')
