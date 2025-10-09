@@ -74,7 +74,7 @@ resp = requests.post(host_url + '/repertoire', json = query)
 
 # The data is returned as JSON, use AIRR library to write out data
 data = resp.json()
-airr.write_repertoire('repertoires.airr.json', data['Repertoire'], info=data['Info'])
+airr.write_airr('repertoires.airr.json', data, info=data['Info'])
 repertoires = data['Repertoire']
 
 # Print out some Info
