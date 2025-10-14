@@ -244,7 +244,7 @@ Schema Definitions
    Clone Schema <clone>
    Cell Schema <cell>
    Cell Expression Schema <cellexpression>
-   Cell Reactivity Schema (Experimental) <cellreactivity>
+   Cell Reactivity Schema <cellreactivity>
    Germline Schema (Experimental) <germline>
    Receptor Schema <receptor>
 
