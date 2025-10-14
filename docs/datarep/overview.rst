@@ -245,6 +245,6 @@ Schema Definitions
    Cell Schema <cell>
    Cell Expression Schema <cellexpression>
    Cell Reactivity Schema <cellreactivity>
-   Germline Schema (Experimental) <germline>
+   Germline Schema <germline>
    Receptor Schema <receptor>
 
