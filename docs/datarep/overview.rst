@@ -242,7 +242,7 @@ Schema Definitions
    Rearrangement Schema <rearrangements>
    Alignment Schema (Experimental) <alignments>
    Clone Schema <clone>
-   Cell Schema (Experimental) <cell>
+   Cell Schema <cell>
    Cell Expression Schema (Experimental) <cellexpression>
    Cell Reactivity Schema (Experimental) <cellreactivity>
    Germline Schema (Experimental) <germline>
