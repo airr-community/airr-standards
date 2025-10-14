@@ -243,7 +243,7 @@ Schema Definitions
    Alignment Schema (Experimental) <alignments>
    Clone Schema <clone>
    Cell Schema <cell>
-   Cell Expression Schema (Experimental) <cellexpression>
+   Cell Expression Schema <cellexpression>
    Cell Reactivity Schema (Experimental) <cellreactivity>
    Germline Schema (Experimental) <germline>
    Receptor Schema <receptor>
