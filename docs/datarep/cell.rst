@@ -1,6 +1,6 @@
 .. _CellSchema:
 
-Cell Schema (Experimental)
+Cell Schema
 ==========================
 
 The cell object acts as point of reference for all data that can be

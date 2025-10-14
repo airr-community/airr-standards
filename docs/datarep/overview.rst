@@ -240,11 +240,10 @@ Schema Definitions
    Repertoire Schema <metadata>
    RepertoireGroup Schema <metadata>
    Rearrangement Schema <rearrangements>
-   Alignment Schema (Experimental) <alignments>
    Clone Schema <clone>
-   Cell Schema (Experimental) <cell>
-   Cell Expression Schema (Experimental) <cellexpression>
-   Cell Reactivity Schema (Experimental) <cellreactivity>
-   Germline Schema (Experimental) <germline>
+   Cell Schema <cell>
+   Cell Expression Schema <cellexpression>
+   Cell Reactivity Schema <cellreactivity>
+   Germline Schema <germline>
    Receptor Schema <receptor>
 

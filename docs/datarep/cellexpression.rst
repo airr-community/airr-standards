@@ -1,6 +1,6 @@
 .. _CellExpressionSchema:
 
-Cell Expression Schema (Experimental)
+Cell Expression Schema
 =====================================
 
 File Format Specification

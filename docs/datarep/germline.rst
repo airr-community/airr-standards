@@ -1,6 +1,6 @@
 .. _GermlineRepresentations:
 
-Germline Schema (Experimental)
+Germline Schema
 ==============================
 
 Motivation
