@@ -44,6 +44,5 @@ Software tools and libraries
 Tutorials, examples and workflows
 ---------------------------------
 
-* `DataRep Command Example <examples/datarep_cmd_example>`_
 * `API Analysis Example <examples/api_analysis_example>`_
 * `API Queries <examples/api_queries>`_
