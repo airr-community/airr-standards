@@ -1,6 +1,6 @@
 .. _CellReactivitySchema:
 
-Cell Reactivity Schema (Experimental)
+Cell Reactivity Schema
 =====================================
 
 The ``CellReactivity`` object contains information that describes the
