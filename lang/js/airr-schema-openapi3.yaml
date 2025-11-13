@@ -196,7 +196,8 @@ InformationProvider:
     provider:
         ENA:
             request:
-                url: "{iri}"
+                url:
+                    - "{iri}"
                 response: text/html
         IEDB_RECEPTOR:
             request:
@@ -206,37 +207,45 @@ InformationProvider:
                 response: application/json
         IEDB_EPITOPE:
             request:
-                url: "https://query-api.iedb.org/epitope_search?structure_id=eq.{local_id}"
+                url:
+                    - "https://query-api.iedb.org/epitope_search?structure_id=eq.{local_id}"
                 response: application/json
         IMGT_GERMLINESET:
             request:
-                url: "{iri}"
+                url:
+                    - "{iri}"
                 response: application/zip
         OLS:
             request:
-                url: "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
+                url:
+                    - "https://www.ebi.ac.uk/ols/api/ontologies/{ontology_id}/terms?iri={iri}"
                 response: application/json
         Ontobee:
             request:
-                url: "http://www.ontobee.org/ontology/rdf/{ontology_id}?iri={iri}"
+                url:
+                    - "http://www.ontobee.org/ontology/rdf/{ontology_id}?iri={iri}"
                 response: application/rdf+xml
         OGRDB_GERMLINESET:
             request:
-                url: "{iri}"
+                url:
+                    - "{iri}"
                 response: application/json
         ORCID:
             request:
-                url: "https://pub.orcid.org/v2.1/{local_id}"
+                url:
+                    - "https://pub.orcid.org/v2.1/{local_id}"
                 header:
                     Accept: application/json
                 response: application/json
         ROR:
             request:
-                url: "https://api.ror.org/organizations/{iri}"
+                url:
+                    - "https://api.ror.org/organizations/{iri}"
                 response: application/json
         SRA:
             request:
-                url: "{iri}"
+                url:
+                    - "{iri}"
                 response: text/html
     parameter:
         CHEBI:
