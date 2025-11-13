@@ -71,8 +71,7 @@ rst_prolog ='''
 needs_sphinx = '1.6'
 
 # Sphinx extension modules
-extensions = ['sphinx.ext.linkcheck',
-              'sphinx.ext.autodoc',
+extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.napoleon',
               'sphinxcontrib.autoprogram',
               'rstjinjaext']
