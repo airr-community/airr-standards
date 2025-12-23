@@ -15,12 +15,8 @@ Repertoire:
       contributors:
         - contributor_id: "1"
           name: "Florian Rubelt"
-          orcid_id:
-            id: null
-            label: null
-          affiliation:
-            id: "ROR:00f54p054"
-            label: "Stanford University"
+          orcid_id: null
+          affiliation: "ROR:00f54p054"
           affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
           contributions:
             - role: "investigation"
@@ -29,12 +25,8 @@ Repertoire:
               degree: null
         - contributor_id: "2"
           name: "Mark M. Davis"
-          orcid_id:
-            id: "ORCID:0000-0001-6868-657X"
-            label: "Mark Davis"
-          affiliation:
-            id: "ROR:00f54p054"
-            label: "Stanford University"
+          orcid_id: "ORCID:0000-0001-6868-657X"
+          affiliation: "ROR:00f54p054"
           affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
           contributions:
             - role: "supervision"
@@ -52,9 +44,9 @@ Repertoire:
         label: "Homo sapiens"
       sex: female
       age:
-        min: 27
-        max: 27
-        unit:
+        time_min: 27
+        time_max: 27
+        time_unit:
           id: UO:0000036
           label: year
       age_event: null
@@ -72,9 +64,9 @@ Repertoire:
       diagnosis:
         - study_group_description: null
           diagnosis_timepoint: 
-            label: Study enrollment
-            value: 60
-            unit:
+            time_label: Study enrollment
+            time_value: 60
+            time_unit:
               id: UO:0000033
               label: day
           disease_diagnosis:
@@ -171,12 +163,8 @@ Repertoire:
       contributors:
         - contributor_id: "1"
           name: "Florian Rubelt"
-          orcid_id:
-            id: null
-            label: null
-          affiliation:
-            id: "ROR:00f54p054"
-            label: "Stanford University"
+          orcid_id: null
+          affiliation: "ROR:00f54p054"
           affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
           contributions:
             - role: "investigation"
@@ -185,12 +173,8 @@ Repertoire:
               degree: null
         - contributor_id: "2"
           name: "Mark M. Davis"
-          orcid_id:
-            id: "ORCID:0000-0001-6868-657X"
-            label: "Mark Davis"
-          affiliation:
-            id: "ROR:00f54p054"
-            label: "Stanford University"
+          orcid_id: "ORCID:0000-0001-6868-657X"
+          affiliation: "ROR:00f54p054"
           affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
           contributions:
             - role: "supervision"
@@ -208,9 +192,9 @@ Repertoire:
         label: "Homo sapiens"
       sex: female
       age:
-        min: 27
-        max: 27
-        unit:
+        time_min: 27
+        time_max: 27
+        time_unit:
           id: UO:0000036
           label: year
       age_event: null
@@ -228,9 +212,9 @@ Repertoire:
       diagnosis:
         - study_group_description: null
           diagnosis_timepoint: 
-            label: Study enrollment
-            value: 60
-            unit:
+            time_label: Study enrollment
+            time_value: 60
+            time_unit:
               id: UO:0000033
               label: day
           disease_diagnosis:
@@ -327,12 +311,8 @@ Repertoire:
       contributors:
         - contributor_id: "1"
           name: "Florian Rubelt"
-          orcid_id:
-            id: null
-            label: null
-          affiliation:
-            id: "ROR:00f54p054"
-            label: "Stanford University"
+          orcid_id: null
+          affiliation: "ROR:00f54p054"
           affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
           contributions:
             - role: "investigation"
@@ -341,12 +321,8 @@ Repertoire:
               degree: null
         - contributor_id: "2"
           name: "Mark M. Davis"
-          orcid_id:
-            id: "ORCID:0000-0001-6868-657X"
-            label: "Mark Davis"
-          affiliation:
-            id: "ROR:00f54p054"
-            label: "Stanford University"
+          orcid_id: "ORCID:0000-0001-6868-657X"
+          affiliation: "ROR:00f54p054"
           affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
           contributions:
             - role: "supervision"
@@ -364,9 +340,9 @@ Repertoire:
         label: "Homo sapiens"
       sex: female
       age:
-        min: 27
-        max: 27
-        unit:
+        time_min: 27
+        time_max: 27
+        time_unit:
           id: UO:0000036
           label: year
       age_event: null
@@ -384,9 +360,9 @@ Repertoire:
       diagnosis:
         - study_group_description: null
           diagnosis_timepoint: 
-            label: Study enrollment
-            value: 60
-            unit:
+            time_label: Study enrollment
+            time_value: 60
+            time_unit:
               id: UO:0000033
               label: day
           disease_diagnosis:

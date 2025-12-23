@@ -622,20 +622,20 @@ TimePoint:
     description: Time point at which an observation or other action was performed.
     type: object
     properties:
-        label:
+        time_label:
             type: string
             description: Informative label for the time point
             example: Pre-operative sampling of cancer tissue
             x-airr:
                 adc-query-support: true
-        value:
+        time_value:
             type: number
             description: Value of the time point
             example: -5.0
             x-airr:
                 nullable: false
                 adc-query-support: true
-        unit:
+        time_unit:
             $ref: '#/Ontology'
             description: Unit of the time point
             title: Unit of immunization schedule
@@ -657,21 +657,21 @@ TimeInterval:
     description: Time range or interval for a measurement, observation or action.
     type: object
     properties:
-        min:
+        time_min:
             type: number
             description: Lower/minimum value of the time interval
             example: 5.0
             x-airr:
                 adc-query-support: true
                 nullable: false
-        max:
+        time_max:
             type: number
             description: Upper/maximum value of the time interval
             example: 10.0
             x-airr:
                 adc-query-support: true
                 nullable: false
-        unit:
+        time_unit:
             $ref: '#/Ontology'
             description: Unit of the time interval
             example:
@@ -692,14 +692,14 @@ PhysicalQuantity:
     description: A physical quantity from a measurement or observation.
     type: object
     properties:
-        quantity:
+        physical_quantity:
             type: number
             description: Physical quantity
             example: -5.0
             x-airr:
                 adc-query-support: true
                 nullable: false
-        unit:
+        physical_unit:
             $ref: '#/Ontology'
             description: Unit of physical quantity
             example:
@@ -720,14 +720,14 @@ TimeQuantity:
     description: A time quantity 
     type: object
     properties:
-        quantity:
+        time_quantity:
             type: number
             description: Time quantity
             example: 30.0
             x-airr:
                 adc-query-support: true
                 nullable: false
-        unit:
+        time_unit:
             $ref: '#/Ontology'
             description: Unit of time
             example:
@@ -767,7 +767,7 @@ Contributor:
             x-airr:
                  nullable: false
         orcid_id:
-            $ref: '#/Ontology'
+            type: string
             description: >
                 ORCID identifier of the contributor. Note that if present, the label of the ORCID record should take
                 precedence over the name reported in the `name` property.
@@ -778,14 +778,9 @@ Contributor:
             x-airr:
                 nullable: true
                 adc-query-support: true
-                format: ontology
-                ontology:
-                    draft: false
-                    top_node:
-                        id: null
-                        label: null
+                format: CURIE
         affiliation:
-            $ref: '#/Ontology'
+            type: string
             description: >
                 ROR of the contributor's primary affiliation. Note that ROR are only minted for institutions, not
                 from individuals institutes, divisions or departments.
@@ -796,12 +791,7 @@ Contributor:
             x-airr:
                 nullable: true
                 adc-query-support: true
-                format: ontology
-                ontology:
-                    draft: false
-                    top_node:
-                        id: null
-                        label: null
+                format: CURIE
         affiliation_department:
             type: string
             description: >
@@ -1257,6 +1247,12 @@ AlleleDescription:
             x-airr:
                 miairr: essential
                 nullable: false
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
         species_subgroup:
             type: string
             description: Race, strain or other species subgroup to which this subject belongs
@@ -1442,7 +1438,7 @@ GermlineSet:
             items:
                 $ref: '#/Contributor'
         release_version:
-            type: number
+            type: integer
             description: Version number of this record, allocated automatically
             x-airr:
                 miairr: important
@@ -1487,6 +1483,12 @@ GermlineSet:
             x-airr:
                 miairr: essential
                 nullable: false
+                format: ontology
+                ontology:
+                    draft: false
+                    top_node:
+                        id: NCBITAXON:7776
+                        label: Gnathostomata
         species_subgroup:
             type: string
             description: Race, strain or other species subgroup to which this subject belongs
@@ -4815,7 +4817,7 @@ Expression:
                 adc-query-support: true
                 name: Property type and detection method
         property:
-            $ref: '#/Ontology'
+            type: string
             title: Property information
             description: >
                 Name of the property observed, typically a gene or antibody identifier (and label) from a 
@@ -4827,7 +4829,7 @@ Expression:
             x-airr:
                 miairr: defined
                 adc-query-support: true
-                format: ontology
+                format: CURIE
                 name: Property information
         value:
             type: number
@@ -5025,7 +5027,7 @@ Reactivity:
                 nullable: false
                 adc-query-support: true
         antigen:
-            $ref: '#/Ontology'
+            type: string
             description: >
                 The substance against which the receptor was tested. This can be any substance that
                 stimulates an adaptive immune response in the host, either through antibody production
@@ -5037,7 +5039,7 @@ Reactivity:
             x-airr:
                 nullable: false
                 adc-query-support: true
-                format: ontology
+                format: CURIE
         antigen_source_species:
             $ref: '#/Ontology'
             description: The species from which the antigen was isolated
@@ -5171,7 +5173,7 @@ Reactivity:
             x-airr:
                 nullable: false
                 adc-query-support: true
-        reactivity_ref:
+        reactivity_refs:
             type: array
             description: Array of cross references to external epitope reactivity records 
             title: Epitope reactivity cross-references
