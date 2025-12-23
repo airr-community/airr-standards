@@ -20,7 +20,7 @@ var airr = require('./airr');
 
 airr.load_schema().then(function() {
     var outFile = path.resolve(__dirname, './airr-schema-openapi3-deref.yaml');
-    fs.writeFile(outFile, yaml.safeDump(airr.Schema['specification']), (err) => {
+    fs.writeFile(outFile, yaml.dump(airr.Schema['specification']), (err) => {
         if (err) {
             console.error(err);
             process.exit(1);
