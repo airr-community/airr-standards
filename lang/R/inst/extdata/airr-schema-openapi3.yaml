@@ -4652,7 +4652,7 @@ Rearrangement:
             type: string
             nullable: true
             description: >
-                Comma separated list of CURIE identifiers of external reactivity records (e.g. IEDB_EPITOPE:1616345, https://https://www.iedb.org/epitope/1616345)
+                Comma separated list of CURIE identifiers of external reactivity records (e.g. IEDB_EPITOPE:1616345, https://https://www.iedb.org/epitope/1616345) 
                 associated with this Rearrangement. Order and length of reactivity_id and reactivity_ref are independent.
             example: "IEDB_EPITOPE:1616345, IEDB_EPITOPE:100725"
         repertoire_id:
