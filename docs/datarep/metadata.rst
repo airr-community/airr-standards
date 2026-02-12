@@ -1,5 +1,8 @@
 .. _RepertoireSchema:
 
+Overview
+=============================
+
 This document describes the AIRR Data Representations. It begins with an 
 overview of the structure and semantics of the ``Repertoire`` schema, 
 including best practices for documenting data processing, principles for 
@@ -7,7 +10,6 @@ linking related data, and definitions of key concepts such as
 ``Repertoire`` and ``Rearrangement``. This is followed by a specification 
 of the file format and a detailed description of individual ``Repertoire`` 
 fields.
-
 
 Repertoire Schema
 =============================

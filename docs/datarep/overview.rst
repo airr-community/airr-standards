@@ -238,7 +238,6 @@ Schema Definitions
 
    Requirement levels of fields <airr_schema_requirement_levels>
    Repertoire Schema <metadata>
-   RepertoireGroup Schema <metadata>
    Rearrangement Schema <rearrangements>
    Clone Schema <clone>
    Cell Schema <cell>
