@@ -227,7 +227,7 @@ Repertoire Fields
 .. _RepertoireFilterFields:
 
 Repertoire Filter Fields
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/RepertoireFilter.tsv>`
 
