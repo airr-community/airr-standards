@@ -392,10 +392,10 @@ PCR Target Locus Fields
 
 .. _RawSequenceDataFields:
 
-Raw Sequence Data Fields
+Sequencing Data Fields
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-:download:`Download as TSV <../_downloads/RawSequenceData.tsv>`
+:download:`Download as TSV <../_downloads/SequenceData.tsv>`
 
 .. list-table::
     :widths: 20, 15, 15, 50
@@ -456,3 +456,244 @@ Data Processing Fields
       - {{ field.Definition | trim }}
     {%- endfor %}
 
+.. _SampleProcessingFields:
+
+Sample Processing Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/SampleProcessing.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in SampleProcessing_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _CellProcessingFields:
+
+Cell Processing Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/CellProcessing.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in CellProcessing_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _ContributorFields:
+
+Contributor Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/Contributor.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in Contributor_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _SubjectGenotypeFields:
+
+Subject Genotype Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/SubjectGenotype.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in SubjectGenotype_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _GenotypeFields:
+
+Genotype Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/Genotype.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in Genotype_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _GenotypeSetFields:
+
+Genotype Set Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/GenotypeSet.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in GenotypeSet_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _MHCGenotypeFields:
+
+MHC Genotype Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/MHCGenotype.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in MHCGenotype_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _MHCGenotypeSetFields:
+
+MHC Genotype Set Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/MHCGenotypeSet.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in MHCGenotypeSet_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _TimePointFields:
+
+Time Point Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/TimePoint.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in TimePoint_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _TimeIntervalFields:
+
+Time Interval Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/TimeInterval.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in TimeInterval_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _TimeQuantityFields:
+
+Time Quantity Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/TimeQuantity.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in TimeQuantity_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}

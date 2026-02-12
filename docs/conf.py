@@ -425,11 +425,16 @@ html_context['MiAIRR_schema'] = miairr_schema
 
 # Write individual spec TSVs
 fields = ['Name', 'Type', 'Attributes', 'Definition']
-tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
+tables = ['Repertoire', 'Study', 'Contributor', 'Subject', 'Diagnosis', 'Sample',
+          'SampleProcessing', 'CellProcessing', 'NucleicAcidProcessing',
           'PCRTarget', 'SequencingRun', 'SequencingData', 'DataProcessing',
+          'TimeInterval', 'TimeQuantity', 'TimePoint', 'PhysicalQuantity',
           'Rearrangement', 'Clone', 'Node', 'Cell', 'Expression',
-          'RearrangedSequence', 'UnrearrangedSequence', 'SequenceDelineationV', 'AlleleDescription', 'GermlineSet',
-          'GenotypeSet', 'Genotype', 'MHCGenotypeSet', 'MHCGenotype', 'Receptor']
+          'RearrangedSequence', 'UnrearrangedSequence',
+          'SequenceDelineationV', 'AlleleDescription', 'GermlineSet',
+          'SubjectGenotype', 'Genotype', 'GenotypeSet',
+          'MHCGenotype', 'MHCGenotypeSet', 'Receptor']
+
 for spec in tables:
     with open(os.path.join(download_path, '%s.tsv' % spec), 'w') as f:
         writer = csv.DictWriter(f, fieldnames=fields, dialect='excel-tab', extrasaction='ignore')
