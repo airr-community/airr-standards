@@ -11,7 +11,6 @@ linking related data, and definitions of key concepts such as
 of the file format and a detailed description of individual ``Repertoire`` 
 fields.
 
-
 Repertoire Schema
 =============================
 
@@ -146,7 +145,7 @@ processed the raw sequencing data leading to invalid annotations.
 .. _RepertoireFilterSchema:
 
 RepertoireFilter Schema
-=============================
+--------------------------------------------------------------------------------
 
 As a ``Repertoire`` corresponds to a discrete biological unit, it
 will often be the case that an experiment or analysis will span 
@@ -170,7 +169,7 @@ building a query equivalent to one that would be used in the
 the underlying ``Repertoires`` or a new one, as appropriate.
 
 File Format Specification
------------------------------
+--------------------------------------------------------------------------------
 
 Files are YAML/JSON with a structure defined below. Files should be
 encoded as UTF-8. Identifiers are case-sensitive. Files should have the
@@ -179,20 +178,31 @@ extension ``.yaml``, ``.yml``, or ``.json``.
 File Structure
 ~~~~~~~~~~~~~~
 
-+ The file as a whole is considered a dictionary (key/value pair) structure with the keys ``Info`` and ``Repertoire``.
++ The file as a whole is considered a dictionary (key/value pair) structure with
+  the keys ``Info`` and ``Repertoire``.
 
-+ The file can (optionally) contain an ``Info`` object, at the beginning of the file, based upon the ``Info`` schema in the OpenAPI V2 specification. If provided, ``version`` in ``Info`` should reference the version of the AIRR schema for the file.
++ The file can (optionally) contain an ``Info`` object, at the beginning of the
+  file, based upon the ``Info`` schema in the OpenAPI V2 specification. If
+  provided, ``version`` in ``Info`` should reference the version of the AIRR
+  schema for the file.
 
-+ The file should correspond to a list of ``Repertoire`` objects, using ``Repertoire`` as the key to the list.
++ The file should correspond to a list of ``Repertoire`` objects, using
+  ``Repertoire`` as the key to the list.
 
-+ Each ``Repertoire`` object should contain a top-level key/value pair for ``repertoire_id`` that uniquely identifies the repertoire.
++ Each ``Repertoire`` object should contain a top-level key/value pair for
+  ``repertoire_id`` that uniquely identifies the repertoire.
 
 + Some fields require the use of a particular ontology or controlled vocabulary.
 
-+ The structure is the same regardless of whether the data is stored in a file or a data repository. For example, The :ref:`ADC API <DataCommonsAPI>` will return a properly structured JSON object that can be saved to a file and used directly without modification.
++ The structure is the same regardless of whether the data is stored in a file
+  or a data repository. For example, The :ref:`ADC API <DataCommonsAPI>` will
+  return a properly structured JSON object that can be saved to a file and used
+  directly without modification.
 
 Schema Field Definitions
-------------------------------
+--------------------------------------------------------------------------------
+
+.. _RepertoireFields:
 
 Repertoire Fields
 ~~~~~~~~~~~~~~~~~
@@ -214,10 +224,10 @@ Repertoire Fields
       - {{ field.Definition | trim }}
     {%- endfor %}
 
-.. _RepertoireFilter Fields:
+.. _RepertoireFilterFields:
 
-RepertoireFilter Fields
-------------------------------
+Repertoire Filter Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/RepertoireFilter.tsv>`
 
@@ -390,12 +400,12 @@ PCR Target Locus Fields
       - {{ field.Definition | trim }}
     {%- endfor %}
 
-.. _RawSequenceDataFields:
+.. _SequencingDataFields:
 
-Raw Sequence Data Fields
+Sequencing Data Fields
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-:download:`Download as TSV <../_downloads/RawSequenceData.tsv>`
+:download:`Download as TSV <../_downloads/SequencingData.tsv>`
 
 .. list-table::
     :widths: 20, 15, 15, 50
@@ -405,7 +415,7 @@ Raw Sequence Data Fields
       - Type
       - Attributes
       - Definition
-    {%- for field in RawSequenceData_schema %}
+    {%- for field in SequencingData_schema %}
     * - ``{{ field.Name }}``
       - {{ field.Type }}
       - {{ field.Attributes }}
@@ -456,3 +466,222 @@ Data Processing Fields
       - {{ field.Definition | trim }}
     {%- endfor %}
 
+.. _CellProcessingFields:
+
+Cell Processing Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/CellProcessing.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in CellProcessing_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _ContributorFields:
+
+Contributor Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/Contributor.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in Contributor_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _SubjectGenotypeFields:
+
+Subject Genotype Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/SubjectGenotype.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in SubjectGenotype_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _GenotypeFields:
+
+Genotype Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/Genotype.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in Genotype_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _GenotypeSetFields:
+
+Genotype Set Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/GenotypeSet.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in GenotypeSet_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _MHCGenotypeFields:
+
+MHC Genotype Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/MHCGenotype.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in MHCGenotype_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _MHCGenotypeSetFields:
+
+MHC Genotype Set Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/MHCGenotypeSet.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in MHCGenotypeSet_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _TimePointFields:
+
+Time Point Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/TimePoint.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in TimePoint_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _TimeIntervalFields:
+
+Time Interval Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/TimeInterval.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in TimeInterval_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+.. _TimeQuantityFields:
+
+Time Quantity Fields
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/TimeQuantity.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in TimeQuantity_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
