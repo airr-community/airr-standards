@@ -1,8 +1,5 @@
 .. _RepertoireSchema:
 
-Overview
-=============================
-
 This document describes the AIRR Data Representations. It begins with an 
 overview of the structure and semantics of the ``Repertoire`` schema, 
 including best practices for documenting data processing, principles for 
