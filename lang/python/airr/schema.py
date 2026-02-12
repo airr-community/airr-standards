@@ -7,9 +7,9 @@ import sys
 import yaml
 import yamlordereddictloader
 from collections import OrderedDict
-from pkg_resources import resource_stream
+import importlib.resources
 
-with resource_stream(__name__, 'specs/airr-schema.yaml') as f:
+with importlib.resources.files('airr').joinpath('specs/airr-schema.yaml').open('rb') as f:
     DEFAULT_SPEC = yaml.load(f, Loader=yamlordereddictloader.Loader)
 
 
