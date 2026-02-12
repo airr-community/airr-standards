@@ -390,12 +390,12 @@ PCR Target Locus Fields
       - {{ field.Definition | trim }}
     {%- endfor %}
 
-.. _RawSequenceDataFields:
+.. _SequencingDataFields:
 
 Sequencing Data Fields
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-:download:`Download as TSV <../_downloads/SequenceData.tsv>`
+:download:`Download as TSV <../_downloads/SequencingData.tsv>`
 
 .. list-table::
     :widths: 20, 15, 15, 50
@@ -405,7 +405,7 @@ Sequencing Data Fields
       - Type
       - Attributes
       - Definition
-    {%- for field in RawSequenceData_schema %}
+    {%- for field in SequencingData_schema %}
     * - ``{{ field.Name }}``
       - {{ field.Type }}
       - {{ field.Attributes }}
