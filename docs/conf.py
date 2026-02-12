@@ -426,7 +426,7 @@ html_context['MiAIRR_schema'] = miairr_schema
 # Write individual spec TSVs
 fields = ['Name', 'Type', 'Attributes', 'Definition']
 tables = ['Repertoire', 'Study', 'Contributor', 'Subject', 'Diagnosis', 'Sample',
-          'SampleProcessing', 'CellProcessing', 'NucleicAcidProcessing',
+          'CellProcessing', 'NucleicAcidProcessing',
           'PCRTarget', 'SequencingRun', 'SequencingData', 'DataProcessing',
           'TimeInterval', 'TimeQuantity', 'TimePoint', 'PhysicalQuantity',
           'Rearrangement', 'Clone', 'Node', 'Cell', 'Expression',

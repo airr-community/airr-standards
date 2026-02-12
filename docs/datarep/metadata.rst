@@ -456,28 +456,6 @@ Data Processing Fields
       - {{ field.Definition | trim }}
     {%- endfor %}
 
-.. _SampleProcessingFields:
-
-Sample Processing Fields
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-:download:`Download as TSV <../_downloads/SampleProcessing.tsv>`
-
-.. list-table::
-    :widths: 20, 15, 15, 50
-    :header-rows: 1
-
-    * - Name
-      - Type
-      - Attributes
-      - Definition
-    {%- for field in SampleProcessing_schema %}
-    * - ``{{ field.Name }}``
-      - {{ field.Type }}
-      - {{ field.Attributes }}
-      - {{ field.Definition | trim }}
-    {%- endfor %}
-
 .. _CellProcessingFields:
 
 Cell Processing Fields
