@@ -24,11 +24,7 @@ Examples
 
    # Load Rearrangement example
    file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
-   rearrangement <- read_rearrangement(file)
-
-::
-
-   indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 2.67PB/s                                                                                                                                                                                                             indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 2.43PB/s                                                                                                                                                                                                             
+   rearrangement <- read_rearrangement(file)                                                                                                                                                                                                    indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 2.43PB/s                                                                                                                                                                                                             
 
 .. code:: r
 
