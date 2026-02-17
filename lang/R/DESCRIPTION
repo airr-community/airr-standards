@@ -1,7 +1,7 @@
 Package: airr
 Type: Package
-Version: 1.6.0
-Date: 2023-08-29
+Version: 1.6.1
+Date: 2024-02-11
 Authors@R: c(person("Jason", "Vander Heiden", role=c("aut", "cre"), 
                     email="jason.vanderheiden@gmail.com"),
              person("Susanna", "Marquez", role=c("aut"), 
@@ -12,13 +12,15 @@ Authors@R: c(person("Jason", "Vander Heiden", role=c("aut", "cre"),
                     email="imkeller@embl.de"),
              person("Ulrik", " Stervbo", role=c("aut"),
                     email="ulrik.stervbo@elisabethgruppe.de"),
+             person("Gisela", "Gabernet", role=c("aut"),
+                    email="gisela.gabernet@yale.edu"),
              person("AIRR Community", role=c("cph")))
 Title: AIRR Data Representation Reference Library
 Description: Schema definitions and read, write and validation tools for data 
     formatted in accordance with the AIRR Data Representation schemas defined 
-    by the AIRR Community <http://docs.airr-community.org>.
+    by the AIRR Community <https://docs.airr-community.org>.
 License: CC BY 4.0
-URL: http://docs.airr-community.org
+URL: https://docs.airr-community.org
 BugReports: https://github.com/airr-community/airr-standards/issues
 LazyData: true
 BuildVignettes: true
@@ -39,4 +41,4 @@ Suggests:
     rmarkdown,
     tibble,
     testthat
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2

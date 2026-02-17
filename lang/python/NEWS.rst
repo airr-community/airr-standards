@@ -1,3 +1,9 @@
+Version 1.6.1: February 12, 2026
+--------------------------------------------------------------------------------
+
+1. Fixed data overwrite bug in ``RearrangementWriter``.
+2. Fixed pkg_resources import error with setuptools>=82.0.0.
+
 Version 1.6.0: July 7, 2025
 --------------------------------------------------------------------------------
 
