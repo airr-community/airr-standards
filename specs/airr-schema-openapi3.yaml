@@ -604,6 +604,7 @@ UnrearrangedSequence:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
             description: unique identifier of this UnrearrangedSequence within the file
         sequence:
             type: string
@@ -3199,6 +3200,7 @@ Repertoire:
             x-airr:
                 adc-query-support: true
                 identifier: true
+                class-identifier: true
         repertoire_name:
             type: string
             nullable: true
