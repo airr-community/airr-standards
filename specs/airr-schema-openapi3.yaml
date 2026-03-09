@@ -1551,6 +1551,7 @@ MHCAllele:
             nullable: true
             x-airr:
                 miairr: important
+                class-identifier: true
             description: >
                 The accepted designation of an allele, usually its gene symbol plus allele/sub-allele/etc
                 identifiers, if provided by the mhc_typing method
