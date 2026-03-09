@@ -604,6 +604,7 @@ UnrearrangedSequence:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
             description: unique identifier of this UnrearrangedSequence within the file
         sequence:
             type: string
@@ -1550,6 +1551,7 @@ MHCAllele:
             nullable: true
             x-airr:
                 miairr: important
+                class-identifier: true
             description: >
                 The accepted designation of an allele, usually its gene symbol plus allele/sub-allele/etc
                 identifiers, if provided by the mhc_typing method
@@ -3199,6 +3201,7 @@ Repertoire:
             x-airr:
                 adc-query-support: true
                 identifier: true
+                class-identifier: true
         repertoire_name:
             type: string
             nullable: true
