@@ -9,7 +9,7 @@ of the file format and a detailed description of individual ``Repertoire``
 fields.
 
 Repertoire Schema
-=============================
+=================
 
 A ``Repertoire`` is an abstract organizational unit of analysis that
 is defined by the researcher and consists of study metadata, subject

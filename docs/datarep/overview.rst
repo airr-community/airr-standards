@@ -240,7 +240,7 @@ Schema Definitions
    Rearrangement Schema <rearrangements>
    Clone Schema <clone>
    Single-cell Schema <cell>
-   Reactivity Schema <receptor>
+   Reactivity & Receptor Schema <receptor>
    Germline Schema <germline>
 
 

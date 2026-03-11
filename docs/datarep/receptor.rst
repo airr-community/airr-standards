@@ -1,7 +1,10 @@
 .. _ReactivitySchema:
 
+Reactivity & Receptor Schemas
+=============================
+
 Reactivity Schema
-=====================================
+-----------------
 
 The ``Reactivity`` object contains information that describes the
 binding of a compound resembling an Ig or TCR antigen by a single,
@@ -16,7 +19,7 @@ is only indirectly linked (via ``Cell``) to the ``Receptor`` object.
 .. _ReceptorSchema:
 
 Receptor Schema
-===============
+---------------
 
 The purpose of the ``Receptor`` object is to provide an structure for
 information referring to actual *Receptors*, i.e., Ig or TCR, both for
@@ -36,7 +39,7 @@ of receptor reactivity.
 
 
 Identifiers
------------
+~~~~~~~~~~~
 
 The ``Receptor`` objects has two properties that serve as identifiers:
 
@@ -70,7 +73,7 @@ the mature variable domain of the Ig heavy, TCR beta or TCR delta chain.
 the mature variable domain of the Ig light, TCR alpha or TCR gamma chain.
 
 Relations to other AIRR Schema objects
---------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``Receptor`` object is only directly linked to the ``Cell`` object,
 which then in turn contains the references to the records in the
@@ -79,9 +82,8 @@ Therefore a given rearrangement cannot directly reference to a receptor,
 which is also not a meaningful thing to do, as the paired chain would
 be unclear, but is necessary to determine a receptors reactivity.
 
-
 Annotation guidelines
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 References to information describing the same receptor located in other
 databases (i.e., outgoing links) SHOULD be provided as as CURIEs in the
@@ -98,7 +100,6 @@ especially applies to experiments that provide further evidence (e.g.,
 surface expression, reaction to superantigens) showing that a receptor
 is functional and present on the surface.
 
-
 Note on cells expressing more than a single receptor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -113,7 +114,6 @@ general annotation rules are met for each of them. Note that the
 annotation of cell-based reactivity information is handled by the
 :ref:`ReactivitySchema` object.
 
-
 Representation of bi-specific antibodies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -122,6 +122,7 @@ occuring receptors. While bi-specific antibodies may arise in
 dual IGK/IGL expressing B cells their individual reactivity is
 not measured on a regular basis. Therefore they are currently not
 supported in the ``Receptor`` schema.
+
 
 Schema Field Definitions
 ------------------------
