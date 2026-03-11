@@ -336,6 +336,26 @@ Sample Fields
 
 .. _CellProcessingFields:
 
+Sample Processing Fields
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/SampleProcessing.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in SampleProcessing_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
 Tissue and Cell Processing Fields
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

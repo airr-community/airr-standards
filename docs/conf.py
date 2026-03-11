@@ -392,6 +392,8 @@ html_context = {'airr_schema': airr_schema}
 # Iterate over schema and build reference tables
 data_elements = {}
 for spec in airr_schema:
+    if 'allOf' in airr_schema[spec]:
+        airr_schema[spec] = airr_schema[spec]['allOf'][0]
     if 'properties' not in airr_schema[spec]:
         continue
 
@@ -426,7 +428,7 @@ html_context['MiAIRR_schema'] = miairr_schema
 # Write individual spec TSVs
 fields = ['Name', 'Type', 'Attributes', 'Definition']
 tables = ['Repertoire', 'Study', 'Contributor', 'Subject', 'Diagnosis', 'Sample',
-          'CellProcessing', 'NucleicAcidProcessing',
+          'SampleProcessing', 'CellProcessing', 'NucleicAcidProcessing',
           'PCRTarget', 'SequencingRun', 'SequencingData', 'DataProcessing',
           'TimeInterval', 'TimeQuantity', 'TimePoint', 'PhysicalQuantity',
           'Rearrangement', 'Clone', 'Node', 'Cell', 'Expression',
