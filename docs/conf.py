@@ -412,7 +412,7 @@ if not os.path.exists(download_path):  os.mkdir(download_path)
 # Write MiAIRR TSV
 fields = ['Set', 'Subset', 'Designation', 'Field', 'Type', 'Format', 'Level', 'Definition', 'Example']
 tables = ['Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
-          'PCRTarget', 'SequencingRun', 'SequencingData', 'DataProcessing']
+          'PCRTarget', 'SequencingRun', 'SequencingData', 'DataProcessing', 'Rearrangement']
 # tables = data_elements.keys()
 miairr_schema = []
 with open(os.path.join(download_path, '%s.tsv' % 'AIRR_Minimal_Standard_Data_Elements'), 'w') as f:
