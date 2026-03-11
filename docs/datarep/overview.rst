@@ -239,9 +239,8 @@ Schema Definitions
    Repertoire Schema <metadata>
    Rearrangement Schema <rearrangements>
    Clone Schema <clone>
-   Cell Schema <cell>
-   Cell Expression Schema <cellexpression>
-   Cell Reactivity Schema <cellreactivity>
+   Single-cell Schema <cell>
+   Reactivity Schema <receptor>
    Germline Schema <germline>
-   Receptor Schema <receptor>
+
 
