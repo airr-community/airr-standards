@@ -1,9 +1,9 @@
-.. _CellReactivitySchema:
+.. _ReactivitySchema:
 
-Cell Reactivity Schema
+Reactivity Schema
 =====================================
 
-The ``CellReactivity`` object contains information that describes the
+The ``Reactivity`` object contains information that describes the
 binding of a compound resembling an Ig or TCR antigen by a single,
 intact cell. It is critical to note that while such experimental
 measurements are related to the antigen reactivity of individual
@@ -20,12 +20,12 @@ File Format Specification
 The file format has not been specified yet.
 
 
-.. _CellReactivityFields:
+.. _ReactivityFields:
 
-Cell Reactivity Fields
+Reactivity Fields
 ----------------------
 
-:download:`Download as TSV <../_downloads/CellReactivity.tsv>`
+:download:`Download as TSV <../_downloads/Reactivity.tsv>`
 
 .. list-table::
     :widths: 20, 15, 15, 50
@@ -35,7 +35,7 @@ Cell Reactivity Fields
       - Type
       - Attributes
       - Definition
-    {%- for field in CellReactivity_schema %}
+    {%- for field in Reactivity_schema %}
     * - ``{{ field.Name }}``
       - {{ field.Type }}
       - {{ field.Attributes }}
@@ -43,7 +43,7 @@ Cell Reactivity Fields
     {%- endfor %}
 
 
-Within the ``CellReactivity`` object, it is expected that the properties
+Within the ``Reactivity`` object, it is expected that the properties
 ``antigen_source_species``, ``peptide_start``, ``peptide_end`` and
 ``peptide_sequence_aa`` have an inseparable relationship with
 ``antigen_type``. They only present a valid value when ``antigen_type``

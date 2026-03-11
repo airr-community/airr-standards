@@ -92,11 +92,11 @@ IGK/IGL/TRA/TRG chain are regularly observered as allelic exclusion is
 never complete and its efficiency is rather low for loci like TRA.
 Such dual-expressing cells can technically be accommodated in the
 current AIRR Schema as an individual ``Cell`` object can link to more
-than two rearrangemts and to more than a single ``Receptor``. In the
+than two rearrangements and to more than a single ``Receptor``. In the
 case of two potential receptors, both MAY be created as objects, if the
 general annotation rules are met for each of them. Note that the
 annotation of cell-based reactivity information is handled by the
-:ref:`CellReactivitySchema` object.
+:ref:`ReactivitySchema` object.
 
 
 Representation of bi-specific antibodies

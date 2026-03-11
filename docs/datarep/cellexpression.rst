@@ -1,6 +1,6 @@
-.. _CellExpressionSchema:
+.. _ExpressionSchema:
 
-Cell Expression Schema
+Expression Schema
 =====================================
 
 File Format Specification
@@ -8,12 +8,12 @@ File Format Specification
 
 The file format has not been specified yet.
 
-.. _CellExpressionFields:
+.. _ExpressionFields:
 
-Cell Expression Fields
+Expression Fields
 ------------------------------
 
-:download:`Download as TSV <../_downloads/CellExpression.tsv>`
+:download:`Download as TSV <../_downloads/Expression.tsv>`
 
 .. list-table::
     :widths: 20, 15, 15, 50
@@ -23,7 +23,7 @@ Cell Expression Fields
       - Type
       - Attributes
       - Definition
-    {%- for field in CellExpression_schema %}
+    {%- for field in Expression_schema %}
     * - ``{{ field.Name }}``
       - {{ field.Type }}
       - {{ field.Attributes }}

@@ -236,7 +236,6 @@ Schema Definitions
 .. toctree::
    :maxdepth: 2
 
-   Requirement levels of fields <airr_schema_requirement_levels>
    Repertoire Schema <metadata>
    Rearrangement Schema <rearrangements>
    Clone Schema <clone>
