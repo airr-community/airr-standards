@@ -14,10 +14,13 @@ Files are YAML/JSON with an AIRR Data File structure. Files should be
 encoded as UTF-8. Identifiers are case-sensitive. Files should have the
 extension ``.yaml``, ``.yml``, or ``.json``.
 
+Schema Field Definitions
+------------------------
+
 .. _CellFields:
 
 Cell Fields
-------------------------------
+~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/Cell.tsv>`
 
@@ -39,7 +42,7 @@ Cell Fields
 .. _ExpressionFields:
 
 Expression Fields
-------------------------------
+~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/Expression.tsv>`
 

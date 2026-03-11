@@ -231,7 +231,7 @@ supported AIRR extension properties:
 
 
 Schema Definitions
------------------------------
+------------------
 
 .. toctree::
    :maxdepth: 2
