@@ -338,7 +338,7 @@ def parse_schema(spec, schema):
                     data_format = 'Ontology: { top_node: { id: %s, label: %s}}' % (ontology_format)
                     # Get 'type' for ontology
                     example = 'id: %s, label: %s' % (example['id'], example['label'])
-                elif xairr['format'] == 'controlled vocabulary':
+                elif xairr['format'] == 'controlled_vocabulary':
                     if attr.get('enum', None) is not None:
                         if None in attr['enum']:
                             attr['enum'].remove(None)
