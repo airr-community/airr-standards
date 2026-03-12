@@ -3722,7 +3722,6 @@ Rearrangement:
                 id: NCBITAXON:9606
                 label: Homo sapiens
             x-airr:
-                miairr: defined
                 nullable: true
                 adc-query-support: true
                 name: Locus species
