@@ -36,11 +36,15 @@ Table of Contents
     :maxdepth: 2
 
     Orientation <getting_started>
-    Release Notes <news>
     Minimal Standards (MiAIRR) <standards/overview>
     Data Model <standards/overview>
-    Data Submission and Query <standards/data_submission>
-    Software <software>
+    AIRR Compliant Tools <placeholder>
+    AIRR Compliant Databases <placeholder>
+    Querying the AIRR Data Commons <placeholder>
+    Data Submission <standards/data_submission>
+    Software Libraries <software>
+    Tutorials <placeholder>
     Community <community>
     Glossary <appendix/terms>
     References <appendix/references>
+    Release Notes <news>
