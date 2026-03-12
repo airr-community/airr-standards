@@ -35,9 +35,10 @@ Table of Contents
 .. toctree::
     :maxdepth: 2
 
-    Getting Started <getting_started>
+    Orientation <getting_started>
     Release Notes <news>
-    AIRR Standards <standards/overview>
+    Minimal Standards (MiAIRR) <standards/overview>
+    Data Model <standards/overview>
     Data Submission and Query <standards/data_submission>
     Software <software>
     Community <community>
