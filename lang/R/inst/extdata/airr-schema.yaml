@@ -3435,7 +3435,7 @@ DataProcessing:
                 nullable: true
                 adc-query-support: true
                 set: 5
-                subset: data (processed sequence)
+                subset: process (computational)
                 name: V(D)J germline reference database
         germline_set_ref:
             type: string
@@ -3731,7 +3731,6 @@ Rearrangement:
                 id: NCBITAXON:9606
                 label: Homo sapiens
             x-airr:
-                miairr: defined
                 nullable: true
                 adc-query-support: true
                 name: Locus species

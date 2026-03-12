@@ -39,10 +39,14 @@ File Structure
 + Some fields require the use of a particular ontology or controlled vocabulary.
 
 + The structure is the same regardless of whether the data is stored in a file or a data repository.
+
+Schema Field Definitions
+------------------------
+
 .. _CloneFields:
 
 Clone Fields
-------------------------------
+~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/Clone.tsv>`
 
@@ -64,7 +68,7 @@ Clone Fields
 .. _NodeFields:
 
 Node Fields
-------------------------------
+~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/Node.tsv>`
 

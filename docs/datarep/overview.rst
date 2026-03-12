@@ -231,19 +231,16 @@ supported AIRR extension properties:
 
 
 Schema Definitions
------------------------------
+------------------
 
 .. toctree::
    :maxdepth: 2
 
-   Requirement levels of fields <airr_schema_requirement_levels>
    Repertoire Schema <metadata>
-   RepertoireGroup Schema <metadata>
    Rearrangement Schema <rearrangements>
    Clone Schema <clone>
-   Cell Schema <cell>
-   Cell Expression Schema <cellexpression>
-   Cell Reactivity Schema <cellreactivity>
+   Single-cell Schema <cell>
+   Reactivity & Receptor Schema <receptor>
    Germline Schema <germline>
-   Receptor Schema <receptor>
+
 

@@ -1,7 +1,25 @@
+.. _ReactivitySchema:
+
+Reactivity & Receptor Schemas
+=============================
+
+Reactivity Schema
+-----------------
+
+The ``Reactivity`` object contains information that describes the
+binding of a compound resembling an Ig or TCR antigen by a single,
+intact cell. It is critical to note that while such experimental
+measurements are related to the antigen reactivity of individual
+Receptors expressed by the cell, the relation is rather complex as
+multiple Receptor species, different expression levels and background
+binding of the compound would need to be taken into account. Therefore
+the AIRR Schema provides a separate record for this information, which
+is only indirectly linked (via ``Cell``) to the ``Receptor`` object.
+
 .. _ReceptorSchema:
 
 Receptor Schema
-===============
+---------------
 
 The purpose of the ``Receptor`` object is to provide an structure for
 information referring to actual *Receptors*, i.e., Ig or TCR, both for
@@ -21,7 +39,7 @@ of receptor reactivity.
 
 
 Identifiers
------------
+~~~~~~~~~~~
 
 The ``Receptor`` objects has two properties that serve as identifiers:
 
@@ -55,7 +73,7 @@ the mature variable domain of the Ig heavy, TCR beta or TCR delta chain.
 the mature variable domain of the Ig light, TCR alpha or TCR gamma chain.
 
 Relations to other AIRR Schema objects
---------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``Receptor`` object is only directly linked to the ``Cell`` object,
 which then in turn contains the references to the records in the
@@ -64,9 +82,8 @@ Therefore a given rearrangement cannot directly reference to a receptor,
 which is also not a meaningful thing to do, as the paired chain would
 be unclear, but is necessary to determine a receptors reactivity.
 
-
 Annotation guidelines
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 References to information describing the same receptor located in other
 databases (i.e., outgoing links) SHOULD be provided as as CURIEs in the
@@ -83,7 +100,6 @@ especially applies to experiments that provide further evidence (e.g.,
 surface expression, reaction to superantigens) showing that a receptor
 is functional and present on the surface.
 
-
 Note on cells expressing more than a single receptor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -92,12 +108,11 @@ IGK/IGL/TRA/TRG chain are regularly observered as allelic exclusion is
 never complete and its efficiency is rather low for loci like TRA.
 Such dual-expressing cells can technically be accommodated in the
 current AIRR Schema as an individual ``Cell`` object can link to more
-than two rearrangemts and to more than a single ``Receptor``. In the
+than two rearrangements and to more than a single ``Receptor``. In the
 case of two potential receptors, both MAY be created as objects, if the
 general annotation rules are met for each of them. Note that the
 annotation of cell-based reactivity information is handled by the
-:ref:`CellReactivitySchema` object.
-
+:ref:`ReactivitySchema` object.
 
 Representation of bi-specific antibodies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -109,10 +124,56 @@ not measured on a regular basis. Therefore they are currently not
 supported in the ``Receptor`` schema.
 
 
+Schema Field Definitions
+------------------------
+
+.. _ReactivityFields:
+
+Reactivity Fields
+~~~~~~~~~~~~~~~~~
+
+:download:`Download as TSV <../_downloads/Reactivity.tsv>`
+
+.. list-table::
+    :widths: 20, 15, 15, 50
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Attributes
+      - Definition
+    {%- for field in Reactivity_schema %}
+    * - ``{{ field.Name }}``
+      - {{ field.Type }}
+      - {{ field.Attributes }}
+      - {{ field.Definition | trim }}
+    {%- endfor %}
+
+Within the ``Reactivity`` object, it is expected that the properties
+``antigen_source_species``, ``peptide_start``, ``peptide_end`` and
+``peptide_sequence_aa`` have an inseparable relationship with
+``antigen_type``. They only present a valid value when ``antigen_type``
+is ``protein`` or ``peptide``, otherwise they MUST contain a NULL value.
+In the former case, ``peptide_sequence_aa`` SHOULD present the actual
+peptide sequence of the protein used experimentally, while the
+``antigen`` field SHOULD reference to a database entry of the protein
+from which the peptide was derived from. Both ``peptide_start`` and
+``peptide_end`` indicate the (1-based) start and end location of
+``peptide_sequence_aa`` in the reference sequence. Note that highly-
+repetitive proteins might contain the same peptide at multiple locations
+of their full-length sequence. While it is generally recommended to
+always use the position of the first occurence for the ``peptide_start``
+and ``peptide_end`` annotation, this also stresses the importance to
+compare actual peptide sequences, not only coordinates.
+
+The five MHC properties (``mhc_*``), which are specifically required for
+records in which ``ligand_type`` is ``MHC:peptide`` or ``MHC:non-peptide``
+should be NULL for all other ``ligand_types``.
+
 .. _ReceptorFields:
 
 Receptor Fields
------------------------------
+~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/Receptor.tsv>`
 
@@ -130,7 +191,6 @@ Receptor Fields
       - {{ field.Attributes }}
       - {{ field.Definition | trim }}
     {%- endfor %}
-
 
 
 .. === References and Links ===
