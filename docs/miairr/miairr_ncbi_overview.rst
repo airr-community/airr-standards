@@ -20,8 +20,8 @@ Introduction
 The MiAIRR standard (minimal information about adaptive immune receptor
 repertoires) is a minimal reporting standard for experiments using
 sequencing-based technologies to study adaptive immune receptors (e.g. T cell
-receptors or immunoglobulins). It was developed by the `AIRR Community Minimal
-Standards Working Group`_ of the `Adaptive Immune Receptor Repertoire (AIRR)
+receptors or immunoglobulins). It was developed by the AIRR Community Minimal
+Standards Working Group of the `Adaptive Immune Receptor Repertoire (AIRR)
 Community`__ [Breden_2017]_. The current version (1.0) was ratified by the AIRR
 Community and published in 2017 [Rubelt_2017]_. MiAIRR requires researchers to
 report six sets of information:
@@ -38,9 +38,6 @@ reported, but neither provides details how and where to deposit data nor
 specifies data types and formats. Therefore this document aims to
 provide both a submission manual for users as well as a detailed data
 specification for developers.
-
-.. _`AIRR Community Minimal Standards Working Group`:
-   http://airr-community.org/working_groups/minimal_standards
 
 .. __: http://airr-community.org
 
