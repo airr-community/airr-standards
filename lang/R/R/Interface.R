@@ -649,7 +649,7 @@ validate_entry <- function(entry, schema) {
         if (is.na(schema[f][["type"]]) || is.null(schema[f][["type"]])) {
             if (!is.null(reference_schemes)) {
                 # check whether an ontology is a list, before recursing into it.
-                if (reference_schemes@definition == "Ontology" & class(entry[[f]]) != "list") {
+                if (reference_schemes@definition == "Ontology" & !is(entry[[f]], "list")) {
                     valid <- FALSE
                     warning(paste("Warning: Property", paste(schema_name, ".", f, sep=""),
                                 "should be an ontology but is of class", class(entry[[f]]), "\n"))
