@@ -221,19 +221,20 @@ class RearrangementWriter:
                 if row.get(field, None) is None:
                     sys.stderr.write('Warning: Record is missing AIRR required field (' + field + ').\n')
 
-        for f in row.keys():
+        entry = row.copy()
+        for f in entry.keys():
             # Adjust coordinates
             if f.endswith('_start') and self.base == 1:
                 try:
-                    row[f] = self.schema.to_int(row[f]) + 1
+                    entry[f] = self.schema.to_int(entry[f]) + 1
                 except TypeError:
-                    row[f] = None
+                    entry[f] = None
 
             # Convert types
             spec = self.schema.type(f)
-            if spec == 'boolean':  row[f] = self.schema.from_bool(row[f])
+            if spec == 'boolean':  entry[f] = self.schema.from_bool(entry[f])
 
-        self.dict_writer.writerow(row)
+        self.dict_writer.writerow(entry)
 
 
 # TODO: pandas validation need if we load with pandas directly

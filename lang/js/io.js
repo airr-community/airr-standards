@@ -290,7 +290,7 @@ module.exports = function(airr) {
         var data = null;
         var ext = filename.split('.').pop().toLowerCase();
         if ((ext == 'yaml') || (ext == 'yml') || (ext == 'json')) {
-            data = yaml.safeLoad(fs.readFileSync(filename));
+            data = yaml.load(fs.readFileSync(filename));
         } else {
             let msg = 'Unknown file type:' + ext + '. Supported file extensions are "yaml", "yml" or "json"';
             if (debug) console.error(msg);

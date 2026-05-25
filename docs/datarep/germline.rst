@@ -1,6 +1,6 @@
 .. _GermlineRepresentations:
 
-Germline Schema (Experimental)
+Germline Schema
 ==============================
 
 Motivation
@@ -127,10 +127,13 @@ overall ``GermlineSet`` as specified in the schema.
 
 + The structure is the same regardless of whether the data is stored in a file or retrieved from a data repository. For example, The :ref:`ADC API <DataCommonsAPI>` will return a properly structured JSON object that can be saved to a file and used directly without modification.
 
+Schema Field Definitions
+------------------------
+
 .. _GermlineSetFields:
 
 GermlineSet Fields
------------------------------
+~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/GermlineSet.tsv>`
 
@@ -152,7 +155,7 @@ GermlineSet Fields
 .. _AlleleDescriptionFields:
 
 AlleleDescription Fields
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/AlleleDescription.tsv>`
 
@@ -174,7 +177,7 @@ AlleleDescription Fields
 .. _RearrangedSequenceFields:
 
 RearrangedSequence Fields
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/RearrangedSequence.tsv>`
 
@@ -196,7 +199,7 @@ RearrangedSequence Fields
 .. _UnrearrangedSequenceFields:
 
 UnrearrangedSequence Fields
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/UnrearrangedSequence.tsv>`
 
@@ -218,7 +221,7 @@ UnrearrangedSequence Fields
 .. _SequenceDelineationVFields:
 
 SequenceDelineationV Fields
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/SequenceDelineationV.tsv>`
 
@@ -240,7 +243,7 @@ SequenceDelineationV Fields
 .. _GenotypeSetFields:
 
 GenotypeSet Fields
------------------------------
+~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/GenotypeSet.tsv>`
 
@@ -262,7 +265,7 @@ GenotypeSet Fields
 .. _GenotypeFields:
 
 Genotype Fields
------------------------------
+~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/Genotype.tsv>`
 
@@ -284,7 +287,7 @@ Genotype Fields
 .. _MHCGenotypeSetFields:
 
 MHCGenotypeSet Fields
------------------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/MHCGenotypeSet.tsv>`
 
@@ -306,7 +309,7 @@ MHCGenotypeSet Fields
 .. _MHCGenotypeFields:
 
 MHCGenotype Fields
------------------------------
+~~~~~~~~~~~~~~~~~~
 
 :download:`Download as TSV <../_downloads/MHCGenotype.tsv>`
 

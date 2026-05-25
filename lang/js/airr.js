@@ -26,7 +26,7 @@ module.exports = airr;
 airr.load_schema = async function() {
     // Load AIRR spec
     var airrFile = path.resolve(__dirname, './airr-schema-openapi3.yaml');
-    var doc = yaml.safeLoad(fs.readFileSync(airrFile));
+    var doc = yaml.load(fs.readFileSync(airrFile));
     if (!doc) Promise.reject(new Error('Could not load AIRR schema yaml file.'));
 
     // dereference all $ref objects
@@ -47,7 +47,7 @@ airr.load_schema = async function() {
 airr.load_custom_schema = async function(obj, filename) {
     // Load schema file
     //var airrFile = path.resolve(__dirname, filename);
-    var doc = yaml.safeLoad(fs.readFileSync(filename));
+    var doc = yaml.load(fs.readFileSync(filename));
     if (!doc) Promise.reject(new Error('Could not load custom schema yaml file.'));
 
     // dereference all $ref objects

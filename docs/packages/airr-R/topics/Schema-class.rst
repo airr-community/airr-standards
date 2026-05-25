@@ -34,10 +34,6 @@ Usage
 
 ::
 
-   AlignmentSchema
-
-::
-
    RearrangementSchema
 
 ::
@@ -95,8 +91,6 @@ The following predefined Schema objects are defined:
 ``InfoSchema``: AIRR Info ``Schema``.
 
 ``DataFileSchema``: AIRR DataFile ``Schema``.
-
-``AlignmentSchema``: AIRR Alignment ``Schema``.
 
 ``RearrangementSchema``: AIRR Rearrangement ``Schema``.
 

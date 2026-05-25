@@ -36,7 +36,7 @@ AIRR Rearrangement schema and comprises eight categories.
 File Format Specification
 ------------------------------
 
-Data for ``Rearrangement`` or ``Alignment`` objects are stored as rows in a
+Data for ``Rearrangement`` objects are stored as rows in a
 *tab-delimited* file and should be compatible with any TSV reader.
 
 Encoding

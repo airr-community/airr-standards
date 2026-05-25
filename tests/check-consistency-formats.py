@@ -61,13 +61,13 @@ for spec_name in v3spec_files:
 
     # Check python package
     if jsondiff.diff(gold_spec, py_spec) != {}:
-        print('{} openapi v3 spec is different from python version'.format(spec_name), file=sys.stderr)
+        print('{} openapi v3 spec is different in lang/python version'.format(spec_name), file=sys.stderr)
         print(jsondiff.diff(gold_spec, py_spec, syntax='explicit'), file=sys.stderr)
         sys.exit(1)
 
     # Check R package
     if jsondiff.diff(gold_spec, r_spec) != {}:
-        print('{} openapi v3 spec is different from R version'.format(spec_name), file=sys.stderr)
+        print('{} openapi v3 spec is different in lang/R version'.format(spec_name), file=sys.stderr)
         print(jsondiff.diff(gold_spec, r_spec), file=sys.stderr)
         sys.exit(1)
 
@@ -83,13 +83,13 @@ for spec_name in spec_files:
 
     # Check python package
     if jsondiff.diff(gold_spec, py_spec) != {}:
-        print('{} openapi v2 spec is different from python version'.format(spec_name), file=sys.stderr)
+        print('{} openapi v2 spec is different in lang/python version'.format(spec_name), file=sys.stderr)
         print(jsondiff.diff(gold_spec, py_spec, syntax='explicit'), file=sys.stderr)
         sys.exit(1)
 
     # Check R package
     if jsondiff.diff(gold_spec, r_spec) != {}:
-        print('{} openapi v2 spec is different from R version'.format(spec_name), file=sys.stderr)
+        print('{} openapi v2 spec is different in lang/R version'.format(spec_name), file=sys.stderr)
         print(jsondiff.diff(gold_spec, r_spec), file=sys.stderr)
         sys.exit(1)
 

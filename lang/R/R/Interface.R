@@ -49,11 +49,23 @@ read_tabular <- function(file, schema, base=c("1", "0"), aux_types=NULL,...) {
         cast <- c(cast, aux_cols)
     }
 
-    types <- do.call(readr::cols, cast)
+    # temporarily treat logical columns as character, to avoid silent NA conversion
+    logical_cols <- names(cast[cast == "l"])
+    cast_sub_logical <- cast
+    cast_sub_logical[logical_cols] <- parsers["character"]
+    types_sub_logical <- do.call(readr::cols, cast_sub_logical)
 
     # Read file
-    data <- suppressMessages(readr::read_tsv(file, col_types=types, na=c("", "NA", "None"), ...))
+    data <- suppressMessages(readr::read_tsv(file, col_types=types_sub_logical, na=c("", "NA", "None"), ...))
     
+    # Attempt to set type of logical columns
+    allowed_logical_characters <- c('T', 'TRUE', 'True', 'true', 'F', 'FALSE', 'False', 'false', NA)
+    for (c in logical_cols) {
+      if (all(data[[c]] %in% allowed_logical_characters)) {
+        data[[c]] <- as.logical(data[[c]])
+      }
+    }
+
     # Validate file
     valid_data <- validate_tabular(data, schema=schema)
     
@@ -76,20 +88,6 @@ read_tabular <- function(file, schema, base=c("1", "0"), aux_types=NULL,...) {
 #' @export
 read_rearrangement <- function(file, base=c("1", "0"), ...) {
   read_tabular(file, base=base, schema=RearrangementSchema, ...)
-}
-
-#' @details
-#' \code{read_alignment} reads an AIRR TSV containing Alignment data.
-#' 
-#' @rdname read_tabular
-#' @export
-read_alignment <- function(file, base=c("1", "0"), ...) {
-  msg <- paste("read_alignment is deprecated and will be removed in a future release.",
-               "Use read_tabular with the argument schema=AlignmentSchema instead.",
-               "See help(\"Deprecated\")", 
-               sep="\n")
-  .Deprecated(msg=msg)
-  read_tabular(file, base=base, schema=AlignmentSchema, ...)
 }
 
 
@@ -326,20 +324,6 @@ write_rearrangement <- function(data, file, base=c("1", "0"), ...) {
 }
 
 
-#' @details
-#' \code{write_alignment} writes a \code{data.frame} containing AIRR Alignment data to TSV.
-#' 
-#' @rdname write_tabular
-#' @export
-write_alignment <- function(data, file, base=c("1", "0"), ...) {
-    msg <- paste("write_alignment is deprecated and will be removed in a future release.",
-                 "Use write_tabular with the argument schema=AlignmentSchema instead.",
-                 "See help(\"Deprecated\")", 
-                 sep="\n")
-    .Deprecated(msg=msg)
-    write_tabular(data, file, base=base, schema=AlignmentSchema, ...)
-}
-
 #### Write YAML/JSON ####
 
 #' Write AIRR Data Model records to YAML or JSON files
@@ -531,9 +515,9 @@ validate_tabular <- function(data, schema) {
     logical_fields <- intersect(colnames(data), logical_fields)
     if (length(logical_fields) > 0 ) {
         for (log_field in logical_fields) {
-            not_logical <- data[[log_field]] %in% c(TRUE, FALSE, NA) == FALSE
+            not_logical <- data[[log_field]] %in% c(TRUE, FALSE, NA, "TRUE", "True", "true", "T", "FALSE", "False", "false", "F") == FALSE
             if (any(not_logical)) {
-                warning(paste("Warning:",log_field,"is not logical for row(s):",
+                warning(paste("Warning:", log_field, "is not logical for row(s):",
                               paste(which(not_logical), collapse = ", ")))            
             } else {
                 NULL
@@ -665,7 +649,7 @@ validate_entry <- function(entry, schema) {
         if (is.na(schema[f][["type"]]) || is.null(schema[f][["type"]])) {
             if (!is.null(reference_schemes)) {
                 # check whether an ontology is a list, before recursing into it.
-                if (reference_schemes@definition == "Ontology" & class(entry[[f]]) != "list") {
+                if (reference_schemes@definition == "Ontology" & !is(entry[[f]], "list")) {
                     valid <- FALSE
                     warning(paste("Warning: Property", paste(schema_name, ".", f, sep=""),
                                 "should be an ontology but is of class", class(entry[[f]]), "\n"))
@@ -688,6 +672,57 @@ validate_entry <- function(entry, schema) {
                     if (!v) { valid <- FALSE }
                 }
             }
+        # For arrays without reference schemas, check that the type inside array is correct
+        } else if (schema[f][["type"]] == "array" & is.null(reference_schemes)) {
+            # check for null entries
+            nullable <- schema[f][["x-airr"]][["nullable"]]
+            # if not specified, it should be nullable
+            if (is.null(nullable)) { nullable <- TRUE }
+            # if array is null and not nullable, fail validation
+            if (!nullable & length(entry[[f]]) == 0) {
+                valid <- FALSE
+                warning(paste("Warning:", entry[[f]], "required entry is not provided:", f, "\n"))
+            } else if (length(entry[[f]]) > 0) {
+                # if array has items and type specified, check that the type is correct
+                if (!is.null(schema[f][["items"]][["type"]])) {
+                    # map specified types to R types
+                    if (schema[f][["items"]][["type"]] == "string") {
+                        if (!is.character(entry[[f]])) {
+                            valid <- FALSE
+                            warning(paste("Warning:", "entry",  schema_name,"does not have the required type",
+                                        schema[f][["items"]][["type"]], "for array items:", f, "\n"))
+                        }
+                        if (!is.null(schema[f][["items"]][["enum"]])) {
+                            invalid <- which(!(entry[[f]] %in% schema[f][["items"]][["enum"]]))
+                            if (length(invalid) > 0) {
+                                valid <- FALSE
+                                warning(paste("Warning:", "entry",  schema_name,"has invalid enum values for array items:", f,
+                                            paste(entry[[f]][invalid], collapse = ", "), "\n"))
+                            }
+                        }
+                    } else if (schema[f][["items"]][["type"]] == "integer") {
+                        if (!is.integer(entry[[f]])) {
+                            valid <- FALSE
+                            warning(paste("Warning:", "entry",  schema_name,"does not have the required type",
+                                        schema[f][["items"]][["type"]], "for array items:", f, "\n"))
+                        }
+                    } else if (schema[f][["items"]][["type"]] == "number") {
+                        if (!is.numeric(entry[[f]])) {
+                            valid <- FALSE
+                            warning(paste("Warning:", "entry",  schema_name,"does not have the required type",
+                                        schema[f][["items"]][["type"]], "for array items:", f, "\n"))
+                        }
+                    } else if (schema[f][["items"]][["type"]] == "boolean") {
+                        if (!is.logical(entry[[f]])) {
+                            valid <- FALSE
+                            warning(paste("Warning:", "entry",  schema_name,"does not have the required type",
+                                        schema[f][["items"]][["type"]], "for array items:", f, "\n"))
+                        }
+                    }
+                }
+
+            }
+
         # check if the entry type is correct
         } else if (class(entry[[f]]) != schema[f][["type"]]) {
             # one reason for non-identical types can be that the entry is nullable
@@ -698,13 +733,53 @@ validate_entry <- function(entry, schema) {
                 # another reason for types not matching is the array format
                 # we test whether the entries are lists
                 if (!(schema[f][["type"]] == "array" & is.vector(entry[[f]]))) {
-                    # another reason for types not matching is the numeric arguments being read as integers
-                    # we test whether the entries are numeric
-                    if (!(schema[f][["type"]] == "numeric" & is.numeric(entry[[f]]))) {
+                    # The names of type might not match the specified format exactly so we need to map them
+                    if (schema[f][["type"]] == "numeric") {
+                        if (!is.numeric(entry[[f]])) {
+                            valid <- FALSE
+                            warning(paste("Warning:", schema_name, "entry does not have the required type",
+                                          schema[f][["type"]], ":", f, "\n"))
+                        }
+                    } else if (schema[f][["type"]] == "string") {
+                        if (!is.character(entry[[f]])) {
+                            valid <- FALSE
+                            warning(paste("Warning:", schema_name, "entry does not have the required type",
+                                          schema[f][["type"]], ":", f, "\n"))
+                        }
+                        #Check that values follow the enum if specified
+                        if (!is.null(schema[f][["enum"]])) {
+                            invalid <- which(!(entry[[f]] %in% schema[f][["enum"]]))
+                            if (length(invalid) > 0) {
+                                valid <- FALSE
+                                warning(paste("Warning:", schema_name, "has invalid values:", f,
+                                              paste(entry[[f]][invalid], collapse = ", "), "\n"))
+                            }
+                        }
+                    } else if (schema[f][["type"]] == "integer") {
+                        if (!is.integer(entry[[f]])) {
+                            valid <- FALSE
+                            warning(paste("Warning:", schema_name, "entry does not have the required type",
+                                          schema[f][["type"]], ":", f, "\n"))
+                        }
+                    }  else if (schema[f][["type"]] == "boolean") {
+                        if (!is.logical(entry[[f]])) {
+                            valid <- FALSE
+                            warning(paste("Warning:", schema_name, "entry does not have the required type",
+                                          schema[f][["type"]], ":", f, "\n"))
+                        }
+                    } else {
                         valid <- FALSE
-                        warning(paste("Warning:", schema_name, "entry does not have the required type",
-                                      schema[f][["type"]], ":", f, "\n"))
-                    }  
+                        warning(paste("Warning: Unrecognized type", schema[f][["type"]],
+                                      "for field", paste(schema_name, ".", f, sep=""), "\n"))
+                    }
+                }
+            }
+        } else {
+            # If the entry is of correct type, check that the value is in the enum if specified
+            if (schema[f][["type"]] == "character" & !is.null(schema[f][["enum"]])) {
+                if (!(entry[[f]] %in% schema[f][["enum"]])) {
+                    valid <- FALSE
+                    warning(paste("Warning:", schema_name, "has invalid value:", f, entry[[f]], "\n"))
                 }
             }
         }

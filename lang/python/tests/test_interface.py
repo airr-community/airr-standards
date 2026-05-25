@@ -33,6 +33,8 @@ class TestInferface(unittest.TestCase):
         self.genotype_bad = os.path.join(data_path, 'bad_genotype_set.json')
         self.combined_yaml = os.path.join(data_path, 'good_combined_airr.yaml')
         self.combined_json = os.path.join(data_path, 'good_combined_airr.json')
+        self.clone_good = os.path.join(data_path, 'good_clone.yaml')
+        self.clone_bad = os.path.join(data_path, 'bad_clone.yaml')
 
         # Output data
         self.output_rep = os.path.join(data_path, 'output_rep.json')
@@ -318,6 +320,23 @@ class TestInferface(unittest.TestCase):
             result = airr.read_airr(self.genotype_bad, validate=True, debug=True)
             valid = airr.validate_airr(result, debug=True)
             self.assertFalse(valid, 'validate_genotype(): bad data succeeded')
+        except ValidationError:
+            pass
+    
+    # @unittest.skip('-> load_clone(): skipped\n')
+    def test_read_clone(self):
+        # Good data
+        print('--> Good data')
+        try:
+            result = airr.read_airr(self.clone_good, validate=True, debug=True)
+        except ValidationError:
+            self.assertTrue(False, 'read_clone(): good data failed')
+
+        # Bad data
+        print('--> Bad data')
+        try:
+            result = airr.read_airr(self.clone_bad, validate=True, debug=True)
+            self.assertFalse(True, 'read_clone(): bad data succeeded')
         except ValidationError:
             pass
 

@@ -23,22 +23,21 @@ bad_germline_set_file <- file.path(parent_path, "data-tests", "bad_germline_set.
 good_genotype_set_file <- file.path(parent_path, "data-tests", "good_genotype_set.json")
 bad_genotype_set_file <- file.path(parent_path, "data-tests", "bad_genotype_set.json")
 
+# Clone test files
+good_clone_file <- file.path(parent_path, "data-tests", "good_clone.yaml")
+bad_clone_file <- file.path(parent_path, "data-tests", "bad_clone.yaml")
+
 # Combined test files
 good_combined_yaml <- file.path(parent_path, "data-tests", "good_combined_airr.yaml")
 good_combined_json <- file.path(parent_path, "data-tests", "good_combined_airr.json")
 good_combined_names <- c("Repertoire", "GermlineSet", "GenotypeSet")
 
 # Expected warnings for bad_rearrangement_file
-# expected_w <- c(
-#     "Warning: File is missing AIRR mandatory field(s): sequence",
-#     "Warning: sequence_id(s) are not unique: IVKNQEJ01AJ44V, IVKNQEJ01AJ44V",
-#     "Warning: sequence_id is empty for row(s): 7",
-#     "Warning: productive is not logical for row(s): 1"
-# )
 expected_w <- c(
     "Warning: File is missing AIRR mandatory field(s): sequence",
     "Warning: sequence_id(s) are not unique: IVKNQEJ01AJ44V, IVKNQEJ01AJ44V",
-    "Warning: sequence_id is empty for row(s): 7"
+    "Warning: sequence_id is empty for row(s): 7",
+    "Warning: productive is not logical for row(s): 1"
 )
 
 
@@ -179,7 +178,7 @@ test_that("write_tabular writes a bad file, with warnings, with logicals T/T", {
     expect_equal(reload_tbl[['rev_comp']],
                 c("T","T","T","","T","T","T","T","T","T","T"))
     expect_equal(reload_tbl[['productive']],
-                 c("","T","F","T","T","F","F","F","T","T","T"))
+                 c("yes","T","F","T","T","F","F","F","T","T","T"))
 })
 
 #### Repertoire ####
@@ -234,7 +233,11 @@ context("GermlineSet I/O - bad data")
 
 test_that("validate_airr with bad data returns an error", {
   bad_data <- read_airr(bad_germline_set_file, validate=F)
-  expect_false(expect_warning(validate_airr(bad_data)))
+  w <- capture_warnings(validate_airr(bad_data))
+  expect_true(length(w) == 6)
+  expect_match(w, "pub_ids", all=FALSE)
+  expect_match(w, "curational_tags", all=FALSE)
+  expect_match(w, "locus", all=FALSE)
 })
 
 #### GenotypeSet ####
@@ -250,8 +253,23 @@ context("GenotypeSet I/O - bad data")
 
 test_that("validate_airr with bad data returns an error", {
   bad_data <- read_airr(bad_genotype_set_file, validate=F)
-  expect_false(expect_warning(validate_airr(bad_data)))
+  expect_warning(validate_airr(bad_data))
 })
+
+#### Clone ####
+
+context("Clone I/O - good data")
+
+test_that("read_airr loads a Clone", {
+    clone_1 <- read_airr(good_clone_file)
+    expect_true(is.list(clone_1))
+})
+
+test_that("read_airr with bad data returns an error", {
+    bad_data <- read_airr(bad_clone_file, validate=F)
+    expect_warning(read_airr(bad_clone_file))
+})
+
 
 #### Combined Data ####
 

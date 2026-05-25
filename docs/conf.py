@@ -20,11 +20,13 @@
 # -- Imports ----------------------------------------------------------------
 
 import csv
+import datetime
 import os
 import sys
+from unittest.mock import MagicMock
+
 import yaml
 import yamlordereddictloader
-from unittest.mock import MagicMock
 
 # -- Python environment ----------------------------------------------------
 
@@ -89,7 +91,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'AIRR Standards'
-copyright = '2015-2023, AIRR Community'
+copyright = f'2015-{datetime.datetime.now().year}, AIRR Community'
 author = 'AIRR Community'
 
 # The name of the Pygments (syntax highlighting) style to use.
@@ -336,7 +338,7 @@ def parse_schema(spec, schema):
                     data_format = 'Ontology: { top_node: { id: %s, label: %s}}' % (ontology_format)
                     # Get 'type' for ontology
                     example = 'id: %s, label: %s' % (example['id'], example['label'])
-                elif xairr['format'] == 'controlled vocabulary':
+                elif xairr['format'] == 'controlled_vocabulary':
                     if attr.get('enum', None) is not None:
                         if None in attr['enum']:
                             attr['enum'].remove(None)
@@ -390,6 +392,8 @@ html_context = {'airr_schema': airr_schema}
 # Iterate over schema and build reference tables
 data_elements = {}
 for spec in airr_schema:
+    if 'allOf' in airr_schema[spec]:
+        airr_schema[spec] = airr_schema[spec]['allOf'][0]
     if 'properties' not in airr_schema[spec]:
         continue
 
@@ -408,7 +412,7 @@ if not os.path.exists(download_path):  os.mkdir(download_path)
 # Write MiAIRR TSV
 fields = ['Set', 'Subset', 'Designation', 'Field', 'Type', 'Format', 'Level', 'Definition', 'Example']
 tables = ['Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
-          'PCRTarget', 'SequencingRun', 'SequencingData', 'DataProcessing']
+          'PCRTarget', 'SequencingRun', 'SequencingData', 'DataProcessing', 'Rearrangement']
 # tables = data_elements.keys()
 miairr_schema = []
 with open(os.path.join(download_path, '%s.tsv' % 'AIRR_Minimal_Standard_Data_Elements'), 'w') as f:
@@ -423,11 +427,16 @@ html_context['MiAIRR_schema'] = miairr_schema
 
 # Write individual spec TSVs
 fields = ['Name', 'Type', 'Attributes', 'Definition']
-tables = ['Repertoire', 'Study', 'Subject', 'Diagnosis', 'Sample', 'CellProcessing', 'NucleicAcidProcessing',
+tables = ['Repertoire', 'Study', 'Contributor', 'Subject', 'Diagnosis', 'Sample',
+          'SampleProcessing', 'CellProcessing', 'NucleicAcidProcessing',
           'PCRTarget', 'SequencingRun', 'SequencingData', 'DataProcessing',
-          'Rearrangement', 'Alignment', 'Clone', 'Tree', 'Node', 'Cell', 'Expression',
-          'RearrangedSequence', 'UnrearrangedSequence', 'SequenceDelineationV', 'AlleleDescription', 'GermlineSet',
-          'GenotypeSet', 'Genotype', 'MHCGenotypeSet', 'MHCGenotype', 'Receptor']
+          'TimeInterval', 'TimeQuantity', 'TimePoint', 'PhysicalQuantity',
+          'Rearrangement', 'Clone', 'Node', 'Cell', 'Expression',
+          'RearrangedSequence', 'UnrearrangedSequence',
+          'SequenceDelineationV', 'AlleleDescription', 'GermlineSet',
+          'SubjectGenotype', 'Genotype', 'GenotypeSet',
+          'MHCGenotype', 'MHCGenotypeSet', 'Receptor']
+
 for spec in tables:
     with open(os.path.join(download_path, '%s.tsv' % spec), 'w') as f:
         writer = csv.DictWriter(f, fieldnames=fields, dialect='excel-tab', extrasaction='ignore')

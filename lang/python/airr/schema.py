@@ -530,7 +530,6 @@ class Schema:
 AIRRSchema = {
     'Info': Schema('InfoObject'),
     'DataFile': Schema('DataFile'),
-    'Alignment': Schema('Alignment'),
     'Rearrangement': Schema('Rearrangement'),
     'Repertoire': Schema('Repertoire'),
     'RepertoireGroup': Schema('RepertoireGroup'),
@@ -559,7 +558,6 @@ AIRRSchema = {
 
 InfoSchema = AIRRSchema['Info']
 DataFileSchema = AIRRSchema['DataFile']
-AlignmentSchema = AIRRSchema['Alignment']
 RearrangementSchema = AIRRSchema['Rearrangement']
 RepertoireSchema = AIRRSchema['Repertoire']
 GermlineSetSchema = AIRRSchema['GermlineSet']

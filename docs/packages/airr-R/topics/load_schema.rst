@@ -33,7 +33,6 @@ Details
 Valid definitions include:
 
 -  ``"Rearrangement"``
--  ``"Alignment"``
 -  ``"Repertoire"``
 -  ``"Study"``
 -  ``"Subject"``
