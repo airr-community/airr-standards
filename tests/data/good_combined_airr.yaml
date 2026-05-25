@@ -25,12 +25,8 @@ Repertoire:
       contributors:
         - contributor_id: "1"
           name: "Florian Rubelt"
-          orcid_id:
-            id:
-            label:
-          affiliation:
-            id: "ROR:00f54p054"
-            label: "Stanford University"
+          orcid_id: null
+          affiliation: "ROR:00f54p054"
           affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
           contributions:
             - role: "investigation"
@@ -39,12 +35,8 @@ Repertoire:
               degree:
         - contributor_id: "2"
           name: "Mark M. Davis"
-          orcid_id:
-            id: "ORCID:0000-0001-6868-657X"
-            label: "Mark Davis"
-          affiliation:
-            id: "ROR:00f54p054"
-            label: "Stanford University"
+          orcid_id: "ORCID:0000-0001-6868-657X"
+          affiliation: "ROR:00f54p054"
           affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
           contributions:
             - role: "supervision"
@@ -62,9 +54,9 @@ Repertoire:
         label: Homo sapiens
       sex: female
       age:
-        min: 27
-        max: 27
-        unit:
+        time_min: 27
+        time_max: 27
+        time_unit:
           id: UO:0000036
           label: year
       age_event:
@@ -82,9 +74,9 @@ Repertoire:
       diagnosis:
         - study_group_description:
           diagnosis_timepoint:
-            label: Study enrollment
-            value: 60
-            unit:
+            time_label: Study enrollment
+            time_value: 60
+            time_unit:
               id: UO:0000033
               label: day
           disease_diagnosis:
@@ -225,12 +217,8 @@ Repertoire:
       contributors:
         - contributor_id: "1"
           name: "Florian Rubelt"
-          orcid_id:
-            id:
-            label:
-          affiliation:
-            id: "ROR:00f54p054"
-            label: "Stanford University"
+          orcid_id: null
+          affiliation: "ROR:00f54p054"
           affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
           contributions:
             - role: "investigation"
@@ -239,12 +227,8 @@ Repertoire:
               degree:
         - contributor_id: "2"
           name: "Mark M. Davis"
-          orcid_id:
-            id: "ORCID:0000-0001-6868-657X"
-            label: "Mark Davis"
-          affiliation:
-            id: "ROR:00f54p054"
-            label: "Stanford University"
+          orcid_id: "ORCID:0000-0001-6868-657X"
+          affiliation: "ROR:00f54p054"
           affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
           contributions:
             - role: "supervision"
@@ -262,9 +246,9 @@ Repertoire:
         label: Homo sapiens
       sex: female
       age:
-        min: 27
-        max: 27
-        unit:
+        time_min: 27
+        time_max: 27
+        time_unit:
           id: UO:0000036
           label: year
       age_event:
@@ -282,9 +266,9 @@ Repertoire:
       diagnosis:
         - study_group_description:
           diagnosis_timepoint:
-            label: Study enrollment
-            value: 60
-            unit:
+            time_label: Study enrollment
+            time_value: 60
+            time_unit:
               id: UO:0000033
               label: day
           disease_diagnosis:
@@ -391,12 +375,8 @@ Repertoire:
       contributors:
         - contributor_id: "1"
           name: "Florian Rubelt"
-          orcid_id:
-            id:
-            label:
-          affiliation:
-            id: "ROR:00f54p054"
-            label: "Stanford University"
+          orcid_id: null
+          affiliation: "ROR:00f54p054"
           affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
           contributions:
             - role: "investigation"
@@ -405,12 +385,8 @@ Repertoire:
               degree:
         - contributor_id: "2"
           name: "Mark M. Davis"
-          orcid_id:
-            id: "ORCID:0000-0001-6868-657X"
-            label: "Mark Davis"
-          affiliation:
-            id: "ROR:00f54p054"
-            label: "Stanford University"
+          orcid_id: "ORCID:0000-0001-6868-657X"
+          affiliation: "ROR:00f54p054"
           affiliation_department: "Department of Microbiology and Immunology, Stanford University School of Medicine"
           contributions:
             - role: "supervision"
@@ -428,9 +404,9 @@ Repertoire:
         label: Homo sapiens
       sex: female
       age:
-        min: 27
-        max: 27
-        unit:
+        time_min: 27
+        time_max: 27
+        time_unit:
           id: UO:0000036
           label: year
       age_event:
@@ -448,9 +424,9 @@ Repertoire:
       diagnosis:
         - study_group_description:
           diagnosis_timepoint:
-            label: Study enrollment
-            value: 60
-            unit:
+            time_label: Study enrollment
+            time_value: 60
+            time_unit:
               id: UO:0000033
               label: day
           disease_diagnosis:
@@ -537,13 +513,9 @@ GermlineSet:
     acknowledgements:
       - contributor_id: "3"
         name: William Lees
-        orcid_id:
-          id: ORCID:0000-0001-9834-6840
-          label: William Lees
-        affiliation:
-          id: ROR:02mb95055
-          label: Birkbeck, University of London
-        affiliation_department:
+        orcid_id: ORCID:0000-0001-9834-6840
+        affiliation: ROR:02mb95055
+        affiliation_department: Birkbeck, University of London
         contributions:
           - role: investigation
             degree: null
@@ -567,13 +539,9 @@ GermlineSet:
         acknowledgements:
           - contributor_id: "3"
             name: William Lees
-            orcid_id:
-              id: ORCID:0000-0001-9834-6840
-              label: William Lees
-            affiliation:
-              id: ROR:02mb95055
-              label: Birkbeck, University of London
-            affiliation_department:
+            orcid_id: ORCID:0000-0001-9834-6840
+            affiliation: ROR:02mb95055
+            affiliation_department: Birkbeck, University of London
             contributions:
               - role: investigation
                 degree:
@@ -742,13 +710,9 @@ GermlineSet:
         acknowledgements:
           - contributor_id: "3"
             name: William Lees
-            orcid_id:
-              id: ORCID:0000-0001-9834-6840
-              label: William Lees
-            affiliation:
-              id: ROR:02mb95055
-              label: Birkbeck, University of London
-            affiliation_department:
+            orcid_id: ORCID:0000-0001-9834-6840
+            affiliation: ROR:02mb95055
+            affiliation_department: Birkbeck, University of London
             contributions:
               - role: investigation
                 degree:
