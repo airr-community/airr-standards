@@ -37,9 +37,10 @@ IMGT reference directories. Researchers interested in submitting sequences shoul
 Submit sequence and data to Genbank or ENA, following the
 :ref:`Genbank/ENA workflow <IARCSubmission>`.
 
-Submit the inferred sequences to IARC via OGRDB, following the :ref:`OGRDB Submission Guide <OGRDB Submission Guide>`
+Submit the inferred sequences to IARC via OGRDB, following the
+`OGRDB Submission Guide <https://ogrdb.airr-community.org/render_page/ogre_guide.html>`.
 
-Additional information is available at the :ref:`OGRDB Website <OGRDB Website>`
+Additional information is available at the :ref:`OGRDB Website <https://ogrdb.airr-community.org>`.
 
 References
 ==========
@@ -50,6 +51,3 @@ References
 
 .. _`DOI: 10.3389/fimmu.2019.00435`: https://doi.org/10.3389/fimmu.2019.00435
 
-.. _`OGRDB Submission Guide`: https://ogrdb.airr-community.org/render_page/ogre_guide.html
-
-.. _`OGRDB Website`: https://ogrdb.airr-community.org
