@@ -14,9 +14,7 @@ and bioinformatics researchers. VDJServer provides a data commons for public sha
 repertoire sequencing data, as well as private sharing of data between users.
 
 + `VDJServer website`_
-
 + `VDJServer Community Data Portal`_
-
 + `Email VDJServer`_ for information about submission of your study data.
 
 References

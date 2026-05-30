@@ -48,9 +48,9 @@ to find data across all of the repositories in the ADC, it is necessary to query
 Querying the AIRR Data Commons
 ------------------------------
 
-Each of the repositories above can be queried directly using the :ref:`ADC API <DataCommonsAPI>`. In addition, the
-following tools and platforms implement web based user interfaces that use the ADC API to query repositories
-in the AIRR Data Commons:
+Each of the repositories above can be queried directly using the
+:ref:`ADC API <DataCommonsAPI>`. In addition, the following tools and platforms implement
+web based user interfaces that use the ADC API to query repositories in the AIRR Data Commons:
 
 + :ref:`iReceptor Gateway <iReceptor>`
 + :ref:`VDJServer Community Data Portal <VDJServer>`
