@@ -33,4 +33,3 @@ Topics
    MiAIRR Data Elements <data_elements>
    Requirement levels of fields <../datarep/airr_schema_requirement_levels>
    Metadata annotation guidelines <metadata_guidelines>
-

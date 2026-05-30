@@ -7,15 +7,9 @@ Data Submission and Query
 Data Submission Guides for AIRR-seq studies
 -------------------------------------------
 
-There are multiple data repositories that accept submission of AIRR-seq datasets.
-Each provides different capabilities but all comply with the MiAIRR standard.
-
-.. toctree::
-    :maxdepth: 1
-    :caption: National Center for Biotechnology Information (NCBI)
-
-    MiAIRR to NCBI submission guide <../miairr/miairr_ncbi_overview>
-    CEDAR's CAIRR submission pipeline <../cairr/overview>
+There are multiple data repositories that accept submission of processed
+(analysis ready) AIRR-seq datasets. Each provides different capabilities,
+but all comply with the AIRR Data Standards.
 
 .. toctree::
     :maxdepth: 1
@@ -28,6 +22,13 @@ Each provides different capabilities but all comply with the MiAIRR standard.
     :caption: iReceptor Turnkey Repository
 
     iReceptor Turnkey Repository <../miairr/ireceptor>
+
+Raw Sequence Data Submission
+----------------------------
+
+The `NCBI Sequence Read Archive (SRA) <https://www.ncbi.nlm.nih.gov/sra`_ is recommended for raw sequence (FASTQ)
+data submission with BioProject and BioSample metadata conforming to the
+`MiAIRR requirements <MiAIRR>`_.
 
 Data Submission for Inferred Genes and Alleles
 ----------------------------------------------

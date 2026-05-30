@@ -19,8 +19,8 @@ Schema Definitions
 .. toctree::
    :maxdepth: 1
 
-   Rearrangement Schema (V(D)J Sequences) <rearrangements>
    Repertoire Schema (Metadata) <metadata>
+   Rearrangement Schema (V(D)J Sequences) <rearrangements>
    Germline & Genotype Schema <germline>
    Clone Schema <clone>
    Single-cell Schema <cell>

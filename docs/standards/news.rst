@@ -1,5 +1,3 @@
-.. this Changelog is based on the merged pull requests involving the ````airr-schema.yaml```` file since Jan 9 2018
-
 Schema Release Notes
 ================================================================================
 
