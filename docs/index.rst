@@ -38,13 +38,12 @@ Table of Contents
 .. toctree::
     :maxdepth: 2
 
-    Orientation <getting_started>
+    Overview <overview>
     Study Reporting (MiAIRR) <miairr/introduction_miairr>
     Data Standards <datarep/overview>
-    Data Submission & Query <standards/data_submission>
+    Data Submission & Query <adc/data_submission>
     Software Libraries <software>
     Data Commons API <api/adc_api_overview>
-    Release Notes <news>
     Software Compliance Guidelines <swtools/airr_swtools_standard>
     Ontologies and Vocabularies <ontovoc/introduction_ontovoc>
     Reference Germline Database <ogrdb/ogrdb>

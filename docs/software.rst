@@ -11,4 +11,3 @@ AIRR Standards Reference Implementations
     Python Library <packages/airr-python/overview>
     R Library <packages/airr-R/overview>
     JavaScript Library <packages/airr-js/overview>
-    ADC API Reference Implementation <api/adc_api_reference>

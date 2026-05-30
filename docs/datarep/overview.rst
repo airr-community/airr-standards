@@ -25,6 +25,7 @@ Schema Definitions
    Clone Schema <clone>
    Single-cell Schema <cell>
    Reactivity & Receptor Schema <receptor>
+   Schema Release Notes <news>
 
 Data Model
 ---------------
