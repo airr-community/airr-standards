@@ -42,12 +42,12 @@ Table of Contents
     Study Reporting (MiAIRR) <miairr/introduction_miairr>
     Data Standards <datarep/overview>
     Data Submission & Query <adc/data_submission>
-    Software Libraries <software>
+    Software Libraries <packages/software>
     Data Commons API <api/adc_api_overview>
     Software Compliance Guidelines <swtools/airr_swtools_standard>
     Ontologies and Vocabularies <ontovoc/introduction_ontovoc>
     Reference Germline Database <ogrdb/ogrdb>
-    Community <community>
+    Community <resources/community>
     Glossary <appendix/terms>
     References <appendix/references>
 
