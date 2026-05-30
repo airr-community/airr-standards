@@ -38,7 +38,7 @@ Table of Contents
 .. toctree::
     :maxdepth: 2
 
-    Overview <overview>
+    Getting Started <overview>
     Study Reporting (MiAIRR) <miairr/introduction_miairr>
     Data Standards <datarep/overview>
     Data Submission & Query <adc/data_submission>
