@@ -1,6 +1,27 @@
 Schema Release Notes
 ================================================================================
 
+Version 1.6.0: July 7, 2025
+--------------------------------------------------------------------------------
+
+**Version 1.6 schema release.**
+
++ Added ``minimum`` value to multiple numeric fields.
++ Made ``TimePoint`` fields ``label``, ``value`` and ``unit`` unique by
+  prefixing with ``time_point_``
++ Renamed ``Acknowledgement.name`` to ``individual_full_name``.
++ Renamed ``CellExpression.value`` to ``property_value``.
++ Moved several ``RepertoireGroup`` fields into a separate
+  ``RepertoireFilter`` object.
++ Fixed multiple type and example errors in the various schemas.
+
+Version 1.5.1: June 2, 2024
+--------------------------------------------------------------------------------
+
+**Version 1.5 patch release.**
+
++ Corrected schema version number in the ``Info`` object.
+
 Version 1.5.0: August 29, 2023
 --------------------------------------------------------------------------------
 
