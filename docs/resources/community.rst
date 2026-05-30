@@ -11,7 +11,7 @@ Resources and Tools Supporting AIRR Standards
 
     Applications Supporting the Rearrangement Schema <rearrangement_support.rst>
     AIRR Data Commons <../adc/adc.rst>
-    AIRR Data Commons Repositories adc_support.rst>
+    AIRR Data Commons Repositories <adc_support.rst>
 
 
 Useful Websites for the AIRR Community
