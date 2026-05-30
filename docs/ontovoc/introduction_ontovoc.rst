@@ -10,7 +10,7 @@ Summary
 The "Ontologies and Vocabularies Team" was initial formed as a joint
 interest group of the Common Repository (ComRepo) and the Minimal
 Standards (MiniStd) working groups (WG) of the AIRR Community. When the
-two WG merged into the current Standards WG in Decemmber 2020, OntoVoc
+two WG merged into the current Standards WG in December 2020, OntoVoc
 became a Sub-WG of it. The long-term aim of the Sub-WG is to define
 standard vocabularies and ontologies to be used by AIRR-compliant
 repositories.

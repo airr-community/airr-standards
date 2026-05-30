@@ -43,7 +43,11 @@ Table of Contents
     Data Standards <datarep/overview>
     Data Submission & Query <standards/data_submission>
     Software Libraries <software>
+    Data Commons API <api/adc_api_overview>
     Release Notes <news>
+    Software Compliance Guidelines <swtools/airr_swtools_standard>
+    Ontologies and Vocabularies <ontovoc/introduction_ontovoc>
+    Reference Germline Database <ogrdb/ogrdb>
     Community <community>
     Glossary <appendix/terms>
     References <appendix/references>

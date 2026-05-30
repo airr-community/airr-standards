@@ -1,7 +1,7 @@
 .. _OGRDB:
 
 ============================================================
-OGRDB - reference database of inferred immune receptor genes
+OGRDB - Reference database of inferred immune receptor genes
 ============================================================
 
 In recent years it has become possible to sequence immune receptor repertoires
