@@ -34,11 +34,10 @@ As a first step, IARC is now ready to review submissions of inferred human IGHV 
 alleles. These sequences may be novel, or may extend incomplete sequences currently in the
 IMGT reference directories. Researchers interested in submitting sequences should:
 
-Submit sequence and data to Genbank or ENA, following the
-:ref:`Genbank/ENA workflow <IARCSubmission>`.
-
-Submit the inferred sequences to IARC via OGRDB, following the
-`OGRDB Submission Guide <https://ogrdb.airr-community.org/render_page/ogre_guide.html>`_.
+1. Submit sequence and data to Genbank or ENA, following the
+   :ref:`Genbank/ENA workflow <IARCSubmission>`.
+2. Submit the inferred sequences to IARC via OGRDB, following the
+   `OGRDB Submission Guide <https://wordpress.vdjbase.org/index.php/ogrdb/submitting-inferences-to-ogrdb/>`_.
 
 Additional information is available at the `OGRDB Website <https://ogrdb.airr-community.org>`_.
 
