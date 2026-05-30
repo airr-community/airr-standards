@@ -4,8 +4,8 @@
 Data Submission and Query
 =========================
 
-Data Submission Guides for AIRR-seq studies
--------------------------------------------
+Submission of Processed AIRR-seq Studies
+----------------------------------------
 
 There are multiple data repositories that accept submission of processed
 (analysis ready) AIRR-seq datasets. Each provides different capabilities,
@@ -26,9 +26,9 @@ but all comply with the AIRR Data Standards.
 Raw Sequence Data Submission
 ----------------------------
 
-The `NCBI Sequence Read Archive (SRA) <https://www.ncbi.nlm.nih.gov/sra`_ is recommended for raw sequence (FASTQ)
+The `NCBI Sequence Read Archive (SRA) <https://www.ncbi.nlm.nih.gov/sra>`_ is recommended for raw sequence (FASTQ)
 data submission with BioProject and BioSample metadata conforming to the
-`MiAIRR requirements <MiAIRR>`_.
+:ref:`MiAIRR requirements <MiAIRR>`.
 
 Data Submission for Inferred Genes and Alleles
 ----------------------------------------------
