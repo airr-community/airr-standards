@@ -17,4 +17,4 @@ R Library Release Notes
 JavaScript Library Release Notes
 =================================
 
-.. include:: packages/airr-js/news.rst
+.. include:: ../lang/js/NEWS.rst
