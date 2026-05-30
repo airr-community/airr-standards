@@ -38,9 +38,9 @@ Submit sequence and data to Genbank or ENA, following the
 :ref:`Genbank/ENA workflow <IARCSubmission>`.
 
 Submit the inferred sequences to IARC via OGRDB, following the
-`OGRDB Submission Guide <https://ogrdb.airr-community.org/render_page/ogre_guide.html>`.
+`OGRDB Submission Guide <https://ogrdb.airr-community.org/render_page/ogre_guide.html>`_.
 
-Additional information is available at the :ref:`OGRDB Website <https://ogrdb.airr-community.org>`.
+Additional information is available at the :ref:`OGRDB Website <https://ogrdb.airr-community.org>`_.
 
 References
 ==========
