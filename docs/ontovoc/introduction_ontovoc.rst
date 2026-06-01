@@ -463,16 +463,6 @@ ontologies in the AIRR specification. Please see the `OLS Web API`_
 documentation for details of the JSON response for the OLS ``provider``.
 
 
-Sprint Reports
-==============
-
-.. toctree::
-   :maxdepth: 2
-
-   Report Sprint 11/2018 <report_sprint_2018-11>
-   Report Sprint 04/2020 <report_sprint_2020-04>
-   Report Sprint 04/2021 <report_sprint_2021-04>
-
 .. == Citations ==
 
 .. [RFC3987] Internationalized Resource Identifiers (IRIs). `DOI:10.17487/RFC3987`_
