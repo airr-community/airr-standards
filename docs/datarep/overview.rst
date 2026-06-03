@@ -1,9 +1,9 @@
 .. _DataRepresentations:
 
-AIRR Data Representations
-=============================
+AIRR Data Standards
+=========================
 
-AIRR Data Representations are versioned specifications that consist of
+AIRR Data Standards are versioned specifications that consist of
 a file format and a well-defined schema. The schema is provided in a
 machine-readable YAML document that follows the OpenAPI v2.0
 specification. The schema defines the data model, field names, data
@@ -13,22 +13,21 @@ tools and repositories, and some fields use a controlled vocabulary or
 an ontology for value restriction. Specification extensions are
 utilized to define AIRR-specific attributes.
 
-FAIR Principles
----------------
+Schema Definitions
+------------------
 
-We desire AIRR standard objects to be FAIR (findable, accessible,
-interoperable and reusable) [Wilkinson_2016]_:
+.. toctree::
+   :maxdepth: 1
 
-+ findable: by giving AIRR standard objects a globally unique identifier
+   Repertoire Schema (Metadata) <metadata>
+   Rearrangement Schema (V(D)J Sequences) <rearrangements>
+   Germline & Genotype Schema <germline>
+   Clone Schema <clone>
+   Single-cell Schema <cell>
+   Reactivity & Receptor Schema <receptor>
+   Schema Release Notes <news>
 
-+ accessible: by providing an API where AIRR standard objects can be queried and downloaded
-
-+ interoperable: by defining a OpenAPI schema for the AIRR standard objects
-
-+ reusable: by linking the AIRR standard objects together into a standard formats
-
-
-AIRR Data Model
+Data Model
 ---------------
 
 The MiAIRR standard defines the minimal information for submission and
@@ -37,15 +36,10 @@ elements for this information and organizes them into six high-level
 sets.
 
 + Study, Subject and Diagnosis
-
 + Sample Collection
-
 + Sample Processing and Sequencing
-
 + Raw Sequences
-
 + Data Processing
-
 + Processed AIRR Sequences with Annotations
 
 However beyond these sets, MiAIRR does not define any structure, data
@@ -230,17 +224,14 @@ supported AIRR extension properties:
       - The deprecated field is replaced by this list of fields.
 
 
-Schema Definitions
-------------------
+FAIR Principles
+---------------
 
-.. toctree::
-   :maxdepth: 2
+We desire AIRR standard objects to be FAIR (findable, accessible,
+interoperable and reusable) [Wilkinson_2016]_:
 
-   Repertoire Schema <metadata>
-   Rearrangement Schema <rearrangements>
-   Clone Schema <clone>
-   Single-cell Schema <cell>
-   Reactivity & Receptor Schema <receptor>
-   Germline Schema <germline>
-
++ Findable: by giving AIRR standard objects a globally unique identifier.
++ Accessible: by providing an API where AIRR standard objects can be queried and downloaded.
++ Interoperable: by defining a OpenAPI schema for the AIRR standard objects.
++ Reusable: by linking the AIRR standard objects together into a standard formats.
 

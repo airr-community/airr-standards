@@ -11,7 +11,6 @@ Version 1.0
 
    Compliance Checklist for AIRR Software Tools <airr_swtools_checklist>
    List of Compliant Tools <airr_swtools_compliant>
-   Recommended Software Evaluation Data Sets <airr_swtools_data>
 
 Introduction
 ------------

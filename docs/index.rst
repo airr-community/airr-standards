@@ -20,14 +20,17 @@ storing, and sharing adaptive immune receptor repertoire (AIRR) data, such as
 sequences of antibodies and T cell receptors (TCRs). Some specific efforts
 include:
 
-+ The MiAIRR standard for describing minimal information about AIRR datasets, including
-  sample collection and data processing information.
-+ Data submission guidelines and workflows.
-+ Data representations (file format) specifications for storing large amounts of annotated AIRR data.
-+ API to query and download AIRR data from repositories/databases as part of the AIRR Data Commons.
-+ A community standard for software tools which will allow conforming tools to gain community recognition.
-+ Set of reference software tools for reading, writing and validating data in the AIRR standards.
-+ A database and web submission frontend for inferred germline genes
++ The MiAIRR standard for study reporting that describes minimal information
+  about AIRR datasets, including sample collection and data processing information.
++ Data representation and file format specifications for storing large amounts of
+  annotated AIRR data.
++ API to query and download AIRR data from repositories/databases as part of the
+  AIRR Data Commons.
++ A community standard for software tools which will allow conforming tools to
+  gain community recognition.
++ Set of reference software tools for reading, writing and validating data in
+  the AIRR standards.
++ A database and web submission frontend for inferred germline genes.
 
 Table of Contents
 ----------------------------------
@@ -35,11 +38,16 @@ Table of Contents
 .. toctree::
     :maxdepth: 2
 
-    Getting Started <getting_started>
-    Release Notes <news>
-    AIRR Standards <standards/overview>
-    Data Submission and Query <standards/data_submission>
-    Software <software>
-    Community <community>
+    Getting Started <overview>
+    Study Reporting (MiAIRR) <miairr/introduction_miairr>
+    Data Standards <datarep/overview>
+    Data Submission & Query <adc/data_submission>
+    Software Libraries <packages/software>
+    Data Commons API <api/adc_api_overview>
+    Software Compliance Guidelines <swtools/airr_swtools_standard>
+    Ontologies and Vocabularies <ontovoc/introduction_ontovoc>
+    Reference Germline Database <ogrdb/ogrdb>
+    Community <resources/community>
     Glossary <appendix/terms>
     References <appendix/references>
+

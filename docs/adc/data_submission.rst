@@ -4,30 +4,22 @@
 Data Submission and Query
 =========================
 
-Data Submission Guides for AIRR-seq studies
--------------------------------------------
+Submission of Processed AIRR-seq Studies
+----------------------------------------
 
-There are multiple data repositories that accept submission of AIRR-seq datasets.
-Each provides different capabilities but all comply with the MiAIRR standard.
+There are multiple data repositories that accept submission of processed
+(analysis ready) AIRR-seq datasets. Each provides different capabilities,
+but all comply with the AIRR Data Standards.
 
-.. toctree::
-    :maxdepth: 1
-    :caption: National Center for Biotechnology Information (NCBI)
+| :ref:`VDJServer Community Data Portal <VDJServer>`
+| :ref:`iReceptor Turnkey Repository <iReceptor>`
 
-    MiAIRR to NCBI submission guide <../miairr/miairr_ncbi_overview>
-    CEDAR's CAIRR submission pipeline <../cairr/overview>
+Raw Sequence Data Submission
+----------------------------
 
-.. toctree::
-    :maxdepth: 1
-    :caption: VDJServer Community Data Portal
-
-    VDJServer Community Data Portal <../miairr/vdjserver>
-    
-.. toctree::
-    :maxdepth: 1
-    :caption: iReceptor Turnkey Repository
-
-    iReceptor Turnkey Repository <../miairr/ireceptor>
+The `NCBI Sequence Read Archive (SRA) <https://www.ncbi.nlm.nih.gov/sra>`_ is
+recommended for raw sequence (FASTQ) data submission with BioProject and BioSample
+metadata conforming to the :ref:`MiAIRR requirements <MiAIRR>`.
 
 Data Submission for Inferred Genes and Alleles
 ----------------------------------------------
@@ -38,11 +30,7 @@ together with colleagues at IMGT and the US National Institutes of Health, to es
 systematic submission and review process. OGRDB was created and designed to support that
 process, and provide a real-time record of affirmed sequences.
 
-.. toctree::
-    :maxdepth: 1
-    :caption: Inferred Immune Receptor Genes
-
-    OGRDB <../ogrdb/ogrdb>
+| :ref:`Open Germline Receptor Database <OGRDB>`
 
 Data Query and Download from the AIRR Data Commons
 --------------------------------------------------
@@ -61,12 +49,7 @@ the set of repositories that both:
 + Implement the :ref:`ADC API <DataCommonsAPI>` as a programmatic mechanism to access that data.
 
 More information on repositories in the AIRR Data Commons and how to query these repositories
-can be found on the AIRR Data Commons page:
-
-.. toctree::
-    :maxdepth: 1
-
-    AIRR Data Commons <../api/adc>
+can be found on the :ref:`AIRR Data Commons <DataCommons>` page.
 
 .. _`AIRR Common Repositories Working Group recommendations`: https://github.com/airr-community/common-repo-wg/blob/master/recommendations.md
 

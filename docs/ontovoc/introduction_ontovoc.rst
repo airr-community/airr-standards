@@ -10,7 +10,7 @@ Summary
 The "Ontologies and Vocabularies Team" was initial formed as a joint
 interest group of the Common Repository (ComRepo) and the Minimal
 Standards (MiniStd) working groups (WG) of the AIRR Community. When the
-two WG merged into the current Standards WG in Decemmber 2020, OntoVoc
+two WG merged into the current Standards WG in December 2020, OntoVoc
 became a Sub-WG of it. The long-term aim of the Sub-WG is to define
 standard vocabularies and ontologies to be used by AIRR-compliant
 repositories.
@@ -462,16 +462,6 @@ all Ontology objects in the AIRR specification have the OLS as a
 ontologies in the AIRR specification. Please see the `OLS Web API`_
 documentation for details of the JSON response for the OLS ``provider``.
 
-
-Sprint Reports
-==============
-
-.. toctree::
-   :maxdepth: 2
-
-   Report Sprint 11/2018 <report_sprint_2018-11>
-   Report Sprint 04/2020 <report_sprint_2020-04>
-   Report Sprint 04/2021 <report_sprint_2021-04>
 
 .. == Citations ==
 

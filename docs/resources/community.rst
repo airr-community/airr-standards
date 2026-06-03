@@ -9,9 +9,9 @@ Resources and Tools Supporting AIRR Standards
 .. toctree::
    :maxdepth: 1
 
-    Applications Supporting the Rearrangement Schema <resources/rearrangement_support.rst>
-    AIRR Data Commons <adc/adc.rst>
-    AIRR Data Commons Repositories <resources/adc_support.rst>
+    Applications Supporting the Rearrangement Schema <rearrangement_support.rst>
+    AIRR Data Commons <../adc/adc.rst>
+    AIRR Data Commons Repositories <adc_support.rst>
 
 
 Useful Websites for the AIRR Community

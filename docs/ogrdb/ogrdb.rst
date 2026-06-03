@@ -1,7 +1,7 @@
 .. _OGRDB:
 
 ============================================================
-OGRDB - reference database of inferred immune receptor genes
+OGRDB - Reference database of inferred immune receptor genes
 ============================================================
 
 In recent years it has become possible to sequence immune receptor repertoires
@@ -34,19 +34,12 @@ As a first step, IARC is now ready to review submissions of inferred human IGHV 
 alleles. These sequences may be novel, or may extend incomplete sequences currently in the
 IMGT reference directories. Researchers interested in submitting sequences should:
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Submit sequence and data to Genbank or ENA, following the
+1. Submit sequence and data to Genbank or ENA, following the
+   :ref:`Genbank/ENA workflow <IARCSubmission>`.
+2. Submit the inferred sequences to IARC via OGRDB, following the
+   `OGRDB Submission Guide <https://wordpress.vdjbase.org/index.php/ogrdb/submitting-inferences-to-ogrdb/>`_.
 
-   The Genbank/ENA Workflow. <iarc_submission_ncbi>
-
-Submit the inferred sequences to IARC via OGRDB, following the
-
-+ `OGRDB Submission Guide`_
-
-Additional information is available at the
-
-+ `OGRDB Website`_
+Additional information is available at the `OGRDB Website <https://ogrdb.airr-community.org>`_.
 
 References
 ==========
@@ -57,6 +50,3 @@ References
 
 .. _`DOI: 10.3389/fimmu.2019.00435`: https://doi.org/10.3389/fimmu.2019.00435
 
-.. _`OGRDB Submission Guide`: https://ogrdb.airr-community.org/render_page/ogre_guide.html
-
-.. _`OGRDB Website`: https://ogrdb.airr-community.org
