@@ -1,3 +1,37 @@
+Version 2.0.0:  June 5, 2026
+-------------------------------------------------------------------------------
+ 
+Deprecation and Removal:
+
++ Completely removed `read_alignment`, `write_alignment`, and `AlignmentSchema`.
+  Removed "Alignment" from the valid definitions list and `AIRRSchema`.
+
+Tabular Data and Parsing:
+
++ Updated `read_tabular` to initially treat logical columns as character data
+  to prevent silent `NA` conversions during parsing, then explicitly casting
+  valid logical character values.
++ Updated `validate_tabular` to support character strings representing logical
+  values (e.g., "TRUE", "T", "False", "F") when validating logical fields.
+
+Validation:
+
++ Enhanced `validate_entry` to support comprehensive validation of arrays
+  without reference schemas, including item type checking (string, integer,
+  number, boolean) and enum constraints.
++ Added rigorous type and enum validation for individual fields within
+  `validate_entry`, providing explicit warnings for unrecognized types.
++ Added an ontology validation check in `validate_entry` to ensure that an
+  ontology field is structured as a list before performing recursive validation.
+
+Data Model and Schema:
+
++ Updated `AIRRSchema` to replace the `Acknowledgement` schema with the new
+  `Contributor` schema.
++ Added a safety check in `extract_field_content` to handle fields with null
+  properties safely.
++ 
+
 Version 1.6.1:  February 12, 2026
 -------------------------------------------------------------------------------
  
