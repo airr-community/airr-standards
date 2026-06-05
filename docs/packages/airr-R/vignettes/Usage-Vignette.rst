@@ -11,7 +11,7 @@ et al, 2009), the increasing number of studies making use of this
 technique has produced enormous amounts of data and there exists a
 pressing need to develop and adopt common standards, protocols, and
 policies for generating and sharing data sets. The `Adaptive Immune
-Receptor Repertoire (AIRR) Community <http://airr-community.org>`__
+Receptor Repertoire (AIRR) Community <https://airr-community.org>`__
 formed in 2015 to address this challenge (Breden et al, 2017) and has
 stablished the set of minimal metadata elements (MiAIRR) required for
 describing published AIRR datasets (Rubelt et al, 2017) as well as file
