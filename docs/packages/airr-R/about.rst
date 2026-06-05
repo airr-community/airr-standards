@@ -14,6 +14,7 @@ Authors
 | `Scott Christley <mailto:Scott.Christley@UTSouthwestern.edu>`__ (aut)
 | `Katharina Imkeller <mailto:imkeller@embl.de>`__ (aut)
 | `Ulrik Stervbo <mailto:ulrik.stervbo@elisabethgruppe.de>`__ (aut)
+| `Gisela Gabernet <mailto:gisela.gabernet@yale.edu>`__ (aut)
 | AIRR Community (cph)
 
 License

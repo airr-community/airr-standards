@@ -32,16 +32,16 @@ Details
 
 Valid definitions include:
 
--  ``"Rearrangement"``
--  ``"Repertoire"``
--  ``"Study"``
--  ``"Subject"``
--  ``"Diagnosis"``
--  ``"Sample"``
--  ``"SampleProcessing"``
--  ``"DataProcessing"``
--  ``"GermlineSet"``
--  ``"GenotypeSet"``
+- ``"Rearrangement"``
+- ``"Repertoire"``
+- ``"Study"``
+- ``"Subject"``
+- ``"Diagnosis"``
+- ``"Sample"``
+- ``"SampleProcessing"``
+- ``"DataProcessing"``
+- ``"GermlineSet"``
+- ``"GenotypeSet"``
 
 Examples
 ~~~~~~~~

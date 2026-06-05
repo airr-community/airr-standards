@@ -63,7 +63,6 @@ Examples
 
    # Load data file
    df <- read_rearrangement(file)
-                                                                                                                                                                                   
 
 See also
 ~~~~~~~~

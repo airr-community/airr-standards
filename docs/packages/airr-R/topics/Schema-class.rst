@@ -79,9 +79,7 @@ An object of class ``Schema`` of length 1.
 
 An object of class ``Schema`` of length 1.
 
-An object of class ``Schema`` of length 1.
-
-An object of class ``list`` of length 26.
+An object of class ``list`` of length 25.
 
 Details
 ~~~~~~~
