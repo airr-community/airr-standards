@@ -5,7 +5,7 @@ info:
   version: 1.2.0
   contact:
     name: AIRR Community
-    url: 'http://www.airr-community.org/'
+    url: 'https://www.airr-community.org/'
     email: join@airr-community.org
   description: >
     Major Version 1 of the Adaptive Immune Receptor Repertoire (AIRR)
