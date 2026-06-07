@@ -12,10 +12,10 @@ standards.
 Format
 ~~~~~~
 
--  ``extdata/rearrangement-example.tsv.gz``: Rearrangement TSV file.
--  ``extdata/repertoire-example.yaml``: Repertoire YAML file.
--  ``extdata/germline-example.json``: GermlineSet and GenotypeSet JSON
-   file.
+- ``extdata/rearrangement-example.tsv.gz``: Rearrangement TSV file.
+- ``extdata/repertoire-example.yaml``: Repertoire YAML file.
+- ``extdata/germline-example.json``: GermlineSet and GenotypeSet JSON
+  file.
 
 Examples
 ~~~~~~~~
@@ -25,7 +25,6 @@ Examples
    # Load Rearrangement example
    file <- system.file("extdata", "rearrangement-example.tsv.gz", package="airr")
    rearrangement <- read_rearrangement(file)
-
 
 .. code:: r
 

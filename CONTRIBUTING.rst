@@ -149,8 +149,8 @@ Public releases of the airr-standards API packages, schema, and documentation
 require the following steps to be performed:
 
 - Update the release notes contained in the NEWS files within the standards
-  documentation (``docs/standards/news.rst``), python package (``lang/python/NEWS.rst``),
-  and R package (``lang/R/NEWS.md``).
+  documentation (``docs/datarep/news.rst``), python package (``lang/python/NEWS.rst``),
+  R package (``lang/R/NEWS.md``), and JavaScript package (``lang/js/NEWS.rst``).
 - Update the date and version in ``lang/R/DESCRIPTION``.
 - Run R CMD check on the R package using the options: ``--as-cran --run-donttest``.
 - Rebuild the R package documentation for the ReadTheDocs site using the
@@ -173,7 +173,7 @@ but the following are essential:
   be built from the newest numerical version tag and will not included changes made after the
   version tag.
 - The release should not be tagged until after CRAN has accepted the R package.
-  CRAN has a tendency not to accept an initial submission and require changes.
+  CRAN may not to accept an initial submission and require changes.
 - The repository must be tagged prior to uploading the python package to PyPI.
   Versioneer is used for annotating the version number of the python package and it
   uses the tag list of the git repository to do so.

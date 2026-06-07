@@ -1,3 +1,17 @@
+Version 2.0.0: June 5, 2026
+--------------------------------------------------------------------------------
+
+1. Added ``check_nullable`` argument to ``read_airr``, ``write_airr``,
+   ``validate_airr``, and ``Schema.validate_object`` to control validation
+   of required and nullable fields.
+2. Updated ``load_rearrangement`` to catch exceptions during file loading,
+   log errors to stderr, and return ``None``.
+3. Removed ``Alignment`` schema and ``AlignmentSchema``.
+4. Renamed ``Acknowledgement`` schema to ``Contributor``.
+5. Simplified ``derive_rearrangement`` by removing explicit gzip file
+   handling.
+
+
 Version 1.6.1: February 12, 2026
 --------------------------------------------------------------------------------
 

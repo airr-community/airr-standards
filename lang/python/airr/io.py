@@ -170,7 +170,7 @@ class RearrangementWriter:
           handle (file): file handle of the open Rearrangements file.
           fields (list) : list of non-required fields to add. May include fields undefined by the schema.
           base (int): one of 0 or 1 specifying the coordinate schema in the output file.
-                      Data provided to the write is assumed to be in python style 0-based
+                      Data provided to the writer is assumed to be in python style 0-based
                       half-open intervals. If 1, then data will be converted to 1-based
                       closed intervals for known fields before writing. If 0, then values will be unchanged.
           debug (bool): debug state. If True prints debug information.

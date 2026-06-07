@@ -1,6 +1,113 @@
 Schema Release Notes
 ================================================================================
 
+Version 2.0.0: June 5, 2026
+--------------------------------------------------------------------------------
+
+**Version 2.0 major schema release.**
+
+General Schema Changes:
+
++ Reorganized time, physical quantities, and contributor tracking by
+  introducing reusable component schemas: ``TimeInterval``,
+  ``PhysicalQuantity``, ``TimeQuantity``, ``Contributor``, and
+  ``ContributorContribution``.
++ Replaced the ``Acknowledgement`` schema with the more robust
+  ``Contributor`` schema, which incorporates the CRediT contributor taxonomy
+  roles and ROR institutional identifiers.
++ Expanded ``CURIEMap`` with new prefixes for geographic locations and
+  germline repositories: ``GAZ``, ``IEDB_EPITOPE``, ``IMGT_GERMLINESET``, and
+  ``OGRDB_GERMLINESET``.
++ Added the ``adc-api-optional`` attribute to the ``Attributes`` schema to
+  designate optional API query fields.
++ Introduced data package management schemas: ``FileObject``, ``DataSet``,
+  and ``Manifest`` to support metadata bundling for groups of files.
++ Updated the ``DataFile`` schema to include arrays for ``Node`` and
+  ``Manifest`` records, while removing direct nesting of ``CellExpression``.
++ Removed the obsolete ``Alignment`` schema definition.
+
+Time and Quantity Reorganization:
+
++ Simplified the ``TimePoint`` schema fields by shortening prefixes from
+  ``time_point_`` to ``time_`` (e.g., ``time_label``, ``time_value``,
+  and ``time_unit``).
++ Converted fields representing single numbers or strings with separate
+  units into unified object references:
+  + ``Subject.age`` now uses ``TimeInterval`` (replacing ``age_min``,
+    ``age_max``, and ``age_unit``).
+  + ``Diagnosis.disease_length`` now uses ``TimeQuantity`` (replacing the
+    generic string).
+  + ``Sample.collection_time_point_relative`` now uses a ``TimePoint``
+    object reference (replacing separate number, unit, and reference
+    fields).
+  + ``NucleicAcidProcessing.template_amount`` now uses ``PhysicalQuantity``
+    (replacing separate number and unit fields).
+
+Repertoire Schema:
+
++ Reorganized study authorship and contact tracking in the ``Study`` schema
+  by introducing a unified ``contributors`` array, deprecating individual
+  contact fields (``study_contact``, ``collected_by``, ``lab_name``,
+  ``lab_address``, and ``submitted_by``).
++ Changed the type of ``Study.pub_ids`` from a single string to an array of
+  strings.
++ Added a ``repertoire_type`` field to the ``Repertoire`` schema supporting
+  a controlled vocabulary (``observed``, ``simulated``, ``inferred``,
+  ``null``).
++ Added an optional ``filter`` object to the ``RepertoireFilter`` schema to
+  document how rearrangements or cells were filtered using JSON structures
+  consistent with the ADC API.
++ Enhanced geographic and demographic tracking by converting
+  ``Subject.ancestry_population`` to an ``Ontology`` reference and adding
+  ``Subject.location_birth`` and ``Sample.collection_location`` as new
+  ontology fields.
+
+Rearrangement Schema:
+
++ Added the ``locus_species`` ontology field to support transgenic or
+  chimeric models where the locus species differs from the host organism.
++ Added a ``rearrangement_type`` field supporting a controlled vocabulary
+  (``observed``, ``simulated``, ``inferred``, ``null``).
++ Added ``reactivity_id`` and ``reactivity_ref`` fields to link
+  rearrangement records directly with single-cell reactivity data.
++ Formalized the deprecation of ``rearrangement_id`` (merged with
+  ``sequence_id``), ``rearrangement_set_id`` (replaced by specific
+  identifiers), and ``germline_database`` (moved to ``DataProcessing``).
+
+Single-cell Schema:
+
++ Renamed the ``CellExpression`` schema to ``Expression`` and its
+  ``property_value`` field to ``value`` for clarity and brevity.
++ Renamed and overhauled the ``ReceptorReactivity`` schema into a top-level
+  single-cell data object called ``Reactivity``, adding keys like
+  ``reactivity_id``, ``cell_id``, ``repertoire_id``, and
+  ``data_processing_id`` to link directly to individual cells and data
+  processing records.
++ Removed the ``reactivity_measurements`` block from the ``Receptor``
+  schema, shifting reactivity tracking to the new top-level ``Reactivity``
+  object.
++ Updated the ``Cell`` schema by adding ``cell_subset``, ``cell_phenotype``,
+  ``cell_label``, and ``cell_type`` fields, while removing the legacy
+  rearrangements array and expression metadata fields.
++ Added a ``cell_label`` free text field to the ``CellProcessing`` schema
+  for custom cell annotations not captured by standard ontologies.
+
+Clone and Tree Schema:
+
++ Completely restructured the ``Clone`` schema to support multi-repertoire
+  clonal analysis across an entire ``RepertoireGroup``.
++ Replaced clone-level alignment and sequence annotations (such as
+  ``v_call``, ``d_call``, ``j_call``, ``junction``, and individual
+  coordinates) with a required list of ``Node`` records and an
+  ``inferred_ancestor`` reference.
++ Embedded phylogenetic trees directly within the ``Clone`` object as a
+  Newick-formatted string field (``tree``), leading to the removal of the
+  separate ``Tree`` schema.
++ Redefined the ``Node`` schema to serve as a link between a clone member
+  and its original repertoire, specifying its source via mutually exclusive
+  ``cell_id`` or ``sequence_id`` fields, along with descriptive properties
+  like ``node_type`` and ``node_class``.
+
 Version 1.6.0: July 7, 2025
 --------------------------------------------------------------------------------
 
