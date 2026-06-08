@@ -33,14 +33,15 @@ Time and Quantity Reorganization:
   and ``time_unit``).
 + Converted fields representing single numbers or strings with separate
   units into unified object references:
-  + ``Subject.age`` now uses ``TimeInterval`` (replacing ``age_min``,
+
+  - ``Subject.age`` now uses ``TimeInterval`` (replacing ``age_min``,
     ``age_max``, and ``age_unit``).
-  + ``Diagnosis.disease_length`` now uses ``TimeQuantity`` (replacing the
+  - ``Diagnosis.disease_length`` now uses ``TimeQuantity`` (replacing the
     generic string).
-  + ``Sample.collection_time_point_relative`` now uses a ``TimePoint``
+  - ``Sample.collection_time_point_relative`` now uses a ``TimePoint``
     object reference (replacing separate number, unit, and reference
     fields).
-  + ``NucleicAcidProcessing.template_amount`` now uses ``PhysicalQuantity``
+  - ``NucleicAcidProcessing.template_amount`` now uses ``PhysicalQuantity``
     (replacing separate number and unit fields).
 
 Repertoire Schema:
