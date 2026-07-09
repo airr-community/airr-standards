@@ -144,6 +144,20 @@ test_that("Columns are of expected type", {
     expect_is(tbl_0$extra.double, "numeric")
     expect_is(tbl_0$extra.numeric, "numeric")
     expect_is(tbl_0$extra.character, "character")
+
+    # Same as previous test, now with compact string representation
+    expect_is(tbl_0_compact <- read_tabular(
+        tmp_file, "1", schema = RearrangementSchema,
+        aux_types =
+            c(extra.int = "i",
+              extra.double = "d",
+              extra.numeric = "n",
+              extra.character = "c")), "data.frame")
+    expect_is(tbl_0_compact$extra.int, "integer")
+    expect_is(tbl_0_compact$extra.double, "numeric")
+    expect_is(tbl_0_compact$extra.numeric, "numeric")
+    expect_is(tbl_0_compact$extra.character, "character")
+
 })
 
 

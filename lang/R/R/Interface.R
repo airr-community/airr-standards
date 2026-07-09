@@ -37,7 +37,8 @@ read_tabular <- function(file, schema, base=c("1", "0"), aux_types=NULL,...) {
     base <- match.arg(base)
 
     # Define types
-    parsers <- c("character"="c", "logical"="l", "integer"="i", "double"="d", "numeric"="n")
+    parsers <- c("character"="c", "logical"="l", "integer"="i", "double"="d", "numeric"="n",
+                 "c"="c", "l"="l", "i"="i", "d"="d", "n"="n")
     header <- names(suppressMessages(readr::read_tsv(file, n_max=1)))
     schema_fields <- intersect(names(schema), header)
     cast <- setNames(lapply(schema_fields, function(f) parsers[schema[f]$type]), schema_fields)
