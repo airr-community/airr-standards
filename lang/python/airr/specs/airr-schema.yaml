@@ -2795,7 +2795,6 @@ SequencingData:
             x-airr:
                 identifier: true
                 miairr: important
-                class-identifier: true
                 nullable: true
                 adc-query-support: true
                 set: 4
