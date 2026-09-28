@@ -265,7 +265,7 @@ Attributes:
             description: >
                 True if the field is the identifier for the AIRR Object/Class.
                 While the AIRR Standards may allow null values for this field, some
-                applications may require value unique values to be assigned.
+                applications may require unique values to be assigned.
             default: false
         adc-query-support:
             type: boolean
