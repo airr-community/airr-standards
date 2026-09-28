@@ -318,6 +318,13 @@ Attributes:
                 True if the field is an identifier required to link metadata and/or individual
                 sequence records across objects in the complete AIRR Data Model and ADC API.
             default: false
+        class-identifier:
+            type: boolean
+            description: >
+                True if the field is the identifier for the AIRR Object/Class.
+                While the AIRR Standards may allow null values for this field, some
+                applications may require unique values to be assigned.
+            default: false
         adc-query-support:
             type: boolean
             description: >
@@ -770,6 +777,7 @@ Contributor:
                 nullable: true
                 identifier: true
                 miairr: important
+                class-identifier: true
         name:
             type: string
             description: Full name of contributor
@@ -883,6 +891,7 @@ RearrangedSequence:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
         sequence:
             type: string
             description: nucleotide sequence
@@ -960,6 +969,7 @@ UnrearrangedSequence:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
         sequence:
             type: string
             description: >
@@ -1034,6 +1044,7 @@ SequenceDelineationV:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
         delineation_scheme:
             type: string
             description: Name of the delineation scheme
@@ -1139,6 +1150,7 @@ AlleleDescription:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
         allele_description_ref:
             type: string
             description: Unique reference to the allele description, in standardized form (Repo:Label:Version)
@@ -1437,6 +1449,7 @@ GermlineSet:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
         acknowledgements:
             type: array
             description: >
@@ -1560,6 +1573,7 @@ GenotypeSet:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
         genotype_class_list:
             description: List of Genotypes included in this Receptor Genotype Set.
             type: array
@@ -1584,6 +1598,7 @@ Genotype:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
         locus:
             type: string
             enum:
@@ -1736,6 +1751,7 @@ MHCGenotypeSet:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
         mhc_genotype_list:
             description: List of MHCGenotypes included in this set
             type: array
@@ -1758,6 +1774,7 @@ MHCGenotype:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
         mhc_class:
             type: string
             enum:
@@ -1802,6 +1819,7 @@ MHCAllele:
                 identifiers, if provided by the mhc_typing method
             x-airr:
                 miairr: important
+                class-identifier: true
         gene:
             $ref: '#/Ontology'
             description: The MHC gene to which the described allele belongs
@@ -1851,6 +1869,7 @@ Study:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
                 nullable: true
                 adc-query-support: true
                 set: 1
@@ -3183,6 +3202,7 @@ SequencingData:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
                 nullable: true
                 adc-query-support: true
                 set: 4
@@ -3326,6 +3346,7 @@ DataProcessing:
             title: Data processing ID
             x-airr:
                 identifier: true
+                class-identifier: true
                 nullable: true
                 name: Data processing ID
                 adc-query-support: true
@@ -3468,6 +3489,7 @@ SampleProcessing:
                   title: Sample processing ID
                   x-airr:
                       identifier: true
+                      class-identifier: true
                       nullable: true
                       name: Sample processing ID
                       adc-query-support: true
@@ -3502,6 +3524,7 @@ Repertoire:
                 nullable: true
                 adc-query-support: true
                 identifier: true
+                class-identifier: true
         repertoire_name:
             type: string
             description: Short generic display name for the repertoire
@@ -3612,6 +3635,7 @@ RepertoireGroup:
             description: Identifier for this repertoire group
             x-airr:
                 identifier: true
+                class-identifier: true
         repertoire_group_name:
             type: string
             description: Short display name for this repertoire group
@@ -3656,6 +3680,7 @@ Rearrangement:
             x-airr:
                 adc-query-support: true
                 identifier: true
+                class-identifier: true
         sequence:
             type: string
             description: >
@@ -4503,6 +4528,7 @@ Clone:
             x-airr:
                 nullable: false
                 identifier: true
+                class-identifier: true
         repertoire_group_id:
             type: string
             description: >
@@ -4585,6 +4611,7 @@ Node:
             x-airr:
                 nullable: false
                 identifier: true
+                class-identifier: true
         repertoire_id:
             type: string
             description: Identifier of the repertoire that cell or rearrangement contained by this node.
@@ -4651,6 +4678,7 @@ Cell:
             x-airr:
                 identifier: true
                 miairr: defined
+                class-identifier: true
                 nullable: false
                 adc-query-support: true
                 name: Cell index
@@ -4778,6 +4806,7 @@ Expression:
             x-airr:
                 identifier: true
                 miairr: defined
+                class-identifier: true
                 nullable: false
                 adc-query-support: true
                 name: Expression measurement identifier
@@ -4874,6 +4903,7 @@ Receptor:
             example: TCR-MM-012345
             x-airr:
                 identifier: true
+                class-identifier: true
                 nullable: false
                 adc-query-support: true
         receptor_hash:
@@ -4979,6 +5009,7 @@ Reactivity:
             title: Reactivity ID
             x-airr:
                 identifier: true
+                class-identifier: true
                 nullable: false
                 adc-query-support: true
         cell_id:
