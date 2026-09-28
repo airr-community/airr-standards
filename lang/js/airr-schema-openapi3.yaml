@@ -1872,7 +1872,6 @@ Subject:
             x-airr:
                 identifier: true
                 miairr: important
-                class-identifier: true
                 adc-query-support: true
                 set: 1
                 subset: subject
@@ -2240,7 +2239,6 @@ Sample:
             x-airr:
                 identifier: true
                 miairr: important
-                class-identifier: true
                 adc-query-support: true
                 set: 2
                 subset: sample
