@@ -2897,6 +2897,7 @@ SequencingData:
             x-airr:
                 identifier: true
                 miairr: important
+                class-identifier: true
                 adc-query-support: true
                 set: 4
                 subset: data (raw reads)
