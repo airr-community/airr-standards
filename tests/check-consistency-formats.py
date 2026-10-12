@@ -16,9 +16,11 @@ basename = lambda f: os.path.splitext(os.path.basename(f))[0]
 #r_files = {basename(f): f for f in glob('lang/R/inst/extdata/*.yaml')}
 spec_files = {basename(f): f for f in glob('specs/airr-schema.yaml')}
 v3spec_files = {basename(f): f for f in glob('specs/airr-schema-openapi3.yaml')}
+v3adc_files = {basename(f): f for f in glob('specs/adc-api-openapi3.yaml')}
 py_files = {basename(f): f for f in glob('lang/python/airr/specs/airr-schema.yaml')}
 r_files = {basename(f): f for f in glob('lang/R/inst/extdata/airr-schema.yaml')}
 js_files = {basename(f): f for f in glob('lang/js/airr-schema-openapi3.yaml')}
+js_adc_files = {basename(f): f for f in glob('lang/js/adc-api-openapi3.yaml')}
 
 # Check python package specs
 if set(spec_files.keys()) != set(py_files.keys()):
@@ -41,6 +43,12 @@ if set(v3spec_files.keys()) != set(js_files.keys()):
     for spec in set(v3spec_files.keys()) - set(js_files.keys()):
         print('{} missing from JavaScript package'.format(spec), file=sys.stderr)
     for spec in set(js_files.keys()) - set(v3spec_files.keys()):
+        print('{} found in JavaScript package but missing from specs/'.format(spec), file=sys.stderr)
+    sys.exit(1)
+if set(v3adc_files.keys()) != set(js_adc_files.keys()):
+    for spec in set(v3adc_files.keys()) - set(js_adc_files.keys()):
+        print('{} missing from JavaScript package'.format(spec), file=sys.stderr)
+    for spec in set(js_adc_files.keys()) - set(v3adc_files.keys()):
         print('{} found in JavaScript package but missing from specs/'.format(spec), file=sys.stderr)
     sys.exit(1)
 
@@ -70,6 +78,19 @@ for spec_name in v3spec_files:
     with open(v3spec_files[spec_name], 'r') as ip:
         gold_spec = yaml.safe_load(ip)
     with open(js_files[spec_name], 'r') as ip:
+        js_spec = yaml.safe_load(ip)
+
+    # Check JavaScript package
+    if jsondiff.diff(gold_spec, js_spec) != {}:
+        print('{} spec is different from python version'.format(spec_name), file=sys.stderr)
+        print(jsondiff.diff(gold_spec, js_spec, syntax='explicit'), file=sys.stderr)
+        sys.exit(1)
+
+for spec_name in v3adc_files:
+    # check equality of specs
+    with open(v3adc_files[spec_name], 'r') as ip:
+        gold_spec = yaml.safe_load(ip)
+    with open(js_adc_files[spec_name], 'r') as ip:
         js_spec = yaml.safe_load(ip)
 
     # Check JavaScript package

@@ -1,0 +1,939 @@
+openapi: '3.0.0'
+
+info:
+  title: AIRR Data Commons API
+  version: 1.2.0
+  contact:
+    name: AIRR Community
+    url: 'http://www.airr-community.org/'
+    email: join@airr-community.org
+  description: >
+    Major Version 1 of the Adaptive Immune Receptor Repertoire (AIRR)
+    data repository web service application programming interface (API).
+  license:
+    name: Creative Commons Attribution 4.0 International
+    url: https://creativecommons.org/licenses/by/4.0/
+
+servers:
+  - url: https://vdjserver.org/airr/v1
+    description: VDJServer ADC API
+    variables:
+      basePath:
+        default: /airr/v1
+  - url: https://ipa1.ireceptor.org/airr/v1
+    description: iReceptor IPA1 ADC API
+    variables:
+      basePath:
+        default: /airr/v1
+
+components:
+  schemas:
+    # Info object
+    info_object:
+      type: object
+      description: Provides information about the API response
+      properties:
+        title:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        contact: 
+          type: object
+          properties:
+            name:
+              type: string
+            url:
+              type: string
+            email:
+              type: string
+        license:
+          type: object
+          properties:
+            name:
+              type: string
+            url:
+              type: string
+
+    # Service info object. This is the object returned by the /info request,
+    # and provides information about the ADC repository service and its attributes and capabilities
+    service_info_object:
+      description: Provides information about the ADC repository service and it attributes and capabilities.
+      allOf:
+        - $ref: '#/components/schemas/info_object'
+        - type: object
+          properties:
+            attributes:
+              type: object
+              properties:
+                max_size:
+                  type: integer
+                max_query_size:
+                  type: integer
+                last_update:
+                  type: string
+            api:
+              $ref: '#/components/schemas/info_object'
+            schema:
+              $ref: '#/components/schemas/info_object'
+
+    # POST query request
+    query_object:
+      description: Query filter and associated parameters for POST end points
+      type: object
+      properties:
+        filters:
+          type: object
+        format:
+          type: string
+          default: json
+          enum:
+            - json
+            - tsv
+        fields:
+          type: array
+          items:
+            type: string
+        size:
+          type: integer
+        from:
+          type: integer
+        include_fields:
+          type: string
+          enum:
+            - miairr
+            - airr-core
+            - airr-schema
+
+    # list of repertoires
+    repertoire_list:
+      type: array
+      items:
+        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/release-1.5/specs/airr-schema-openapi3.yaml#/Repertoire'
+
+    # list of facets
+    facet_list:
+      type: array
+      items:
+        type: object
+        properties:
+          count:
+            type: integer
+
+    # list of rearrangement extension fields
+    rearrangement_extension:
+      description: The extended Rearrangement object with additional query fields for the ADC.
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/release-1.5/specs/airr-schema-openapi3.yaml#/Rearrangement'
+        - type: object
+          properties:
+            v_subgroup:
+              type: string
+              description: >
+                V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHV4).
+              example: IGHV4
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: V gene subgroup
+            v_gene:
+              type: string
+              description: >
+                V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHV4-59).
+              example: IGHV4-59
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: V gene
+            d_subgroup:
+              type: string
+              description: >
+                D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHD3).
+              example: IGHD3
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: D gene subgroup
+            d_gene:
+              type: string
+              description: >
+                D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHD3-10).
+              example: IGHD3-10
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: D gene
+            j_subgroup:
+              type: string
+              description: >
+                J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHJ4).
+              example: IGHJ4
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: J gene subgroup
+            j_gene:
+              type: string
+              description: >
+                J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHJ4).
+              example: IGHJ4
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: J gene
+            c_subgroup:
+              type: string
+              description: >
+                C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHG1).
+              example: IGHG1
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: C gene subgroup
+            c_gene:
+              type: string
+              description: >
+                C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHG1).
+              example: IGHG1
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: C gene
+            annotation_cell_id:
+              type: string
+              nullable: true
+              description: >
+                The Cell ID used by the annotation tool to annotate the Cell during data processing.
+              example: AAACCTGAGCACCGCT-1
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: Tool Cell ID
+              
+    # list of rearrangement annotations
+    rearrangement_list:
+      type: array
+      items:
+        $ref: '#/components/schemas/rearrangement_extension'
+
+    # list of clone extension fields
+    clone_extension:
+      description: The extended Clone object with additional query fields for the ADC.
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/release-1.5/specs/airr-schema-openapi3.yaml#/Clone'
+        - type: object
+          properties:
+            v_subgroup:
+              type: string
+              description: >
+                V subgroup of the V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHV4).
+              example: IGHV4
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: V gene subgroup
+            v_gene:
+              type: string
+              description: >
+                V gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHV4-59).
+              example: IGHV4-59
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: V gene
+            d_subgroup:
+              type: string
+              description: >
+                D subgroup of the D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHD3).
+              example: IGHD3
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: D gene subgroup
+            d_gene:
+              type: string
+              description: >
+                D gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHD3-10).
+              example: IGHD3-10
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: D gene
+            j_subgroup:
+              type: string
+              description: >
+                J subgroup of the J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHJ4).
+              example: IGHJ4
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: J gene subgroup
+            j_gene:
+              type: string
+              description: >
+                J gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHJ4).
+              example: IGHJ4
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: J gene
+            c_subgroup:
+              type: string
+              description: >
+                C subgroup of the C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHG1).
+              example: IGHG1
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: C gene subgroup
+            c_gene:
+              type: string
+              description: >
+                C gene. If referring to a known reference sequence in a database, such as IMGT/GENE-DB,
+                the relevant gene nomenclature should be followed (e.g., IGHG1).
+              example: IGHG1
+              nullable: true
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: C gene
+              
+    # list of clone annotations
+    clone_list:
+      type: array
+      items:
+        $ref: '#/components/schemas/clone_extension'
+
+    # list of cell extension fields
+    cell_extension:
+      description: The extended Cell object with additional query fields for the ADC.
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/release-1.5/specs/airr-schema-openapi3.yaml#/Cell'
+        - type: object
+          properties:
+            annotation_cell_id:
+              type: string
+              nullable: true
+              description: >
+                The Cell ID used by the annotation tool to annotate the Cell during data processing.
+              example: AAACCTGAGCACCGCT-1
+              x-airr:
+                adc-api-optional: false
+                adc-query-support: true
+                name: Tool Cell ID
+
+    # list of cell annotations
+    cell_list:
+      type: array
+      items:
+        $ref: '#/components/schemas/cell_extension'
+
+    # list of gene expression features
+    expression_list:
+      type: array
+      items:
+        $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/release-1.5/specs/airr-schema-openapi3.yaml#/CellExpression'
+
+    # list of receptor extension fields
+    receptor_extension:
+      description: The extended Receptor object with additional query fields for the ADC.
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/airr-community/airr-standards/release-1.5/specs/airr-schema-openapi3.yaml#/Receptor'
+
+    # list of receptor annotations
+    receptor_list:
+      type: array
+      items:
+        $ref: '#/components/schemas/receptor_extension'
+
+    # The response object /repertoire endpoint
+    repertoire_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        Repertoire:
+          $ref: '#/components/schemas/repertoire_list'
+        Facet:
+          $ref: '#/components/schemas/facet_list'
+
+    # The response object /rearrangement endpoint
+    rearrangement_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        Rearrangement:
+          $ref: '#/components/schemas/rearrangement_list'
+        Facet:
+          $ref: '#/components/schemas/facet_list'
+
+    # The response object /clone/{clone_id} endpoint
+    clone_id_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        Clone:
+          $ref: '#/components/schemas/clone_list'
+
+    # The response object /clone endpoint
+    clone_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        Clone:
+          $ref: '#/components/schemas/clone_list'
+        Facet:
+          $ref: '#/components/schemas/facet_list'
+
+    # The response object /clone endpoint
+    cell_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        Cell:
+          $ref: '#/components/schemas/cell_list'
+        Facet:
+          $ref: '#/components/schemas/facet_list'
+          
+    # The response object /cell/{cell_id} endpoint
+    cell_id_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        Cell:
+          $ref: '#/components/schemas/cell_list'
+
+    # The response object /expression/{expression_id} endpoint
+    expression_id_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        CellExpression:
+          $ref: '#/components/schemas/expression_list'
+
+    # The response object for the /expression endpoint
+    expression_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        CellExpression:
+          $ref: '#/components/schemas/expression_list'
+        Facet:
+          $ref: '#/components/schemas/facet_list'
+
+    # The response object /receptor endpoint
+    receptor_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        Receptor:
+          $ref: '#/components/schemas/receptor_list'
+        Facet:
+          $ref: '#/components/schemas/facet_list'
+
+    # The response object /receptor/{receptor_id} endpoint
+    receptor_id_response:
+      type: object
+      properties:
+        Info:
+          $ref: '#/components/schemas/info_object'
+        Receptor:
+          $ref: '#/components/schemas/receptor_list'
+
+    # error response
+    error_response:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Detail about the error
+
+paths:
+  /:
+    get:
+      description: Service heartbeat.
+      operationId: get_service_status
+      responses:
+        '200':
+          description: Service is up.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /info:
+    get:
+      description: Service information.
+      operationId: get_info
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service_info_object'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /repertoire/{repertoire_id}:
+    get:
+      description: >
+        Returns a repertoire based upon its identifier.
+      operationId: get_repertoire
+      tags:
+        - repertoires
+      parameters:
+        - name: repertoire_id
+          in: path
+          description: ID of repertoire to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |
+            A successful call returns the repertoire data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/repertoire_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /repertoire:
+    post:
+      description: >
+        This query service returns metadata about repertoires.
+      operationId: query_repertoires
+      tags:
+        - repertoires
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/query_object'
+      responses:
+        '200':
+          description: |
+            A successful call returns the repertoire data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/repertoire_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /rearrangement/{sequence_id}:
+    get:
+      description: >
+        Returns a rearrangement based upon its identifier.
+      operationId: get_rearrangement
+      tags:
+        - rearrangements
+      parameters:
+        - name: sequence_id
+          in: path
+          description: ID of rearrangement to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: >
+            A successful call returns the rearrangement annotation data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rearrangement_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /rearrangement:
+    post:
+      description: >
+        This query service returns rearrangement annotation data.
+      operationId: query_rearrangements
+      tags:
+        - rearrangements
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/query_object'
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of rearrangement annotation data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rearrangement_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /clone/{clone_id}:
+    get:
+      description: >
+        Returns a clone based upon its identifier.
+      operationId: get_clone
+      tags:
+        - clones
+      parameters:
+        - name: clone_id
+          in: path
+          description: ID of clone to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: >
+            A successful call returns the clone annotation data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/clone_id_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /clone:
+    post:
+      description: >
+        This query service returns clone annotation data.
+      operationId: query_clones
+      tags:
+        - clones
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/query_object'
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of clone annotation data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/clone_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+                
+                
+  /cell/{cell_id}:
+    x-swagger-router-controller: cell
+    get:
+      description: >
+        Returns a cell based upon its identifier.
+      tags:
+        - cells
+      parameters:
+        - name: cell_id
+          in: path
+          description: ID of clone to return
+          required: true
+          schema:
+            type: string
+      operationId: get_cell
+      responses:
+        '200':
+          description: >
+            A successful call returns the clone annotation data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cell_id_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /cell:
+    post:
+      description: >
+        This query service returns cell annotation data.
+      operationId: query_cell
+      tags:
+        - cells
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/query_object'
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of cell annotation data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cell_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+  
+  /expression/{expression_id}:
+    x-swagger-router-controller: expression
+    get:
+      description: >
+        Returns an expression property based upon its identifier.
+      tags:
+        - expression
+      parameters:
+        - name: expression_id
+          in: path
+          description: ID of expression property to return
+          required: true
+          schema:
+            type: string
+      operationId: get_expression
+      responses:
+        '200':
+          description: >
+            A successful call returns the expression property data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/expression_id_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+  
+  /expression:
+    post:
+      description: >
+        This query service returns gene expression data.
+      operationId: query_expression
+      tags:
+        - expression
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/query_object'
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of gene expression data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/expression_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /receptor/{receptor_id}:
+    get:
+      description: >
+        Returns a receptor based upon its identifier.
+      operationId: get_receptor
+      tags:
+        - receptors
+      parameters:
+        - name: receptor_id
+          in: path
+          description: ID of receptor to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: >
+            A successful call returns the receptor data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/receptor_id_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+
+  /receptor:
+    post:
+      description: >
+        This query service returns receptor data.
+      operationId: query_receptor
+      tags:
+        - receptors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/query_object'
+      responses:
+        '200':
+          description: >
+            A successful call returns an array of receptor data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/receptor_response'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
