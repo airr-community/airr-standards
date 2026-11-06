@@ -39,6 +39,14 @@ File Format Specification
 Data for ``Rearrangement`` objects are stored as rows in a
 *tab-delimited* file and should be compatible with any TSV reader.
 
+``Rearrangement`` objects can also be represented in AIRR Data Model JSON
+or YAML files. For large datasets, alternative storage formats such as
+Parquet or Feather may be useful; no specific binary format is endorsed.
+When converting between formats, preserve AIRR field names and data types,
+required and custom columns, comma-delimited values, and the distinction
+between true, false, and null. The TSV encoding rules below apply when
+exporting to TSV.
+
 Encoding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
