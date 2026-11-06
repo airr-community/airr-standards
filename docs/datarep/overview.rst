@@ -190,7 +190,7 @@ reserved column name for a different meaning.
 
 For nested values, dot-separated paths can make the source of each field
 explicit. For example, the following JSON fragment contains selected
-fields from two Repertoire objects; it is not a complete metadata file:
+fields from two Repertoire objects (note: it is not a complete metadata file):
 
 .. code-block:: json
 
@@ -211,8 +211,8 @@ fields from two Repertoire objects; it is not a complete metadata file:
 
 Joining these selected fields to rearrangements by ``repertoire_id`` gives
 the following illustrative table. Metadata values are repeated for each
-rearrangement in the same repertoire. Only selected columns are shown;
-a complete Rearrangement TSV must also include all required columns.
+rearrangement in the same repertoire. Only selected columns are shown, and
+a complete Rearrangement TSV must also include all other required columns.
 
 .. list-table::
    :header-rows: 1
