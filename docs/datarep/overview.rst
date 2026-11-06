@@ -170,17 +170,17 @@ involve multiple ``Repertoires``, which may be combined into a
 Combining Fields across Schema Objects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For analysis or sharing with collaborators, it may be useful to 
+For analysis or sharing with collaborators, it may be useful to
 combine fields from multiple schema objects into a single table
-(e.g., adding selected repertoire metadata to the 
+(e.g., adding selected repertoire metadata to a table following the
 :ref:`Rearrangement schema <RearrangementSchema>`).
-Where relevant, field names across schemas have been chosen such
-that clashes/duplication are avoided, and merging of data across
-schemas is relatively easy. Flattening of all fields typically 
-contained in JSON/YAML files to a tabular format is not generally
-recommended, though, as the nature of the hierarchical relationships
-means that duplicating full metadata can substantially increase file size.
-Instead, flatten only the fields needed for the intended use case.
+Where relevant, field names across schemas have been chosen to avoid
+naming conflicts and maintain consistent meanings, facilitating the
+combination of fields from different schema objects.
+Flattening all fields from JSON/YAML files into a single table is not
+generally recommended, as repeating metadata across rearrangement rows
+can substantially increase file size. Instead, flatten only the fields
+needed for the intended use case.
 
 The :ref:`Rearrangement schema <RearrangementSchema>` allows additional columns,
 so selected fields from other AIRR objects can be included without changing
@@ -237,10 +237,14 @@ a complete Rearrangement TSV must also include all other required columns.
 The dotted headers illustrate how nested paths can be represented; they
 are not a required naming convention. Existing AIRR field names,
 such as ``subject_id``, can also be used directly where their meanings
-are preserved and there is no naming conflict. In general, naming conflicts
-are unlikely due to efforts to avoid duplication/clashes in field names
-between existing schemas.
+are preserved and there is no naming conflict.
 Existing Rearrangement columns retain their specified names and TSV encodings.
+
+When combining fields from objects with one-to-many relationships,
+take care to identify the appropriate records rather than
+unintentionally duplicating rearrangement rows or discarding values.
+See :ref:`RepertoireSchema` for guidance on linking records using
+``repertoire_id``, ``sample_processing_id``, and ``data_processing_id``.
 
 AIRR extension properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~
