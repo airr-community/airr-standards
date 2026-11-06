@@ -165,6 +165,91 @@ As a ``Repertoire`` is limited to a single sample, many analyses will
 involve multiple ``Repertoires``, which may be combined into a
 ``RepertoireGroup``.
 
+.. _TabularCombinedData:
+
+Combining Selected Fields in Tabular Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For analysis or sharing with collaborators, it may be useful to include
+selected repertoire metadata or single-cell annotations alongside
+rearrangement annotations in a single table. The
+:ref:`Rearrangement schema <RearrangementSchema>` allows additional columns,
+so selected fields from other AIRR objects can be included without changing
+the existing Rearrangement fields. Preserve the source fields' meanings,
+data types, and applicable controlled vocabularies, and do not reuse a
+reserved column name for a different meaning.
+
+For nested values, dot-separated paths can make the source of each field
+explicit. For example, the following JSON fragment contains selected
+fields from two Repertoire objects; it is not a complete metadata file:
+
+.. code-block:: json
+
+   {
+     "Repertoire": [
+       {
+         "repertoire_id": "rep1",
+         "study": {"study_id": "study1"},
+         "subject": {"subject_id": "subject1"}
+       },
+       {
+         "repertoire_id": "rep2",
+         "study": {"study_id": "study1"},
+         "subject": {"subject_id": "subject2"}
+       }
+     ]
+   }
+
+Joining these selected fields to rearrangements by ``repertoire_id`` gives
+the following illustrative table. Metadata values are repeated for each
+rearrangement in the same repertoire. Only selected columns are shown;
+a complete Rearrangement TSV must also include all required columns.
+
+.. list-table::
+   :header-rows: 1
+
+   * - sequence_id
+     - repertoire_id
+     - study.study_id
+     - subject.subject_id
+   * - seq1
+     - rep1
+     - study1
+     - subject1
+   * - seq2
+     - rep1
+     - study1
+     - subject1
+   * - seq3
+     - rep2
+     - study1
+     - subject2
+
+The dotted headers illustrate how nested paths can be represented; they
+are not a new required naming convention. Existing AIRR field names,
+such as ``subject_id``, can also be used directly where their meanings
+are preserved and there is no naming conflict. Existing Rearrangement
+columns retain their specified names and TSV encodings.
+
+Resolve one-to-many relationships before attaching metadata. When a
+repertoire has multiple sample processing or data processing records,
+use ``sample_processing_id`` or ``data_processing_id``, as appropriate,
+together with ``repertoire_id`` to identify the relevant record; see
+:ref:`Repertoire Schema <RepertoireSchema>` for linking details. Do not
+silently select the first element of a repeated object or expand arrays
+in a way that unintentionally duplicates rearrangements. Similarly,
+selected annotations from :ref:`Cell objects <CellSchema>` can be attached
+only after identifying the matching cell in the appropriate dataset context.
+
+Flatten only the fields needed for the intended use: duplicating full
+metadata across every rearrangement can substantially increase file size.
+For arrays or ontology-valued objects, explicitly document which elements
+or components are retained, including relevant ontology identifiers.
+A table containing selected fields may omit information and need not allow
+reconstruction of the original objects. This guidance does not define a
+replacement for the Repertoire or Single-cell YAML/JSON file formats or
+change repository submission requirements.
+
 AIRR extension properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 

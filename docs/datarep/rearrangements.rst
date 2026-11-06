@@ -101,6 +101,12 @@ follow the same naming scheme as existing fields. Meaning, ``snake_case``
 with narrowing scope when read from left to right. For example,
 ``sequence_id`` is the "*identifier* of the *query sequence*".
 
+Additional columns can also contain selected repertoire metadata or
+single-cell annotations, while preserving the meanings of existing
+Rearrangement fields. See :ref:`TabularCombinedData` for an example of
+combining fields from multiple AIRR objects and guidance on nested fields
+and one-to-many relationships.
+
 Consider submitting a pull request for a field name reservation to the
 `airr-standards repository <https://github.com/airr-community/airr-standards>`_
 if the field may be broadly useful.
