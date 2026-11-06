@@ -235,10 +235,12 @@ a complete Rearrangement TSV must also include all other required columns.
      - subject2
 
 The dotted headers illustrate how nested paths can be represented; they
-are not a new required naming convention. Existing AIRR field names,
+are not a required naming convention. Existing AIRR field names,
 such as ``subject_id``, can also be used directly where their meanings
-are preserved and there is no naming conflict. Existing Rearrangement
-columns retain their specified names and TSV encodings.
+are preserved and there is no naming conflict. In general, naming conflicts
+are unlikely due to efforts to avoid duplication/clashes in field names
+between existing schemas.
+Existing Rearrangement columns retain their specified names and TSV encodings.
 
 AIRR extension properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~
