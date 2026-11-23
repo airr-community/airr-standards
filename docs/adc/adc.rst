@@ -42,7 +42,7 @@ AIRR Data Commons Repositories
 ------------------------------
 
 The repositories that are part of the ADC are listed on the `AIRR Community ADC Registry github site
-<https://github.com/airr-community/adc-registry/blob/ADC/ADC-registry.tsv>`_. In order
+<https://github.com/airr-community/adc-registry/blob/master/ADC-registry.tsv>`_. In order
 to find data across all of the repositories in the ADC, it is necessary to query all of these repositories.
 
 Querying the AIRR Data Commons
